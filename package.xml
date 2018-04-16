@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>manif</name>
+  <version>0.0.0</version>
+  <description>The manif package</description>
+
+  <maintainer email="deray.jeremie@gmail.com">Jeremie Deray</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>Eigen</depend>
+
+</package>
