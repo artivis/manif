@@ -14,11 +14,11 @@ namespace manif
 
 // Forward declaration to specialize traits
 
-template <template <typename _Scalar> class _Tangent, typename _Scalar>
-struct SO2TangentBase;
+//template <template <typename _Scalar> class _Tangent, typename _Scalar>
+//struct SO2TangentBase;
 
-template <typename _Scalar>
-struct SO2Tangent;
+//template <typename _Scalar>
+//struct SO2Tangent;
 
 template <template <typename _Scalar> class _Manifold, typename _Scalar>
 struct SO2Base;
@@ -28,38 +28,51 @@ struct SO2;
 
 // Traits specialization
 
-template <>
-template <template <typename _Scalar> class _Tangent, typename _Scalar>
-struct TangentTraits<SO2TangentBase<_Tangent, _Scalar>>
-{
-  using Scalar = _Scalar;
-  using Tangent = _Tangent<Scalar>;
+//template <>
+//template <template <typename _Scalar> class _Tangent, typename _Scalar>
+//struct TangentTraits<SO2TangentBase<_Tangent, _Scalar>>
+//{
+//  using Scalar = _Scalar;
+//  using Tangent = _Tangent<Scalar>;
 
-  static constexpr int Dim = SO2TangentBase<_Tangent, Scalar>::Dim;
-  static constexpr int RepSize = SO2TangentBase<_Tangent, Scalar>::RepSize;
+//  static constexpr int Dim = SO2TangentBase<_Tangent, Scalar>::Dim;
+//  static constexpr int RepSize = SO2TangentBase<_Tangent, Scalar>::RepSize;
 
-  using Manifold = SO2<Scalar>;
-};
+//  using Manifold = SO2<Scalar>;
+//};
 
 template <>
 template <template <typename _Scalar> class _Manifold, typename _Scalar>
 struct ManifoldTraits<SO2Base<_Manifold, _Scalar>>
 {
   using Scalar = _Scalar;
+
+  using Base = SO2Base<_Manifold, _Scalar>;
+
   using Manifold = _Manifold<Scalar>;
 
   static constexpr int Dim = SO2Base<_Manifold, Scalar>::Dim;
   static constexpr int RepSize = SO2Base<_Manifold, Scalar>::RepSize;
 
-  using Tangent = SO2Tangent<Scalar>;
+//  using Tangent = SO2Tangent<Scalar>;
 };
+
+//template <>
+//template <typename _Scalar>
+//struct ManifoldTraits<SO2<_Scalar>>
+//{
+//  using Scalar = _Scalar;
+//  using Manifold = SO2<_Scalar>;
+
+
+//};
 
 ///////////////
 ///         ///
 /// Tangent ///
 ///         ///
 ///////////////
-
+/*
 template <template <typename _Scalar> class _Tangent, typename _Scalar>
 struct SO2TangentBase : TangentBase<SO2TangentBase<_Tangent, _Scalar>>
 {
@@ -89,6 +102,8 @@ struct SO2Tangent : SO2TangentBase<SO2Tangent, _Scalar>
     return Manifold();
   }
 };
+*/
+
 
 ////////////////
 ///          ///
@@ -109,6 +124,17 @@ struct SO2Base : ManifoldBase<SO2Base<_Manifold, _Scalar>>
   static constexpr int RepSize = 2;
 };
 
+template <template <typename _Scalar> class _Manifold, typename _Scalar>
+using SO2Tangent = typename SO2Base<_Manifold, _Scalar>::Tangent;
+
+
+//template <template <typename _Scalar> class _Manifold, typename _Scalar>
+//typename SO2Tangent<_Manifold, _Scalar>::Manifold
+//SO2Tangent<_Manifold, _Scalar>::retract() const
+//{
+//  return SO2Tangent<_Manifold, _Scalar>::Manifold();
+//}
+
 template <typename _Scalar>
 struct SO2 : SO2Base<SO2, _Scalar>
 {
@@ -128,17 +154,6 @@ struct SO2 : SO2Base<SO2, _Scalar>
   SO2(const UnderlyingData& d)
     : data_(d) { }
 
-  void zero()
-  {
-    data_.setZero();
-  }
-
-  static Manifold Zero()
-  {
-    static SO2 zero(UnderlyingData::Zero());
-    return zero;
-  }
-
   void identity()
   {
     data_.setIdentity();
@@ -153,13 +168,20 @@ struct SO2 : SO2Base<SO2, _Scalar>
   Tangent lift() const
   {
     std::cout << "SO2 lift\n";
-    return SO2Tangent<Scalar>();
+    return Tangent();
   }
 
 protected:
 
   UnderlyingData data_;
 };
+
+template <template <typename _Scalar> class _Manifold, typename _Scalar>
+_Manifold<_Scalar>
+SO2::Tangent::retract() const
+{
+  return SO2Tangent<_Manifold, _Scalar>::Manifold();
+}
 
 using SO2f = SO2<float>;
 using SO2d = SO2<double>;

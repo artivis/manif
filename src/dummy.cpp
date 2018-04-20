@@ -12,9 +12,8 @@ int main() {
 
   std::cout << "Starting dummy.\n";
 
-  SO2d so2 = SO2d::Zero();
+  SO2d so2 = SO2d::Identity();
 
-  so2.zero();
   so2.identity();
 
   auto l = so2.lift();

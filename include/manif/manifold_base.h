@@ -17,26 +17,31 @@ struct ManifoldBase
   static constexpr int Dim     = ManifoldTraits<_Derived>::Dim;
   static constexpr int RepSize = ManifoldTraits<_Derived>::RepSize;
 
-  using Tangent  = typename ManifoldTraits<_Derived>::Tangent;
+//  using Tangent  = typename ManifoldTraits<_Derived>::Tangent;
 
-  Manifold zero()
+  struct Tangent
   {
-    return manifold().zero();
-  }
+    using Scalar = typename ManifoldTraits<_Derived>::Scalar;
 
-  static Manifold Zero()
-  {
-    return manifold().Zero();
-  }
+    static constexpr int Dim = ManifoldTraits<_Derived>::Dim;
+    static constexpr int RepSize = Dim;
+
+    using Manifold = typename ManifoldTraits<_Derived>::Manifold;
+
+    Manifold retract() const;
+//    {
+//      return tangent().retract();
+//    }
+  };
 
   void identity()
   {
     manifold().identity();
   }
 
-  static Manifold Identity()
+  void random()
   {
-    return manifold().Identity();
+    manifold().random();
   }
 
   Manifold inverse() const
@@ -44,47 +49,120 @@ struct ManifoldBase
     return manifold().inverse();
   }
 
+  Manifold plus(const Tangent& t) const
+  {
+    return manifold().plus(t);
+  }
+
+  Manifold rminus(const Manifold& m) const
+  {
+    return manifold().rminus(m);
+  }
+
+  Manifold lminus(const Manifold& m) const
+  {
+    return manifold().lminus(m);
+  }
+
   Tangent lift() const
   {
     return manifold().lift();
   }
 
-  static Tangent lift(const Manifold& m)
+  /*
+  LieType lie() const
   {
-    return m.lift();
+    return manifold().lie();
+  }
+  */
+
+  Manifold compose(const Manifold& m)
+  {
+    return manifold().compose(m);
   }
 
-  static Manifold retract(const Tangent& t)
+  Manifold between(const Manifold& m)
   {
-    return manifold().retract(t);
-  }
-
-  Manifold plus(const Manifold& m) const
-  {
-    return manifold().plus(m);
-  }
-
-  Manifold minus(const Manifold& m) const
-  {
-    return manifold().minus(m);
+    return manifold().inverse().compose(m);
   }
 
   /*
-  auto compose() -> decltype(std::declval<Manifold>().compose())
-  {
-    return manifold().compose();
-  }
-
-  auto between() -> decltype(std::declval<Manifold>().between())
-  {
-    return manifold().between();
-  }
-
-  auto interpolate() -> decltype(std::declval<Manifold>().interpolate())
+  Manifold interpolate()
   {
     return manifold().interpolate();
   }
   */
+
+  /// some static helpers
+
+  static Manifold Identity()
+  {
+    static Manifold m; m.identity();
+    return m;
+  }
+
+  static Manifold Random()
+  {
+    static Manifold m; m.random();
+    return m;
+  }
+
+  static Tangent Inverse(const Manifold& m)
+  {
+    return m.inverse();
+  }
+
+  static Manifold Rplus(const Manifold& m, const Tangent& t)
+  {
+    return m.plus(t);
+  }
+
+  static Manifold Lplus(const Tangent& t, const Manifold& m)
+  {
+    return t.plus(m);
+  }
+
+  static Manifold Rminus(const Manifold& m0, const Manifold& m1)
+  {
+    return m0.rminus(m1);
+  }
+
+  static Manifold Lminus(const Manifold& m0, const Manifold& m1)
+  {
+    return m0.lminus(m1);
+  }
+
+  static Tangent Lift(const Manifold& m)
+  {
+    return m.lift();
+  }
+
+  static Manifold Retract(const Tangent& t)
+  {
+    return t.retract();
+  }
+
+  /*
+  static LieType Lie(const Manifold& m)
+  {
+    return m.lie();
+  }
+
+  static LieType Lie(const Tangent& t)
+  {
+    return t.lie();
+  }
+  */
+
+  static Manifold Compose(const Manifold& m0, const Manifold& m1)
+  {
+    return m0.compose(m1);
+  }
+
+  static Manifold Between(const Manifold& m0, const Manifold& m1)
+  {
+    return m0.between(m1);
+  }
 
 protected:
 
