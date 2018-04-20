@@ -1,32 +1,47 @@
 #ifndef _MANIF_MANIF_TANGENT_BASE_H_
 #define _MANIF_MANIF_TANGENT_BASE_H_
 
+#include "manif/fwd.h"
+
 namespace manif
 {
 
-template <typename T>
-struct TangentTraits;
-
-template <class _Derived>
+template <class _Manifold>
 struct TangentBase
 {
-  using Scalar  = typename TangentTraits<_Derived>::Scalar;
+  using Scalar = typename _Manifold::Scalar;
 
-  using Tangent = typename TangentTraits<_Derived>::Tangent;
+  static constexpr int Dim = _Manifold::Dim;
+  static constexpr int RepSize = Dim;
 
-  static constexpr int Dim     = TangentTraits<_Derived>::Dim;
-  static constexpr int RepSize = TangentTraits<_Derived>::RepSize;
+  using Manifold = typename _Manifold::Manifold;
 
-  using Manifold = typename TangentTraits<_Derived>::Manifold;
+  void zero()
+  {
+    tangent().zero();
+  }
+
+  void random()
+  {
+    tangent().random();
+  }
 
   Manifold retract() const
   {
     return tangent().retract();
   }
 
-protected:
+  static Manifold Retract(const TangentBase<_Manifold>& t)
+  {
+    return t.retract();
+  }
 
-  /*constexpr*/ Tangent& tangent() { return static_cast< Tangent& >(*this); }
+private:
+
+  using Tangent = typename Manifold::Tangent;
+
+  Tangent& tangent() { return *static_cast< Tangent* >(this); }
+  const Tangent& tangent() const { return *static_cast< const Tangent* >(this); }
 };
 
 } /* namespace manif */

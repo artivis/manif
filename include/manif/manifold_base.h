@@ -1,57 +1,64 @@
 #ifndef _MANIF_MANIF_MANIFOLD_BASE_H_
 #define _MANIF_MANIF_MANIFOLD_BASE_H_
 
+#include "manif/fwd.h"
+#include "manif/tangent_base.h"
+
+#include <iostream>
+#include <utility>
+
 namespace manif
 {
-
-template <typename T>
-struct ManifoldTraits;
 
 template <class _Derived>
 struct ManifoldBase
 {
-  using Scalar   = typename ManifoldTraits<_Derived>::Scalar;
+  using Derived = _Derived;
 
-  using Manifold = typename ManifoldTraits<_Derived>::Manifold;
+  using Scalar   = typename internal::traits<Derived>::Scalar;
 
-  static constexpr int Dim     = ManifoldTraits<_Derived>::Dim;
-  static constexpr int RepSize = ManifoldTraits<_Derived>::RepSize;
+  using Manifold = typename internal::traits<Derived>::Manifold;
 
-//  using Tangent  = typename ManifoldTraits<_Derived>::Tangent;
+  static constexpr int Dim     = internal::traits<Derived>::Dim;
+  static constexpr int RepSize = internal::traits<Derived>::RepSize;
 
-  struct Tangent
-  {
-    using Scalar = typename ManifoldTraits<_Derived>::Scalar;
-
-    static constexpr int Dim = ManifoldTraits<_Derived>::Dim;
-    static constexpr int RepSize = Dim;
-
-    using Manifold = typename ManifoldTraits<_Derived>::Manifold;
-
-    Manifold retract() const;
-//    {
-//      return tangent().retract();
-//    }
-  };
+  using ManifoldTangentBase = TangentBase<Derived>;
+//  using ManifoldTangent = TangentBase<Derived>;
 
   void identity()
   {
+    //std::cout << "ManifoldBase identity\n";
     manifold().identity();
   }
 
   void random()
   {
+    //std::cout << "ManifoldBase random\n";
     manifold().random();
   }
 
   Manifold inverse() const
   {
+    //std::cout << "ManifoldBase inverse\n";
     return manifold().inverse();
   }
 
-  Manifold plus(const Tangent& t) const
+  Manifold rplus(const ManifoldTangentBase& t) const
   {
-    return manifold().plus(t);
+    //std::cout << "ManifoldBase rplus\n";
+    return manifold().rplus(t);
+  }
+
+  Manifold lplus(const ManifoldTangentBase& t) const
+  {
+    //std::cout << "ManifoldBase lplus\n";
+    return manifold().lplus(t);
+  }
+
+  template <typename T>
+  Manifold plus(T&& t) const
+  {
+    return manifold().rplus(std::forward<T>(t));
   }
 
   Manifold rminus(const Manifold& m) const
@@ -64,7 +71,13 @@ struct ManifoldBase
     return manifold().lminus(m);
   }
 
-  Tangent lift() const
+  template <typename T>
+  Manifold minus(T&& t) const
+  {
+    return manifold().rminus(std::forward<T>(t));
+  }
+
+  ManifoldTangentBase lift() const
   {
     return manifold().lift();
   }
@@ -76,12 +89,12 @@ struct ManifoldBase
   }
   */
 
-  Manifold compose(const Manifold& m)
+  Manifold compose(const Manifold& m) const
   {
     return manifold().compose(m);
   }
 
-  Manifold between(const Manifold& m)
+  Manifold between(const Manifold& m) const
   {
     return manifold().inverse().compose(m);
   }
@@ -93,7 +106,35 @@ struct ManifoldBase
   }
   */
 
-  /// some static helpers
+  /// Some operators
+
+  template <typename T>
+  Manifold operator +(T&& t) const
+  {
+    return manifold().rplus(std::forward<T>(t));
+  }
+
+  template <typename T>
+  Manifold& operator +=(T&& t)
+  {
+    manifold() = manifold().rplus(std::forward<T>(t));
+    return manifold();
+  }
+
+  template <typename T>
+  Manifold operator *(T&& m) const
+  {
+    return manifold().compose(std::forward<T>(m));
+  }
+
+  template <typename T>
+  Manifold& operator *=(T&& m)
+  {
+    manifold() = manifold().compose(std::forward<T>(m));
+    return manifold();
+  }
+
+  /// Some static helpers
 
   static Manifold Identity()
   {
@@ -107,17 +148,17 @@ struct ManifoldBase
     return m;
   }
 
-  static Tangent Inverse(const Manifold& m)
+  static ManifoldTangentBase Inverse(const Manifold& m)
   {
     return m.inverse();
   }
 
-  static Manifold Rplus(const Manifold& m, const Tangent& t)
+  static Manifold Rplus(const Manifold& m, const ManifoldTangentBase& t)
   {
     return m.plus(t);
   }
 
-  static Manifold Lplus(const Tangent& t, const Manifold& m)
+  static Manifold Lplus(const ManifoldTangentBase& t, const Manifold& m)
   {
     return t.plus(m);
   }
@@ -132,12 +173,12 @@ struct ManifoldBase
     return m0.lminus(m1);
   }
 
-  static Tangent Lift(const Manifold& m)
+  static ManifoldTangentBase Lift(const Manifold& m)
   {
     return m.lift();
   }
 
-  static Manifold Retract(const Tangent& t)
+  static Manifold Retract(const ManifoldTangentBase& t)
   {
     return t.retract();
   }
@@ -148,7 +189,7 @@ struct ManifoldBase
     return m.lie();
   }
 
-  static LieType Lie(const Tangent& t)
+  static LieType Lie(const ManifoldTangentBase& t)
   {
     return t.lie();
   }
@@ -164,9 +205,18 @@ struct ManifoldBase
     return m0.between(m1);
   }
 
-protected:
+  /// static helpers with Jacobians
 
-  /*constexpr*/ Manifold& manifold() { return static_cast< Manifold& >(*this); }
+  template <typename _Jacobian>
+  static ManifoldTangentBase Inverse(const Manifold& m, _Jacobian& jac)
+  {
+    return m.inverse();
+  }
+
+private:
+
+  Manifold& manifold() { return *static_cast< Manifold* >(this); }
+  const Manifold& manifold() const { return *static_cast< const Manifold* >(this); }
 };
 
 } /* namespace manif */
