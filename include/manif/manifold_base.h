@@ -6,24 +6,47 @@
 
 #include <iostream>
 #include <utility>
+#include <tuple>
 
 namespace manif
 {
 
+template <typename _ManifoldBase> struct ManifoldProperties;
+
 template <class _Derived>
 struct ManifoldBase
 {
-  using Derived = _Derived;
+  using Scalar   = typename internal::traits<_Derived>::Scalar;
 
-  using Scalar   = typename internal::traits<Derived>::Scalar;
+  using Manifold = typename internal::traits<_Derived>::Manifold;
 
-  using Manifold = typename internal::traits<Derived>::Manifold;
+  static constexpr int Dim     = internal::traits<_Derived>::Dim;
+  static constexpr int DoF     = internal::traits<_Derived>::DoF;
+  static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
-  static constexpr int Dim     = internal::traits<Derived>::Dim;
-  static constexpr int RepSize = internal::traits<Derived>::RepSize;
+  using ManifoldDataType = typename internal::traits<_Derived>::ManifoldDataType;
+  using TangentDataType  = typename internal::traits<_Derived>::TangentDataType;
 
-  using ManifoldTangentBase = TangentBase<Derived>;
-//  using ManifoldTangent = TangentBase<Derived>;
+  using JacobianType = typename internal::traits<_Derived>::JacobianType;
+
+  using ManifoldTangentBase = TangentBase<_Derived>;
+
+  using Tangent = typename internal::traits<_Derived>::Tangent;
+
+  /// @todo this is an implicit conversion operator,
+  /// evaluate how bad it is to use it.
+  operator Manifold&() { return manifold(); }
+  operator const Manifold& () const { return manifold(); }
+
+  ManifoldDataType* data()
+  {
+    return manifold().data();
+  }
+
+  const ManifoldDataType* data() const
+  {
+    return manifold().data();
+  }
 
   void identity()
   {
@@ -43,13 +66,20 @@ struct ManifoldBase
     return manifold().inverse();
   }
 
-  Manifold rplus(const ManifoldTangentBase& t) const
+  template <typename _OtherManifold>
+  void inverse(_OtherManifold&& m, JacobianType& j) const
+  {
+    //std::cout << "ManifoldBase inverseWithJacobian\n";
+    manifold().inverse(std::forward<_OtherManifold>(m), j);
+  }
+
+  Manifold rplus(const Tangent& t) const
   {
     //std::cout << "ManifoldBase rplus\n";
     return manifold().rplus(t);
   }
 
-  Manifold lplus(const ManifoldTangentBase& t) const
+  Manifold lplus(const Tangent& t) const
   {
     //std::cout << "ManifoldBase lplus\n";
     return manifold().lplus(t);
@@ -71,11 +101,13 @@ struct ManifoldBase
     return manifold().lminus(m);
   }
 
+  /*
   template <typename T>
   Manifold minus(T&& t) const
   {
     return manifold().rminus(std::forward<T>(t));
   }
+  */
 
   ManifoldTangentBase lift() const
   {
@@ -208,9 +240,10 @@ struct ManifoldBase
   /// static helpers with Jacobians
 
   template <typename _Jacobian>
-  static ManifoldTangentBase Inverse(const Manifold& m, _Jacobian& jac)
+  static void Inverse(const Manifold& m, Manifold& minv, _Jacobian& jac)
   {
-    return m.inverse();
+    minv = m.inverse();
+//    InverseJacobianHelper<Manifold>::compute/*<_Jacobian>*/(m, minv, jac);
   }
 
 private:

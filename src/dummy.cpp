@@ -1,4 +1,5 @@
 #include "manif/SO2.h"
+#include "manif/SO3.h"
 
 using namespace manif;
 
@@ -16,6 +17,24 @@ void setRandom(ManifoldBase<Derived>& m)
   m.random();
 }
 
+template <typename Derived>
+void computeInverseJac(ManifoldBase<Derived>& m)
+{
+  std::cout << "Compute inverse with Jac\n";
+
+  using T = typename ManifoldBase<Derived>::Scalar;
+
+  SO2<T> minv = m;
+  typename SO2<T>::JacobianType Jac;
+  m.inverse(minv, Jac);
+}
+
+template <typename ManDerived, typename TanDerived>
+void doPlus(const ManifoldBase<ManDerived>& m, const TangentBase<TanDerived>& t)
+{
+  auto ret = m.plus(t);
+}
+
 int main()
 {
   static_assert(std::is_same<SO2<double>, SO2d>::value, "ok");
@@ -25,7 +44,6 @@ int main()
 
   static_assert(std::is_same<SO2d::Tangent, SO2Tangentd>::value, "ok");
   static_assert(std::is_same<SO2f::Tangent, SO2Tangentf>::value, "ok");
-
 
   std::cout << "Starting dummy.\n\n";
 
@@ -58,6 +76,11 @@ int main()
 
   so2_rplus = so2.plus( so2_lift );
 
+  doPlus(so2, so2_lift);
+
+  // Should **not** compile
+  //doPlus(so2, SO3Tangentd{});
+
   auto so2_lplus = so2.lplus( so2_lift );
 
   static_assert(std::is_same<decltype(so2_lplus), SO2d>::value, "ok");
@@ -67,7 +90,7 @@ int main()
 //  so2_rplus = so2 - so2_lift;
 //  so2_rplus -= so2_lift;
 
-  so2_rplus = so2.minus( so2_inv );
+//  so2_rplus = so2.minus( so2_inv );
 
   static_assert(std::is_same<decltype(so2_rminus), SO2d>::value, "ok");
 
@@ -84,13 +107,21 @@ int main()
   so2_compose = so2 * so2_inv;
   so2_compose *= so2_inv;
 
-  auto so2_between = so2.between(so2_inv);
+  SO2d so2_between = so2.between(so2_inv);
 
   static_assert(std::is_same<decltype(so2_between), SO2d>::value, "ok");
 
   setIdentity(so2);
 
   setRandom(so2);
+
+  //////
+
+  SO2d::JacobianType so2_inv_jac;
+
+  so2.inverse(so2_inv, so2_inv_jac);
+
+  computeInverseJac(so2);
 
   std::cout << "\n";
 

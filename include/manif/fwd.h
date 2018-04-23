@@ -1,8 +1,14 @@
 #ifndef _MANIF_MANIF_FWD_H_
 #define _MANIF_MANIF_FWD_H_
 
+#include <type_traits>
+
 namespace manif
 {
+
+using WithJacobian = std::true_type;
+using WithoutJacobian = std::false_type;
+
 namespace internal
 {
 
@@ -21,47 +27,45 @@ template<typename T> struct traits<const T> : traits<T> {};
 
 #endif /* _MANIF_MANIF_FWD_H_ */
 
-#define DEFINE_MANIFOLD_TANGENT                                 \
-  struct Tangent : TangentBase<typename ManifoldBase::Manifold> \
-  {                                                             \
-    void zero();                                                \
-    void random();                                              \
-    typename ManifoldBase::Manifold retract() const;            \
+#define MANIF_DEFINE_MANIFOLD_TANGENT                    \
+  struct Tangent : TangentBase<typename Base::Manifold>  \
+  {                                                      \
+    void zero();                                         \
+    void random();                                       \
+    typename Base::Manifold retract() const;             \
   };
 
-#define MANIFOLD_BASE_TYPEDEF \
-  using Base::plus; \
-  using Base::operator +; \
-  using Base::operator +=; \
-  using Base::operator *; \
-  using Base::operator *=; \
-  using Manifold = typename Base::Manifold; \
+#define MANIF_MANIFOLD_BASE_TYPEDEF           \
+  using Base::operator +;                     \
+  using Base::operator +=;                    \
+  using Base::operator *;                     \
+  using Base::operator *=;                    \
+  using Manifold = typename Base::Manifold;
 
-#define MANIFOLD_TYPEDEF                            \
-  using Scalar = _Scalar;                           \
-  using Manifold = typename ManifoldBase::Manifold; \
-  using Type = Manifold;                            \
-  using ManifoldBase::Dim;                          \
-  using ManifoldBase::RepSize; \
-  using ManifoldBase::plus; \
-  using ManifoldBase::operator +; \
-  using ManifoldBase::operator +=; \
-  using ManifoldBase::operator *; \
-  using ManifoldBase::operator *=; \
+#define MANIF_MANIFOLD_TYPEDEF                              \
+  using Scalar = _Scalar;                                   \
+  using Manifold = typename Base::Manifold;                 \
+  using Type = Manifold;                                    \
+  using Base::Dim;                                          \
+  using ManifoldDataType = typename Base::ManifoldDataType; \
+  using TangentDataType = typename Base::TangentDataType;   \
+  using JacobianType = typename Base::JacobianType;         \
+  using Base::RepSize;
 
-#define INHERIT_MANIFOLD_OPERATOR \
-  using Base::operator =;
+#define MANIF_INHERIT_MANIFOLD_OPERATOR \
+  using Base::operator +;               \
+  using Base::operator +=;              \
+  using Base::operator *;               \
+  using Base::operator *=;
 
-#define COMPLETE_MANIFOLD_TYPEDEF \
-  DEFINE_MANIFOLD_TANGENT         \
-  MANIFOLD_TYPEDEF                \
+#define MANIF_COMPLETE_MANIFOLD_TYPEDEF \
+  MANIF_MANIFOLD_TYPEDEF                \
+  MANIF_INHERIT_MANIFOLD_OPERATOR
 
-#define EXTRA_MANIFOLD_TYPEDEF(manifold)                          \
-  using manifold##f = manifold<float>;                            \
-  using manifold##d = manifold<double>;                           \
-                                                                  \
-  template <typename _Scalar>                                     \
-  using manifold##Tangent = typename manifold<_Scalar>::Tangent;  \
-                                                                  \
-  using manifold##Tangentf = manifold##Tangent<float>;            \
-  using manifold##Tangentd = manifold##Tangent<double>;
+#define MANIF_EXTRA_MANIFOLD_TYPEDEF(manifold) \
+  using manifold##f = manifold<float>;         \
+  using manifold##d = manifold<double>;
+
+#define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
+  using tangent##f = tangent<float>;         \
+  using tangent##d = tangent<double>;

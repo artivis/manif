@@ -6,15 +6,20 @@
 namespace manif
 {
 
-template <class _Manifold>
+template <class _Derived>
 struct TangentBase
 {
-  using Scalar = typename _Manifold::Scalar;
+  using Scalar   = typename internal::traits<_Derived>::Scalar;
 
-  static constexpr int Dim = _Manifold::Dim;
-  static constexpr int RepSize = Dim;
+  using Manifold = typename internal::traits<_Derived>::Manifold;
+  using Tangent  = typename internal::traits<_Derived>::Tangent;
 
-  using Manifold = typename _Manifold::Manifold;
+  static constexpr int Dim     = internal::traits<_Derived>::Dim;
+  static constexpr int RepSize = internal::traits<_Derived>::RepSize;
+  static constexpr int DoF     = internal::traits<_Derived>::DoF;
+
+  operator Tangent&() { return tangent(); }
+  operator const Tangent& () const { return tangent(); }
 
   void zero()
   {
@@ -31,14 +36,12 @@ struct TangentBase
     return tangent().retract();
   }
 
-  static Manifold Retract(const TangentBase<_Manifold>& t)
+  static Manifold Retract(const Tangent& t)
   {
     return t.retract();
   }
 
 private:
-
-  using Tangent = typename Manifold::Tangent;
 
   Tangent& tangent() { return *static_cast< Tangent* >(this); }
   const Tangent& tangent() const { return *static_cast< const Tangent* >(this); }
