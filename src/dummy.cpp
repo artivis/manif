@@ -55,6 +55,8 @@ int main()
 
   SO2d so2 = SO2d::Random();
 
+  so2 = SO2d::Identity();
+
   so2.identity();
 
   SO2d so2_inv = so2.inverse();
@@ -114,6 +116,14 @@ int main()
   setIdentity(so2);
 
   setRandom(so2);
+
+  //////
+
+  SO2Tangentd so2_tan(0.17);
+  so2_tan = SO2Tangentd(SO2Tangentd::TangentDataType(0.17));
+
+  so2_tan.zero();
+
 
   //////
 

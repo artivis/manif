@@ -25,8 +25,6 @@ template<typename T> struct traits<const T> : traits<T> {};
 } /* namespace internal */
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_FWD_H_ */
-
 #define MANIF_DEFINE_MANIFOLD_TANGENT                    \
   struct Tangent : TangentBase<typename Base::Manifold>  \
   {                                                      \
@@ -48,7 +46,6 @@ template<typename T> struct traits<const T> : traits<T> {};
   using Type = Manifold;                                    \
   using Base::Dim;                                          \
   using ManifoldDataType = typename Base::ManifoldDataType; \
-  using TangentDataType = typename Base::TangentDataType;   \
   using JacobianType = typename Base::JacobianType;         \
   using Base::RepSize;
 
@@ -69,3 +66,5 @@ template<typename T> struct traits<const T> : traits<T> {};
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
   using tangent##f = tangent<float>;         \
   using tangent##d = tangent<double>;
+
+#endif /* _MANIF_MANIF_FWD_H_ */
