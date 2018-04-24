@@ -28,9 +28,12 @@ struct ManifoldBase
 
   using Tangent = typename internal::traits<_Derived>::Tangent;
 
-  using JacobianType = typename internal::traits<_Derived>::JacobianType;
+  using JacobianMtoM = typename internal::traits<_Derived>::JacobianMtoM;
+  using JacobianMtoT = typename internal::traits<_Derived>::JacobianMtoT;
 
   using Transformation = typename internal::traits<_Derived>::Transformation;
+
+  using Rotation = typename internal::traits<_Derived>::Rotation;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -42,6 +45,8 @@ struct ManifoldBase
   const ManifoldDataType* data() const;
 
   Transformation matrix() const;
+
+  Rotation rotation() const;
 
   void identity();
 
@@ -123,7 +128,10 @@ struct ManifoldBase
 
   /// Jacs
 
-  void inverse(Manifold& m, JacobianType& j) const;
+  void inverse(Manifold& m, JacobianMtoM& J) const;
+
+  void rplus(const Tangent& t, Manifold& m,
+             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
 
   /// Some static helpers
 
@@ -231,6 +239,13 @@ typename ManifoldBase<_Derived>::Transformation
 ManifoldBase<_Derived>::matrix() const
 {
   return manifold().matrix();
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Rotation
+ManifoldBase<_Derived>::rotation() const
+{
+  return manifold().rotation();
 }
 
 template <typename _Derived>
@@ -348,7 +363,7 @@ ManifoldBase<_Derived>::operator *=(const Manifold& m)
 /// Jacs
 
 template <typename _Derived>
-void ManifoldBase<_Derived>::inverse(Manifold& m, JacobianType& j) const
+void ManifoldBase<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
 {
   manifold().inverse(m, j);
 }

@@ -25,7 +25,7 @@ void computeInverseJac(ManifoldBase<Derived>& m)
   using T = typename ManifoldBase<Derived>::Scalar;
 
   SO2<T> minv = m;
-  typename SO2<T>::JacobianType Jac;
+  typename SO2<T>::JacobianMtoM Jac;
   m.inverse(minv, Jac);
 }
 
@@ -81,7 +81,7 @@ int main()
   doPlus(so2, so2_lift);
 
   // Should **not** compile
-  //doPlus(so2, SO3Tangentd{});
+//  doPlus(so2, SO3Tangentd{});
 
   auto so2_lplus = so2.lplus( so2_lift );
 
@@ -127,7 +127,7 @@ int main()
 
   //////
 
-  SO2d::JacobianType so2_inv_jac;
+  SO2d::JacobianMtoM so2_inv_jac;
 
   so2.inverse(so2_inv, so2_inv_jac);
 

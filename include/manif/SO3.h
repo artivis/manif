@@ -27,7 +27,7 @@ struct traits<SO3<_Scalar>>
   using Scalar = _Scalar;
 
   using Manifold = SO3<_Scalar>;
-  using Tangent  = SO3<_Scalar>;
+  using Tangent  = SO3Tangent<_Scalar>;
 
   using Base = SO3Base<SO3<_Scalar>>;
 
@@ -38,21 +38,18 @@ struct traits<SO3<_Scalar>>
   using ManifoldDataType = Eigen::Matrix<Scalar, 2, 1>;
   using TangentDataType  = Eigen::Matrix<Scalar, 2, 1>;
 
-  using JacobianType = Eigen::Matrix<Scalar, 2, 2>;
-  /*
-  using JacobianType0    = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianType1    = Eigen::Matrix<Scalar, RepSize, DoF>;
-  using JacobianType2    = Eigen::Matrix<Scalar, DoF, RepSize>;
-  */
+  using JacobianMtoM = Eigen::Matrix<Scalar, RepSize, RepSize>;
+  using JacobianMtoT = Eigen::Matrix<Scalar, DoF, RepSize>;
 };
 
+template <>
 template <typename _Scalar>
 struct traits<SO3Tangent<_Scalar>>
 {
   using Scalar = _Scalar;
 
   using Manifold = SO3<_Scalar>;
-  using Tangent = SO3Tangent<_Scalar>;
+  using Tangent  = SO3Tangent<_Scalar>;
 
   using Base = SO3Base<SO3<_Scalar>>;
 
@@ -64,11 +61,6 @@ struct traits<SO3Tangent<_Scalar>>
   using TangentDataType  = Eigen::Matrix<Scalar, 2, 1>;
 
   using JacobianType = Eigen::Matrix<Scalar, 2, 2>;
-  /*
-  using JacobianType0    = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianType1    = Eigen::Matrix<Scalar, RepSize, DoF>;
-  using JacobianType2    = Eigen::Matrix<Scalar, DoF, RepSize>;
-  */
 };
 
 } /* namespace internal */
@@ -154,10 +146,6 @@ struct SO3 : SO3Base<SO3<_Scalar>>
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
 
-  using ManifoldDataType2 = Eigen::Matrix<_Scalar, RepSize, 1>;
-//  using TangentDataType  = Eigen::Matrix<_Scalar, 2, 1>;
-//  using JacobianType = Eigen::Matrix<_Scalar, 2, 2>;
-
   SO3()  = default;
   ~SO3() = default;
 
@@ -199,7 +187,7 @@ struct SO3 : SO3Base<SO3<_Scalar>>
 
   ///
 
-  void inverse(SO3& m, JacobianType& j) const;
+  void inverse(SO3& m, JacobianMtoM& j) const;
 
 protected:
 
@@ -317,7 +305,7 @@ SO3<_Scalar> SO3<_Scalar>::compose(const SO3& /*m*/) const
 
 template <typename _Scalar>
 void SO3<_Scalar>::inverse(
-    SO3<_Scalar>& /*m*/, typename SO3<_Scalar>::JacobianType& /*j*/) const
+    SO3<_Scalar>& /*m*/, typename SO3<_Scalar>::JacobianMtoM& /*j*/) const
 {
   std::cout << "SO3 inverseWithJacobian\n";
 }

@@ -42,7 +42,7 @@ struct SO3Base : ManifoldBase<_Derived>
 
   static constexpr int Dim      = ManifoldProperties<SO3Base<_Derived>>::Dim;
   static constexpr int DoF      = ManifoldProperties<SO3Base<_Derived>>::DoF;
-  static constexpr int RepSize  = 2;
+  static constexpr int RepSize  = 4;
 };
 
 template <typename _Derived>

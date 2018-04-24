@@ -34,7 +34,8 @@ struct SO2Base : ManifoldBase<_Derived>
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
 
-  using JacobianType = typename Base::JacobianType;
+  using JacobianMtoM = typename Base::JacobianMtoM;
+  using JacobianMtoT = typename Base::JacobianMtoT;
 
   using ManifoldDataType = typename Base::ManifoldDataType;
 
@@ -42,10 +43,15 @@ struct SO2Base : ManifoldBase<_Derived>
   static constexpr int DoF = ManifoldProperties<SO2Base<_Derived>>::DoF;
 
   using Transformation  = typename Base::Transformation;
+  using Rotation  = typename Base::Rotation;
 
   using Base::data;
 
+  /// Manifold common API
+
   Transformation matrix() const;
+
+  Rotation rotation() const;
 
   void identity();
 
@@ -53,21 +59,50 @@ struct SO2Base : ManifoldBase<_Derived>
 
   Manifold inverse() const;
 
-  Manifold rplus(const Tangent& /*t*/) const;
+  Manifold rplus(const Tangent& t) const;
 
-  Manifold lplus(const Tangent& /*t*/) const;
+  Manifold lplus(const Tangent& t) const;
 
-  Manifold rminus(const Manifold& /*m*/) const;
+  Manifold rminus(const Manifold& m) const;
 
-  Manifold lminus(const Manifold& /*m*/) const;
+  Manifold lminus(const Manifold& m) const;
 
   Tangent lift() const;
 
-  Manifold compose(const Manifold& /*m*/) const;
+  Manifold compose(const Manifold& m) const;
 
   /// with Jacs
 
-  void inverse(Manifold& m, JacobianType& j) const;
+  void inverse(Manifold& m, JacobianMtoM& j) const;
+
+  void rplus(const Tangent& t, Manifold& m,
+             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+
+  void lplus(const Tangent& t, Manifold& m,
+             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+
+  void rminus(const Manifold& min, Manifold& mout,
+              JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+
+  void lminus(const Manifold& min, Manifold& mout,
+              JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+
+  void lift(const Manifold& m, Tangent& t, JacobianMtoT& J_t_m) const;
+
+  void compose(const Manifold& ma, const Manifold& mb,
+               Manifold& mout,
+               JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+
+  /// SO2 specific functions
+
+  const Scalar& real() const;
+  const Scalar& imag() const;
+  Scalar angle() const;
+
+protected:
+
+  Scalar& real();
+  Scalar& imag();
 };
 
 template <typename _Derived>
@@ -78,10 +113,22 @@ SO2Base<_Derived>::matrix() const
 }
 
 template <typename _Derived>
+typename SO2Base<_Derived>::Rotation
+SO2Base<_Derived>::rotation() const
+{
+  using std::sin;
+  using std::cos;
+  const Scalar theta = angle();
+  return (Rotation() << cos(theta), -sin(theta),
+                        sin(theta),  cos(theta)).finished();
+}
+
+template <typename _Derived>
 void SO2Base<_Derived>::identity()
 {
   MANIF_INFO("SO2Base identity");
-  data()->setIdentity();
+  real() = 1;
+  imag() = 1;
 }
 
 template <typename _Derived>
@@ -96,9 +143,7 @@ typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::inverse() const
 {
   MANIF_INFO("SO2Base inverse");
-  return Manifold(
-        data()->cwiseProduct(ManifoldDataType(1,-1))
-        );
+  return Manifold(real(), -imag());
 }
 
 template <typename _Derived>
@@ -106,7 +151,8 @@ typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::rplus(const Tangent& t) const
 {
   /// @todo check this
-  return Manifold( Tangent(lift().data()->x() + t.data()->x()).retract() );
+  return Manifold( real() + cos(t.angle()),
+                   imag() + sin(t.angle()) );
 }
 
 template <typename _Derived>
@@ -118,44 +164,154 @@ SO2Base<_Derived>::lplus(const Tangent& t) const
 }
 
 template <typename _Derived>
+typename SO2Base<_Derived>::Manifold
+SO2Base<_Derived>::rminus(const Manifold& m) const
+{
+  return Manifold(real() - m.real(),
+                  imag() - m.imag());
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Manifold
+SO2Base<_Derived>::lminus(const Manifold& m) const
+{
+  return Manifold(m.real() - real(),
+                  m.imag() - imag());
+}
+
+template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
 SO2Base<_Derived>::lift() const
 {
   MANIF_INFO("SO2Base lift");
-  using std::atan2;
-  return Tangent(
-        typename Tangent::TangentDataType(
-          atan2(data()->y(),
-                data()->x())));
+  return Tangent(angle());
 }
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::compose(const Manifold& m) const
 {
-  const Scalar& lhs_real = data()->x();
-  const Scalar& lhs_imag = data()->y();
-  const Scalar& rhs_real = m.data()->x();
-  const Scalar& rhs_imag = m.data()->y();
+  const Scalar& lhs_real = real();
+  const Scalar& lhs_imag = imag();
+  const Scalar& rhs_real = m.real();
+  const Scalar& rhs_imag = m.imag();
 
   return Manifold(
-        typename Manifold::ManifoldDataType(
-          lhs_real * rhs_real - lhs_imag * rhs_imag,
-          lhs_real * rhs_imag + lhs_imag * rhs_real
-          ) );
+        lhs_real * rhs_real - lhs_imag * rhs_imag,
+        lhs_real * rhs_imag + lhs_imag * rhs_real
+        );
 }
 
 /// with Jacs
 
 template <typename _Derived>
-void SO2Base<_Derived>::inverse(Manifold& m, JacobianType& j) const
+void SO2Base<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
 {
-  using std::cos;
-  using std::sin;
-  const Scalar theta = m.lift().data()->x();
   m = inverse();
-  j << cos(theta), -sin(theta),
-       sin(theta),  cos(theta);
+  j = rotation();
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::rplus(const Tangent& t,
+                              Manifold& m,
+                              JacobianMtoM& J_c_a,
+                              JacobianMtoM& J_c_b) const
+{
+  m = rplus(t);
+  J_c_a.setIdentity();
+  J_c_b = rotation();
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::lplus(const Tangent& t,
+                              Manifold& m,
+                              JacobianMtoM& J_c_a,
+                              JacobianMtoM& J_c_b) const
+{
+  m = lplus(t);
+  J_c_a = t.retract().rotation();
+  J_c_b.setIdentity();
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::rminus(const Manifold& min,
+                               Manifold& mout,
+                               JacobianMtoM& J_c_a,
+                               JacobianMtoM& J_c_b) const
+{
+  mout = rminus(min);
+  J_c_a = -rotation().transpose();
+  J_c_b =  rotation().transpose();
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::lminus(const Manifold& min,
+                               Manifold& mout,
+                               JacobianMtoM& J_c_a,
+                               JacobianMtoM& J_c_b) const
+{
+  mout = lminus(min);
+  J_c_a =  min.rotation().transpose();
+  J_c_b = -min.rotation().transpose();
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::lift(const Manifold& m,
+                             Tangent& t,
+                             JacobianMtoT& J_t_m) const
+{
+  t = m.lift();
+//  J_t_m = ;
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::compose(const Manifold& ma,
+                                const Manifold& mb,
+                                Manifold& mout,
+                                JacobianMtoM& J_c_a,
+                                JacobianMtoM& J_c_b) const
+{
+  mout = ma.compose(mb);
+  J_c_a.setIdentity();
+  J_c_b = rotation();
+}
+
+/// SO2 specific function
+
+template <typename _Derived>
+const typename SO2Base<_Derived>::Scalar&
+SO2Base<_Derived>::real() const
+{
+  return data()->x();
+}
+
+template <typename _Derived>
+const typename SO2Base<_Derived>::Scalar&
+SO2Base<_Derived>::imag() const
+{
+  return data()->y();
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Scalar
+SO2Base<_Derived>::angle() const
+{
+  using std::atan2;
+  return atan2(imag(), real());
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Scalar&
+SO2Base<_Derived>::real()
+{
+  return data()->x();
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Scalar&
+SO2Base<_Derived>::imag()
+{
+  return data()->y();
 }
 
 ///////////////
@@ -172,6 +328,8 @@ struct SO2TangentBase : TangentBase<_Derived>
 
   using Base = TangentBase<_Derived>;
 
+  using Scalar = typename Base::Scalar;
+
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
 
@@ -179,9 +337,15 @@ struct SO2TangentBase : TangentBase<_Derived>
 
   using Base::data;
 
+  /// Tangent common API
+
   void zero();
   void random();
   Manifold retract() const;
+
+  /// SO2Tangent specific API
+
+  const Scalar& angle() const;
 };
 
 template <typename _Derived>
@@ -205,10 +369,14 @@ SO2TangentBase<_Derived>::retract() const
   MANIF_INFO("SO2TangentBase random");
   using std::cos;
   using std::sin;
-  return Manifold(
-        typename Manifold::ManifoldDataType(cos(data()->operator()(0)),
-                                            sin(data()->operator()(0)))
-        );
+  return Manifold(cos(angle()), sin(angle()));
+}
+
+template <typename _Derived>
+const typename SO2TangentBase<_Derived>::Scalar&
+SO2TangentBase<_Derived>::angle() const
+{
+  return data()->x();
 }
 
 } /* namespace manif */

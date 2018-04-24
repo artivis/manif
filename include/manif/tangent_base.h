@@ -21,7 +21,9 @@ struct TangentBase
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
 
   using TangentDataType = typename internal::traits<_Derived>::TangentDataType;
-  using JacobianType = typename internal::traits<_Derived>::JacobianType;
+
+  using JacobianTtoT = typename internal::traits<_Derived>::JacobianTtoT;
+  using JacobianTtoM = typename internal::traits<_Derived>::JacobianTtoM;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -37,7 +39,13 @@ struct TangentBase
 
   Manifold retract() const;
 
+  void retract(Manifold& m, JacobianTtoM& J_m_t) const;
+
+  static Tangent Zero();
+  static Tangent Random();
   static Manifold Retract(const Tangent& t);
+
+  static void Retract(const Tangent& t, Manifold& m, JacobianTtoM& J_m_t);
 
 private:
 
@@ -79,6 +87,32 @@ TangentBase<_Derived>::retract() const
 {
   MANIF_INFO("TangentBase retract");
   return tangent().retract();
+}
+
+template <class _Derived>
+void TangentBase<_Derived>::retract(Manifold& m,
+                                    JacobianTtoM& J_m_t) const
+{
+  MANIF_INFO("TangentBase retract with Jac");
+  tangent().retract(m, J_m_t);
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::Zero()
+{
+  MANIF_INFO("TangentBase Zero");
+  static /*const*/ Tangent t; t.zero();
+  return t;
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::Random()
+{
+  MANIF_INFO("TangentBase Retract");
+  static /*const*/ Tangent t; t.random();
+  return t;
 }
 
 template <class _Derived>

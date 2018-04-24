@@ -46,7 +46,8 @@ template<typename T> struct traits<const T> : traits<T> {};
   using Type = Manifold;                                    \
   using Base::Dim;                                          \
   using ManifoldDataType = typename Base::ManifoldDataType; \
-  using JacobianType = typename Base::JacobianType;         \
+  using JacobianMtoM = typename Base::JacobianMtoM;         \
+  using JacobianMtoT = typename Base::JacobianMtoT;         \
   using Base::RepSize;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \

@@ -37,14 +37,12 @@ struct traits<SO2<_Scalar>>
 
   using ManifoldDataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using JacobianType = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  /*
-  using JacobianType0    = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianType1    = Eigen::Matrix<Scalar, RepSize, DoF>;
-  using JacobianType2    = Eigen::Matrix<Scalar, DoF, RepSize>;
-  */
+  using JacobianMtoM = Eigen::Matrix<Scalar, RepSize, RepSize>;
+  using JacobianMtoT = Eigen::Matrix<Scalar, DoF, RepSize>;
 
   using Transformation = Eigen::Matrix<Scalar, Dim+1, Dim+1>;
+
+  using Rotation = Eigen::Matrix<Scalar, Dim, Dim>;
 };
 
 template <typename _Scalar>
@@ -63,12 +61,8 @@ struct traits<SO2Tangent<_Scalar>>
 
   using TangentDataType  = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using JacobianType = Eigen::Matrix<Scalar, 2, 2>;
-  /*
-  using JacobianType0    = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianType1    = Eigen::Matrix<Scalar, RepSize, DoF>;
-  using JacobianType2    = Eigen::Matrix<Scalar, DoF, RepSize>;
-  */
+  using JacobianTtoT = Eigen::Matrix<Scalar, DoF, DoF>;
+  using JacobianTtoM = Eigen::Matrix<Scalar, RepSize, DoF>;
 };
 
 } /* namespace internal */
@@ -88,20 +82,38 @@ template <typename _Scalar>
 struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
 {
   using Base = SO2TangentBase<SO2Tangent<_Scalar>>;
+
+  using Scalar = typename Base::Scalar;
   using Manifold = typename Base::Manifold;
   using TangentDataType = typename Base::TangentDataType;
-
-  using Base::zero;
-  using Base::random;
-  using Base::retract;
 
   SO2Tangent() = default;
 
   SO2Tangent(const double theta);
   SO2Tangent(const TangentDataType& theta);
 
+  /// Tangent common API
+
   TangentDataType* data();
   const TangentDataType* data() const;
+
+  using Base::zero;
+  using Base::random;
+  using Base::retract;
+
+  /// SO2Tangent specific API
+
+  using Base::angle;
+
+  /// @todo consider using a
+  /// Eigen::Matrix<std::complex<Scalar>, 1, 1>
+  /// as TangentDataType
+//  Scalar angle2()
+//  {
+//    using std::atan2;
+//    Eigen::Matrix<std::complex<Scalar>, 1, 1> test;
+//    return atan2(test.imag()(0), test.real()(0));
+//  }
 
 protected:
 
@@ -157,21 +169,33 @@ struct SO2 : SO2Base<SO2<_Scalar>>
   ~SO2() = default;
 
   SO2(const ManifoldDataType& d);
+  SO2(const Scalar real, const Scalar imag);
+  SO2(const Scalar theta);
+
+  /// Manifold common API
 
   ManifoldDataType* data();
   const ManifoldDataType* data() const;
 
+  using Base::data;
+  using Base::matrix;
+  using Base::rotation;
   using Base::identity;
   using Base::random;
   using Base::inverse;
   using Base::rplus;
   using Base::lplus;
+  using Base::rminus;
+  using Base::lminus;
   using Base::lift;
   using Base::compose;
 
-  SO2 rminus(const SO2& /*m*/) const;
+//  SO2 rminus(const SO2& /*m*/) const;
+//  SO2 lminus(const SO2& /*m*/) const;
 
-  SO2 lminus(const SO2& /*m*/) const;
+  /// SO2 specific API
+
+  using Base::angle;
 
 protected:
 
@@ -190,6 +214,21 @@ SO2<_Scalar>::SO2(const ManifoldDataType& d)
 }
 
 template <typename _Scalar>
+SO2<_Scalar>::SO2(const Scalar real, const Scalar imag)
+  : SO2(ManifoldDataType(real, imag))
+{
+//
+}
+
+template <typename _Scalar>
+SO2<_Scalar>::SO2(const Scalar theta)
+  : SO2(cos(theta), sin(theta))
+{
+  using std::cos;
+  using std::sin;
+}
+
+template <typename _Scalar>
 typename SO2<_Scalar>::ManifoldDataType*
 SO2<_Scalar>::data()
 {
@@ -203,19 +242,19 @@ SO2<_Scalar>::data() const
   return &data_;
 }
 
-template <typename _Scalar>
-SO2<_Scalar> SO2<_Scalar>::rminus(const SO2& /*m*/) const
-{
-  MANIF_INFO("SO2 rminus");
-  return SO2();
-}
+//template <typename _Scalar>
+//SO2<_Scalar> SO2<_Scalar>::rminus(const SO2& /*m*/) const
+//{
+//  MANIF_INFO("SO2 rminus");
+//  return SO2();
+//}
 
-template <typename _Scalar>
-SO2<_Scalar> SO2<_Scalar>::lminus(const SO2& /*m*/) const
-{
-  MANIF_INFO("SO2 lminus");
-  return SO2();
-}
+//template <typename _Scalar>
+//SO2<_Scalar> SO2<_Scalar>::lminus(const SO2& /*m*/) const
+//{
+//  MANIF_INFO("SO2 lminus");
+//  return SO2();
+//}
 
 } /* namespace manif */
 
