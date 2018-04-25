@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_TANGENT_BASE_H_
 #define _MANIF_MANIF_TANGENT_BASE_H_
 
-#include "manif/fwd.h"
+#include "manif/impl/fwd.h"
 
 #include "lspdlog/logging.h"
 
@@ -27,8 +27,8 @@ struct TangentBase
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
-  operator Tangent&() { return tangent(); }
-  operator const Tangent& () const { return tangent(); }
+  operator Tangent&() { return derived(); }
+  operator const Tangent& () const { return derived(); }
 
   TangentDataType* data();
   const TangentDataType* data() const;
@@ -49,36 +49,36 @@ struct TangentBase
 
 private:
 
-  Tangent& tangent() { return *static_cast< Tangent* >(this); }
-  const Tangent& tangent() const { return *static_cast< const Tangent* >(this); }
+  Tangent& derived() { return *static_cast< Tangent* >(this); }
+  const Tangent& derived() const { return *static_cast< const Tangent* >(this); }
 };
 
 template <class _Derived>
 typename TangentBase<_Derived>::TangentDataType*
 TangentBase<_Derived>::data()
 {
-  return tangent().data();
+  return derived().data();
 }
 
 template <class _Derived>
 const typename TangentBase<_Derived>::TangentDataType*
 TangentBase<_Derived>::data() const
 {
-  return tangent().data();
+  return derived().data();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::zero()
 {
   MANIF_INFO("TangentBase zero");
-  tangent().zero();
+  derived().zero();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::random()
 {
   MANIF_INFO("TangentBase random");
-  tangent().random();
+  derived().random();
 }
 
 template <class _Derived>
@@ -86,7 +86,7 @@ typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::retract() const
 {
   MANIF_INFO("TangentBase retract");
-  return tangent().retract();
+  return derived().retract();
 }
 
 template <class _Derived>
@@ -94,7 +94,7 @@ void TangentBase<_Derived>::retract(Manifold& m,
                                     JacobianTtoM& J_m_t) const
 {
   MANIF_INFO("TangentBase retract with Jac");
-  tangent().retract(m, J_m_t);
+  derived().retract(m, J_m_t);
 }
 
 template <class _Derived>

@@ -1,5 +1,9 @@
+#include <iostream>
+
 #include "manif/SO2.h"
 #include "manif/SO3.h"
+
+#include <Eigen/Core>
 
 using namespace manif;
 
@@ -144,7 +148,7 @@ int main()
   double complex_num_b[2] = {1,0};
 
   Eigen::Map<SO2d> so2_map_a(complex_num_a);
-  Eigen::Map</*const*/ SO2d> so2_map_b(complex_num_b);
+  Eigen::Map<const SO2d> so2_map_b(complex_num_b);
 
   so2_map_a = SO2d::Random();
   so2_map_a = SO2d::Identity();

@@ -3,11 +3,13 @@
 
 #include <type_traits>
 
+#include <stdexcept> // for std::runtime_error
+
 namespace manif
 {
 
-using WithJacobian = std::true_type;
-using WithoutJacobian = std::false_type;
+//using WithJacobian = std::true_type;
+//using WithoutJacobian = std::false_type;
 
 namespace internal
 {
@@ -17,13 +19,37 @@ template <typename T> struct traits;
 /// @note the following is from the Eigen library
 
 // here we say once and for all that traits<const T> == traits<T>
-// When constness must affect traits, it has to be constness on template parameters on which T itself depends.
+// When constness must affect traits, it has to be constness on
+// template parameters on which T itself depends.
 // For example, traits<Map<const T> > != traits<Map<T> >, but
 //              traits<const Map<T> > == traits<Map<T> >
 template<typename T> struct traits<const T> : traits<T> {};
 
+/// @brief ManifoldProperties
+/**
+ * @brief ManifoldProperties, a traits for defining some
+ * manifold properties. E.g. Space dimension, Degrees of Freedom ...
+ */
+template <typename _ManifoldBase> struct ManifoldProperties;
+
 } /* namespace internal */
 } /* namespace manif */
+
+#define MANIF_NOT_IMPLEMENTED_YET \
+  throw std::runtime_error("Not implemented yet !");
+
+#define MANIF_INHERIT_MANIFOLD_API  \
+  using Base::matrix;               \
+  using Base::rotation;             \
+  using Base::identity;             \
+  using Base::random;               \
+  using Base::inverse;              \
+  using Base::rplus;                \
+  using Base::lplus;                \
+  using Base::rminus;               \
+  using Base::lminus;               \
+  using Base::lift;                 \
+  using Base::compose;
 
 #define MANIF_DEFINE_MANIFOLD_TANGENT                    \
   struct Tangent : TangentBase<typename Base::Manifold>  \

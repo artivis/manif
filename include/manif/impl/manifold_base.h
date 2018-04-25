@@ -1,15 +1,13 @@
 #ifndef _MANIF_MANIF_MANIFOLD_BASE_H_
 #define _MANIF_MANIF_MANIFOLD_BASE_H_
 
-#include "manif/fwd.h"
-#include "manif/tangent_base.h"
+#include "manif/impl/fwd.h"
+#include "manif/impl/tangent_base.h"
 
 #include "lspdlog/logging.h"
 
 namespace manif
 {
-
-template <typename _ManifoldBase> struct ManifoldProperties;
 
 template <class _Derived>
 struct ManifoldBase

@@ -1,22 +1,12 @@
 #ifndef _MANIF_MANIF_SO2_BASE_H_
 #define _MANIF_MANIF_SO2_BASE_H_
 
-#include "manif/manifold_base.h"
-#include "manif/tangent_base.h"
+#include "manif/impl/SO2_properties.h"
+#include "manif/impl/manifold_base.h"
+//#include "manif/impl/tangent_base.h"
 
 namespace manif
 {
-
-template <typename _Derived> struct SO2Base;
-template <typename _Derived> struct SO2TangentBase;
-
-template <>
-template <typename _Derived>
-struct ManifoldProperties<SO2Base<_Derived>>
-{
-  static constexpr int Dim = 2;
-  static constexpr int DoF = 1;
-};
 
 ////////////////
 ///          ///
@@ -27,7 +17,16 @@ struct ManifoldProperties<SO2Base<_Derived>>
 template <typename _Derived>
 struct SO2Base : ManifoldBase<_Derived>
 {
+private:
+
   using Base = ManifoldBase<_Derived>;
+  using Type = SO2Base<_Derived>;
+
+public:
+
+  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
+  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
+  static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
   using Scalar = typename Base::Scalar;
 
@@ -39,11 +38,8 @@ struct SO2Base : ManifoldBase<_Derived>
 
   using ManifoldDataType = typename Base::ManifoldDataType;
 
-  static constexpr int Dim = ManifoldProperties<SO2Base<_Derived>>::Dim;
-  static constexpr int DoF = ManifoldProperties<SO2Base<_Derived>>::DoF;
-
   using Transformation  = typename Base::Transformation;
-  using Rotation  = typename Base::Rotation;
+  using Rotation = typename Base::Rotation;
 
   using Base::data;
 
@@ -95,14 +91,18 @@ struct SO2Base : ManifoldBase<_Derived>
 
   /// SO2 specific functions
 
-  const Scalar& real() const;
-  const Scalar& imag() const;
+  /*const*/ Scalar/*&*/ real() const;
+  /*const*/ Scalar/*&*/ imag() const;
   Scalar angle() const;
 
 protected:
 
-  Scalar& real();
-  Scalar& imag();
+  /// @todo given a Eigen::Map<const SO2>
+  /// data()->x() return a reference to
+  /// temporary ...
+
+//  Scalar& real();
+//  Scalar& imag();
 };
 
 template <typename _Derived>
@@ -127,8 +127,9 @@ template <typename _Derived>
 void SO2Base<_Derived>::identity()
 {
   MANIF_INFO("SO2Base identity");
-  real() = 1;
-  imag() = 1;
+//  real() = 1;
+//  imag() = 1;
+  data()->setIdentity();
 }
 
 template <typename _Derived>
@@ -279,14 +280,14 @@ void SO2Base<_Derived>::compose(const Manifold& ma,
 /// SO2 specific function
 
 template <typename _Derived>
-const typename SO2Base<_Derived>::Scalar&
+/*const*/ typename SO2Base<_Derived>::Scalar/*&*/
 SO2Base<_Derived>::real() const
 {
   return data()->x();
 }
 
 template <typename _Derived>
-const typename SO2Base<_Derived>::Scalar&
+/*const*/ typename SO2Base<_Derived>::Scalar/*&*/
 SO2Base<_Derived>::imag() const
 {
   return data()->y();
@@ -300,84 +301,19 @@ SO2Base<_Derived>::angle() const
   return atan2(imag(), real());
 }
 
-template <typename _Derived>
-typename SO2Base<_Derived>::Scalar&
-SO2Base<_Derived>::real()
-{
-  return data()->x();
-}
+//template <typename _Derived>
+//typename SO2Base<_Derived>::Scalar&
+//SO2Base<_Derived>::real()
+//{
+//  return data()->x();
+//}
 
-template <typename _Derived>
-typename SO2Base<_Derived>::Scalar&
-SO2Base<_Derived>::imag()
-{
-  return data()->y();
-}
-
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
-
-template <typename _Derived>
-struct SO2TangentBase : TangentBase<_Derived>
-{
-  static constexpr int Dim = ManifoldProperties<SO2Base<_Derived>>::Dim;
-  static constexpr int DoF = ManifoldProperties<SO2Base<_Derived>>::DoF;
-
-  using Base = TangentBase<_Derived>;
-
-  using Scalar = typename Base::Scalar;
-
-  using Manifold = typename Base::Manifold;
-  using Tangent  = typename Base::Tangent;
-
-  using TangentDataType  = typename Base::TangentDataType;
-
-  using Base::data;
-
-  /// Tangent common API
-
-  void zero();
-  void random();
-  Manifold retract() const;
-
-  /// SO2Tangent specific API
-
-  const Scalar& angle() const;
-};
-
-template <typename _Derived>
-void SO2TangentBase<_Derived>::zero()
-{
-  MANIF_INFO("SO2TangentBase zero");
-  data()->setZero();
-}
-
-template <typename _Derived>
-void SO2TangentBase<_Derived>::random()
-{
-  MANIF_INFO("SO2TangentBase random");
-  data()->setRandom();
-}
-
-template <typename _Derived>
-typename SO2TangentBase<_Derived>::Manifold
-SO2TangentBase<_Derived>::retract() const
-{
-  MANIF_INFO("SO2TangentBase random");
-  using std::cos;
-  using std::sin;
-  return Manifold(cos(angle()), sin(angle()));
-}
-
-template <typename _Derived>
-const typename SO2TangentBase<_Derived>::Scalar&
-SO2TangentBase<_Derived>::angle() const
-{
-  return data()->x();
-}
+//template <typename _Derived>
+//typename SO2Base<_Derived>::Scalar&
+//SO2Base<_Derived>::imag()
+//{
+//  return data()->y();
+//}
 
 } /* namespace manif */
 
