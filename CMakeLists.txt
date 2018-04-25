@@ -73,15 +73,9 @@ install(DIRECTORY include/${PROJECT_NAME}
 ## Testing ##
 #############
 
-if (BUILD_TESTING)
+if(BUILD_TESTING)
 
   enable_testing()
-
-  find_package(GTest REQUIRED)
-  include_directories(${GTEST_INCLUDE_DIRS})
-
-  message(WARNING "DERERERERERE")
-
   add_subdirectory(test)
 
 endif(BUILD_TESTING)

@@ -7,12 +7,6 @@
 
 namespace manif
 {
-
-// Forward declare for type traits specialization
-
-//template <typename _Scalar> struct SO2;
-//template <typename _Scalar> struct SO2Tangent;
-
 namespace internal
 {
 
@@ -24,9 +18,8 @@ struct traits<SO2Tangent<_Scalar>>
   using Scalar = _Scalar;
 
   using Manifold = SO2<_Scalar>;
-  using Tangent = SO2Tangent<_Scalar>;
+  using Tangent  = SO2Tangent<_Scalar>;
 
-  /// @todo is it useful ???
   using Base = SO2TangentBase<_Scalar>;
 
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
@@ -70,9 +63,7 @@ struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
   TangentDataType* data();
   const TangentDataType* data() const;
 
-  using Base::zero;
-  using Base::random;
-  using Base::retract;
+  MANIF_INHERIT_TANGENT_API
 
   /// SO2Tangent specific API
 

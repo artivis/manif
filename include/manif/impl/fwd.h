@@ -51,6 +51,11 @@ template <typename _ManifoldBase> struct ManifoldProperties;
   using Base::lift;                 \
   using Base::compose;
 
+#define MANIF_INHERIT_TANGENT_API \
+  using Base::zero;               \
+  using Base::random;             \
+  using Base::retract;
+
 #define MANIF_DEFINE_MANIFOLD_TANGENT                    \
   struct Tangent : TangentBase<typename Base::Manifold>  \
   {                                                      \
@@ -69,7 +74,6 @@ template <typename _ManifoldBase> struct ManifoldProperties;
 #define MANIF_MANIFOLD_TYPEDEF                              \
   using Scalar = _Scalar;                                   \
   using Manifold = typename Base::Manifold;                 \
-  using Type = Manifold;                                    \
   using Base::Dim;                                          \
   using ManifoldDataType = typename Base::ManifoldDataType; \
   using JacobianMtoM = typename Base::JacobianMtoM;         \

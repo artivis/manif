@@ -3,17 +3,40 @@
 
 #include "manif/impl/SO2Tangent.h"
 
+namespace manif {
+namespace internal {
+
+template <>
+template <typename _Scalar>
+struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
+    : public traits<SO2Tangent<_Scalar>>
+{
+  using typename traits<SO2Tangent<_Scalar>>::Scalar;
+  using traits<SO2Tangent<_Scalar>>::RepSize;
+  using ManifoldDataType = Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+};
+
+template <>
+template <typename _Scalar>
+struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
+    : public traits<const SO2Tangent<_Scalar>>
+{
+  using typename traits<const SO2Tangent<_Scalar>>::Scalar;
+  using traits<const SO2Tangent<_Scalar>>::RepSize;
+  using ManifoldDataType = Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+};
+
+} /* namespace internal */
+} /* namespace manif */
+
 namespace Eigen
 {
 
-/// @todo
-
-/*
 template <class _Scalar>
-class Map<manif::SO2<_Scalar>, 0>
-    : public manif::SO2Base<Map<manif::SO2<_Scalar>, 0> >
+class Map<manif::SO2Tangent<_Scalar>, 0>
+    : public manif::SO2TangentBase<Map<manif::SO2Tangent<_Scalar>, 0> >
 {
-  using Base = manif::SO2Base<Map<manif::SO2<_Scalar>, 0> >;
+  using Base = manif::SO2TangentBase<Map<manif::SO2Tangent<_Scalar>, 0> >;
 
 public:
 
@@ -23,23 +46,12 @@ public:
 
 //  EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Map)
 
-  //  using Base::data;
-  using Base::matrix;
-  using Base::rotation;
-  using Base::identity;
-  using Base::random;
-  using Base::inverse;
-  using Base::rplus;
-  using Base::lplus;
-  using Base::rminus;
-  using Base::lminus;
-  using Base::lift;
-  using Base::compose;
+  MANIF_INHERIT_MANIFOLD_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
   template <typename _Derived>
-  Manifold& operator =(const manif::SO2Base<_Derived>& o)
+  Manifold& operator =(const manif::SO2TangentBase<_Derived>& o)
   {
     data_ = *o.data();
     return *this;
@@ -49,17 +61,17 @@ public:
 
 protected:
 
-  friend class manif::ManifoldBase<Map<manif::SO2<_Scalar>, 0>>;
-
+  friend class manif::ManifoldBase<Map<manif::SO2Tangent<_Scalar>, 0>>;
   ManifoldDataType* data() { return &data_; }
+
   ManifoldDataType data_;
 };
 
 template <class _Scalar>
-class Map<const manif::SO2<_Scalar>, 0>
-    : public manif::SO2Base<Map<const manif::SO2<_Scalar>, 0> >
+class Map<const manif::SO2Tangent<_Scalar>, 0>
+    : public manif::SO2TangentBase<Map<const manif::SO2Tangent<_Scalar>, 0> >
 {
-  using Base = manif::SO2Base<Map<const manif::SO2<_Scalar>, 0> >;
+  using Base = manif::SO2TangentBase<Map<const manif::SO2Tangent<_Scalar>, 0> >;
 
 public:
 
@@ -69,18 +81,7 @@ public:
 
 //  EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Map)
 
-  //  using Base::data;
-  using Base::matrix;
-  using Base::rotation;
-  using Base::identity;
-  using Base::random;
-  using Base::inverse;
-  using Base::rplus;
-  using Base::lplus;
-  using Base::rminus;
-  using Base::lminus;
-  using Base::lift;
-  using Base::compose;
+  MANIF_INHERIT_MANIFOLD_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
@@ -88,12 +89,11 @@ public:
 
 protected:
 
-  friend class manif::ManifoldBase<Map<manif::SO2<_Scalar>, 0>>;
-
+  friend class manif::ManifoldBase<Map<const manif::SO2Tangent<_Scalar>, 0>>;
   ManifoldDataType* data() { return &data_; }
+
   ManifoldDataType data_;
 };
-*/
 
 } /* namespace Eigen */
 

@@ -1,7 +1,7 @@
-#ifndef _MANIF_MANIF_SO2TANGENT_BASE_H_
-#define _MANIF_MANIF_SO2TANGENT_BASE_H_
+#ifndef _MANIF_MANIF_SO3TANGENT_BASE_H_
+#define _MANIF_MANIF_SO3TANGENT_BASE_H_
 
-#include "manif/impl/SO2_properties.h"
+#include "manif/impl/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
 namespace manif
@@ -14,12 +14,12 @@ namespace manif
 ///////////////
 
 template <typename _Derived>
-struct SO2TangentBase : TangentBase<_Derived>
+struct SO3TangentBase : TangentBase<_Derived>
 {
 private:
 
   using Base = TangentBase<_Derived>;
-  using Type = SO2TangentBase<_Derived>;
+  using Type = SO3TangentBase<_Derived>;
 
 public:
 
@@ -49,54 +49,38 @@ public:
 
   void retract(Manifold& m, JacobianTtoM& J_m_t) const;
 
-  /// SO2Tangent specific API
-
-  const Scalar& angle() const;
+  /// SO3Tangent specific API
 };
 
 template <typename _Derived>
-void SO2TangentBase<_Derived>::zero()
+void SO3TangentBase<_Derived>::zero()
 {
-  MANIF_INFO("SO2TangentBase zero");
   data()->setZero();
 }
 
 template <typename _Derived>
-void SO2TangentBase<_Derived>::random()
+void SO3TangentBase<_Derived>::random()
 {
-  MANIF_INFO("SO2TangentBase random");
   data()->setRandom();
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Manifold
-SO2TangentBase<_Derived>::retract() const
+typename SO3TangentBase<_Derived>::Manifold
+SO3TangentBase<_Derived>::retract() const
 {
-  MANIF_INFO("SO2TangentBase random");
-  using std::cos;
-  using std::sin;
-  return Manifold(cos(angle()), sin(angle()));
+  MANIF_NOT_IMPLEMENTED_YET
+  return Manifold();
 }
 
 /// with Jacs
 
 template <typename _Derived>
-void SO2TangentBase<_Derived>::retract(
+void SO3TangentBase<_Derived>::retract(
     Manifold& m, JacobianTtoM& J_m_t) const
 {
-  MANIF_INFO("SO2TangentBase retract with jac");
   MANIF_NOT_IMPLEMENTED_YET
-}
-
-/// SO2Tangent specific API
-
-template <typename _Derived>
-const typename SO2TangentBase<_Derived>::Scalar&
-SO2TangentBase<_Derived>::angle() const
-{
-  return data()->x();
 }
 
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_SO2_BASE_H_ */
+#endif /* _MANIF_MANIF_SO3TANGENT_BASE_H_ */

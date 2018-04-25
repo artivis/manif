@@ -176,6 +176,8 @@ int main()
 
   doPlus(so2, so2_lift);
 
+  SO2d new_so2 = so2_map_a;
+
   std::cout << "\n";
 
   return 0;

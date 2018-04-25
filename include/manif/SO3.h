@@ -1,6 +1,16 @@
 #ifndef _MANIF_SO3_H_
 #define _MANIF_SO3_H_
 
-//#include "manif/impl/SO3.h"
+#include "manif/impl/fwd.h"
+#include "manif/impl/manifold_base.h"
+#include "manif/impl/tangent_base.h"
+
+#include "manif/impl/SO3_properties.h"
+#include "manif/impl/SO3_base.h"
+#include "manif/impl/SO3Tangent_base.h"
+#include "manif/impl/SO3.h"
+#include "manif/impl/SO3Tangent.h"
+//#include "manif/impl/SO3_map.h"
+//#include "manif/impl/SO3Tangent_map.h"
 
 #endif /* _MANIF_SO3_H_ */

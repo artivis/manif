@@ -18,6 +18,7 @@ struct ManifoldBase
 
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
+  static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
   using ManifoldDataType = typename internal::traits<_Derived>::ManifoldDataType;

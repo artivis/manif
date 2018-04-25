@@ -3,7 +3,6 @@
 
 #include "manif/impl/SO2_properties.h"
 #include "manif/impl/manifold_base.h"
-//#include "manif/impl/tangent_base.h"
 
 namespace manif
 {
