@@ -174,10 +174,16 @@ struct SO2 : SO2Base<SO2<_Scalar>>
 
   /// Manifold common API
 
+protected:
+
+  friend class ManifoldBase<SO2<Scalar>>;
   ManifoldDataType* data();
+
+public:
+
   const ManifoldDataType* data() const;
 
-  using Base::data;
+//  using Base::data;
   using Base::matrix;
   using Base::rotation;
   using Base::identity;
@@ -257,5 +263,160 @@ SO2<_Scalar>::data() const
 //}
 
 } /* namespace manif */
+
+/// Eigen Map
+
+namespace manif {
+namespace internal {
+
+template <>
+template <typename _Scalar>
+struct traits< Eigen::Map<SO2<_Scalar>,0> >
+    : public traits<SO2<_Scalar>>
+{
+  using typename traits<SO2<_Scalar>>::Scalar;
+  using /*typename*/ traits<SO2<_Scalar>>::RepSize;
+  using ManifoldDataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>,0>;
+};
+
+} /* namespace internal */
+} /* namespace manif */
+
+namespace Eigen {
+namespace internal {
+
+//template <class _Scalar>
+//struct traits<Map<manif::SO2<_Scalar>, 0>>
+//    //: traits<manif::SO2<_Scalar>>
+//{
+//protected:
+
+//  using TT = manif::internal::traits<manif::SO2<_Scalar>>;
+
+//public:
+
+//  using Scalar = _Scalar;
+//  using ComplexType = Map<typename TT::ManifoldDataType, 0>;
+//};
+
+//template <class _Scalar>
+//struct traits<Map<manif::SO2<_Scalar>, 0>
+//    : traits<manif::SO2<_Scalar>>
+//{
+//protected:
+
+//  using Base = traits<manif::SO2<_Scalar>>;
+
+//public:
+
+//  using Scalar = _Scalar;
+//  using ComplexType = Map<typename Base::ManifoldDataType, 0>;
+//};
+
+//template <class Scalar_, int Options>
+//struct traits<Map<Sophus::SO2<Scalar_> const, Options>>
+//    : traits<Sophus::SO2<Scalar_, Options> const> {
+//  using Scalar = Scalar_;
+//  using ComplexType = Map<Sophus::Vector2<Scalar> const, Options>;
+//};
+
+}  // namespace internal
+} // namespace Eigen
+
+namespace Eigen {
+
+template <class _Scalar>
+class Map<manif::SO2<_Scalar>, 0>
+    : public manif::SO2Base<Map<manif::SO2<_Scalar>, 0> >
+{
+  using Base = manif::SO2Base<Map<manif::SO2<_Scalar>, 0> >;
+
+public:
+
+  using Tangent = typename Base::Tangent;
+
+  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+
+//  EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Map)
+
+  //  using Base::data;
+  using Base::matrix;
+  using Base::rotation;
+  using Base::identity;
+  using Base::random;
+  using Base::inverse;
+  using Base::rplus;
+  using Base::lplus;
+  using Base::rminus;
+  using Base::lminus;
+  using Base::lift;
+  using Base::compose;
+
+  Map(Scalar* coeffs) : data_(coeffs) { }
+
+  template <typename _Derived>
+  Manifold& operator =(const manif::SO2Base<_Derived>& o)
+  {
+    data_ = *o.data();
+    return *this;
+  }
+
+  ManifoldDataType const* data() const { return &data_; }
+
+protected:
+
+  friend class manif::ManifoldBase<Map<manif::SO2<_Scalar>, 0>>;
+
+  ManifoldDataType* data() { return &data_; }
+  ManifoldDataType data_;
+};
+
+template <class _Scalar>
+class Map<const manif::SO2<_Scalar>, 0>
+    : public manif::SO2Base<Map<const manif::SO2<_Scalar>, 0> >
+{
+  using Base = manif::SO2Base<Map<const manif::SO2<_Scalar>, 0> >;
+
+public:
+
+  using Tangent = typename Base::Tangent;
+
+  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+
+//  EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Map)
+
+  //  using Base::data;
+  using Base::matrix;
+  using Base::rotation;
+  using Base::identity;
+  using Base::random;
+  using Base::inverse;
+  using Base::rplus;
+  using Base::lplus;
+  using Base::rminus;
+  using Base::lminus;
+  using Base::lift;
+  using Base::compose;
+
+  Map(Scalar* coeffs) : data_(coeffs) { }
+
+//  template <typename _Derived>
+//  Manifold& operator =(const manif::SO2Base<_Derived>& o)
+//  {
+//    data_ = *o.data();
+//    return *this;
+//  }
+
+  ManifoldDataType const* data() const { return &data_; }
+
+protected:
+
+  friend class manif::ManifoldBase<Map<manif::SO2<_Scalar>, 0>>;
+
+  ManifoldDataType* data() { return &data_; }
+  ManifoldDataType data_;
+};
+
+} /* namespace Eigen */
 
 #endif /* _MANIF_MANIF_SO2_H_ */

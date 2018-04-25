@@ -117,21 +117,60 @@ int main()
 
   setRandom(so2);
 
-  //////
+  ///////////////
+  /// Tangent ///
+  ///////////////
 
   SO2Tangentd so2_tan(0.17);
   so2_tan = SO2Tangentd(SO2Tangentd::TangentDataType(0.17));
 
   so2_tan.zero();
 
-
-  //////
+  /////////////////
+  /// Jacobians ///
+  /////////////////
 
   SO2d::JacobianMtoM so2_inv_jac;
 
   so2.inverse(so2_inv, so2_inv_jac);
 
   computeInverseJac(so2);
+
+  /////////////////
+  /// Eigen Map ///
+  /////////////////
+
+  double complex_num_a[2] = {1,0};
+  double complex_num_b[2] = {1,0};
+
+  Eigen::Map<SO2d> so2_map_a(complex_num_a);
+  Eigen::Map</*const*/ SO2d> so2_map_b(complex_num_b);
+
+  so2_map_a = SO2d::Random();
+  so2_map_a = SO2d::Identity();
+
+  so2_map_a.identity();
+
+  so2_map_a = so2_map_b.inverse();
+
+  auto from_map_so2_lift = so2_map_b.lift();
+
+  static_assert(std::is_same<decltype(from_map_so2_lift), SO2d::Tangent>::value, "ok");
+
+  so2_map_a = from_map_so2_lift.retract();
+
+  static_assert(std::is_same<decltype(so2_map_a), Eigen::Map<SO2d>>::value, "ok");
+
+  so2_map_a = so2_map_b.rplus( from_map_so2_lift );
+
+  static_assert(std::is_same<decltype(so2_rplus), SO2d>::value, "ok");
+
+  so2_map_a = so2_map_b + from_map_so2_lift;
+  so2_map_a += from_map_so2_lift;
+
+  so2_map_a = so2_map_b.plus( from_map_so2_lift );
+
+  doPlus(so2, so2_lift);
 
   std::cout << "\n";
 

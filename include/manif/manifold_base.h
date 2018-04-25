@@ -37,10 +37,14 @@ struct ManifoldBase
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
-  operator Manifold&() { return manifold(); }
-  operator const Manifold& () const { return manifold(); }
+  operator Manifold&() { return derived(); }
+  operator const Manifold& () const { return derived(); }
+
+protected:
 
   ManifoldDataType* data();
+
+public:
 
   const ManifoldDataType* data() const;
 
@@ -68,7 +72,7 @@ struct ManifoldBase
   template <typename T>
   Manifold minus(T&& t) const
   {
-    return manifold().rminus(std::forward<T>(t));
+    return derived().rminus(std::forward<T>(t));
   }
   */
 
@@ -77,7 +81,7 @@ struct ManifoldBase
   /*
   LieType lie() const
   {
-    return manifold().lie();
+    return derived().lie();
   }
   */
 
@@ -88,7 +92,7 @@ struct ManifoldBase
   /*
   Manifold interpolate()
   {
-    return manifold().interpolate();
+    return derived().interpolate();
   }
   */
 
@@ -216,50 +220,50 @@ struct ManifoldBase
 
 private:
 
-  Manifold& manifold() { return *static_cast< Manifold* >(this); }
-  const Manifold& manifold() const { return *static_cast< const Manifold* >(this); }
+  _Derived& derived() { return *static_cast< _Derived* >(this); }
+  const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
 };
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::ManifoldDataType*
 ManifoldBase<_Derived>::data()
 {
-  return manifold().data();
+  return derived().data();
 }
 
 template <typename _Derived>
 const typename ManifoldBase<_Derived>::ManifoldDataType*
 ManifoldBase<_Derived>::data() const
 {
-  return manifold().data();
+  return derived().data();
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Transformation
 ManifoldBase<_Derived>::matrix() const
 {
-  return manifold().matrix();
+  return derived().matrix();
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Rotation
 ManifoldBase<_Derived>::rotation() const
 {
-  return manifold().rotation();
+  return derived().rotation();
 }
 
 template <typename _Derived>
 void ManifoldBase<_Derived>::identity()
 {
   //std::cout << "ManifoldBase identity\n";
-  manifold().identity();
+  derived().identity();
 }
 
 template <typename _Derived>
 void ManifoldBase<_Derived>::random()
 {
   //std::cout << "ManifoldBase random\n";
-  manifold().random();
+  derived().random();
 }
 
 template <typename _Derived>
@@ -267,7 +271,7 @@ typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::inverse() const
 {
   //std::cout << "ManifoldBase inverse\n";
-  return manifold().inverse();
+  return derived().inverse();
 }
 
 template <typename _Derived>
@@ -275,7 +279,7 @@ typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::rplus(const Tangent& t) const
 {
   //std::cout << "ManifoldBase rplus\n";
-  return manifold().rplus(t);
+  return derived().rplus(t);
 }
 
 template <typename _Derived>
@@ -283,49 +287,49 @@ typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::lplus(const Tangent& t) const
 {
   //std::cout << "ManifoldBase lplus\n";
-  return manifold().lplus(t);
+  return derived().lplus(t);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::plus(const Tangent& t) const
 {
-  return manifold().rplus(t);
+  return derived().rplus(t);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::rminus(const Manifold& m) const
 {
-  return manifold().rminus(m);
+  return derived().rminus(m);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::lminus(const Manifold& m) const
 {
-  return manifold().lminus(m);
+  return derived().lminus(m);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Tangent
 ManifoldBase<_Derived>::lift() const
 {
-  return manifold().lift();
+  return derived().lift();
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::compose(const Manifold& m) const
 {
-  return manifold().compose(m);
+  return derived().compose(m);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::between(const Manifold& m) const
 {
-  return manifold().inverse().compose(m);
+  return derived().inverse().compose(m);
 }
 
 /// Operators
@@ -334,30 +338,30 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::operator +(const Tangent& t) const
 {
-  return manifold().rplus(t);
+  return derived().rplus(t);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold&
 ManifoldBase<_Derived>::operator +=(const Tangent& t)
 {
-  manifold() = manifold().rplus(t);
-  return manifold();
+  derived() = derived().rplus(t);
+  return derived();
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::operator *(const Manifold& m) const
 {
-  return manifold().compose(m);
+  return derived().compose(m);
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold&
 ManifoldBase<_Derived>::operator *=(const Manifold& m)
 {
-  manifold() = manifold().compose(m);
-  return manifold();
+  derived() = derived().compose(m);
+  return derived();
 }
 
 /// Jacs
@@ -365,7 +369,17 @@ ManifoldBase<_Derived>::operator *=(const Manifold& m)
 template <typename _Derived>
 void ManifoldBase<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
 {
-  manifold().inverse(m, j);
+  derived().inverse(m, j);
+}
+
+/// Utils
+
+template <typename _Stream, typename _Derived>
+_Stream& operator << (
+    _Stream& s,
+    const manif::ManifoldBase<_Derived>& m)
+{
+  s << *m.data();
 }
 
 } /* namespace manif */

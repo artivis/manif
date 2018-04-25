@@ -11,7 +11,7 @@ else()
   message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-find_package(catkin REQUIRED)
+#find_package(catkin REQUIRED)
 
 find_package(cmake_modules REQUIRED)
 find_package(Eigen REQUIRED)
@@ -19,15 +19,19 @@ find_package(Threads REQUIRED)
 
 add_subdirectory(external/lspdlog)
 
+# Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
+# catkin build manif --cmake-args -DBUILD_TESTING=ON
+option(BUILD_TESTING "Build all tests." OFF)
+
 ###################################
 ## catkin specific configuration ##
 ###################################
-catkin_package(
-  INCLUDE_DIRS include #${EIGEN_INCLUDE_DIRS}
-#  LIBRARIES ${PROJECT_NAME}
-#  CATKIN_DEPENDS other_catkin_pkg
-  DEPENDS Eigen
-)
+#catkin_package(
+#  INCLUDE_DIRS include #${EIGEN_INCLUDE_DIRS}
+##  LIBRARIES ${PROJECT_NAME}
+##  CATKIN_DEPENDS other_catkin_pkg
+#  DEPENDS Eigen
+#)
 
 ###########
 ## Build ##
@@ -56,19 +60,28 @@ endif()
 ## Install ##
 #############
 
-## Mark cpp header files for installation
-#install(DIRECTORY include/${PROJECT_NAME}/
-#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#  FILES_MATCHING PATTERN "*.h"
-#  PATTERN ".svn" EXCLUDE
-#)
+#message(WARNING ${CMAKE_INSTALL_PREFIX})
+
+# Mark cpp header files for installation
+install(DIRECTORY include/${PROJECT_NAME}
+  DESTINATION include
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
 
 #############
 ## Testing ##
 #############
 
-if (CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-   #Add gtest
+if (BUILD_TESTING)
+
+  enable_testing()
+
+  find_package(GTest REQUIRED)
+  include_directories(${GTEST_INCLUDE_DIRS})
+
+  message(WARNING "DERERERERERE")
+
   add_subdirectory(test)
-endif(CATKIN_ENABLE_TESTING)
+
+endif(BUILD_TESTING)
