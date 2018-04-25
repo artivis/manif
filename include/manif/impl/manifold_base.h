@@ -58,42 +58,27 @@ public:
   Manifold inverse() const;
 
   Manifold rplus(const Tangent& t) const;
-
   Manifold lplus(const Tangent& t) const;
 
+  /**
+   * @brief plus, calls rplus
+   * @see rplus
+   */
   Manifold plus(const Tangent& t) const;
 
   Manifold rminus(const Manifold& m) const;
-
   Manifold lminus(const Manifold& m) const;
-
-  /*
-  template <typename T>
-  Manifold minus(T&& t) const
-  {
-    return derived().rminus(std::forward<T>(t));
-  }
-  */
+//  Manifold minus(const Manifold& m) const;
 
   Tangent lift() const;
 
-  /*
-  LieType lie() const
-  {
-    return derived().lie();
-  }
-  */
+  // LieType lie() const {return derived().lie();}
 
   Manifold compose(const Manifold& m) const;
 
   Manifold between(const Manifold& m) const;
 
-  /*
-  Manifold interpolate()
-  {
-    return derived().interpolate();
-  }
-  */
+//  Manifold interpolate() {return derived().interpolate();}
 
   /// Some operators
 

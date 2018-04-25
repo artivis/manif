@@ -33,13 +33,36 @@ struct TangentBase
   TangentDataType* data();
   const TangentDataType* data() const;
 
+  /// Common Tangent API
+
   void zero();
-
   void random();
-
   Manifold retract() const;
 
+  Manifold rplus(const Manifold& m) const;
+  Manifold lplus(const Manifold& m) const;
+
+  /**
+   * @brief plus, calls lplus
+   * @see lplus
+   */
+  Manifold plus(const Manifold& m) const;
+
+  /// Some operators
+
+  /**
+   * @brief operator +, lplus
+   * @param t
+   * @return
+   * @see lplus
+   */
+  Manifold operator +(const Manifold& t) const;
+
+  /// with Jacs
+
   void retract(Manifold& m, JacobianTtoM& J_m_t) const;
+
+  /// static helpers
 
   static Tangent Zero();
   static Tangent Random();
@@ -88,6 +111,40 @@ TangentBase<_Derived>::retract() const
   MANIF_INFO("TangentBase retract");
   return derived().retract();
 }
+
+template <class _Derived>
+typename TangentBase<_Derived>::Manifold
+TangentBase<_Derived>::rplus(const Manifold& m) const
+{
+  return m.rplus(derived());
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Manifold
+TangentBase<_Derived>::lplus(const Manifold& m) const
+{
+  return m.lplus(derived());
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Manifold
+TangentBase<_Derived>::plus(const Manifold& m) const
+{
+  return m.lplus(derived());
+}
+
+/// Some operators
+
+/// Operators
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Manifold
+TangentBase<_Derived>::operator +(const Manifold& t) const
+{
+  return derived().lplus(t);
+}
+
+/// with Jacs
 
 template <class _Derived>
 void TangentBase<_Derived>::retract(Manifold& m,
