@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 2.8.8)
-find_package(GTest REQUIRED)
+find_package(GTest QUIET)
+
+if(NOT GTEST_FOUND)
+  add_subdirectory(gtest)
+endif()
 
 # small helper function
 function(manif_add_gtest target)
