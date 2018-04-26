@@ -72,7 +72,6 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Manifold
 SO2TangentBase<_Derived>::retract() const
 {
-  MANIF_INFO("SO2TangentBase random");
   using std::cos;
   using std::sin;
   return Manifold(cos(angle()), sin(angle()));

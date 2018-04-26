@@ -93,6 +93,7 @@ public:
   /*const*/ Scalar/*&*/ real() const;
   /*const*/ Scalar/*&*/ imag() const;
   Scalar angle() const;
+  void angle(const Scalar theta);
 
 protected:
 
@@ -125,7 +126,6 @@ SO2Base<_Derived>::rotation() const
 template <typename _Derived>
 void SO2Base<_Derived>::identity()
 {
-  MANIF_INFO("SO2Base identity");
 //  real() = 1;
 //  imag() = 1;
   data()->setIdentity();
@@ -134,7 +134,6 @@ void SO2Base<_Derived>::identity()
 template <typename _Derived>
 void SO2Base<_Derived>::random()
 {
-  MANIF_INFO("SO2Base random");
   data()->setRandom();
 }
 
@@ -142,7 +141,6 @@ template <typename _Derived>
 typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::inverse() const
 {
-  MANIF_INFO("SO2Base inverse");
   return Manifold(real(), -imag());
 }
 
@@ -183,7 +181,6 @@ template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
 SO2Base<_Derived>::lift() const
 {
-  MANIF_INFO("SO2Base lift");
   return Tangent(angle());
 }
 
@@ -298,6 +295,16 @@ SO2Base<_Derived>::angle() const
 {
   using std::atan2;
   return atan2(imag(), real());
+}
+
+template <typename _Derived>
+void SO2Base<_Derived>::angle(const Scalar theta)
+{
+  using std::cos;
+  using std::sin;
+
+  data()->operator()(0) = cos(theta);
+  data()->operator()(1) = sin(theta);
 }
 
 //template <typename _Derived>
