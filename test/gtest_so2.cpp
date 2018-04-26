@@ -25,7 +25,7 @@ TEST(TEST_SO2, TEST_SO2_2)
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_3)
+TEST(TEST_SO2, TEST_SO2_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
@@ -44,6 +44,8 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY)
   so2.identity();
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
+  EXPECT_DOUBLE_EQ(1, so2.real());
+  EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
 TEST(TEST_SO2, TEST_SO2_IDENTITY2)
@@ -51,6 +53,8 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY2)
   SO2d so2 = SO2d::Identity();
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
+  EXPECT_DOUBLE_EQ(1, so2.real());
+  EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
 //TEST(TEST_SO2, TEST_SO2_RANDOM)
@@ -142,15 +146,37 @@ TEST(TEST_SO2, TEST_SO2_PLUS)
 //  EXPECT_DOUBLE_EQ(0., so2c.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_RMINUS)
+TEST(TEST_SO2, TEST_SO2_OP_PLUS)
 {
   SO2d so2a(M_PI / 2.);
-  SO2d so2b(M_PI / 2.);
+  SO2Tangentd so2b(M_PI / 2.);
+
+  auto so2c = so2a + so2b;
+
+  /// @todo
+//  EXPECT_DOUBLE_EQ(0., so2c.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_OP_PLUS_EQ)
+{
+  SO2d so2a(M_PI / 2.);
+  SO2Tangentd so2b(M_PI / 2.);
+
+  so2a +=so2b;
+
+  /// @todo
+//  EXPECT_DOUBLE_EQ(0., so2c.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_RMINUS)
+{
+  SO2d so2a(M_PI);
+  SO2d so2b(M_PI_2);
 
   auto so2c = so2a.rminus(so2b);
 
   /// @todo
-//  EXPECT_DOUBLE_EQ(0., so2c.angle());
+//  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_LMINUS)
@@ -184,6 +210,7 @@ TEST(TEST_SO2, TEST_SO2_LIFT)
   EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
 }
 
+/// @todo move to SO2Tangent tests
 TEST(TEST_SO2, TEST_SO2_RETRACT)
 {
   SO2d so2(M_PI);
@@ -201,15 +228,42 @@ TEST(TEST_SO2, TEST_SO2_RETRACT)
 
 TEST(TEST_SO2, TEST_SO2_COMPOSE)
 {
-  SO2d so2a(M_PI);
-  SO2d so2b(M_PI);
+  SO2d so2a(M_PI_2);
+  SO2d so2b(M_PI_2);
 
   auto so2c = so2a.compose(so2b);
 
-  /// @todo tolerance issue
-  /// normalize complex number ??
-//  EXPECT_DOUBLE_EQ(0., so2c.angle());
-  EXPECT_NEAR(0., so2c.angle(), 1e-15);
+  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_OP_COMPOSE)
+{
+  SO2d so2a(M_PI_2);
+  SO2d so2b(M_PI_2);
+
+  auto so2c = so2a * so2b;
+
+  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_OP_COMPOSE_EQ)
+{
+  SO2d so2a(M_PI_2);
+  SO2d so2b(M_PI_2);
+
+  so2a *= so2b;
+
+  EXPECT_DOUBLE_EQ(M_PI, so2a.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_BETWEEN)
+{
+  SO2d so2a(M_PI);
+  SO2d so2b(M_PI_2);
+
+  auto so2c = so2a.between(so2b);
+
+  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
 }
 
 int main(int argc, char** argv)

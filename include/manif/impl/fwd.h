@@ -49,7 +49,8 @@ template <typename _ManifoldBase> struct ManifoldProperties;
   using Base::rminus;               \
   using Base::lminus;               \
   using Base::lift;                 \
-  using Base::compose;
+  using Base::compose;              \
+  using Base::between;
 
 #define MANIF_INHERIT_TANGENT_API \
   using Base::zero;               \
