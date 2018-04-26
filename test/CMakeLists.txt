@@ -17,10 +17,10 @@ endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-manif_add_gtest(gtest_test gtest_test.cpp)
+manif_add_gtest(gtest_so2 gtest_so2.cpp)
 
 set(CXX_11_TEST_TARGETS
-  gtest_test
+  gtest_so2
 )
 
 # Set required C++11 flag
