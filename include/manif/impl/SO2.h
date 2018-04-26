@@ -36,8 +36,7 @@ struct traits<SO2<_Scalar>>
 
   using ManifoldDataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using JacobianMtoM = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianMtoT = Eigen::Matrix<Scalar, DoF, RepSize>;
+  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 
   using Transformation = Eigen::Matrix<Scalar, N, N>;
 

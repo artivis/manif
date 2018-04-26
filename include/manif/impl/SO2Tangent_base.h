@@ -32,8 +32,7 @@ public:
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
 
-  using JacobianTtoT = typename Base::JacobianTtoT;
-  using JacobianTtoM = typename Base::JacobianTtoM;
+  using Jacobian = typename Base::Jacobian;
 
   using TangentDataType  = typename Base::TangentDataType;
 
@@ -47,7 +46,7 @@ public:
 
   /// with Jacs
 
-  void retract(Manifold& m, JacobianTtoM& J_m_t) const;
+  void retract(Manifold& m, Jacobian& J_m_t) const;
 
   /// SO2Tangent specific API
 
@@ -81,7 +80,7 @@ SO2TangentBase<_Derived>::retract() const
 
 template <typename _Derived>
 void SO2TangentBase<_Derived>::retract(
-    Manifold& m, JacobianTtoM& J_m_t) const
+    Manifold& m, Jacobian& J_m_t) const
 {
   MANIF_INFO("SO2TangentBase retract with jac");
   MANIF_NOT_IMPLEMENTED_YET

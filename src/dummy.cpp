@@ -29,7 +29,7 @@ void computeInverseJac(ManifoldBase<Derived>& m)
   using T = typename ManifoldBase<Derived>::Scalar;
 
   SO2<T> minv = m;
-  typename SO2<T>::JacobianMtoM Jac;
+  typename SO2<T>::Jacobian Jac;
   m.inverse(minv, Jac);
 }
 
@@ -43,6 +43,9 @@ int main()
 {
   static_assert(std::is_same<SO2<double>, SO2d>::value, "ok");
   static_assert(std::is_same<SO2<float>,  SO2f>::value, "ok");
+
+  static_assert(internal::has_inverse<SO2<double>>::value, "Does not have inverse");
+  static_assert(internal::has_rplus<SO2<double>>::value, "Does not have rplus");
 
   static_assert(std::is_same<SO2d, SO2d::Manifold>::value, "ok");
 
@@ -98,11 +101,11 @@ int main()
 
 //  so2_rplus = so2.minus( so2_inv );
 
-  static_assert(std::is_same<decltype(so2_rminus), SO2d>::value, "ok");
+  static_assert(std::is_same<decltype(so2_rminus), SO2Tangentd>::value, "ok");
 
   auto so2_lminus = so2.lminus(so2_inv);
 
-  static_assert(std::is_same<decltype(so2_lminus), SO2d>::value, "ok");
+  static_assert(std::is_same<decltype(so2_lminus), SO2Tangentd>::value, "ok");
 
   auto so2_compose = so2.compose(so2_inv);
 
@@ -134,7 +137,7 @@ int main()
   /// Jacobians ///
   /////////////////
 
-  SO2d::JacobianMtoM so2_inv_jac;
+  SO2d::Jacobian so2_inv_jac;
 
   so2.inverse(so2_inv, so2_inv_jac);
 

@@ -9,6 +9,79 @@
 namespace manif
 {
 
+
+namespace internal
+{
+
+template<class, typename T> struct has_rplus_impl : std::false_type {};
+template<typename T> struct
+has_rplus_impl<decltype( void(std::declval<T>().rplus(typename T::Tangent{})) ), T> : std::true_type {};
+template<typename T> struct has_rplus : has_rplus_impl<void, T> {};
+
+template<class, typename T> struct has_inverse_impl : std::false_type {};
+template<typename T> struct
+has_inverse_impl<decltype( void(std::declval<T>().inverse()) ), T> : std::true_type {};
+template<typename T> struct has_inverse : has_inverse_impl<void, T> {};
+
+template<class, typename T> struct has_foo_impl : std::false_type {};
+template<typename T> struct
+has_foo_impl<decltype( void(std::declval<T>().foo()) ), T> : std::true_type {};
+template<typename T> struct has_foo : has_foo_impl<void, T> {};
+
+template<class, typename T> struct implement_inverse_impl : std::false_type {};
+
+template<typename T> struct
+implement_inverse_impl<decltype(
+    typename std::enable_if<
+//    std::true_type::value &&
+      std::is_same<typename T::Manifold (T::Base::*)() const, decltype(&T::ttt)>::value
+      , void
+    >::type()
+    ), T> : std::true_type
+{};
+
+template<typename T> struct implement_inverse : implement_inverse_impl<void, T> {};
+
+// Check for func in base
+template< class T >
+struct CheckForFoo
+{
+  typedef char(&YesType)[1];
+  typedef char(&NoType)[2];
+
+  template< class T2 > static YesType Test(
+      typename std::enable_if<
+      !has_foo<T>::value
+//      &&
+//      std::is_same<typename T::Manifold (T::Base::Base::*)(), decltype(&T2::foo)>::value,
+//      !std::is_same<typename T::Manifold (T::*)() const, decltype(&T2::bar)>::value
+      ,
+      int
+      >::type );
+  template< class T2 > static NoType Test( ... );
+  static const bool value = sizeof(Test<T>(0))==sizeof(YesType);
+};
+
+template< class T >
+struct implement_rplus
+{
+  typedef char(&YesType)[1];
+  typedef char(&NoType)[2];
+
+  template< class T2 > static YesType Test(
+      typename std::enable_if<
+      std::is_same<typename T::Manifold (T::*)(const typename T::Tangent&)const, decltype(&T2::rplus)>::value,
+      int
+      >::type );
+  template< class T2 > static NoType  Test( ... );
+  static const bool value = sizeof(Test<T>(0))==sizeof(YesType);
+};
+
+} /* namespace internal */
+
+
+
+
 template <class _Derived>
 struct ManifoldBase
 {
@@ -27,8 +100,7 @@ struct ManifoldBase
 
   using Tangent = typename internal::traits<_Derived>::Tangent;
 
-  using JacobianMtoM = typename internal::traits<_Derived>::JacobianMtoM;
-  using JacobianMtoT = typename internal::traits<_Derived>::JacobianMtoT;
+  using Jacobian = typename internal::traits<_Derived>::Jacobian;
 
   using Transformation = typename internal::traits<_Derived>::Transformation;
 
@@ -66,9 +138,9 @@ public:
    */
   Manifold plus(const Tangent& t) const;
 
-  Manifold rminus(const Manifold& m) const;
-  Manifold lminus(const Manifold& m) const;
-//  Manifold minus(const Manifold& m) const;
+  Tangent rminus(const Manifold& m) const;
+  Tangent lminus(const Manifold& m) const;
+  Tangent minus(const Manifold& m) const;
 
   Tangent lift() const;
 
@@ -99,6 +171,14 @@ public:
   Manifold& operator +=(const Tangent& t);
 
   /**
+   * @brief operator -, rminus
+   * @param m
+   * @return
+   * @see rminus
+   */
+  Tangent operator -(const Manifold& m) const;
+
+  /**
    * @brief operator *, compose
    * @param m
    * @return
@@ -116,10 +196,10 @@ public:
 
   /// Jacs
 
-  void inverse(Manifold& m, JacobianMtoM& J) const;
+  void inverse(Manifold& m, Jacobian& J) const;
 
   void rplus(const Tangent& t, Manifold& m,
-             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+             Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// Some static helpers
 
@@ -254,7 +334,9 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::inverse() const
 {
-  //std::cout << "ManifoldBase inverse\n";
+  static_assert(internal::has_inverse<typename _Derived::Base>::value,
+                "Derived class must implement 'inverse' !");
+
   return derived().inverse();
 }
 
@@ -262,8 +344,10 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::rplus(const Tangent& t) const
 {
-  //std::cout << "ManifoldBase rplus\n";
-  return derived().rplus(t);
+  static_assert(internal::has_rplus<typename _Derived::Base>::value,
+                "Derived class must implement 'rplus' !");
+
+  return compose(t.retract());
 }
 
 template <typename _Derived>
@@ -271,28 +355,35 @@ typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::lplus(const Tangent& t) const
 {
   //std::cout << "ManifoldBase lplus\n";
-  return derived().lplus(t);
+  return t.retract().compose(derived());
 }
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::plus(const Tangent& t) const
 {
-  return derived().rplus(t);
+  return rplus(t);
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Manifold
+typename ManifoldBase<_Derived>::Tangent
 ManifoldBase<_Derived>::rminus(const Manifold& m) const
 {
-  return derived().rminus(m);
+  return m.inverse().compose(derived()).lift();
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Manifold
+typename ManifoldBase<_Derived>::Tangent
 ManifoldBase<_Derived>::lminus(const Manifold& m) const
 {
-  return derived().lminus(m);
+  return derived().inverse().compose(m).lift();
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Tangent
+ManifoldBase<_Derived>::minus(const Manifold& m) const
+{
+  return rminus(m);
 }
 
 template <typename _Derived>
@@ -334,6 +425,13 @@ ManifoldBase<_Derived>::operator +=(const Tangent& t)
 }
 
 template <typename _Derived>
+typename ManifoldBase<_Derived>::Tangent
+ManifoldBase<_Derived>::operator -(const Manifold& m) const
+{
+  return derived().rminus(m);
+}
+
+template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::operator *(const Manifold& m) const
 {
@@ -351,7 +449,7 @@ ManifoldBase<_Derived>::operator *=(const Manifold& m)
 /// Jacs
 
 template <typename _Derived>
-void ManifoldBase<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
+void ManifoldBase<_Derived>::inverse(Manifold& m, Jacobian& j) const
 {
   derived().inverse(m, j);
 }

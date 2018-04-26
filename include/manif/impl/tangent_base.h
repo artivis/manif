@@ -22,8 +22,7 @@ struct TangentBase
 
   using TangentDataType = typename internal::traits<_Derived>::TangentDataType;
 
-  using JacobianTtoT = typename internal::traits<_Derived>::JacobianTtoT;
-  using JacobianTtoM = typename internal::traits<_Derived>::JacobianTtoM;
+  using Jacobian = typename internal::traits<_Derived>::Jacobian;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -60,7 +59,7 @@ struct TangentBase
 
   /// with Jacs
 
-  void retract(Manifold& m, JacobianTtoM& J_m_t) const;
+  void retract(Manifold& m, Jacobian& J_m_t) const;
 
   /// static helpers
 
@@ -68,7 +67,7 @@ struct TangentBase
   static Tangent Random();
   static Manifold Retract(const Tangent& t);
 
-  static void Retract(const Tangent& t, Manifold& m, JacobianTtoM& J_m_t);
+  static void Retract(const Tangent& t, Manifold& m, Jacobian& J_m_t);
 
 private:
 
@@ -148,7 +147,7 @@ TangentBase<_Derived>::operator +(const Manifold& t) const
 
 template <class _Derived>
 void TangentBase<_Derived>::retract(Manifold& m,
-                                    JacobianTtoM& J_m_t) const
+                                    Jacobian& J_m_t) const
 {
   MANIF_INFO("TangentBase retract with Jac");
   derived().retract(m, J_m_t);

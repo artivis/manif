@@ -28,8 +28,7 @@ struct traits<SO2Tangent<_Scalar>>
 
   using TangentDataType  = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using JacobianTtoT = Eigen::Matrix<Scalar, DoF, DoF>;
-  using JacobianTtoM = Eigen::Matrix<Scalar, RepSize, DoF>;
+  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 };
 
 } /* namespace internal */

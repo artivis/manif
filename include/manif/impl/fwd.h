@@ -77,8 +77,7 @@ template <typename _ManifoldBase> struct ManifoldProperties;
   using Manifold = typename Base::Manifold;                 \
   using Base::Dim;                                          \
   using ManifoldDataType = typename Base::ManifoldDataType; \
-  using JacobianMtoM = typename Base::JacobianMtoM;         \
-  using JacobianMtoT = typename Base::JacobianMtoT;         \
+  using Jacobian = typename Base::Jacobian;                 \
   using Base::RepSize;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \
