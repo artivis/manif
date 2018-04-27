@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO3TANGENT_H_
 #define _MANIF_MANIF_SO3TANGENT_H_
 
-#include "manif/impl/SO3Tangent_base.h"
+#include "manif/impl/so3/SO3Tangent_base.h"
 
 #include <Eigen/Core>
 

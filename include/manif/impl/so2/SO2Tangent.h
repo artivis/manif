@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO2TANGENT_H_
 #define _MANIF_MANIF_SO2TANGENT_H_
 
-#include "manif/impl/SO2Tangent_base.h"
+#include "manif/impl/so2/SO2Tangent_base.h"
 
 #include <Eigen/Core>
 

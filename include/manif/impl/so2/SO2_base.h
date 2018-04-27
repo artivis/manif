@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO2_BASE_H_
 #define _MANIF_MANIF_SO2_BASE_H_
 
-#include "manif/impl/SO2_properties.h"
+#include "manif/impl/so2/SO2_properties.h"
 #include "manif/impl/manifold_base.h"
 
 namespace manif

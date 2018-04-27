@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO2_H_
 #define _MANIF_MANIF_SO2_H_
 
-#include "manif/impl/SO2_base.h"
+#include "manif/impl/so2/SO2_base.h"
 
 #include <Eigen/Core>
 

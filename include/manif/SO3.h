@@ -5,11 +5,11 @@
 #include "manif/impl/manifold_base.h"
 #include "manif/impl/tangent_base.h"
 
-#include "manif/impl/SO3_properties.h"
-#include "manif/impl/SO3_base.h"
-#include "manif/impl/SO3Tangent_base.h"
-#include "manif/impl/SO3.h"
-#include "manif/impl/SO3Tangent.h"
+#include "manif/impl/so3/SO3_properties.h"
+#include "manif/impl/so3/SO3_base.h"
+#include "manif/impl/so3/SO3Tangent_base.h"
+#include "manif/impl/so3/SO3.h"
+#include "manif/impl/so3/SO3Tangent.h"
 //#include "manif/impl/SO3_map.h"
 //#include "manif/impl/SO3Tangent_map.h"
 

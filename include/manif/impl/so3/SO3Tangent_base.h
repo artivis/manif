@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO3TANGENT_BASE_H_
 #define _MANIF_MANIF_SO3TANGENT_BASE_H_
 
-#include "manif/impl/SO3_properties.h"
+#include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
 namespace manif

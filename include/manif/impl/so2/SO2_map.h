@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO2_MAP_H_
 #define _MANIF_MANIF_SO2_MAP_H_
 
-#include "manif/impl/SO2.h"
+#include "manif/impl/so2/SO2.h"
 
 namespace manif {
 namespace internal {
