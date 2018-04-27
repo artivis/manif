@@ -65,8 +65,6 @@ private:
 
 public:
 
-  using Tangent = typename Base::Tangent;
-
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
 
   SO2()  = default;

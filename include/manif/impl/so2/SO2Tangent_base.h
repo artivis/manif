@@ -56,14 +56,12 @@ public:
 template <typename _Derived>
 void SO2TangentBase<_Derived>::zero()
 {
-  MANIF_INFO("SO2TangentBase zero");
   data()->setZero();
 }
 
 template <typename _Derived>
 void SO2TangentBase<_Derived>::random()
 {
-  MANIF_INFO("SO2TangentBase random");
   data()->setRandom();
 }
 
@@ -82,8 +80,8 @@ template <typename _Derived>
 void SO2TangentBase<_Derived>::retract(
     Manifold& m, Jacobian& J_m_t) const
 {
-  MANIF_INFO("SO2TangentBase retract with jac");
-  MANIF_NOT_IMPLEMENTED_YET
+  m = retract();
+  J_m_t.setConstant(1);
 }
 
 /// SO2Tangent specific API

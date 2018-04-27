@@ -4,42 +4,63 @@
 
 using namespace manif;
 
-TEST(TEST_SO2, TEST_SO2_0)
+TEST(TEST_SO2, TEST_SO2_MAP)
 {
-  SO2d so2(SO2d::ManifoldDataType(1,0));
+  double data[2] = {1,0};
+
+  Eigen::Map<SO2d> so2(data);
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_1)
+TEST(TEST_SO2, TEST_SO2_MAP_CONST)
 {
-  SO2d so2(1, 0);
+  double data[2] = {1,0};
+
+  Eigen::Map<const SO2d> so2(data);
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_2)
-{
-  SO2d so2(0);
-
-  EXPECT_DOUBLE_EQ(0, so2.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_DATA)
+TEST(TEST_SO2, TEST_SO2_MAP_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
-  const SO2d so2(0);
+
+  double data[2] = {1,0};
+
+  const Eigen::Map</*const*/ SO2d> so2(data);
 
   EXPECT_NE(nullptr, so2.data());
+  EXPECT_EQ(data, so2.data()->data());
 
   EXPECT_DOUBLE_EQ(1, (*so2.data())(0));
   EXPECT_DOUBLE_EQ(0, (*so2.data())(1));
 }
 
-TEST(TEST_SO2, TEST_SO2_IDENTITY)
+TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
 {
-  SO2d so2;
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+
+  double datab[2] = {0,1};
+  const Eigen::Map<const SO2d> so2b(datab);
+
+  so2a = so2b;
+
+  EXPECT_DOUBLE_EQ(0, so2a.real());
+  EXPECT_DOUBLE_EQ(1, so2a.imag());
+
+  so2a = SO2d(0.5,0.5);
+
+  EXPECT_DOUBLE_EQ(0.5, so2a.real());
+  EXPECT_DOUBLE_EQ(0.5, so2a.imag());
+}
+
+TEST(TEST_SO2, TEST_SO2_MAP_IDENTITY)
+{
+  double data[2] = {0,0};
+  Eigen::Map<SO2d> so2(data);
 
   so2.identity();
 
@@ -48,16 +69,18 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY)
   EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
-TEST(TEST_SO2, TEST_SO2_IDENTITY2)
+TEST(TEST_SO2, TEST_SO2_MAP_IDENTITY2)
 {
-  SO2d so2 = SO2d::Identity();
+  double data[2] = {0,0};
+  Eigen::Map<SO2d> so2(data);
+  so2 = SO2d::Identity();
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
   EXPECT_DOUBLE_EQ(1, so2.real());
   EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
-//TEST(TEST_SO2, TEST_SO2_RANDOM)
+//TEST(TEST_SO2, TEST_SO2_MAP_RANDOM)
 //{
 //  SO2d so2;
 
@@ -66,16 +89,17 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY2)
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}
 
-//TEST(TEST_SO2, TEST_SO2_RANDOM2)
+//TEST(TEST_SO2, TEST_SO2_MAP_RANDOM2)
 //{
 //  SO2d so2 = SO2d::Random();
 
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}
 
-TEST(TEST_SO2, TEST_SO2_MATRIX)
+TEST(TEST_SO2, TEST_SO2_MAP_MATRIX)
 {
-  SO2d so2 = SO2d::Identity();
+  double data[2] = {1,0};
+  Eigen::Map<SO2d> so2(data);
 
   SO2d::Transformation t = so2.matrix();
 
@@ -85,9 +109,11 @@ TEST(TEST_SO2, TEST_SO2_MATRIX)
   /// @todo Eigen matrix comparison
 }
 
-TEST(TEST_SO2, TEST_SO2_ROTATION)
+
+TEST(TEST_SO2, TEST_SO2_MAP_ROTATION)
 {
-  SO2d so2 = SO2d::Identity();
+  double data[2] = {1,0};
+  Eigen::Map<SO2d> so2(data);
 
   SO2d::Rotation r = so2.rotation();
 
@@ -97,19 +123,10 @@ TEST(TEST_SO2, TEST_SO2_ROTATION)
   /// @todo Eigen matrix comparison
 }
 
-TEST(TEST_SO2, TEST_SO2_ASSIGN_OP)
+TEST(TEST_SO2, TEST_SO2_MAP_INVERSE)
 {
-  SO2d so2a(0);
-  SO2d so2b(M_PI);
-
-  so2a = so2b;
-
-  EXPECT_DOUBLE_EQ(M_PI, so2a.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_INVERSE)
-{
-  SO2d so2 = SO2d::Identity();
+  double data[2] = {1,0};
+  Eigen::Map<SO2d> so2(data);
 
   auto so2_inv = so2.inverse();
 
@@ -121,140 +138,215 @@ TEST(TEST_SO2, TEST_SO2_INVERSE)
   so2_inv = so2.inverse();
 
   EXPECT_DOUBLE_EQ(-M_PI, so2_inv.angle());
+
+  double data_inv[2] = {1,0};
+  Eigen::Map<SO2d> so2_inv_map(data_inv);
+
+  so2.identity();
+  so2_inv_map = so2.inverse();
+
+  EXPECT_DOUBLE_EQ(so2.angle(), so2_inv_map.angle());
+  EXPECT_DOUBLE_EQ(1, so2_inv_map.real());
+  EXPECT_DOUBLE_EQ(0, so2_inv_map.imag());
+
+  so2.angle(M_PI);
+  so2_inv_map = so2.inverse();
+
+  EXPECT_DOUBLE_EQ(-M_PI, so2_inv_map.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_RPLUS)
+TEST(TEST_SO2, TEST_SO2_MAP_RPLUS)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+  so2a = SO2d(M_PI_2);
 
-  auto so2c = so2a.rplus(so2b);
+  SO2Tangentd so2b(M_PI_2);
+
+  double datac[2] = {1,0};
+  Eigen::Map<SO2d> so2c(datac);
+  so2c = so2a.rplus(so2b);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_LPLUS)
+//TEST(TEST_SO2, TEST_SO2_MAP_LPLUS)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI_2);
+
+//  SO2Tangentd so2b(M_PI_2);
+
+//  double datac[2] = {1,0};
+//  Eigen::Map<SO2d> so2c(datac);
+
+//  so2c = so2a.lplus(so2b);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
+//}
+
+TEST(TEST_SO2, TEST_SO2_MAP_PLUS)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+  so2a = SO2d(M_PI_2);
 
-  auto so2c = so2a.lplus(so2b);
-
-  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_PLUS)
-{
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  SO2Tangentd so2b(M_PI_2);
 
   auto so2c = so2a.plus(so2b);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_OP_PLUS)
+TEST(TEST_SO2, TEST_SO2_MAP_OP_PLUS)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+  so2a = SO2d(M_PI_2);
+
+  SO2Tangentd so2b(M_PI_2);
 
   auto so2c = so2a + so2b;
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_OP_PLUS_EQ)
+TEST(TEST_SO2, TEST_SO2_MAP_OP_PLUS_EQ)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+  so2a = SO2d(M_PI_2);
+
+  SO2Tangentd so2b(M_PI_2);
 
   so2a += so2b;
 
   EXPECT_DOUBLE_EQ(M_PI, so2a.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_RMINUS)
+//TEST(TEST_SO2, TEST_SO2_MAP_RMINUS)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI);
+
+//  double datab[2] = {1,0};
+//  Eigen::Map<SO2d> so2b(datab);
+//  so2b = SO2d(M_PI_2);
+
+//  auto so2c = so2a.rminus(so2b);
+
+//  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
+//}
+
+//TEST(TEST_SO2, TEST_SO2_MAP_LMINUS)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI);
+
+//  double datab[2] = {1,0};
+//  Eigen::Map<SO2d> so2b(datab);
+//  so2b = SO2d(M_PI_2);
+
+//  auto so2c = so2a.lminus(so2b);
+
+//  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+//}
+
+//TEST(TEST_SO2, TEST_SO2_MAP_MINUS)
+//{
+//  SO2d so2a(M_PI);
+//  SO2d so2b(M_PI_2);
+
+//  auto so2c = so2a.minus(so2b);
+
+//  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
+//}
+
+TEST(TEST_SO2, TEST_SO2_MAP_LIFT)
 {
-  SO2d so2a(M_PI);
-  SO2d so2b(M_PI_2);
-
-  auto so2c = so2a.rminus(so2b);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_LMINUS)
-{
-  SO2d so2a(M_PI);
-  SO2d so2b(M_PI_2);
-
-  auto so2c = so2a.lminus(so2b);
-
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_MINUS)
-{
-  SO2d so2a(M_PI);
-  SO2d so2b(M_PI_2);
-
-  auto so2c = so2a.minus(so2b);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_LIFT)
-{
-  SO2d so2(M_PI);
+  double data[2] = {1,0};
+  Eigen::Map<SO2d> so2(data);
+  so2 = SO2d(M_PI);
 
   auto so2_lift = so2.lift();
+
+  static_assert(std::is_same<SO2d::Tangent, decltype(so2_lift)>::value, "");
 
   EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_COMPOSE)
+TEST(TEST_SO2, TEST_SO2_MAP_COMPOSE)
 {
-  SO2d so2a(M_PI_2);
-  SO2d so2b(M_PI_2);
+  double dataa[2] = {1,0};
+  Eigen::Map<SO2d> so2a(dataa);
+  so2a = SO2d(M_PI_2);
 
-  auto so2c = so2a.compose(so2b);
+  double datab[2] = {1,0};
+  Eigen::Map<SO2d> so2b(datab);
+  so2b = SO2d(M_PI_2);
+
+  double datac[2] = {1,0};
+  Eigen::Map<SO2d> so2c(datac);
+
+  so2c = so2a.compose(so2b);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_OP_COMPOSE)
-{
-  SO2d so2a(M_PI_2);
-  SO2d so2b(M_PI_2);
+//TEST(TEST_SO2, TEST_SO2_MAP_OP_COMPOSE)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI_2);
 
-  auto so2c = so2a * so2b;
+//  double datab[2] = {1,0};
+//  Eigen::Map<SO2d> so2b(datab);
+//  so2b = SO2d(M_PI_2);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
-}
+//  double datac[2] = {1,0};
+//  Eigen::Map<SO2d> so2c(datac);
 
-TEST(TEST_SO2, TEST_SO2_OP_COMPOSE_EQ)
-{
-  SO2d so2a(M_PI_2);
-  SO2d so2b(M_PI_2);
+//  so2c = so2a * so2b;
 
-  so2a *= so2b;
+//  EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
+//}
 
-  EXPECT_DOUBLE_EQ(M_PI, so2a.angle());
-}
+//TEST(TEST_SO2, TEST_SO2_MAP_OP_COMPOSE_EQ)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI_2);
 
-TEST(TEST_SO2, TEST_SO2_BETWEEN)
-{
-  SO2d so2a(M_PI);
-  SO2d so2b(M_PI_2);
+//  double datab[2] = {1,0};
+//  Eigen::Map<SO2d> so2b(datab);
+//  so2b = SO2d(M_PI_2);
 
-  auto so2c = so2a.between(so2b);
+//  so2a *= so2b;
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
-}
+//  EXPECT_DOUBLE_EQ(M_PI, so2a.angle());
+//}
+
+//TEST(TEST_SO2, TEST_SO2_MAP_BETWEEN)
+//{
+//  double dataa[2] = {1,0};
+//  Eigen::Map<SO2d> so2a(dataa);
+//  so2a = SO2d(M_PI);
+
+//  double datab[2] = {1,0};
+//  Eigen::Map<SO2d> so2b(datab);
+//  so2b = SO2d(M_PI_2);
+
+//  auto so2c = so2a.between(so2b);
+
+//  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+//}
 
 /// with Jacs
-
-TEST(TEST_SO2, TEST_SO2_INVERSE_JAC)
+/*
+TEST(TEST_SO2, TEST_SO2_MAP_INVERSE_JAC)
 {
   SO2d so2 = SO2d::Identity();
 
@@ -280,7 +372,7 @@ TEST(TEST_SO2, TEST_SO2_INVERSE_JAC)
   EXPECT_DOUBLE_EQ(-1, J_inv(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_LIFT_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_LIFT_JAC)
 {
   SO2d so2(M_PI);
 
@@ -297,7 +389,7 @@ TEST(TEST_SO2, TEST_SO2_LIFT_JAC)
   EXPECT_DOUBLE_EQ(1, J_lift(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_COMPOSE_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_COMPOSE_JAC)
 {
   SO2d so2a(M_PI_2);
   SO2d so2b(M_PI_2);
@@ -318,10 +410,10 @@ TEST(TEST_SO2, TEST_SO2_COMPOSE_JAC)
   EXPECT_DOUBLE_EQ(1, J_c_b(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_RPLUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_RPLUS_JAC)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  SO2d so2a(M_PI_2);
+  SO2Tangentd so2b(M_PI_2);
 
   SO2d so2c;
   SO2d::Jacobian J_rplus_m;
@@ -340,10 +432,10 @@ TEST(TEST_SO2, TEST_SO2_RPLUS_JAC)
   EXPECT_DOUBLE_EQ(1, J_rplus_t(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_LPLUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_LPLUS_JAC)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  SO2d so2a(M_PI_2);
+  SO2Tangentd so2b(M_PI_2);
 
   SO2d so2c;
   SO2d::Jacobian J_lplus_t;
@@ -362,10 +454,10 @@ TEST(TEST_SO2, TEST_SO2_LPLUS_JAC)
   EXPECT_DOUBLE_EQ(1, J_lplus_m(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_PLUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_PLUS_JAC)
 {
-  SO2d so2a(M_PI / 2.);
-  SO2Tangentd so2b(M_PI / 2.);
+  SO2d so2a(M_PI_2);
+  SO2Tangentd so2b(M_PI_2);
 
   SO2d so2c;
   SO2d::Jacobian J_plus_m;
@@ -384,7 +476,7 @@ TEST(TEST_SO2, TEST_SO2_PLUS_JAC)
   EXPECT_DOUBLE_EQ(1, J_plus_t(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_RMINUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_RMINUS_JAC)
 {
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
@@ -406,7 +498,7 @@ TEST(TEST_SO2, TEST_SO2_RMINUS_JAC)
   EXPECT_DOUBLE_EQ(-1, J_rminus_b(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_LMINUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_LMINUS_JAC)
 {
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
@@ -428,7 +520,7 @@ TEST(TEST_SO2, TEST_SO2_LMINUS_JAC)
   EXPECT_DOUBLE_EQ(1, J_lminus_b(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
+TEST(TEST_SO2, TEST_SO2_MAP_MINUS_JAC)
 {
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
@@ -449,7 +541,7 @@ TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
   EXPECT_EQ(1, J_minus_b.cols());
   EXPECT_DOUBLE_EQ(-1, J_minus_b(0));
 }
-
+*/
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);

@@ -25,12 +25,10 @@ struct traits<SO3Tangent<_Scalar>>
 
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
-  static constexpr int RepSize = DoF;
 
-  using TangentDataType  = Eigen::Matrix<Scalar, RepSize, 1>;
+  using TangentDataType  = Eigen::Matrix<Scalar, DoF, 1>;
 
-  using JacobianTtoT = Eigen::Matrix<Scalar, DoF, DoF>;
-  using JacobianTtoM = Eigen::Matrix<Scalar, RepSize, DoF>;
+  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 };
 
 } /* namespace internal */

@@ -92,14 +92,12 @@ TangentBase<_Derived>::data() const
 template <class _Derived>
 void TangentBase<_Derived>::zero()
 {
-  MANIF_INFO("TangentBase zero");
   derived().zero();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::random()
 {
-  MANIF_INFO("TangentBase random");
   derived().random();
 }
 
@@ -107,7 +105,6 @@ template <class _Derived>
 typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::retract() const
 {
-  MANIF_INFO("TangentBase retract");
   return derived().retract();
 }
 
@@ -149,7 +146,6 @@ template <class _Derived>
 void TangentBase<_Derived>::retract(Manifold& m,
                                     Jacobian& J_m_t) const
 {
-  MANIF_INFO("TangentBase retract with Jac");
   derived().retract(m, J_m_t);
 }
 
@@ -157,8 +153,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Zero()
 {
-  MANIF_INFO("TangentBase Zero");
-  static /*const*/ Tangent t; t.zero();
+  static const Tangent t(TangentDataType::Zero());
   return t;
 }
 
@@ -166,8 +161,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Random()
 {
-  MANIF_INFO("TangentBase Retract");
-  static /*const*/ Tangent t; t.random();
+  static const Tangent t(TangentDataType::Random());
   return t;
 }
 
@@ -175,7 +169,6 @@ template <class _Derived>
 typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::Retract(const Tangent& t)
 {
-  MANIF_INFO("TangentBase Retract");
   return t.retract();
 }
 

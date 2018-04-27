@@ -75,6 +75,7 @@ template <typename _ManifoldBase> struct ManifoldProperties;
 #define MANIF_MANIFOLD_TYPEDEF                              \
   using Scalar = _Scalar;                                   \
   using Manifold = typename Base::Manifold;                 \
+  using Tangent = typename Base::Tangent;                   \
   using Base::Dim;                                          \
   using ManifoldDataType = typename Base::ManifoldDataType; \
   using Jacobian = typename Base::Jacobian;                 \
@@ -84,7 +85,8 @@ template <typename _ManifoldBase> struct ManifoldProperties;
   using Base::operator +;               \
   using Base::operator +=;              \
   using Base::operator *;               \
-  using Base::operator *=;
+  using Base::operator *=;              \
+  using Base::operator =;
 
 #define MANIF_COMPLETE_MANIFOLD_TYPEDEF \
   MANIF_MANIFOLD_TYPEDEF                \

@@ -44,9 +44,6 @@ int main()
   static_assert(std::is_same<SO2<double>, SO2d>::value, "ok");
   static_assert(std::is_same<SO2<float>,  SO2f>::value, "ok");
 
-  static_assert(internal::has_inverse<SO2<double>>::value, "Does not have inverse");
-  static_assert(internal::has_rplus<SO2<double>>::value, "Does not have rplus");
-
   static_assert(std::is_same<SO2d, SO2d::Manifold>::value, "ok");
 
   static_assert(std::is_same<SO2d::Tangent, SO2Tangentd>::value, "ok");
@@ -179,7 +176,7 @@ int main()
 
   doPlus(so2, so2_lift);
 
-  SO2d new_so2 = so2_map_a;
+//  SO2d new_so2 = so2_map_a;
 
   std::cout << "\n";
 

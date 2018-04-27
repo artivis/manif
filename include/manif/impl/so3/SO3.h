@@ -36,8 +36,7 @@ struct traits<SO3<_Scalar>>
 
   using ManifoldDataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using JacobianMtoM = Eigen::Matrix<Scalar, RepSize, RepSize>;
-  using JacobianMtoT = Eigen::Matrix<Scalar, DoF, RepSize>;
+  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 
   using Transformation = Eigen::Matrix<Scalar, N, N>;
 
@@ -65,8 +64,6 @@ private:
   using Type = SO3<_Scalar>;
 
 public:
-
-  using Tangent = typename Base::Tangent;
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
 

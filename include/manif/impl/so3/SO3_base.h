@@ -32,8 +32,7 @@ public:
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
 
-  using JacobianMtoM = typename Base::JacobianMtoM;
-  using JacobianMtoT = typename Base::JacobianMtoT;
+  using Jacobian = typename Base::Jacobian;
 
   using ManifoldDataType = typename Base::ManifoldDataType;
 
@@ -68,25 +67,25 @@ public:
 
   /// with Jacs
 
-  void inverse(Manifold& m, JacobianMtoM& j) const;
+  void inverse(Manifold& m, Jacobian& j) const;
 
   void rplus(const Tangent& t, Manifold& m,
-             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+             Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   void lplus(const Tangent& t, Manifold& m,
-             JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+             Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   void rminus(const Manifold& min, Manifold& mout,
-              JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+              Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   void lminus(const Manifold& min, Manifold& mout,
-              JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+              Jacobian& J_c_a, Jacobian& J_c_b) const;
 
-  void lift(const Manifold& m, Tangent& t, JacobianMtoT& J_t_m) const;
+  void lift(const Manifold& m, Tangent& t, Jacobian& J_t_m) const;
 
   void compose(const Manifold& ma, const Manifold& mb,
                Manifold& mout,
-               JacobianMtoM& J_c_a, JacobianMtoM& J_c_b) const;
+               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SO3 specific functions
 };
@@ -178,7 +177,7 @@ SO3Base<_Derived>::compose(const Manifold& m) const
 /// with Jacs
 
 template <typename _Derived>
-void SO3Base<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
+void SO3Base<_Derived>::inverse(Manifold& m, Jacobian& j) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -186,8 +185,8 @@ void SO3Base<_Derived>::inverse(Manifold& m, JacobianMtoM& j) const
 template <typename _Derived>
 void SO3Base<_Derived>::rplus(const Tangent& t,
                               Manifold& m,
-                              JacobianMtoM& J_c_a,
-                              JacobianMtoM& J_c_b) const
+                              Jacobian& J_c_a,
+                              Jacobian& J_c_b) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -195,8 +194,8 @@ void SO3Base<_Derived>::rplus(const Tangent& t,
 template <typename _Derived>
 void SO3Base<_Derived>::lplus(const Tangent& t,
                               Manifold& m,
-                              JacobianMtoM& J_c_a,
-                              JacobianMtoM& J_c_b) const
+                              Jacobian& J_c_a,
+                              Jacobian& J_c_b) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -204,8 +203,8 @@ void SO3Base<_Derived>::lplus(const Tangent& t,
 template <typename _Derived>
 void SO3Base<_Derived>::rminus(const Manifold& min,
                                Manifold& mout,
-                               JacobianMtoM& J_c_a,
-                               JacobianMtoM& J_c_b) const
+                               Jacobian& J_c_a,
+                               Jacobian& J_c_b) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -213,8 +212,8 @@ void SO3Base<_Derived>::rminus(const Manifold& min,
 template <typename _Derived>
 void SO3Base<_Derived>::lminus(const Manifold& min,
                                Manifold& mout,
-                               JacobianMtoM& J_c_a,
-                               JacobianMtoM& J_c_b) const
+                               Jacobian& J_c_a,
+                               Jacobian& J_c_b) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -222,7 +221,7 @@ void SO3Base<_Derived>::lminus(const Manifold& min,
 template <typename _Derived>
 void SO3Base<_Derived>::lift(const Manifold& m,
                              Tangent& t,
-                             JacobianMtoT& J_t_m) const
+                             Jacobian& J_t_m) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }
@@ -231,8 +230,8 @@ template <typename _Derived>
 void SO3Base<_Derived>::compose(const Manifold& ma,
                                 const Manifold& mb,
                                 Manifold& mout,
-                                JacobianMtoM& J_c_a,
-                                JacobianMtoM& J_c_b) const
+                                Jacobian& J_c_a,
+                                Jacobian& J_c_b) const
 {
   MANIF_NOT_IMPLEMENTED_YET
 }

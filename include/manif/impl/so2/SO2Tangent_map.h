@@ -40,22 +40,11 @@ class Map<manif::SO2Tangent<_Scalar>, 0>
 
 public:
 
-  using Tangent = typename Base::Tangent;
-
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
-
-//  EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Map)
 
   MANIF_INHERIT_MANIFOLD_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
-
-  template <typename _Derived>
-  Manifold& operator =(const manif::SO2TangentBase<_Derived>& o)
-  {
-    data_ = *o.data();
-    return *this;
-  }
 
   ManifoldDataType const* data() const { return &data_; }
 
@@ -74,8 +63,6 @@ class Map<const manif::SO2Tangent<_Scalar>, 0>
   using Base = manif::SO2TangentBase<Map<const manif::SO2Tangent<_Scalar>, 0> >;
 
 public:
-
-  using Tangent = typename Base::Tangent;
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
 
