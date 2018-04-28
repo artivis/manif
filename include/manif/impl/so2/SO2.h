@@ -34,7 +34,7 @@ struct traits<SO2<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 2;
 
-  using ManifoldDataType = Eigen::Matrix<Scalar, RepSize, 1>;
+  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 
@@ -70,13 +70,13 @@ public:
   SO2()  = default;
   ~SO2() = default;
 
-  SO2(const ManifoldDataType& d);
+  SO2(const DataType& d);
   SO2(const Scalar real, const Scalar imag);
   SO2(const Scalar theta);
 
   /// Manifold common API
 
-  const ManifoldDataType* data() const;
+  const DataType* data() const;
 
   MANIF_INHERIT_MANIFOLD_API
 
@@ -87,15 +87,15 @@ public:
 protected:
 
   friend class ManifoldBase<SO2<Scalar>>;
-  ManifoldDataType* data();
+  DataType* data();
 
-  ManifoldDataType data_;
+  DataType data_;
 };
 
 MANIF_EXTRA_MANIFOLD_TYPEDEF(SO2)
 
 template <typename _Scalar>
-SO2<_Scalar>::SO2(const ManifoldDataType& d)
+SO2<_Scalar>::SO2(const DataType& d)
   : data_(d)
 {
   //
@@ -103,7 +103,7 @@ SO2<_Scalar>::SO2(const ManifoldDataType& d)
 
 template <typename _Scalar>
 SO2<_Scalar>::SO2(const Scalar real, const Scalar imag)
-  : SO2(ManifoldDataType(real, imag))
+  : SO2(DataType(real, imag))
 {
   //
 }
@@ -117,14 +117,14 @@ SO2<_Scalar>::SO2(const Scalar theta)
 }
 
 template <typename _Scalar>
-typename SO2<_Scalar>::ManifoldDataType*
+typename SO2<_Scalar>::DataType*
 SO2<_Scalar>::data()
 {
   return &data_;
 }
 
 template <typename _Scalar>
-const typename SO2<_Scalar>::ManifoldDataType*
+const typename SO2<_Scalar>::DataType*
 SO2<_Scalar>::data() const
 {
   return &data_;

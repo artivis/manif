@@ -26,7 +26,7 @@ struct traits<SO2Tangent<_Scalar>>
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
-  using TangentDataType  = Eigen::Matrix<Scalar, RepSize, 1>;
+  using DataType  = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 };
@@ -48,21 +48,22 @@ struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
 {
   using Base = SO2TangentBase<SO2Tangent<_Scalar>>;
 
-  using Scalar = typename Base::Scalar;
+  using Scalar   = typename Base::Scalar;
   using Manifold = typename Base::Manifold;
-  using TangentDataType = typename Base::TangentDataType;
+  using DataType = typename Base::DataType;
 
   SO2Tangent() = default;
 
   SO2Tangent(const double theta);
-  SO2Tangent(const TangentDataType& theta);
+  SO2Tangent(const DataType& theta);
 
   /// Tangent common API
 
-  TangentDataType* data();
-  const TangentDataType* data() const;
+  DataType* data();
+  const DataType* data() const;
 
   MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   /// SO2Tangent specific API
 
@@ -70,7 +71,7 @@ struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
 
   /// @todo consider using a
   /// Eigen::Matrix<std::complex<Scalar>, 1, 1>
-  /// as TangentDataType
+  /// as DataType
 //  Scalar angle2()
 //  {
 //    using std::atan2;
@@ -80,7 +81,7 @@ struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
 
 protected:
 
-  TangentDataType data_;
+  DataType data_;
 };
 
 MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent);
@@ -93,21 +94,21 @@ SO2Tangent<_Scalar>::SO2Tangent(const double theta)
 }
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const TangentDataType& theta)
+SO2Tangent<_Scalar>::SO2Tangent(const DataType& theta)
   : data_(theta)
 {
   //
 }
 
 template <typename _Scalar>
-typename SO2Tangent<_Scalar>::TangentDataType*
+typename SO2Tangent<_Scalar>::DataType*
 SO2Tangent<_Scalar>::data()
 {
   return &data_;
 }
 
 template <typename _Scalar>
-const typename SO2Tangent<_Scalar>::TangentDataType*
+const typename SO2Tangent<_Scalar>::DataType*
 SO2Tangent<_Scalar>::data() const
 {
   return &data_;

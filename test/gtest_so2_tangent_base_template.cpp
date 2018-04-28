@@ -1,73 +1,50 @@
 #include <gtest/gtest.h>
 
+#include "test_utils.h"
+
 #include "manif/SO2.h"
 
 using namespace manif;
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_0)
-{
-  SO2Tangentd so2tan(SO2Tangentd::DataType(M_PI));
-
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_TANGENT_1)
-{
-  SO2Tangentd so2tan(M_PI);
-
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_TANGENT_DATA)
+TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
   const SO2Tangentd so2tan(M_PI);
+
+  const SO2Tangentd::DataType* data_ptr =
+      callData(so2tan);
 
   EXPECT_NE(nullptr, so2tan.data());
 
   EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)
+TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_ZERO)
 {
   SO2Tangentd so2tan;
 
-  so2tan.zero();
+  callZero(so2tan);
 
   EXPECT_DOUBLE_EQ(0, so2tan.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO2)
-{
-  SO2Tangentd so2tan = SO2Tangentd::Zero();
-
-  EXPECT_DOUBLE_EQ(0, so2tan.angle());
-}
-
-//TEST(TEST_SO2, TEST_SO2_RANDOM)
+//TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM)
 //{
-//  SO2d so2;
+//  SO2Tangentd so2tan;
 
-//  so2.random();
+//  callRandom(so2tan).random();
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
+//  EXPECT_DOUBLE_EQ(0, so2tan.angle());
 //}
 
-//TEST(TEST_SO2, TEST_SO2_RANDOM2)
-//{
-//  SO2d so2 = SO2d::Random();
-
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
-
-TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
+TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_RETRACT)
 {
   SO2Tangentd so2_tan(M_PI);
 
   EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
 
-  auto so2_retract = so2_tan.retract();
+  auto so2_retract = callRetract(so2_tan);
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
@@ -76,7 +53,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
 
 /// with Jacs
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
+TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_RETRACT_JAC)
 {
   SO2Tangentd so2_tan(M_PI);
 
@@ -85,7 +62,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
   SO2d so2_retract;
   SO2d::Jacobian J_ret;
 
-  so2_tan.retract(so2_retract, J_ret);
+  callRetractWithJac(so2_tan, so2_retract, J_ret);
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());

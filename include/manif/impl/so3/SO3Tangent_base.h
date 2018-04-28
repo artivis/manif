@@ -34,7 +34,7 @@ public:
 
   using Jacobian = typename Base::Jacobian;
 
-  using TangentDataType  = typename Base::TangentDataType;
+  using DataType  = typename Base::DataType;
 
   using Base::data;
 

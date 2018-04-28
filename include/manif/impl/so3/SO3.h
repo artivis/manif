@@ -34,7 +34,7 @@ struct traits<SO3<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 4;
 
-  using ManifoldDataType = Eigen::Matrix<Scalar, RepSize, 1>;
+  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 
@@ -70,18 +70,18 @@ public:
   SO3()  = default;
   ~SO3() = default;
 
-  SO3(const ManifoldDataType& d);
+  SO3(const DataType& d);
 
-  const ManifoldDataType* data() const;
+  const DataType* data() const;
 
   MANIF_INHERIT_MANIFOLD_API
 
 protected:
 
   friend class ManifoldBase<SO3<Scalar>>;
-  ManifoldDataType* data();
+  DataType* data();
 
-  ManifoldDataType data_;
+  DataType data_;
 };
 
 MANIF_EXTRA_MANIFOLD_TYPEDEF(SO3)
@@ -89,21 +89,21 @@ MANIF_EXTRA_MANIFOLD_TYPEDEF(SO3)
 /// SO3 functions definitions
 
 template <typename _Scalar>
-SO3<_Scalar>::SO3(const ManifoldDataType& d)
+SO3<_Scalar>::SO3(const DataType& d)
   : data_(d)
 {
   //
 }
 
 template <typename _Scalar>
-typename SO3<_Scalar>::ManifoldDataType*
+typename SO3<_Scalar>::DataType*
 SO3<_Scalar>::data()
 {
   return &data_;
 }
 
 template <typename _Scalar>
-const typename SO3<_Scalar>::ManifoldDataType*
+const typename SO3<_Scalar>::DataType*
 SO3<_Scalar>::data() const
 {
   return &data_;

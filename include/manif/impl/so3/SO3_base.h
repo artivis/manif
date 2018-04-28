@@ -34,7 +34,7 @@ public:
 
   using Jacobian = typename Base::Jacobian;
 
-  using ManifoldDataType = typename Base::ManifoldDataType;
+  using DataType = typename Base::DataType;
 
   using Transformation  = typename Base::Transformation;
   using Rotation = typename Base::Rotation;

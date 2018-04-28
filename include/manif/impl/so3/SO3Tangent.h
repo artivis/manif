@@ -26,7 +26,7 @@ struct traits<SO3Tangent<_Scalar>>
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
 
-  using TangentDataType  = Eigen::Matrix<Scalar, DoF, 1>;
+  using DataType  = Eigen::Matrix<Scalar, DoF, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 };
@@ -55,16 +55,16 @@ public:
 
   using Scalar = typename Base::Scalar;
   using Manifold = typename Base::Manifold;
-  using TangentDataType = typename Base::TangentDataType;
+  using DataType = typename Base::DataType;
 
   SO3Tangent() = default;
 
-  SO3Tangent(const TangentDataType& theta);
+  SO3Tangent(const DataType& theta);
 
   /// Tangent common API
 
-  TangentDataType* data();
-  const TangentDataType* data() const;
+  DataType* data();
+  const DataType* data() const;
 
   MANIF_INHERIT_TANGENT_API
 
@@ -72,27 +72,27 @@ public:
 
 protected:
 
-  TangentDataType data_;
+  DataType data_;
 };
 
 MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent);
 
 template <typename _Scalar>
-SO3Tangent<_Scalar>::SO3Tangent(const TangentDataType& theta)
+SO3Tangent<_Scalar>::SO3Tangent(const DataType& theta)
   : data_(theta)
 {
   //
 }
 
 template <typename _Scalar>
-typename SO3Tangent<_Scalar>::TangentDataType*
+typename SO3Tangent<_Scalar>::DataType*
 SO3Tangent<_Scalar>::data()
 {
   return &data_;
 }
 
 template <typename _Scalar>
-const typename SO3Tangent<_Scalar>::TangentDataType*
+const typename SO3Tangent<_Scalar>::DataType*
 SO3Tangent<_Scalar>::data() const
 {
   return &data_;

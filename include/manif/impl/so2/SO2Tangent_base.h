@@ -27,14 +27,8 @@ public:
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
   static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
-  using Scalar = typename Base::Scalar;
-
-  using Manifold = typename Base::Manifold;
-  using Tangent  = typename Base::Tangent;
-
-  using Jacobian = typename Base::Jacobian;
-
-  using TangentDataType  = typename Base::TangentDataType;
+  MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   using Base::data;
 
@@ -42,6 +36,7 @@ public:
 
   void zero();
   void random();
+
   Manifold retract() const;
 
   /// with Jacs
@@ -50,7 +45,9 @@ public:
 
   /// SO2Tangent specific API
 
-  const Scalar& angle() const;
+  //const Scalar& angle() const;
+
+  Scalar angle() const;
 };
 
 template <typename _Derived>
@@ -86,8 +83,15 @@ void SO2TangentBase<_Derived>::retract(
 
 /// SO2Tangent specific API
 
+//template <typename _Derived>
+//const typename SO2TangentBase<_Derived>::Scalar&
+//SO2TangentBase<_Derived>::angle() const
+//{
+//  return data()->x();
+//}
+
 template <typename _Derived>
-const typename SO2TangentBase<_Derived>::Scalar&
+typename SO2TangentBase<_Derived>::Scalar
 SO2TangentBase<_Derived>::angle() const
 {
   return data()->x();

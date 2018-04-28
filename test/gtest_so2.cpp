@@ -6,7 +6,7 @@ using namespace manif;
 
 TEST(TEST_SO2, TEST_SO2_0)
 {
-  SO2d so2(SO2d::ManifoldDataType(1,0));
+  SO2d so2(SO2d::DataType(1,0));
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }

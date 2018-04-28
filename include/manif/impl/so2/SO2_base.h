@@ -34,7 +34,7 @@ public:
 
   using Jacobian = typename Base::Jacobian;
 
-  using ManifoldDataType = typename Base::ManifoldDataType;
+  using DataType = typename Base::DataType;
 
   using Transformation  = typename Base::Transformation;
   using Rotation = typename Base::Rotation;
@@ -53,51 +53,8 @@ public:
   Manifold inverse() const;
   Tangent lift() const;
 
-//  Manifold compose(const Manifold& m) const
-//  {
-//    const Scalar& lhs_real = real();
-//    const Scalar& lhs_imag = imag();
-//    const Scalar& rhs_real = m.real();
-//    const Scalar& rhs_imag = m.imag();
-
-//    return Manifold(
-//          lhs_real * rhs_real - lhs_imag * rhs_imag,
-//          lhs_real * rhs_imag + lhs_imag * rhs_real
-//          );
-//  }
-
-//  template <typename _DerivedOther>
-//  Manifold compose(const SO2Base<_DerivedOther>& m) const
-//  {
-//    const Scalar& lhs_real = real();
-//    const Scalar& lhs_imag = imag();
-//    const Scalar& rhs_real = m.real();
-//    const Scalar& rhs_imag = m.imag();
-
-//    return Manifold(
-//          lhs_real * rhs_real - lhs_imag * rhs_imag,
-//          lhs_real * rhs_imag + lhs_imag * rhs_real
-//          );
-//  }
-
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const
-  {
-    static_assert(std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
-                  "nop");
-
-    const auto& m_so2 = static_cast<const SO2Base<_DerivedOther>&>(m);
-
-    const Scalar& lhs_real = real();
-    const Scalar& lhs_imag = imag();
-    const Scalar& rhs_real = m_so2.real();
-    const Scalar& rhs_imag = m_so2.imag();
-
-    return Manifold(
-          lhs_real * rhs_real - lhs_imag * rhs_imag,
-          lhs_real * rhs_imag + lhs_imag * rhs_real
-          );
-  }
+  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
   using Base::rplus;
   using Base::lplus;
@@ -175,6 +132,27 @@ typename SO2Base<_Derived>::Tangent
 SO2Base<_Derived>::lift() const
 {
   return Tangent(angle());
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename SO2Base<_Derived>::Manifold
+SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+{
+  static_assert(std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
+                "nop");
+
+  const auto& m_so2 = static_cast<const SO2Base<_DerivedOther>&>(m);
+
+  const Scalar& lhs_real = real();
+  const Scalar& lhs_imag = imag();
+  const Scalar& rhs_real = m_so2.real();
+  const Scalar& rhs_imag = m_so2.imag();
+
+  return Manifold(
+        lhs_real * rhs_real - lhs_imag * rhs_imag,
+        lhs_real * rhs_imag + lhs_imag * rhs_real
+        );
 }
 
 //template <typename _Derived>

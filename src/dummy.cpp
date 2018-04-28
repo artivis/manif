@@ -126,7 +126,7 @@ int main()
   ///////////////
 
   SO2Tangentd so2_tan(0.17);
-  so2_tan = SO2Tangentd(SO2Tangentd::TangentDataType(0.17));
+  so2_tan = SO2Tangentd(SO2Tangentd::DataType(0.17));
 
   so2_tan.zero();
 

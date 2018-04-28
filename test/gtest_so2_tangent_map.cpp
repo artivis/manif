@@ -6,14 +6,8 @@ using namespace manif;
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_0)
 {
-  SO2Tangentd so2tan(SO2Tangentd::DataType(M_PI));
-
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
-}
-
-TEST(TEST_SO2, TEST_SO2_TANGENT_1)
-{
-  SO2Tangentd so2tan(M_PI);
+  double data(M_PI);
+  Eigen::Map<SO2Tangentd> so2tan(&data);
 
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 }
@@ -22,16 +16,20 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
-  const SO2Tangentd so2tan(M_PI);
+
+  double data(M_PI);
+  const Eigen::Map<SO2Tangentd> so2tan(&data);
 
   EXPECT_NE(nullptr, so2tan.data());
+  EXPECT_EQ(&data, so2tan.data()->data());
 
   EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)
 {
-  SO2Tangentd so2tan;
+  double data(1);
+  Eigen::Map<SO2Tangentd> so2tan(&data);
 
   so2tan.zero();
 
@@ -40,7 +38,9 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO2)
 {
-  SO2Tangentd so2tan = SO2Tangentd::Zero();
+  double data(1);
+  Eigen::Map<SO2Tangentd> so2tan(&data);
+  so2tan = SO2Tangentd::Zero();
 
   EXPECT_DOUBLE_EQ(0, so2tan.angle());
 }
@@ -63,11 +63,12 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO2)
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
 {
-  SO2Tangentd so2_tan(M_PI);
+  double data(M_PI);
+  Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
-  auto so2_retract = so2_tan.retract();
+  auto so2_retract = so2tan.retract();
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
@@ -78,14 +79,15 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
 {
-  SO2Tangentd so2_tan(M_PI);
+  double data(M_PI);
+  Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
   SO2d so2_retract;
   SO2d::Jacobian J_ret;
 
-  so2_tan.retract(so2_retract, J_ret);
+  so2tan.retract(so2_retract, J_ret);
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());

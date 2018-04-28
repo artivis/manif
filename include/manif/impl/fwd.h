@@ -57,28 +57,24 @@ template <typename _ManifoldBase> struct ManifoldProperties;
   using Base::random;             \
   using Base::retract;
 
-#define MANIF_DEFINE_MANIFOLD_TANGENT                    \
-  struct Tangent : TangentBase<typename Base::Manifold>  \
-  {                                                      \
-    void zero();                                         \
-    void random();                                       \
-    typename Base::Manifold retract() const;             \
-  };
+#define MANIF_INHERIT_TANGENT_OPERATOR \
+  using Base::operator +;              \
+  using Base::operator =;
 
-#define MANIF_MANIFOLD_BASE_TYPEDEF           \
-  using Base::operator +;                     \
-  using Base::operator +=;                    \
-  using Base::operator *;                     \
-  using Base::operator *=;                    \
-  using Manifold = typename Base::Manifold;
+#define MANIF_TANGENT_TYPEDEF               \
+  using Scalar   = typename Base::Scalar;   \
+  using Manifold = typename Base::Manifold; \
+  using Tangent  = typename Base::Tangent;  \
+  using Jacobian = typename Base::Jacobian; \
+  using DataType = typename Base::DataType;
 
-#define MANIF_MANIFOLD_TYPEDEF                              \
-  using Scalar = _Scalar;                                   \
-  using Manifold = typename Base::Manifold;                 \
-  using Tangent = typename Base::Tangent;                   \
-  using Base::Dim;                                          \
-  using ManifoldDataType = typename Base::ManifoldDataType; \
-  using Jacobian = typename Base::Jacobian;                 \
+#define MANIF_MANIFOLD_TYPEDEF              \
+  using Scalar = _Scalar;                   \
+  using Manifold = typename Base::Manifold; \
+  using Tangent  = typename Base::Tangent;  \
+  using Base::Dim;                          \
+  using DataType = typename Base::DataType; \
+  using Jacobian = typename Base::Jacobian; \
   using Base::RepSize;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \

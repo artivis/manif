@@ -22,7 +22,7 @@ struct ManifoldBase
   static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
-  using ManifoldDataType = typename internal::traits<_Derived>::ManifoldDataType;
+  using DataType = typename internal::traits<_Derived>::DataType;
 
   using ManifoldTangentBase = TangentBase<_Derived>;
 
@@ -41,11 +41,11 @@ struct ManifoldBase
 
 protected:
 
-  ManifoldDataType* data();
+  DataType* data();
 
 public:
 
-  const ManifoldDataType* data() const;
+  const DataType* data() const;
 
   Transformation matrix() const;
 
@@ -232,14 +232,14 @@ private:
 };
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::ManifoldDataType*
+typename ManifoldBase<_Derived>::DataType*
 ManifoldBase<_Derived>::data()
 {
   return derived().data();
 }
 
 template <typename _Derived>
-const typename ManifoldBase<_Derived>::ManifoldDataType*
+const typename ManifoldBase<_Derived>::DataType*
 ManifoldBase<_Derived>::data() const
 {
   return derived().data();

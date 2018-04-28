@@ -13,7 +13,7 @@ struct traits< Eigen::Map<SO2<_Scalar>,0> >
 {
   using typename traits<SO2<_Scalar>>::Scalar;
   using traits<SO2<_Scalar>>::RepSize;
-  using ManifoldDataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 template <>
@@ -23,7 +23,7 @@ struct traits< Eigen::Map<const SO2<_Scalar>,0> >
 {
   using typename traits<const SO2<_Scalar>>::Scalar;
   using traits<const SO2<_Scalar>>::RepSize;
-  using ManifoldDataType = ::Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 } /* namespace internal */
@@ -47,14 +47,14 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
-  ManifoldDataType const* data() const { return &data_; }
+  DataType const* data() const { return &data_; }
 
 protected:
 
   friend class manif::ManifoldBase<Map<manif::SO2<_Scalar>, 0>>;
-  ManifoldDataType* data() { return &data_; }
+  DataType* data() { return &data_; }
 
-  ManifoldDataType data_;
+  DataType data_;
 };
 
 template <class _Scalar>
@@ -71,14 +71,14 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
-  ManifoldDataType const* data() const { return &data_; }
+  DataType const* data() const { return &data_; }
 
 protected:
 
   friend class manif::ManifoldBase<Map<const manif::SO2<_Scalar>, 0>>;
-  ManifoldDataType* data() { return &data_; }
+  DataType* data() { return &data_; }
 
-  ManifoldDataType data_;
+  DataType data_;
 };
 
 } /* namespace Eigen */

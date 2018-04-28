@@ -20,17 +20,22 @@ struct TangentBase
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
 
-  using TangentDataType = typename internal::traits<_Derived>::TangentDataType;
+  using DataType = typename internal::traits<_Derived>::DataType;
 
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
-  operator Tangent&() { return derived(); }
-  operator const Tangent& () const { return derived(); }
+  operator _Derived&() { return derived(); }
+  operator const _Derived& () const { return derived(); }
 
-  TangentDataType* data();
-  const TangentDataType* data() const;
+protected:
+
+  DataType* data();
+
+public:
+
+  const DataType* data() const;
 
   /// Common Tangent API
 
@@ -57,6 +62,14 @@ struct TangentBase
    */
   Manifold operator +(const Manifold& t) const;
 
+  /**
+   * @brief operator =, assignment oprator
+   * @param t
+   * @return
+   */
+  template <typename _DerivedOther>
+  _Derived& operator =(const TangentBase<_DerivedOther>& t);
+
   /// with Jacs
 
   void retract(Manifold& m, Jacobian& J_m_t) const;
@@ -71,19 +84,19 @@ struct TangentBase
 
 private:
 
-  Tangent& derived() { return *static_cast< Tangent* >(this); }
-  const Tangent& derived() const { return *static_cast< const Tangent* >(this); }
+  _Derived& derived() { return *static_cast< _Derived* >(this); }
+  const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
 };
 
 template <class _Derived>
-typename TangentBase<_Derived>::TangentDataType*
+typename TangentBase<_Derived>::DataType*
 TangentBase<_Derived>::data()
 {
   return derived().data();
 }
 
 template <class _Derived>
-const typename TangentBase<_Derived>::TangentDataType*
+const typename TangentBase<_Derived>::DataType*
 TangentBase<_Derived>::data() const
 {
   return derived().data();
@@ -129,8 +142,6 @@ TangentBase<_Derived>::plus(const Manifold& m) const
   return m.lplus(derived());
 }
 
-/// Some operators
-
 /// Operators
 
 template <typename _Derived>
@@ -138,6 +149,16 @@ typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::operator +(const Manifold& t) const
 {
   return derived().lplus(t);
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+_Derived&
+TangentBase<_Derived>::operator =(
+    const TangentBase<_DerivedOther>& m)
+{
+  *derived().data() = *m.data();
+  return derived();
 }
 
 /// with Jacs
@@ -153,7 +174,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Zero()
 {
-  static const Tangent t(TangentDataType::Zero());
+  static const Tangent t(DataType::Zero());
   return t;
 }
 
@@ -161,7 +182,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Random()
 {
-  static const Tangent t(TangentDataType::Random());
+  static const Tangent t(DataType::Random());
   return t;
 }
 

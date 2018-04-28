@@ -6,10 +6,17 @@
 namespace manif {
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callData(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
+}
+
+template <typename _Derived>
+const typename _Derived::DataType*
+callData(const TangentBase<_Derived>& tangent)
+{
+  return tangent.data();
 }
 
 template <typename _Derived>
@@ -35,9 +42,23 @@ callIdentity(ManifoldBase<_Derived>& manifold)
 
 template <typename _Derived>
 void
+callZero(TangentBase<_Derived>& tangent)
+{
+  tangent.zero();
+}
+
+template <typename _Derived>
+void
 callRandom(ManifoldBase<_Derived>& manifold)
 {
   manifold.random();
+}
+
+template <typename _Derived>
+void
+callRandom(TangentBase<_Derived>& tangent)
+{
+  tangent.random();
 }
 
 template <typename _Derived>
@@ -168,70 +189,79 @@ callOpTimeEq(ManifoldBase<_Derived0>& manifold_lhs,
 /// with Jacs
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callInverseWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callRplusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callLplusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callPlusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callRminusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callLminusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callMinusWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callLiftWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+void
+callRetractWithJac(const TangentBase<_Derived>& tangent,
+                   typename _Derived::Manifold& manifold,
+                   typename _Derived::Jacobian& J)
+{
+  return tangent.retract(manifold, J);
+}
+
+template <typename _Derived>
+const typename _Derived::DataType*
 callComposeWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-const typename _Derived::ManifoldDataType*
+const typename _Derived::DataType*
 callBetweenWithJac(const ManifoldBase<_Derived>& manifold)
 {
   return manifold.data();
