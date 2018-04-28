@@ -77,7 +77,7 @@ TEST(TEST_SO2, TEST_SO2_MATRIX)
 {
   SO2d so2 = SO2d::Identity();
 
-  SO2d::Transformation t = so2.matrix();
+  SO2d::Transformation t = so2.transform();
 
   EXPECT_EQ(3, t.rows());
   EXPECT_EQ(3, t.cols());

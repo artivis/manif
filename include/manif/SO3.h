@@ -1,7 +1,7 @@
 #ifndef _MANIF_SO3_H_
 #define _MANIF_SO3_H_
 
-#include "manif/impl/fwd.h"
+#include "manif/impl/macro.h"
 #include "manif/impl/manifold_base.h"
 #include "manif/impl/tangent_base.h"
 

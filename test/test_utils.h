@@ -21,9 +21,9 @@ callData(const TangentBase<_Derived>& tangent)
 
 template <typename _Derived>
 typename _Derived::Transformation
-callMatrix(const ManifoldBase<_Derived>& manifold)
+callTransform(const ManifoldBase<_Derived>& manifold)
 {
-  return manifold.matrix();
+  return manifold.transform();
 }
 
 template <typename _Derived>

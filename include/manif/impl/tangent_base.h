@@ -1,7 +1,8 @@
 #ifndef _MANIF_MANIF_TANGENT_BASE_H_
 #define _MANIF_MANIF_TANGENT_BASE_H_
 
-#include "manif/impl/fwd.h"
+#include "manif/impl/macro.h"
+#include "manif/impl/traits.h"
 
 #include "lspdlog/logging.h"
 

@@ -60,7 +60,7 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_IDENTITY2)
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_MATRIX)
 {
-  SO2d::Transformation t = callMatrix(SO2d::Identity());
+  SO2d::Transformation t = callTransform(SO2d::Identity());
 
   EXPECT_EQ(3, t.rows());
   EXPECT_EQ(3, t.cols());

@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_MANIFOLD_BASE_H_
 #define _MANIF_MANIF_MANIFOLD_BASE_H_
 
-#include "manif/impl/fwd.h"
+#include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/impl/tangent_base.h"
 
@@ -22,17 +22,12 @@ struct ManifoldBase
   static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
-  using DataType = typename internal::traits<_Derived>::DataType;
-
-  using ManifoldTangentBase = TangentBase<_Derived>;
-
-  using Tangent = typename internal::traits<_Derived>::Tangent;
-
-  using Jacobian = typename internal::traits<_Derived>::Jacobian;
-
+  using DataType       = typename internal::traits<_Derived>::DataType;
+  using Tangent        = typename internal::traits<_Derived>::Tangent;
+  using Jacobian       = typename internal::traits<_Derived>::Jacobian;
   using Transformation = typename internal::traits<_Derived>::Transformation;
-
-  using Rotation = typename internal::traits<_Derived>::Rotation;
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Vector         = typename internal::traits<_Derived>::Vector;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -47,7 +42,13 @@ public:
 
   const DataType* data() const;
 
-  Transformation matrix() const;
+//  template <class _Scalar>
+//  ManifoldBase<_Derived> cast() const
+//  {
+//    return ManifoldBase<_Derived>(data()->cast<_Scalar>());
+//  }
+
+  Transformation transform() const;
 
   Rotation rotation() const;
 
@@ -88,6 +89,8 @@ public:
 
   template <typename _DerivedOther>
   Manifold between(const ManifoldBase<_DerivedOther>& m) const;
+
+  Vector act(const Vector& v) const;
 
   /// @todo
 //  LieType lie() const {return derived().lie();}
@@ -247,9 +250,9 @@ ManifoldBase<_Derived>::data() const
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Transformation
-ManifoldBase<_Derived>::matrix() const
+ManifoldBase<_Derived>::transform() const
 {
-  return derived().matrix();
+  return derived().transform();
 }
 
 template <typename _Derived>
@@ -355,6 +358,13 @@ ManifoldBase<_Derived>::between(
     const ManifoldBase<_DerivedOther>& m) const
 {
   return derived().inverse().compose(m);
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Vector
+ManifoldBase<_Derived>::act(const Vector& v) const
+{
+  return v.transpose() * transform();
 }
 
 /// Operators

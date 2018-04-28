@@ -44,7 +44,7 @@ public:
 
   /// Manifold common API
 
-  Transformation matrix() const;
+  Transformation transform() const;
   Rotation rotation() const;
 
   void identity();
@@ -90,9 +90,11 @@ protected:
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Transformation
-SO2Base<_Derived>::matrix() const
+SO2Base<_Derived>::transform() const
 {
-  return Transformation();
+  Transformation T(Transformation::Identity());
+  T.template block<2,2>(0,0) = rotation();
+  return T;
 }
 
 template <typename _Derived>

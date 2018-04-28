@@ -101,7 +101,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_MATRIX)
   double data[2] = {1,0};
   Eigen::Map<SO2d> so2(data);
 
-  SO2d::Transformation t = so2.matrix();
+  SO2d::Transformation t = so2.transform();
 
   EXPECT_EQ(3, t.rows());
   EXPECT_EQ(3, t.cols());

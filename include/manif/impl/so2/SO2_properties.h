@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SO2_PROPERTIES_H_
 #define _MANIF_MANIF_SO2_PROPERTIES_H_
 
-#include "manif/impl/fwd.h"
+#include "manif/impl/traits.h"
 
 namespace manif
 {
