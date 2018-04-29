@@ -90,7 +90,7 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_INVERSE)
   EXPECT_DOUBLE_EQ(1, so2_inv.real());
   EXPECT_DOUBLE_EQ(0, so2_inv.imag());
 
-  so2.angle(M_PI);
+  so2 = SO2d(M_PI);
   so2_inv = so2.inverse();
 
   EXPECT_DOUBLE_EQ(-M_PI, so2_inv.angle());

@@ -119,7 +119,7 @@ TEST(TEST_SO2, TEST_SO2_INVERSE)
   EXPECT_DOUBLE_EQ(1, so2_inv.real());
   EXPECT_DOUBLE_EQ(0, so2_inv.imag());
 
-  so2.angle(M_PI);
+  so2 = SO2d(M_PI);
   so2_inv = so2.inverse();
 
   EXPECT_DOUBLE_EQ(-M_PI, so2_inv.angle());
@@ -272,7 +272,7 @@ TEST(TEST_SO2, TEST_SO2_INVERSE_JAC)
   EXPECT_EQ(1, J_inv.cols());
   EXPECT_DOUBLE_EQ(-1, J_inv(0));
 
-  so2.angle(M_PI);
+  so2 = SO2d(M_PI);
   so2.inverse(so2_inv, J_inv);
 
   EXPECT_DOUBLE_EQ(-M_PI, so2_inv.angle());
@@ -450,6 +450,27 @@ TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
   EXPECT_EQ(1, J_minus_b.rows());
   EXPECT_EQ(1, J_minus_b.cols());
   EXPECT_DOUBLE_EQ(-1, J_minus_b(0));
+}
+
+TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
+{
+  SO2d so2a(M_PI);
+  SO2d so2b(M_PI_2);
+
+  SO2d::Jacobian J_between_a, J_between_b;
+  SO2d so2c;
+
+  so2a.between(so2b, so2c, J_between_a, J_between_b);
+
+  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+
+  EXPECT_EQ(1, J_between_a.rows());
+  EXPECT_EQ(1, J_between_a.cols());
+  EXPECT_DOUBLE_EQ(-1, J_between_a(0));
+
+  EXPECT_EQ(1, J_between_b.rows());
+  EXPECT_EQ(1, J_between_b.cols());
+  EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
 
 int main(int argc, char** argv)

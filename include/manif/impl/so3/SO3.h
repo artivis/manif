@@ -78,6 +78,9 @@ public:
 
   SO3(const Eigen::AngleAxis<Scalar>& angle_axis);
 
+  SO3(const Scalar roll, const Scalar pitch,
+      const Scalar yaw);
+
   const DataType* data() const;
 
   MANIF_INHERIT_MANIFOLD_API
@@ -114,6 +117,17 @@ SO3<_Scalar>::SO3(const Eigen::AngleAxis<Scalar>& angle_axis)
   : data_(angle_axis)
 {
 
+}
+
+template <typename _Scalar>
+SO3<_Scalar>::SO3(const Scalar roll,
+                  const Scalar pitch,
+                  const Scalar yaw)
+  : data_( /*(*/Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX()) *
+            Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
+            Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ()) /*).toRotationMatrix()*/ )
+{
+  //
 }
 
 template <typename _Scalar>

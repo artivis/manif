@@ -26,6 +26,12 @@ template<typename T> struct traits<const T> : traits<T> {};
  */
 template <typename _ManifoldBase> struct ManifoldProperties;
 
+//template <template <typename _Derived> class _Base>
+//struct TangentBaseHelper
+//{
+//  using Base = TangentBase<_Derived>;
+//};
+
 } /* namespace internal */
 } /* namespace manif */
 

@@ -1,7 +1,7 @@
-#ifndef _MANIF_MANIF_SO2TANGENT_H_
-#define _MANIF_MANIF_SO2TANGENT_H_
+#ifndef _MANIF_MANIF_SE2TANGENT_H_
+#define _MANIF_MANIF_SE2TANGENT_H_
 
-#include "manif/impl/so2/SO2Tangent_base.h"
+#include "manif/impl/so2/SE2Tangent_base.h"
 
 #include <Eigen/Core>
 
@@ -13,14 +13,14 @@ namespace internal
 // Traits specialization
 
 template <typename _Scalar>
-struct traits<SO2Tangent<_Scalar>>
+struct traits<SE2Tangent<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SO2<_Scalar>;
-  using Tangent  = SO2Tangent<_Scalar>;
+  using Manifold = SE2<_Scalar>;
+  using Tangent  = SE2Tangent<_Scalar>;
 
-  using Base = SO2TangentBase<_Scalar>;
+  using Base = SE2TangentBase<_Scalar>;
 
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
@@ -44,7 +44,7 @@ namespace manif
 ///////////////
 
 template <typename _Scalar>
-struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
+struct SE2Tangent : SE2TangentBase<SE2Tangent<_Scalar>>
 {
 private:
 
@@ -55,10 +55,10 @@ public:
 
   MANIF_TANGENT_TYPEDEF
 
-  SO2Tangent() = default;
+  SE2Tangent() = default;
 
-  SO2Tangent(const Scalar theta);
-  SO2Tangent(const DataType& theta);
+  SE2Tangent(const DataType& v);
+  SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);
 
   /// Tangent common API
 
@@ -67,58 +67,50 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  /// SO2Tangent specific API
+  /// SE2Tangent specific API
 
   using Base::angle;
 
-  /// @todo consider using a
-  /// Eigen::Matrix<std::complex<Scalar>, 1, 1>
-  /// as DataType
-//  Scalar angle2()
-//  {
-//    using std::atan2;
-//    Eigen::Matrix<std::complex<Scalar>, 1, 1> test;
-//    return atan2(test.imag()(0), test.real()(0));
-//  }
-
 protected:
 
-  friend class TangentBase<SO2Tangent<Scalar>>;
+  friend class TangentBase<SE2Tangent<Scalar>>;
   DataType* data();
 
   DataType data_;
 };
 
-MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent);
+MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent);
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)
+SE2Tangent<_Scalar>::SE2Tangent(const DataType& theta)
   : data_(theta)
 {
   //
 }
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const DataType& theta)
-  : data_(theta)
+SE2Tangent<_Scalar>::SE2Tangent(const Scalar x,
+                                const Scalar y,
+                                const Scalar theta)
+  : SE2Tangent(DataType(x, y, theta))
 {
   //
 }
 
 template <typename _Scalar>
-typename SO2Tangent<_Scalar>::DataType*
-SO2Tangent<_Scalar>::data()
+typename SE2Tangent<_Scalar>::DataType*
+SE2Tangent<_Scalar>::data()
 {
   return &data_;
 }
 
 template <typename _Scalar>
-const typename SO2Tangent<_Scalar>::DataType*
-SO2Tangent<_Scalar>::data() const
+const typename SE2Tangent<_Scalar>::DataType*
+SE2Tangent<_Scalar>::data() const
 {
   return &data_;
 }
 
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_SO2TANGENT_H_ */
+#endif /* _MANIF_MANIF_SE2TANGENT_H_ */

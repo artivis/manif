@@ -13,17 +13,14 @@ namespace manif
 template <class _Derived>
 struct TangentBase
 {
-  using Scalar   = typename internal::traits<_Derived>::Scalar;
-
-  using Manifold = typename internal::traits<_Derived>::Manifold;
-  using Tangent  = typename internal::traits<_Derived>::Tangent;
-
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
 
+  using Scalar   = typename internal::traits<_Derived>::Scalar;
+  using Manifold = typename internal::traits<_Derived>::Manifold;
+  using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
-
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
 
   /// @todo this is an implicit conversion operator,
@@ -107,13 +104,13 @@ TangentBase<_Derived>::data() const
 template <class _Derived>
 void TangentBase<_Derived>::zero()
 {
-  derived().zero();
+  data()->setZero();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::random()
 {
-  derived().random();
+  data()->setRandom();
 }
 
 template <class _Derived>

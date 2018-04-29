@@ -27,20 +27,16 @@ public:
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
   static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
-  using Scalar = typename Base::Scalar;
+  using Scalar   = typename Base::Scalar;
 
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
-
   using Jacobian = typename Base::Jacobian;
 
   using DataType = typename Base::DataType;
 
-  using Transformation  = typename Base::Transformation;
+  using Transformation = typename Base::Transformation;
   using Rotation = typename Base::Rotation;
-
-  using Base::data;
-  using Base::operator =;
 
   /// Manifold common API
 
@@ -48,7 +44,6 @@ public:
   Rotation rotation() const;
 
   void identity();
-  void random();
 
   Manifold inverse() const;
   Tangent lift() const;
@@ -56,10 +51,13 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
+  using Base::data;
+  using Base::random;
   using Base::rplus;
   using Base::lplus;
   using Base::rminus;
   using Base::lminus;
+  using Base::operator=;
 
   /// with Jacs
 
@@ -77,7 +75,6 @@ public:
   /*const*/ Scalar/*&*/ real() const;
   /*const*/ Scalar/*&*/ imag() const;
   Scalar angle() const;
-  void angle(const Scalar theta);
 
 protected:
 
@@ -118,18 +115,6 @@ void SO2Base<_Derived>::identity()
 }
 
 template <typename _Derived>
-void SO2Base<_Derived>::random()
-{
-  const auto m = Tangent::Random().retract();
-  *data() = *m.data();
-
-  /// @todo the following does not work
-  /// figure out why
-//  Base::operator =(Tangent::Random().retract());
-//  *this = Tangent::Random().retract();
-}
-
-template <typename _Derived>
 typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::inverse() const
 {
@@ -148,8 +133,9 @@ template <typename _DerivedOther>
 typename SO2Base<_Derived>::Manifold
 SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 {
-  static_assert(std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
-                "nop");
+  static_assert(
+    std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
+    "Argument does not inherit from SE2Base !");
 
   const auto& m_so2 = static_cast<const SO2Base<_DerivedOther>&>(m);
 
@@ -163,21 +149,6 @@ SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
         lhs_real * rhs_imag + lhs_imag * rhs_real
         );
 }
-
-//template <typename _Derived>
-//typename SO2Base<_Derived>::Manifold
-//SO2Base<_Derived>::compose(const Manifold& m) const
-//{
-//  const Scalar& lhs_real = real();
-//  const Scalar& lhs_imag = imag();
-//  const Scalar& rhs_real = m.real();
-//  const Scalar& rhs_imag = m.imag();
-
-//  return Manifold(
-//        lhs_real * rhs_real - lhs_imag * rhs_imag,
-//        lhs_real * rhs_imag + lhs_imag * rhs_real
-//        );
-//}
 
 /// with Jacs
 
@@ -229,16 +200,6 @@ SO2Base<_Derived>::angle() const
 {
   using std::atan2;
   return atan2(imag(), real());
-}
-
-template <typename _Derived>
-void SO2Base<_Derived>::angle(const Scalar theta)
-{
-  using std::cos;
-  using std::sin;
-
-  data()->operator()(0) = cos(theta);
-  data()->operator()(1) = sin(theta);
 }
 
 //template <typename _Derived>

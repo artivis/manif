@@ -1,29 +1,49 @@
 #include <gtest/gtest.h>
 
 #include "manif/SO3.h"
+#include "manif/impl/utils.h"
 
 using namespace manif;
 
-//TEST(TEST_SO3, TEST_SO3_0)
-//{
-//  SO3d so3(SO3d::DataType(1,0));
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_QUAT)
+{
+  SO3d so3(SO3d::DataType(1,0,0,0));
 
-//  EXPECT_DOUBLE_EQ(0, so3.angle());
-//}
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
 
-//TEST(TEST_SO3, TEST_SO3_1)
-//{
-//  SO3d so3(1, 0);
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_QUAT_COEFFS)
+{
+  SO3d so3(0,0,0,1);
 
-//  EXPECT_DOUBLE_EQ(0, so3.angle());
-//}
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
 
-//TEST(TEST_SO3, TEST_SO3_2)
-//{
-//  SO3d so3(0);
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_ANGLE_AXIS)
+{
+  SO3d so3(Eigen::AngleAxis<double>(0, Eigen::Vector3d::UnitX()));
 
-//  EXPECT_DOUBLE_EQ(0, so3.angle());
-//}
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
+
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_ROLL_PITCH_YAW)
+{
+  SO3d so3(0, 0, 0);
+
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
 
 //TEST(TEST_SO3, TEST_SO3_DATA)
 //{
@@ -225,46 +245,58 @@ TEST(TEST_SO3, TEST_SO3_LIFT)
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE)
 {
-  SO3d so3a;
-  SO3d so3b;
+  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
 
   auto so3c = so3a.compose(so3b);
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
 {
-  SO3d so3a;
-  SO3d so3b;
+  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
 
   auto so3c = so3a * so3b;
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
 {
-  SO3d so3a;
-  SO3d so3b;
+  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
 
   so3a *= so3b;
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+  EXPECT_DOUBLE_EQ(0, so3a.x());
+  EXPECT_DOUBLE_EQ(0, so3a.y());
+  EXPECT_DOUBLE_EQ(0, so3a.z());
+  EXPECT_DOUBLE_EQ(1, so3a.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_BETWEEN)
 {
-  SO3d so3a;
-  SO3d so3b;
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
 
   auto so3c = so3a.between(so3b);
 
-//  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
 }
 
 /// with Jacs
-/*
+
 TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 {
   SO3d so3 = SO3d::Identity();
@@ -273,62 +305,71 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
   SO3d::Jacobian J_inv;
   so3.inverse(so3_inv, J_inv);
 
-  EXPECT_DOUBLE_EQ(so3.angle(), so3_inv.angle());
-  EXPECT_DOUBLE_EQ(1, so3_inv.real());
-  EXPECT_DOUBLE_EQ(0, so3_inv.imag());
+  EXPECT_DOUBLE_EQ(0, so3_inv.x());
+  EXPECT_DOUBLE_EQ(0, so3_inv.y());
+  EXPECT_DOUBLE_EQ(0, so3_inv.z());
+  EXPECT_DOUBLE_EQ(1, so3_inv.w());
 
-  EXPECT_EQ(1, J_inv.rows());
-  EXPECT_EQ(1, J_inv.cols());
-  EXPECT_DOUBLE_EQ(-1, J_inv(0));
+  EXPECT_EQ(3, J_inv.rows());
+  EXPECT_EQ(3, J_inv.cols());
 
-  so3.angle(M_PI);
-  so3.inverse(so3_inv, J_inv);
+  /// @todo
+//  EXPECT_DOUBLE_EQ(Eigen::Matrix3d::Identity(), J_inv);
 
-  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
+//  so3.angle(M_PI);
+//  so3.inverse(so3_inv, J_inv);
 
-  EXPECT_EQ(1, J_inv.rows());
-  EXPECT_EQ(1, J_inv.cols());
-  EXPECT_DOUBLE_EQ(-1, J_inv(0));
+//  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
+
+//  EXPECT_EQ(1, J_inv.rows());
+//  EXPECT_EQ(1, J_inv.cols());
+//  EXPECT_DOUBLE_EQ(-1, J_inv(0));
 }
 
 TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
-  SO3d so3(M_PI);
+  SO3d so3(0,0,0);
 
   SO3d::Tangent so3_lift;
   SO3d::Tangent::Jacobian J_lift;
 
   so3.lift(so3_lift, J_lift);
 
-  EXPECT_DOUBLE_EQ(M_PI, so3_lift.angle());
+  EXPECT_DOUBLE_EQ(0, so3_lift.x());
+  EXPECT_DOUBLE_EQ(0, so3_lift.y());
+  EXPECT_DOUBLE_EQ(0, so3_lift.z());
 
   /// @todo check this J
-  EXPECT_EQ(1, J_lift.rows());
-  EXPECT_EQ(1, J_lift.cols());
-  EXPECT_DOUBLE_EQ(1, J_lift(0));
+  EXPECT_EQ(3, J_lift.rows());
+  EXPECT_EQ(3, J_lift.cols());
+
+//  EXPECT_DOUBLE_EQ(1, J_lift(0));
 }
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 {
-  SO3d so3a(M_PI_2);
-  SO3d so3b(M_PI_2);
+  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
 
   SO3d so3c;
   SO3d::Jacobian J_c_a, J_c_b;
 
   so3a.compose(so3b, so3c, J_c_a, J_c_b);
 
-  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
 
-  EXPECT_EQ(1, J_c_a.rows());
-  EXPECT_EQ(1, J_c_a.cols());
-  EXPECT_DOUBLE_EQ(1, J_c_a(0));
+//  EXPECT_EQ(1, J_c_a.rows());
+//  EXPECT_EQ(1, J_c_a.cols());
+//  EXPECT_DOUBLE_EQ(1, J_c_a(0));
 
-  EXPECT_EQ(1, J_c_b.rows());
-  EXPECT_EQ(1, J_c_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_c_b(0));
+//  EXPECT_EQ(1, J_c_b.rows());
+//  EXPECT_EQ(1, J_c_b.cols());
+//  EXPECT_DOUBLE_EQ(1, J_c_b(0));
 }
-
+/*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
 {
   SO3d so3a;
@@ -462,6 +503,28 @@ TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
 }
 
 */
+
+TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
+{
+  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
+
+  SO3d so3c;
+  SO3d::Jacobian J_between_a, J_between_b;
+
+  so3a.between(so3b, so3c, J_between_a, J_between_b);
+
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
+
+  EXPECT_EQ(3, J_between_a.rows());
+  EXPECT_EQ(3, J_between_a.cols());
+
+  EXPECT_EQ(3, J_between_b.rows());
+  EXPECT_EQ(3, J_between_b.cols());
+}
 
 int main(int argc, char** argv)
 {

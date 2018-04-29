@@ -23,24 +23,8 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
-
-  using Scalar = typename Base::Scalar;
-
-  using Manifold = typename Base::Manifold;
-  using Tangent  = typename Base::Tangent;
-
-  using Jacobian = typename Base::Jacobian;
-
-  using DataType = typename Base::DataType;
-
-  using Transformation  = typename Base::Transformation;
-  using Rotation = typename Base::Rotation;
-
-  using Base::data;
-  using Base::operator =;
+  MANIF_MANIFOLD_PROPERTIES
+  MANIF_MANIFOLD_TYPEDEF
 
   /// Manifold common API
 
@@ -48,7 +32,6 @@ public:
   Rotation rotation() const;
 
   void identity();
-  void random();
 
   Manifold inverse() const;
   Tangent lift() const;
@@ -56,15 +39,14 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
-  using Base::rplus;
-  using Base::lplus;
-  using Base::rminus;
-  using Base::lminus;
+  using Base::data;
+  MANIF_INHERIT_MANIFOLD_AUTO_API
+  MANIF_INHERIT_MANIFOLD_OPERATOR
 
   /// with Jacs
 
   void inverse(Manifold& m, Jacobian& j) const;
-  void lift(const Manifold& m, Tangent& t, Jacobian& J_t_m) const;
+  void lift(Tangent& t, Jacobian& J_t_m) const;
 
   void compose(const Manifold& mb,
                Manifold& mout,
@@ -76,41 +58,32 @@ public:
   Scalar y() const;
   Scalar z() const;
   Scalar w() const;
+
+protected:
+
+  void normalize();
 };
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Transformation
 SO3Base<_Derived>::transform() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
-  return Transformation();
+  Transformation T = Transformation::Identity();
+  T.template block<3,3>(0,0) = rotation();
+  return T;
 }
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Rotation
 SO3Base<_Derived>::rotation() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
-  return Rotation();
+  return data()->matrix();
 }
 
 template <typename _Derived>
 void SO3Base<_Derived>::identity()
 {
   data()->setIdentity();
-}
-
-template <typename _Derived>
-void SO3Base<_Derived>::random()
-{
-  const auto m = Tangent::Random().retract();
-
-  *data() = *m.data();
-
-  /// @todo the following does not work
-  /// figure out why
-//  Base::operator =(Tangent::Random().retract());
-//  *this = Tangent::Random().retract();
 }
 
 template <typename _Derived>
@@ -173,18 +146,17 @@ SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 template <typename _Derived>
 void SO3Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
   m = inverse();
-  J = rotation();
+  J = -rotation();
 }
 
 template <typename _Derived>
-void SO3Base<_Derived>::lift(const Manifold& m,
-                             Tangent& t,
+void SO3Base<_Derived>::lift(Tangent& t,
                              Jacobian& J_t_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
-  m = lift();
+  t = lift();
+  /// @todo
+//  J_t_m
 }
 
 template <typename _Derived>
@@ -194,7 +166,7 @@ void SO3Base<_Derived>::compose(const Manifold& mb,
                                 Jacobian& J_c_b) const
 {
   mout = compose(mb);
-  J_c_a = data()->conjugate()->matrix(); // R2.tr
+  J_c_a = data()->conjugate().matrix(); // R2.tr
   J_c_b.setIdentity();
 }
 
@@ -226,6 +198,12 @@ typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::w() const
 {
   return data()->w();
+}
+
+template <typename _Derived>
+void SO3Base<_Derived>::normalize()
+{
+  data()->normalize();
 }
 
 } /* namespace manif */

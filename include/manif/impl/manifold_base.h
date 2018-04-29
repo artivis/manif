@@ -186,6 +186,11 @@ public:
              TangentBase<_DerivedOther1>& t,
              Jacobian& J_t_ma, Jacobian& J_t_mb) const;
 
+  template <typename _DerivedOther0, typename _DerivedOther1>
+  void between(const ManifoldBase<_DerivedOther0>& mb,
+               ManifoldBase<_DerivedOther1>& mc,
+               Jacobian& J_mc_ma, Jacobian& J_mc_mb) const;
+
   /// Some static helpers
 
   static Manifold Identity()
@@ -272,7 +277,8 @@ void ManifoldBase<_Derived>::identity()
 template <typename _Derived>
 void ManifoldBase<_Derived>::random()
 {
-  derived().random();
+  const auto m = Tangent::Random().retract();
+  *data() = *m.data();
 }
 
 template <typename _Derived>
@@ -567,6 +573,22 @@ void ManifoldBase<_Derived>::minus(
   rminus(mb, t, J_t_ma, J_t_mb);
 }
 
+template <typename _Derived>
+template <typename _DerivedOther0, typename _DerivedOther1>
+void ManifoldBase<_Derived>::between(
+    const ManifoldBase<_DerivedOther0>& mb,
+    ManifoldBase<_DerivedOther1>& mc,
+    Jacobian& J_mc_ma, Jacobian& J_mc_mb) const
+{
+  Manifold inv;
+  Jacobian J_inv_ma;
+  derived().inverse(inv, J_inv_ma);
+
+  Jacobian J_mc_inv;
+  inv.compose(mb, mc, J_mc_inv, J_mc_mb);
+
+  J_mc_ma = J_mc_inv * J_inv_ma;
+}
 
 /// Utils
 

@@ -34,9 +34,6 @@ public:
 
   /// Tangent common API
 
-  void zero();
-  void random();
-
   Manifold retract() const;
 
   /// with Jacs
@@ -49,18 +46,6 @@ public:
 
   Scalar angle() const;
 };
-
-template <typename _Derived>
-void SO2TangentBase<_Derived>::zero()
-{
-  data()->setZero();
-}
-
-template <typename _Derived>
-void SO2TangentBase<_Derived>::random()
-{
-  data()->setRandom();
-}
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::Manifold
