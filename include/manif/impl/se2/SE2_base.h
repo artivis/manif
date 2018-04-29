@@ -110,7 +110,9 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
 SE2Base<_Derived>::lift() const
 {
-  std::abs;
+  using std::abs;
+  using std::cos;
+  using std::sin;
 
   const Scalar theta = angle();
 
@@ -119,11 +121,13 @@ SE2Base<_Derived>::lift() const
 
   if (abs(theta) < constants<Scalar>::eps)
   {
+    // Mid-point approximation
     sin_theta_by_theta = real() * cos(imag()/2);
     one_minus_cos_theta_by_theta = real() * sin(imag()/2);
   }
   else
   {
+    // Euler integration
     sin_theta_by_theta = sin(theta) / theta;
     one_minus_cos_theta_by_theta = (Scalar(1) - cos(theta)) / theta;
   }

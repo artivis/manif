@@ -11,40 +11,28 @@ function(manif_add_gtest target)
   add_dependencies(${target} libgtest)
   target_link_libraries(${target} libgtest)
 
-  #WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
   add_test(NAME ${target} COMMAND ${target})
 endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # SO2 tests
-
-manif_add_gtest(gtest_so2 gtest_so2.cpp)
-manif_add_gtest(gtest_so2_base_template gtest_so2_base_template.cpp)
-manif_add_gtest(gtest_so2_map gtest_so2_map.cpp)
-
-manif_add_gtest(gtest_so2_tangent gtest_so2_tangent.cpp)
-manif_add_gtest(gtest_so2_tangent_base_template
-  gtest_so2_tangent_base_template.cpp)
-manif_add_gtest(gtest_so2_tangent_map gtest_so2_tangent_map.cpp)
+add_subdirectory(so2)
 
 # SO3 tests
+add_subdirectory(so3)
 
-manif_add_gtest(gtest_so3 gtest_so3.cpp)
+# SE2 tests
+add_subdirectory(se2)
 
-set(CXX_11_TEST_TARGETS
+# SE3 tests
+add_subdirectory(se3)
 
-  # SO2
-  gtest_so2
-  gtest_so2_base_template
-  gtest_so2_map
-  gtest_so2_tangent
-  gtest_so2_tangent_base_template
-  gtest_so2_tangent_map
+find_package(Ceres QUIET)
 
-  # SO3
-  gtest_so3
-)
+if(CERES_FOUND)
+  add_subdirectory(ceres)
+endif(CERES_FOUND)
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")

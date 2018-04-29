@@ -50,7 +50,12 @@ SE2TangentBase<_Derived>::retract() const
 {
   using std::cos;
   using std::sin;
-  return Manifold(x(), y(), cos(angle()), sin(angle()));
+
+  const Scalar theta = angle();
+
+  /// @todo ret
+
+  return Manifold(x(), y(), cos(theta), sin(theta));
 }
 
 /// with Jacs
@@ -60,7 +65,7 @@ void SE2TangentBase<_Derived>::retract(
     Manifold& m, Jacobian& J_m_t) const
 {
   m = retract();
-  /// @todo check J
+  /// @todo J
   J_m_t.setIdentity();
   J_m_t.template block<2,2>(0,0) = m.rotation();
   J_m_t(0,2) = x();
