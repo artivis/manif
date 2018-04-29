@@ -29,13 +29,12 @@ TEST(TEST_SO2, TEST_SO2_MAP_DATA)
 
   double data[2] = {1,0};
 
-  const Eigen::Map</*const*/ SO2d> so2(data);
+  Eigen::Map<SO2d> so2(data);
 
-  EXPECT_NE(nullptr, so2.data());
-  EXPECT_EQ(data, so2.data()->data());
+  EXPECT_EQ(data, so2.coeffs().data());
 
-  EXPECT_DOUBLE_EQ(1, (*so2.data())(0));
-  EXPECT_DOUBLE_EQ(0, (*so2.data())(1));
+  EXPECT_DOUBLE_EQ(1, so2.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so2.coeffs()(1));
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
@@ -87,9 +86,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_RANDOM)
 
   so2.random();
 
-  const auto& so2_ref = so2;
-
-  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_RANDOM2)
@@ -98,9 +95,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_RANDOM2)
   Eigen::Map<SO2d> so2(data);
   so2 = SO2d::Random();
 
-  const auto& so2_ref = so2;
-
-  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_MATRIX)

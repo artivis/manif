@@ -6,10 +6,10 @@
 namespace manif {
 
 template <typename _Derived>
-const typename _Derived::DataType*
-callData(const ManifoldBase<_Derived>& manifold)
+const typename _Derived::DataType&
+callCoeffs(const ManifoldBase<_Derived>& manifold)
 {
-  return manifold.data();
+  return manifold.coeffs();
 }
 
 template <typename _Derived>

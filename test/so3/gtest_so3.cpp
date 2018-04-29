@@ -45,20 +45,6 @@ TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_ROLL_PITCH_YAW)
   EXPECT_DOUBLE_EQ(1, so3.w());
 }
 
-//TEST(TEST_SO3, TEST_SO3_DATA)
-//{
-//  /// @todo without specifying const
-//  /// it calls non-const data()
-//  const SO3d so3(0);
-
-//  EXPECT_NE(nullptr, so3.data());
-
-//  EXPECT_DOUBLE_EQ(1, (*so3.data())(0));
-//  EXPECT_DOUBLE_EQ(0, (*so3.data())(1));
-//  EXPECT_DOUBLE_EQ(0, (*so3.data())(2));
-//  EXPECT_DOUBLE_EQ(0, (*so3.data())(3));
-//}
-
 TEST(TEST_SO3, TEST_SO3_IDENTITY)
 {
   SO3d so3;
@@ -89,14 +75,14 @@ TEST(TEST_SO3, TEST_SO3_RANDOM)
 
   const SO3d& so3_ref = so3;
 
-  EXPECT_DOUBLE_EQ(1, so3_ref.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so3_ref.coeffs().norm());
 }
 
 TEST(TEST_SO3, TEST_SO3_RANDOM2)
 {
   const SO3d so3 = SO3d::Random();
 
-  EXPECT_DOUBLE_EQ(1, so3.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so3.coeffs().norm());
 }
 
 /*

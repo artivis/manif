@@ -33,8 +33,6 @@ struct traits<SE2<_Scalar>>
   static constexpr int DoF = ManifoldProperties<Base>::DoF;
   static constexpr int N   = ManifoldProperties<Base>::N;
 
-  /// @todo move those to some traits ?
-
   using DataType = Eigen::Matrix<Scalar, 4, 1>;
 
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
@@ -76,7 +74,7 @@ public:
 
   /// Manifold common API
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
   MANIF_INHERIT_MANIFOLD_API
 
@@ -87,7 +85,7 @@ public:
 protected:
 
   friend class ManifoldBase<SE2<Scalar>>;
-  DataType* data();
+  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -110,24 +108,25 @@ SE2<_Scalar>::SE2(const Scalar x, const Scalar y, const Scalar theta)
 }
 
 template <typename _Scalar>
-SE2<_Scalar>::SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag)
+SE2<_Scalar>::SE2(const Scalar x, const Scalar y,
+                  const Scalar real, const Scalar imag)
   : SE2(DataType(x, y, real, imag))
 {
   //
 }
 
 template <typename _Scalar>
-typename SE2<_Scalar>::DataType*
-SE2<_Scalar>::data()
+typename SE2<_Scalar>::DataType&
+SE2<_Scalar>::coeffs_nonconst()
 {
-  return &data_;
+  return data_;
 }
 
 template <typename _Scalar>
-const typename SE2<_Scalar>::DataType*
-SE2<_Scalar>::data() const
+const typename SE2<_Scalar>::DataType&
+SE2<_Scalar>::coeffs() const
 {
-  return &data_;
+  return data_;
 }
 
 } /* namespace manif */

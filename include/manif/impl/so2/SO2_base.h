@@ -51,7 +51,7 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
-  using Base::data;
+  using Base::coeffs;
   using Base::random;
   using Base::rplus;
   using Base::lplus;
@@ -78,8 +78,10 @@ public:
 
 protected:
 
+  using Base::coeffs_nonconst;
+
   /// @todo given a Eigen::Map<const SO2>
-  /// data()->x() return a reference to
+  /// coeffs()->x() return a reference to
   /// temporary ...
 
 //  Scalar& real();
@@ -111,7 +113,7 @@ void SO2Base<_Derived>::identity()
 {
 //  real() = 1;
 //  imag() = 0;
-  data()->setIdentity();
+  coeffs_nonconst().setIdentity();
 }
 
 template <typename _Derived>
@@ -184,14 +186,14 @@ template <typename _Derived>
 /*const*/ typename SO2Base<_Derived>::Scalar/*&*/
 SO2Base<_Derived>::real() const
 {
-  return data()->x();
+  return coeffs().x();
 }
 
 template <typename _Derived>
 /*const*/ typename SO2Base<_Derived>::Scalar/*&*/
 SO2Base<_Derived>::imag() const
 {
-  return data()->y();
+  return coeffs().y();
 }
 
 template <typename _Derived>
@@ -206,14 +208,14 @@ SO2Base<_Derived>::angle() const
 //typename SO2Base<_Derived>::Scalar&
 //SO2Base<_Derived>::real()
 //{
-//  return data()->x();
+//  return coeffs.x();
 //}
 
 //template <typename _Derived>
 //typename SO2Base<_Derived>::Scalar&
 //SO2Base<_Derived>::imag()
 //{
-//  return data()->y();
+//  return coeffs.y();
 //}
 
 } /* namespace manif */

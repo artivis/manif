@@ -32,16 +32,11 @@ struct traits<SO3<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 4;
 
-  using DataType = Eigen::Quaternion<Scalar>;
-//  using DataType = Eigen::Matrix<Scalar, 4, 1>;
-
-  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-
+  using DataType       = Eigen::Quaternion<Scalar>;
+  using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;
-
-  using Rotation = Eigen::Matrix<Scalar, Dim, Dim>;
-
-  using Vector = Eigen::Matrix<Scalar, Dim, 1>;
+  using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
+  using Vector         = Eigen::Matrix<Scalar, Dim, 1>;
 };
 
 } /* namespace internal */
@@ -81,14 +76,14 @@ public:
   SO3(const Scalar roll, const Scalar pitch,
       const Scalar yaw);
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
   MANIF_INHERIT_MANIFOLD_API
 
 protected:
 
   friend class ManifoldBase<SO3<Scalar>>;
-  DataType* data();
+  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -131,17 +126,17 @@ SO3<_Scalar>::SO3(const Scalar roll,
 }
 
 template <typename _Scalar>
-typename SO3<_Scalar>::DataType*
-SO3<_Scalar>::data()
+typename SO3<_Scalar>::DataType&
+SO3<_Scalar>::coeffs_nonconst()
 {
-  return &data_;
+  return data_;
 }
 
 template <typename _Scalar>
-const typename SO3<_Scalar>::DataType*
-SO3<_Scalar>::data() const
+const typename SO3<_Scalar>::DataType&
+SO3<_Scalar>::coeffs() const
 {
-  return &data_;
+  return data_;
 }
 
 } /* namespace manif */

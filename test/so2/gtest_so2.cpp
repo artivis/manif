@@ -27,14 +27,10 @@ TEST(TEST_SO2, TEST_SO2_2)
 
 TEST(TEST_SO2, TEST_SO2_DATA)
 {
-  /// @todo without specifying const
-  /// it calls non-const data()
-  const SO2d so2(0);
+  SO2d so2(0);
 
-  EXPECT_NE(nullptr, so2.data());
-
-  EXPECT_DOUBLE_EQ(1, (*so2.data())(0));
-  EXPECT_DOUBLE_EQ(0, (*so2.data())(1));
+  EXPECT_DOUBLE_EQ(1, so2.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so2.coeffs()(1));
 }
 
 TEST(TEST_SO2, TEST_SO2_IDENTITY)
@@ -63,16 +59,14 @@ TEST(TEST_SO2, TEST_SO2_RANDOM)
 
   so2.random();
 
-  const SO2d& so2_ref = so2;
-
-  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
 
 TEST(TEST_SO2, TEST_SO2_RANDOM2)
 {
   const SO2d so2 = SO2d::Random();
 
-  EXPECT_DOUBLE_EQ(1, so2.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
 
 TEST(TEST_SO2, TEST_SO2_MATRIX)

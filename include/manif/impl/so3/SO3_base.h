@@ -39,7 +39,8 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
-  using Base::data;
+  using Base::coeffs;
+  using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
@@ -77,13 +78,13 @@ template <typename _Derived>
 typename SO3Base<_Derived>::Rotation
 SO3Base<_Derived>::rotation() const
 {
-  return data()->matrix();
+  return coeffs().matrix();
 }
 
 template <typename _Derived>
 void SO3Base<_Derived>::identity()
 {
-  data()->setIdentity();
+  coeffs_nonconst().setIdentity();
 }
 
 template <typename _Derived>
@@ -93,7 +94,7 @@ SO3Base<_Derived>::inverse() const
   /// @todo, conjugate doc :
   /// equal to the multiplicative inverse if
   /// the quaternion is normalized
-  return Manifold(data()->conjugate());
+  return Manifold(coeffs().conjugate());
 }
 
 template <typename _Derived>
@@ -103,7 +104,7 @@ SO3Base<_Derived>::lift() const
   using std::sqrt;
   using std::atan2;
 
-  const Scalar sin_angle_squared = data()->vec().squaredNorm();
+  const Scalar sin_angle_squared = coeffs().vec().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
   {
     const Scalar sin_angle = sqrt(sin_angle_squared);
@@ -124,12 +125,12 @@ SO3Base<_Derived>::lift() const
                                  atan2( sin_angle,  cos_angle));
 
     const Scalar k = two_angle / sin_angle;
-    return Tangent(data()->vec() * k);
+    return Tangent(coeffs().vec() * k);
   }
   else
   {
     // small-angle approximation
-    return Tangent(data()->vec() * Scalar(2.0));
+    return Tangent(coeffs().vec() * Scalar(2.0));
   }
 }
 
@@ -138,7 +139,7 @@ template <typename _DerivedOther>
 typename SO3Base<_Derived>::Manifold
 SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 {
-  return Manifold(data()->operator *(*m.data()));
+  return Manifold(coeffs() * m.coeffs());
 }
 
 /// with Jacs
@@ -166,7 +167,7 @@ void SO3Base<_Derived>::compose(const Manifold& mb,
                                 Jacobian& J_c_b) const
 {
   mout = compose(mb);
-  J_c_a = data()->conjugate().matrix(); // R2.tr
+  J_c_a = coeffs().conjugate().matrix(); // R2.tr
   J_c_b.setIdentity();
 }
 
@@ -176,34 +177,34 @@ template <typename _Derived>
 typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::x() const
 {
-  return data()->x();
+  return coeffs().x();
 }
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::y() const
 {
-  return data()->y();
+  return coeffs().y();
 }
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::z() const
 {
-  return data()->z();
+  return coeffs().z();
 }
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::w() const
 {
-  return data()->w();
+  return coeffs().w();
 }
 
 template <typename _Derived>
 void SO3Base<_Derived>::normalize()
 {
-  data()->normalize();
+  coeffs().normalize();
 }
 
 } /* namespace manif */

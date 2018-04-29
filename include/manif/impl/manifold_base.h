@@ -37,11 +37,11 @@ struct ManifoldBase
 
 protected:
 
-  DataType* data();
+  DataType& coeffs_nonconst();
 
 public:
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
 //  template <class _Scalar>
 //  ManifoldBase<_Derived> cast() const
@@ -241,17 +241,18 @@ private:
 };
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::DataType*
-ManifoldBase<_Derived>::data()
+typename ManifoldBase<_Derived>::DataType&
+ManifoldBase<_Derived>::coeffs_nonconst()
 {
-  return derived().data();
+  return derived().coeffs_nonconst();
 }
 
 template <typename _Derived>
-const typename ManifoldBase<_Derived>::DataType*
-ManifoldBase<_Derived>::data() const
+const typename ManifoldBase<_Derived>::DataType&
+ManifoldBase<_Derived>::coeffs() const
 {
-  return derived().data();
+  return derived().coeffs();
+//  return derived().coeffs_nonconst();
 }
 
 template <typename _Derived>
@@ -277,8 +278,10 @@ void ManifoldBase<_Derived>::identity()
 template <typename _Derived>
 void ManifoldBase<_Derived>::random()
 {
-  const auto m = Tangent::Random().retract();
-  *data() = *m.data();
+//  const auto m = Tangent::Random().retract();
+//  coeffs_nonconst() = m.coeffs_nonconst();
+
+  coeffs_nonconst() = Tangent::Random().retract().coeffs();
 }
 
 template <typename _Derived>
@@ -383,7 +386,7 @@ ManifoldBase<_Derived>::operator =(
     const ManifoldBase<_DerivedOther>& m)
 {
   MANIF_DEBUG("ManifoldBase operator =");
-  *derived().data() = *m.data();
+  derived().coeffs_nonconst() = m.coeffs();
   return derived();
 }
 
@@ -597,7 +600,7 @@ _Stream& operator << (
     _Stream& s,
     const manif::ManifoldBase<_Derived>& m)
 {
-  s << *m.data();
+  s << m.coeffs();
 }
 
 } /* namespace manif */

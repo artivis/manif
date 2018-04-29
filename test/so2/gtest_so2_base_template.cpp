@@ -10,14 +10,12 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
-  const SO2d so2(0);
+  /*const*/ SO2d so2(0);
 
-  const auto* data_ptr = callData(so2);
+  const auto& data = callCoeffs(so2);
 
-  ASSERT_NE(nullptr, data_ptr);
-
-  EXPECT_DOUBLE_EQ(1, (*data_ptr)(0));
-  EXPECT_DOUBLE_EQ(0, (*data_ptr)(1));
+  EXPECT_DOUBLE_EQ(1, data(0));
+  EXPECT_DOUBLE_EQ(0, data(1));
 }
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_IDENTITY)
@@ -50,7 +48,7 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM)
 
   const SO2d& so2_ref = so2;
 
-  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+  EXPECT_DOUBLE_EQ(1, so2_ref.coeffs().norm());
 }
 
 //TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM2)

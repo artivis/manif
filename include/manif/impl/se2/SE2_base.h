@@ -41,7 +41,8 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
-  using Base::data;
+  using Base::coeffs;
+  using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
@@ -89,7 +90,7 @@ SE2Base<_Derived>::rotation() const
 template <typename _Derived>
 void SE2Base<_Derived>::identity()
 {
-  data()->operator()(2) = 1;
+  coeffs_nonconst()(2) = 1;
 }
 
 template <typename _Derived>
@@ -224,14 +225,14 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Scalar
 SE2Base<_Derived>::real() const
 {
-  return data()->operator()(2);
+  return coeffs()(2);
 }
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Scalar
 SE2Base<_Derived>::imag() const
 {
-  return data()->operator()(3);
+  return coeffs()(3);
 }
 
 template <typename _Derived>
@@ -246,14 +247,14 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Scalar
 SE2Base<_Derived>::x() const
 {
-  return data()->x();
+  return coeffs().x();
 }
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Scalar
 SE2Base<_Derived>::y() const
 {
-  return data()->y();
+  return coeffs().y();
 }
 
 } /* namespace manif */

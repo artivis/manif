@@ -80,7 +80,7 @@ public:
 
   /// Manifold common API
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
   MANIF_INHERIT_MANIFOLD_API
 
@@ -91,7 +91,7 @@ public:
 protected:
 
   friend class ManifoldBase<SO2<Scalar>>;
-  DataType* data();
+  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -121,17 +121,17 @@ SO2<_Scalar>::SO2(const Scalar theta)
 }
 
 template <typename _Scalar>
-typename SO2<_Scalar>::DataType*
-SO2<_Scalar>::data()
+typename SO2<_Scalar>::DataType&
+SO2<_Scalar>::coeffs_nonconst()
 {
-  return &data_;
+  return data_;
 }
 
 template <typename _Scalar>
-const typename SO2<_Scalar>::DataType*
-SO2<_Scalar>::data() const
+const typename SO2<_Scalar>::DataType&
+SO2<_Scalar>::coeffs() const
 {
-  return &data_;
+  return data_;
 }
 
 } /* namespace manif */
