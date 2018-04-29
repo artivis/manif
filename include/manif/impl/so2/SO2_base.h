@@ -67,6 +67,7 @@ public:
 
   void lift(Tangent& t, Jacobian& J_t_m) const;
 
+  /// @todo check why this compose ain't template
   void compose(const Manifold& mb,
                Manifold& mout,
                Jacobian& J_c_a, Jacobian& J_c_b) const;
@@ -112,14 +113,20 @@ template <typename _Derived>
 void SO2Base<_Derived>::identity()
 {
 //  real() = 1;
-//  imag() = 1;
+//  imag() = 0;
   data()->setIdentity();
 }
 
 template <typename _Derived>
 void SO2Base<_Derived>::random()
 {
-  data()->setRandom();
+  const auto m = Tangent::Random().retract();
+  *data() = *m.data();
+
+  /// @todo the following does not work
+  /// figure out why
+//  Base::operator =(Tangent::Random().retract());
+//  *this = Tangent::Random().retract();
 }
 
 template <typename _Derived>

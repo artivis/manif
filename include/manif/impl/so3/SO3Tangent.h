@@ -59,7 +59,7 @@ public:
 
   SO3Tangent() = default;
 
-  SO3Tangent(const DataType& theta);
+  SO3Tangent(const DataType& vec);
 
   /// Tangent common API
 
@@ -78,8 +78,8 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent);
 
 template <typename _Scalar>
-SO3Tangent<_Scalar>::SO3Tangent(const DataType& theta)
-  : data_(theta)
+SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)
+  : data_(vec)
 {
   //
 }

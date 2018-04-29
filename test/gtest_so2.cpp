@@ -57,21 +57,23 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY2)
   EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
-//TEST(TEST_SO2, TEST_SO2_RANDOM)
-//{
-//  SO2d so2;
+TEST(TEST_SO2, TEST_SO2_RANDOM)
+{
+  SO2d so2;
 
-//  so2.random();
+  so2.random();
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
+  const SO2d& so2_ref = so2;
 
-//TEST(TEST_SO2, TEST_SO2_RANDOM2)
-//{
-//  SO2d so2 = SO2d::Random();
+  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+}
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
+TEST(TEST_SO2, TEST_SO2_RANDOM2)
+{
+  const SO2d so2 = SO2d::Random();
+
+  EXPECT_DOUBLE_EQ(1, so2.data()->norm());
+}
 
 TEST(TEST_SO2, TEST_SO2_MATRIX)
 {

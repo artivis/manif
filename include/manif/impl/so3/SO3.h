@@ -3,8 +3,6 @@
 
 #include "manif/impl/so3/SO3_base.h"
 
-#include <Eigen/Core>
-
 namespace manif
 {
 
@@ -34,13 +32,16 @@ struct traits<SO3<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 4;
 
-  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
+  using DataType = Eigen::Quaternion<Scalar>;
+//  using DataType = Eigen::Matrix<Scalar, 4, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
 
   using Transformation = Eigen::Matrix<Scalar, N, N>;
 
   using Rotation = Eigen::Matrix<Scalar, Dim, Dim>;
+
+  using Vector = Eigen::Matrix<Scalar, Dim, 1>;
 };
 
 } /* namespace internal */
@@ -72,6 +73,11 @@ public:
 
   SO3(const DataType& d);
 
+  SO3(const Scalar x, const Scalar y,
+      const Scalar z, const Scalar w);
+
+  SO3(const Eigen::AngleAxis<Scalar>& angle_axis);
+
   const DataType* data() const;
 
   MANIF_INHERIT_MANIFOLD_API
@@ -93,6 +99,21 @@ SO3<_Scalar>::SO3(const DataType& d)
   : data_(d)
 {
   //
+}
+
+template <typename _Scalar>
+SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
+                  const Scalar z, const Scalar w)
+  : data_(w, x,y, z)
+{
+  //
+}
+
+template <typename _Scalar>
+SO3<_Scalar>::SO3(const Eigen::AngleAxis<Scalar>& angle_axis)
+  : data_(angle_axis)
+{
+
 }
 
 template <typename _Scalar>

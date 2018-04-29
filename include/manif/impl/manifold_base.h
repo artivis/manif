@@ -3,6 +3,7 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
+#include "manif/constants.h"
 #include "manif/impl/tangent_base.h"
 
 #include "lspdlog/logging.h"
@@ -375,6 +376,7 @@ _Derived&
 ManifoldBase<_Derived>::operator =(
     const ManifoldBase<_DerivedOther>& m)
 {
+  MANIF_DEBUG("ManifoldBase operator =");
   *derived().data() = *m.data();
   return derived();
 }

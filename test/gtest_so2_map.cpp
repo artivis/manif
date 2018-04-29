@@ -80,21 +80,28 @@ TEST(TEST_SO2, TEST_SO2_MAP_IDENTITY2)
   EXPECT_DOUBLE_EQ(0, so2.imag());
 }
 
-//TEST(TEST_SO2, TEST_SO2_MAP_RANDOM)
-//{
-//  SO2d so2;
+TEST(TEST_SO2, TEST_SO2_MAP_RANDOM)
+{
+  double data[2] = {0,0};
+  Eigen::Map<SO2d> so2(data);
 
-//  so2.random();
+  so2.random();
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
+  const auto& so2_ref = so2;
 
-//TEST(TEST_SO2, TEST_SO2_MAP_RANDOM2)
-//{
-//  SO2d so2 = SO2d::Random();
+  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+}
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
+TEST(TEST_SO2, TEST_SO2_MAP_RANDOM2)
+{
+  double data[2] = {0,0};
+  Eigen::Map<SO2d> so2(data);
+  so2 = SO2d::Random();
+
+  const auto& so2_ref = so2;
+
+  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+}
 
 TEST(TEST_SO2, TEST_SO2_MAP_MATRIX)
 {

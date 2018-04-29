@@ -4,6 +4,8 @@
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
+#include <Eigen/Geometry>
+
 namespace manif
 {
 
@@ -49,6 +51,10 @@ public:
   void retract(Manifold& m, Jacobian& J_m_t) const;
 
   /// SO3Tangent specific API
+
+  Scalar x() const;
+  Scalar y() const;
+  Scalar z() const;
 };
 
 template <typename _Derived>
@@ -67,8 +73,20 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::Manifold
 SO3TangentBase<_Derived>::retract() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
-  return Manifold();
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const Scalar angle = sqrt(data()->squaredNorm());
+
+  if (angle > Constants<Scalar>::eps)
+  {
+    return Manifold( Eigen::AngleAxis<Scalar>(angle, data()->normalized()) );
+  }
+  else
+  {
+    return Manifold(x()/2, y()/2, z()/2, 1);
+  }
 }
 
 /// with Jacs
@@ -78,6 +96,29 @@ void SO3TangentBase<_Derived>::retract(
     Manifold& m, Jacobian& J_m_t) const
 {
   MANIF_NOT_IMPLEMENTED_YET
+}
+
+/// SO3Tangent specifics
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Scalar
+SO3TangentBase<_Derived>::x() const
+{
+  return data()->operator()(0);
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Scalar
+SO3TangentBase<_Derived>::y() const
+{
+  return data()->operator()(1);
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Scalar
+SO3TangentBase<_Derived>::z() const
+{
+  return data()->operator()(2);
 }
 
 } /* namespace manif */

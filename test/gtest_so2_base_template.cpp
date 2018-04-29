@@ -42,14 +42,16 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_IDENTITY2)
 }
 */
 
-//TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM)
-//{
-//  SO2d so2;
+TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM)
+{
+  SO2d so2;
 
-//  callRandom(so2);
+  callRandom(so2);
 
-//  EXPECT_DOUBLE_EQ(0, so2.angle());
-//}
+  const SO2d& so2_ref = so2;
+
+  EXPECT_DOUBLE_EQ(1, so2_ref.data()->norm());
+}
 
 //TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM2)
 //{

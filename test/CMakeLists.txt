@@ -17,6 +17,8 @@ endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
+# SO2 tests
+
 manif_add_gtest(gtest_so2 gtest_so2.cpp)
 manif_add_gtest(gtest_so2_base_template gtest_so2_base_template.cpp)
 manif_add_gtest(gtest_so2_map gtest_so2_map.cpp)
@@ -26,13 +28,22 @@ manif_add_gtest(gtest_so2_tangent_base_template
   gtest_so2_tangent_base_template.cpp)
 manif_add_gtest(gtest_so2_tangent_map gtest_so2_tangent_map.cpp)
 
+# SO3 tests
+
+manif_add_gtest(gtest_so3 gtest_so3.cpp)
+
 set(CXX_11_TEST_TARGETS
+
+  # SO2
   gtest_so2
   gtest_so2_base_template
   gtest_so2_map
   gtest_so2_tangent
   gtest_so2_tangent_base_template
   gtest_so2_tangent_map
+
+  # SO3
+  gtest_so3
 )
 
 # Set required C++11 flag

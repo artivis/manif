@@ -3,6 +3,7 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
+#include "manif/constants.h"
 
 #include "lspdlog/logging.h"
 

@@ -1,0 +1,470 @@
+#include <gtest/gtest.h>
+
+#include "manif/SO3.h"
+
+using namespace manif;
+
+//TEST(TEST_SO3, TEST_SO3_0)
+//{
+//  SO3d so3(SO3d::DataType(1,0));
+
+//  EXPECT_DOUBLE_EQ(0, so3.angle());
+//}
+
+//TEST(TEST_SO3, TEST_SO3_1)
+//{
+//  SO3d so3(1, 0);
+
+//  EXPECT_DOUBLE_EQ(0, so3.angle());
+//}
+
+//TEST(TEST_SO3, TEST_SO3_2)
+//{
+//  SO3d so3(0);
+
+//  EXPECT_DOUBLE_EQ(0, so3.angle());
+//}
+
+//TEST(TEST_SO3, TEST_SO3_DATA)
+//{
+//  /// @todo without specifying const
+//  /// it calls non-const data()
+//  const SO3d so3(0);
+
+//  EXPECT_NE(nullptr, so3.data());
+
+//  EXPECT_DOUBLE_EQ(1, (*so3.data())(0));
+//  EXPECT_DOUBLE_EQ(0, (*so3.data())(1));
+//  EXPECT_DOUBLE_EQ(0, (*so3.data())(2));
+//  EXPECT_DOUBLE_EQ(0, (*so3.data())(3));
+//}
+
+TEST(TEST_SO3, TEST_SO3_IDENTITY)
+{
+  SO3d so3;
+
+  so3.identity();
+
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
+
+TEST(TEST_SO3, TEST_SO3_IDENTITY2)
+{
+  const SO3d so3 = SO3d::Identity();
+
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
+
+TEST(TEST_SO3, TEST_SO3_RANDOM)
+{
+  SO3d so3;
+
+  so3.random();
+
+  const SO3d& so3_ref = so3;
+
+  EXPECT_DOUBLE_EQ(1, so3_ref.data()->norm());
+}
+
+TEST(TEST_SO3, TEST_SO3_RANDOM2)
+{
+  const SO3d so3 = SO3d::Random();
+
+  EXPECT_DOUBLE_EQ(1, so3.data()->norm());
+}
+
+/*
+TEST(TEST_SO3, TEST_SO3_MATRIX)
+{
+  SO3d so3 = SO3d::Identity();
+
+  SO3d::Transformation t = so3.transform();
+
+  EXPECT_EQ(3, t.rows());
+  EXPECT_EQ(3, t.cols());
+
+  /// @todo Eigen matrix comparison
+}
+
+TEST(TEST_SO3, TEST_SO3_ROTATION)
+{
+  SO3d so3 = SO3d::Identity();
+
+  SO3d::Rotation r = so3.rotation();
+
+  EXPECT_EQ(2, r.rows());
+  EXPECT_EQ(2, r.cols());
+
+  /// @todo Eigen matrix comparison
+}
+
+TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
+{
+  SO3d so3a(0);
+  SO3d so3b(M_PI);
+
+  so3a = so3b;
+
+  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+}
+*/
+
+
+TEST(TEST_SO3, TEST_SO3_INVERSE)
+{
+  SO3d so3 = SO3d::Identity();
+
+  auto so3_inv = so3.inverse();
+
+  EXPECT_DOUBLE_EQ(0, so3_inv.x());
+  EXPECT_DOUBLE_EQ(0, so3_inv.y());
+  EXPECT_DOUBLE_EQ(0, so3_inv.z());
+  EXPECT_DOUBLE_EQ(1, so3_inv.w());
+
+  /// @todo
+//  so3.angle(M_PI);
+//  so3_inv = so3.inverse();
+
+//  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_RPLUS)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  auto so3c = so3a.rplus(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_LPLUS)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  auto so3c = so3a.lplus(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_PLUS)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  auto so3c = so3a.plus(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_OP_PLUS)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  auto so3c = so3a + so3b;
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_OP_PLUS_EQ)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  so3a += so3b;
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_RMINUS)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a.rminus(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_LMINUS)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a.lminus(so3b);
+
+//  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_MINUS)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a.minus(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_LIFT)
+{
+  SO3d so3;
+
+  auto so3_lift = so3.lift();
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3_lift.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_COMPOSE)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a.compose(so3b);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a * so3b;
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  so3a *= so3b;
+
+//  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+}
+
+TEST(TEST_SO3, TEST_SO3_BETWEEN)
+{
+  SO3d so3a;
+  SO3d so3b;
+
+  auto so3c = so3a.between(so3b);
+
+//  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+}
+
+/// with Jacs
+/*
+TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
+{
+  SO3d so3 = SO3d::Identity();
+
+  SO3d so3_inv;
+  SO3d::Jacobian J_inv;
+  so3.inverse(so3_inv, J_inv);
+
+  EXPECT_DOUBLE_EQ(so3.angle(), so3_inv.angle());
+  EXPECT_DOUBLE_EQ(1, so3_inv.real());
+  EXPECT_DOUBLE_EQ(0, so3_inv.imag());
+
+  EXPECT_EQ(1, J_inv.rows());
+  EXPECT_EQ(1, J_inv.cols());
+  EXPECT_DOUBLE_EQ(-1, J_inv(0));
+
+  so3.angle(M_PI);
+  so3.inverse(so3_inv, J_inv);
+
+  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
+
+  EXPECT_EQ(1, J_inv.rows());
+  EXPECT_EQ(1, J_inv.cols());
+  EXPECT_DOUBLE_EQ(-1, J_inv(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
+{
+  SO3d so3(M_PI);
+
+  SO3d::Tangent so3_lift;
+  SO3d::Tangent::Jacobian J_lift;
+
+  so3.lift(so3_lift, J_lift);
+
+  EXPECT_DOUBLE_EQ(M_PI, so3_lift.angle());
+
+  /// @todo check this J
+  EXPECT_EQ(1, J_lift.rows());
+  EXPECT_EQ(1, J_lift.cols());
+  EXPECT_DOUBLE_EQ(1, J_lift(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
+{
+  SO3d so3a(M_PI_2);
+  SO3d so3b(M_PI_2);
+
+  SO3d so3c;
+  SO3d::Jacobian J_c_a, J_c_b;
+
+  so3a.compose(so3b, so3c, J_c_a, J_c_b);
+
+  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+
+  EXPECT_EQ(1, J_c_a.rows());
+  EXPECT_EQ(1, J_c_a.cols());
+  EXPECT_DOUBLE_EQ(1, J_c_a(0));
+
+  EXPECT_EQ(1, J_c_b.rows());
+  EXPECT_EQ(1, J_c_b.cols());
+  EXPECT_DOUBLE_EQ(1, J_c_b(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  SO3d so3c;
+  SO3d::Jacobian J_rplus_m;
+  SO3d::Jacobian J_rplus_t;
+
+  so3a.rplus(so3b, so3c, J_rplus_m, J_rplus_t);
+
+  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+
+  EXPECT_EQ(1, J_rplus_m.rows());
+  EXPECT_EQ(1, J_rplus_m.cols());
+  EXPECT_DOUBLE_EQ(1, J_rplus_m(0));
+
+  EXPECT_EQ(1, J_rplus_t.rows());
+  EXPECT_EQ(1, J_rplus_t.cols());
+  EXPECT_DOUBLE_EQ(1, J_rplus_t(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_LPLUS_JAC)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  SO3d so3c;
+  SO3d::Jacobian J_lplus_t;
+  SO3d::Jacobian J_lplus_m;
+
+  so3a.lplus(so3b, so3c, J_lplus_t, J_lplus_m);
+
+  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+
+  EXPECT_EQ(1, J_lplus_t.rows());
+  EXPECT_EQ(1, J_lplus_t.cols());
+  EXPECT_DOUBLE_EQ(1, J_lplus_t(0));
+
+  EXPECT_EQ(1, J_lplus_m.rows());
+  EXPECT_EQ(1, J_lplus_m.cols());
+  EXPECT_DOUBLE_EQ(1, J_lplus_m(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_PLUS_JAC)
+{
+  SO3d so3a;
+  SO3Tangentd so3b;
+
+  SO3d so3c;
+  SO3d::Jacobian J_plus_m;
+  SO3d::Jacobian J_plus_t;
+
+  so3a.plus(so3b, so3c, J_plus_m, J_plus_t);
+
+  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+
+  EXPECT_EQ(1, J_plus_m.rows());
+  EXPECT_EQ(1, J_plus_m.cols());
+  EXPECT_DOUBLE_EQ(1, J_plus_m(0));
+
+  EXPECT_EQ(1, J_plus_t.rows());
+  EXPECT_EQ(1, J_plus_t.cols());
+  EXPECT_DOUBLE_EQ(1, J_plus_t(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_RMINUS_JAC)
+{
+  SO3d so3a(M_PI);
+  SO3d so3b(M_PI_2);
+
+  SO3Tangentd so3c;
+
+  SO3d::Jacobian J_rminus_a, J_rminus_b;
+
+  so3a.rminus(so3b, so3c, J_rminus_a, J_rminus_b);
+
+  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+
+  EXPECT_EQ(1, J_rminus_a.rows());
+  EXPECT_EQ(1, J_rminus_a.cols());
+  EXPECT_DOUBLE_EQ(1, J_rminus_a(0));
+
+  EXPECT_EQ(1, J_rminus_b.rows());
+  EXPECT_EQ(1, J_rminus_b.cols());
+  EXPECT_DOUBLE_EQ(-1, J_rminus_b(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_LMINUS_JAC)
+{
+  SO3d so3a(M_PI);
+  SO3d so3b(M_PI_2);
+
+  SO3Tangentd so3c;
+
+  SO3d::Jacobian J_lminus_a, J_lminus_b;
+
+  so3a.lminus(so3b, so3c, J_lminus_a, J_lminus_b);
+
+  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+
+  EXPECT_EQ(1, J_lminus_a.rows());
+  EXPECT_EQ(1, J_lminus_a.cols());
+  EXPECT_DOUBLE_EQ(-1, J_lminus_a(0));
+
+  EXPECT_EQ(1, J_lminus_b.rows());
+  EXPECT_EQ(1, J_lminus_b.cols());
+  EXPECT_DOUBLE_EQ(1, J_lminus_b(0));
+}
+
+TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
+{
+  SO3d so3a(M_PI);
+  SO3d so3b(M_PI_2);
+
+  SO3Tangentd so3c;
+
+  SO3d::Jacobian J_minus_a, J_minus_b;
+
+  so3a.minus(so3b, so3c, J_minus_a, J_minus_b);
+
+  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+
+  EXPECT_EQ(1, J_minus_a.rows());
+  EXPECT_EQ(1, J_minus_a.cols());
+  EXPECT_DOUBLE_EQ(1, J_minus_a(0));
+
+  EXPECT_EQ(1, J_minus_b.rows());
+  EXPECT_EQ(1, J_minus_b.cols());
+  EXPECT_DOUBLE_EQ(-1, J_minus_b(0));
+}
+
+*/
+
+int main(int argc, char** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
