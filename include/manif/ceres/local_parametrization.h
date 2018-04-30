@@ -17,6 +17,8 @@ class LocalParameterization
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
+
+  /// @todo check diz J size :s
   using JacobianMap =
     Eigen::Map<Eigen::Matrix<
       double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
@@ -58,11 +60,6 @@ public:
   virtual bool ComputeJacobian(double const* state_raw,
                                double* rplus_jacobian_raw) const override
   {
-    /// @todo check diz J size :s
-    using Jacobian =
-      Eigen::Map<Eigen::Matrix<
-        double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
-
     const Eigen::Map<const Manifold> state(state_raw);
 
     state.rplus(delta_zero_, tmp_out_, J_rplus_m, J_rplus_t);
