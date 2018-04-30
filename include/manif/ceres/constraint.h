@@ -49,19 +49,25 @@ public:
 
         measurement_.retract(mmeas_, J_mmeas_meas_);
 
-        mmeas_.between(pose_increment_, residuals, J_res_mmeas_, J_res_pi_);
+        mmeas_.between(pose_increment_,
+                       pe_,
+                       J_pe_mmeas_, J_pe_pi_);
+
+        pe_.lift(residuals, J_res_pe_);
 
         JacobianMap J_res_past(jacobians_raw[0]);
         JacobianMap J_res_future(jacobians_raw[1]);
 
-        J_res_past   = J_res_pi_ * J_pi_past_;
-        J_res_future = J_res_pi_ * J_pi_future_;
+        J_res_past   = J_res_pe_ * J_pe_pi_ * J_pi_past_;
+        J_res_future = J_res_pe_ * J_pe_pi_ * J_pi_future_;
       }
     }
     else
     {
       residuals =
-        measurement_.retract().between(state_future.between(state_past)).lift();
+        measurement_.retract()
+          .between(state_future.between(state_past))
+            .lift();
     }
 
     return true;
@@ -77,7 +83,10 @@ protected:
   mutable Manifold pose_increment_;
   mutable Jacobian J_pi_past_, J_pi_future_;
 
-  mutable Jacobian J_res_mmeas_, J_res_pi_;
+  mutable Jacobian J_pe_mmeas_, J_pe_pi_;
+
+  mutable Manifold pe_;
+  mutable Jacobian J_res_pe_;
 };
 
 //using ConstraintSO2 = Constraint<SO2d>;

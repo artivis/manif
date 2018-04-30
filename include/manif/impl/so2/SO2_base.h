@@ -66,9 +66,9 @@ public:
   template <typename _DerivedOther>
   void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
 
-  /// @todo check why this compose ain't template
-  void compose(const Manifold& mb,
-               Manifold& mout,
+  template <typename _DerivedOther0, typename _DerivedOther1>
+  void compose(const ManifoldBase<_DerivedOther0>& mb,
+               ManifoldBase<_DerivedOther1>& mout,
                Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SO2 specific functions
@@ -172,8 +172,9 @@ void SO2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
 }
 
 template <typename _Derived>
-void SO2Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
+template <typename _DerivedOther0, typename _DerivedOther1>
+void SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
+                                ManifoldBase<_DerivedOther1>& mout,
                                 Jacobian& J_c_a,
                                 Jacobian& J_c_b) const
 {
