@@ -67,7 +67,7 @@ public:
 
   MANIF_INHERIT_MANIFOLD_API
 
-  Map(Scalar* coeffs) : data_(coeffs) { }
+  Map(const Scalar* coeffs) : data_(coeffs) { }
 
   const DataType& coeffs() const { return data_; }
 

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.8)
 find_package(GTest QUIET)
 
 if(NOT GTEST_FOUND)
+  # If not found, download it
   add_subdirectory(gtest)
 endif()
 
@@ -27,8 +28,6 @@ add_subdirectory(se2)
 
 # SE3 tests
 add_subdirectory(se3)
-
-find_package(ceres_solver REQUIRED)
 
 if(ceres_solver_FOUND)
 

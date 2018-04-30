@@ -43,6 +43,9 @@ public:
 
   const DataType& coeffs() const;
 
+  Scalar* data();
+  const Scalar* data() const;
+
 //  template <class _Scalar>
 //  ManifoldBase<_Derived> cast() const
 //  {
@@ -252,7 +255,20 @@ const typename ManifoldBase<_Derived>::DataType&
 ManifoldBase<_Derived>::coeffs() const
 {
   return derived().coeffs();
-//  return derived().coeffs_nonconst();
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Scalar*
+ManifoldBase<_Derived>::data()
+{
+  return derived().coeffs_nonconst().data();
+}
+
+template <typename _Derived>
+const typename ManifoldBase<_Derived>::Scalar*
+ManifoldBase<_Derived>::data() const
+{
+  derived().coeffs().data();
 }
 
 template <typename _Derived>

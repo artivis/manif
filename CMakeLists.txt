@@ -17,6 +17,8 @@ find_package(cmake_modules REQUIRED)
 find_package(Eigen REQUIRED)
 find_package(Threads REQUIRED)
 
+find_package(ceres_solver REQUIRED)
+
 add_subdirectory(external/lspdlog)
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
@@ -41,6 +43,7 @@ include_directories(include)
 include_directories(SYSTEM
   ${EIGEN_INCLUDE_DIRS}
   ${LSPDLOG_INCLUDE_DIRS}
+  ${ceres_solver_INCLUDE_DIRS}
 )
 
 add_executable(dummy src/dummy.cpp)

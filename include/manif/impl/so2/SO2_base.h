@@ -63,7 +63,8 @@ public:
 
   void inverse(Manifold& m, Jacobian& j) const;
 
-  void lift(Tangent& t, Jacobian& J_t_m) const;
+  template <typename _DerivedOther>
+  void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
 
   /// @todo check why this compose ain't template
   void compose(const Manifold& mb,
@@ -162,7 +163,8 @@ void SO2Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
 }
 
 template <typename _Derived>
-void SO2Base<_Derived>::lift(Tangent& t,
+template <typename _DerivedOther>
+void SO2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
                              Jacobian& J_t_m) const
 {
   t = lift();
