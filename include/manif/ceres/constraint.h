@@ -40,7 +40,8 @@ public:
 
     if (jacobians_raw != nullptr)
     {
-      if (jacobians_raw[0] != nullptr)
+      if (jacobians_raw[0] != nullptr &&
+          jacobians_raw[1] != nullptr)
       {
         state_future.between(state_past,
                              pose_increment_,
@@ -68,7 +69,7 @@ public:
 
 protected:
 
-  const Manifold measurement_;
+  const Tangent measurement_;
 
   mutable Manifold mmeas_;
   mutable Jacobian J_mmeas_meas_;

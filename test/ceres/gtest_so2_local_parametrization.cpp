@@ -3,6 +3,7 @@
 #include "manif/SO2.h"
 #include "manif/ceres/local_parametrization.h"
 #include "manif/ceres/objective.h"
+#include "manif/ceres/constraint.h"
 
 #include <ceres/ceres.h>
 
@@ -10,7 +11,8 @@ namespace manif
 {
 
 using LocalParameterizationSO2 = LocalParameterization<SO2d>;
-using ObjectiveSO2 = Objective<SO2d>;
+using ObjectiveSO2  = Objective<SO2d>;
+using ConstraintSO2 = Constraint<SO2d>;
 
 } /* namespace manif */
 
@@ -27,7 +29,7 @@ std::string getReason(const int flag)
   }
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -64,6 +66,114 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2)
 
   problem.SetParameterization( average_state.data(),
                                &local_parametrization );
+
+  // Run the solver!
+  ceres::Solver::Options options;
+//  options.max_num_iterations = 50;
+//  options.minimizer_progress_to_stdout = false;
+
+  ceres::Solver::Summary summary;
+  ceres::Solve(options, &problem, &summary);
+
+//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+  std::cout << "summary:\n" << summary.FullReport() << "\n";
+
+  bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
+                     (summary.termination_type != 1) and // NO_CONVERGENCE
+                     (summary.termination_type != 5);    // NUMERICAL_FAILURE
+
+  EXPECT_TRUE(opt_success) << getReason(summary.termination_type);
+}
+
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
+{
+  // Tell ceres not to take ownership of the raw pointers
+  ceres::Problem::Options problem_options;
+  problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+
+  ceres::Problem problem(problem_options);
+
+  SO2d state_0(0);
+  SO2d state_1(0);
+  SO2d state_2(0);
+  SO2d state_3(0);
+  SO2d state_4(0);
+  SO2d state_5(0);
+  SO2d state_6(0);
+  SO2d state_7(0);
+
+  ConstraintSO2 constraint_0_1(M_PI/4.);
+  ConstraintSO2 constraint_1_2(M_PI/4.);
+  ConstraintSO2 constraint_2_3(M_PI/4.);
+  ConstraintSO2 constraint_3_4(M_PI/4.);
+  ConstraintSO2 constraint_4_5(M_PI/4.);
+  ConstraintSO2 constraint_5_6(M_PI/4.);
+  ConstraintSO2 constraint_6_7(M_PI/4.);
+
+  // This would be like a loop-closure
+//  ConstraintSO2 constraint_7_8(M_PI/4.);
+
+  // Add residual blocks to ceres problem
+  problem.AddResidualBlock( &constraint_0_1,
+                            nullptr,
+                            state_0.data(), state_1.data() );
+
+  problem.AddResidualBlock( &constraint_1_2,
+                            nullptr,
+                            state_1.data(), state_2.data() );
+
+  problem.AddResidualBlock( &constraint_2_3,
+                            nullptr,
+                            state_2.data(), state_3.data() );
+
+  problem.AddResidualBlock( &constraint_3_4,
+                            nullptr,
+                            state_3.data(), state_4.data() );
+
+  problem.AddResidualBlock( &constraint_4_5,
+                            nullptr,
+                            state_4.data(), state_5.data() );
+
+  problem.AddResidualBlock( &constraint_5_6,
+                            nullptr,
+                            state_5.data(), state_6.data() );
+
+  problem.AddResidualBlock( &constraint_6_7,
+                            nullptr,
+                            state_6.data(), state_7.data() );
+
+  LocalParameterizationSO2 local_parametrization_0;
+  LocalParameterizationSO2 local_parametrization_1;
+  LocalParameterizationSO2 local_parametrization_2;
+  LocalParameterizationSO2 local_parametrization_3;
+  LocalParameterizationSO2 local_parametrization_4;
+  LocalParameterizationSO2 local_parametrization_5;
+  LocalParameterizationSO2 local_parametrization_6;
+  LocalParameterizationSO2 local_parametrization_7;
+
+  problem.SetParameterization( state_0.data(),
+                               &local_parametrization_0 );
+
+  problem.SetParameterization( state_1.data(),
+                               &local_parametrization_1 );
+
+  problem.SetParameterization( state_2.data(),
+                               &local_parametrization_2 );
+
+  problem.SetParameterization( state_3.data(),
+                               &local_parametrization_3 );
+
+  problem.SetParameterization( state_4.data(),
+                               &local_parametrization_4 );
+
+  problem.SetParameterization( state_5.data(),
+                               &local_parametrization_5 );
+
+  problem.SetParameterization( state_6.data(),
+                               &local_parametrization_6 );
+
+  problem.SetParameterization( state_7.data(),
+                               &local_parametrization_7 );
 
   // Run the solver!
   ceres::Solver::Options options;
