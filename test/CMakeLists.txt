@@ -28,11 +28,16 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
-find_package(Ceres QUIET)
+find_package(ceres_solver REQUIRED)
 
-if(CERES_FOUND)
+if(ceres_solver_FOUND)
+
+  message(STATUS "Found ceres_solver, building ceres tests.")
   add_subdirectory(ceres)
-endif(CERES_FOUND)
+
+else()
+  message(STATUS "Could not find ceres_solver, ceres tests will not be built.")
+endif(ceres_solver_FOUND)
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")

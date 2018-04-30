@@ -123,8 +123,8 @@ SE2Base<_Derived>::lift() const
   if (abs(theta) < constants<Scalar>::eps)
   {
     // Mid-point approximation
-    sin_theta_by_theta = real() * cos(imag()/2);
-    one_minus_cos_theta_by_theta = real() * sin(imag()/2);
+    sin_theta_by_theta = cos(imag()/2);
+    one_minus_cos_theta_by_theta = sin(imag()/2);
   }
   else
   {
@@ -136,7 +136,7 @@ SE2Base<_Derived>::lift() const
   return Tangent(
     sin_theta_by_theta * x() - one_minus_cos_theta_by_theta * y(),
     one_minus_cos_theta_by_theta * x() + sin_theta_by_theta * y(),
-    angle());
+    angle() );
 }
 
 template <typename _Derived>
@@ -157,8 +157,7 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 
   return Manifold(
         lhs_real * rhs_real - lhs_imag * rhs_imag,
-        lhs_real * rhs_imag + lhs_imag * rhs_real
-        );
+        lhs_real * rhs_imag + lhs_imag * rhs_real );
 }
 
 /// with Jacs
