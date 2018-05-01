@@ -20,13 +20,9 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_1)
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_DATA)
 {
-  /// @todo without specifying const
-  /// it calls non-const data()
   const SO2Tangentd so2tan(M_PI);
 
-  EXPECT_NE(nullptr, so2tan.data());
-
-  EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
+  EXPECT_DOUBLE_EQ(M_PI, so2tan.coeffs()(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)

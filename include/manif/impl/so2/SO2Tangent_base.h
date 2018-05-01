@@ -30,7 +30,7 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  using Base::data;
+  using Base::coeffs;
 
   /// Tangent common API
 
@@ -72,14 +72,14 @@ void SO2TangentBase<_Derived>::retract(
 //const typename SO2TangentBase<_Derived>::Scalar&
 //SO2TangentBase<_Derived>::angle() const
 //{
-//  return data()->x();
+//  return coeffs().x();
 //}
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::Scalar
 SO2TangentBase<_Derived>::angle() const
 {
-  return data()->x();
+  return coeffs().x();
 }
 
 } /* namespace manif */

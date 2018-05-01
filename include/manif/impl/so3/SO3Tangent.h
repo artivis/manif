@@ -63,14 +63,16 @@ public:
 
   /// Tangent common API
 
-  DataType* data();
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_API;
 
   /// SO3Tangent specific API
 
 protected:
+
+  friend class TangentBase<SO3Tangent<Scalar>>;
+  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -85,17 +87,17 @@ SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)
 }
 
 template <typename _Scalar>
-typename SO3Tangent<_Scalar>::DataType*
-SO3Tangent<_Scalar>::data()
+typename SO3Tangent<_Scalar>::DataType&
+SO3Tangent<_Scalar>::coeffs_nonconst()
 {
-  return &data_;
+  return data_;
 }
 
 template <typename _Scalar>
-const typename SO3Tangent<_Scalar>::DataType*
-SO3Tangent<_Scalar>::data() const
+const typename SO3Tangent<_Scalar>::DataType&
+SO3Tangent<_Scalar>::coeffs() const
 {
-  return &data_;
+  return data_;
 }
 
 } /* namespace manif */

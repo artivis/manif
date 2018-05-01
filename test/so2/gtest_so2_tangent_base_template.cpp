@@ -12,12 +12,10 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_DATA)
   /// it calls non-const data()
   const SO2Tangentd so2tan(M_PI);
 
-  const SO2Tangentd::DataType* data_ptr =
-      callData(so2tan);
+  const SO2Tangentd::DataType& data_ref =
+      callCoeffs(so2tan);
 
-  EXPECT_NE(nullptr, so2tan.data());
-
-  EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
+  EXPECT_DOUBLE_EQ(M_PI, data_ref(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_ZERO)

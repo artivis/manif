@@ -38,7 +38,8 @@ public:
 
   using DataType  = typename Base::DataType;
 
-  using Base::data;
+  using Base::coeffs;
+  using Base::coeffs_nonconst;
 
   /// Tangent common API
 
@@ -60,13 +61,13 @@ public:
 template <typename _Derived>
 void SO3TangentBase<_Derived>::zero()
 {
-  data()->setZero();
+  coeffs_nonconst().setZero();
 }
 
 template <typename _Derived>
 void SO3TangentBase<_Derived>::random()
 {
-  data()->setRandom();
+  coeffs_nonconst().setRandom();
 }
 
 template <typename _Derived>
@@ -77,11 +78,11 @@ SO3TangentBase<_Derived>::retract() const
   using std::cos;
   using std::sin;
 
-  const Scalar angle = sqrt(data()->squaredNorm());
+  const Scalar angle = sqrt(coeffs().squaredNorm());
 
   if (angle > Constants<Scalar>::eps)
   {
-    return Manifold( Eigen::AngleAxis<Scalar>(angle, data()->normalized()) );
+    return Manifold( Eigen::AngleAxis<Scalar>(angle, coeffs().normalized()) );
   }
   else
   {
@@ -104,21 +105,21 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::Scalar
 SO3TangentBase<_Derived>::x() const
 {
-  return data()->operator()(0);
+  return coeffs()(0);
 }
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Scalar
 SO3TangentBase<_Derived>::y() const
 {
-  return data()->operator()(1);
+  return coeffs()(1);
 }
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Scalar
 SO3TangentBase<_Derived>::z() const
 {
-  return data()->operator()(2);
+  return coeffs()(2);
 }
 
 } /* namespace manif */

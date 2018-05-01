@@ -30,11 +30,14 @@ struct TangentBase
 
 protected:
 
-  DataType* data();
+  DataType& coeffs_nonconst();
 
 public:
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
+
+//  DataType* data();
+//  const DataType* data() const;
 
   /// Common Tangent API
 
@@ -66,6 +69,8 @@ public:
    * @param t
    * @return
    */
+  _Derived& operator =(const TangentBase<_Derived>& t);
+
   template <typename _DerivedOther>
   _Derived& operator =(const TangentBase<_DerivedOther>& t);
 
@@ -87,30 +92,44 @@ private:
   const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
 };
 
-template <class _Derived>
-typename TangentBase<_Derived>::DataType*
-TangentBase<_Derived>::data()
+template <typename _Derived>
+typename TangentBase<_Derived>::DataType&
+TangentBase<_Derived>::coeffs_nonconst()
 {
-  return derived().data();
+  return derived().coeffs_nonconst();
 }
 
-template <class _Derived>
-const typename TangentBase<_Derived>::DataType*
-TangentBase<_Derived>::data() const
+template <typename _Derived>
+const typename TangentBase<_Derived>::DataType&
+TangentBase<_Derived>::coeffs() const
 {
-  return derived().data();
+  return derived().coeffs();
 }
+
+//template <class _Derived>
+//typename TangentBase<_Derived>::DataType*
+//TangentBase<_Derived>::data()
+//{
+//  return derived().coeffs_nonconst().data();
+//}
+
+//template <class _Derived>
+//const typename TangentBase<_Derived>::DataType*
+//TangentBase<_Derived>::data() const
+//{
+//  return derived().coeffs().data();
+//}
 
 template <class _Derived>
 void TangentBase<_Derived>::zero()
 {
-  data()->setZero();
+  coeffs_nonconst().setZero();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::random()
 {
-  data()->setRandom();
+  coeffs_nonconst().setRandom();
 }
 
 template <class _Derived>
@@ -151,12 +170,21 @@ TangentBase<_Derived>::operator +(const Manifold& t) const
 }
 
 template <typename _Derived>
+_Derived&
+TangentBase<_Derived>::operator =(
+    const TangentBase<_Derived>& t)
+{
+  derived().coeffs_nonconst() = t.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
 TangentBase<_Derived>::operator =(
-    const TangentBase<_DerivedOther>& m)
+    const TangentBase<_DerivedOther>& t)
 {
-  *derived().data() = *m.data();
+  derived().coeffs_nonconst() = t.coeffs();
   return derived();
 }
 
@@ -190,6 +218,16 @@ typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::Retract(const Tangent& t)
 {
   return t.retract();
+}
+
+/// Utils
+
+template <typename _Stream, typename _Derived>
+_Stream& operator << (
+    _Stream& s,
+    const manif::TangentBase<_Derived>& m)
+{
+  s << m.coeffs().transpose();
 }
 
 } /* namespace manif */

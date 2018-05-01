@@ -13,10 +13,10 @@ callCoeffs(const ManifoldBase<_Derived>& manifold)
 }
 
 template <typename _Derived>
-const typename _Derived::DataType*
-callData(const TangentBase<_Derived>& tangent)
+const typename _Derived::DataType&
+callCoeffs(const TangentBase<_Derived>& tangent)
 {
-  return tangent.data();
+  return tangent.coeffs();
 }
 
 template <typename _Derived>
