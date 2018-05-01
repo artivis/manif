@@ -46,6 +46,7 @@ public:
   Scalar* data();
   const Scalar* data() const;
 
+  /// @todo
 //  template <class _Scalar>
 //  ManifoldBase<_Derived> cast() const
 //  {
@@ -108,8 +109,10 @@ public:
    * @param t
    * @return
    */
+  _Derived& operator =(const ManifoldBase<_Derived>& m);
+
   template <typename _DerivedOther>
-  _Derived& operator =(const ManifoldBase<_DerivedOther>& t);
+  _Derived& operator =(const ManifoldBase<_DerivedOther>& m);
 
   /**
    * @brief operator +, rplus
@@ -396,12 +399,20 @@ ManifoldBase<_Derived>::act(const Vector& v) const
 /// Operators
 
 template <typename _Derived>
+_Derived&
+ManifoldBase<_Derived>::operator =(
+    const ManifoldBase<_Derived>& m)
+{
+  derived().coeffs_nonconst() = m.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
 ManifoldBase<_Derived>::operator =(
     const ManifoldBase<_DerivedOther>& m)
 {
-  MANIF_DEBUG("ManifoldBase operator =");
   derived().coeffs_nonconst() = m.coeffs();
   return derived();
 }
@@ -616,7 +627,7 @@ _Stream& operator << (
     _Stream& s,
     const manif::ManifoldBase<_Derived>& m)
 {
-  s << m.coeffs();
+  s << m.coeffs().transpose();
 }
 
 } /* namespace manif */
