@@ -114,7 +114,7 @@ void SO2Base<_Derived>::identity()
 {
 //  real() = 0;
 //  imag() = 0;
-  coeffs_nonconst().setZero();
+  coeffs_nonconst().setIdentity();
 }
 
 template <typename _Derived>
