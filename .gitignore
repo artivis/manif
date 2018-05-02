@@ -1,1 +1,6 @@
 *.user
+.cproject
+.project
+.settings
+build
+
