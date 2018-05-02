@@ -105,7 +105,7 @@ SO3<_Scalar>::SO3(const DataType& d)
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
                   const Scalar z, const Scalar w)
-  : data_(w, x,y, z)
+  : data_(w, x, y, z) // Eigen Quaternion constructor uses 'w' in first place
 {
   //
 }

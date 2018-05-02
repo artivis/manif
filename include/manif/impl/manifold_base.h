@@ -35,8 +35,8 @@ struct ManifoldBase
   static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
-  using Scalar   = typename internal::traits<_Derived>::Scalar;
-  using Manifold = typename internal::traits<_Derived>::Manifold;
+  using Scalar         = typename internal::traits<_Derived>::Scalar;
+  using Manifold       = typename internal::traits<_Derived>::Manifold;
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
