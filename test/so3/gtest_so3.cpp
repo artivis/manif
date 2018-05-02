@@ -490,7 +490,7 @@ TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
 
 */
 
-TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
+TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
 {
   SO3d so3b(toRad(15),toRad(45),toRad(90));
   SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
@@ -511,6 +511,24 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   EXPECT_EQ(3, J_between_b.rows());
   EXPECT_EQ(3, J_between_b.cols());
 }
+
+TEST(TEST_SO3, TEST_SO3_TANGENT_SKEW)
+{
+  SO3Tangentd so3_tan(SO3Tangentd::DataType(1, 2, 3));
+
+  SO3Tangentd::LieType so3_lie = so3_tan.skew();
+
+  EXPECT_DOUBLE_EQ( 0, so3_lie(0,0));
+  EXPECT_DOUBLE_EQ(-3, so3_lie(0,1));
+  EXPECT_DOUBLE_EQ( 2, so3_lie(0,2));
+  EXPECT_DOUBLE_EQ( 3, so3_lie(1,0));
+  EXPECT_DOUBLE_EQ( 0, so3_lie(1,1));
+  EXPECT_DOUBLE_EQ(-1, so3_lie(1,2));
+  EXPECT_DOUBLE_EQ(-2, so3_lie(2,0));
+  EXPECT_DOUBLE_EQ( 1, so3_lie(2,1));
+  EXPECT_DOUBLE_EQ( 0, so3_lie(2,2));
+}
+
 
 int main(int argc, char** argv)
 {
