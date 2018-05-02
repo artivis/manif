@@ -12,23 +12,44 @@ namespace manif
 {
 
 template <class _Derived>
+struct ManifoldBase;
+
+template <typename _Manifold>
+struct traits_cast;
+
+template <>
+template <template <typename _Scalar> class _Manifold, typename _Scalar>
+struct traits_cast<_Manifold<_Scalar>>
+{
+  template <typename T>
+  using MaMan = _Manifold<T>;
+
+  using MyInt = int;
+};
+
+template <class _Derived>
 struct ManifoldBase
 {
-  using Scalar   = typename internal::traits<_Derived>::Scalar;
-
-  using Manifold = typename internal::traits<_Derived>::Manifold;
-
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
   static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
+  using Scalar   = typename internal::traits<_Derived>::Scalar;
+  using Manifold = typename internal::traits<_Derived>::Manifold;
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
   using Transformation = typename internal::traits<_Derived>::Transformation;
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
+
+  //  using MyInt = typename traits_cast<_Derived>::MyInt;
+
+  /// @todo find something sexier
+  template <typename T>
+  using ManifoldTemplate =
+  typename internal::traits<_Derived>::template ManifoldTemplate<T>;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -47,11 +68,11 @@ public:
   const Scalar* data() const;
 
   /// @todo
-//  template <class _Scalar>
-//  ManifoldBase<_Derived> cast() const
-//  {
-//    return ManifoldBase<_Derived>(data()->cast<_Scalar>());
-//  }
+  template <class _NewScalar>
+  ManifoldTemplate<_NewScalar> cast() const
+  {
+    return ManifoldTemplate<_NewScalar>(coeffs().cast<_NewScalar>());
+  }
 
   Transformation transform() const;
 

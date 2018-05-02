@@ -29,11 +29,141 @@ std::string getReason(const int flag)
   }
 }
 
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_OBJECTIVE)
+{
+  ceres::Problem problem;
+
+  // Create 4 objectives spread arround pi
+  ceres::CostFunction* obj_pi_over_4 =
+      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
+          new ObjectiveSO2(SO2d(M_PI/4.)));
+
+  ceres::CostFunction* obj_3_pi_over_8 =
+      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
+          new ObjectiveSO2(SO2d(3.*M_PI/8.)));
+
+  ceres::CostFunction* obj_5_pi_over_8 =
+      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
+          new ObjectiveSO2(SO2d(5.*M_PI/8.)));
+
+  ceres::CostFunction* obj_3_pi_over_4 =
+      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
+          new ObjectiveSO2(SO2d(3.*M_PI/4.)));
+
+  /// @todo eval Jac
+  double** parameters = new double*[1];
+////  double** jacobians = new double*[10];
+//  for (int i = 0; i < 2; ++i) {
+//    parameters[i] = new double[1];
+//    parameters[i][0] = i;
+////    jacobians[i] = new double[1];
+//  }
+
+  SO2d average_state(0);
+
+  double residuals = 0.0;
+
+  parameters[0] = average_state.data();
+
+  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(M_PI/4., residuals);
+
+  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
+
+  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
+
+  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
+  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
+
+  parameters[0] = nullptr;
+  delete parameters[0];
+  delete[] parameters;
+
+  /////////////////////////////////
+
+  // Add residual blocks to ceres problem
+  problem.AddResidualBlock( obj_pi_over_4,
+                            nullptr,
+                            average_state.data() );
+
+  problem.AddResidualBlock( obj_3_pi_over_8,
+                            nullptr,
+                            average_state.data() );
+
+  problem.AddResidualBlock( obj_5_pi_over_8,
+                            nullptr,
+                             average_state.data() );
+
+  problem.AddResidualBlock( obj_3_pi_over_4,
+                            nullptr,
+                            average_state.data() );
+
+  ceres::LocalParameterization* auto_diff_local_parameterization =
+      new ceres::AutoDiffLocalParameterization<LocalParameterizationSO2, 2, 1>;
+
+  double x[2] = {0.0, 0.0};
+  double delta[1] = {M_PI};
+  double x_plus_delta[2] = {0.0, 0.0};
+
+  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+
+  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
+//  EXPECT_DOUBLE_EQ( 0.0, x_plus_delta[1]); //Which is: 1.2246467991473532e-16
+  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
+
+  EXPECT_EQ(M_PI, Eigen::Map<const SO2d>(x_plus_delta).angle());
+
+
+  x[0] = 0,99990605; // pi/4
+  x[1] = 0,013707355;
+  delta[0] = M_PI;
+  x_plus_delta[0] = 0;
+  x_plus_delta[1] = 0;
+
+  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+
+  EXPECT_DOUBLE_EQ(0.0, x_plus_delta[0]);
+  EXPECT_DOUBLE_EQ(0.0, x_plus_delta[1]);
+  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
+
+  EXPECT_EQ(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle());
+
+
+
+  problem.SetParameterization( average_state.data(),
+                               auto_diff_local_parameterization );
+/*
+  // Run the solver!
+  ceres::Solver::Options options;
+//  options.max_num_iterations = 50;
+//  options.minimizer_progress_to_stdout = false;
+
+  ceres::Solver::Summary summary;
+  ceres::Solve(options, &problem, &summary);
+
+  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+//  std::cout << "summary:\n" << summary.FullReport() << "\n";
+
+  bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
+                     (summary.termination_type != 1) and // NO_CONVERGENCE
+                     (summary.termination_type != 5);    // NUMERICAL_FAILURE
+
+  EXPECT_TRUE(opt_success) << "Solving failure : "
+                           << getReason(summary.termination_type);
+
+  EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
+  */
+}
+
+/*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
   ceres::Problem problem(problem_options);
 
@@ -44,6 +174,9 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
                obj_3_pi_over_8(SO2d(3.*M_PI/8.)),
                obj_5_pi_over_8(SO2d(5.*M_PI/8.)),
                obj_3_pi_over_4(SO2d(3.*M_PI/4.));
+
+  ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
+          new MyScalarCostFunctor(1.0));
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &obj_pi_over_4,
@@ -62,10 +195,13 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
                             nullptr,
                             average_state.data() );
 
-  LocalParameterizationSO2 local_parametrization;
+  ceres::AutoDiffLocalParameterization<LocalParameterizationSO2, 2, 1>
+        auto_diff_local_parameterization;
+
+//  LocalParameterizationSO2 local_parametrization;
 
   problem.SetParameterization( average_state.data(),
-                               &local_parametrization );
+                               &auto_diff_local_parameterization );
 
   // Run the solver!
   ceres::Solver::Options options;
@@ -75,16 +211,21 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
 
-//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
-  std::cout << "summary:\n" << summary.FullReport() << "\n";
+  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+//  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
   bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
                      (summary.termination_type != 1) and // NO_CONVERGENCE
                      (summary.termination_type != 5);    // NUMERICAL_FAILURE
 
-  EXPECT_TRUE(opt_success) << getReason(summary.termination_type);
-}
+  EXPECT_TRUE(opt_success) << "Solving failure : "
+                           << getReason(summary.termination_type);
 
+  EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
+}
+*/
+
+/*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
 {
   // Tell ceres not to take ownership of the raw pointers
@@ -192,6 +333,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
 
   EXPECT_TRUE(opt_success) << getReason(summary.termination_type);
 }
+*/
 
 int main(int argc, char** argv)
 {

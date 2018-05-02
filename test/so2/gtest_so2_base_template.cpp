@@ -8,9 +8,7 @@ using namespace manif;
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_DATA)
 {
-  /// @todo without specifying const
-  /// it calls non-const data()
-  /*const*/ SO2d so2(0);
+  SO2d so2(0);
 
   const auto& data = callCoeffs(so2);
 
@@ -181,20 +179,6 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_LIFT)
   auto so2_lift = callLift(so2);
 
   EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
-}
-
-/// @todo move to SO2Tangent tests
-TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RETRACT)
-{
-  SO2Tangentd so2_lift(M_PI);
-
-  EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
-
-  auto so2_retract = callRetract(so2_lift);
-
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_COMPOSE)

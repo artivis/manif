@@ -23,6 +23,10 @@ struct TangentBase
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
 
+  template <typename T>
+  using TangentTemplate =
+  typename internal::traits<_Derived>::template TangentTemplate<T>;
+
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
   operator _Derived&() { return derived(); }
@@ -36,8 +40,8 @@ public:
 
   const DataType& coeffs() const;
 
-//  DataType* data();
-//  const DataType* data() const;
+  DataType* data();
+  const DataType* data() const;
 
   /// Common Tangent API
 
@@ -106,19 +110,19 @@ TangentBase<_Derived>::coeffs() const
   return derived().coeffs();
 }
 
-//template <class _Derived>
-//typename TangentBase<_Derived>::DataType*
-//TangentBase<_Derived>::data()
-//{
-//  return derived().coeffs_nonconst().data();
-//}
+template <class _Derived>
+typename TangentBase<_Derived>::DataType*
+TangentBase<_Derived>::data()
+{
+  return derived().coeffs_nonconst().data();
+}
 
-//template <class _Derived>
-//const typename TangentBase<_Derived>::DataType*
-//TangentBase<_Derived>::data() const
-//{
-//  return derived().coeffs().data();
-//}
+template <class _Derived>
+const typename TangentBase<_Derived>::DataType*
+TangentBase<_Derived>::data() const
+{
+  return derived().coeffs().data();
+}
 
 template <class _Derived>
 void TangentBase<_Derived>::zero()

@@ -112,9 +112,9 @@ SO2Base<_Derived>::rotation() const
 template <typename _Derived>
 void SO2Base<_Derived>::identity()
 {
-//  real() = 1;
+//  real() = 0;
 //  imag() = 0;
-  coeffs_nonconst().setIdentity();
+  coeffs_nonconst().setZero();
 }
 
 template <typename _Derived>

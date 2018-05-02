@@ -24,6 +24,9 @@ struct traits<SE2<_Scalar>>
 {
   using Scalar = _Scalar;
 
+  template <typename T>
+  using ManifoldTemplate = SE2<T>;
+
   using Manifold = SE2<_Scalar>;
   using Tangent  = SE2Tangent<_Scalar>;
 

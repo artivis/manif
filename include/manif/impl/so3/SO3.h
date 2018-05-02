@@ -22,6 +22,9 @@ struct traits<SO3<_Scalar>>
 {
   using Scalar = _Scalar;
 
+  template <typename T>
+  using ManifoldTemplate = SO3<T>;
+
   using Manifold = SO3<_Scalar>;
   using Tangent  = SO3Tangent<_Scalar>;
 

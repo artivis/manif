@@ -22,19 +22,30 @@ TEST(TEST_SO2, TEST_SO2_MAP_CONST)
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_MAP_DATA)
+TEST(TEST_SO2, TEST_SO2_COEFFS)
 {
-  /// @todo without specifying const
-  /// it calls non-const data()
-
   double data[2] = {1,0};
 
   Eigen::Map<SO2d> so2(data);
 
-  EXPECT_EQ(data, so2.coeffs().data());
-
   EXPECT_DOUBLE_EQ(1, so2.coeffs()(0));
   EXPECT_DOUBLE_EQ(0, so2.coeffs()(1));
+}
+
+TEST(TEST_SO2, TEST_SO2_MAP_DATA)
+{
+  double data[2] = {1,0};
+
+  Eigen::Map<SO2d> so2(data);
+
+  double * data_ptr = so2.data();
+
+  ASSERT_NE(nullptr, data_ptr);
+  EXPECT_EQ(data, data_ptr);
+
+  EXPECT_DOUBLE_EQ(1, *data_ptr);
+  ++data_ptr;
+  EXPECT_DOUBLE_EQ(0, *data_ptr);
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
@@ -50,10 +61,15 @@ TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
   EXPECT_DOUBLE_EQ(0, so2a.real());
   EXPECT_DOUBLE_EQ(1, so2a.imag());
 
-  so2a = SO2d(0.5,0.5);
+  so2a = SO2d(1, 1);
 
-  EXPECT_DOUBLE_EQ(0.5, so2a.real());
-  EXPECT_DOUBLE_EQ(0.5, so2a.imag());
+  EXPECT_DOUBLE_EQ(1, so2a.real());
+  EXPECT_DOUBLE_EQ(1, so2a.imag());
+
+//  SO2d so2e = so2a;
+
+//  EXPECT_DOUBLE_EQ(1, so2e.real());
+//  EXPECT_DOUBLE_EQ(1, so2e.imag());
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_IDENTITY)

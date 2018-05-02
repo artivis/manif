@@ -23,7 +23,7 @@ set(CXX_11_TEST_TARGETS_CERES
 
 foreach(target ${CXX_11_TEST_TARGETS_CERES})
   target_link_libraries(${target} ${ceres_solver_LIBRARIES})
-endforeach(test_src)
+endforeach()
 
 set(CXX_11_TEST_TARGETS
   ${CXX_11_TEST_TARGETS}

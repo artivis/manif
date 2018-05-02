@@ -4,33 +4,64 @@
 
 using namespace manif;
 
-TEST(TEST_SO2, TEST_SO2_0)
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_DATATYPE)
 {
   SO2d so2(SO2d::DataType(1,0));
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_1)
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_REAL_IMAG)
 {
   SO2d so2(1, 0);
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_2)
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_THETA)
 {
   SO2d so2(0);
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_DATA)
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_COPY)
+{
+  SO2d so2(SO2d(1,1));
+
+  EXPECT_DOUBLE_EQ(M_PI/4., so2.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_COEFFS)
 {
   SO2d so2(0);
 
   EXPECT_DOUBLE_EQ(1, so2.coeffs()(0));
   EXPECT_DOUBLE_EQ(0, so2.coeffs()(1));
+}
+
+TEST(TEST_SO2, TEST_SO2_DATA)
+{
+  SO2d so2(0);
+
+  double * data_ptr = so2.data();
+
+  ASSERT_NE(nullptr, data_ptr);
+
+  EXPECT_DOUBLE_EQ(1, *data_ptr);
+  ++data_ptr;
+  EXPECT_DOUBLE_EQ(0, *data_ptr);
+}
+
+TEST(TEST_SO2, TEST_SO2_CAST)
+{
+  SO2d so2d(0);
+
+  EXPECT_DOUBLE_EQ(0, so2d.angle());
+
+  SO2f so2f = so2d.cast<float>();
+
+  EXPECT_DOUBLE_EQ(0, so2f.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_IDENTITY)
@@ -177,6 +208,16 @@ TEST(TEST_SO2, TEST_SO2_RMINUS)
   auto so2c = so2a.rminus(so2b);
 
   EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_RMINUS2)
+{
+  SO2d so2a(3.*M_PI/8.);
+  SO2d so2b(0);
+
+  auto so2c = so2a.rminus(so2b);
+
+  EXPECT_DOUBLE_EQ(3.*M_PI/8., so2c.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_LMINUS)
@@ -470,5 +511,8 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
+
+//  ::testing::GTEST_FLAG(filter) = "TEST_SO2.TEST_SO2_LIFT_JAC";
+
   return RUN_ALL_TESTS();
 }

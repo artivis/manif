@@ -22,6 +22,9 @@ template <>
 template <typename _Scalar>
 struct traits<SO2<_Scalar>>
 {
+  template <typename T>
+  using ManifoldTemplate = SO2<T>;
+
   using Scalar = _Scalar;
 
   using Manifold = SO2<_Scalar>;

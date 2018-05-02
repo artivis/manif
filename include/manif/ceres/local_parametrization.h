@@ -10,6 +10,17 @@
 namespace manif
 {
 
+template <typename _Jacobian>
+struct traits_ceres;
+
+template <typename _Scalar, int _Rows, int _Cols>
+struct traits_ceres<Eigen::Matrix<_Scalar, _Rows, _Cols>>
+{
+  using JacobianMap =
+    Eigen::Map<
+      Eigen::Matrix<_Scalar, _Rows, _Cols, Eigen::RowMajor>>;
+};
+
 template <typename _Manifold>
 class LocalParameterization
     : public ceres::LocalParameterization
@@ -18,15 +29,35 @@ class LocalParameterization
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
 
-  /// @todo check diz J size :s
-  using JacobianMap =
-    Eigen::Map<Eigen::Matrix<
-      double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
+  using JacobianMap = typename traits_ceres<Jacobian>::JacobianMap;
+
+  template <typename _Scalar>
+  using ManifoldTemplate =
+  typename _Manifold::template ManifoldTemplate<_Scalar>;
+
+  template <typename _Scalar>
+  using TangentTemplate =
+  typename Tangent::template TangentTemplate<_Scalar>;
 
 public:
 
   LocalParameterization() : delta_zero_(Tangent::Zero()) {}
   virtual ~LocalParameterization() = default;
+
+  template<typename T>
+  bool operator()(const T* state_raw,
+                  const T* delta_raw,
+                  T* state_plus_delta_raw) const
+  {
+    const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
+    const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
+
+    Eigen::Map<ManifoldTemplate<T>> state_plus_delta(state_plus_delta_raw);
+
+    state_plus_delta = state + delta;
+
+    return true;
+  }
 
   /**
    * @brief Plus, rplus
@@ -40,14 +71,16 @@ public:
                     double const* delta_raw,
                     double* state_plus_delta_raw) const override
   {
-    const Eigen::Map<const Manifold> state(state_raw);
-    const Eigen::Map<const Tangent>  delta(delta_raw);
+    return operator ()(state_raw, delta_raw, state_plus_delta_raw);
 
-    Eigen::Map<Manifold> state_plus_delta(state_plus_delta_raw);
+//    const Eigen::Map<const Manifold> state(state_raw);
+//    const Eigen::Map<const Tangent>  delta(delta_raw);
 
-    state_plus_delta = state + delta;
+//    Eigen::Map<Manifold> state_plus_delta(state_plus_delta_raw);
 
-    return true;
+//    state_plus_delta = state + delta;
+
+//    return true;
   }
 
   /**
@@ -62,22 +95,54 @@ public:
   {
     const Eigen::Map<const Manifold> state(state_raw);
 
-    state.rplus(delta_zero_, tmp_out_, J_rplus_m, J_rplus_t);
+    state.rplus(delta_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
-    rplus_jacobian = J_rplus_t;
+//    Eigen::Map<Jacobian> rplus_jacobian(rplus_jacobian_raw);
+    rplus_jacobian = J_rplus_t_;
+
+    rplus_jacobian_raw[0] = -1;
+    rplus_jacobian_raw[1] = -1;
 
     return true;
   }
 
-  virtual int GlobalSize() const { return SO2d::RepSize; }
-  virtual int LocalSize() const { return SO2d::DoF; }
+//  bool MultiplyByJacobian(const double *x, const int /*num_rows*/,
+//                          const double *global_matrix,
+//                          double *local_matrix) const override
+//  {
+////    ceres::Matrix jacobian(GlobalSize(), LocalSize());
+//    Jacobian jacobian;
+//    if (!ComputeJacobian(x, jacobian.data())) {
+//      return false;
+//    }
+
+////    MatrixRef(local_matrix, num_rows, LocalSize()) =
+////          ConstMatrixRef(global_matrix, num_rows, GlobalSize()) * jacobian;
+
+//    const Eigen::Map<const Manifold> state(global_matrix);
+//    Eigen::Map<Tangent> delta(local_matrix);
+
+//    JacobianMap rplus_jacobian(x);
+
+//    std::cout << "MultiplyByJacobian :\n"
+//              << "state " << state
+//              << "delta " << delta
+//              << "rplus_jacobian " << rplus_jacobian
+//              << "\n";
+
+//    return true;
+//  }
+
+  virtual int GlobalSize() const override { return Manifold::RepSize; }
+  virtual int LocalSize()  const override { return Manifold::DoF; }
 
 protected:
 
-  /*static*/ const Tangent delta_zero_;
+  const Tangent delta_zero_;
+
   mutable Manifold tmp_out_;
-  mutable Jacobian J_rplus_m, J_rplus_t;
+  mutable Jacobian J_rplus_m_, J_rplus_t_;
 };
 
 //using LocalParameterizationSO2 = LocalParameterization<SO2d>;
