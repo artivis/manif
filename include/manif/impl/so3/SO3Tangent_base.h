@@ -95,7 +95,9 @@ typename SO3TangentBase<_Derived>::LieType
 SO3TangentBase<_Derived>::skew() const
 {
   MANIF_NOT_IMPLEMENTED_YET
-  return LieType();
+  return (LieType() <<      0     , -coeffs()(2),  coeffs()(1),
+                       coeffs()(2),       0     , -coeffs()(0),
+                      -coeffs()(1),  coeffs()(0),      0      ).finished();
 }
 
 /// with Jacs
