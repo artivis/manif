@@ -61,7 +61,6 @@ public:
   Scalar real() const;
   Scalar imag() const;
   Scalar angle() const;
-  void angle(const Scalar theta);
 
   Scalar x() const;
   Scalar y() const;
@@ -90,6 +89,7 @@ SE2Base<_Derived>::rotation() const
 template <typename _Derived>
 void SE2Base<_Derived>::identity()
 {
+  coeffs_nonconst().setZero();
   coeffs_nonconst()(2) = 1;
 }
 
@@ -111,32 +111,7 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
 SE2Base<_Derived>::lift() const
 {
-  using std::abs;
-  using std::cos;
-  using std::sin;
 
-  const Scalar theta = angle();
-
-  Scalar sin_theta_by_theta;
-  Scalar one_minus_cos_theta_by_theta;
-
-  if (abs(theta) < constants<Scalar>::eps)
-  {
-    // Mid-point approximation
-    sin_theta_by_theta = cos(imag()/2);
-    one_minus_cos_theta_by_theta = sin(imag()/2);
-  }
-  else
-  {
-    // Euler integration
-    sin_theta_by_theta = sin(theta) / theta;
-    one_minus_cos_theta_by_theta = (Scalar(1) - cos(theta)) / theta;
-  }
-
-  return Tangent(
-    sin_theta_by_theta * x() - one_minus_cos_theta_by_theta * y(),
-    one_minus_cos_theta_by_theta * x() + sin_theta_by_theta * y(),
-    angle() );
 }
 
 template <typename _Derived>
@@ -192,12 +167,7 @@ template <typename _Derived>
 void SE2Base<_Derived>::lift(Tangent& t,
                              Jacobian& J_t_m) const
 {
-  t = lift();
-  /// @todo check J
-  J_t_m.setIdentity();
-  J_t_m.template block<2,2>(0,0) = rotation();
-  J_t_m(0,2) = 0;
-  J_t_m(1,2) = 0;
+
 }
 
 template <typename _Derived>
