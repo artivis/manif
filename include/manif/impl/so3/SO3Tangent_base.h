@@ -106,7 +106,28 @@ template <typename _Derived>
 void SO3TangentBase<_Derived>::retract(
     Manifold& m, Jacobian& J_m_t) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  m = retract();
+
+  // Jacobians from wolf::rotations.h
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const DataType& theta_vec = this->coeffs();
+  Jacobian W(skew(theta_vec));
+
+  Scalar theta_sq = theta_vec.squaredNorm();
+
+  if (theta_sq <= Constants<Scalar>::eps_sq)
+      return Jacobian::Identity() - (Scalar)0.5 * W; // Small angle approximation
+
+  Scalar theta    = sqrt(theta_sq);
+  Jacobian M1, M2;
+
+  M1.noalias() = ((Scalar)1.0 - cos(theta)) / theta_sq * W;
+  M2.noalias() = (theta_vec - sin(theta)) / (theta_sq * theta) * (W * W);
+
+  J_m_t = Jacobian::Identity() - M1 + M2;
 }
 
 /// SO3Tangent specifics
