@@ -46,7 +46,7 @@ public:
 
   /// with Jacs
 
-  void inverse(Manifold& m, Jacobian& j) const;
+  void inverse(Manifold& minv, Jacobian& J_minv_m) const;
   void lift(Tangent& t, Jacobian& J_t_m) const;
 
   void compose(const Manifold& mb,
@@ -145,10 +145,10 @@ SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 /// with Jacs
 
 template <typename _Derived>
-void SO3Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
+void SO3Base<_Derived>::inverse(Manifold& minv, Jacobian& J_minv_m) const
 {
-  m = inverse();
-  J = -rotation();
+  minv = inverse();
+  J_minv_m = -rotation();
 }
 
 template <typename _Derived>
