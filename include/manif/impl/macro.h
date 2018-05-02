@@ -58,7 +58,8 @@
 #define MANIF_INHERIT_TANGENT_API \
   using Base::zero;               \
   using Base::random;             \
-  using Base::retract;
+  using Base::retract;            \
+  using Base::skew;
 
 #define MANIF_INHERIT_TANGENT_OPERATOR \
   using Base::operator +;              \

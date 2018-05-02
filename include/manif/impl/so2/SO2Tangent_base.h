@@ -36,6 +36,8 @@ public:
 
   Manifold retract() const;
 
+  LieType skew() const;
+
   /// with Jacs
 
   void retract(Manifold& m, Jacobian& J_m_t) const;
@@ -54,6 +56,13 @@ SO2TangentBase<_Derived>::retract() const
   using std::cos;
   using std::sin;
   return Manifold(cos(angle()), sin(angle()));
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::LieType
+SO2TangentBase<_Derived>::skew() const
+{
+  return (LieType() << 0, -1, 0, 1).finished();
 }
 
 /// with Jacs

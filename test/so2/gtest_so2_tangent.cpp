@@ -70,6 +70,20 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
   EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
 }
 
+TEST(TEST_SO2, TEST_SO2_TANGENT_SKEW)
+{
+  SO2Tangentd so2_tan(M_PI);
+
+  EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
+
+  SO2Tangentd::LieType so2_lie = so2_tan.skew();
+
+  EXPECT_DOUBLE_EQ( 0, so2_lie(0,0));
+  EXPECT_DOUBLE_EQ(-1, so2_lie(0,1));
+  EXPECT_DOUBLE_EQ( 0, so2_lie(1,0));
+  EXPECT_DOUBLE_EQ( 1, so2_lie(1,1));
+}
+
 /// with Jacs
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
