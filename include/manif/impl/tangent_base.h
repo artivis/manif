@@ -22,6 +22,7 @@ struct TangentBase
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
+  using LieType  = typename internal::traits<_Derived>::LieType;
 
   template <typename T>
   using TangentTemplate =
@@ -48,6 +49,7 @@ public:
   void zero();
   void random();
   Manifold retract() const;
+  LieType skew() const;
 
   Manifold rplus(const Manifold& m) const;
   Manifold lplus(const Manifold& m) const;
@@ -141,6 +143,13 @@ typename TangentBase<_Derived>::Manifold
 TangentBase<_Derived>::retract() const
 {
   return derived().retract();
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::LieType
+TangentBase<_Derived>::skew() const
+{
+  return derived().skew();
 }
 
 template <class _Derived>

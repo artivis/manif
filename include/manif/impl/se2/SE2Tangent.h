@@ -32,6 +32,8 @@ struct traits<SE2Tangent<_Scalar>>
   using DataType  = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
+
+  using LieType = Eigen::Matrix<Scalar, 3, 3>;
 };
 
 } /* namespace internal */

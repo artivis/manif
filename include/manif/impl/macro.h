@@ -69,7 +69,8 @@
   using Manifold = typename Base::Manifold; \
   using Tangent  = typename Base::Tangent;  \
   using Jacobian = typename Base::Jacobian; \
-  using DataType = typename Base::DataType;
+  using DataType = typename Base::DataType; \
+  using LieType  = typename Base::LieType;
 
 #define MANIF_TANGENT_PROPERTIES                                      \
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \

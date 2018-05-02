@@ -33,10 +33,9 @@ public:
 
   using Manifold = typename Base::Manifold;
   using Tangent  = typename Base::Tangent;
-
   using Jacobian = typename Base::Jacobian;
-
-  using DataType  = typename Base::DataType;
+  using DataType = typename Base::DataType;
+  using LieType  = typename Base::LieType;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
@@ -46,6 +45,7 @@ public:
   void zero();
   void random();
   Manifold retract() const;
+  LieType skew() const;
 
   /// with Jacs
 
@@ -88,6 +88,14 @@ SO3TangentBase<_Derived>::retract() const
   {
     return Manifold(x()/2, y()/2, z()/2, 1);
   }
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::LieType
+SO3TangentBase<_Derived>::skew() const
+{
+  MANIF_NOT_IMPLEMENTED_YET
+  return LieType();
 }
 
 /// with Jacs
