@@ -56,6 +56,16 @@ public:
 
     state_plus_delta = state + delta;
 
+    std::cout << "state r " << state.coeffs()(0) << "\n";
+    std::cout << "state i " << state.coeffs()(1) << "\n";
+    std::cout << "state a " << state.angle() << "\n";
+
+    std::cout << "delta " << delta.coeffs()(0) << "\n";
+
+    std::cout << "state_plus_delta r " << state_plus_delta.coeffs()(0) << "\n";
+    std::cout << "state_plus_delta i " << state_plus_delta.coeffs()(1) << "\n";
+    std::cout << "state_plus_delta a " << state_plus_delta.angle() << "\n";
+
     return true;
   }
 

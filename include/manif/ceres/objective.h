@@ -28,12 +28,10 @@ public:
   explicit Objective(const Manifold& target_state)
     : target_state_(target_state)
   {
-//    set_num_residuals(Manifold::DoF);
+    set_num_residuals(Manifold::DoF);
+    /// @todo fix dat
 //    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
-
 //    mutable_parameter_block_sizes()->push_back(Manifold::DoF);
-
-//    std::cout << "Objective : " << target_state << "\n";
   }
 
   virtual ~Objective() = default;
@@ -45,6 +43,18 @@ public:
     Eigen::Map<TangentTemplate<T>> error(residuals_raw);
 
     error = target_state_.template cast<T>() - state;
+
+    const auto casted = target_state_.template cast<T>();
+
+    std::cout << "state r " << state.coeffs()(0) << "\n";
+    std::cout << "state i " << state.coeffs()(1) << "\n";
+    std::cout << "state a " << state.angle() << "\n";
+
+    std::cout << "target r " << casted.coeffs()(0) << "\n";
+    std::cout << "target i " << casted.coeffs()(1) << "\n";
+    std::cout << "target a " << casted.angle() << "\n";
+
+    std::cout << "error " << residuals_raw[0] << "\n";
 
     return true;
   }
