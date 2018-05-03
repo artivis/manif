@@ -12,22 +12,6 @@ namespace manif
 {
 
 template <class _Derived>
-struct ManifoldBase;
-
-template <typename _Manifold>
-struct traits_cast;
-
-template <>
-template <template <typename _Scalar> class _Manifold, typename _Scalar>
-struct traits_cast<_Manifold<_Scalar>>
-{
-  template <typename T>
-  using MaMan = _Manifold<T>;
-
-  using MyInt = int;
-};
-
-template <class _Derived>
 struct ManifoldBase
 {
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
