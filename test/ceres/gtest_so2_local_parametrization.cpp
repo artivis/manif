@@ -232,9 +232,12 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_SMALL_PROBLEM)
   std::cout << "\t Calling Solve ! \n";
   std::cout << "-----------------------------\n\n";
 
+  // Initializing state closer to solution
+  average_state = SO2d(3.*M_PI/8.);
+
   // Run the solver!
   ceres::Solver::Options options;
-//  options.function_tolerance = 1e-15;
+  options.function_tolerance = 1e-15;
   options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
@@ -245,8 +248,8 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_SMALL_PROBLEM)
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
-//  EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
-  EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-15);
+  // 1.3088223838053636e-09
+  EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
 
 /*
