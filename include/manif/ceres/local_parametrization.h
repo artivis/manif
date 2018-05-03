@@ -41,7 +41,7 @@ class LocalParameterization
 
 public:
 
-  LocalParameterization() : delta_zero_(Tangent::Zero()) {}
+  LocalParameterization() : tangent_zero_(Tangent::Zero()) {}
   virtual ~LocalParameterization() = default;
 
   template<typename T>
@@ -105,7 +105,7 @@ public:
   {
     const Eigen::Map<const Manifold> state(state_raw);
 
-    state.rplus(delta_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
+    state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
 //    Eigen::Map<Jacobian> rplus_jacobian(rplus_jacobian_raw);
@@ -149,7 +149,7 @@ public:
 
 protected:
 
-  const Tangent delta_zero_;
+  const Tangent tangent_zero_;
 
   mutable Manifold tmp_out_;
   mutable Jacobian J_rplus_m_, J_rplus_t_;
