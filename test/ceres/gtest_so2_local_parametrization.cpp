@@ -5,6 +5,8 @@
 #include "manif/ceres/objective.h"
 #include "manif/ceres/constraint.h"
 
+#include "manif/ceres/ceres_utils.h"
+
 #include <ceres/ceres.h>
 
 namespace manif
@@ -18,40 +20,29 @@ using ConstraintSO2 = Constraint<SO2d>;
 
 using namespace manif;
 
-std::string getReason(const int flag)
-{
-  switch(flag)
-  {
-    case 0: return "DID_NOT_RUN";
-    case 1: return "NO_CONVERGENCE";
-    case 5: return "NUMERICAL_FAILURE";
-    default: return "UNKNOWN";
-  }
-}
-
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_OBJECTIVE)
 {
-  ceres::Problem problem;
+  ceres::Problem::Options problem_options;
+  problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+
+  ceres::Problem problem(problem_options);
 
   // Create 4 objectives spread arround pi
-  ceres::CostFunction* obj_pi_over_4 =
-      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
-          new ObjectiveSO2(SO2d(M_PI/4.)));
+  std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
+      make_objective_autodiff<SO2d>(M_PI/4.);
 
-  ceres::CostFunction* obj_3_pi_over_8 =
-      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
-          new ObjectiveSO2(SO2d(3.*M_PI/8.)));
+  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_8 =
+      make_objective_autodiff<SO2d>(3.*M_PI/8.);
 
-  ceres::CostFunction* obj_5_pi_over_8 =
-      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
-          new ObjectiveSO2(SO2d(5.*M_PI/8.)));
+  std::shared_ptr<ceres::CostFunction> obj_5_pi_over_8 =
+      make_objective_autodiff<SO2d>(5.*M_PI/8.);
 
-  ceres::CostFunction* obj_3_pi_over_4 =
-      new ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
-          new ObjectiveSO2(SO2d(3.*M_PI/4.)));
+  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
+      make_objective_autodiff<SO2d>(3.*M_PI/4.);
 
   /// @todo eval Jac
-  double** parameters = new double*[1];
+//  double** parameters = new double*[1];
 ////  double** jacobians = new double*[10];
 //  for (int i = 0; i < 2; ++i) {
 //    parameters[i] = new double[1];
@@ -61,100 +52,102 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_OBJECTIVE)
 
   SO2d average_state(0);
 
-  double residuals = 0.0;
+//  double residuals = 0.0;
 
-  parameters[0] = average_state.data();
+//  parameters[0] = average_state.data();
 
-  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
-  EXPECT_DOUBLE_EQ(M_PI/4., residuals);
+//  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
+//  EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals);
 
-  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
-  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
+//  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+//  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
 
-  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
-  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
+//  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+//  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
 
-  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
-  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
+//  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
+//  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
 
-  parameters[0] = nullptr;
-  delete parameters[0];
-  delete[] parameters;
+//  parameters[0] = nullptr;
+//  delete parameters[0];
+//  delete[] parameters;
 
   /////////////////////////////////
 
   // Add residual blocks to ceres problem
-  problem.AddResidualBlock( obj_pi_over_4,
+  problem.AddResidualBlock( obj_pi_over_4.get(),
                             nullptr,
                             average_state.data() );
 
-  problem.AddResidualBlock( obj_3_pi_over_8,
+  problem.AddResidualBlock( obj_3_pi_over_8.get(),
                             nullptr,
                             average_state.data() );
 
-  problem.AddResidualBlock( obj_5_pi_over_8,
+  problem.AddResidualBlock( obj_5_pi_over_8.get(),
                             nullptr,
                              average_state.data() );
 
-  problem.AddResidualBlock( obj_3_pi_over_4,
+  problem.AddResidualBlock( obj_3_pi_over_4.get(),
                             nullptr,
                             average_state.data() );
 
-  ceres::LocalParameterization* auto_diff_local_parameterization =
-      new ceres::AutoDiffLocalParameterization<LocalParameterizationSO2, 2, 1>;
+  std::shared_ptr<ceres::LocalParameterization> auto_diff_local_parameterization =
+    make_local_parametrization_autodiff<SO2d>();
 
-  double x[2] = {0.0, 0.0};
+  double x[2] = {1.0, 0.0};
   double delta[1] = {M_PI};
   double x_plus_delta[2] = {0.0, 0.0};
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+//  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
 
-  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
-//  EXPECT_DOUBLE_EQ( 0.0, x_plus_delta[1]); //Which is: 1.2246467991473532e-16
-  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
+//  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
+////  EXPECT_DOUBLE_EQ( 0.0, x_plus_delta[1]);
+//  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
 
-  EXPECT_EQ(M_PI, Eigen::Map<const SO2d>(x_plus_delta).angle());
+//  EXPECT_EQ(M_PI, Eigen::Map<const SO2d>(x_plus_delta).angle());
 
+//  Eigen::Map<SO2d> map_so2(x);
+//  map_so2 = SO2d(M_PI/4.);
 
-  x[0] = 0,99990605; // pi/4
-  x[1] = 0,013707355;
-  delta[0] = M_PI;
-  x_plus_delta[0] = 0;
-  x_plus_delta[1] = 0;
+//  delta[0] = M_PI;
+//  x_plus_delta[0] = 0;
+//  x_plus_delta[1] = 0;
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+//  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
 
-  EXPECT_DOUBLE_EQ(0.0, x_plus_delta[0]);
-  EXPECT_DOUBLE_EQ(0.0, x_plus_delta[1]);
-  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
+//  EXPECT_DOUBLE_EQ(cos(-3.*M_PI/4.), x_plus_delta[0]);
+//  EXPECT_DOUBLE_EQ(sin(-3.*M_PI/4.), x_plus_delta[1]);
 
-  EXPECT_EQ(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle());
+////  EXPECT_EQ(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle());
+//  EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
 
+//  double J_rplus[2];
+//  auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
 
+//  EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
+//  EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
 
   problem.SetParameterization( average_state.data(),
-                               auto_diff_local_parameterization );
-/*
+                               auto_diff_local_parameterization.get() );
+
   // Run the solver!
   ceres::Solver::Options options;
-//  options.max_num_iterations = 50;
-//  options.minimizer_progress_to_stdout = false;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
 
-  std::cout << "summary:\n" << summary.BriefReport() << "\n";
-//  std::cout << "summary:\n" << summary.FullReport() << "\n";
+//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
   bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
                      (summary.termination_type != 1) and // NO_CONVERGENCE
                      (summary.termination_type != 5);    // NUMERICAL_FAILURE
 
-  EXPECT_TRUE(opt_success) << "Solving failure : "
+  ASSERT_TRUE(opt_success) << "Solving failure : "
                            << getReason(summary.termination_type);
 
   EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
-  */
 }
 
 /*
