@@ -12,8 +12,7 @@ struct traits< Eigen::Map<SE2Tangent<_Scalar>,0> >
     : public traits<SE2Tangent<_Scalar>>
 {
   using typename traits<SE2Tangent<_Scalar>>::Scalar;
-  using traits<SE2Tangent<_Scalar>>::RepSize;
-  using DataType = Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using DataType = Eigen::Map<Eigen::Matrix<Scalar, 3, 1>, 0>;
 };
 
 template <>
@@ -22,8 +21,7 @@ struct traits< Eigen::Map<const SE2Tangent<_Scalar>,0> >
     : public traits<const SE2Tangent<_Scalar>>
 {
   using typename traits<const SE2Tangent<_Scalar>>::Scalar;
-  using traits<const SE2Tangent<_Scalar>>::RepSize;
-  using DataType = Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using DataType = Eigen::Map<const Eigen::Matrix<Scalar, 3, 1>, 0>;
 };
 
 } /* namespace internal */

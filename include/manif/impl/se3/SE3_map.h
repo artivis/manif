@@ -13,7 +13,7 @@ struct traits< Eigen::Map<SE3<_Scalar>,0> >
 {
   using typename traits<SE3<_Scalar>>::Scalar;
   using traits<SE3<_Scalar>>::DoF;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 7, 1>, 0>;
 };
 
 template <>
@@ -23,7 +23,7 @@ struct traits< Eigen::Map<const SE3<_Scalar>,0> >
 {
   using typename traits<const SE3<_Scalar>>::Scalar;
   using traits<const SE3<_Scalar>>::DoF;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, 7, 1>, 0>;
 };
 
 } /* namespace internal */

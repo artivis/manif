@@ -12,8 +12,7 @@ struct traits< Eigen::Map<SE2<_Scalar>,0> >
     : public traits<SE2<_Scalar>>
 {
   using typename traits<SE2<_Scalar>>::Scalar;
-  using traits<SE2<_Scalar>>::DoF;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 4, 1>, 0>;
 };
 
 template <>
@@ -22,8 +21,7 @@ struct traits< Eigen::Map<const SE2<_Scalar>,0> >
     : public traits<const SE2<_Scalar>>
 {
   using typename traits<const SE2<_Scalar>>::Scalar;
-  using traits<const SE2<_Scalar>>::DoF;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, 4, 1>, 0>;
 };
 
 } /* namespace internal */
