@@ -17,7 +17,7 @@ find_package(cmake_modules REQUIRED)
 find_package(Eigen REQUIRED)
 find_package(Threads REQUIRED)
 
-find_package(ceres_solver REQUIRED)
+find_package(Ceres REQUIRED)
 
 add_subdirectory(external/lspdlog)
 
@@ -43,21 +43,8 @@ include_directories(include)
 include_directories(SYSTEM
   ${EIGEN_INCLUDE_DIRS}
   ${LSPDLOG_INCLUDE_DIRS}
-  ${ceres_solver_INCLUDE_DIRS}
+  ${Ceres_INCLUDE_DIRS}
 )
-
-add_executable(dummy src/dummy.cpp)
-target_link_libraries(dummy ${catkin_LIBRARIES})
-add_dependencies(dummy spdlog)
-target_link_libraries(dummy ${CMAKE_THREAD_LIBS_INIT})
-
-if(CMAKE_VERSION VERSION_LESS "3.1")
-  set_target_properties(dummy PROPERTIES COMPILE_FLAGS "-std=c++11")
-else()
-  set_property(TARGET dummy PROPERTY CXX_STANDARD 11)
-  set_property(TARGET dummy PROPERTY CXX_STANDARD_REQUIRED ON)
-  set_property(TARGET dummy PROPERTY CXX_EXTENSIONS OFF)
-endif()
 
 #############
 ## Install ##

@@ -29,14 +29,14 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
-if(ceres_solver_FOUND)
+if(CERES_FOUND)
 
   message(STATUS "Found ceres_solver, building ceres tests.")
   add_subdirectory(ceres)
 
 else()
   message(STATUS "Could not find ceres_solver, ceres tests will not be built.")
-endif(ceres_solver_FOUND)
+endif(CERES_FOUND)
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")
