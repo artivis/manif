@@ -29,11 +29,9 @@ struct traits<SE2Tangent<_Scalar>>
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
-  using DataType  = Eigen::Matrix<Scalar, RepSize, 1>;
-
+  using DataType = Eigen::Matrix<Scalar, DoF, 1>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-
-  using LieType = Eigen::Matrix<Scalar, 3, 3>;
+  using LieType  = Eigen::Matrix<Scalar, 3, 3>;
 };
 
 } /* namespace internal */
