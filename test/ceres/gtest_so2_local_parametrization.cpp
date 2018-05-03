@@ -52,25 +52,24 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_OBJECTIVE)
 
   SO2d average_state(0);
 
-//  double residuals = 0.0;
+  double residuals = 0.0;
 
-//  parameters[0] = average_state.data();
+  double*  parameter;
+  double** parameters;
+  parameter  = average_state.data();
+  parameters = &parameter;
 
-//  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals);
+  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals);
 
-//  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
+  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
 
-//  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
+  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
 
-//  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
-//  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
-
-//  parameters[0] = nullptr;
-//  delete parameters[0];
-//  delete[] parameters;
+  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
+  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
 
   /////////////////////////////////
 
