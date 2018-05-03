@@ -62,7 +62,8 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieType
 SO2TangentBase<_Derived>::skew() const
 {
-  return (LieType() << 0, -1, 0, 1).finished();
+  return (LieType() << Scalar(0), Scalar(-1),
+                       Scalar(0), Scalar( 1)).finished();
 }
 
 /// with Jacs
@@ -88,7 +89,7 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Scalar
 SO2TangentBase<_Derived>::angle() const
 {
-  return coeffs().x();
+  return coeffs()(0);
 }
 
 } /* namespace manif */

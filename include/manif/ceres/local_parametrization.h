@@ -40,6 +40,17 @@ public:
                   const T* delta_raw,
                   T* state_plus_delta_raw) const
   {
+//    std::cout << "Local Parametrization\n";
+
+//    if (std::is_same<double, T>::value)
+//    {
+//      std::cout << "Local param with double !\n";
+//    }
+//    else if (std::is_same<ceres::Jet<double,3>, T>::value)
+//    {
+//      std::cout << "Local param with Jet3 !\n";
+//    }
+
     const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
     const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
 
@@ -47,15 +58,24 @@ public:
 
     state_plus_delta = state + delta;
 
-    std::cout << "state r " << state.coeffs()(0) << "\n";
-    std::cout << "state i " << state.coeffs()(1) << "\n";
-    std::cout << "state a " << state.angle() << "\n";
+//    auto ttt = delta.retract();
 
-    std::cout << "delta " << delta.coeffs()(0) << "\n";
+//    state_plus_delta = state.compose(ttt);
 
-    std::cout << "state_plus_delta r " << state_plus_delta.coeffs()(0) << "\n";
-    std::cout << "state_plus_delta i " << state_plus_delta.coeffs()(1) << "\n";
-    std::cout << "state_plus_delta a " << state_plus_delta.angle() << "\n";
+//    std::cout << "state r " << state.coeffs()(0) << "\n";
+//    std::cout << "state i " << state.coeffs()(1) << "\n";
+//    std::cout << "state a " << state.angle() << "\n";
+
+//    std::cout << "delta " << delta.coeffs()(0) << "\n";
+
+//    std::cout << "delta_ret r " << ttt.coeffs()(0) << "\n";
+//    std::cout << "delta_ret i " << ttt.coeffs()(1) << "\n";
+//    std::cout << "delta_ret a " << ttt.angle() << "\n";
+
+//    std::cout << "state_plus_delta r " << state_plus_delta.coeffs()(0) << "\n";
+//    std::cout << "state_plus_delta i " << state_plus_delta.coeffs()(1) << "\n";
+//    std::cout << "state_plus_delta a " << state_plus_delta.angle() << "\n";
+//    std::cout << "----------------------------------\n\n";
 
     return true;
   }
@@ -73,15 +93,6 @@ public:
                     double* state_plus_delta_raw) const override
   {
     return operator ()(state_raw, delta_raw, state_plus_delta_raw);
-
-//    const Eigen::Map<const Manifold> state(state_raw);
-//    const Eigen::Map<const Tangent>  delta(delta_raw);
-
-//    Eigen::Map<Manifold> state_plus_delta(state_plus_delta_raw);
-
-//    state_plus_delta = state + delta;
-
-//    return true;
   }
 
   /**
@@ -99,7 +110,6 @@ public:
     state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
-//    Eigen::Map<Jacobian> rplus_jacobian(rplus_jacobian_raw);
     rplus_jacobian = J_rplus_t_;
 
     rplus_jacobian_raw[0] = -1;
@@ -107,33 +117,6 @@ public:
 
     return true;
   }
-
-//  bool MultiplyByJacobian(const double *x, const int /*num_rows*/,
-//                          const double *global_matrix,
-//                          double *local_matrix) const override
-//  {
-////    ceres::Matrix jacobian(GlobalSize(), LocalSize());
-//    Jacobian jacobian;
-//    if (!ComputeJacobian(x, jacobian.data())) {
-//      return false;
-//    }
-
-////    MatrixRef(local_matrix, num_rows, LocalSize()) =
-////          ConstMatrixRef(global_matrix, num_rows, GlobalSize()) * jacobian;
-
-//    const Eigen::Map<const Manifold> state(global_matrix);
-//    Eigen::Map<Tangent> delta(local_matrix);
-
-//    JacobianMap rplus_jacobian(x);
-
-//    std::cout << "MultiplyByJacobian :\n"
-//              << "state " << state
-//              << "delta " << delta
-//              << "rplus_jacobian " << rplus_jacobian
-//              << "\n";
-
-//    return true;
-//  }
 
   virtual int GlobalSize() const override { return Manifold::RepSize; }
   virtual int LocalSize()  const override { return Manifold::DoF; }

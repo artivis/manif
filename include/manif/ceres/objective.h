@@ -44,17 +44,22 @@ public:
 
     error = target_state_.template cast<T>() - state;
 
-    const auto casted = target_state_.template cast<T>();
+//    residuals_raw[0] *= T(100000);
 
-    std::cout << "state r " << state.coeffs()(0) << "\n";
-    std::cout << "state i " << state.coeffs()(1) << "\n";
-    std::cout << "state a " << state.angle() << "\n";
+//    const auto casted = target_state_.template cast<T>();
 
-    std::cout << "target r " << casted.coeffs()(0) << "\n";
-    std::cout << "target i " << casted.coeffs()(1) << "\n";
-    std::cout << "target a " << casted.angle() << "\n";
+//    std::cout << "Objective\n";
+//    std::cout << "state r " << state.coeffs()(0) << "\n";
+//    std::cout << "state i " << state.coeffs()(1) << "\n";
+//    std::cout << "state a " << state.angle() << "\n";
 
-    std::cout << "error " << residuals_raw[0] << "\n";
+//    std::cout << "target r " << casted.coeffs()(0) << "\n";
+//    std::cout << "target i " << casted.coeffs()(1) << "\n";
+//    std::cout << "target a " << casted.angle() << "\n";
+
+//    std::cout << "error " << residuals_raw[0] << "\n";
+
+//    std::cout << "----------------------------------\n\n";
 
     return true;
   }

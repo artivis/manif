@@ -10,14 +10,16 @@
 namespace manif
 {
 
-std::string getReason(const int flag)
+std::string getReason(const ceres::TerminationType flag)
 {
   switch(flag)
   {
-    case 0: return "DID_NOT_RUN";
-    case 1: return "NO_CONVERGENCE";
-    case 5: return "NUMERICAL_FAILURE";
-    default: return "UNKNOWN";
+    case ceres::CONVERGENCE:    return "CONVERGENCE";
+    case ceres::NO_CONVERGENCE: return "NO_CONVERGENCE";
+    case ceres::FAILURE:        return "FAILURE";
+    case ceres::USER_SUCCESS:   return "USER_SUCCESS";
+    case ceres::USER_FAILURE:   return "USER_FAILURE";
+    default:                    return "UNKNOWN";
   }
 }
 
@@ -38,7 +40,7 @@ make_objective(Args&&... args)
 }
 
 template <typename _Manifold, typename... Args>
-std::shared_ptr<ceres::CostFunction>
+std::shared_ptr<ceres::AutoDiffCostFunction<Objective<_Manifold>, _Manifold::DoF, _Manifold::RepSize>>
 make_objective_autodiff(Args&&... args)
 {
   constexpr int DoF = _Manifold::DoF;
