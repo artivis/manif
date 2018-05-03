@@ -111,7 +111,33 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
 SE2Base<_Derived>::lift() const
 {
+  using std::abs;
+  using std::cos;
+  using std::sin;
 
+  const Scalar theta = angle();
+
+  Scalar A,  // sin_theta_by_theta
+         B;  // one_minus_cos_theta_by_theta
+
+  if (abs(real_minus_one) < Constants<Scalar>::eps)
+  {
+    // Taylor approximation
+    const Scalar theta_sq = theta * theta;
+    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
+    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
+  }
+  else
+  {
+    A = sin(theta) / theta;
+    B = (Scalar(1) - cos(theta) ) / theta;
+  }
+
+  const Scalar den = Scalar(1) / (A*A + B*B);
+
+  return Tangent( A * den * x() + B * den * y(),
+                 -B * den * x() + A * den * y(),
+                  theta );
 }
 
 template <typename _Derived>
@@ -167,7 +193,44 @@ template <typename _Derived>
 void SE2Base<_Derived>::lift(Tangent& t,
                              Jacobian& J_t_m) const
 {
+  using std::abs;
+  using std::cos;
+  using std::sin;
 
+  t = lift();
+
+  J_t_m.setIdentity();
+  J_t_m.template block<2,2>(0,0) = rotation();
+
+  const Scalar theta    = angle();
+  const Scalar theta_sq = theta*theta;
+
+  Scalar d_sin_theta_by_theta;
+  Scalar d_one_minus_cos_theta_by_theta;
+
+  if (abs(theta) < Constants<Scalar>::eps)
+  {
+    d_sin_theta_by_theta = -theta / Scalar(3);
+    d_one_minus_cos_theta_by_theta =
+        Scalar(0.5) - theta_sq * Scalar(0.125);
+  }
+  else
+  {
+    const Scalar cos_theta = cos(theta);
+    const Scalar sin_theta = sin(theta);
+
+    d_sin_theta_by_theta =
+        (theta * cos_theta - sin_theta) / theta_sq;
+
+    d_one_minus_cos_theta_by_theta =
+        (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
+  }
+
+  J_t_m(0,2) =  d_sin_theta_by_theta * x() +
+                d_one_minus_cos_theta_by_theta * y();
+
+  J_t_m(1,2) = -d_one_minus_cos_theta_by_theta * x() +
+                d_sin_theta_by_theta * y();
 }
 
 template <typename _Derived>

@@ -92,7 +92,7 @@ void SE2TangentBase<_Derived>::retract(
 
   /// @todo check J
 
-  const Scalar theta = angle();
+  const Scalar theta    = angle();
   const Scalar theta_sq = theta*theta;
 
   J_m_t.setIdentity();
@@ -104,7 +104,8 @@ void SE2TangentBase<_Derived>::retract(
   if (abs(theta) < constants<Scalar>::eps)
   {
     d_sin_theta_by_theta = -theta / Scalar(3);
-    d_one_minus_cos_theta_by_theta = Scalar(0.5) - theta_sq * Scalar(0.125);
+    d_one_minus_cos_theta_by_theta =
+        Scalar(0.5) - theta_sq * Scalar(0.125);
   }
   else
   {
