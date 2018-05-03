@@ -5,21 +5,12 @@
 /// most likely
 //#include "manif/impl/SO2_map.h"
 
+#include "manif/ceres/ceres_traits.h"
+
 #include <ceres/local_parameterization.h>
 
 namespace manif
 {
-
-template <typename _Jacobian>
-struct traits_ceres;
-
-template <typename _Scalar, int _Rows, int _Cols>
-struct traits_ceres<Eigen::Matrix<_Scalar, _Rows, _Cols>>
-{
-  using JacobianMap =
-    Eigen::Map<
-      Eigen::Matrix<_Scalar, _Rows, _Cols, Eigen::RowMajor>>;
-};
 
 template <typename _Manifold>
 class LocalParameterization
@@ -29,7 +20,7 @@ class LocalParameterization
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
 
-  using JacobianMap = typename traits_ceres<Jacobian>::JacobianMap;
+  using JacobianMap = typename internal::traits_ceres<Jacobian>::JacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate =

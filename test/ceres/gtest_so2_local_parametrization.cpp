@@ -98,34 +98,32 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_OBJECTIVE)
   double delta[1] = {M_PI};
   double x_plus_delta[2] = {0.0, 0.0};
 
-//  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
 
-//  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
-////  EXPECT_DOUBLE_EQ( 0.0, x_plus_delta[1]);
-//  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
+  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
+  EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
 
-//  EXPECT_EQ(M_PI, Eigen::Map<const SO2d>(x_plus_delta).angle());
+  EXPECT_EQ(M_PI, Eigen::Map<const SO2d>(x_plus_delta).angle());
 
-//  Eigen::Map<SO2d> map_so2(x);
-//  map_so2 = SO2d(M_PI/4.);
+  Eigen::Map<SO2d> map_so2(x);
+  map_so2 = SO2d(M_PI/4.);
 
-//  delta[0] = M_PI;
-//  x_plus_delta[0] = 0;
-//  x_plus_delta[1] = 0;
+  delta[0] = M_PI;
+  x_plus_delta[0] = 0;
+  x_plus_delta[1] = 0;
 
-//  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
 
-//  EXPECT_DOUBLE_EQ(cos(-3.*M_PI/4.), x_plus_delta[0]);
-//  EXPECT_DOUBLE_EQ(sin(-3.*M_PI/4.), x_plus_delta[1]);
+  EXPECT_DOUBLE_EQ(cos(-3.*M_PI/4.), x_plus_delta[0]);
+  EXPECT_DOUBLE_EQ(sin(-3.*M_PI/4.), x_plus_delta[1]);
 
-////  EXPECT_EQ(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle());
-//  EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
+  EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
 
-//  double J_rplus[2];
-//  auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
+  double J_rplus[2];
+  auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
 
-//  EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
-//  EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
+  EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
+  EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
 
   problem.SetParameterization( average_state.data(),
                                auto_diff_local_parameterization.get() );
