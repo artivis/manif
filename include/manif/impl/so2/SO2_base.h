@@ -145,10 +145,10 @@ SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 
   const auto& m_so2 = static_cast<const SO2Base<_DerivedOther>&>(m);
 
-  const Scalar& lhs_real = real();
-  const Scalar& lhs_imag = imag();
-  const Scalar& rhs_real = m_so2.real();
-  const Scalar& rhs_imag = m_so2.imag();
+  const Scalar lhs_real = real();
+  const Scalar lhs_imag = imag();
+  const Scalar rhs_real = m_so2.real();
+  const Scalar rhs_imag = m_so2.imag();
 
   return Manifold(
         lhs_real * rhs_real - lhs_imag * rhs_imag,
