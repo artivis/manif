@@ -36,7 +36,8 @@
   using Jacobian       = typename Base::Jacobian;       \
   using DataType       = typename Base::DataType;       \
   using Transformation = typename Base::Transformation; \
-  using Rotation       = typename Base::Rotation;
+  using Rotation       = typename Base::Rotation;       \
+  using Vector         = typename Base::Vector;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \
   using Base::operator +;               \

@@ -44,8 +44,6 @@ struct ManifoldBase
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
-  //  using MyInt = typename traits_cast<_Derived>::MyInt;
-
   /// @todo find something sexier
   template <typename T>
   using ManifoldTemplate =
@@ -67,12 +65,8 @@ public:
   Scalar* data();
   const Scalar* data() const;
 
-  /// @todo
   template <class _NewScalar>
-  ManifoldTemplate<_NewScalar> cast() const
-  {
-    return ManifoldTemplate<_NewScalar>(coeffs().cast<_NewScalar>());
-  }
+  ManifoldTemplate<_NewScalar> cast() const;
 
   Transformation transform() const;
 
@@ -296,6 +290,14 @@ ManifoldBase<_Derived>::data() const
 }
 
 template <typename _Derived>
+template <class _NewScalar>
+typename ManifoldBase<_Derived>::template ManifoldTemplate<_NewScalar>
+ManifoldBase<_Derived>::cast() const
+{
+  return ManifoldTemplate<_NewScalar>(coeffs().cast<_NewScalar>());
+}
+
+template <typename _Derived>
 typename ManifoldBase<_Derived>::Transformation
 ManifoldBase<_Derived>::transform() const
 {
@@ -414,7 +416,7 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Vector
 ManifoldBase<_Derived>::act(const Vector& v) const
 {
-  return v.transpose() * transform();
+  return derived().act(v);
 }
 
 /// Operators

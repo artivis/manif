@@ -41,6 +41,7 @@ struct traits<SE2<_Scalar>>
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
+  using Translation    = Eigen::Matrix<Scalar, 2, 1>;
   using Vector         = Eigen::Matrix<Scalar, DoF, 1>;
 };
 

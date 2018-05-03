@@ -36,7 +36,8 @@ public:
   using DataType = typename Base::DataType;
 
   using Transformation = typename Base::Transformation;
-  using Rotation = typename Base::Rotation;
+  using Rotation       = typename Base::Rotation;
+  using Vector         = typename Base::Vector;
 
   /// Manifold common API
 
@@ -50,6 +51,8 @@ public:
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+
+  Vector act(const Vector &v) const;
 
   using Base::coeffs;
   using Base::random;
@@ -151,6 +154,13 @@ SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
         lhs_real * rhs_real - lhs_imag * rhs_imag,
         lhs_real * rhs_imag + lhs_imag * rhs_real
         );
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Vector
+SO2Base<_Derived>::act(const Vector &v) const
+{
+  return rotation() * v;
 }
 
 /// with Jacs

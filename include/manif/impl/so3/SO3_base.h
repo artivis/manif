@@ -39,6 +39,8 @@ public:
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
 
+  Vector act(const Vector &v) const;
+
   using Base::coeffs;
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
@@ -140,6 +142,13 @@ typename SO3Base<_Derived>::Manifold
 SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 {
   return Manifold(coeffs() * m.coeffs());
+}
+
+template <typename _Derived>
+typename SO3Base<_Derived>::Vector
+SO3Base<_Derived>::act(const Vector &v) const
+{
+  return rotation() * v;
 }
 
 /// with Jacs

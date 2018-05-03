@@ -26,12 +26,15 @@ public:
   MANIF_MANIFOLD_PROPERTIES
 
   MANIF_MANIFOLD_TYPEDEF
-//  using Translation = typename Base::Translation;
+  /// @todo find a mechanism to fetch it from base
+  /// just like the other typedefs
+  using Translation = typename internal::traits<_Derived>::Translation;
 
   /// Manifold common API
 
   Transformation transform() const;
   Rotation rotation() const;
+  Translation translation() const;
 
   void identity();
 
@@ -40,6 +43,8 @@ public:
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+
+  Vector act(const Vector &v) const;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
@@ -72,6 +77,8 @@ SE2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
   T.template block<2,2>(0,0) = rotation();
+  T(0,2) = x();
+  T(1,2) = y();
   return T;
 }
 
@@ -84,6 +91,13 @@ SE2Base<_Derived>::rotation() const
   const Scalar theta = angle();
   return (Rotation() << cos(theta), -sin(theta),
                         sin(theta),  cos(theta)).finished();
+}
+
+template <typename _Derived>
+typename SE2Base<_Derived>::Translation
+SE2Base<_Derived>::translation() const
+{
+  return Translation(x(), y());
 }
 
 template <typename _Derived>
@@ -159,6 +173,13 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
   return Manifold(
         lhs_real * rhs_real - lhs_imag * rhs_imag,
         lhs_real * rhs_imag + lhs_imag * rhs_real );
+}
+
+template <typename _Derived>
+typename SE2Base<_Derived>::Vector
+SE2Base<_Derived>::act(const Vector &v) const
+{
+  return transform() * v;
 }
 
 /// with Jacs
