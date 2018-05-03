@@ -67,7 +67,7 @@ public:
 
   /// Tangent common API
 
-  const DataType* data() const;
+  const DataType& coeffs() const;
 
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -79,7 +79,7 @@ public:
 protected:
 
   friend class TangentBase<SE2Tangent<Scalar>>;
-  DataType* data();
+  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -103,17 +103,17 @@ SE2Tangent<_Scalar>::SE2Tangent(const Scalar x,
 }
 
 template <typename _Scalar>
-typename SE2Tangent<_Scalar>::DataType*
-SE2Tangent<_Scalar>::data()
+typename SE2Tangent<_Scalar>::DataType&
+SE2Tangent<_Scalar>::coeffs_nonconst()
 {
-  return &data_;
+  return data_;
 }
 
 template <typename _Scalar>
-const typename SE2Tangent<_Scalar>::DataType*
-SE2Tangent<_Scalar>::data() const
+const typename SE2Tangent<_Scalar>::DataType&
+SE2Tangent<_Scalar>::coeffs() const
 {
-  return &data_;
+  return data_;
 }
 
 } /* namespace manif */
