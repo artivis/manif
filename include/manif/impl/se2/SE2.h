@@ -32,11 +32,12 @@ struct traits<SE2<_Scalar>>
 
   using Base = SE2Base<SE2<_Scalar>>;
 
-  static constexpr int Dim = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF = ManifoldProperties<Base>::DoF;
-  static constexpr int N   = ManifoldProperties<Base>::N;
+  static constexpr int Dim     = ManifoldProperties<Base>::Dim;
+  static constexpr int DoF     = ManifoldProperties<Base>::DoF;
+  static constexpr int N       = ManifoldProperties<Base>::N;
+  static constexpr int RepSize = 4;
 
-  using DataType = Eigen::Matrix<Scalar, 4, 1>;
+  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;

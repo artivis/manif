@@ -71,17 +71,17 @@ TEST(TEST_SE2, TEST_SE2_DATA)
 
 TEST(TEST_SE2, TEST_SE2_CAST)
 {
-  SE2d se2d(4, 2, 0);
+  SE2d se2d(4, 2, 0.1789);
 
   EXPECT_DOUBLE_EQ(4, se2d.x());
   EXPECT_DOUBLE_EQ(2, se2d.y());
-  EXPECT_DOUBLE_EQ(0, se2d.angle());
+  EXPECT_DOUBLE_EQ(0.1789, se2d.angle());
 
   SE2f se2f = se2d.cast<float>();
 
   EXPECT_FLOAT_EQ(4, se2f.x());
   EXPECT_FLOAT_EQ(2, se2f.y());
-  EXPECT_FLOAT_EQ(0, se2f.angle());
+  EXPECT_FLOAT_EQ(0.1789, se2f.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_IDENTITY)

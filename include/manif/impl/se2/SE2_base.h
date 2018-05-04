@@ -55,10 +55,12 @@ public:
 
   void inverse(Manifold& m, Jacobian& j) const;
 
-  void lift(Tangent& t, Jacobian& J_t_m) const;
+  template <typename _DerivedOther>
+  void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
 
-  void compose(const Manifold& mb,
-               Manifold& mout,
+  template <typename _DerivedOther0, typename _DerivedOther1>
+  void compose(const ManifoldBase<_DerivedOther0>& mb,
+               ManifoldBase<_DerivedOther1>& mout,
                Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SE2 specific functions
@@ -213,7 +215,8 @@ void SE2Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
 }
 
 template <typename _Derived>
-void SE2Base<_Derived>::lift(Tangent& t,
+template <typename _DerivedOther>
+void SE2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
                              Jacobian& J_t_m) const
 {
   using std::abs;
@@ -257,8 +260,9 @@ void SE2Base<_Derived>::lift(Tangent& t,
 }
 
 template <typename _Derived>
-void SE2Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
+template <typename _DerivedOther0, typename _DerivedOther1>
+void SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
+                                ManifoldBase<_DerivedOther1>& mout,
                                 Jacobian& J_c_a,
                                 Jacobian& J_c_b) const
 {
@@ -266,11 +270,11 @@ void SE2Base<_Derived>::compose(const Manifold& mb,
 
   const Scalar theta_inv = -angle();
 
-  J_c_a.setIdentity(1);
-  J_c_a(0,2) = mb.x()*sin(theta_inv) - mb.y()*cos(theta_inv);
-  J_c_a(1,2) = mb.x()*cos(theta_inv) + mb.y()*sin(theta_inv);
+  J_c_a.setIdentity();
+//  J_c_a(0,2) = mb.x()*sin(theta_inv) - mb.y()*cos(theta_inv);
+//  J_c_a(1,2) = mb.x()*cos(theta_inv) + mb.y()*sin(theta_inv);
 
-  J_c_b.setIdentity(1);
+  J_c_b.setIdentity();
   J_c_b.template block<2,2>(0,0) = rotation();
 }
 

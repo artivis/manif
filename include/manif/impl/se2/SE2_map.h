@@ -12,7 +12,8 @@ struct traits< Eigen::Map<SE2<_Scalar>,0> >
     : public traits<SE2<_Scalar>>
 {
   using typename traits<SE2<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 4, 1>, 0>;
+  using traits<SE2<_Scalar>>::RepSize;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 template <>
@@ -21,7 +22,8 @@ struct traits< Eigen::Map<const SE2<_Scalar>,0> >
     : public traits<const SE2<_Scalar>>
 {
   using typename traits<const SE2<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, 4, 1>, 0>;
+  using traits<const SE2<_Scalar>>::RepSize;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 } /* namespace internal */
@@ -67,14 +69,11 @@ public:
 
   MANIF_INHERIT_MANIFOLD_API
 
-  Map(Scalar* coeffs) : data_(coeffs) { }
+  Map(const Scalar* coeffs) : data_(coeffs) { }
 
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend class manif::ManifoldBase<Map<const manif::SE2<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

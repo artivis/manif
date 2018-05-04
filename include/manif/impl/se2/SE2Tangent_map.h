@@ -12,7 +12,8 @@ struct traits< Eigen::Map<SE2Tangent<_Scalar>,0> >
     : public traits<SE2Tangent<_Scalar>>
 {
   using typename traits<SE2Tangent<_Scalar>>::Scalar;
-  using DataType = Eigen::Map<Eigen::Matrix<Scalar, 3, 1>, 0>;
+  using traits<SE2Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 template <>
@@ -21,7 +22,8 @@ struct traits< Eigen::Map<const SE2Tangent<_Scalar>,0> >
     : public traits<const SE2Tangent<_Scalar>>
 {
   using typename traits<const SE2Tangent<_Scalar>>::Scalar;
-  using DataType = Eigen::Map<const Eigen::Matrix<Scalar, 3, 1>, 0>;
+  using traits<SE2Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 } /* namespace internal */
@@ -66,14 +68,13 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  Map(Scalar* coeffs) : data_(coeffs) { }
+  Map(const Scalar* coeffs) : data_(coeffs) { }
 
   const DataType& data() const { return data_; }
 
-protected:
+  const DataType& coeffs() const { return data_; }
 
-  friend class manif::TangentBase<Map<const manif::SE2Tangent<_Scalar>, 0>>;
-  DataType& coeffs() { return data_; }
+protected:
 
   DataType data_;
 };
