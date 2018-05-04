@@ -7,12 +7,13 @@ namespace manif {
 namespace internal {
 
 template <>
-template <typename _Scalar>
+template <typename _Scalar/*, int _MapOptions, typename _StrideType*/>
 struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
     : public traits<SO2Tangent<_Scalar>>
 {
   using typename traits<SO2Tangent<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 1, 1>, 0>;
+  using traits<SO2Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 template <>
@@ -21,7 +22,8 @@ struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
     : public traits<const SO2Tangent<_Scalar>>
 {
   using typename traits<const SO2Tangent<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, 1, 1>, 0>;
+  using traits<const SO2Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 } /* namespace internal */
@@ -35,7 +37,6 @@ class Map<manif::SO2Tangent<_Scalar>, 0>
     : public manif::SO2TangentBase<Map<manif::SO2Tangent<_Scalar>, 0> >
 {
   using Base = manif::SO2TangentBase<Map<manif::SO2Tangent<_Scalar>, 0> >;
-  using Type = Map<manif::SO2Tangent<_Scalar>, 0>;
 
 public:
 
@@ -72,9 +73,6 @@ public:
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend class manif::TangentBase<Map<const manif::SO2Tangent<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

@@ -73,9 +73,6 @@ public:
 
 protected:
 
-  friend class manif::ManifoldBase<Map<const manif::SO2<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
-
   DataType data_;
 };
 
