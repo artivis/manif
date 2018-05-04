@@ -338,7 +338,7 @@ typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::plus(
     const TangentBase<_DerivedOther>& t) const
 {
-  return rplus(t);
+  return derived().rplus(t);
 }
 
 template <typename _Derived>
