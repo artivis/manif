@@ -17,17 +17,44 @@ class Constraint
     Eigen::Map<Eigen::Matrix<
       double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
 
+  template <typename _Scalar>
+  using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
+
+  template <typename _Scalar>
+  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+
 public:
 
   explicit Constraint(const Tangent& measurement)
     : measurement_(measurement)
   {
-    set_num_residuals(Manifold::DoF);
-    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
-    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
+    constexpr int DoF = Manifold::DoF;
+    constexpr int RepSize = Manifold::RepSize;
+
+    set_num_residuals(DoF);
+    mutable_parameter_block_sizes()->push_back(RepSize);
+    mutable_parameter_block_sizes()->push_back(RepSize);
   }
 
   virtual ~Constraint() = default;
+
+  template<typename T>
+  bool operator()(const T* const past_raw,
+                  const T* const futur_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const ManifoldTemplate<T>> state_past(past_raw);
+    const Eigen::Map<const ManifoldTemplate<T>> state_future(futur_raw);
+
+    Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
+
+    residuals =
+      measurement_.retract().template cast<T>()
+        .between(state_past.between(state_future))
+          .lift();
+
+    return true;
+  }
 
   virtual bool Evaluate(double const* const* parameters_raw,
                         double* residuals_raw,

@@ -109,6 +109,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_LOCAL_PARAMETRIZATION)
 
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_SMALL_PROBLEM)
 {
+  // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
   problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
@@ -251,6 +252,128 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_SMALL_PROBLEM)
   // 1.3088223838053636e-09
   EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
+
+
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
+{
+  // Tell ceres not to take ownership of the raw pointers
+  ceres::Problem::Options problem_options;
+  problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+
+  ceres::Problem problem(problem_options);
+
+  SO2d state_0(0);
+  SO2d state_1(0);
+  SO2d state_2(0);
+  SO2d state_3(0);
+  SO2d state_4(0);
+  SO2d state_5(0);
+  SO2d state_6(0);
+  SO2d state_7(0);
+
+  auto constraint_0_1 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_1_2 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_2_3 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_3_4 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_4_5 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_5_6 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  auto constraint_6_7 = make_constraint_autodiff<SO2d>(M_PI/4.);
+
+  // This would be like a loop-closure
+//  ConstraintSO2 constraint_7_8(M_PI/4.);
+
+  // Add residual blocks to ceres problem
+  problem.AddResidualBlock( constraint_0_1.get(),
+                            nullptr,
+                            state_0.data(), state_1.data() );
+
+  problem.AddResidualBlock( constraint_1_2.get(),
+                            nullptr,
+                            state_1.data(), state_2.data() );
+
+  problem.AddResidualBlock( constraint_2_3.get(),
+                            nullptr,
+                            state_2.data(), state_3.data() );
+
+  problem.AddResidualBlock( constraint_3_4.get(),
+                            nullptr,
+                            state_3.data(), state_4.data() );
+
+  problem.AddResidualBlock( constraint_4_5.get(),
+                            nullptr,
+                            state_4.data(), state_5.data() );
+
+  problem.AddResidualBlock( constraint_5_6.get(),
+                            nullptr,
+                            state_5.data(), state_6.data() );
+
+  problem.AddResidualBlock( constraint_6_7.get(),
+                            nullptr,
+                            state_6.data(), state_7.data() );
+
+  // Fix 'first' state
+  problem.SetParameterBlockConstant(state_0.data());
+
+
+  std::shared_ptr<ceres::LocalParameterization>
+    auto_diff_local_parameterization =
+      make_local_parametrization_autodiff<SO2d>();
+
+  problem.SetParameterization( state_0.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_1.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_2.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_3.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_4.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_5.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_6.data(),
+                               auto_diff_local_parameterization.get() );
+
+  problem.SetParameterization( state_7.data(),
+                               auto_diff_local_parameterization.get() );
+
+  std::cout << "-----------------------------\n";
+  std::cout << "\t Calling Solve ! \n";
+  std::cout << "-----------------------------\n\n";
+
+  // Run the solver!
+  ceres::Solver::Options options;
+  options.function_tolerance = 1e-15;
+  options.minimizer_progress_to_stdout = true;
+
+  ceres::Solver::Summary summary;
+  ceres::Solve(options, &problem, &summary);
+
+//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+  std::cout << "summary:\n" << summary.FullReport() << "\n";
+
+  ASSERT_TRUE(summary.IsSolutionUsable());
+
+  EXPECT_NEAR(0,          state_0.angle(), 1e-8);
+  EXPECT_NEAR(M_PI/4.,    state_1.angle(), 1e-8);
+  EXPECT_NEAR(M_PI_2,     state_2.angle(), 1e-8);
+  EXPECT_NEAR(3.*M_PI/4., state_3.angle(), 1e-8);
+  EXPECT_NEAR(M_PI,       state_4.angle(), 1e-8);
+  EXPECT_NEAR(-3.*M_PI/4, state_5.angle(), 1e-8);
+
+  // 1.0195351229924654e-08
+  EXPECT_NEAR(-M_PI_2,    state_6.angle(), 2e-8);
+  // 1.045793596166078e-08
+  EXPECT_NEAR(-M_PI/4.,   state_7.angle(), 2e-8);
+}
+
 
 /*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
