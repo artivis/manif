@@ -42,15 +42,6 @@ public:
   {
 //    std::cout << "Local Parametrization\n";
 
-//    if (std::is_same<double, T>::value)
-//    {
-//      std::cout << "Local param with double !\n";
-//    }
-//    else if (std::is_same<ceres::Jet<double,3>, T>::value)
-//    {
-//      std::cout << "Local param with Jet3 !\n";
-//    }
-
     const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
     const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
 
@@ -59,8 +50,6 @@ public:
     state_plus_delta = state + delta;
 
 //    auto ttt = delta.retract();
-
-//    state_plus_delta = state.compose(ttt);
 
 //    std::cout << "state r " << state.coeffs()(0) << "\n";
 //    std::cout << "state i " << state.coeffs()(1) << "\n";
