@@ -304,9 +304,6 @@ void ManifoldBase<_Derived>::identity()
 template <typename _Derived>
 void ManifoldBase<_Derived>::random()
 {
-//  const auto m = Tangent::Random().retract();
-//  coeffs_nonconst() = m.coeffs_nonconst();
-
   coeffs_nonconst() = Tangent::Random().retract().coeffs();
 }
 
