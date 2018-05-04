@@ -93,7 +93,7 @@ public:
     {
       residuals =
         measurement_.retract()
-          .between(state_future.between(state_past))
+          .between(state_past.between(state_future))
             .lift();
     }
 
