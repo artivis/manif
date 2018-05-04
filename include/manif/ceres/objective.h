@@ -28,10 +28,12 @@ public:
   explicit Objective(const Manifold& target_state)
     : target_state_(target_state)
   {
-    set_num_residuals(Manifold::DoF);
-    /// @todo fix dat
-//    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
-//    mutable_parameter_block_sizes()->push_back(Manifold::DoF);
+    constexpr int DoF = Manifold::DoF;
+    constexpr int RepSize = Manifold::RepSize;
+
+    set_num_residuals(DoF);
+    mutable_parameter_block_sizes()->push_back(RepSize);
+//    mutable_parameter_block_sizes()->push_back(DoF);
   }
 
   virtual ~Objective() = default;
