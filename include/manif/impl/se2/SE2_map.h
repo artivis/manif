@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE2_MAP_H_
 #define _MANIF_MANIF_SE2_MAP_H_
 
-#include "manif/impl/so2/SE2.h"
+#include "manif/impl/se2/SE2.h"
 
 namespace manif {
 namespace internal {

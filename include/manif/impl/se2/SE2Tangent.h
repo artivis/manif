@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE2TANGENT_H_
 #define _MANIF_MANIF_SE2TANGENT_H_
 
-#include "manif/impl/so2/SE2Tangent_base.h"
+#include "manif/impl/se2/SE2Tangent_base.h"
 
 #include <Eigen/Core>
 
@@ -51,8 +51,8 @@ struct SE2Tangent : SE2TangentBase<SE2Tangent<_Scalar>>
 {
 private:
 
-  using Base = SO2TangentBase<SO2Tangent<_Scalar>>;
-  using Type = SO2Tangent<_Scalar>;
+  using Base = SE2TangentBase<SE2Tangent<_Scalar>>;
+  using Type = SE2Tangent<_Scalar>;
 
 public:
 

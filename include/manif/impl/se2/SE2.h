@@ -85,6 +85,10 @@ public:
   /// SE2 specific API
 
   using Base::angle;
+  using Base::real;
+  using Base::imag;
+  using Base::x;
+  using Base::y;
 
 protected:
 

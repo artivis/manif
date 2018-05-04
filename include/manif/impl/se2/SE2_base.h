@@ -116,8 +116,8 @@ SE2Base<_Derived>::inverse() const
 
   const Scalar theta_inv = -angle();
 
-  return Manifold( x()*cos(theta_inv) + y()*sin(theta_inv),
-                  -x()*sin(theta_inv) + y()*cos(theta_inv),
+  return Manifold(-(x()*cos(theta_inv) - y()*sin(theta_inv)),
+                  -(x()*sin(theta_inv) + y()*cos(theta_inv)),
                    theta_inv );
 }
 
@@ -134,7 +134,7 @@ SE2Base<_Derived>::lift() const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (abs(real_minus_one) < Constants<Scalar>::eps)
+  if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
     const Scalar theta_sq = theta * theta;
@@ -163,16 +163,18 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
     std::is_base_of<SE2Base<_DerivedOther>, _DerivedOther>::value,
     "Argument does not inherit from SE2Base !");
 
-  const auto& m_so2 = static_cast<const SE2Base<_DerivedOther>&>(m);
+  const auto& m_se2 = static_cast<const SE2Base<_DerivedOther>&>(m);
 
-  const Scalar& lhs_real = real();
-  const Scalar& lhs_imag = imag();
-  const Scalar& rhs_real = m_so2.real();
-  const Scalar& rhs_imag = m_so2.imag();
+  const Scalar lhs_real = real(); // cos(t)
+  const Scalar lhs_imag = imag(); // sin(t)
+  const Scalar rhs_real = m_se2.real();
+  const Scalar rhs_imag = m_se2.imag();
 
   return Manifold(
-        lhs_real * rhs_real - lhs_imag * rhs_imag,
-        lhs_real * rhs_imag + lhs_imag * rhs_real );
+        lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
+        lhs_imag * m_se2.x() + lhs_real * m_se2.y() + y(),
+        lhs_real * rhs_real  - lhs_imag * rhs_imag,
+        lhs_real * rhs_imag  + lhs_imag * rhs_real         );
 }
 
 template <typename _Derived>

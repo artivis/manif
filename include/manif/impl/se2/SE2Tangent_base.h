@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE2TANGENT_BASE_H_
 #define _MANIF_MANIF_SE2TANGENT_BASE_H_
 
-#include "manif/impl/so2/SE2_properties.h"
+#include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/tangent_base.h"
 
 namespace manif
@@ -28,6 +28,7 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   using Base::data;
+  using Base::coeffs;
 
   /// Tangent common API
 
@@ -57,7 +58,7 @@ SE2TangentBase<_Derived>::retract() const
   Scalar sin_theta_by_theta;
   Scalar one_minus_cos_theta_by_theta;
 
-  if (abs(theta) < constants<Scalar>::eps)
+  if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
     const Scalar theta_sq = theta * theta;
@@ -96,12 +97,13 @@ void SE2TangentBase<_Derived>::retract(
   const Scalar theta_sq = theta*theta;
 
   J_m_t.setIdentity();
-  J_m_t.template block<2,2>(0,0) = rotation();
+  /// @todo
+//  J_m_t.template block<2,2>(0,0) = rotation();
 
   Scalar d_sin_theta_by_theta;
   Scalar d_one_minus_cos_theta_by_theta;
 
-  if (abs(theta) < constants<Scalar>::eps)
+  if (abs(theta) < Constants<Scalar>::eps)
   {
     d_sin_theta_by_theta = -theta / Scalar(3);
     d_one_minus_cos_theta_by_theta =
@@ -132,21 +134,21 @@ template <typename _Derived>
 typename SE2TangentBase<_Derived>::Scalar
 SE2TangentBase<_Derived>::x() const
 {
-  return data()->x();
+  return coeffs().x();
 }
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Scalar
 SE2TangentBase<_Derived>::y() const
 {
-  return data()->y();
+  return coeffs().y();
 }
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Scalar
 SE2TangentBase<_Derived>::angle() const
 {
-  return data()->z();
+  return coeffs().z();
 }
 
 } /* namespace manif */
