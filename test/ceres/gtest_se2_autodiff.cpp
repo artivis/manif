@@ -231,22 +231,30 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   SE2d state_0(0,0,0); // expected at  0,0,0
   SE2d state_1(0,0,0); // expected at  1,0,0
-  SE2d state_2(0,0,0); // expected at  2,1,0
-  SE2d state_3(0,0,0); // expected at  2,2,0
-  SE2d state_4(0,0,0); // expected at  1,3,0
-  SE2d state_5(0,0,0); // expected at  0,3,0
-  SE2d state_6(0,0,0); // expected at -1,2,0
-  SE2d state_7(0,0,0); // expected at -1,1,0
+  SE2d state_2(0,0,0); // expected at  2,1,M_PI/4.
+  SE2d state_3(0,0,0); // expected at  2,2,M_PI/2.
+  SE2d state_4(0,0,0); // expected at  1,3,3.*M_PI/4.
+  SE2d state_5(0,0,0); // expected at  0,3,M_PI
+  SE2d state_6(0,0,0); // expected at -1,2,-3.*M_PI/4.
+  SE2d state_7(0,0,0); // expected at -1,1,-M_PI/2.
 
   /// @todo adapt Tangents x,y to fit the expected dim
 
-  auto constraint_0_1 = make_constraint_autodiff<SE2d>( 1, 0, 0);
-  auto constraint_1_2 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4.);
-  auto constraint_2_3 = make_constraint_autodiff<SE2d>( 0, 1, M_PI/4.);
-  auto constraint_3_4 = make_constraint_autodiff<SE2d>(-1, 1, M_PI/4.);
-  auto constraint_4_5 = make_constraint_autodiff<SE2d>(-1, 0, M_PI/4.);
-  auto constraint_5_6 = make_constraint_autodiff<SE2d>(-1,-1, M_PI/4.);
-  auto constraint_6_7 = make_constraint_autodiff<SE2d>( 0,-1, M_PI/4.);
+//  auto constraint_0_1 = make_constraint_autodiff<SE2d>( 1, 0, 0       );
+//  auto constraint_1_2 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+//  auto constraint_2_3 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+//  auto constraint_3_4 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+//  auto constraint_4_5 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+//  auto constraint_5_6 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+//  auto constraint_6_7 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
+
+  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( 1, 0, 0       ).lift() );
+  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( constraint_0_1.get(),
@@ -330,37 +338,39 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
-//  EXPECT_NEAR( 0,           state_0.x(),      1e-10);
-//  EXPECT_NEAR( 0,           state_0.y(),      1e-10);
-  EXPECT_NEAR( 0,           state_0.angle(),  1e-10);
+  constexpr double ceres_eps = 1e-3;
 
-//  EXPECT_NEAR( 1,           state_1.x(),      1e-10);
-//  EXPECT_NEAR( 0,           state_1.y(),      1e-10);
-  EXPECT_NEAR( 0,           state_1.angle(),  1e-10);
+  EXPECT_NEAR( 0,           state_0.x(),      ceres_eps);
+  EXPECT_NEAR( 0,           state_0.y(),      ceres_eps);
+  EXPECT_NEAR( 0,           state_0.angle(),  ceres_eps);
 
-//  EXPECT_NEAR( 2,           state_2.x(),      1e-10);
-//  EXPECT_NEAR( 1,           state_2.y(),      1e-10);
-  EXPECT_NEAR( M_PI/4.,     state_2.angle(),  1e-10);
+  EXPECT_NEAR( 1,           state_1.x(),      ceres_eps);
+  EXPECT_NEAR( 0,           state_1.y(),      ceres_eps);
+  EXPECT_NEAR( 0,           state_1.angle(),  ceres_eps);
 
-//  EXPECT_NEAR( 2,           state_3.x(),      1e-10);
-//  EXPECT_NEAR( 2,           state_3.y(),      1e-10);
-  EXPECT_NEAR( M_PI_2,      state_3.angle(),  1e-10);
+  EXPECT_NEAR( 2,           state_2.x(),      ceres_eps);
+  EXPECT_NEAR( 1,           state_2.y(),      ceres_eps);
+  EXPECT_NEAR( M_PI/4.,     state_2.angle(),  ceres_eps);
 
-//  EXPECT_NEAR( 1,           state_4.x(),      1e-10);
-//  EXPECT_NEAR( 3,           state_4.y(),      1e-10);
-  EXPECT_NEAR( 3.*M_PI/4.,  state_4.angle(),  1e-10);
+  EXPECT_NEAR( 2,           state_3.x(),      ceres_eps);
+  EXPECT_NEAR( 2,           state_3.y(),      ceres_eps);
+  EXPECT_NEAR( M_PI_2,      state_3.angle(),  ceres_eps);
 
-//  EXPECT_NEAR( 0,           state_5.x(),      1e-10);
-//  EXPECT_NEAR( 3,           state_5.y(),      1e-10);
-  EXPECT_NEAR( M_PI,        state_5.angle(),  1e-10);
+  EXPECT_NEAR( 1,           state_4.x(),      ceres_eps);
+  EXPECT_NEAR( 3,           state_4.y(),      ceres_eps);
+  EXPECT_NEAR( 3.*M_PI/4.,  state_4.angle(),  ceres_eps);
 
-//  EXPECT_NEAR(-1,           state_6.x(),      1e-10);
-//  EXPECT_NEAR( 2,           state_6.y(),      1e-10);
-  EXPECT_NEAR(-3.*M_PI/4,   state_6.angle(),  1e-10);
+  EXPECT_NEAR( 0,           state_5.x(),      ceres_eps);
+  EXPECT_NEAR( 3,           state_5.y(),      ceres_eps);
+  EXPECT_NEAR( M_PI,        state_5.angle(),  ceres_eps);
 
-//  EXPECT_NEAR(-1,           state_7.x(),      1e-10);
-//  EXPECT_NEAR( 1,           state_7.y(),      1e-10);
-  EXPECT_NEAR(-M_PI_2,      state_7.angle(),  2e-10);
+  EXPECT_NEAR(-1,           state_6.x(),      ceres_eps);
+  EXPECT_NEAR( 2,           state_6.y(),      ceres_eps);
+  EXPECT_NEAR(-3.*M_PI/4,   state_6.angle(),  ceres_eps);
+
+  EXPECT_NEAR(-1,           state_7.x(),      ceres_eps);
+  EXPECT_NEAR( 1,           state_7.y(),      ceres_eps);
+  EXPECT_NEAR(-M_PI_2,      state_7.angle(),  ceres_eps);
 }
 
 
