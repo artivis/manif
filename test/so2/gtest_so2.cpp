@@ -61,7 +61,7 @@ TEST(TEST_SO2, TEST_SO2_CAST)
 
   SO2f so2f = so2d.cast<float>();
 
-  EXPECT_DOUBLE_EQ(0, so2f.angle());
+  EXPECT_FLOAT_EQ(0, so2f.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_IDENTITY)
