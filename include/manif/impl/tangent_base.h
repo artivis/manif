@@ -41,8 +41,8 @@ public:
 
   const DataType& coeffs() const;
 
-  DataType* data();
-  const DataType* data() const;
+  Scalar* data();
+  const Scalar* data() const;
 
   /// Common Tangent API
 
@@ -113,14 +113,14 @@ TangentBase<_Derived>::coeffs() const
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::DataType*
+typename TangentBase<_Derived>::Scalar*
 TangentBase<_Derived>::data()
 {
   return derived().coeffs_nonconst().data();
 }
 
 template <class _Derived>
-const typename TangentBase<_Derived>::DataType*
+const typename TangentBase<_Derived>::Scalar*
 TangentBase<_Derived>::data() const
 {
   return derived().coeffs().data();
