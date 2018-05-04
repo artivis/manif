@@ -312,9 +312,13 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
                             nullptr,
                             state_6.data(), state_7.data() );
 
-  // Fix 'first' state
-  problem.SetParameterBlockConstant(state_0.data());
+  // Force 'first' state to 0
+  std::shared_ptr<ceres::CostFunction> obj_origin =
+      make_objective_autodiff<SO2d>(0);
 
+  problem.AddResidualBlock( obj_origin.get(),
+                            nullptr,
+                            state_0.data() );
 
   std::shared_ptr<ceres::LocalParameterization>
     auto_diff_local_parameterization =
@@ -361,17 +365,14 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
-  EXPECT_NEAR(0,          state_0.angle(), 1e-8);
-  EXPECT_NEAR(M_PI/4.,    state_1.angle(), 1e-8);
-  EXPECT_NEAR(M_PI_2,     state_2.angle(), 1e-8);
-  EXPECT_NEAR(3.*M_PI/4., state_3.angle(), 1e-8);
-  EXPECT_NEAR(M_PI,       state_4.angle(), 1e-8);
-  EXPECT_NEAR(-3.*M_PI/4, state_5.angle(), 1e-8);
-
-  // 1.0195351229924654e-08
-  EXPECT_NEAR(-M_PI_2,    state_6.angle(), 2e-8);
-  // 1.045793596166078e-08
-  EXPECT_NEAR(-M_PI/4.,   state_7.angle(), 2e-8);
+  EXPECT_NEAR(0,          state_0.angle(), 1e-10);
+  EXPECT_NEAR(M_PI/4.,    state_1.angle(), 1e-10);
+  EXPECT_NEAR(M_PI_2,     state_2.angle(), 1e-10);
+  EXPECT_NEAR(3.*M_PI/4., state_3.angle(), 1e-10);
+  EXPECT_NEAR(M_PI,       state_4.angle(), 1e-10);
+  EXPECT_NEAR(-3.*M_PI/4, state_5.angle(), 1e-10);
+  EXPECT_NEAR(-M_PI_2,    state_6.angle(), 2e-10);
+  EXPECT_NEAR(-M_PI/4.,   state_7.angle(), 2e-10);
 }
 
 
