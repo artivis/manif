@@ -2,8 +2,44 @@
 #define _MANIF_MANIF_TEST_UTILS_H_
 
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
+
+#define EXPECT_ANGLE_NEAR(e, a, eps) \
+  EXPECT_LT(pi2pi(e-a), eps)
 
 namespace manif {
+
+template <typename _Scalar = double>
+class GaussianNoiseGenerator
+{
+  using Clock = std::chrono::system_clock;
+  using Scalar = _Scalar;
+
+public:
+
+  GaussianNoiseGenerator(const Scalar mean,
+                         const Scalar std)
+    : re_(Clock::now().time_since_epoch().count())
+    , distr_(mean, std)
+  {
+    //
+  }
+
+  Scalar noise()
+  {
+    return distr_(re_);
+  }
+
+  Scalar operator()()
+  {
+    return noise();
+  }
+
+protected:
+
+  std::default_random_engine re_;
+  std::normal_distribution<Scalar> distr_;
+};
 
 template <typename _Derived>
 const typename _Derived::DataType&
