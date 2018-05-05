@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE2.h"
+
+#include "manif/impl/utils.h"
+
 #include "manif/ceres/local_parametrization.h"
 #include "manif/ceres/objective.h"
 #include "manif/ceres/constraint.h"
@@ -229,32 +232,25 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   ceres::Problem problem(problem_options);
 
-  SE2d state_0(0,0,0); // expected at  0,0,0
-  SE2d state_1(0,0,0); // expected at  1,0,0
-  SE2d state_2(0,0,0); // expected at  2,1,M_PI/4.
-  SE2d state_3(0,0,0); // expected at  2,2,M_PI/2.
-  SE2d state_4(0,0,0); // expected at  1,3,3.*M_PI/4.
-  SE2d state_5(0,0,0); // expected at  0,3,M_PI
-  SE2d state_6(0,0,0); // expected at -1,2,-3.*M_PI/4.
-  SE2d state_7(0,0,0); // expected at -1,1,-M_PI/2.
+  SE2d state_0(0,0,0); // expected at  0, 0, -M_PI/4.
+  SE2d state_1(0,0,0); // expected at  1, 0, 0
+  SE2d state_2(0,0,0); // expected at  2, 1, M_PI/4.
+  SE2d state_3(0,0,0); // expected at  2, 2, M_PI/2.
+  SE2d state_4(0,0,0); // expected at  1, 3, 3.*M_PI/4.
+  SE2d state_5(0,0,0); // expected at  0, 3, M_PI
+  SE2d state_6(0,0,0); // expected at -1, 2, -3.*M_PI/4.
+  SE2d state_7(0,0,0); // expected at -1, 1, -M_PI/2.
 
-  /// @todo adapt Tangents x,y to fit the expected dim
+  constexpr double inv_sqrt_2 = 1./sqrt(2.);
 
-//  auto constraint_0_1 = make_constraint_autodiff<SE2d>( 1, 0, 0       );
-//  auto constraint_1_2 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-//  auto constraint_2_3 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-//  auto constraint_3_4 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-//  auto constraint_4_5 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-//  auto constraint_5_6 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-//  auto constraint_6_7 = make_constraint_autodiff<SE2d>( 1, 1, M_PI/4. );
-
-  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( 1, 0, 0       ).lift() );
-  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
-  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
-  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
-  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
-  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
-  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( 1, 1, M_PI/4. ).lift() );
+  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
+  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
+  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
+  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
+  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
+  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
+  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
+//  auto constraint_7_0 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( constraint_0_1.get(),
@@ -285,9 +281,13 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
                             nullptr,
                             state_6.data(), state_7.data() );
 
-  // Force 'first' state to 0
+//  problem.AddResidualBlock( constraint_7_0.get(),
+//                            nullptr,
+//                            state_7.data(), state_0.data() );
+
+  // Anchor on state
   std::shared_ptr<ceres::CostFunction> obj_origin =
-      make_objective_autodiff<SE2d>(0,0,0);
+      make_objective_autodiff<SE2d>(0,0,-M_PI/4.);
 
   problem.AddResidualBlock( obj_origin.get(),
                             nullptr,
@@ -322,13 +322,14 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
                                auto_diff_local_parameterization.get() );
 
   std::cout << "-----------------------------\n";
-  std::cout << "\t Calling Solve ! \n";
+  std::cout << "|       Calling Solve !     |\n";
   std::cout << "-----------------------------\n\n";
 
   // Run the solver!
   ceres::Solver::Options options;
   options.function_tolerance = 1e-15;
-  options.minimizer_progress_to_stdout = true;
+  options.max_num_iterations = 250;
+  options.minimizer_progress_to_stdout = false;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
@@ -338,11 +339,20 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
-  constexpr double ceres_eps = 1e-3;
+  std::cout << "p0 : [" << state_0.x() << "," << state_0.y() << "," << state_0.angle() << "]\n";
+  std::cout << "p1 : [" << state_1.x() << "," << state_1.y() << "," << state_1.angle() << "]\n";
+  std::cout << "p2 : [" << state_2.x() << "," << state_2.y() << "," << state_2.angle() << "]\n";
+  std::cout << "p3 : [" << state_3.x() << "," << state_3.y() << "," << state_3.angle() << "]\n";
+  std::cout << "p4 : [" << state_4.x() << "," << state_4.y() << "," << state_4.angle() << "]\n";
+  std::cout << "p5 : [" << state_5.x() << "," << state_5.y() << "," << state_5.angle() << "]\n";
+  std::cout << "p6 : [" << state_6.x() << "," << state_6.y() << "," << state_6.angle() << "]\n";
+  std::cout << "p7 : [" << state_7.x() << "," << state_7.y() << "," << state_7.angle() << "]\n";
+
+  constexpr double ceres_eps = 1e-10;
 
   EXPECT_NEAR( 0,           state_0.x(),      ceres_eps);
   EXPECT_NEAR( 0,           state_0.y(),      ceres_eps);
-  EXPECT_NEAR( 0,           state_0.angle(),  ceres_eps);
+  EXPECT_NEAR(-M_PI/4.,     state_0.angle(),  ceres_eps);
 
   EXPECT_NEAR( 1,           state_1.x(),      ceres_eps);
   EXPECT_NEAR( 0,           state_1.y(),      ceres_eps);
@@ -362,7 +372,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   EXPECT_NEAR( 0,           state_5.x(),      ceres_eps);
   EXPECT_NEAR( 3,           state_5.y(),      ceres_eps);
-  EXPECT_NEAR( M_PI,        state_5.angle(),  ceres_eps);
+  EXPECT_NEAR(-M_PI,        state_5.angle(),  ceres_eps);
 
   EXPECT_NEAR(-1,           state_6.x(),      ceres_eps);
   EXPECT_NEAR( 2,           state_6.y(),      ceres_eps);
