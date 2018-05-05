@@ -6,6 +6,7 @@
 //#include "manif/impl/SO2_map.h"
 
 #include "manif/ceres/ceres_traits.h"
+#include "manif/ceres/ceres_jacobian_helper.h"
 
 #include <ceres/local_parameterization.h>
 
@@ -20,7 +21,7 @@ class LocalParameterization
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
 
-  using JacobianMap = typename internal::traits_ceres<Jacobian>::JacobianMap;
+  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate =
@@ -98,11 +99,10 @@ public:
 
     state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
 
-    JacobianMap rplus_jacobian(rplus_jacobian_raw);
-    rplus_jacobian = J_rplus_t_;
+//    const auto J_lift_m = computeJacobian(state);
 
-    rplus_jacobian_raw[0] = -1;
-    rplus_jacobian_raw[1] = -1;
+    JacobianMap rplus_jacobian(rplus_jacobian_raw);
+    rplus_jacobian = computeJacobian(state) * J_rplus_t_;
 
     return true;
   }

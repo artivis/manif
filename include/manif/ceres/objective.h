@@ -1,7 +1,9 @@
 #ifndef _MANIF_MANIF_CERES_OBJECTIVE_H_
 #define _MANIF_MANIF_CERES_OBJECTIVE_H_
 
-#include <ceres/cost_function.h>
+#include "manif/ceres/ceres_traits.h"
+#include "manif/ceres/ceres_jacobian_helper.h"
+
 #include <ceres/cost_function.h>
 
 namespace manif
@@ -13,9 +15,8 @@ class Objective : public ceres::CostFunction
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
-  using JacobianMap =
-    Eigen::Map<Eigen::Matrix<
-      double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
+
+  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
@@ -33,7 +34,6 @@ public:
 
     set_num_residuals(DoF);
     mutable_parameter_block_sizes()->push_back(RepSize);
-//    mutable_parameter_block_sizes()->push_back(DoF);
   }
 
   virtual ~Objective() = default;
@@ -45,8 +45,6 @@ public:
     Eigen::Map<TangentTemplate<T>> error(residuals_raw);
 
     error = target_state_.template cast<T>() - state;
-
-//    residuals_raw[0] *= T(100000);
 
 //    const auto casted = target_state_.template cast<T>();
 
@@ -74,30 +72,20 @@ public:
 
     Eigen::Map<Tangent> error(residuals_raw);
 
-//    std::cout << "target_state " << target_state_ << "\n";
-//    std::cout << "state " << state << "\n";
-
     if (jacobians_raw != nullptr)
     {
       if (jacobians_raw[0] != nullptr)
       {
         target_state_.rminus(state, error, J_rminus_ma, J_rminus_mb);
 
-//        std::cout << "errorA " << error << "\n";
         JacobianMap jacobian(jacobians_raw[0]);
-        jacobian = J_rminus_mb;
-
-//        std::cout << "jacobian " << jacobian << "\n";
+        jacobian = computeJacobian(state) * J_rminus_mb;
       }
     }
     else
     {
       error = target_state_ - state;
-
-//      std::cout << "errorB " << error << "\n";
     }
-
-//    std::cout << "---------------------\n\n";
 
     return true;
   }

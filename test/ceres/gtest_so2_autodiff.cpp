@@ -177,7 +177,6 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_AUTODIFF_SMALL_PROBLEM)
   EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
 
-
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
 {
   // Tell ceres not to take ownership of the raw pointers
@@ -339,9 +338,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
   EXPECT_ANGLE_NEAR(-M_PI/4.,   state_7.angle(), ceres_eps);
 }
 
-
-/*
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -350,16 +347,13 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
 
   ceres::Problem problem(problem_options);
 
-  SO2d average_state(0);
+  SO2d average_state(M_PI/4.);
 
   // Create 4 objectives spread arround pi
-  ObjectiveSO2 obj_pi_over_4(SO2d(M_PI/4.)),
+  ObjectiveSO2 obj_pi_over_4(  SO2d(   M_PI/4.)),
                obj_3_pi_over_8(SO2d(3.*M_PI/8.)),
                obj_5_pi_over_8(SO2d(5.*M_PI/8.)),
                obj_3_pi_over_4(SO2d(3.*M_PI/4.));
-
-  ceres::AutoDiffCostFunction<ObjectiveSO2, 1, 2>(
-          new MyScalarCostFunctor(1.0));
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &obj_pi_over_4,
@@ -378,18 +372,19 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
                             nullptr,
                             average_state.data() );
 
-  ceres::AutoDiffLocalParameterization<LocalParameterizationSO2, 2, 1>
-        auto_diff_local_parameterization;
-
-//  LocalParameterizationSO2 local_parametrization;
+  LocalParameterizationSO2 local_parametrization;
 
   problem.SetParameterization( average_state.data(),
-                               &auto_diff_local_parameterization );
+                               &local_parametrization );
+
+  std::cout << "-----------------------------\n";
+  std::cout << "|       Calling Solve !     |\n";
+  std::cout << "-----------------------------\n\n";
 
   // Run the solver!
   ceres::Solver::Options options;
-//  options.max_num_iterations = 50;
-//  options.minimizer_progress_to_stdout = false;
+  options.function_tolerance = 1e-10;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
@@ -397,16 +392,10 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
   std::cout << "summary:\n" << summary.BriefReport() << "\n";
 //  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
-  bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
-                     (summary.termination_type != 1) and // NO_CONVERGENCE
-                     (summary.termination_type != 5);    // NUMERICAL_FAILURE
+  ASSERT_TRUE(summary.IsSolutionUsable());
 
-  EXPECT_TRUE(opt_success) << "Solving failure : "
-                           << getReason(summary.termination_type);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
+  EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
-*/
 
 /*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
