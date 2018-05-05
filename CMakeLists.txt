@@ -43,7 +43,7 @@ include_directories(include)
 include_directories(SYSTEM
   ${EIGEN_INCLUDE_DIRS}
   ${LSPDLOG_INCLUDE_DIRS}
-  ${Ceres_INCLUDE_DIRS}
+  ${CERES_INCLUDE_DIRS}
 )
 
 #############
