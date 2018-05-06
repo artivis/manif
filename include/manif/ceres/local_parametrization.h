@@ -99,8 +99,6 @@ public:
 
     state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
 
-//    const auto J_lift_m = computeJacobian(state);
-
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
     rplus_jacobian = computeJacobian(state) * J_rplus_t_;
 

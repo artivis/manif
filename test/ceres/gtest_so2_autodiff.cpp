@@ -184,9 +184,6 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
   problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
-  // states are equally spread over the circle by
-  // M_PI / 4
-
   ceres::Problem problem(problem_options);
 
   GaussianNoiseGenerator<> noise(0, 0.1);
@@ -397,23 +394,45 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM)
   EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
 
-/*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
   ceres::Problem problem(problem_options);
 
-  SO2d state_0(0);
-  SO2d state_1(0);
-  SO2d state_2(0);
-  SO2d state_3(0);
-  SO2d state_4(0);
-  SO2d state_5(0);
-  SO2d state_6(0);
-  SO2d state_7(0);
+  GaussianNoiseGenerator<> noise(0, 0.1);
+
+  //  p0 expected at  0
+  //  p1 expected at  M_PI/4.
+  //  p2 expected at  M_PI_2
+  //  p3 expected at  3.*M_PI/4.
+  //  p4 expected at  M_PI
+  //  p5 expected at -3.*M_PI/4
+  //  p6 expected at -M_PI_2
+  //  p7 expected at -M_PI/4.
+
+  SO2d state_0( 0          + noise());
+  SO2d state_1( M_PI/4.    + noise());
+  SO2d state_2( M_PI_2     + noise());
+  SO2d state_3( 3.*M_PI/4. + noise());
+  SO2d state_4( M_PI       + noise());
+  SO2d state_5(-3.*M_PI/4  + noise());
+  SO2d state_6(-M_PI_2     + noise());
+  SO2d state_7(-M_PI/4.    + noise());
+
+  std::cout << "Initial states :\n";
+  std::cout << "p0 : [" << state_0.angle() << "]\n";
+  std::cout << "p1 : [" << state_1.angle() << "]\n";
+  std::cout << "p2 : [" << state_2.angle() << "]\n";
+  std::cout << "p3 : [" << state_3.angle() << "]\n";
+  std::cout << "p4 : [" << state_4.angle() << "]\n";
+  std::cout << "p5 : [" << state_5.angle() << "]\n";
+  std::cout << "p6 : [" << state_6.angle() << "]\n";
+  std::cout << "p7 : [" << state_7.angle() << "]\n";
+  std::cout << "\n";
 
   ConstraintSO2 constraint_0_1(M_PI/4.);
   ConstraintSO2 constraint_1_2(M_PI/4.);
@@ -422,9 +441,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
   ConstraintSO2 constraint_4_5(M_PI/4.);
   ConstraintSO2 constraint_5_6(M_PI/4.);
   ConstraintSO2 constraint_6_7(M_PI/4.);
-
-  // This would be like a loop-closure
-//  ConstraintSO2 constraint_7_8(M_PI/4.);
+  ConstraintSO2 constraint_7_0(M_PI/4.);
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &constraint_0_1,
@@ -455,6 +472,19 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
                             nullptr,
                             state_6.data(), state_7.data() );
 
+  problem.AddResidualBlock( &constraint_7_0,
+                            nullptr,
+                            state_7.data(), state_0.data() );
+
+  // Anchor state 0 at 0
+  ObjectiveSO2 obj_origin(0);
+
+  problem.AddResidualBlock( &obj_origin,
+                            nullptr,
+                            state_0.data() );
+
+  /// @todo Not sure if LocalParametrization is
+  /// thread safe thus the several instance
   LocalParameterizationSO2 local_parametrization_0;
   LocalParameterizationSO2 local_parametrization_1;
   LocalParameterizationSO2 local_parametrization_2;
@@ -488,24 +518,45 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
   problem.SetParameterization( state_7.data(),
                                &local_parametrization_7 );
 
+  std::cout << "-----------------------------\n";
+  std::cout << "|       Calling Solve !     |\n";
+  std::cout << "-----------------------------\n\n";
+
   // Run the solver!
   ceres::Solver::Options options;
-//  options.max_num_iterations = 50;
-//  options.minimizer_progress_to_stdout = false;
+  options.function_tolerance = 1e-15;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
 
-//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
-  std::cout << "summary:\n" << summary.FullReport() << "\n";
+  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+//  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
-  bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
-                     (summary.termination_type != 1) and // NO_CONVERGENCE
-                     (summary.termination_type != 5);    // NUMERICAL_FAILURE
+  ASSERT_TRUE(summary.IsSolutionUsable());
 
-  EXPECT_TRUE(opt_success) << getReason(summary.termination_type);
+  std::cout << "Final states :\n";
+  std::cout << "p0 : [" << state_0.angle() << "]\n";
+  std::cout << "p1 : [" << state_1.angle() << "]\n";
+  std::cout << "p2 : [" << state_2.angle() << "]\n";
+  std::cout << "p3 : [" << state_3.angle() << "]\n";
+  std::cout << "p4 : [" << state_4.angle() << "]\n";
+  std::cout << "p5 : [" << state_5.angle() << "]\n";
+  std::cout << "p6 : [" << state_6.angle() << "]\n";
+  std::cout << "p7 : [" << state_7.angle() << "]\n";
+  std::cout << "\n";
+
+  constexpr double ceres_eps = 1e-6;
+
+  EXPECT_ANGLE_NEAR(0,          state_0.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(M_PI/4.,    state_1.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(M_PI_2,     state_2.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(3.*M_PI/4., state_3.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(M_PI,       state_4.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(-3.*M_PI/4, state_5.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(-M_PI_2,    state_6.angle(), ceres_eps);
+  EXPECT_ANGLE_NEAR(-M_PI/4.,   state_7.angle(), ceres_eps);
 }
-*/
 
 int main(int argc, char** argv)
 {

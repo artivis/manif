@@ -39,13 +39,9 @@ computeJacobian<Eigen::Map<const SO2d>>(const Eigen::Map<const SO2d>& m)
   using Jacobian_lift_coeffs = Eigen::Matrix<SO2d::Scalar,
                                              SO2d::RepSize,
                                              SO2d::DoF>;
-
-  Jacobian_lift_coeffs J_l_c;
-
-  J_l_c(0) = -m.imag();
-  J_l_c(1) =  m.real();
-
-  return J_l_c;
+  return (Jacobian_lift_coeffs()
+           << -m.imag(),
+               m.real() ).finished();
 }
 
 } /* namespace manif */

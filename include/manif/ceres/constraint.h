@@ -1,6 +1,8 @@
 #ifndef _MANIF_MANIF_CERES_CONSTRAINT_H_
 #define _MANIF_MANIF_CERES_CONSTRAINT_H_
 
+#include "manif/ceres/ceres_jacobian_helper.h"
+
 #include <ceres/cost_function.h>
 
 namespace manif
@@ -13,9 +15,8 @@ class Constraint
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
   using Jacobian = typename _Manifold::Jacobian;
-  using JacobianMap =
-    Eigen::Map<Eigen::Matrix<
-      double, Manifold::DoF, Manifold::DoF, Eigen::RowMajor>>;
+
+  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
@@ -67,12 +68,12 @@ public:
 
     if (jacobians_raw != nullptr)
     {
-      if (jacobians_raw[0] != nullptr &&
+      if (jacobians_raw[0] != nullptr ||
           jacobians_raw[1] != nullptr)
       {
-        state_future.between(state_past,
-                             pose_increment_,
-                             J_pi_future_, J_pi_past_);
+        state_past.between(state_future,
+                           pose_increment_,
+                           J_pi_past_, J_pi_future_);
 
         measurement_.retract(mmeas_, J_mmeas_meas_);
 
@@ -82,11 +83,19 @@ public:
 
         pe_.lift(residuals, J_res_pe_);
 
-        JacobianMap J_res_past(jacobians_raw[0]);
-        JacobianMap J_res_future(jacobians_raw[1]);
+        if (jacobians_raw[0] != nullptr)
+        {
+          JacobianMap J_res_past(jacobians_raw[0]);
+          J_res_past =
+            computeJacobian(state_past) * J_res_pe_ * J_pe_pi_ * J_pi_past_;
+        }
 
-        J_res_past   = J_res_pe_ * J_pe_pi_ * J_pi_past_;
-        J_res_future = J_res_pe_ * J_pe_pi_ * J_pi_future_;
+        if (jacobians_raw[1] != nullptr)
+        {
+          JacobianMap J_res_future(jacobians_raw[1]);
+          J_res_future =
+            computeJacobian(state_future) * J_res_pe_ * J_pe_pi_ * J_pi_future_;
+        }
       }
     }
     else
