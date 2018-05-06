@@ -22,20 +22,13 @@ using ConstraintSO2 = Constraint<SO2d>;
 
 using namespace manif;
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE_AUTODIFF)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
 {
   // Create 4 objectives spread arround pi
-  std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
-      make_objective_autodiff<SO2d>(M_PI/4.);
-
-  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_8 =
-      make_objective_autodiff<SO2d>(3.*M_PI/8.);
-
-  std::shared_ptr<ceres::CostFunction> obj_5_pi_over_8 =
-      make_objective_autodiff<SO2d>(5.*M_PI/8.);
-
-  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
-      make_objective_autodiff<SO2d>(3.*M_PI/4.);
+  ObjectiveSO2 obj_pi_over_4(     M_PI/4.);
+  ObjectiveSO2 obj_3_pi_over_8(3.*M_PI/8.);
+  ObjectiveSO2 obj_5_pi_over_8(5.*M_PI/8.);
+  ObjectiveSO2 obj_3_pi_over_4(3.*M_PI/4.);
 
   /// @todo eval Jac
 ////  double** jacobians = new double*[10];
@@ -52,24 +45,22 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE_AUTODIFF)
   parameter  = average_state.data();
   parameters = &parameter;
 
-  obj_pi_over_4->Evaluate(parameters, &residuals, nullptr);
+  obj_pi_over_4.Evaluate(parameters, &residuals, nullptr);
   EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals);
 
-  obj_3_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  obj_3_pi_over_8.Evaluate(parameters, &residuals, nullptr);
   EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
 
-  obj_5_pi_over_8->Evaluate(parameters, &residuals, nullptr);
+  obj_5_pi_over_8.Evaluate(parameters, &residuals, nullptr);
   EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
 
-  obj_3_pi_over_4->Evaluate(parameters, &residuals, nullptr );
+  obj_3_pi_over_4.Evaluate(parameters, &residuals, nullptr );
   EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION)
 {
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parametrization_autodiff<SO2d>();
+  LocalParameterizationSO2 local_parameterization;
 
   // 0 + pi
 
@@ -77,7 +68,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   double delta[1] = {M_PI};
   double x_plus_delta[2] = {0.0, 0.0};
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  local_parameterization.Plus(x, delta, x_plus_delta);
 
   EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
   EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
@@ -93,7 +84,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   x_plus_delta[0] = 0;
   x_plus_delta[1] = 0;
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  local_parameterization.Plus(x, delta, x_plus_delta);
 
   EXPECT_DOUBLE_EQ(cos(-3.*M_PI/4.), x_plus_delta[0]);
   EXPECT_DOUBLE_EQ(sin(-3.*M_PI/4.), x_plus_delta[1]);
@@ -101,13 +92,13 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
 
   double J_rplus[2];
-  auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
+  local_parameterization.ComputeJacobian(x, J_rplus);
 
   EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
   EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -116,45 +107,35 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
 
   ceres::Problem problem(problem_options);
 
+  SO2d average_state(M_PI/4.);
+
   // Create 4 objectives spread arround pi
-  std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
-      make_objective_autodiff<SO2d>(M_PI/4.);
-
-  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_8 =
-      make_objective_autodiff<SO2d>(3.*M_PI/8.);
-
-  std::shared_ptr<ceres::CostFunction> obj_5_pi_over_8 =
-      make_objective_autodiff<SO2d>(5.*M_PI/8.);
-
-  std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
-      make_objective_autodiff<SO2d>(3.*M_PI/4.);
-
-  // Initializing state close to solution
-  SO2d average_state(3.*M_PI/8.);
+  ObjectiveSO2 obj_pi_over_4(  SO2d(   M_PI/4.)),
+               obj_3_pi_over_8(SO2d(3.*M_PI/8.)),
+               obj_5_pi_over_8(SO2d(5.*M_PI/8.)),
+               obj_3_pi_over_4(SO2d(3.*M_PI/4.));
 
   // Add residual blocks to ceres problem
-  problem.AddResidualBlock( obj_pi_over_4.get(),
+  problem.AddResidualBlock( &obj_pi_over_4,
                             nullptr,
                             average_state.data() );
 
-  problem.AddResidualBlock( obj_3_pi_over_8.get(),
+  problem.AddResidualBlock( &obj_3_pi_over_8,
                             nullptr,
                             average_state.data() );
 
-  problem.AddResidualBlock( obj_5_pi_over_8.get(),
+  problem.AddResidualBlock( &obj_5_pi_over_8,
                             nullptr,
                              average_state.data() );
 
-  problem.AddResidualBlock( obj_3_pi_over_4.get(),
+  problem.AddResidualBlock( &obj_3_pi_over_4,
                             nullptr,
                             average_state.data() );
 
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parametrization_autodiff<SO2d>();
+  LocalParameterizationSO2 local_parametrization;
 
   problem.SetParameterization( average_state.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";
@@ -162,7 +143,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
 
   // Run the solver!
   ceres::Solver::Options options;
-  options.function_tolerance = 1e-15;
+  options.function_tolerance = 1e-10;
   options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
@@ -173,11 +154,10 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
-  // 1.3088223838053636e-09
   EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -217,83 +197,89 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT_AUTODIFF)
   std::cout << "p7 : [" << state_7.angle() << "]\n";
   std::cout << "\n";
 
-  auto constraint_0_1 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_1_2 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_2_3 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_3_4 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_4_5 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_5_6 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_6_7 = make_constraint_autodiff<SO2d>(M_PI/4.);
-  auto constraint_7_0 = make_constraint_autodiff<SO2d>(M_PI/4.);
+  ConstraintSO2 constraint_0_1(M_PI/4.);
+  ConstraintSO2 constraint_1_2(M_PI/4.);
+  ConstraintSO2 constraint_2_3(M_PI/4.);
+  ConstraintSO2 constraint_3_4(M_PI/4.);
+  ConstraintSO2 constraint_4_5(M_PI/4.);
+  ConstraintSO2 constraint_5_6(M_PI/4.);
+  ConstraintSO2 constraint_6_7(M_PI/4.);
+  ConstraintSO2 constraint_7_0(M_PI/4.);
 
   // Add residual blocks to ceres problem
-  problem.AddResidualBlock( constraint_0_1.get(),
+  problem.AddResidualBlock( &constraint_0_1,
                             nullptr,
                             state_0.data(), state_1.data() );
 
-  problem.AddResidualBlock( constraint_1_2.get(),
+  problem.AddResidualBlock( &constraint_1_2,
                             nullptr,
                             state_1.data(), state_2.data() );
 
-  problem.AddResidualBlock( constraint_2_3.get(),
+  problem.AddResidualBlock( &constraint_2_3,
                             nullptr,
                             state_2.data(), state_3.data() );
 
-  problem.AddResidualBlock( constraint_3_4.get(),
+  problem.AddResidualBlock( &constraint_3_4,
                             nullptr,
                             state_3.data(), state_4.data() );
 
-  problem.AddResidualBlock( constraint_4_5.get(),
+  problem.AddResidualBlock( &constraint_4_5,
                             nullptr,
                             state_4.data(), state_5.data() );
 
-  problem.AddResidualBlock( constraint_5_6.get(),
+  problem.AddResidualBlock( &constraint_5_6,
                             nullptr,
                             state_5.data(), state_6.data() );
 
-  problem.AddResidualBlock( constraint_6_7.get(),
+  problem.AddResidualBlock( &constraint_6_7,
                             nullptr,
                             state_6.data(), state_7.data() );
 
-  problem.AddResidualBlock( constraint_7_0.get(),
+  problem.AddResidualBlock( &constraint_7_0,
                             nullptr,
                             state_7.data(), state_0.data() );
 
   // Anchor state 0 at 0
-  std::shared_ptr<ceres::CostFunction> obj_origin =
-      make_objective_autodiff<SO2d>(0);
+  ObjectiveSO2 obj_origin(0);
 
-  problem.AddResidualBlock( obj_origin.get(),
+  problem.AddResidualBlock( &obj_origin,
                             nullptr,
                             state_0.data() );
 
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parametrization_autodiff<SO2d>();
+  /// @todo Not sure if LocalParametrization is
+  /// thread safe thus the several instance
+  LocalParameterizationSO2 local_parametrization_0;
+  LocalParameterizationSO2 local_parametrization_1;
+  LocalParameterizationSO2 local_parametrization_2;
+  LocalParameterizationSO2 local_parametrization_3;
+  LocalParameterizationSO2 local_parametrization_4;
+  LocalParameterizationSO2 local_parametrization_5;
+  LocalParameterizationSO2 local_parametrization_6;
+  LocalParameterizationSO2 local_parametrization_7;
 
   problem.SetParameterization( state_0.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_0 );
 
   problem.SetParameterization( state_1.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_1 );
 
   problem.SetParameterization( state_2.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_2 );
 
   problem.SetParameterization( state_3.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_3 );
 
   problem.SetParameterization( state_4.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_4 );
 
   problem.SetParameterization( state_5.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_5 );
 
   problem.SetParameterization( state_6.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_6 );
 
   problem.SetParameterization( state_7.data(),
-                               auto_diff_local_parameterization.get() );
+                               &local_parametrization_7 );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";
