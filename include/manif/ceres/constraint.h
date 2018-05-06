@@ -26,8 +26,9 @@ class Constraint
 
 public:
 
-  explicit Constraint(const Tangent& measurement)
-    : measurement_(measurement)
+  template <typename... Args>
+  Constraint(Args&&... args)
+    : measurement_(std::forward<Args>(args)...)
   {
     constexpr int DoF = Manifold::DoF;
     constexpr int RepSize = Manifold::RepSize;

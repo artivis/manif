@@ -26,8 +26,9 @@ class Objective : public ceres::CostFunction
 
 public:
 
-  explicit Objective(const Manifold& target_state)
-    : target_state_(target_state)
+  template <typename... Args>
+  Objective(Args&&... args)
+    : target_state_(std::forward<Args>(args)...)
   {
     constexpr int DoF = Manifold::DoF;
     constexpr int RepSize = Manifold::RepSize;
