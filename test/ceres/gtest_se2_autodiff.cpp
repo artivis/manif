@@ -24,7 +24,7 @@ using ConstraintSE2 = Constraint<SE2d>;
 
 using namespace manif;
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_OBJECTIVE)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE_AUTODIFF)
 {
   // Create 4 objectives spread arround pi
   std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
@@ -77,7 +77,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_OBJECTIVE)
   EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals[2]);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_LOCAL_PARAMETRIZATION)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_LOCAL_PARAMETRIZATION_AUTODIFF)
 {
   std::shared_ptr<ceres::LocalParameterization>
     auto_diff_local_parameterization =
@@ -142,7 +142,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_LOCAL_PARAMETRIZATION)
   EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[11]);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_SMALL_PROBLEM)
+TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -202,7 +202,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_AUTODIFF_SMALL_PROBLEM)
   // Run the solver!
   ceres::Solver::Options options;
   options.function_tolerance = 1e-15;
-  options.minimizer_progress_to_stdout = false;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
@@ -351,7 +351,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
   // Run the solver!
   ceres::Solver::Options options;
   options.function_tolerance = 1e-15;
-  options.minimizer_progress_to_stdout = false;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
@@ -406,7 +406,6 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
   EXPECT_ANGLE_NEAR(-M_PI_2,      state_7.angle(),  ceres_eps);
 }
 
-
 /*
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE)
 {
@@ -417,16 +416,15 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE)
 
   ceres::Problem problem(problem_options);
 
-  SE2d average_state(0);
-
   // Create 4 objectives spread arround pi
-  ObjectiveSE2 obj_pi_over_4(SE2d(M_PI/4.)),
-               obj_3_pi_over_8(SE2d(3.*M_PI/8.)),
-               obj_5_pi_over_8(SE2d(5.*M_PI/8.)),
-               obj_3_pi_over_4(SE2d(3.*M_PI/4.));
+  ObjectiveSE2 obj_pi_over_4(  3, 3,    M_PI/4.);
+  ObjectiveSE2 obj_3_pi_over_8(3, 1, 3.*M_PI/8.);
+  ObjectiveSE2 obj_5_pi_over_8(1, 1, 5.*M_PI/8.);
+  ObjectiveSE2 obj_3_pi_over_4(3, 1, 3.*M_PI/4.);
 
-  ceres::AutoDiffCostFunction<ObjectiveSE2, 1, 2>(
-          new MyScalarCostFunctor(1.0));
+  SE2d average_state(0,0,0);
+
+  /////////////////////////////////
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &obj_pi_over_4,
@@ -445,33 +443,32 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE)
                             nullptr,
                             average_state.data() );
 
-  ceres::AutoDiffLocalParameterization<LocalParameterizationSE2, 2, 1>
-        auto_diff_local_parameterization;
-
-//  LocalParameterizationSE2 local_parametrization;
+  LocalParameterizationSE2 local_parameterization;
 
   problem.SetParameterization( average_state.data(),
-                               &auto_diff_local_parameterization );
+                               &local_parameterization );
+
+  std::cout << "-----------------------------\n";
+  std::cout << "|       Calling Solve !     |\n";
+  std::cout << "-----------------------------\n\n";
+
+  // Initializing state closer to solution
+//  average_state = SE2d(3.*M_PI/8.);
 
   // Run the solver!
   ceres::Solver::Options options;
-//  options.max_num_iterations = 50;
-//  options.minimizer_progress_to_stdout = false;
+  options.function_tolerance = 1e-15;
+  options.minimizer_progress_to_stdout = true;
 
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
 
-  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+  std::cout << "summary:\n" << summary.BriefReport() << "\n\n";
 //  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
-  bool opt_success = (summary.termination_type != 0) and // DID_NOT_RUN
-                     (summary.termination_type != 1) and // NO_CONVERGENCE
-                     (summary.termination_type != 5);    // NUMERICAL_FAILURE
+  ASSERT_TRUE(summary.IsSolutionUsable());
 
-  EXPECT_TRUE(opt_success) << "Solving failure : "
-                           << getReason(summary.termination_type);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, average_state.angle());
+  EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-1);
 }
 */
 
