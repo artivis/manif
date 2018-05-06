@@ -22,7 +22,7 @@ template <typename _Manifold>
 Eigen::Matrix<typename _Manifold::Scalar,
               _Manifold::RepSize,
               _Manifold::DoF>
-computeJacobian(const _Manifold& /*m*/)
+computeLiftJacobianGlobal(const _Manifold& /*m*/)
 {
   MANIF_NOT_IMPLEMENTED_YET;
   return Eigen::Matrix<typename _Manifold::Scalar,
@@ -34,7 +34,8 @@ template<>
 Eigen::Matrix<SO2d::Scalar,
               SO2d::RepSize,
               SO2d::DoF>
-computeJacobian<Eigen::Map<const SO2d>>(const Eigen::Map<const SO2d>& m)
+computeLiftJacobianGlobal<Eigen::Map<const SO2d>>(
+    const Eigen::Map<const SO2d>& m)
 {
   using Jacobian_lift_coeffs = Eigen::Matrix<SO2d::Scalar,
                                              SO2d::RepSize,

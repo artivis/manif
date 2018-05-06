@@ -79,7 +79,7 @@ public:
         target_state_.rminus(state, error, J_rminus_ma, J_rminus_mb);
 
         JacobianMap jacobian(jacobians_raw[0]);
-        jacobian = computeJacobian(state) * J_rminus_mb;
+        jacobian = computeLiftJacobianGlobal(state) * J_rminus_mb;
       }
     }
     else
