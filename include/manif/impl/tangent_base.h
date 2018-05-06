@@ -88,9 +88,6 @@ public:
 
   static Tangent Zero();
   static Tangent Random();
-  static Manifold Retract(const Tangent& t);
-
-  static void Retract(const Tangent& t, Manifold& m, Jacobian& J_m_t);
 
 private:
 
@@ -224,13 +221,6 @@ TangentBase<_Derived>::Random()
 {
   static const Tangent t(DataType::Random());
   return t;
-}
-
-template <class _Derived>
-typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::Retract(const Tangent& t)
-{
-  return t.retract();
 }
 
 /// Utils
