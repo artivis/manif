@@ -334,12 +334,11 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 {
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3b(toRad(15),  toRad(45),  toRad(90));
 
-  SO3d so3c;
   SO3d::Jacobian J_c_a, J_c_b;
 
-  so3a.compose(so3b, so3c, J_c_a, J_c_b);
+  SO3d so3c = so3a.compose(so3b, J_c_a, J_c_b);
 
   EXPECT_DOUBLE_EQ(0, so3c.x());
   EXPECT_DOUBLE_EQ(0, so3c.y());

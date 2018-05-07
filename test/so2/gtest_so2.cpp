@@ -336,10 +336,8 @@ TEST(TEST_SO2, TEST_SO2_COMPOSE_JAC)
   SO2d so2a(M_PI_2);
   SO2d so2b(M_PI_2);
 
-  SO2d so2c;
   SO2d::Jacobian J_c_a, J_c_b;
-
-  so2a.compose(so2b, so2c, J_c_a, J_c_b);
+  SO2d so2c = so2a.compose(so2b, J_c_a, J_c_b);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 

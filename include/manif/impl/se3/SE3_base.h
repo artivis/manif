@@ -44,7 +44,9 @@ public:
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
   Vector act(const Vector &v) const;
 
@@ -52,14 +54,6 @@ public:
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  void lift(Tangent& t, Jacobian& J_t_m) const;
-
-  void compose(const Manifold& mb,
-               Manifold& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SE3 specific functions
 
@@ -136,7 +130,10 @@ SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SE3Base<_Derived>::Manifold
-SE3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SE3Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE3Base<_DerivedOther>, _DerivedOther>::value,
@@ -154,24 +151,6 @@ typename SE3Base<_Derived>::Vector
 SE3Base<_Derived>::act(const Vector &v) const
 {
   return transform() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SE3Base<_Derived>::lift(Tangent& t,
-                             Jacobian& J_t_m) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
-}
-
-template <typename _Derived>
-void SE3Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
 }
 
 /// SE3 specific function

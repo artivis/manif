@@ -60,10 +60,22 @@ public:
   Rotation rotation() const;
 
   void identity();
-
   void random();
 
+  // Minimum API
+
   Manifold inverse(OptJacobianRef J_m_t = {}) const;
+
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
+
+  template <typename _DerivedOther>
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
+
+  Vector act(const Vector& v) const;
+
+  // Deduced API
 
   template <typename _DerivedOther>
   Manifold rplus(const TangentBase<_DerivedOther>& t) const;
@@ -89,15 +101,8 @@ public:
   template <typename _DerivedOther>
   Tangent minus(const ManifoldBase<_DerivedOther>& m) const;
 
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
-
-  template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
-
   template <typename _DerivedOther>
   Manifold between(const ManifoldBase<_DerivedOther>& m) const;
-
-  Vector act(const Vector& v) const;
 
   /// @todo
 //  LieType lie() const {return derived().lie();}
@@ -152,13 +157,10 @@ public:
 
   /// Jacs
 
-//  template <typename _DerivedOther>
-//  void lift(ManifoldBase<_DerivedOther>& m, Jacobian& J) const;
-
-  template <typename _DerivedOther0, typename _DerivedOther1>
-  void compose(const ManifoldBase<_DerivedOther0>& mb,
-               ManifoldBase<_DerivedOther1>& mc,
-               Jacobian& J_mc_ma, Jacobian& J_mc_mb) const;
+//  template <typename _DerivedOther0, typename _DerivedOther1>
+//  void compose(const ManifoldBase<_DerivedOther0>& mb,
+//               ManifoldBase<_DerivedOther1>& mc,
+//               Jacobian& J_mc_ma, Jacobian& J_mc_mb) const;
 
   template <typename _DerivedOther0, typename _DerivedOther1>
   void rplus(const TangentBase<_DerivedOther0>& t,
@@ -340,9 +342,11 @@ template <typename _Derived>
 template <typename _DerivedOther>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m) const
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
-  return derived().compose(m);
+  return derived().compose(m, J_mc_ma, J_mc_mb);
 }
 
 template <typename _Derived>
@@ -432,23 +436,15 @@ ManifoldBase<_Derived>::operator *=(
 /// Jacs
 
 //template <typename _Derived>
-//template <typename _DerivedOther>
-//void ManifoldBase<_Derived>::lift(
-//    ManifoldBase<_DerivedOther>& m, Jacobian& J) const
+//template <typename _DerivedOther0, typename _DerivedOther1>
+//void ManifoldBase<_Derived>::compose(
+//    const ManifoldBase<_DerivedOther0>& mb,
+//    ManifoldBase<_DerivedOther1>& mc,
+//    Jacobian& J_mc_ma,
+//    Jacobian& J_mc_mb) const
 //{
-//  derived().lift(m, J);
+//  derived().compose(mb, mc, J_mc_ma, J_mc_mb);
 //}
-
-template <typename _Derived>
-template <typename _DerivedOther0, typename _DerivedOther1>
-void ManifoldBase<_Derived>::compose(
-    const ManifoldBase<_DerivedOther0>& mb,
-    ManifoldBase<_DerivedOther1>& mc,
-    Jacobian& J_mc_ma,
-    Jacobian& J_mc_mb) const
-{
-  derived().compose(mb, mc, J_mc_ma, J_mc_mb);
-}
 
 template <typename _Derived>
 template <typename _DerivedOther0, typename _DerivedOther1>
@@ -464,7 +460,7 @@ void ManifoldBase<_Derived>::rplus(
 
   Jacobian J_rplus_ret;
 
-  compose(ret, m, J_rplus_m, J_rplus_ret);
+  m = compose(ret, J_rplus_m, J_rplus_ret);
 
   J_rplus_t = J_rplus_ret * J_ret_t;
 }
@@ -478,12 +474,9 @@ void ManifoldBase<_Derived>::lplus(
     Jacobian& J_lplus_t) const
 {
   Jacobian J_ret_t;
-
-  const Manifold ret = t.retract(J_ret_t);
-
   Jacobian J_lplus_ret;
 
-  ret.compose(*this, m, J_lplus_ret, J_lplus_m);
+  m = t.retract(J_ret_t).compose(*this, J_lplus_ret, J_lplus_m);
 
   J_lplus_t = J_lplus_ret * J_ret_t;
 }
@@ -510,10 +503,9 @@ void ManifoldBase<_Derived>::rminus(
   Jacobian J_inv_mb;
   Manifold inv = mb.inverse(J_inv_mb);
 
-  Manifold comp;
   Jacobian J_comp_inv;
   Jacobian J_comp_ma;
-  inv.compose(*this, comp, J_comp_inv, J_comp_ma);
+  Manifold comp = inv.compose(*this, J_comp_inv, J_comp_ma);
 
   Jacobian J_rminus_comp;
   t = comp.lift(J_rminus_comp);
@@ -532,10 +524,10 @@ void ManifoldBase<_Derived>::lminus(
 {
   Jacobian J_inv_ma;
 
-  Manifold comp;
   Jacobian J_comp_inv;
   Jacobian J_comp_mb;
-  mb.compose(derived().inverse(J_inv_ma), comp, J_comp_mb, J_comp_inv);
+  Manifold comp = mb.compose(derived().inverse(J_inv_ma),
+                             J_comp_mb, J_comp_inv);
 
   Jacobian J_rminus_comp;
   t = comp.lift(J_rminus_comp);
@@ -564,7 +556,7 @@ void ManifoldBase<_Derived>::between(
 {
   Jacobian J_inv_ma;
   Jacobian J_mc_inv;
-  derived().inverse(J_inv_ma).compose(mb, mc, J_mc_inv, J_mc_mb);
+  mc = derived().inverse(J_inv_ma).compose(mb, J_mc_inv, J_mc_mb);
 
   J_mc_ma = J_mc_inv * J_inv_ma;
 }

@@ -44,7 +44,9 @@ public:
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
   Vector act(const Vector &v) const;
 
@@ -52,13 +54,6 @@ public:
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  template <typename _DerivedOther0, typename _DerivedOther1>
-  void compose(const ManifoldBase<_DerivedOther0>& mb,
-               ManifoldBase<_DerivedOther1>& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SE2 specific functions
 
@@ -207,7 +202,10 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SE2Base<_Derived>::Manifold
-SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SE2Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE2Base<_DerivedOther>, _DerivedOther>::value,
@@ -219,6 +217,23 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
   const Scalar lhs_imag = imag(); // sin(t)
   const Scalar rhs_real = m_se2.real();
   const Scalar rhs_imag = m_se2.imag();
+
+  if (J_mc_ma)
+  {
+    const Scalar theta_inv = -angle();
+
+    J_mc_ma->setIdentity();
+    (*J_mc_ma)(0,2) = m.coeffs().x()*sin(theta_inv) -
+                      m.coeffs().y()*cos(theta_inv);
+    (*J_mc_ma)(1,2) = m.coeffs().x()*cos(theta_inv) +
+                      m.coeffs().y()*sin(theta_inv);
+  }
+
+  if (J_mc_mb)
+  {
+    J_mc_mb->setIdentity();
+    J_mc_mb->template block<2,2>(0,0) = rotation();
+  }
 
   return Manifold(
         lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
@@ -232,29 +247,6 @@ typename SE2Base<_Derived>::Vector
 SE2Base<_Derived>::act(const Vector &v) const
 {
   return transform() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-template <typename _DerivedOther0, typename _DerivedOther1>
-void SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
-                                ManifoldBase<_DerivedOther1>& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  mout = compose(mb);
-
-  const Scalar theta_inv = -angle();
-
-  J_c_a.setIdentity();
-  J_c_a(0,2) = mb.coeffs().x()*sin(theta_inv) -
-               mb.coeffs().y()*cos(theta_inv);
-  J_c_a(1,2) = mb.coeffs().x()*cos(theta_inv) +
-               mb.coeffs().y()*sin(theta_inv);
-
-  J_c_b.setIdentity();
-  J_c_b.template block<2,2>(0,0) = rotation();
 }
 
 /// SE2 specific function

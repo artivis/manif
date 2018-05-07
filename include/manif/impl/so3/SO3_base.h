@@ -38,7 +38,9 @@ public:
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
   Vector act(const Vector &v) const;
 
@@ -46,12 +48,6 @@ public:
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  void compose(const Manifold& mb,
-               Manifold& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SO3 specific functions
 
@@ -148,8 +144,17 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SO3Base<_Derived>::Manifold
-SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SO3Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
+  if (J_mc_ma)
+    *J_mc_ma = coeffs().conjugate().matrix(); // R2.tr
+
+  if (J_mc_mb)
+    J_mc_mb->setIdentity();
+
   return Manifold(coeffs() * m.coeffs());
 }
 
@@ -158,19 +163,6 @@ typename SO3Base<_Derived>::Vector
 SO3Base<_Derived>::act(const Vector &v) const
 {
   return rotation() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SO3Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  mout = compose(mb);
-  J_c_a = coeffs().conjugate().matrix(); // R2.tr
-  J_c_b.setIdentity();
 }
 
 /// SO3 specific
