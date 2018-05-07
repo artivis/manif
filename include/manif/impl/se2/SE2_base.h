@@ -271,8 +271,10 @@ void SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
   const Scalar theta_inv = -angle();
 
   J_c_a.setIdentity();
-//  J_c_a(0,2) = mb.x()*sin(theta_inv) - mb.y()*cos(theta_inv);
-//  J_c_a(1,2) = mb.x()*cos(theta_inv) + mb.y()*sin(theta_inv);
+  J_c_a(0,2) = mb.coeffs().x()*sin(theta_inv) -
+               mb.coeffs().y()*cos(theta_inv);
+  J_c_a(1,2) = mb.coeffs().x()*cos(theta_inv) +
+               mb.coeffs().y()*sin(theta_inv);
 
   J_c_b.setIdentity();
   J_c_b.template block<2,2>(0,0) = rotation();

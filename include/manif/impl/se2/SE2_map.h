@@ -49,6 +49,12 @@ public:
 
   const DataType& coeffs() const { return data_; }
 
+  using Base::angle;
+  using Base::real;
+  using Base::imag;
+  using Base::x;
+  using Base::y;
+
 protected:
 
   friend class manif::ManifoldBase<Map<manif::SE2<_Scalar>, 0>>;
@@ -72,6 +78,12 @@ public:
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
   const DataType& coeffs() const { return data_; }
+
+  using Base::angle;
+  using Base::real;
+  using Base::imag;
+  using Base::x;
+  using Base::y;
 
 protected:
 
