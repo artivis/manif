@@ -27,7 +27,7 @@ public:
 
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
   using Scalar = typename Base::Scalar;
 

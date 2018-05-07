@@ -25,7 +25,7 @@ public:
 
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR

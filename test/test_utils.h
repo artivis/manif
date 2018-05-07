@@ -4,6 +4,8 @@
 #include "manif/impl/manifold_base.h"
 #include "manif/impl/utils.h"
 
+#include <random>
+
 #define EXPECT_ANGLE_NEAR(e, a, eps) \
   EXPECT_LT(pi2pi(e-a), eps)
 

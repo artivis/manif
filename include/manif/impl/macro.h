@@ -76,8 +76,8 @@
 
 #define MANIF_TANGENT_PROPERTIES                                      \
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF; \
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
+//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
   using tangent##f = tangent<float>;         \
