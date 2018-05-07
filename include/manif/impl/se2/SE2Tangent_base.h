@@ -27,16 +27,14 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
+  using OptJacobianRef = typename Base::OptJacobianRef;
   using Base::data;
   using Base::coeffs;
 
   /// Tangent common API
 
-  Manifold retract() const;
-
-  /// with Jacs
-
-  void retract(Manifold& m, Jacobian& J_m_t) const;
+  Manifold retract(OptJacobianRef J_m_t =
+                     OptJacobianRef{}) const;
 
   /// SE2Tangent specific API
 
@@ -47,16 +45,20 @@ public:
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Manifold
-SE2TangentBase<_Derived>::retract() const
+SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::abs;
   using std::cos;
   using std::sin;
 
   const Scalar theta = angle();
+  const Scalar theta_sq = theta*theta;
 
   Scalar sin_theta_by_theta;
   Scalar one_minus_cos_theta_by_theta;
+
+  if (J_m_t)
+    J_m_t->setIdentity();
 
   if (abs(theta) < Constants<Scalar>::eps)
   {
@@ -65,12 +67,44 @@ SE2TangentBase<_Derived>::retract() const
     sin_theta_by_theta = Scalar(1) - Scalar(1. / 6.) * theta_sq;
     one_minus_cos_theta_by_theta =
         Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
+
+    if (J_m_t)
+    {
+      const Scalar d_sin_theta_by_theta = -theta / Scalar(3);
+
+      const Scalar d_one_minus_cos_theta_by_theta =
+                    Scalar(0.5) - theta_sq * Scalar(0.125);
+
+      (*J_m_t)(0,2) = d_sin_theta_by_theta * x() -
+                      d_one_minus_cos_theta_by_theta * y();
+
+      (*J_m_t)(1,2) = d_one_minus_cos_theta_by_theta * x() +
+                      d_sin_theta_by_theta * y();
+    }
   }
   else
   {
     // Euler
     sin_theta_by_theta = sin(theta) / theta;
     one_minus_cos_theta_by_theta = (Scalar(1) - cos(theta)) / theta;
+
+    if (J_m_t)
+    {
+      const Scalar cos_theta = cos(theta);
+      const Scalar sin_theta = sin(theta);
+
+      const Scalar d_sin_theta_by_theta =
+          (theta * cos_theta - sin_theta) / theta_sq;
+
+      const Scalar d_one_minus_cos_theta_by_theta =
+          (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
+
+      (*J_m_t)(0,2) = d_sin_theta_by_theta * x() -
+                      d_one_minus_cos_theta_by_theta * y();
+
+      (*J_m_t)(1,2) = d_one_minus_cos_theta_by_theta * x() +
+                      d_sin_theta_by_theta * y();
+    }
   }
 
   return Manifold(
@@ -81,52 +115,52 @@ SE2TangentBase<_Derived>::retract() const
 
 /// with Jacs
 
-template <typename _Derived>
-void SE2TangentBase<_Derived>::retract(
-    Manifold& m, Jacobian& J_m_t) const
-{
-  using std::abs;
-  using std::cos;
-  using std::sin;
+//template <typename _Derived>
+//void SE2TangentBase<_Derived>::retract(
+//    Manifold& m, Jacobian& J_m_t) const
+//{
+//  using std::abs;
+//  using std::cos;
+//  using std::sin;
 
-  m = retract();
+//  m = retract();
 
-  /// @todo check J
+//  /// @todo check J
 
-  const Scalar theta    = angle();
-  const Scalar theta_sq = theta*theta;
+//  const Scalar theta    = angle();
+//  const Scalar theta_sq = theta*theta;
 
-  J_m_t.setIdentity();
-  /// @todo
-//  J_m_t.template block<2,2>(0,0) = rotation();
+//  J_m_t.setIdentity();
+//  /// @todo
+////  J_m_t.template block<2,2>(0,0) = rotation();
 
-  Scalar d_sin_theta_by_theta;
-  Scalar d_one_minus_cos_theta_by_theta;
+//  Scalar d_sin_theta_by_theta;
+//  Scalar d_one_minus_cos_theta_by_theta;
 
-  if (abs(theta) < Constants<Scalar>::eps)
-  {
-    d_sin_theta_by_theta = -theta / Scalar(3);
-    d_one_minus_cos_theta_by_theta =
-        Scalar(0.5) - theta_sq * Scalar(0.125);
-  }
-  else
-  {
-    const Scalar cos_theta = cos(theta);
-    const Scalar sin_theta = sin(theta);
+//  if (abs(theta) < Constants<Scalar>::eps)
+//  {
+//    d_sin_theta_by_theta = -theta / Scalar(3);
+//    d_one_minus_cos_theta_by_theta =
+//        Scalar(0.5) - theta_sq * Scalar(0.125);
+//  }
+//  else
+//  {
+//    const Scalar cos_theta = cos(theta);
+//    const Scalar sin_theta = sin(theta);
 
-    d_sin_theta_by_theta =
-        (theta * cos_theta - sin_theta) / theta_sq;
+//    d_sin_theta_by_theta =
+//        (theta * cos_theta - sin_theta) / theta_sq;
 
-    d_one_minus_cos_theta_by_theta =
-        (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
-  }
+//    d_one_minus_cos_theta_by_theta =
+//        (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
+//  }
 
-  J_m_t(0,2) = d_sin_theta_by_theta * x() -
-               d_one_minus_cos_theta_by_theta * y();
+//  J_m_t(0,2) = d_sin_theta_by_theta * x() -
+//               d_one_minus_cos_theta_by_theta * y();
 
-  J_m_t(1,2) = d_one_minus_cos_theta_by_theta * x() +
-               d_sin_theta_by_theta * y();
-}
+//  J_m_t(1,2) = d_one_minus_cos_theta_by_theta * x() +
+//               d_sin_theta_by_theta * y();
+//}
 
 /// SE2Tangent specific API
 

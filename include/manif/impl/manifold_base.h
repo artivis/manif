@@ -505,10 +505,9 @@ void ManifoldBase<_Derived>::rplus(
     Jacobian& J_rplus_m,
     Jacobian& J_rplus_t) const
 {
-  Manifold ret;
   Jacobian J_ret_t;
 
-  t.retract(ret, J_ret_t);
+  const Manifold ret = t.retract(J_ret_t);
 
   Jacobian J_rplus_ret;
 
@@ -525,10 +524,9 @@ void ManifoldBase<_Derived>::lplus(
     Jacobian& J_lplus_m,
     Jacobian& J_lplus_t) const
 {
-  Manifold ret;
   Jacobian J_ret_t;
 
-  t.retract(ret, J_ret_t);
+  const Manifold ret = t.retract(J_ret_t);
 
   Jacobian J_lplus_ret;
 

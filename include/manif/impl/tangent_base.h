@@ -4,6 +4,7 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/constants.h"
+#include "optional.hpp"
 
 #include "lspdlog/logging.h"
 
@@ -23,6 +24,8 @@ struct TangentBase
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieType  = typename internal::traits<_Derived>::LieType;
+
+  using OptJacobianRef = tl::optional<Jacobian&>;
 
   template <typename T>
   using TangentTemplate =
@@ -48,8 +51,11 @@ public:
 
   void zero();
   void random();
-  Manifold retract() const;
+
   LieType skew() const;
+
+  Manifold retract(OptJacobianRef J_m_t =
+                    OptJacobianRef{}) const;
 
   Manifold rplus(const Manifold& m) const;
   Manifold lplus(const Manifold& m) const;
@@ -82,7 +88,7 @@ public:
 
   /// with Jacs
 
-  void retract(Manifold& m, Jacobian& J_m_t) const;
+//  void retract(Manifold& m, Jacobian& J_m_t) const;
 
   /// static helpers
 
@@ -137,9 +143,9 @@ void TangentBase<_Derived>::random()
 
 template <class _Derived>
 typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::retract() const
+TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
-  return derived().retract();
+  return derived().retract(J_m_t);
 }
 
 template <class _Derived>
@@ -200,12 +206,12 @@ TangentBase<_Derived>::operator =(
 
 /// with Jacs
 
-template <class _Derived>
-void TangentBase<_Derived>::retract(Manifold& m,
-                                    Jacobian& J_m_t) const
-{
-  derived().retract(m, J_m_t);
-}
+//template <class _Derived>
+//void TangentBase<_Derived>::retract(Manifold& m,
+//                                    Jacobian& J_m_t) const
+//{
+//  derived().retract(m, J_m_t);
+//}
 
 template <class _Derived>
 typename TangentBase<_Derived>::Tangent

@@ -281,12 +281,11 @@ callLiftWithJac(const ManifoldBase<_Derived>& manifold)
 }
 
 template <typename _Derived>
-void
+typename _Derived::Manifold
 callRetractWithJac(const TangentBase<_Derived>& tangent,
-                   typename _Derived::Manifold& manifold,
                    typename _Derived::Jacobian& J)
 {
-  return tangent.retract(manifold, J);
+  return tangent.retract(J);
 }
 
 template <typename _Derived>

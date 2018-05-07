@@ -76,7 +76,7 @@ public:
                            pose_increment_,
                            J_pi_past_, J_pi_future_);
 
-        measurement_.retract(mmeas_, J_mmeas_meas_);
+        mmeas_ = measurement_.retract(J_mmeas_meas_);
 
         mmeas_.between(pose_increment_,
                        pe_,

@@ -28,6 +28,7 @@ struct traits<SO3Tangent<_Scalar>>
 
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
+  static constexpr int RepSize = DoF;
 
   using DataType  = Eigen::Matrix<Scalar, DoF, 1>;
 
