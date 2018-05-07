@@ -36,8 +36,7 @@ public:
 
   /// Tangent common API
 
-  Manifold retract(OptJacobianRef J_m_t =
-                     OptJacobianRef{}) const;
+  Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   LieType skew() const;
 

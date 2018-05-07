@@ -48,12 +48,7 @@ public:
 
   LieType skew() const;
 
-  Manifold retract(OptJacobianRef J_m_t =
-                    OptJacobianRef{}) const;
-
-  /// with Jacs
-
-//  void retract(Manifold& m, Jacobian& J_m_t) const;
+  Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   /// SO3Tangent specific API
 
@@ -93,13 +88,10 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
       Jacobian M1, M2;
 
-      const Jacobian W = skew();
+      const LieType W = skew();
 
       M1.noalias() = (Scalar(1.0) - cos(theta)) / theta_sq * W;
-      /// @todo error: no match for ‘operator-’
-      /// (operand types are ‘const DataType {aka const Eigen::Matrix<double, 3, 1>}’ and ‘double’)
-
-//      M2.noalias() = (theta_vec - sin(theta)) / (theta_sq * theta) * (W * W);
+      M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);;
 
       *J_m_t = Jacobian::Identity() - M1 + M2;
     }

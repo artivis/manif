@@ -4,8 +4,8 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/constants.h"
-#include "optional.hpp"
 
+#include "optional.hpp"
 #include "lspdlog/logging.h"
 
 namespace manif
@@ -85,10 +85,6 @@ public:
 
   template <typename _DerivedOther>
   _Derived& operator =(const TangentBase<_DerivedOther>& t);
-
-  /// with Jacs
-
-//  void retract(Manifold& m, Jacobian& J_m_t) const;
 
   /// static helpers
 
