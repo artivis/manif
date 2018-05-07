@@ -77,7 +77,7 @@ public:
     {
       if (jacobians_raw[0] != nullptr)
       {
-        target_state_.rminus(state, error, J_rminus_ma, J_rminus_mb);
+        error = target_state_.rminus(state, Manifold::_, J_rminus_mb);
 
         JacobianMap jacobian(jacobians_raw[0]);
         jacobian = computeLiftJacobianGlobal(state) * J_rminus_mb;
@@ -94,7 +94,7 @@ public:
 protected:
 
   const Manifold target_state_;
-  mutable Jacobian J_rminus_ma, J_rminus_mb;
+  mutable Jacobian J_rminus_mb;
 };
 
 //using ObjectiveSO2 = Objective<SO2d>;

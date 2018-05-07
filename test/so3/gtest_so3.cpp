@@ -493,10 +493,9 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   SO3d so3b(toRad(15),toRad(45),toRad(90));
   SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
 
-  SO3d so3c;
   SO3d::Jacobian J_between_a, J_between_b;
 
-  so3a.between(so3b, so3c, J_between_a, J_between_b);
+  SO3d so3c = so3a.between(so3b, J_between_a, J_between_b);
 
   EXPECT_DOUBLE_EQ(0, so3c.x());
   EXPECT_DOUBLE_EQ(0, so3c.y());

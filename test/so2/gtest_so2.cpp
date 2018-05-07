@@ -339,6 +339,8 @@ TEST(TEST_SO2, TEST_SO2_COMPOSE_JAC)
   SO2d::Jacobian J_c_a, J_c_b;
   SO2d so2c = so2a.compose(so2b, J_c_a, J_c_b);
 
+  so2c = so2a.compose(so2b, SO2d::_, J_c_b);
+
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 
   EXPECT_EQ(1, J_c_a.rows());
@@ -355,11 +357,10 @@ TEST(TEST_SO2, TEST_SO2_RPLUS_JAC)
   SO2d so2a(M_PI / 2.);
   SO2Tangentd so2b(M_PI / 2.);
 
-  SO2d so2c;
   SO2d::Jacobian J_rplus_m;
   SO2d::Jacobian J_rplus_t;
 
-  so2a.rplus(so2b, so2c, J_rplus_m, J_rplus_t);
+  SO2d so2c = so2a.rplus(so2b, J_rplus_m, J_rplus_t);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 
@@ -377,11 +378,10 @@ TEST(TEST_SO2, TEST_SO2_LPLUS_JAC)
   SO2d so2a(M_PI / 2.);
   SO2Tangentd so2b(M_PI / 2.);
 
-  SO2d so2c;
   SO2d::Jacobian J_lplus_t;
   SO2d::Jacobian J_lplus_m;
 
-  so2a.lplus(so2b, so2c, J_lplus_t, J_lplus_m);
+  SO2d so2c = so2a.lplus(so2b, J_lplus_t, J_lplus_m);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 
@@ -399,11 +399,10 @@ TEST(TEST_SO2, TEST_SO2_PLUS_JAC)
   SO2d so2a(M_PI / 2.);
   SO2Tangentd so2b(M_PI / 2.);
 
-  SO2d so2c;
   SO2d::Jacobian J_plus_m;
   SO2d::Jacobian J_plus_t;
 
-  so2a.plus(so2b, so2c, J_plus_m, J_plus_t);
+  SO2d so2c = so2a.plus(so2b, J_plus_m, J_plus_t);
 
   EXPECT_DOUBLE_EQ(M_PI, so2c.angle());
 
@@ -421,11 +420,9 @@ TEST(TEST_SO2, TEST_SO2_RMINUS_JAC)
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
 
-  SO2Tangentd so2c;
-
   SO2d::Jacobian J_rminus_a, J_rminus_b;
 
-  so2a.rminus(so2b, so2c, J_rminus_a, J_rminus_b);
+  SO2Tangentd so2c = so2a.rminus(so2b, J_rminus_a, J_rminus_b);
 
   EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 
@@ -443,11 +440,9 @@ TEST(TEST_SO2, TEST_SO2_LMINUS_JAC)
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
 
-  SO2Tangentd so2c;
-
   SO2d::Jacobian J_lminus_a, J_lminus_b;
 
-  so2a.lminus(so2b, so2c, J_lminus_a, J_lminus_b);
+  SO2Tangentd so2c = so2a.lminus(so2b, J_lminus_a, J_lminus_b);
 
   EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
 
@@ -465,11 +460,9 @@ TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
   SO2d so2a(M_PI);
   SO2d so2b(M_PI_2);
 
-  SO2Tangentd so2c;
-
   SO2d::Jacobian J_minus_a, J_minus_b;
 
-  so2a.minus(so2b, so2c, J_minus_a, J_minus_b);
+  SO2Tangentd so2c = so2a.minus(so2b, J_minus_a, J_minus_b);
 
   EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 
@@ -488,9 +481,7 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   SO2d so2b(M_PI_2);
 
   SO2d::Jacobian J_between_a, J_between_b;
-  SO2d so2c;
-
-  so2a.between(so2b, so2c, J_between_a, J_between_b);
+  SO2d so2c = so2a.between(so2b, J_between_a, J_between_b);
 
   EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
 
