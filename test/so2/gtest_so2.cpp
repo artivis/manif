@@ -295,9 +295,8 @@ TEST(TEST_SO2, TEST_SO2_INVERSE_JAC)
 {
   SO2d so2 = SO2d::Identity();
 
-  SO2d so2_inv;
   SO2d::Jacobian J_inv;
-  so2.inverse(so2_inv, J_inv);
+  SO2d so2_inv = so2.inverse(J_inv);
 
   EXPECT_DOUBLE_EQ(so2.angle(), so2_inv.angle());
   EXPECT_DOUBLE_EQ(1, so2_inv.real());
@@ -308,7 +307,7 @@ TEST(TEST_SO2, TEST_SO2_INVERSE_JAC)
   EXPECT_DOUBLE_EQ(-1, J_inv(0));
 
   so2 = SO2d(M_PI);
-  so2.inverse(so2_inv, J_inv);
+  so2_inv = so2.inverse(J_inv);
 
   EXPECT_DOUBLE_EQ(-M_PI, so2_inv.angle());
 
@@ -321,10 +320,8 @@ TEST(TEST_SO2, TEST_SO2_LIFT_JAC)
 {
   SO2d so2(M_PI);
 
-  SO2d::Tangent so2_lift;
   SO2d::Tangent::Jacobian J_lift;
-
-  so2.lift(so2_lift, J_lift);
+  SO2d::Tangent so2_lift = so2.lift(J_lift);
 
   EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
 

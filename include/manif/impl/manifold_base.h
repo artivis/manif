@@ -6,6 +6,7 @@
 #include "manif/constants.h"
 #include "manif/impl/tangent_base.h"
 
+#include "optional.hpp"
 #include "lspdlog/logging.h"
 
 namespace manif
@@ -27,6 +28,8 @@ struct ManifoldBase
   using Transformation = typename internal::traits<_Derived>::Transformation;
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
+
+  using OptJacobianRef = tl::optional<Jacobian&>;
 
   /// @todo find something sexier
   template <typename T>
@@ -60,7 +63,7 @@ public:
 
   void random();
 
-  Manifold inverse() const;
+  Manifold inverse(OptJacobianRef J_m_t = {}) const;
 
   template <typename _DerivedOther>
   Manifold rplus(const TangentBase<_DerivedOther>& t) const;
@@ -86,7 +89,7 @@ public:
   template <typename _DerivedOther>
   Tangent minus(const ManifoldBase<_DerivedOther>& m) const;
 
-  Tangent lift() const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
@@ -99,7 +102,6 @@ public:
   /// @todo
 //  LieType lie() const {return derived().lie();}
 //  Manifold interpolate() {return derived().interpolate();}
-//  Vector act(const Vector& v) {return derived().act(v);}
 
   /// Some operators
 
@@ -150,11 +152,8 @@ public:
 
   /// Jacs
 
-  template <typename _DerivedOther>
-  void inverse(ManifoldBase<_DerivedOther>& m, Jacobian& J) const;
-
-  template <typename _DerivedOther>
-  void lift(ManifoldBase<_DerivedOther>& m, Jacobian& J) const;
+//  template <typename _DerivedOther>
+//  void lift(ManifoldBase<_DerivedOther>& m, Jacobian& J) const;
 
   template <typename _DerivedOther0, typename _DerivedOther1>
   void compose(const ManifoldBase<_DerivedOther0>& mb,
@@ -198,46 +197,8 @@ public:
 
   /// Some static helpers
 
-  static Manifold Identity()
-  {
-    /// @todo how to optimize .identity() call away ?
-    static Manifold m; m.identity();
-    return m;
-  }
-
-  static Manifold Random()
-  {
-    /// @todo how to optimize .random() call away ?
-    static Manifold m; m.random();
-    return m;
-  }
-
-  static Tangent Inverse(const Manifold& m);
-
-  static Manifold Rplus(const Manifold& m, const Tangent& t);
-
-  static Manifold Lplus(const Tangent& t, const Manifold& m);
-
-  static Manifold Rminus(const Manifold& m0, const Manifold& m1);
-
-  static Manifold Lminus(const Manifold& m0, const Manifold& m1);
-
-  static Tangent Lift(const Manifold& m);
-
-  static Manifold Retract(const Tangent& t);
-
-  /*
-  static LieType Lie(const Manifold& m)
-  static LieType Lie(const Tangent& t)
-  */
-
-  static Manifold Compose(const Manifold& m0, const Manifold& m1);
-  static Manifold Between(const Manifold& m0, const Manifold& m1);
-
-  /// static helpers with Jacobians
-
-  template <typename _Jacobian>
-  static void Inverse(const Manifold& m, Manifold& minv, _Jacobian& jac);
+  static Manifold Identity();
+  static Manifold Random();
 
 private:
 
@@ -309,9 +270,9 @@ void ManifoldBase<_Derived>::random()
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::inverse() const
+ManifoldBase<_Derived>::inverse(OptJacobianRef J_m_t) const
 {
-  return derived().inverse();
+  return derived().inverse(J_m_t);
 }
 
 template <typename _Derived>
@@ -370,9 +331,9 @@ ManifoldBase<_Derived>::minus(
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::lift() const
+ManifoldBase<_Derived>::lift(OptJacobianRef J_t_m) const
 {
-  return derived().lift();
+  return derived().lift(J_t_m);
 }
 
 template <typename _Derived>
@@ -470,21 +431,13 @@ ManifoldBase<_Derived>::operator *=(
 
 /// Jacs
 
-template <typename _Derived>
-template <typename _DerivedOther>
-void ManifoldBase<_Derived>::inverse(
-    ManifoldBase<_DerivedOther>& m, Jacobian& J) const
-{
-  derived().inverse(m, J);
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-void ManifoldBase<_Derived>::lift(
-    ManifoldBase<_DerivedOther>& m, Jacobian& J) const
-{
-  derived().lift(m, J);
-}
+//template <typename _Derived>
+//template <typename _DerivedOther>
+//void ManifoldBase<_Derived>::lift(
+//    ManifoldBase<_DerivedOther>& m, Jacobian& J) const
+//{
+//  derived().lift(m, J);
+//}
 
 template <typename _Derived>
 template <typename _DerivedOther0, typename _DerivedOther1>
@@ -554,9 +507,8 @@ void ManifoldBase<_Derived>::rminus(
     Jacobian& J_rminus_ma,
     Jacobian& J_rminus_mb) const
 {
-  Manifold inv;
   Jacobian J_inv_mb;
-  mb.inverse(inv, J_inv_mb);
+  Manifold inv = mb.inverse(J_inv_mb);
 
   Manifold comp;
   Jacobian J_comp_inv;
@@ -564,7 +516,7 @@ void ManifoldBase<_Derived>::rminus(
   inv.compose(*this, comp, J_comp_inv, J_comp_ma);
 
   Jacobian J_rminus_comp;
-  comp.lift(t, J_rminus_comp);
+  t = comp.lift(J_rminus_comp);
 
   J_rminus_ma = J_rminus_comp * J_comp_ma;
   J_rminus_mb = J_rminus_comp * J_comp_inv * J_inv_mb;
@@ -578,17 +530,15 @@ void ManifoldBase<_Derived>::lminus(
     Jacobian& J_lminus_ma,
     Jacobian& J_lminus_mb) const
 {
-  Manifold inv;
   Jacobian J_inv_ma;
-  derived().inverse(inv, J_inv_ma);
 
   Manifold comp;
   Jacobian J_comp_inv;
   Jacobian J_comp_mb;
-  mb.compose(inv, comp, J_comp_mb, J_comp_inv);
+  mb.compose(derived().inverse(J_inv_ma), comp, J_comp_mb, J_comp_inv);
 
   Jacobian J_rminus_comp;
-  comp.lift(t, J_rminus_comp);
+  t = comp.lift(J_rminus_comp);
 
   J_lminus_ma = J_rminus_comp * J_comp_inv * J_inv_ma;
   J_lminus_mb = J_rminus_comp * J_comp_mb;
@@ -612,14 +562,29 @@ void ManifoldBase<_Derived>::between(
     ManifoldBase<_DerivedOther1>& mc,
     Jacobian& J_mc_ma, Jacobian& J_mc_mb) const
 {
-  Manifold inv;
   Jacobian J_inv_ma;
-  derived().inverse(inv, J_inv_ma);
-
   Jacobian J_mc_inv;
-  inv.compose(mb, mc, J_mc_inv, J_mc_mb);
+  derived().inverse(J_inv_ma).compose(mb, mc, J_mc_inv, J_mc_mb);
 
   J_mc_ma = J_mc_inv * J_inv_ma;
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Manifold
+ManifoldBase<_Derived>::Identity()
+{
+  /// @todo how to optimize .identity() call away ?
+  static Manifold m; m.identity();
+  return m;
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Manifold
+ManifoldBase<_Derived>::Random()
+{
+  /// @todo how to optimize .random() call away ?
+  static Manifold m; m.random();
+  return m;
 }
 
 /// Utils

@@ -26,6 +26,8 @@ public:
   MANIF_MANIFOLD_PROPERTIES
 
   MANIF_MANIFOLD_TYPEDEF
+  using OptJacobianRef = typename Base::OptJacobianRef;
+
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
@@ -38,8 +40,8 @@ public:
 
   void identity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
@@ -52,8 +54,6 @@ public:
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
   /// with Jacs
-
-  void inverse(Manifold& m, Jacobian& j) const;
 
   void lift(Tangent& t, Jacobian& J_t_m) const;
 
@@ -107,16 +107,28 @@ void SE3Base<_Derived>::identity()
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Manifold
-SE3Base<_Derived>::inverse() const
+SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  MANIF_NOT_IMPLEMENTED_YET;
+
+  if (J_minv_m)
+  {
+
+  }
+
+  return Manifold();
 }
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::lift() const
+SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  MANIF_NOT_IMPLEMENTED_YET;
+
+  if (J_t_m)
+  {
+
+  }
 
   return Tangent();
 }
@@ -145,12 +157,6 @@ SE3Base<_Derived>::act(const Vector &v) const
 }
 
 /// with Jacs
-
-template <typename _Derived>
-void SE3Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
-}
 
 template <typename _Derived>
 void SE3Base<_Derived>::lift(Tangent& t,

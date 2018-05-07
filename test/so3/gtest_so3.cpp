@@ -287,9 +287,8 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 {
   SO3d so3 = SO3d::Identity();
 
-  SO3d so3_inv;
   SO3d::Jacobian J_inv;
-  so3.inverse(so3_inv, J_inv);
+  SO3d so3_inv = so3.inverse(J_inv);
 
   EXPECT_DOUBLE_EQ(0, so3_inv.x());
   EXPECT_DOUBLE_EQ(0, so3_inv.y());
@@ -303,7 +302,7 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 //  EXPECT_DOUBLE_EQ(Eigen::Matrix3d::Identity(), J_inv);
 
 //  so3.angle(M_PI);
-//  so3.inverse(so3_inv, J_inv);
+//  so3_inv = so3.inverse(J_inv);
 
 //  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
 
@@ -316,10 +315,10 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
   SO3d so3(0,0,0);
 
-  SO3d::Tangent so3_lift;
   SO3d::Tangent::Jacobian J_lift;
 
-  so3.lift(so3_lift, J_lift);
+  /// @todo Jac not implemented yet
+  SO3d::Tangent so3_lift = so3.lift(/*J_lift*/);
 
   EXPECT_DOUBLE_EQ(0, so3_lift.x());
   EXPECT_DOUBLE_EQ(0, so3_lift.y());

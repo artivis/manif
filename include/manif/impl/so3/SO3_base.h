@@ -25,6 +25,7 @@ public:
 
   MANIF_MANIFOLD_PROPERTIES
   MANIF_MANIFOLD_TYPEDEF
+  using OptJacobianRef = typename Base::OptJacobianRef;
 
   /// Manifold common API
 
@@ -33,8 +34,8 @@ public:
 
   void identity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
@@ -47,9 +48,6 @@ public:
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
   /// with Jacs
-
-  void inverse(Manifold& minv, Jacobian& J_minv_m) const;
-  void lift(Tangent& t, Jacobian& J_t_m) const;
 
   void compose(const Manifold& mb,
                Manifold& mout,
@@ -91,8 +89,13 @@ void SO3Base<_Derived>::identity()
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Manifold
-SO3Base<_Derived>::inverse() const
+SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
+  if (J_minv_m)
+  {
+    *J_minv_m = -rotation();
+  }
+
   /// @todo, conjugate doc :
   /// equal to the multiplicative inverse if
   /// the quaternion is normalized
@@ -101,10 +104,16 @@ SO3Base<_Derived>::inverse() const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Tangent
-SO3Base<_Derived>::lift() const
+SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
   using std::sqrt;
   using std::atan2;
+
+  if (J_t_m)
+  {
+    /// @todo
+    MANIF_NOT_IMPLEMENTED_YET
+  }
 
   const Scalar sin_angle_squared = coeffs().vec().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
@@ -152,22 +161,6 @@ SO3Base<_Derived>::act(const Vector &v) const
 }
 
 /// with Jacs
-
-template <typename _Derived>
-void SO3Base<_Derived>::inverse(Manifold& minv, Jacobian& J_minv_m) const
-{
-  minv = inverse();
-  J_minv_m = -rotation();
-}
-
-template <typename _Derived>
-void SO3Base<_Derived>::lift(Tangent& t,
-                             Jacobian& J_t_m) const
-{
-  t = lift();
-  /// @todo
-//  J_t_m
-}
 
 template <typename _Derived>
 void SO3Base<_Derived>::compose(const Manifold& mb,

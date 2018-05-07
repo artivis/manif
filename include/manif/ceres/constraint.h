@@ -82,7 +82,7 @@ public:
                        pe_,
                        J_pe_mmeas_, J_pe_pi_);
 
-        pe_.lift(residuals, J_res_pe_);
+        residuals = pe_.lift(J_res_pe_);
 
         if (jacobians_raw[0] != nullptr)
         {

@@ -33,6 +33,8 @@ public:
   using Tangent  = typename Base::Tangent;
   using Jacobian = typename Base::Jacobian;
 
+  using OptJacobianRef = typename Base::OptJacobianRef;
+
   using DataType = typename Base::DataType;
 
   using Transformation = typename Base::Transformation;
@@ -46,8 +48,8 @@ public:
 
   void identity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
   Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
@@ -63,11 +65,6 @@ public:
   using Base::operator=;
 
   /// with Jacs
-
-  void inverse(Manifold& m, Jacobian& j) const;
-
-  template <typename _DerivedOther>
-  void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
 
   template <typename _DerivedOther0, typename _DerivedOther1>
   void compose(const ManifoldBase<_DerivedOther0>& mb,
@@ -120,15 +117,21 @@ void SO2Base<_Derived>::identity()
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Manifold
-SO2Base<_Derived>::inverse() const
+SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
+  if (J_minv_m)
+    J_minv_m->setConstant(Scalar(-1));
+
   return Manifold(real(), -imag());
 }
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
-SO2Base<_Derived>::lift() const
+SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
+  if (J_t_m)
+    J_t_m->setConstant(Scalar(1));
+
   return Tangent(angle());
 }
 
@@ -162,22 +165,6 @@ SO2Base<_Derived>::act(const Vector &v) const
 }
 
 /// with Jacs
-
-template <typename _Derived>
-void SO2Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
-{
-  m = inverse();
-  J.setConstant(-1);
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-void SO2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
-                             Jacobian& J_t_m) const
-{
-  t = lift();
-  J_t_m.setConstant(1);
-}
 
 template <typename _Derived>
 template <typename _DerivedOther0, typename _DerivedOther1>
