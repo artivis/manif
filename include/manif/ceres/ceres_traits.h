@@ -6,22 +6,8 @@
 
 namespace manif
 {
-
 namespace internal
 {
-
-//template <typename _Jacobian>
-//struct traits_ceres;
-
-//template <typename _Derived>
-//struct traits_ceres<ManifoldBase<_Derived>>
-//{
-//  using Manifold = ManifoldBase<_Derived>;
-
-//  using JacobianMap =
-//    Eigen::Map<
-//      Eigen::Matrix<typename Manifold::Scalar, Manifold::RepSize, Manifold::DoF, Eigen::RowMajor>>;
-//};
 
 template <typename _Manifold>
 struct traits_ceres
