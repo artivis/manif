@@ -18,16 +18,16 @@ T pi2pi(T angle)
 
 template <typename _Scalar>
 Eigen::Matrix<_Scalar, 2, 2>
-skew(const _Scalar v)
+skew2(const _Scalar v)
 {
   return (Eigen::Matrix<_Scalar, 2, 2>() <<
              _Scalar(0.), -v,
-            +v, _Scalar(0.) ).finished();
+             v, _Scalar(0.) ).finished();
 }
 
 template <typename _Derived>
 Eigen::Matrix<typename _Derived::Scalar, 3, 3>
-skew(const Eigen::MatrixBase<_Derived>& v)
+skew3(const Eigen::MatrixBase<_Derived>& v)
 {
   assert_vector_dim(v, 3);
 

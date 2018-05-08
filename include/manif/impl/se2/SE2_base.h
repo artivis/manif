@@ -224,17 +224,26 @@ SE2Base<_Derived>::compose(
 
   if (J_mc_ma)
   {
-    const Scalar theta_inv = -angle();
+    /// @note
+    ///
+    /// J = | I   R u_x tb
+    ///     | 0      1
+    ///
 
     J_mc_ma->setIdentity();
-    (*J_mc_ma)(0,2) = m.coeffs().x()*sin(theta_inv) -
-                      m.coeffs().y()*cos(theta_inv);
-    (*J_mc_ma)(1,2) = m.coeffs().x()*cos(theta_inv) +
-                      m.coeffs().y()*sin(theta_inv);
+
+    J_mc_mb->template topRightCorner<Dim,1>() =
+        rotation() * Translation(-m.coeffs().y(), m.coeffs().x());
   }
 
   if (J_mc_mb)
   {
+    /// @note
+    ///
+    /// J = | R 0
+    ///     | 0 I
+    ///
+
     J_mc_mb->setIdentity();
     J_mc_mb->template block<2,2>(0,0) = rotation();
   }
@@ -254,7 +263,7 @@ SE2Base<_Derived>::act(const Vector &v,
 {
   if (J_vout_m)
   {
-    (*J_vout_m) = rotation() * skew(1) * v;
+    (*J_vout_m) = rotation() * skew2(1) * v;
   }
 
   if (J_vout_v)
