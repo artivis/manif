@@ -27,7 +27,6 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  using OptJacobianRef = typename Base::OptJacobianRef;
   using Base::data;
   using Base::coeffs;
 

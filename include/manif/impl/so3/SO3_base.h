@@ -25,7 +25,6 @@ public:
 
   MANIF_MANIFOLD_PROPERTIES
   MANIF_MANIFOLD_TYPEDEF
-  using OptJacobianRef = typename Base::OptJacobianRef;
 
   /// Manifold common API
 

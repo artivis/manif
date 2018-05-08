@@ -26,7 +26,6 @@ public:
   MANIF_MANIFOLD_PROPERTIES
 
   MANIF_MANIFOLD_TYPEDEF
-  using OptJacobianRef = typename Base::OptJacobianRef;
 
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs

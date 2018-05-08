@@ -25,9 +25,6 @@ public:
 
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
-
-  using OptJacobianRef = typename Base::OptJacobianRef;
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -72,8 +69,9 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieType
 SO2TangentBase<_Derived>::skew() const
 {
-  return (LieType() << Scalar(0), Scalar(-1),
-                       Scalar(0), Scalar( 1)).finished();
+  return (LieType() <<
+    Scalar(0),       Scalar(-angle()),
+    Scalar(angle()), Scalar( 0)       ).finished();
 }
 
 /// with Jacs

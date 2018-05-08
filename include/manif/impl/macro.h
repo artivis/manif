@@ -37,7 +37,8 @@
   using DataType       = typename Base::DataType;       \
   using Transformation = typename Base::Transformation; \
   using Rotation       = typename Base::Rotation;       \
-  using Vector         = typename Base::Vector;
+  using Vector         = typename Base::Vector;         \
+  using OptJacobianRef = typename Base::OptJacobianRef;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \
   using Base::operator +;               \
@@ -72,12 +73,12 @@
   using Tangent  = typename Base::Tangent;  \
   using Jacobian = typename Base::Jacobian; \
   using DataType = typename Base::DataType; \
-  using LieType  = typename Base::LieType;
+  using LieType  = typename Base::LieType;  \
+  using OptJacobianRef = typename Base::OptJacobianRef;
 
 #define MANIF_TANGENT_PROPERTIES                                      \
   static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF; \
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
 
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
   using tangent##f = tangent<float>;         \

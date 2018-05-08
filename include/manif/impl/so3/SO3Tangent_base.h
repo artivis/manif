@@ -25,18 +25,9 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+  MANIF_TANGENT_PROPERTIES
 
-  using Scalar = typename Base::Scalar;
-
-  using Manifold = typename Base::Manifold;
-  using Tangent  = typename Base::Tangent;
-  using Jacobian = typename Base::Jacobian;
-  using OptJacobianRef = typename Base::OptJacobianRef;
-  using DataType = typename Base::DataType;
-  using LieType  = typename Base::LieType;
+  MANIF_TANGENT_TYPEDEF
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
