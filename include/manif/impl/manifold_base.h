@@ -223,7 +223,7 @@ template <class _NewScalar>
 typename ManifoldBase<_Derived>::template ManifoldTemplate<_NewScalar>
 ManifoldBase<_Derived>::cast() const
 {
-  return ManifoldTemplate<_NewScalar>(coeffs().cast<_NewScalar>());
+  return ManifoldTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
 }
 
 template <typename _Derived>
