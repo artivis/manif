@@ -32,7 +32,7 @@ public:
   Transformation transform() const;
   Rotation rotation() const;
 
-  void identity();
+  SO3Base<_Derived>& setIdentity();
 
   Manifold inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -80,9 +80,11 @@ SO3Base<_Derived>::rotation() const
 }
 
 template <typename _Derived>
-void SO3Base<_Derived>::identity()
+SO3Base<_Derived>&
+SO3Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setIdentity();
+  return *this;
 }
 
 template <typename _Derived>

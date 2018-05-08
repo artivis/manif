@@ -47,7 +47,7 @@ public:
   Transformation transform() const;
   Rotation rotation() const;
 
-  void identity();
+  SO2Base<_Derived>& setIdentity();
 
   Manifold inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -62,7 +62,7 @@ public:
              OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
-  using Base::random;
+  using Base::setRandom;
   using Base::rplus;
   using Base::lplus;
   using Base::rminus;
@@ -108,9 +108,11 @@ SO2Base<_Derived>::rotation() const
 }
 
 template <typename _Derived>
-void SO2Base<_Derived>::identity()
+SO2Base<_Derived>&
+SO2Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setIdentity();
+  return *this;
 }
 
 template <typename _Derived>

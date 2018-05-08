@@ -37,7 +37,7 @@ public:
   Rotation rotation() const;
   Translation translation() const;
 
-  void identity();
+  SE3Base<_Derived>& setIdentity();
 
   Manifold inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -94,10 +94,12 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-void SE3Base<_Derived>::identity()
+SE3Base<_Derived>&
+SE3Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setZero();
   coeffs_nonconst()(6) = 1;
+  return *this;
 }
 
 template <typename _Derived>

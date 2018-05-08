@@ -49,7 +49,7 @@ TEST(TEST_SO3, TEST_SO3_IDENTITY)
 {
   SO3d so3;
 
-  so3.identity();
+  so3.setIdentity();
 
   EXPECT_DOUBLE_EQ(0, so3.x());
   EXPECT_DOUBLE_EQ(0, so3.y());
@@ -71,7 +71,7 @@ TEST(TEST_SO3, TEST_SO3_RANDOM)
 {
   SO3d so3;
 
-  so3.random();
+  so3.setRandom();
 
   const SO3d& so3_ref = so3;
 

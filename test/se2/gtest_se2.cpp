@@ -88,7 +88,7 @@ TEST(TEST_SE2, TEST_SE2_IDENTITY)
 {
   SE2d se2;
 
-  se2.identity();
+  se2.setIdentity();
 
   EXPECT_DOUBLE_EQ(0, se2.x());
   EXPECT_DOUBLE_EQ(0, se2.y());
@@ -108,7 +108,7 @@ TEST(TEST_SE2, TEST_SE2_RANDOM)
 {
   SE2d se2;
 
-  se2.random();
+  se2.setRandom();
 
   const auto complex = se2.coeffs().block<2,1>(2,0);
 

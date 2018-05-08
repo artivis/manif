@@ -73,7 +73,7 @@ template <typename _Derived>
 void
 callIdentity(ManifoldBase<_Derived>& manifold)
 {
-  manifold.identity();
+  manifold.setIdentity();
 }
 
 template <typename _Derived>
@@ -87,7 +87,7 @@ template <typename _Derived>
 void
 callRandom(ManifoldBase<_Derived>& manifold)
 {
-  manifold.random();
+  manifold.setRandom();
 }
 
 template <typename _Derived>

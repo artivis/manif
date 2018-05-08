@@ -61,8 +61,8 @@ public:
 
   Rotation rotation() const;
 
-  void identity();
-  void random();
+  _Derived& setIdentity();
+  _Derived& setRandom();
 
   // Minimum API
 
@@ -241,15 +241,19 @@ ManifoldBase<_Derived>::rotation() const
 }
 
 template <typename _Derived>
-void ManifoldBase<_Derived>::identity()
+_Derived&
+ManifoldBase<_Derived>::setIdentity()
 {
-  derived().identity();
+  derived().setIdentity();
+  return derived();
 }
 
 template <typename _Derived>
-void ManifoldBase<_Derived>::random()
+_Derived&
+ManifoldBase<_Derived>::setRandom()
 {
   coeffs_nonconst() = Tangent::Random().retract().coeffs();
+  return derived();
 }
 
 template <typename _Derived>
@@ -570,8 +574,7 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::Identity()
 {
-  /// @todo how to optimize .identity() call away ?
-  static Manifold m; m.identity();
+  const static Manifold m(Manifold().setIdentity());
   return m;
 }
 
@@ -579,9 +582,7 @@ template <typename _Derived>
 typename ManifoldBase<_Derived>::Manifold
 ManifoldBase<_Derived>::Random()
 {
-  /// @todo how to optimize .random() call away ?
-  static Manifold m; m.random();
-  return m;
+  return Manifold().setRandom();
 }
 
 /// Utils

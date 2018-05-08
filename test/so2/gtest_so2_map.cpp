@@ -77,7 +77,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_IDENTITY)
   double data[2] = {0,0};
   Eigen::Map<SO2d> so2(data);
 
-  so2.identity();
+  so2.setIdentity();
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
   EXPECT_DOUBLE_EQ(1, so2.real());
@@ -100,7 +100,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_RANDOM)
   double data[2] = {0,0};
   Eigen::Map<SO2d> so2(data);
 
-  so2.random();
+  so2.setRandom();
 
   EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
@@ -160,7 +160,7 @@ TEST(TEST_SO2, TEST_SO2_MAP_INVERSE)
   double data_inv[2] = {1,0};
   Eigen::Map<SO2d> so2_inv_map(data_inv);
 
-  so2.identity();
+  so2.setIdentity();
   so2_inv_map = so2.inverse();
 
   EXPECT_DOUBLE_EQ(so2.angle(), so2_inv_map.angle());

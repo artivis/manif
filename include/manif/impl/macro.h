@@ -14,7 +14,7 @@
   static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
 #define MANIF_INHERIT_MANIFOLD_AUTO_API \
-  using Base::random;                   \
+  using Base::setRandom;                \
   using Base::rplus;                    \
   using Base::lplus;                    \
   using Base::rminus;                   \
@@ -25,7 +25,7 @@
   MANIF_INHERIT_MANIFOLD_AUTO_API   \
   using Base::transform;            \
   using Base::rotation;             \
-  using Base::identity;             \
+  using Base::setIdentity;          \
   using Base::inverse;              \
   using Base::lift;
 

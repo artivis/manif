@@ -68,7 +68,7 @@ TEST(TEST_SO2, TEST_SO2_IDENTITY)
 {
   SO2d so2;
 
-  so2.identity();
+  so2.setIdentity();
 
   EXPECT_DOUBLE_EQ(0, so2.angle());
   EXPECT_DOUBLE_EQ(1, so2.real());
@@ -88,7 +88,7 @@ TEST(TEST_SO2, TEST_SO2_RANDOM)
 {
   SO2d so2;
 
-  so2.random();
+  so2.setRandom();
 
   EXPECT_DOUBLE_EQ(1, so2.coeffs().norm());
 }
