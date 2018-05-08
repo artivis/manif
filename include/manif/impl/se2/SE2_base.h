@@ -128,8 +128,8 @@ SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
     J_minv_m_ref = -Jacobian::Identity();
     J_minv_m_ref.template block<2,2>(0,0) = -rotation().transpose();
-    J_minv_m_ref(0,2) = x()*sin(theta_inv) - y()*cos(theta_inv);
-    J_minv_m_ref(1,2) = x()*cos(theta_inv) + y()*sin(theta_inv);
+    J_minv_m_ref(0,2) = -x()*sin(theta_inv) - y()*cos(theta_inv);
+    J_minv_m_ref(1,2) =  x()*cos(theta_inv) - y()*sin(theta_inv);
   }
 
   return Manifold(-(x()*cos(theta_inv) - y()*sin(theta_inv)),
