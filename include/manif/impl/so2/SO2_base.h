@@ -3,6 +3,7 @@
 
 #include "manif/impl/so2/SO2_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
 
 namespace manif
 {
@@ -171,12 +172,12 @@ SO2Base<_Derived>::act(const Vector &v,
 {
   if (J_vout_m)
   {
-    MANIF_NOT_IMPLEMENTED_YET
+    (*J_vout_m) = rotation() * skew(1) * v;
   }
 
   if (J_vout_v)
   {
-    MANIF_NOT_IMPLEMENTED_YET
+    (*J_vout_v) = rotation();
   }
 
   return rotation() * v;
