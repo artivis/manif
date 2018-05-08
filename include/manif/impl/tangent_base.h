@@ -200,15 +200,6 @@ TangentBase<_Derived>::operator =(
   return derived();
 }
 
-/// with Jacs
-
-//template <class _Derived>
-//void TangentBase<_Derived>::retract(Manifold& m,
-//                                    Jacobian& J_m_t) const
-//{
-//  derived().retract(m, J_m_t);
-//}
-
 template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Zero()

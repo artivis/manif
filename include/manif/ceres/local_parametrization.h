@@ -100,7 +100,7 @@ public:
     state.rplus(tangent_zero_, Manifold::_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
-    rplus_jacobian = computeLiftJacobianGlobal(state) * J_rplus_t_;
+    rplus_jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rplus_t_;
 
     return true;
   }

@@ -93,14 +93,14 @@ public:
         if (jacobians_raw[0] != nullptr)
         {
           JacobianMap J_res_past(jacobians_raw[0]);
-          J_res_past =
+          J_res_past.noalias() =
             computeLiftJacobianGlobal(state_past) * J_res_pe_ * J_pe_pi_ * J_pi_past_;
         }
 
         if (jacobians_raw[1] != nullptr)
         {
           JacobianMap J_res_future(jacobians_raw[1]);
-          J_res_future =
+          J_res_future.noalias() =
             computeLiftJacobianGlobal(state_future) * J_res_pe_ * J_pe_pi_ * J_pi_future_;
         }
       }

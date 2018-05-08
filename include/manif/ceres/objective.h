@@ -78,7 +78,7 @@ public:
       error = target_state_.rminus(state, Manifold::_, J_rminus_mb);
 
       JacobianMap jacobian(jacobians_raw[0]);
-      jacobian = computeLiftJacobianGlobal(state) * J_rminus_mb;
+      jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rminus_mb;
     }
     else
     {

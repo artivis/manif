@@ -301,7 +301,7 @@ ManifoldBase<_Derived>::lplus(
 
     lplus = t.retract(J_ret_t).compose(*this, J_lplus_ret, J_mout_m);
 
-    (*J_mout_t) = J_lplus_ret * J_ret_t;
+    J_mout_t->noalias() = J_lplus_ret * J_ret_t;
   }
   else
   {
@@ -344,8 +344,8 @@ ManifoldBase<_Derived>::rminus(
           compose(derived(), J_comp_inv, J_comp_ma).
             lift(J_rminus_comp);
 
-    (*J_t_ma) = J_rminus_comp * J_comp_ma;
-    (*J_t_mb) = J_rminus_comp * J_comp_inv * J_inv_mb;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_ma;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_inv * J_inv_mb;
   }
   else if (J_t_ma && !J_t_mb)
   {
@@ -356,7 +356,7 @@ ManifoldBase<_Derived>::rminus(
           compose(derived(), _, J_comp_ma).
             lift(J_rminus_comp);
 
-    (*J_t_ma) = J_rminus_comp * J_comp_ma;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_ma;
   }
   else if (!J_t_ma && J_t_mb)
   {
@@ -368,7 +368,7 @@ ManifoldBase<_Derived>::rminus(
           compose(derived(), J_comp_inv, _).
             lift(J_rminus_comp);
 
-    (*J_t_mb) = J_rminus_comp * J_comp_inv * J_inv_mb;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_inv * J_inv_mb;
   }
   else
   {
@@ -399,8 +399,8 @@ ManifoldBase<_Derived>::lminus(
     t = m.compose(derived().inverse(J_inv_ma),
                   J_comp_mb, J_comp_inv).lift(J_rminus_comp);
 
-    (*J_t_ma) = J_rminus_comp * J_comp_inv * J_inv_ma;
-    (*J_t_mb) = J_rminus_comp * J_comp_mb;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_inv * J_inv_ma;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_mb;
   }
   else if (J_t_ma && !J_t_mb)
   {
@@ -411,7 +411,7 @@ ManifoldBase<_Derived>::lminus(
     t = m.compose(derived().inverse(J_inv_ma),
                   _, J_comp_inv).lift(J_rminus_comp);
 
-    (*J_t_ma) = J_rminus_comp * J_comp_inv * J_inv_ma;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_inv * J_inv_ma;
   }
   else if (!J_t_ma && J_t_mb)
   {
@@ -421,7 +421,7 @@ ManifoldBase<_Derived>::lminus(
     t = m.compose(derived().inverse(),
                   J_comp_mb, _).lift(J_rminus_comp);
 
-    (*J_t_mb) = J_rminus_comp * J_comp_mb;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_mb;
   }
   else
   {
@@ -476,7 +476,7 @@ ManifoldBase<_Derived>::between(
     Jacobian J_mc_inv;
     between = derived().inverse(J_inv_ma).compose(m, J_mc_inv, J_mc_mb);
 
-    (*J_mc_ma) = J_mc_inv * J_inv_ma;
+    J_mc_ma->noalias() = J_mc_inv * J_inv_ma;
   }
   else
   {
