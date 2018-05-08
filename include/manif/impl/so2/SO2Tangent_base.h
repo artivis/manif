@@ -56,15 +56,6 @@ SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   return Manifold(cos(angle()), sin(angle()));;
 }
 
-//template <typename _Derived>
-//typename SO2TangentBase<_Derived>::Manifold
-//SO2TangentBase<_Derived>::retract() const
-//{
-//  using std::cos;
-//  using std::sin;
-//  return Manifold(cos(angle()), sin(angle()));
-//}
-
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieType
 SO2TangentBase<_Derived>::skew() const
@@ -73,16 +64,6 @@ SO2TangentBase<_Derived>::skew() const
     Scalar(0),       Scalar(-angle()),
     Scalar(angle()), Scalar( 0)       ).finished();
 }
-
-/// with Jacs
-
-//template <typename _Derived>
-//void SO2TangentBase<_Derived>::retract(
-//    Manifold& m, Jacobian& J_m_t) const
-//{
-//  m = retract();
-//  J_m_t.setConstant(1);
-//}
 
 /// SO2Tangent specific API
 
