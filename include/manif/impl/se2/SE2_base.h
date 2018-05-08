@@ -3,6 +3,7 @@
 
 #include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
 
 namespace manif
 {

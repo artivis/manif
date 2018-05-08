@@ -72,9 +72,22 @@ public:
       if (jacobians_raw[0] != nullptr ||
           jacobians_raw[1] != nullptr)
       {
+        typename Manifold::OptJacobianRef J_pi_past;
+        typename Manifold::OptJacobianRef J_pi_future;
+
+        if (jacobians_raw[0] != nullptr)
+        {
+          J_pi_past = J_pi_past_;
+        }
+
+        if (jacobians_raw[1] != nullptr)
+        {
+          J_pi_future = J_pi_future_;
+        }
+
         residuals = measurement_.retract().
                       between( state_past.between(state_future,
-                                J_pi_past_, J_pi_future_) ,     Manifold::_, J_pe_pi_).
+                                J_pi_past, J_pi_future) ,      Manifold::_, J_pe_pi_).
                         lift(J_res_pe_);
 
         if (jacobians_raw[0] != nullptr)
