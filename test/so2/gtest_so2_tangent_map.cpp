@@ -4,7 +4,7 @@
 
 using namespace manif;
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_0)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_0)
 {
   double data(M_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
@@ -12,7 +12,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_0)
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_DATA)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_DATA)
 {
   /// @todo without specifying const
   /// it calls non-const data()
@@ -26,7 +26,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_DATA)
 //  EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
 }
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO)
 {
   double data(1);
   Eigen::Map<SO2Tangentd> so2tan(&data);
@@ -36,7 +36,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO)
   EXPECT_DOUBLE_EQ(0, so2tan.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO2)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO2)
 {
   double data(1);
   Eigen::Map<SO2Tangentd> so2tan(&data);
@@ -61,7 +61,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_ZERO2)
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_RETRACT)
 {
   double data(M_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
@@ -77,7 +77,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
 
 /// with Jacs
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
+TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_RETRACT_JAC)
 {
   double data(M_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
