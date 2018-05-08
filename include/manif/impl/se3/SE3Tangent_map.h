@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE3TANGENT_MAP_H_
 #define _MANIF_MANIF_SE3TANGENT_MAP_H_
 
-#include "manif/impl/so2/SE3Tangent.h"
+#include "manif/impl/se3/SE3Tangent.h"
 
 namespace manif {
 namespace internal {

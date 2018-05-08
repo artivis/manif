@@ -1,8 +1,9 @@
 #ifndef _MANIF_MANIF_SE3_BASE_H_
 #define _MANIF_MANIF_SE3_BASE_H_
 
-#include "manif/impl/se2/SE3_properties.h"
+#include "manif/impl/se3/SE3_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/so3/SO3_map.h"
 
 namespace manif
 {
@@ -53,6 +54,7 @@ public:
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
+  using Base::data;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
@@ -60,11 +62,49 @@ public:
 
   Scalar x() const;
   Scalar y() const;
-  Scalar y() const;
+  Scalar z() const;
 
   //Scalar roll() const;
   //Scalar pitch() const;
   //Scalar yaw() const;
+
+protected:
+
+  /// Helper
+
+//  auto trapart()
+//  -> decltype( std::declval<Type>().coeffs().template block<Dim, 1>(0,0) )
+//  {
+//    coeffs().block<Dim, 1>(0,0);
+//  }
+
+//  auto trapart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<Dim, 1>(0,0) )
+//  {
+//    coeffs().block<Dim, 1>(0,0);
+//  }
+
+//  auto rotpart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
+//  {
+//    coeffs().block<4, 1>(3,0);
+//  }
+
+//  auto rotpart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
+//  {
+//    coeffs().block<4, 1>(3,0);
+//  }
+
+  Eigen::Map<const SO3<Scalar>> asSO3() const
+  {
+    return Eigen::Map<const SO3<Scalar>>(data()+3);
+  }
+
+  Eigen::Map<SO3<Scalar>> asSO3()
+  {
+    return Eigen::Map<SO3<Scalar>>(data()+3);
+  }
 };
 
 template <typename _Derived>
@@ -83,7 +123,7 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Rotation
 SE3Base<_Derived>::rotation() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  return asSO3().rotation();
 }
 
 template <typename _Derived>
@@ -98,7 +138,7 @@ SE3Base<_Derived>&
 SE3Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setZero();
-  coeffs_nonconst()(6) = 1;
+  asSO3().setIdentity();
   return *this;
 }
 
@@ -106,14 +146,28 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Manifold
 SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
-
   if (J_minv_m)
   {
+    /// @note
+    ///
+    /// J = | R^T  -R u_x t
+    ///     |  0       I
+    ///
 
+    static const Eigen::Matrix<Scalar,Dim,Dim> u_x(
+         ( Eigen::Matrix<Scalar,Dim,Dim>() <<
+            0, -1,  1,
+            1,  0, -1,
+           -1,  1,  0   ).finished()
+          );
+
+    J_minv_m->setIdentity();
+    J_minv_m->template block<Dim,Dim>(0,0) = rotation().transpose();
+    J_minv_m->template block<Dim,1>(0,3) = rotation().transpose() * u_x * translation();
   }
 
-  return Manifold();
+  return Manifold(-rotation() * translation(),
+                   asSO3().inverse().coeffs());
 }
 
 template <typename _Derived>
@@ -144,9 +198,54 @@ SE3Base<_Derived>::compose(
 
   const auto& m_se3 = static_cast<const SE3Base<_DerivedOther>&>(m);
 
-  MANIF_NOT_IMPLEMENTED_YET
+  if (J_mc_ma)
+  {
+    /// @note
+    ///
+    /// J = | I  -R tb_x
+    ///     | 0    Rb^T
+    ///
 
-  return Manifold();
+    J_mc_ma->setIdentity();
+
+    J_mc_ma->template bottomRightCorner<Dim,Dim>() =
+        m_se3.rotation().transpose();
+
+    J_mc_ma->template topRightCorner<Dim,Dim>() =
+        -rotation() * skew3(translation());
+  }
+
+  if (J_mc_mb)
+  {
+    /// @note
+    ///
+    /// J = | R 0
+    ///     | 0 I
+    ///
+
+    J_mc_mb->setIdentity();
+    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
+
+    /// @note
+    ///
+    /// J = | R  t_x R
+    ///     | 0    R
+    ///
+/*
+    J_mc_mb->setIdentity();
+
+    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
+
+    J_mc_mb->template bottomRightCorner<Dim,Dim>() =
+        J_mc_mb->template topLeftCorner<Dim,Dim>();
+
+    J_mc_mb->template topRightCorner<Dim,1>() =
+        skew(translation()) * J_mc_mb->template topLeftCorner<Dim,Dim>();
+*/
+  }
+
+  return Manifold(rotation()*m_se3.translation() + translation(),
+                  asSO3().compose(m_se3.asSO3()).coeffs());
 }
 
 template <typename _Derived>
