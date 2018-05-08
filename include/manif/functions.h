@@ -2,7 +2,6 @@
 #define _MANIF_MANIF_FUNCTIONS_H_
 
 #include "manif/impl/manifold_base.h"
-//#include "manif/impl/utils.h"
 
 namespace manif {
 
