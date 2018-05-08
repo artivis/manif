@@ -75,10 +75,10 @@ public:
 
     if (jacobians_raw != nullptr && jacobians_raw[0] != nullptr)
     {
-      error = target_state_.rminus(state, Manifold::_, J_rminus_mb);
+      error = target_state_.rminus(state, Manifold::_, J_rminus_mb_);
 
       JacobianMap jacobian(jacobians_raw[0]);
-      jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rminus_mb;
+      jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rminus_mb_;
     }
     else
     {
@@ -91,7 +91,7 @@ public:
 protected:
 
   const Manifold target_state_;
-  mutable Jacobian J_rminus_mb;
+  mutable Jacobian J_rminus_mb_;
 };
 
 //using ObjectiveSO2 = Objective<SO2d>;
