@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include "../eigen_gtest.h"
 #include "manif/SO2.h"
 
 using namespace manif;
@@ -109,7 +110,7 @@ TEST(TEST_SO2, TEST_SO2_MATRIX)
   EXPECT_EQ(3, t.rows());
   EXPECT_EQ(3, t.cols());
 
-  /// @todo Eigen matrix comparison
+  EXPECT_EIGEN_NEAR(Eigen::Matrix3d::Identity(), t);
 }
 
 TEST(TEST_SO2, TEST_SO2_ROTATION)
@@ -121,7 +122,7 @@ TEST(TEST_SO2, TEST_SO2_ROTATION)
   EXPECT_EQ(2, r.rows());
   EXPECT_EQ(2, r.cols());
 
-  /// @todo Eigen matrix comparison
+  EXPECT_EIGEN_NEAR(Eigen::Matrix2d::Identity(), r);
 }
 
 TEST(TEST_SO2, TEST_SO2_ASSIGN_OP)
