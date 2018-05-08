@@ -3,6 +3,7 @@
 
 #include "manif/impl/so2/SO2_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
 
 namespace manif
 {
@@ -33,6 +34,8 @@ public:
   using Tangent  = typename Base::Tangent;
   using Jacobian = typename Base::Jacobian;
 
+  using OptJacobianRef = typename Base::OptJacobianRef;
+
   using DataType = typename Base::DataType;
 
   using Transformation = typename Base::Transformation;
@@ -46,13 +49,17 @@ public:
 
   void identity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector &v) const;
+  Vector act(const Vector &v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
   using Base::random;
@@ -61,18 +68,6 @@ public:
   using Base::rminus;
   using Base::lminus;
   using Base::operator=;
-
-  /// with Jacs
-
-  void inverse(Manifold& m, Jacobian& j) const;
-
-  template <typename _DerivedOther>
-  void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
-
-  template <typename _DerivedOther0, typename _DerivedOther1>
-  void compose(const ManifoldBase<_DerivedOther0>& mb,
-               ManifoldBase<_DerivedOther1>& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SO2 specific functions
 
@@ -120,22 +115,31 @@ void SO2Base<_Derived>::identity()
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Manifold
-SO2Base<_Derived>::inverse() const
+SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
+  if (J_minv_m)
+    J_minv_m->setConstant(Scalar(-1));
+
   return Manifold(real(), -imag());
 }
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
-SO2Base<_Derived>::lift() const
+SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
+  if (J_t_m)
+    J_t_m->setConstant(Scalar(1));
+
   return Tangent(angle());
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SO2Base<_Derived>::Manifold
-SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SO2Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
@@ -148,6 +152,12 @@ SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
   const Scalar rhs_real = m_so2.real();
   const Scalar rhs_imag = m_so2.imag();
 
+  if (J_mc_ma)
+    J_mc_ma->setConstant(Scalar(1));
+
+  if (J_mc_mb)
+    J_mc_mb->setConstant(Scalar(1));
+
   return Manifold(
         lhs_real * rhs_real - lhs_imag * rhs_imag,
         lhs_real * rhs_imag + lhs_imag * rhs_real
@@ -156,39 +166,21 @@ SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Vector
-SO2Base<_Derived>::act(const Vector &v) const
+SO2Base<_Derived>::act(const Vector &v,
+                       OptJacobianRef J_vout_m,
+                       OptJacobianRef J_vout_v) const
 {
+  if (J_vout_m)
+  {
+    (*J_vout_m) = rotation() * skew(1) * v;
+  }
+
+  if (J_vout_v)
+  {
+    (*J_vout_v) = rotation();
+  }
+
   return rotation() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SO2Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
-{
-  m = inverse();
-  J.setConstant(-1);
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-void SO2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
-                             Jacobian& J_t_m) const
-{
-  t = lift();
-  J_t_m.setConstant(1);
-}
-
-template <typename _Derived>
-template <typename _DerivedOther0, typename _DerivedOther1>
-void SO2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
-                                ManifoldBase<_DerivedOther1>& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  mout = compose(mb);
-  J_c_a.setConstant(1);
-  J_c_b.setConstant(1);
 }
 
 /// SO2 specific function

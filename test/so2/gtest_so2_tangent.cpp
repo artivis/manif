@@ -78,15 +78,36 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_SKEW)
 
   SO2Tangentd::LieType so2_lie = so2_tan.skew();
 
-  EXPECT_DOUBLE_EQ( 0, so2_lie(0,0));
-  EXPECT_DOUBLE_EQ(-1, so2_lie(0,1));
-  EXPECT_DOUBLE_EQ( 0, so2_lie(1,0));
-  EXPECT_DOUBLE_EQ( 1, so2_lie(1,1));
+  EXPECT_DOUBLE_EQ( 0,    so2_lie(0,0));
+  EXPECT_DOUBLE_EQ(-M_PI, so2_lie(0,1));
+  EXPECT_DOUBLE_EQ( M_PI, so2_lie(1,0));
+  EXPECT_DOUBLE_EQ( 0,    so2_lie(1,1));
 }
 
 /// with Jacs
 
-TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
+//TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
+//{
+//  SO2Tangentd so2_tan(M_PI);
+
+//  EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
+
+//  SO2d so2_retract;
+//  SO2d::Jacobian J_ret;
+
+//  so2_tan.retract(so2_retract, J_ret);
+
+//  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
+//  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
+//  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+
+//  /// @todo check this J
+//  EXPECT_EQ(1, J_ret.rows());
+//  EXPECT_EQ(1, J_ret.cols());
+//  EXPECT_DOUBLE_EQ(1, J_ret(0));
+//}
+
+TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_OPTJAC)
 {
   SO2Tangentd so2_tan(M_PI);
 
@@ -95,7 +116,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_JAC)
   SO2d so2_retract;
   SO2d::Jacobian J_ret;
 
-  so2_tan.retract(so2_retract, J_ret);
+  so2_retract = so2_tan.retract(J_ret);
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());

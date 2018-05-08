@@ -97,7 +97,7 @@ public:
   {
     const Eigen::Map<const Manifold> state(state_raw);
 
-    state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
+    state.rplus(tangent_zero_, Manifold::_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
     rplus_jacobian = computeLiftJacobianGlobal(state) * J_rplus_t_;

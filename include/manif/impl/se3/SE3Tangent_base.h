@@ -31,11 +31,7 @@ public:
 
   /// Tangent common API
 
-  Manifold retract() const;
-
-  /// with Jacs
-
-  void retract(Manifold& m, Jacobian& J_m_t) const;
+  Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   /// SE3Tangent specific API
 
@@ -50,20 +46,16 @@ public:
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::Manifold
-SE3TangentBase<_Derived>::retract() const
+SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  MANIF_NOT_IMPLEMENTED_YET;
+
+  if (J_m_t)
+  {
+
+  }
 
   return Manifold();
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SE3TangentBase<_Derived>::retract(
-    Manifold& m, Jacobian& J_m_t) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
 }
 
 /// SE3Tangent specific API

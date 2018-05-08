@@ -96,10 +96,8 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_RETRACT_JAC)
   EXPECT_DOUBLE_EQ(2, so2tan.y());
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
-  SE2d so2_retract;
   SE2d::Jacobian J_ret;
-
-  so2tan.retract(so2_retract, J_ret);
+  SE2d so2_retract = so2tan.retract(J_ret);
 
   EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
   EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());

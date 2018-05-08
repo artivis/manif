@@ -72,17 +72,10 @@ public:
       if (jacobians_raw[0] != nullptr ||
           jacobians_raw[1] != nullptr)
       {
-        state_past.between(state_future,
-                           pose_increment_,
-                           J_pi_past_, J_pi_future_);
-
-        measurement_.retract(mmeas_, J_mmeas_meas_);
-
-        mmeas_.between(pose_increment_,
-                       pe_,
-                       J_pe_mmeas_, J_pe_pi_);
-
-        pe_.lift(residuals, J_res_pe_);
+        residuals = measurement_.retract().
+                      between( state_past.between(state_future,
+                                J_pi_past_, J_pi_future_) ,     Manifold::_, J_pe_pi_).
+                        lift(J_res_pe_);
 
         if (jacobians_raw[0] != nullptr)
         {
@@ -114,15 +107,8 @@ protected:
 
   const Tangent measurement_;
 
-  mutable Manifold mmeas_;
-  mutable Jacobian J_mmeas_meas_;
-
-  mutable Manifold pose_increment_;
-  mutable Jacobian J_pi_past_, J_pi_future_;
-
-  mutable Jacobian J_pe_mmeas_, J_pe_pi_;
-
-  mutable Manifold pe_;
+  mutable Jacobian J_pi_past_,  J_pi_future_;
+  mutable Jacobian J_pe_pi_;
   mutable Jacobian J_res_pe_;
 };
 

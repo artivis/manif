@@ -3,6 +3,7 @@
 
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
 
 namespace manif
 {
@@ -33,27 +34,22 @@ public:
 
   void identity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector &v) const;
+  Vector act(const Vector &v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  void inverse(Manifold& minv, Jacobian& J_minv_m) const;
-  void lift(Tangent& t, Jacobian& J_t_m) const;
-
-  void compose(const Manifold& mb,
-               Manifold& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SO3 specific functions
 
@@ -91,8 +87,13 @@ void SO3Base<_Derived>::identity()
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Manifold
-SO3Base<_Derived>::inverse() const
+SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
+  if (J_minv_m)
+  {
+    *J_minv_m = -rotation();
+  }
+
   /// @todo, conjugate doc :
   /// equal to the multiplicative inverse if
   /// the quaternion is normalized
@@ -101,10 +102,16 @@ SO3Base<_Derived>::inverse() const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Tangent
-SO3Base<_Derived>::lift() const
+SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
   using std::sqrt;
   using std::atan2;
+
+  if (J_t_m)
+  {
+    /// @todo
+    MANIF_NOT_IMPLEMENTED_YET
+  }
 
   const Scalar sin_angle_squared = coeffs().vec().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
@@ -139,45 +146,37 @@ SO3Base<_Derived>::lift() const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SO3Base<_Derived>::Manifold
-SO3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SO3Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
+  if (J_mc_ma)
+    *J_mc_ma = coeffs().conjugate().matrix(); // R2.tr
+
+  if (J_mc_mb)
+    J_mc_mb->setIdentity();
+
   return Manifold(coeffs() * m.coeffs());
 }
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Vector
-SO3Base<_Derived>::act(const Vector &v) const
+SO3Base<_Derived>::act(const Vector &v,
+                       OptJacobianRef J_vout_m,
+                       OptJacobianRef J_vout_v) const
 {
+  if (J_vout_m)
+  {
+    (*J_vout_m) = -rotation() * skew(v);
+  }
+
+  if (J_vout_v)
+  {
+    (*J_vout_v) = rotation();
+  }
+
   return rotation() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SO3Base<_Derived>::inverse(Manifold& minv, Jacobian& J_minv_m) const
-{
-  minv = inverse();
-  J_minv_m = -rotation();
-}
-
-template <typename _Derived>
-void SO3Base<_Derived>::lift(Tangent& t,
-                             Jacobian& J_t_m) const
-{
-  t = lift();
-  /// @todo
-//  J_t_m
-}
-
-template <typename _Derived>
-void SO3Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  mout = compose(mb);
-  J_c_a = coeffs().conjugate().matrix(); // R2.tr
-  J_c_b.setIdentity();
 }
 
 /// SO3 specific
