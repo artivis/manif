@@ -75,7 +75,9 @@ public:
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector& v) const;
+  Vector act(const Vector& v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   // Deduced API
 
@@ -487,9 +489,11 @@ ManifoldBase<_Derived>::between(
 
 template <typename _Derived>
 typename ManifoldBase<_Derived>::Vector
-ManifoldBase<_Derived>::act(const Vector& v) const
+ManifoldBase<_Derived>::act(const Vector& v,
+                            OptJacobianRef J_vout_m,
+                            OptJacobianRef J_vout_v) const
 {
-  return derived().act(v);
+  return derived().act(v, J_vout_m, J_vout_v);
 }
 
 /// Operators

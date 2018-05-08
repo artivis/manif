@@ -47,7 +47,9 @@ public:
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector &v) const;
+  Vector act(const Vector &v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
@@ -147,8 +149,20 @@ SE3Base<_Derived>::compose(
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Vector
-SE3Base<_Derived>::act(const Vector &v) const
+SE3Base<_Derived>::act(const Vector &v,
+                       OptJacobianRef J_vout_m,
+                       OptJacobianRef J_vout_v) const
 {
+  if (J_vout_m)
+  {
+    MANIF_NOT_IMPLEMENTED_YET
+  }
+
+  if (J_vout_v)
+  {
+    MANIF_NOT_IMPLEMENTED_YET
+  }
+
   return transform() * v;
 }
 
