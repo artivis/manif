@@ -75,7 +75,7 @@ template <typename _Derived>
 void
 callIdentity(ManifoldBase<_Derived>& manifold)
 {
-  manifold.identity();
+  manifold.setIdentity();
 }
 
 template <typename _Derived>
@@ -89,7 +89,7 @@ template <typename _Derived>
 void
 callRandom(ManifoldBase<_Derived>& manifold)
 {
-  manifold.random();
+  manifold.setRandom();
 }
 
 template <typename _Derived>
@@ -283,12 +283,11 @@ callLiftWithJac(const ManifoldBase<_Derived>& manifold)
 }
 
 template <typename _Derived>
-void
+typename _Derived::Manifold
 callRetractWithJac(const TangentBase<_Derived>& tangent,
-                   typename _Derived::Manifold& manifold,
                    typename _Derived::Jacobian& J)
 {
-  return tangent.retract(manifold, J);
+  return tangent.retract(J);
 }
 
 template <typename _Derived>

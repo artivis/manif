@@ -1,8 +1,9 @@
 #ifndef _MANIF_MANIF_SE3_BASE_H_
 #define _MANIF_MANIF_SE3_BASE_H_
 
-#include "manif/impl/se2/SE3_properties.h"
+#include "manif/impl/se3/SE3_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/so3/SO3_map.h"
 
 namespace manif
 {
@@ -26,6 +27,7 @@ public:
   MANIF_MANIFOLD_PROPERTIES
 
   MANIF_MANIFOLD_TYPEDEF
+
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
@@ -36,40 +38,73 @@ public:
   Rotation rotation() const;
   Translation translation() const;
 
-  void identity();
+  SE3Base<_Derived>& setIdentity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector &v) const;
+  Vector act(const Vector &v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
+  using Base::data;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  void inverse(Manifold& m, Jacobian& j) const;
-
-  void lift(Tangent& t, Jacobian& J_t_m) const;
-
-  void compose(const Manifold& mb,
-               Manifold& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SE3 specific functions
 
   Scalar x() const;
   Scalar y() const;
-  Scalar y() const;
+  Scalar z() const;
 
   //Scalar roll() const;
   //Scalar pitch() const;
   //Scalar yaw() const;
+
+protected:
+
+  /// Helper
+
+//  auto trapart()
+//  -> decltype( std::declval<Type>().coeffs().template block<Dim, 1>(0,0) )
+//  {
+//    coeffs().block<Dim, 1>(0,0);
+//  }
+
+//  auto trapart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<Dim, 1>(0,0) )
+//  {
+//    coeffs().block<Dim, 1>(0,0);
+//  }
+
+//  auto rotpart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
+//  {
+//    coeffs().block<4, 1>(3,0);
+//  }
+
+//  auto rotpart() const
+//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
+//  {
+//    coeffs().block<4, 1>(3,0);
+//  }
+
+  Eigen::Map<const SO3<Scalar>> asSO3() const
+  {
+    return Eigen::Map<const SO3<Scalar>>(data()+3);
+  }
+
+  Eigen::Map<SO3<Scalar>> asSO3()
+  {
+    return Eigen::Map<SO3<Scalar>>(data()+3);
+  }
 };
 
 template <typename _Derived>
@@ -88,7 +123,7 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Rotation
 SE3Base<_Derived>::rotation() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  return asSO3().rotation();
 }
 
 template <typename _Derived>
@@ -99,24 +134,52 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-void SE3Base<_Derived>::identity()
+SE3Base<_Derived>&
+SE3Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setZero();
-  coeffs_nonconst()(6) = 1;
+  asSO3().setIdentity();
+  return *this;
 }
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Manifold
-SE3Base<_Derived>::inverse() const
+SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  if (J_minv_m)
+  {
+    /// @note
+    ///
+    /// J = | R^T  -R u_x t
+    ///     |  0       I
+    ///
+
+    static const Eigen::Matrix<Scalar,Dim,Dim> u_x(
+         ( Eigen::Matrix<Scalar,Dim,Dim>() <<
+            0, -1,  1,
+            1,  0, -1,
+           -1,  1,  0   ).finished()
+          );
+
+    J_minv_m->setIdentity();
+    J_minv_m->template block<Dim,Dim>(0,0) = rotation().transpose();
+    J_minv_m->template block<Dim,1>(0,3) = rotation().transpose() * u_x * translation();
+  }
+
+  return Manifold(-rotation() * translation(),
+                   asSO3().inverse().coeffs());
 }
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::lift() const
+SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET
+  MANIF_NOT_IMPLEMENTED_YET;
+
+  if (J_t_m)
+  {
+
+  }
 
   return Tangent();
 }
@@ -124,7 +187,10 @@ SE3Base<_Derived>::lift() const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SE3Base<_Derived>::Manifold
-SE3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SE3Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE3Base<_DerivedOther>, _DerivedOther>::value,
@@ -132,40 +198,73 @@ SE3Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 
   const auto& m_se3 = static_cast<const SE3Base<_DerivedOther>&>(m);
 
-  MANIF_NOT_IMPLEMENTED_YET
+  if (J_mc_ma)
+  {
+    /// @note
+    ///
+    /// J = | I  -R tb_x
+    ///     | 0    Rb^T
+    ///
 
-  return Manifold();
+    J_mc_ma->setIdentity();
+
+    J_mc_ma->template bottomRightCorner<Dim,Dim>() =
+        m_se3.rotation().transpose();
+
+    J_mc_ma->template topRightCorner<Dim,Dim>() =
+        -rotation() * skew3(translation());
+  }
+
+  if (J_mc_mb)
+  {
+    /// @note
+    ///
+    /// J = | R 0
+    ///     | 0 I
+    ///
+
+    J_mc_mb->setIdentity();
+    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
+
+    /// @note
+    ///
+    /// J = | R  t_x R
+    ///     | 0    R
+    ///
+/*
+    J_mc_mb->setIdentity();
+
+    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
+
+    J_mc_mb->template bottomRightCorner<Dim,Dim>() =
+        J_mc_mb->template topLeftCorner<Dim,Dim>();
+
+    J_mc_mb->template topRightCorner<Dim,1>() =
+        skew(translation()) * J_mc_mb->template topLeftCorner<Dim,Dim>();
+*/
+  }
+
+  return Manifold(rotation()*m_se3.translation() + translation(),
+                  asSO3().compose(m_se3.asSO3()).coeffs());
 }
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Vector
-SE3Base<_Derived>::act(const Vector &v) const
+SE3Base<_Derived>::act(const Vector &v,
+                       OptJacobianRef J_vout_m,
+                       OptJacobianRef J_vout_v) const
 {
+  if (J_vout_m)
+  {
+    MANIF_NOT_IMPLEMENTED_YET
+  }
+
+  if (J_vout_v)
+  {
+    MANIF_NOT_IMPLEMENTED_YET
+  }
+
   return transform() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SE3Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
-}
-
-template <typename _Derived>
-void SE3Base<_Derived>::lift(Tangent& t,
-                             Jacobian& J_t_m) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
-}
-
-template <typename _Derived>
-void SE3Base<_Derived>::compose(const Manifold& mb,
-                                Manifold& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  MANIF_NOT_IMPLEMENTED_YET
 }
 
 /// SE3 specific function

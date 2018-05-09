@@ -25,17 +25,9 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+  MANIF_TANGENT_PROPERTIES
 
-  using Scalar = typename Base::Scalar;
-
-  using Manifold = typename Base::Manifold;
-  using Tangent  = typename Base::Tangent;
-  using Jacobian = typename Base::Jacobian;
-  using DataType = typename Base::DataType;
-  using LieType  = typename Base::LieType;
+  MANIF_TANGENT_TYPEDEF
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
@@ -44,12 +36,10 @@ public:
 
   void zero();
   void random();
-  Manifold retract() const;
+
   LieType skew() const;
 
-  /// with Jacs
-
-  void retract(Manifold& m, Jacobian& J_m_t) const;
+  Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   /// SO3Tangent specific API
 
@@ -72,21 +62,41 @@ void SO3TangentBase<_Derived>::random()
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Manifold
-SO3TangentBase<_Derived>::retract() const
+SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
   using std::cos;
   using std::sin;
 
-  const Scalar angle = sqrt(coeffs().squaredNorm());
+  const DataType& theta_vec = coeffs();
+  const Scalar theta = sqrt(theta_vec.squaredNorm());
 
-  if (angle > Constants<Scalar>::eps)
+  if (theta > Constants<Scalar>::eps)
   {
-    return Manifold( Eigen::AngleAxis<Scalar>(angle, coeffs().normalized()) );
+    if (J_m_t)
+    {
+      const Scalar theta_sq = theta*theta;
+
+      Jacobian M1, M2;
+
+      const LieType W = skew();
+
+      M1.noalias() = (Scalar(1.0) - cos(theta)) / theta_sq * W;
+      M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);;
+
+      *J_m_t = Jacobian::Identity() - M1 + M2;
+    }
+
+    return Manifold( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
   }
   else
   {
-    return Manifold(x()/2, y()/2, z()/2, 1);
+    if (J_m_t)
+    {
+      *J_m_t = Jacobian::Identity() - Scalar(0.5) * skew();
+    }
+
+    return Manifold(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
   }
 }
 
@@ -97,36 +107,6 @@ SO3TangentBase<_Derived>::skew() const
   return (LieType() <<      0     , -coeffs()(2),  coeffs()(1),
                        coeffs()(2),       0     , -coeffs()(0),
                       -coeffs()(1),  coeffs()(0),      0      ).finished();
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SO3TangentBase<_Derived>::retract(
-    Manifold& m, Jacobian& J_m_t) const
-{
-  m = retract();
-
-  // Jacobians from wolf::rotations.h
-  using std::sqrt;
-  using std::cos;
-  using std::sin;
-
-  const DataType& theta_vec = this->coeffs();
-  Jacobian W(skew(theta_vec));
-
-  Scalar theta_sq = theta_vec.squaredNorm();
-
-  if (theta_sq <= Constants<Scalar>::eps_sq)
-      return Jacobian::Identity() - (Scalar)0.5 * W; // Small angle approximation
-
-  Scalar theta    = sqrt(theta_sq);
-  Jacobian M1, M2;
-
-  M1.noalias() = ((Scalar)1.0 - cos(theta)) / theta_sq * W;
-  M2.noalias() = (theta_vec - sin(theta)) / (theta_sq * theta) * (W * W);
-
-  J_m_t = Jacobian::Identity() - M1 + M2;
 }
 
 /// SO3Tangent specifics

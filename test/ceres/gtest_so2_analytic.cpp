@@ -248,38 +248,31 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
 
   /// @todo Not sure if LocalParametrization is
   /// thread safe thus the several instance
-  LocalParameterizationSO2 local_parametrization_0;
-  LocalParameterizationSO2 local_parametrization_1;
-  LocalParameterizationSO2 local_parametrization_2;
-  LocalParameterizationSO2 local_parametrization_3;
-  LocalParameterizationSO2 local_parametrization_4;
-  LocalParameterizationSO2 local_parametrization_5;
-  LocalParameterizationSO2 local_parametrization_6;
-  LocalParameterizationSO2 local_parametrization_7;
+  LocalParameterizationSO2 local_parametrization;
 
   problem.SetParameterization( state_0.data(),
-                               &local_parametrization_0 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_1.data(),
-                               &local_parametrization_1 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_2.data(),
-                               &local_parametrization_2 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_3.data(),
-                               &local_parametrization_3 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_4.data(),
-                               &local_parametrization_4 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_5.data(),
-                               &local_parametrization_5 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_6.data(),
-                               &local_parametrization_6 );
+                               &local_parametrization );
 
   problem.SetParameterization( state_7.data(),
-                               &local_parametrization_7 );
+                               &local_parametrization );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";

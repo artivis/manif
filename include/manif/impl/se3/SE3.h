@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE3_H_
 #define _MANIF_MANIF_SE3_H_
 
-#include "manif/impl/se2/SE3_base.h"
+#include "manif/impl/se3/SE3_base.h"
 
 #include <Eigen/Core>
 
@@ -69,11 +69,15 @@ private:
 public:
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  using Translation = typename Base::Translation;
 
   SE3()  = default;
   ~SE3() = default;
 
   SE3(const DataType& d);
+
+  SE3(const Translation& t,
+      const Eigen::Quaternion<Scalar>& q);
 
   /// Manifold common API
 
@@ -82,8 +86,6 @@ public:
   MANIF_INHERIT_MANIFOLD_API
 
   /// SE3 specific API
-
-  using Base::angle;
 
 protected:
 
@@ -100,6 +102,13 @@ SE3<_Scalar>::SE3(const DataType& d)
   : data_(d)
 {
   //
+}
+
+template <typename _Scalar>
+SE3<_Scalar>::SE3(const Translation& t,
+                  const Eigen::Quaternion<Scalar>& q)
+{
+  coeffs_nonconst() << t, q.coeffs();
 }
 
 template <typename _Scalar>

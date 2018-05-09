@@ -40,6 +40,7 @@ option(BUILD_TESTING "Build all tests." OFF)
 ###########
 
 include_directories(include)
+include_directories(external/lt)
 include_directories(SYSTEM
   ${EIGEN_INCLUDE_DIRS}
   ${LSPDLOG_INCLUDE_DIRS}

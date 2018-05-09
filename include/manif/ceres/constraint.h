@@ -72,29 +72,35 @@ public:
       if (jacobians_raw[0] != nullptr ||
           jacobians_raw[1] != nullptr)
       {
-        state_past.between(state_future,
-                           pose_increment_,
-                           J_pi_past_, J_pi_future_);
+        typename Manifold::OptJacobianRef J_pi_past;
+        typename Manifold::OptJacobianRef J_pi_future;
 
-        measurement_.retract(mmeas_, J_mmeas_meas_);
+        if (jacobians_raw[0] != nullptr)
+        {
+          J_pi_past = J_pi_past_;
+        }
 
-        mmeas_.between(pose_increment_,
-                       pe_,
-                       J_pe_mmeas_, J_pe_pi_);
+        if (jacobians_raw[1] != nullptr)
+        {
+          J_pi_future = J_pi_future_;
+        }
 
-        pe_.lift(residuals, J_res_pe_);
+        residuals = measurement_.retract().
+                      between( state_past.between(state_future,
+                                J_pi_past, J_pi_future) ,      Manifold::_, J_pe_pi_).
+                        lift(J_res_pe_);
 
         if (jacobians_raw[0] != nullptr)
         {
           JacobianMap J_res_past(jacobians_raw[0]);
-          J_res_past =
+          J_res_past.noalias() =
             computeLiftJacobianGlobal(state_past) * J_res_pe_ * J_pe_pi_ * J_pi_past_;
         }
 
         if (jacobians_raw[1] != nullptr)
         {
           JacobianMap J_res_future(jacobians_raw[1]);
-          J_res_future =
+          J_res_future.noalias() =
             computeLiftJacobianGlobal(state_future) * J_res_pe_ * J_pe_pi_ * J_pi_future_;
         }
       }
@@ -114,15 +120,8 @@ protected:
 
   const Tangent measurement_;
 
-  mutable Manifold mmeas_;
-  mutable Jacobian J_mmeas_meas_;
-
-  mutable Manifold pose_increment_;
-  mutable Jacobian J_pi_past_, J_pi_future_;
-
-  mutable Jacobian J_pe_mmeas_, J_pe_pi_;
-
-  mutable Manifold pe_;
+  mutable Jacobian J_pi_past_,  J_pi_future_;
+  mutable Jacobian J_pe_pi_;
   mutable Jacobian J_res_pe_;
 };
 

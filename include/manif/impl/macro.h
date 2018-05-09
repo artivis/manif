@@ -14,7 +14,7 @@
   static constexpr int N   = internal::ManifoldProperties<Type>::N;
 
 #define MANIF_INHERIT_MANIFOLD_AUTO_API \
-  using Base::random;                   \
+  using Base::setRandom;                \
   using Base::rplus;                    \
   using Base::lplus;                    \
   using Base::rminus;                   \
@@ -25,9 +25,16 @@
   MANIF_INHERIT_MANIFOLD_AUTO_API   \
   using Base::transform;            \
   using Base::rotation;             \
-  using Base::identity;             \
+  using Base::setIdentity;          \
   using Base::inverse;              \
   using Base::lift;
+
+#define MANIF_INHERIT_MANIFOLD_OPERATOR \
+  using Base::operator +;               \
+  using Base::operator +=;              \
+  using Base::operator *;               \
+  using Base::operator *=;              \
+  using Base::operator =;
 
 #define MANIF_MANIFOLD_TYPEDEF                          \
   using Scalar         = typename Base::Scalar;         \
@@ -37,14 +44,8 @@
   using DataType       = typename Base::DataType;       \
   using Transformation = typename Base::Transformation; \
   using Rotation       = typename Base::Rotation;       \
-  using Vector         = typename Base::Vector;
-
-#define MANIF_INHERIT_MANIFOLD_OPERATOR \
-  using Base::operator +;               \
-  using Base::operator +=;              \
-  using Base::operator *;               \
-  using Base::operator *=;              \
-  using Base::operator =;
+  using Vector         = typename Base::Vector;         \
+  using OptJacobianRef = typename Base::OptJacobianRef;
 
 #define MANIF_COMPLETE_MANIFOLD_TYPEDEF \
   MANIF_MANIFOLD_TYPEDEF                \
@@ -55,6 +56,10 @@
   using manifold##d = manifold<double>;
 
 /// Tangent - related macros
+
+#define MANIF_TANGENT_PROPERTIES                                      \
+  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
+  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
 
 #define MANIF_INHERIT_TANGENT_API \
   using Base::zero;               \
@@ -72,12 +77,8 @@
   using Tangent  = typename Base::Tangent;  \
   using Jacobian = typename Base::Jacobian; \
   using DataType = typename Base::DataType; \
-  using LieType  = typename Base::LieType;
-
-#define MANIF_TANGENT_PROPERTIES                                      \
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
-//  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+  using LieType  = typename Base::LieType;  \
+  using OptJacobianRef = typename Base::OptJacobianRef;
 
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
   using tangent##f = tangent<float>;         \

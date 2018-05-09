@@ -41,8 +41,6 @@ public:
                   const T* delta_raw,
                   T* state_plus_delta_raw) const
   {
-//    std::cout << "Local Parametrization\n";
-
     const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
     const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
 
@@ -76,7 +74,6 @@ public:
    * @param delta_raw
    * @param state_plus_delta_raw
    * @return true
-   * @see SO2::rplus
    */
   virtual bool Plus(double const* state_raw,
                     double const* delta_raw,
@@ -90,17 +87,17 @@ public:
    * @param T_raw
    * @param jacobian_raw
    * @return
-   * @see SO2::rplus
    */
   virtual bool ComputeJacobian(double const* state_raw,
                                double* rplus_jacobian_raw) const override
   {
     const Eigen::Map<const Manifold> state(state_raw);
 
-    state.rplus(tangent_zero_, tmp_out_, J_rplus_m_, J_rplus_t_);
+    Jacobian J_rplus_t_;
+    state.rplus(tangent_zero_, Manifold::_, J_rplus_t_);
 
     JacobianMap rplus_jacobian(rplus_jacobian_raw);
-    rplus_jacobian = computeLiftJacobianGlobal(state) * J_rplus_t_;
+    rplus_jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rplus_t_;
 
     return true;
   }
@@ -111,9 +108,6 @@ public:
 protected:
 
   const Tangent tangent_zero_;
-
-  mutable Manifold tmp_out_;
-  mutable Jacobian J_rplus_m_, J_rplus_t_;
 };
 
 //using LocalParameterizationSO2 = LocalParameterization<SO2d>;

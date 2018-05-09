@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_SE3TANGENT_H_
 #define _MANIF_MANIF_SE3TANGENT_H_
 
-#include "manif/impl/so2/SE3Tangent_base.h"
+#include "manif/impl/se3/SE3Tangent_base.h"
 
 #include <Eigen/Core>
 
@@ -70,8 +70,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   /// SE3Tangent specific API
-
-  using Base::angle;
 
 protected:
 

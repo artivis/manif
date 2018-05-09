@@ -3,6 +3,7 @@
 
 #include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/utils.h"
 
 namespace manif
 {
@@ -26,6 +27,7 @@ public:
   MANIF_MANIFOLD_PROPERTIES
 
   MANIF_MANIFOLD_TYPEDEF
+
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
@@ -36,32 +38,24 @@ public:
   Rotation rotation() const;
   Translation translation() const;
 
-  void identity();
+  SE2Base<_Derived>& setIdentity();
 
-  Manifold inverse() const;
-  Tangent lift() const;
+  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m) const;
+  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
 
-  Vector act(const Vector &v) const;
+  Vector act(const Vector &v,
+             OptJacobianRef J_vout_m = {},
+             OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
-
-  /// with Jacs
-
-  void inverse(Manifold& m, Jacobian& j) const;
-
-  template <typename _DerivedOther>
-  void lift(TangentBase<_DerivedOther>& t, Jacobian& J_t_m) const;
-
-  template <typename _DerivedOther0, typename _DerivedOther1>
-  void compose(const ManifoldBase<_DerivedOther0>& mb,
-               ManifoldBase<_DerivedOther1>& mout,
-               Jacobian& J_c_a, Jacobian& J_c_b) const;
 
   /// SE2 specific functions
 
@@ -103,20 +97,40 @@ SE2Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-void SE2Base<_Derived>::identity()
+SE2Base<_Derived>&
+SE2Base<_Derived>::setIdentity()
 {
   coeffs_nonconst().setZero();
   coeffs_nonconst()(2) = 1;
+  return *this;
 }
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Manifold
-SE2Base<_Derived>::inverse() const
+SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   using std::cos;
   using std::sin;
 
   const Scalar theta_inv = -angle();
+
+  if (J_minv_m)
+  {
+    //  p  = T(1:2);
+    //  th = T(3);
+    //  R  = [cos(th)  -sin(th);  sin(th)  cos(th)];
+    //  Ri = R';
+    //  Ti = [-Ri*p; -th];
+    //  u_x = [[0 -1] ; [1 0]];
+    //  J_Ti_T = [-Ri Ri*u_x*p ; [0 0 -1]];
+
+    Jacobian& J_minv_m_ref = *J_minv_m;
+
+    J_minv_m_ref = -Jacobian::Identity();
+    J_minv_m_ref.template block<2,2>(0,0) = -rotation().transpose();
+    J_minv_m_ref(0,2) = -x()*sin(theta_inv) - y()*cos(theta_inv);
+    J_minv_m_ref(1,2) =  x()*cos(theta_inv) - y()*sin(theta_inv);
+  }
 
   return Manifold(-(x()*cos(theta_inv) - y()*sin(theta_inv)),
                   -(x()*sin(theta_inv) + y()*cos(theta_inv)),
@@ -125,13 +139,14 @@ SE2Base<_Derived>::inverse() const
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
-SE2Base<_Derived>::lift() const
+SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
   using std::abs;
   using std::cos;
   using std::sin;
 
   const Scalar theta = angle();
+  const Scalar theta_sq = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
@@ -139,7 +154,6 @@ SE2Base<_Derived>::lift() const
   if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
-    const Scalar theta_sq = theta * theta;
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
     B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
   }
@@ -147,6 +161,39 @@ SE2Base<_Derived>::lift() const
   {
     A = sin(theta) / theta;
     B = (Scalar(1) - cos(theta) ) / theta;
+  }
+
+  if (J_t_m)
+  {
+    J_t_m->setIdentity();
+    J_t_m->template block<2,2>(0,0) = rotation();
+
+    Scalar d_sin_theta_by_theta;
+    Scalar d_one_minus_cos_theta_by_theta;
+
+    if (abs(theta) < Constants<Scalar>::eps)
+    {
+      d_sin_theta_by_theta = -theta / Scalar(3);
+      d_one_minus_cos_theta_by_theta =
+          Scalar(0.5) - theta_sq * Scalar(0.125);
+    }
+    else
+    {
+      const Scalar cos_theta = cos(theta);
+      const Scalar sin_theta = sin(theta);
+
+      d_sin_theta_by_theta =
+          (theta * cos_theta - sin_theta) / theta_sq;
+
+      d_one_minus_cos_theta_by_theta =
+          (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
+    }
+
+    (*J_t_m)(0,2) =  d_sin_theta_by_theta * x() +
+                     d_one_minus_cos_theta_by_theta * y();
+
+    (*J_t_m)(1,2) = -d_one_minus_cos_theta_by_theta * x() +
+                     d_sin_theta_by_theta * y();
   }
 
   const Scalar den = Scalar(1) / (A*A + B*B);
@@ -159,7 +206,10 @@ SE2Base<_Derived>::lift() const
 template <typename _Derived>
 template <typename _DerivedOther>
 typename SE2Base<_Derived>::Manifold
-SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
+SE2Base<_Derived>::compose(
+    const ManifoldBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE2Base<_DerivedOther>, _DerivedOther>::value,
@@ -172,6 +222,32 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
   const Scalar rhs_real = m_se2.real();
   const Scalar rhs_imag = m_se2.imag();
 
+  if (J_mc_ma)
+  {
+    /// @note
+    ///
+    /// J = | I   R u_x tb
+    ///     | 0      1
+    ///
+
+    J_mc_ma->setIdentity();
+
+    J_mc_mb->template topRightCorner<Dim,1>() =
+        rotation() * Translation(-m.coeffs().y(), m.coeffs().x());
+  }
+
+  if (J_mc_mb)
+  {
+    /// @note
+    ///
+    /// J = | R 0
+    ///     | 0 I
+    ///
+
+    J_mc_mb->setIdentity();
+    J_mc_mb->template block<2,2>(0,0) = rotation();
+  }
+
   return Manifold(
         lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
         lhs_imag * m_se2.x() + lhs_real * m_se2.y() + y(),
@@ -181,103 +257,21 @@ SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther>& m) const
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Vector
-SE2Base<_Derived>::act(const Vector &v) const
+SE2Base<_Derived>::act(const Vector &v,
+                       OptJacobianRef J_vout_m,
+                       OptJacobianRef J_vout_v) const
 {
+  if (J_vout_m)
+  {
+    (*J_vout_m) = rotation() * skew2(1) * v;
+  }
+
+  if (J_vout_v)
+  {
+    (*J_vout_v) = rotation();
+  }
+
   return transform() * v;
-}
-
-/// with Jacs
-
-template <typename _Derived>
-void SE2Base<_Derived>::inverse(Manifold& m, Jacobian& J) const
-{
-//  p  = T(1:2);
-//  th = T(3);
-//  R  = [cos(th)  -sin(th);  sin(th)  cos(th)];
-//  Ri = R';
-//  Ti = [-Ri*p; -th];
-//  u_x = [[0 -1] ; [1 0]];
-//  J_Ti_T = [-Ri Ri*u_x*p ; [0 0 -1]];
-
-  using std::cos;
-  using std::sin;
-
-  const Scalar theta_inv = -angle();
-
-  m = Manifold( x()*cos(theta_inv) + y()*sin(theta_inv),
-               -x()*sin(theta_inv) + y()*cos(theta_inv),
-                theta_inv );
-
-  J = -Jacobian::Identity();
-  J.template block<2,2>(0,0) = -rotation().transpose();
-  J(0,2) = x()*sin(theta_inv) - y()*cos(theta_inv);
-  J(1,2) = x()*cos(theta_inv) + y()*sin(theta_inv);
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-void SE2Base<_Derived>::lift(TangentBase<_DerivedOther>& t,
-                             Jacobian& J_t_m) const
-{
-  using std::abs;
-  using std::cos;
-  using std::sin;
-
-  t = lift();
-
-  J_t_m.setIdentity();
-  J_t_m.template block<2,2>(0,0) = rotation();
-
-  const Scalar theta    = angle();
-  const Scalar theta_sq = theta*theta;
-
-  Scalar d_sin_theta_by_theta;
-  Scalar d_one_minus_cos_theta_by_theta;
-
-  if (abs(theta) < Constants<Scalar>::eps)
-  {
-    d_sin_theta_by_theta = -theta / Scalar(3);
-    d_one_minus_cos_theta_by_theta =
-        Scalar(0.5) - theta_sq * Scalar(0.125);
-  }
-  else
-  {
-    const Scalar cos_theta = cos(theta);
-    const Scalar sin_theta = sin(theta);
-
-    d_sin_theta_by_theta =
-        (theta * cos_theta - sin_theta) / theta_sq;
-
-    d_one_minus_cos_theta_by_theta =
-        (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
-  }
-
-  J_t_m(0,2) =  d_sin_theta_by_theta * x() +
-                d_one_minus_cos_theta_by_theta * y();
-
-  J_t_m(1,2) = -d_one_minus_cos_theta_by_theta * x() +
-                d_sin_theta_by_theta * y();
-}
-
-template <typename _Derived>
-template <typename _DerivedOther0, typename _DerivedOther1>
-void SE2Base<_Derived>::compose(const ManifoldBase<_DerivedOther0>& mb,
-                                ManifoldBase<_DerivedOther1>& mout,
-                                Jacobian& J_c_a,
-                                Jacobian& J_c_b) const
-{
-  mout = compose(mb);
-
-  const Scalar theta_inv = -angle();
-
-  J_c_a.setIdentity();
-  J_c_a(0,2) = mb.coeffs().x()*sin(theta_inv) -
-               mb.coeffs().y()*cos(theta_inv);
-  J_c_a(1,2) = mb.coeffs().x()*cos(theta_inv) +
-               mb.coeffs().y()*sin(theta_inv);
-
-  J_c_b.setIdentity();
-  J_c_b.template block<2,2>(0,0) = rotation();
 }
 
 /// SE2 specific function

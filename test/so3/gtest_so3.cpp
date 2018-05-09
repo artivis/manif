@@ -49,7 +49,7 @@ TEST(TEST_SO3, TEST_SO3_IDENTITY)
 {
   SO3d so3;
 
-  so3.identity();
+  so3.setIdentity();
 
   EXPECT_DOUBLE_EQ(0, so3.x());
   EXPECT_DOUBLE_EQ(0, so3.y());
@@ -71,7 +71,7 @@ TEST(TEST_SO3, TEST_SO3_RANDOM)
 {
   SO3d so3;
 
-  so3.random();
+  so3.setRandom();
 
   const SO3d& so3_ref = so3;
 
@@ -287,9 +287,8 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 {
   SO3d so3 = SO3d::Identity();
 
-  SO3d so3_inv;
   SO3d::Jacobian J_inv;
-  so3.inverse(so3_inv, J_inv);
+  SO3d so3_inv = so3.inverse(J_inv);
 
   EXPECT_DOUBLE_EQ(0, so3_inv.x());
   EXPECT_DOUBLE_EQ(0, so3_inv.y());
@@ -303,7 +302,7 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 //  EXPECT_DOUBLE_EQ(Eigen::Matrix3d::Identity(), J_inv);
 
 //  so3.angle(M_PI);
-//  so3.inverse(so3_inv, J_inv);
+//  so3_inv = so3.inverse(J_inv);
 
 //  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
 
@@ -316,10 +315,10 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
   SO3d so3(0,0,0);
 
-  SO3d::Tangent so3_lift;
   SO3d::Tangent::Jacobian J_lift;
 
-  so3.lift(so3_lift, J_lift);
+  /// @todo Jac not implemented yet
+  SO3d::Tangent so3_lift = so3.lift(/*J_lift*/);
 
   EXPECT_DOUBLE_EQ(0, so3_lift.x());
   EXPECT_DOUBLE_EQ(0, so3_lift.y());
@@ -335,12 +334,11 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 {
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3b(toRad(15),  toRad(45),  toRad(90));
 
-  SO3d so3c;
   SO3d::Jacobian J_c_a, J_c_b;
 
-  so3a.compose(so3b, so3c, J_c_a, J_c_b);
+  SO3d so3c = so3a.compose(so3b, J_c_a, J_c_b);
 
   EXPECT_DOUBLE_EQ(0, so3c.x());
   EXPECT_DOUBLE_EQ(0, so3c.y());
@@ -495,10 +493,9 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   SO3d so3b(toRad(15),toRad(45),toRad(90));
   SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
 
-  SO3d so3c;
   SO3d::Jacobian J_between_a, J_between_b;
 
-  so3a.between(so3b, so3c, J_between_a, J_between_b);
+  SO3d so3c = so3a.between(so3b, J_between_a, J_between_b);
 
   EXPECT_DOUBLE_EQ(0, so3c.x());
   EXPECT_DOUBLE_EQ(0, so3c.y());
