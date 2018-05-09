@@ -131,9 +131,9 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
      * angle - pi = atan(sin(angle - pi), cos(angle - pi))
      *            = atan(-sin(angle), -cos(angle))
      */
-    const Scalar two_angle = (Scalar(2.0) * ((cos_angle < Scalar(0.0))) ?
+    const Scalar two_angle = (Scalar(2.0) * (cos_angle < Scalar(0.0))) ?
                                  atan2(-sin_angle, -cos_angle) :
-                                 atan2( sin_angle,  cos_angle));
+                                 atan2( sin_angle,  cos_angle);
 
     const Scalar k = two_angle / sin_angle;
     return Tangent(coeffs().vec() * k);

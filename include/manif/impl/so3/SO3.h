@@ -16,7 +16,6 @@ namespace internal
 
 // Traits specialization
 
-template <>
 template <typename _Scalar>
 struct traits<SO3<_Scalar>>
 {

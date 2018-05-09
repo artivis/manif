@@ -3,10 +3,11 @@
 
 #include "manif/impl/so2/SO2Tangent.h"
 
-namespace manif {
-namespace internal {
+namespace manif
+{
+namespace internal
+{
 
-template <>
 template <typename _Scalar/*, int _MapOptions, typename _StrideType*/>
 struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
     : public traits<SO2Tangent<_Scalar>>
@@ -16,7 +17,6 @@ struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
-template <>
 template <typename _Scalar>
 struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
     : public traits<const SO2Tangent<_Scalar>>

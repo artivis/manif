@@ -15,7 +15,6 @@ namespace internal
 
 // traits specialization
 
-template <>
 template <typename _Derived>
 struct ManifoldProperties<SE2Base<_Derived>>
 {
@@ -24,7 +23,6 @@ struct ManifoldProperties<SE2Base<_Derived>>
   static constexpr int N   = 3; /// @brief Dimension of transformation matrix
 };
 
-template <>
 template <typename _Derived>
 struct ManifoldProperties<SE2TangentBase<_Derived>>
 {

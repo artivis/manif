@@ -98,12 +98,12 @@ protected:
 
   Eigen::Map<const SO3<Scalar>> asSO3() const
   {
-    return Eigen::Map<const SO3<Scalar>>(data()+3);
+    return Eigen::Map<const SO3<Scalar>>(coeffs().data()+3);
   }
 
   Eigen::Map<SO3<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3<Scalar>>(data()+3);
+    return Eigen::Map<SO3<Scalar>>(coeffs_nonconst().data()+3);
   }
 };
 
@@ -166,7 +166,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     J_minv_m->template block<Dim,1>(0,3) = rotation().transpose() * u_x * translation();
   }
 
-  return Manifold(-rotation() * translation(),
+  return Manifold(-rotation().transpose() * translation(),
                    asSO3().inverse().coeffs());
 }
 

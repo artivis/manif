@@ -18,7 +18,6 @@ namespace internal
 
 // Traits specialization
 
-template <>
 template <typename _Scalar>
 struct traits<SE2<_Scalar>>
 {

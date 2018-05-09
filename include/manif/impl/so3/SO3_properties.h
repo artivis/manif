@@ -15,7 +15,6 @@ namespace internal
 
 // traits specialization
 
-template <>
 template <typename _Derived>
 struct ManifoldProperties<SO3Base<_Derived>>
 {
@@ -24,7 +23,6 @@ struct ManifoldProperties<SO3Base<_Derived>>
   static constexpr int N   = 4; /// @brief Dimension of transformation matrix
 };
 
-template <>
 template <typename _Derived>
 struct ManifoldProperties<SO3TangentBase<_Derived>>
 {

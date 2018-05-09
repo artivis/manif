@@ -264,7 +264,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
   std::cout << "p7 : [" << state_7.x() << "," << state_7.y() << "," << state_7.angle() << "]\n";
   std::cout << "\n";
 
-  constexpr double inv_sqrt_2 = 1./sqrt(2.);
+  double inv_sqrt_2 = 1./sqrt(2.);
 
   auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
   auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
