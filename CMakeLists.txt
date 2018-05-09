@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(manif)
+project(manif CXX)
 
 # Check that the compoiler has c++11 support
 # Crash otherwise.
@@ -12,7 +12,15 @@ else()
 endif()
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=1024")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=1024")
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  # GCC is not strict enough by default, so enable most of the warnings.
+  add_compile_options(-Werror=all)
+  add_compile_options(-Werror=extra)
+  add_compile_options(-Wno-unknown-pragmas)
+  add_compile_options(-Wno-sign-compare)
+  add_compile_options(-Wno-unused-parameter)
+  add_compile_options(-Wno-missing-field-initializers)
 endif()
 
 find_package(Eigen3 REQUIRED)
