@@ -166,7 +166,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     J_minv_m->template block<Dim,1>(0,3) = rotation().transpose() * u_x * translation();
   }
 
-  return Manifold(-rotation() * translation(),
+  return Manifold(-rotation().transpose() * translation(),
                    asSO3().inverse().coeffs());
 }
 
