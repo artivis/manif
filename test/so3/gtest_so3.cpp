@@ -124,6 +124,7 @@ TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
 
 TEST(TEST_SO3, TEST_SO3_INVERSE)
 {
+    // inverse of identity is identity
   SO3d so3 = SO3d::Identity();
 
   auto so3_inv = so3.inverse();
@@ -132,6 +133,16 @@ TEST(TEST_SO3, TEST_SO3_INVERSE)
   EXPECT_DOUBLE_EQ(0, so3_inv.y());
   EXPECT_DOUBLE_EQ(0, so3_inv.z());
   EXPECT_DOUBLE_EQ(1, so3_inv.w());
+
+  // inverse of random in quaternion form is conjugate
+  so3 = SO3d::Random();
+
+  so3_inv = so3.inverse();
+
+  EXPECT_DOUBLE_EQ(so3.x(), +so3_inv.x());
+  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.y());
+  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.z());
+  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.w());
 
   /// @todo
 //  so3.angle(M_PI);
