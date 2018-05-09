@@ -3,10 +3,11 @@
 
 #include "manif/impl/so3/SO3Tangent.h"
 
-namespace manif {
-namespace internal {
+namespace manif
+{
+namespace internal
+{
 
-template <>
 template <typename _Scalar>
 struct traits< Eigen::Map<SO3Tangent<_Scalar>,0> >
     : public traits<SO3Tangent<_Scalar>>
@@ -15,7 +16,6 @@ struct traits< Eigen::Map<SO3Tangent<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Quaternion<Scalar, 3, 1>, 0>;
 };
 
-template <>
 template <typename _Scalar>
 struct traits< Eigen::Map<const SO3Tangent<_Scalar>,0> >
     : public traits<const SO3Tangent<_Scalar>>

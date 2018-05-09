@@ -3,10 +3,11 @@
 
 #include "manif/impl/se2/SE2Tangent.h"
 
-namespace manif {
-namespace internal {
+namespace manif
+{
+namespace internal
+{
 
-template <>
 template <typename _Scalar>
 struct traits< Eigen::Map<SE2Tangent<_Scalar>,0> >
     : public traits<SE2Tangent<_Scalar>>
@@ -16,7 +17,6 @@ struct traits< Eigen::Map<SE2Tangent<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
-template <>
 template <typename _Scalar>
 struct traits< Eigen::Map<const SE2Tangent<_Scalar>,0> >
     : public traits<const SE2Tangent<_Scalar>>
