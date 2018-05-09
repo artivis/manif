@@ -98,12 +98,12 @@ protected:
 
   Eigen::Map<const SO3<Scalar>> asSO3() const
   {
-    return Eigen::Map<const SO3<Scalar>>(data()+3);
+    return Eigen::Map<const SO3<Scalar>>(coeffs().data()+3);
   }
 
   Eigen::Map<SO3<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3<Scalar>>(data()+3);
+    return Eigen::Map<SO3<Scalar>>(coeffs_nonconst().data()+3);
   }
 };
 

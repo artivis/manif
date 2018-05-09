@@ -11,9 +11,10 @@ else()
   message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-#find_package(catkin REQUIRED)
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=1024")
+endif()
 
-#find_package(cmake_modules REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Threads REQUIRED)
 
