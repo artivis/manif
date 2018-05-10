@@ -348,6 +348,32 @@ TEST(TEST_SO3, TEST_SO3_OP_MINUS)
   EXPECT_DOUBLE_EQ(so3d.coeffs()(2), so3c.coeffs()(2));
 }
 
+TEST(TEST_SO3, TEST_SO3_RETRACT)
+{
+    // retract of zero is identity
+    SO3Tangentd so3t = SO3Tangentd::Zero();
+
+    auto so3 = so3t.retract();
+
+    EXPECT_DOUBLE_EQ(0, so3.x());
+    EXPECT_DOUBLE_EQ(0, so3.y());
+    EXPECT_DOUBLE_EQ(0, so3.z());
+    EXPECT_DOUBLE_EQ(1, so3.w());
+
+    // retract of negative is inverse of retract, that is, its conjugate
+    so3t = SO3Tangentd::Random(); // something
+    so3 = so3t.retract(); // retract of something
+
+    SO3Tangentd so3n(-so3t.coeffs()); // minus something
+    auto so3_inv = so3n.retract(); // retract of minus something
+
+    EXPECT_DOUBLE_EQ(so3_inv.x(), -so3.x()); // check conjugate
+    EXPECT_DOUBLE_EQ(so3_inv.y(), -so3.y());
+    EXPECT_DOUBLE_EQ(so3_inv.z(), -so3.z());
+    EXPECT_DOUBLE_EQ(so3_inv.w(), +so3.w());
+
+}
+
 TEST(TEST_SO3, TEST_SO3_LIFT)
 {
     // Lift of Identity is Zero
@@ -454,7 +480,7 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 
 TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
-  SO3d so3(0,0,0);
+  SO3d so3(0,0,0); // Identity
 
   SO3d::Tangent::Jacobian J_lift;
 
