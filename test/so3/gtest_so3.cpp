@@ -349,11 +349,24 @@ TEST(TEST_SO3, TEST_SO3_OP_MINUS)
 
 TEST(TEST_SO3, TEST_SO3_LIFT)
 {
-  SO3d so3;
+    // Lift of Identity is Zero
+  SO3d so3 = SO3d::Identity();
 
   auto so3_lift = so3.lift();
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3_lift.angle());
+  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(2));
+
+  // Lift of inverse is minus lift
+  so3 = SO3d::Random();
+  so3_lift = so3.lift();
+
+  auto so3_inv_lift = so3.inverse().lift();
+
+  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(0), -so3_lift.coeffs()(0));
+  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(1), -so3_lift.coeffs()(1));
+  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(2), -so3_lift.coeffs()(2));
 }
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE)
