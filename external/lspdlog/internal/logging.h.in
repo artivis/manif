@@ -1,0 +1,552 @@
+/**
+ * \file logging.h
+ *
+ * Created on: Oct 27, 2016
+ * \author: Jeremie Deray
+ */
+
+#ifndef _@PROJECT_NAME_CAPS@_INTERNAL_CONFIG_LOGGING_H_
+#define _@PROJECT_NAME_CAPS@_INTERNAL_CONFIG_LOGGING_H_
+
+#cmakedefine _LSPDLOG_COMPILER_SUPPORTS_CONSTEXPR_FUNC_
+
+#include "spdlog/spdlog.h"
+
+// for getpwuid
+#include <pwd.h>
+
+namespace
+{
+
+// macro trick from https://blog.galowicz.de/2016/02/20/short_file_macro/
+using cstr = const char * const;
+
+static constexpr cstr past_last_slash(cstr str, cstr last_slash)
+{
+  return *str == '\0' ? last_slash :
+         *str == '/'  ? past_last_slash(str + 1, str + 1) :
+                        past_last_slash(str + 1, last_slash);
+}
+
+static constexpr cstr past_last_slash(cstr str)
+{
+  return past_last_slash(str, str);
+}
+
+#define __SHORT_FILE__ ({constexpr cstr sf__ {past_last_slash(__FILE__)}; sf__;})
+
+/**
+ * \brief A (thread-safer ?) Singleton implementation
+ * with constructor argument forwarding.
+ **/
+template <class T>
+class Singleton
+{
+
+  using SingletonOPtr = std::unique_ptr<T>;
+
+public:
+
+  template <typename... Args>
+  static T& get(Args&&... args)
+  {
+    static SingletonOPtr instance_(new T(std::forward<Args>(args)...));
+    return *instance_;
+  }
+
+  constexpr Singleton(const Singleton&)       = delete;
+  //constexpr Singleton(const Singleton&&)      = delete;
+
+  constexpr Singleton& operator=(const Singleton&)  = delete;
+  //constexpr Singleton& operator=(const Singleton&&) = delete;
+
+protected:
+
+  Singleton()  = default;
+  ~Singleton() = default;
+};
+
+#ifdef _LSPDLOG_COMPILER_SUPPORTS_CONSTEXPR_FUNC_
+constexpr auto repeated_brace = std::make_tuple("{}",
+#else
+    const auto repeated_brace = std::make_tuple("{}",
+#endif
+                                                "{}{}",
+                                                "{}{}{}",
+                                                "{}{}{}{}",
+                                                "{}{}{}{}{}",
+                                                "{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}",
+                                                "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}"); // up to 25 args. Should be fine
+
+class Logger
+{
+public:
+
+  Logger();
+  ~Logger();
+
+  Logger(Logger&)         = delete;
+  void operator=(Logger&) = delete;
+
+  template<typename... Args>
+  void info(Args&&... args);
+
+  template<typename... Args>
+  void warn(Args&&... args);
+
+  template<typename... Args>
+  void error(Args&&... args);
+
+  template<typename... Args>
+  void debug(Args&&... args);
+
+  template<typename... Args>
+  void trace(Args&&... args);
+
+  /*constexpr*/ bool async_enabled() const noexcept;
+
+  /*constexpr*/ bool debug_enabled() const noexcept;
+
+  /*constexpr*/ bool trace_enabled() const noexcept;
+
+  bool set_async_queue(const std::size_t q_size);
+
+protected:
+
+  std::shared_ptr<spdlog::logger> console_;
+};
+
+Logger::Logger()
+{
+  console_ = spdlog::stdout_color_mt("@PROJECT_NAME@_main_console");
+
+#if ${_LSPDLOG_ENABLE_TRACE_LOGGING_}
+  console_->set_level(spdlog::level::trace);
+#endif
+
+#if ${_LSPDLOG_ENABLE_ASYNC_LOGGING_}
+  // Enable asynchronous logging
+  // Queue size must be a power of 2
+  spdlog::set_async_mode(4096);
+
+  // Logging pattern is :
+  // [hour:minutes:seconds.nanoseconds][thread-id] #log-content
+  spdlog::set_pattern("[%t][%H:%M:%S.%F][%l] %v");
+#else
+
+  // Logging pattern is :
+  // [logging-type] #log-content
+  spdlog::set_pattern("[%l] %v");
+#endif
+}
+
+Logger::~Logger()
+{
+  spdlog::drop("@PROJECT_NAME@_main_console");
+}
+
+template<typename... Args>
+void Logger::info(Args&&... args)
+{
+  console_->info(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+template<typename... Args>
+void Logger::warn(Args&&... args)
+{
+  console_->warn(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+template<typename... Args>
+void Logger::error(Args&&... args)
+{
+  console_->error(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+template<typename... Args>
+void Logger::debug(Args&&... args)
+{
+  console_->debug(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+template<typename... Args>
+void Logger::trace(Args&&... args)
+{
+  console_->trace(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+inline /*constexpr*/ bool Logger::debug_enabled() const noexcept
+{
+  return ${__AM_I_COMPILED_IN_DEBUG__};
+}
+
+inline /*constexpr*/ bool Logger::trace_enabled() const noexcept
+{
+  return ${_LSPDLOG_ENABLE_TRACE_LOGGING_};
+}
+
+inline /*constexpr*/ bool Logger::async_enabled() const noexcept
+{
+  return ${_LSPDLOG_ENABLE_ASYNC_LOGGING_};
+}
+
+inline bool Logger::set_async_queue(const std::size_t q_size)
+{
+#if ${_LSPDLOG_ENABLE_ASYNC_LOGGING_}
+  bool p2 = q_size%2 == 0;
+  if (p2) spdlog::set_async_mode(q_size);
+  else error("Can not set async queue to ", q_size, " as it's not a power of 2!");
+  return p2;
+#else
+  return false;
+#endif
+}
+
+} /* namespace */
+
+namespace lspdlog
+{
+namespace details
+{
+using Lspdlogger = Singleton<Logger>;
+} /* namespace details */
+
+#define @PROJECT_NAME_CAPS@_INFO(...) \
+  lspdlog::details::Lspdlogger::get().info(__VA_ARGS__);
+
+#define @PROJECT_NAME_CAPS@_WARN(...) \
+  lspdlog::details::Lspdlogger::get().warn(__VA_ARGS__);
+
+#define @PROJECT_NAME_CAPS@_ERROR(...) \
+  lspdlog::details::Lspdlogger::get().error(__VA_ARGS__);
+
+#if ${__AM_I_COMPILED_IN_DEBUG__}
+  #define @PROJECT_NAME_CAPS@_DEBUG(...) \
+    lspdlog::details::Lspdlogger::get().debug(__VA_ARGS__);
+#else
+  #define @PROJECT_NAME_CAPS@_DEBUG(...)
+#endif
+
+#if ${_LSPDLOG_ENABLE_TRACE_LOGGING_}
+  #define @PROJECT_NAME_CAPS@_TRACE(...) \
+    {char this_file[] = __FILE__;\
+    lspdlog::details::Lspdlogger::get().trace("[", basename(this_file), " L", __LINE__, \
+              " : ", __FUNCTION__, "] ", __VA_ARGS__);}
+#else
+  #define @PROJECT_NAME_CAPS@_TRACE(...)
+#endif
+
+} // namespace lspdlog
+
+namespace 
+{
+
+namespace spdlogd   = spdlog::details;
+namespace spdlogdos = spdlogd::os;
+
+/**
+ * @brief getUserHome.
+ * @param home. The user home.
+ * @return true is found it, false otherwise.
+ */
+inline bool getUserHome(std::string& home)
+{
+  home.clear();
+  struct passwd* pwd = getpwuid(getuid());
+
+  if (pwd)
+    home = pwd->pw_dir;
+  else
+    home = getenv("HOME");
+
+  return (home.empty())? false : true;
+}
+
+/**
+ * @brief directoryExists.
+ * @param dir. Absolute path to 'dir'.
+ * @return true if exists, false otherwise.
+ */
+inline bool directoryExists(const std::string& dir)
+{
+  struct stat sb;
+  return stat(dir.c_str(), &sb) == 0;
+}
+
+/**
+ * @brief createDirectory.
+ * @param dir. Absolute path to 'dir'.
+ * @return true if created, false otherwise.
+ */
+inline bool createDirectory(const std::string& dir)
+{
+  return mkdir(dir.c_str(), S_IRUSR | S_IWUSR | S_IXUSR) == 0;
+}
+
+/**
+ * @brief getDateStr.
+ *
+ * Return current date formated as
+ * MM_DD_YY (month, day, year).
+ *
+ * @return std::string. Formated date.
+ */
+inline std::string getDateStr()
+{
+  fmt::MemoryWriter w;
+  auto tm_time = spdlogdos::localtime(spdlog::log_clock::to_time_t(spdlogdos::now()));
+
+  return spdlogd::pad_n_join(w, tm_time.tm_mon + 1, tm_time.tm_mday, tm_time.tm_year % 100, '_').str();
+}
+
+/**
+ * @brief getTimeStr.
+ *
+ * Return current time formated as
+ * HH_MM_SS (hour, min, second).
+ *
+ * @return std::string. Formated time.
+ */
+inline std::string getTimeStr()
+{
+  fmt::MemoryWriter w;
+  auto tm_time = spdlogdos::localtime(spdlog::log_clock::to_time_t(spdlogdos::now()));
+
+  return spdlogd::pad_n_join(w, tm_time.tm_hour, tm_time.tm_min, tm_time.tm_sec, '_').str();
+}
+
+/**
+ * @brief fileExists.
+ * @param file. Absolute path to 'file'.
+ * @return true if exists, false otherwise.
+ */
+inline bool fileExists(const std::string& file)
+{
+  return spdlogdos::file_exists(file);
+}
+
+/**
+ * @brief deleteFile.
+ * @param file. Absolute path to 'file'.
+ * @return true if deleted, false otherwise.
+ */
+inline bool deleteFile(const std::string& file)
+{
+  return (bool)spdlogdos::remove(file);
+}
+
+class DataLogger
+{
+public:
+
+  DataLogger();
+  ~DataLogger();
+
+  DataLogger(DataLogger&)     = delete;
+  void operator=(DataLogger&) = delete;
+
+  template<typename... Args>
+  void log(Args&&... args);
+
+  void enable_log(const bool enabled);
+
+  bool set_async_queue(const std::size_t q_size);
+
+  inline /*constexpr*/ bool async_enabled() const noexcept
+  {
+    return ${_LSPDLOG_ENABLE_ASYNC_LOGGING_};
+  }
+
+protected:
+
+  bool init_ = false;
+
+  bool log_ = true;
+
+  const std::string log_name_;
+
+  std::string log_ext_ = ".log";
+
+  std::string log_dir_;
+
+  std::string log_time_;
+
+  std::string log_sess_dir_;
+
+  std::string log_full_;
+
+  std::string user_home_;
+
+  std::shared_ptr<spdlog::logger> logger_;
+
+  bool init();
+};
+
+DataLogger::DataLogger() :
+  log_name_("@PROJECT_NAME@_main_logger"),
+  log_dir_(".@PROJECT_NAME@")
+{
+  enable_log(${_LSPDLOG_ENABLE_DATA_LOGGING_});
+
+  log_sess_dir_ = getDateStr();
+  log_time_ = getTimeStr();
+}
+
+DataLogger::~DataLogger()
+{
+  spdlog::drop(log_name_);
+}
+
+inline bool DataLogger::init()
+{
+  if (!getUserHome(user_home_))
+  {
+    log_ = false;
+    return false;
+  }
+  else
+  {
+    log_dir_.insert(0, 1, '/');
+    log_dir_.insert(0, user_home_);
+
+    if (!directoryExists(log_dir_))
+    {
+      if (!createDirectory(log_dir_))
+      {
+        @PROJECT_NAME_CAPS@_ERROR("Could not find nor create directory ", log_dir_,
+                                  ". Data will not be logged !");
+        log_ = false;
+        return false;
+      }
+    }
+  }
+
+  //log_sess_dir_ = getDateStr();
+
+  log_sess_dir_.insert(0, 1, '/');
+  log_sess_dir_.insert(0, log_dir_);
+
+  if (!directoryExists(log_sess_dir_))
+  {
+    if (!createDirectory(log_sess_dir_))
+    {
+      log_sess_dir_ = log_dir_;
+    }
+  }
+
+  log_full_ = log_sess_dir_ + "/" + log_time_ + log_ext_;
+
+  @PROJECT_NAME_CAPS@_DEBUG("Logger ", log_name_, " will log at : ", log_full_);
+
+  if (fileExists(log_full_))
+  {
+    deleteFile(log_full_);
+  }
+
+  logger_ = spdlog::basic_logger_mt(log_name_, log_full_);
+
+  // Logging pattern is :
+  // [hour:minutes:seconds.nanoseconds] #log-content
+  logger_->set_pattern("[%H:%M:%S.%F] %v");
+
+  init_ = true;
+  return init_;
+}
+
+template<typename... Args>
+inline void DataLogger::log(Args&&... args)
+{
+  if (!log_) return;
+  if (!init_) init();
+  logger_->info(std::get<sizeof...(args)-1>(repeated_brace), std::forward<Args>(args)...);
+}
+
+inline void DataLogger::enable_log(const bool enabled)
+{
+  log_ = enabled;
+}
+
+inline bool DataLogger::set_async_queue(const std::size_t q_size)
+{
+#if ${_LSPDLOG_ENABLE_ASYNC_LOGGING_}
+  // Enable asynchronous logging
+  // Queue size must be a power of 2
+
+  bool p2 = q_size%2 == 0;
+  if (p2) spdlog::set_async_mode(q_size);
+  // Error is already thrown in Logger.
+  //else error("Can not set async queue to ", q_size, " as it's not a power of 2!");
+  return p2;
+#else
+  return false;
+#endif
+}
+
+} /* namespace */
+
+namespace lspdlog
+{
+namespace details
+{
+
+using LspdloggerData = Singleton<DataLogger>;
+
+} /* namespace details */
+
+#define @PROJECT_NAME_CAPS@_LOG(...) \
+  lspdlog::details::LspdloggerData::get().log(__VA_ARGS__);
+
+#define @PROJECT_NAME_CAPS@_ENABLE_LOG() \
+  lspdlog::details::LspdloggerData::get().enable_log(true);
+
+#define @PROJECT_NAME_CAPS@_DISABLE_LOG() \
+  lspdlog::details::LspdloggerData::get().enable_log(false);
+
+namespace details
+{
+struct ScopedLogEnabler
+{
+  ScopedLogEnabler()
+  {
+    @PROJECT_NAME_CAPS@_ENABLE_LOG();
+  }
+
+  ~ScopedLogEnabler()
+  {
+    @PROJECT_NAME_CAPS@_DISABLE_LOG();
+  }
+};
+} /* namespace details */
+
+#define @PROJECT_NAME_CAPS@_SCOPED_ENABLE_LOG() \
+  const std::unique_ptr<lspdlog::details::ScopedLogEnabler> scoped_log_enabler(new lspdlog::details::ScopedLogEnabler);
+
+#if ${_LSPDLOG_ENABLE_ASYNC_LOGGING_}
+  #define @PROJECT_NAME_CAPS@_SET_ASYNC_QUEUE_LOG(x) \
+    lspdlog::details::Lspdlogger::get().set_async_queue(x); \
+    //lspdlog::details::LspdloggerData::get().set_async_queue(x);
+#else
+  #define @PROJECT_NAME_CAPS@_SET_ASYNC_QUEUE_LOG(x)
+#endif
+
+} /* namespace lspdlog */
+
+#endif  /* _@PROJECT_NAME_CAPS@_INTERNAL_CONFIG_LOGGING_H_ */
