@@ -139,10 +139,10 @@ TEST(TEST_SO3, TEST_SO3_INVERSE)
 
   so3_inv = so3.inverse();
 
-  EXPECT_DOUBLE_EQ(so3.x(), +so3_inv.x());
-  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.y());
-  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.z());
-  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.w());
+  EXPECT_DOUBLE_EQ(so3.x(), -so3_inv.x());
+  EXPECT_DOUBLE_EQ(so3.y(), -so3_inv.y());
+  EXPECT_DOUBLE_EQ(so3.z(), -so3_inv.z());
+  EXPECT_DOUBLE_EQ(so3.w(), +so3_inv.w());
 
   /// @todo
 //  so3.angle(M_PI);
