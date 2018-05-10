@@ -136,17 +136,18 @@ TEST(TEST_SO3, TEST_SO3_ROTATION)
   /// @todo Eigen matrix comparison
 }
 
-/*
 TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
 {
-  SO3d so3a(0);
-  SO3d so3b(M_PI);
+  SO3d so3a = SO3d::Random();
+  SO3d so3b = SO3d::Random();
 
   so3a = so3b;
 
-  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+  EXPECT_DOUBLE_EQ(so3a.x(), so3b.x());
+  EXPECT_DOUBLE_EQ(so3a.y(), so3b.y());
+  EXPECT_DOUBLE_EQ(so3a.z(), so3b.z());
+  EXPECT_DOUBLE_EQ(so3a.w(), so3b.w());
 }
-*/
 
 
 TEST(TEST_SO3, TEST_SO3_INVERSE)
