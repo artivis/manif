@@ -398,6 +398,7 @@ TEST(TEST_SO3, TEST_SO3_LIFT)
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE)
 {
+    // compose two particular elements giving identity as result
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
   SO3d so3b(toRad(15),toRad(45),toRad(90));
 
@@ -411,6 +412,7 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE)
 
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
 {
+    // compose two particular elements giving identity as result
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
   SO3d so3b(toRad(15),toRad(45),toRad(90));
 
@@ -424,6 +426,7 @@ TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
 
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
 {
+    // compose two particular elements giving identity as result
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
   SO3d so3b(toRad(15),toRad(45),toRad(90));
 
@@ -437,6 +440,7 @@ TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
 
 TEST(TEST_SO3, TEST_SO3_BETWEEN)
 {
+    // between two equals is identity
   SO3d so3b(toRad(15),toRad(45),toRad(90));
   SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
 
