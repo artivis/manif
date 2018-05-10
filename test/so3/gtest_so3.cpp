@@ -526,6 +526,9 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 {
+    // Composing these two elements a*b gives the identity;
+    // Jac_a is rotation 'b' transpose;
+    // Jac_b is identity
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
   SO3d so3b(toRad(15),  toRad(45),  toRad(90));
 
@@ -538,13 +541,29 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_DOUBLE_EQ(0, so3c.z());
   EXPECT_DOUBLE_EQ(1, so3c.w());
 
-//  EXPECT_EQ(1, J_c_a.rows());
-//  EXPECT_EQ(1, J_c_a.cols());
-//  EXPECT_DOUBLE_EQ(1, J_c_a(0));
+  EXPECT_EQ(3, J_c_a.rows());
+  EXPECT_EQ(3, J_c_a.cols());
+  EXPECT_DOUBLE_EQ(so3b.rotation()(0,0), J_c_b(0,0));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(1,0), J_c_b(0,1));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(2,0), J_c_b(0,2));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(0,1), J_c_b(1,0));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(1,1), J_c_b(1,1));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(2,1), J_c_b(1,2));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(0,2), J_c_b(2,0));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(1,2), J_c_b(2,1));
+  EXPECT_DOUBLE_EQ(so3b.rotation()(2,2), J_c_b(2,2));
 
-//  EXPECT_EQ(1, J_c_b.rows());
-//  EXPECT_EQ(1, J_c_b.cols());
-//  EXPECT_DOUBLE_EQ(1, J_c_b(0));
+  EXPECT_EQ(3, J_c_b.rows());
+  EXPECT_EQ(3, J_c_b.cols());
+  EXPECT_DOUBLE_EQ(1, J_c_b(0,0));
+  EXPECT_DOUBLE_EQ(0, J_c_b(0,1));
+  EXPECT_DOUBLE_EQ(0, J_c_b(0,2));
+  EXPECT_DOUBLE_EQ(0, J_c_b(1,0));
+  EXPECT_DOUBLE_EQ(1, J_c_b(1,1));
+  EXPECT_DOUBLE_EQ(0, J_c_b(1,2));
+  EXPECT_DOUBLE_EQ(0, J_c_b(2,0));
+  EXPECT_DOUBLE_EQ(0, J_c_b(2,1));
+  EXPECT_DOUBLE_EQ(1, J_c_b(2,2));
 }
 /*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
