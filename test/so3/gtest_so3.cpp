@@ -170,12 +170,6 @@ TEST(TEST_SO3, TEST_SO3_INVERSE)
   EXPECT_DOUBLE_EQ(so3.y(), -so3_inv.y());
   EXPECT_DOUBLE_EQ(so3.z(), -so3_inv.z());
   EXPECT_DOUBLE_EQ(so3.w(), +so3_inv.w());
-
-  /// @todo
-//  so3.angle(M_PI);
-//  so3_inv = so3.inverse();
-
-//  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
 }
 
 TEST(TEST_SO3, TEST_SO3_RPLUS)
@@ -200,6 +194,8 @@ TEST(TEST_SO3, TEST_SO3_RPLUS)
   EXPECT_DOUBLE_EQ(so3a.y(), so3c.y());
   EXPECT_DOUBLE_EQ(so3a.z(), so3c.z());
   EXPECT_DOUBLE_EQ(so3a.w(), so3c.w());
+
+  // todo: adding something to something
 }
 
 TEST(TEST_SO3, TEST_SO3_LPLUS)
@@ -224,6 +220,8 @@ TEST(TEST_SO3, TEST_SO3_LPLUS)
     EXPECT_DOUBLE_EQ(so3a.y(), so3c.y());
     EXPECT_DOUBLE_EQ(so3a.z(), so3c.z());
     EXPECT_DOUBLE_EQ(so3a.w(), so3c.w());
+
+    // todo: adding something to something
 }
 
 TEST(TEST_SO3, TEST_SO3_PLUS)
