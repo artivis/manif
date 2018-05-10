@@ -271,32 +271,80 @@ TEST(TEST_SO3, TEST_SO3_OP_PLUS_EQ)
 
 TEST(TEST_SO3, TEST_SO3_RMINUS)
 {
-  SO3d so3a;
-  SO3d so3b;
+    // identity minus identity is zero
+  SO3d so3a = SO3d::Identity();
+  SO3d so3b = SO3d::Identity();
 
   auto so3c = so3a.rminus(so3b);
 
-//  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+
+  // random minus the same is zero
+  so3a = SO3d::Random();
+  so3b = so3a;
+
+  so3c = so3a.rminus(so3b);
+
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+
+  // todo subtracting something from something
 }
 
 TEST(TEST_SO3, TEST_SO3_LMINUS)
 {
-  SO3d so3a;
-  SO3d so3b;
+    // identity minus identity is zero
+  SO3d so3a = SO3d::Identity();
+  SO3d so3b = SO3d::Identity();
 
-  auto so3c = so3a.lminus(so3b);
+  auto so3c = so3a.rminus(so3b);
 
-//  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+
+  // random minus the same is zero
+  so3a = SO3d::Random();
+  so3b = so3a;
+
+  so3c = so3a.rminus(so3b);
+
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+
+  // todo subtracting something from something
 }
 
 TEST(TEST_SO3, TEST_SO3_MINUS)
 {
-  SO3d so3a;
-  SO3d so3b;
+    // minus is the same as rminus
+  SO3d so3a = SO3d::Random();
+  SO3d so3b = SO3d::Random();
 
   auto so3c = so3a.minus(so3b);
+  auto so3d = so3a.rminus(so3b);
 
-//  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(0), so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(1), so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(2), so3c.coeffs()(2));
+}
+
+TEST(TEST_SO3, TEST_SO3_OP_MINUS)
+{
+    // '-' is the same as rminus, and in the same order
+  SO3d so3a = SO3d::Random();
+  SO3d so3b = SO3d::Random();
+
+  auto so3c = so3a - so3b;
+  auto so3d = so3a.rminus(so3b);
+
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(0), so3c.coeffs()(0));
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(1), so3c.coeffs()(1));
+  EXPECT_DOUBLE_EQ(so3d.coeffs()(2), so3c.coeffs()(2));
 }
 
 TEST(TEST_SO3, TEST_SO3_LIFT)
