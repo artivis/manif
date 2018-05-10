@@ -36,12 +36,9 @@ struct TangentBase
   operator _Derived&() { return derived(); }
   operator const _Derived& () const { return derived(); }
 
-protected:
-
-  DataType& coeffs_nonconst();
-
 public:
 
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   Scalar* data();
@@ -99,9 +96,9 @@ private:
 
 template <typename _Derived>
 typename TangentBase<_Derived>::DataType&
-TangentBase<_Derived>::coeffs_nonconst()
+TangentBase<_Derived>::coeffs()
 {
-  return derived().coeffs_nonconst();
+  return derived().coeffs();
 }
 
 template <typename _Derived>
@@ -115,7 +112,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Scalar*
 TangentBase<_Derived>::data()
 {
-  return derived().coeffs_nonconst().data();
+  return derived().coeffs().data();
 }
 
 template <class _Derived>
@@ -128,13 +125,13 @@ TangentBase<_Derived>::data() const
 template <class _Derived>
 void TangentBase<_Derived>::zero()
 {
-  coeffs_nonconst().setZero();
+  coeffs().setZero();
 }
 
 template <class _Derived>
 void TangentBase<_Derived>::random()
 {
-  coeffs_nonconst().setRandom();
+  coeffs().setRandom();
 }
 
 template <class _Derived>
@@ -186,7 +183,7 @@ _Derived&
 TangentBase<_Derived>::operator =(
     const TangentBase<_Derived>& t)
 {
-  derived().coeffs_nonconst() = t.coeffs();
+  derived().coeffs() = t.coeffs();
   return derived();
 }
 
@@ -196,7 +193,7 @@ _Derived&
 TangentBase<_Derived>::operator =(
     const TangentBase<_DerivedOther>& t)
 {
-  derived().coeffs_nonconst() = t.coeffs();
+  derived().coeffs() = t.coeffs();
   return derived();
 }
 

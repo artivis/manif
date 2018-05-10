@@ -45,12 +45,10 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend class manif::TangentBase<Map<manif::SO3Tangent<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };
@@ -72,9 +70,6 @@ public:
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend class manif::TangentBase<Map<const manif::SO3Tangent<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

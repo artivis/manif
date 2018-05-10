@@ -46,12 +46,10 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend class manif::TangentBase<Map<manif::SE2Tangent<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };
@@ -69,8 +67,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
-
-  const DataType& data() const { return data_; }
 
   const DataType& coeffs() const { return data_; }
 

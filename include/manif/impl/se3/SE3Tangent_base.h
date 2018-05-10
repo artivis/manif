@@ -29,7 +29,6 @@ public:
 
   using Base::data;
   using Base::coeffs;
-  using Base::coeffs_nonconst;
 
   /// Tangent common API
 
@@ -52,13 +51,13 @@ public:
 template <typename _Derived>
 void SE3TangentBase<_Derived>::zero()
 {
-  coeffs_nonconst().setZero();
+  coeffs().setZero();
 }
 
 template <typename _Derived>
 void SE3TangentBase<_Derived>::random()
 {
-  coeffs_nonconst().setRandom();
+  coeffs().setRandom();
 }
 
 template <typename _Derived>

@@ -69,6 +69,7 @@ public:
 
   /// Tangent common API
 
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   MANIF_INHERIT_TANGENT_API;
@@ -76,9 +77,6 @@ public:
   /// SO3Tangent specific API
 
 protected:
-
-  friend class TangentBase<SO3Tangent<Scalar>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -94,7 +92,7 @@ SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)
 
 template <typename _Scalar>
 typename SO3Tangent<_Scalar>::DataType&
-SO3Tangent<_Scalar>::coeffs_nonconst()
+SO3Tangent<_Scalar>::coeffs()
 {
   return data_;
 }
