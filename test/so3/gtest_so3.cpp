@@ -456,6 +456,7 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN)
 
 TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
 {
+    // Inverse of identity is identity; Jac is minus identity
   SO3d so3 = SO3d::Identity();
 
   SO3d::Jacobian J_inv;
@@ -469,17 +470,38 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
   EXPECT_EQ(3, J_inv.rows());
   EXPECT_EQ(3, J_inv.cols());
 
-  /// @todo
-//  EXPECT_DOUBLE_EQ(Eigen::Matrix3d::Identity(), J_inv);
+  EXPECT_EQ(-1, J_inv(0,0));
+  EXPECT_EQ( 0, J_inv(0,1));
+  EXPECT_EQ( 0, J_inv(0,2));
+  EXPECT_EQ( 0, J_inv(1,0));
+  EXPECT_EQ(-1, J_inv(1,1));
+  EXPECT_EQ( 0, J_inv(1,2));
+  EXPECT_EQ( 0, J_inv(2,0));
+  EXPECT_EQ( 0, J_inv(2,1));
+  EXPECT_EQ(-1, J_inv(2,2));
 
-//  so3.angle(M_PI);
-//  so3_inv = so3.inverse(J_inv);
+  // Inverse of something is conjugate; Jac is minus rotation
+  so3 = SO3d::Random();
 
-//  EXPECT_DOUBLE_EQ(-M_PI, so3_inv.angle());
+  so3_inv = so3.inverse(J_inv);
 
-//  EXPECT_EQ(1, J_inv.rows());
-//  EXPECT_EQ(1, J_inv.cols());
-//  EXPECT_DOUBLE_EQ(-1, J_inv(0));
+  EXPECT_DOUBLE_EQ(-so3.x(), so3_inv.x());
+  EXPECT_DOUBLE_EQ(-so3.y(), so3_inv.y());
+  EXPECT_DOUBLE_EQ(-so3.z(), so3_inv.z());
+  EXPECT_DOUBLE_EQ( so3.w(), so3_inv.w());
+
+  EXPECT_EQ(3, J_inv.rows());
+  EXPECT_EQ(3, J_inv.cols());
+
+  EXPECT_EQ(-so3.rotation()(0,0), J_inv(0,0));
+  EXPECT_EQ(-so3.rotation()(0,1), J_inv(0,1));
+  EXPECT_EQ(-so3.rotation()(0,2), J_inv(0,2));
+  EXPECT_EQ(-so3.rotation()(1,0), J_inv(1,0));
+  EXPECT_EQ(-so3.rotation()(1,1), J_inv(1,1));
+  EXPECT_EQ(-so3.rotation()(1,2), J_inv(1,2));
+  EXPECT_EQ(-so3.rotation()(2,0), J_inv(2,0));
+  EXPECT_EQ(-so3.rotation()(2,1), J_inv(2,1));
+  EXPECT_EQ(-so3.rotation()(2,2), J_inv(2,2));
 }
 
 TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
