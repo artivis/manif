@@ -85,15 +85,31 @@ TEST(TEST_SO3, TEST_SO3_RANDOM2)
   EXPECT_DOUBLE_EQ(1, so3.coeffs().norm());
 }
 
-/*
 TEST(TEST_SO3, TEST_SO3_MATRIX)
 {
   SO3d so3 = SO3d::Identity();
 
   SO3d::Transformation t = so3.transform();
 
-  EXPECT_EQ(3, t.rows());
-  EXPECT_EQ(3, t.cols());
+  EXPECT_EQ(4, t.rows());
+  EXPECT_EQ(4, t.cols());
+
+  EXPECT_DOUBLE_EQ(1, t(0,0));
+  EXPECT_DOUBLE_EQ(0, t(0,1));
+  EXPECT_DOUBLE_EQ(0, t(0,2));
+  EXPECT_DOUBLE_EQ(0, t(0,3));
+  EXPECT_DOUBLE_EQ(0, t(1,0));
+  EXPECT_DOUBLE_EQ(1, t(1,1));
+  EXPECT_DOUBLE_EQ(0, t(1,2));
+  EXPECT_DOUBLE_EQ(0, t(1,3));
+  EXPECT_DOUBLE_EQ(0, t(2,0));
+  EXPECT_DOUBLE_EQ(0, t(2,1));
+  EXPECT_DOUBLE_EQ(1, t(2,2));
+  EXPECT_DOUBLE_EQ(0, t(2,3));
+  EXPECT_DOUBLE_EQ(0, t(3,0));
+  EXPECT_DOUBLE_EQ(0, t(3,1));
+  EXPECT_DOUBLE_EQ(0, t(3,2));
+  EXPECT_DOUBLE_EQ(1, t(3,3));
 
   /// @todo Eigen matrix comparison
 }
@@ -104,12 +120,23 @@ TEST(TEST_SO3, TEST_SO3_ROTATION)
 
   SO3d::Rotation r = so3.rotation();
 
-  EXPECT_EQ(2, r.rows());
-  EXPECT_EQ(2, r.cols());
+  EXPECT_EQ(3, r.rows());
+  EXPECT_EQ(3, r.cols());
+
+  EXPECT_DOUBLE_EQ(1, r(0,0));
+  EXPECT_DOUBLE_EQ(0, r(0,1));
+  EXPECT_DOUBLE_EQ(0, r(0,2));
+  EXPECT_DOUBLE_EQ(0, r(1,0));
+  EXPECT_DOUBLE_EQ(1, r(1,1));
+  EXPECT_DOUBLE_EQ(0, r(1,2));
+  EXPECT_DOUBLE_EQ(0, r(2,0));
+  EXPECT_DOUBLE_EQ(0, r(2,1));
+  EXPECT_DOUBLE_EQ(1, r(2,2));
 
   /// @todo Eigen matrix comparison
 }
 
+/*
 TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
 {
   SO3d so3a(0);
