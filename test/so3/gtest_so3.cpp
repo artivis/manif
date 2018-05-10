@@ -85,7 +85,7 @@ TEST(TEST_SO3, TEST_SO3_RANDOM2)
   EXPECT_DOUBLE_EQ(1, so3.coeffs().norm());
 }
 
-TEST(TEST_SO3, TEST_SO3_MATRIX)
+TEST(TEST_SO3, TEST_SO3_TRANSFORM)
 {
   SO3d so3 = SO3d::Identity();
 
@@ -180,52 +180,95 @@ TEST(TEST_SO3, TEST_SO3_INVERSE)
 
 TEST(TEST_SO3, TEST_SO3_RPLUS)
 {
-  SO3d so3a;
-  SO3Tangentd so3b;
+    // Adding zero to Identity
+  SO3d so3a = SO3d::Identity();
+  SO3Tangentd so3b = SO3Tangentd::Zero();
 
   auto so3c = so3a.rplus(so3b);
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(0, so3c.x());
+  EXPECT_DOUBLE_EQ(0, so3c.y());
+  EXPECT_DOUBLE_EQ(0, so3c.z());
+  EXPECT_DOUBLE_EQ(1, so3c.w());
+
+  // Adding zero to random
+  so3a = SO3d::Random();
+
+  so3c = so3a.rplus(so3b);
+
+  EXPECT_DOUBLE_EQ(so3a.x(), so3c.x());
+  EXPECT_DOUBLE_EQ(so3a.y(), so3c.y());
+  EXPECT_DOUBLE_EQ(so3a.z(), so3c.z());
+  EXPECT_DOUBLE_EQ(so3a.w(), so3c.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_LPLUS)
 {
-  SO3d so3a;
-  SO3Tangentd so3b;
+    // Adding zero to Identity
+    SO3d so3a = SO3d::Identity();
+    SO3Tangentd so3t = SO3Tangentd::Zero();
 
-  auto so3c = so3a.lplus(so3b);
+    auto so3c = so3a.lplus(so3t);
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+    EXPECT_DOUBLE_EQ(0, so3c.x());
+    EXPECT_DOUBLE_EQ(0, so3c.y());
+    EXPECT_DOUBLE_EQ(0, so3c.z());
+    EXPECT_DOUBLE_EQ(1, so3c.w());
+
+    // Adding zero to random
+    so3a = SO3d::Random();
+
+    so3c = so3a.lplus(so3t);
+
+    EXPECT_DOUBLE_EQ(so3a.x(), so3c.x());
+    EXPECT_DOUBLE_EQ(so3a.y(), so3c.y());
+    EXPECT_DOUBLE_EQ(so3a.z(), so3c.z());
+    EXPECT_DOUBLE_EQ(so3a.w(), so3c.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_PLUS)
 {
-  SO3d so3a;
-  SO3Tangentd so3b;
+    // plus() is the same as rplus()
+  SO3d so3a = SO3d::Random();
+  SO3Tangentd so3t = SO3Tangentd::Random();
 
-  auto so3c = so3a.plus(so3b);
+  auto so3c = so3a.plus(so3t);
+  auto so3d = so3a.rplus(so3t);
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(so3c.x(), so3d.x());
+  EXPECT_DOUBLE_EQ(so3c.y(), so3d.y());
+  EXPECT_DOUBLE_EQ(so3c.z(), so3d.z());
+  EXPECT_DOUBLE_EQ(so3c.w(), so3d.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_OP_PLUS)
 {
-  SO3d so3a;
-  SO3Tangentd so3b;
+    // manif + tangent is the same as rplus()
+  SO3d so3a = SO3d::Random();
+  SO3Tangentd so3t = SO3Tangentd::Random();
 
-  auto so3c = so3a + so3b;
+  auto so3c = so3a + so3t;
+  auto so3d = so3a.rplus(so3t);
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(so3c.x(), so3d.x());
+  EXPECT_DOUBLE_EQ(so3c.y(), so3d.y());
+  EXPECT_DOUBLE_EQ(so3c.z(), so3d.z());
+  EXPECT_DOUBLE_EQ(so3c.w(), so3d.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_OP_PLUS_EQ)
 {
-  SO3d so3a;
-  SO3Tangentd so3b;
+    // manif += tangent is the same as rplus()
+  SO3d so3a = SO3d::Random();
+  SO3Tangentd so3t = SO3Tangentd::Random();
 
-  so3a += so3b;
+  auto so3d = so3a.rplus(so3t);
+  so3a += so3t;
 
-//  EXPECT_DOUBLE_EQ(M_PI, so3a.angle());
+  EXPECT_DOUBLE_EQ(so3a.x(), so3d.x());
+  EXPECT_DOUBLE_EQ(so3a.y(), so3d.y());
+  EXPECT_DOUBLE_EQ(so3a.z(), so3d.z());
+  EXPECT_DOUBLE_EQ(so3a.w(), so3d.w());
 }
 
 TEST(TEST_SO3, TEST_SO3_RMINUS)
