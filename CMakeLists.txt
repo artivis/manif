@@ -25,8 +25,7 @@ endif()
 
 find_package(Eigen3 REQUIRED)
 find_package(Threads REQUIRED)
-
-find_package(Ceres REQUIRED)
+find_package(Ceres QUIET)
 
 add_subdirectory(external/lspdlog)
 
@@ -34,46 +33,139 @@ add_subdirectory(external/lspdlog)
 # catkin build manif --cmake-args -DBUILD_TESTING=ON
 option(BUILD_TESTING "Build all tests." OFF)
 
-###################################
-## catkin specific configuration ##
-###################################
-#catkin_package(
-#  INCLUDE_DIRS include #${EIGEN_INCLUDE_DIRS}
-##  LIBRARIES ${PROJECT_NAME}
-##  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS Eigen
-#)
-
 ###########
 ## Build ##
 ###########
 
-include_directories(include)
-include_directories(external/lt)
+#include_directories(include)
+#include_directories(external/lt)
 include_directories(SYSTEM
   ${EIGEN_INCLUDE_DIRS}
   ${LSPDLOG_INCLUDE_DIRS}
-  ${CERES_INCLUDE_DIRS}
+)
+
+add_library(${PROJECT_NAME} INTERFACE)
+#target_include_directories(${PROJECT_NAME} INTERFACE include)
+#target_include_directories(${PROJECT_NAME} INTERFACE external/lt)
+target_compile_definitions(${PROJECT_NAME} INTERFACE -std=c++11)
+#set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+
+target_include_directories(${PROJECT_NAME} INTERFACE
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/external/lt>
+  $<INSTALL_INTERFACE:include>
 )
 
 #############
 ## Install ##
 #############
 
+set(config_install_dir "lib/cmake/${PROJECT_NAME}")
+set(include_install_dir "include")
+
+set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
+
+# Configuration
+set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
+set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
+set(namespace "${PROJECT_NAME}::")
+
+include(CMakePackageConfigHelpers)
+
+# Configure '<PROJECT-NAME>ConfigVersion.cmake'
+write_basic_package_version_file(
+  ${PROJECT_NAME}ConfigVersion.cmake
+  VERSION 0.0.0
+  COMPATIBILITY AnyNewerVersion
+)
+
+#message(WARNING ${${PROJECT_NAME}Targets})
+
+configure_package_config_file(
+  "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+  "${project_config}"
+  INSTALL_DESTINATION "${config_install_dir}"
+)
+
+# Targets:
+install(
+  TARGETS  ${PROJECT_NAME}
+  EXPORT   ${PROJECT_NAME}Targets
+  LIBRARY  DESTINATION "lib" #COMPONENT Runtime
+  ARCHIVE  DESTINATION "lib" #COMPONENT Development
+  RUNTIME  DESTINATION "bin" #COMPONENT Runtime
+  INCLUDES DESTINATION "${include_install_dir}"
+)
+
+# Headers:
+install(
+  DIRECTORY
+    ${PROJECT_SOURCE_DIR}/include/
+    ${PROJECT_SOURCE_DIR}/external/lt/
+  DESTINATION include
+)
+
+# Export headers:
+#install(
+#  FILES "${bar_export}" "${baz_export}"
+#  DESTINATION "${include_install_dir}/foo"
+#)
+
+# Config
+install(
+  FILES
+    "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    "${project_config}"
+  DESTINATION
+    "${config_install_dir}"
+)
+
+install(
+  EXPORT ${PROJECT_NAME}Targets
+  FILE ${PROJECT_NAME}Targets.cmake
+#  NAMESPACE MANIF::
+  DESTINATION
+    "${config_install_dir}"
+)
+
+
+
+
+
+#########################################################
+
 #message(WARNING ${CMAKE_INSTALL_PREFIX})
 
 # Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}
-  DESTINATION include
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
+#install(DIRECTORY include/${PROJECT_NAME}
+#  DESTINATION include
+#  FILES_MATCHING PATTERN "*.h"
+#  PATTERN ".svn" EXCLUDE
+#)
+
+install(FILES package.xml
+  DESTINATION share/${PROJECT_NAME}
 )
+
+###############
+## Packaging ##
+###############
+
+#target_include_directories(
+#  PUBLIC
+#  $<INSTALL_INTERFACE:include>
+#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#)
 
 #############
 ## Testing ##
 #############
 
 if(BUILD_TESTING)
+
+  include_directories(SYSTEM
+    ${CERES_INCLUDE_DIRS}
+  )
 
   enable_testing()
   add_subdirectory(test)
