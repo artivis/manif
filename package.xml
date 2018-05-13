@@ -9,8 +9,8 @@
   <maintainer email="deray.jeremie@gmail.com">Jeremie Deray</maintainer>
 
 <!--  <url type="website">http://ros.org/wiki/todo</url>-->
-  <url type="repository">https://github.com/todo/todo.git</url>
-  <url type="bugtracker">https://github.com/todo/todo/issues</url>
+  <url type="repository">https://github.com/artivis/manif.git</url>
+  <url type="bugtracker">https://github.com/artivis/manif/issues</url>
 
   <license>TODO</license>
 
@@ -19,10 +19,10 @@
   <build_export_depend>eigen</build_export_depend>
 
   <test_depend>gtest</test_depend>
+  <test_depend>eigen</test_depend>
   <test_depend>libceres-dev</test_depend>
 
   <export>
     <build_type>cmake</build_type>
   </export>
-
 </package>
