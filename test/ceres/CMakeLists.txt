@@ -26,10 +26,12 @@ set(CXX_11_TEST_TARGETS_CERES
 
 foreach(target ${CXX_11_TEST_TARGETS_CERES})
   target_link_libraries(${target} ${CERES_LIBRARIES})
+  target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
 endforeach()
 
 set(CXX_11_TEST_TARGETS
   ${CXX_11_TEST_TARGETS}
   ${CXX_11_TEST_TARGETS_CERES}
+
   PARENT_SCOPE
 )

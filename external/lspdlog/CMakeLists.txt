@@ -1,5 +1,14 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
+# Assert C++11 support
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+
+if(NOT COMPILER_SUPPORTS_CXX11)
+  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.\
+          Please use a different C++ compiler.")
+endif()
+
 #option(ENABLE_DATA_LOGGING "Enable data logging." OFF) # set it to ON for data logging.
 
 # Get the project name in capital letters
@@ -43,15 +52,6 @@ _LSPDLOG_COMPILER_SUPPORTS_CONSTEXPR_FUNC_)
 # Download spdlog
 add_subdirectory(internal)
 
-# Set C++11 support
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-
-if(NOT COMPILER_SUPPORTS_CXX11)
-  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.\
-          Please use a different C++ compiler.")
-endif()
-
 # Set lsdplog/logging.h base directory
 set(CONFIG_DIR "${PROJECT_BINARY_DIR}/lspdlog/config/lspdlog")
 
@@ -66,8 +66,13 @@ if (EXISTS "${CONFIG_DIR}" AND NOT IS_DIRECTORY "${CONFIG_DIR}")
 endif()
 
 # configure logging.h
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/internal/logging.h.in "${CONFIG_DIR}/logging.h")
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/internal/logging.h.in
+  "${CONFIG_DIR}/logging.h"
+)
 
 set(LSPDLOG_INCLUDE_DIRS
     ${LSPDLOG_INCLUDE_DIRS}
-    ${PROJECT_BINARY_DIR}/lspdlog/config PARENT_SCOPE)
+    ${PROJECT_BINARY_DIR}/lspdlog/config
+    PARENT_SCOPE
+)

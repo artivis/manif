@@ -15,23 +15,23 @@ set(GTEST_DISABLE_PTHREADS OFF)
 # This is a known issue for MinGW :
 # https://github.com/google/shaderc/pull/174
 #if(MINGW)
-    set(GTEST_DISABLE_PTHREADS ON)
+  set(GTEST_DISABLE_PTHREADS ON)
 #endif()
 
 # Download GoogleTest
 ExternalProject_Add(googletest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    # TIMEOUT 1 # We'll try this
-    CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
-    -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
-    -DCMAKE_CXX_FLAGS=${MSVC_COMPILER_DEFS}
-    -Dgtest_force_shared_crt=${GTEST_FORCE_SHARED_CRT}
-    -Dgtest_disable_pthreads=${GTEST_DISABLE_PTHREADS}
-    -DBUILD_GTEST=ON
-    PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
-    # Disable install step
-    INSTALL_COMMAND ""
-    UPDATE_DISCONNECTED 1 # 1: do not update googletest; 0: update googletest via github
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  # TIMEOUT 1 # We'll try this
+  CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
+  -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
+  -DCMAKE_CXX_FLAGS=${MSVC_COMPILER_DEFS}
+  -Dgtest_force_shared_crt=${GTEST_FORCE_SHARED_CRT}
+  -Dgtest_disable_pthreads=${GTEST_DISABLE_PTHREADS}
+  -DBUILD_GTEST=ON
+  PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
+  # Disable install step
+  INSTALL_COMMAND ""
+  UPDATE_DISCONNECTED 1 # 1: do not update googletest; 0: update googletest via github
 )
 
 # Get GTest source and binary directories from CMake project
@@ -53,12 +53,3 @@ set_target_properties(libgtest PROPERTIES
     "IMPORTED_LOCATION" "${binary_dir}/googlemock/gtest/libgtest.a"
     "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
 )
-
-function(wolf_add_gtest target)
-  add_executable(${target} ${ARGN})
-  add_dependencies(${target} libgtest)
-  target_link_libraries(${target} libgtest)
-
-  #WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-  add_test(NAME ${target} COMMAND ${target})
-endfunction()

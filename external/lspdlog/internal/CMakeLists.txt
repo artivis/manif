@@ -15,7 +15,8 @@ ExternalProject_Add(spdlog
   #--Install step---------------
   UPDATE_COMMAND ""
   INSTALL_COMMAND ""
-  LOG_DOWNLOAD ON)
+  LOG_DOWNLOAD ON
+)
 
 set(LSPDLOG_INCLUDE_DIRS
     ${LSPDLOG_INCLUDE_DIRS}
