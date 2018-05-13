@@ -2,6 +2,7 @@
 #define _MANIF_CONSTANTS_H_
 
 #include <cmath>
+#include <limits>
 
 namespace manif
 {
