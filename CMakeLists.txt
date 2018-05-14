@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.12)
 project(manif CXX)
 
 # Get the project name in capital letters
@@ -31,19 +31,9 @@ option(BUILD_TESTING "Build all tests." OFF)
 
 add_library(${PROJECT_NAME} INTERFACE)
 
-# This enable cxx11 project-wise
-# @todo remove this and list the actual
-# needed features - see below ...
-#set(CMAKE_CXX_STANDARD 11)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_EXTENSIONS OFF)
-
-#message("Supported features = ${CMAKE_CXX_COMPILE_FEATURES}")
-#target_compile_features(myTarget
-#  INTERFACE
-#    #cxx_variadic_templates
-#    cxx_nullptr
-#)
+# @todo export c++11 dependency
+# @note A per-feature basis does
+# not seems to work
 
 # CMake 3.8 ...
 #set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -58,7 +48,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 # Add Eigen interface dependency, depending on available cmake info
 if(TARGET Eigen3::Eigen)
   target_link_libraries(${PROJECT_NAME} INTERFACE Eigen3::Eigen)
-  set(Eigen3_DEPENDENCY "find_dependency (Eigen3 ${Eigen3_VERSION})")
+  set(Eigen3_DEPENDENCY "find_dependency(Eigen3 ${Eigen3_VERSION})")
 else(TARGET Eigen3::Eigen)
   target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${EIGEN3_INCLUDE_DIR})
 endif(TARGET Eigen3::Eigen)

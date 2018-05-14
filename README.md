@@ -11,7 +11,6 @@ find_package(manif REQUIRED)
 
 add_executable(${PROJECT_NAME} src/foo.cpp)
 
-# Link against it.
-# Include directories are automatically resolved
-target_link_libraries(${PROJECT_NAME} ${manif_LIBRARIES})
+# Add include directories to the target
+target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 ```
