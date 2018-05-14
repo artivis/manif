@@ -74,7 +74,7 @@ endif()
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 
-set(config_install_dir "lib/${PROJECT_NAME}/cmake")
+set(config_install_dir "share/${PROJECT_NAME}/cmake")
 set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
 # Targets:
