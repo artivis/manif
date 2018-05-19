@@ -38,6 +38,7 @@ template<typename F, class T, template <int...I> class S, int... I>
 void call_for_each(F f, const T& t, const S<I...>&)
 {
   auto l = { (f(std::get<I>(/*std::forward<T>*/(t))), 0)... };
+  (void)(l);
 }
 
 template<typename F, template <typename...Ts> class C, typename... Ts>

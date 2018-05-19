@@ -4,11 +4,25 @@
   <version>0.0.0</version>
   <description>The manif package</description>
 
+  <author>Jeremie Deray</author>
+  <author>Joan Sola</author>
   <maintainer email="deray.jeremie@gmail.com">Jeremie Deray</maintainer>
+
+<!--  <url type="website">http://ros.org/wiki/todo</url>-->
+  <url type="repository">https://github.com/artivis/manif.git</url>
+  <url type="bugtracker">https://github.com/artivis/manif/issues</url>
 
   <license>TODO</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>Eigen</depend>
+  <buildtool_depend>cmake</buildtool_depend>
 
+  <build_export_depend>eigen</build_export_depend>
+
+  <test_depend>gtest</test_depend>
+  <test_depend>eigen</test_depend>
+  <test_depend>libceres-dev</test_depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
 </package>

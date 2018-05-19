@@ -5,8 +5,8 @@
 #include "manif/impl/traits.h"
 #include "manif/constants.h"
 
-#include "optional.hpp"
-#include "lspdlog/logging.h"
+#include "lt/optional.hpp"
+//#include "lspdlog/logging.h"
 
 namespace manif
 {

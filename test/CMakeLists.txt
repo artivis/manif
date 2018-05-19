@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8.8)
+
 find_package(GTest QUIET)
 
 if(NOT GTEST_FOUND)
@@ -10,7 +11,7 @@ endif()
 function(manif_add_gtest target)
   add_executable(${target} ${ARGN})
   add_dependencies(${target} libgtest)
-  target_link_libraries(${target} libgtest)
+  target_link_libraries(${target} ${PROJECT_NAME} libgtest)
 
   add_test(NAME ${target} COMMAND ${target})
 endfunction()
@@ -29,6 +30,8 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
+find_package(Ceres QUIET)
+
 if(CERES_FOUND)
 
   message(STATUS "Found ceres_solver, building ceres tests.")
@@ -36,7 +39,7 @@ if(CERES_FOUND)
 
 else()
   message(STATUS "Could not find ceres_solver, ceres tests will not be built.")
-endif(CERES_FOUND)
+endif()
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")

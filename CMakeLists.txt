@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.12)
 project(manif CXX)
+
+# Get the project name in capital letters
+# for the lib namespace
+string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_CAPS)
 
 # Check that the compoiler has c++11 support
 # Crash otherwise.
@@ -8,65 +12,129 @@ CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 if(COMPILER_SUPPORTS_CXX11)
   message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
 else()
-  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
-endif()
-
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  add_compile_options(-ftemplate-depth=1024)
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  # GCC is not strict enough by default, so enable most of the warnings.
-  #add_compile_options(-Werror=all)
-  #add_compile_options(-Werror=extra)
-  #add_compile_options(-Wno-unknown-pragmas)
-  #add_compile_options(-Wno-sign-compare)
-  #add_compile_options(-Wno-unused-parameter)
-  #add_compile_options(-Wno-missing-field-initializers)
+  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} "
+    "has no C++11 support. Please use a different C++ compiler.")
 endif()
 
 find_package(Eigen3 REQUIRED)
-find_package(Threads REQUIRED)
 
-find_package(Ceres REQUIRED)
-
-add_subdirectory(external/lspdlog)
+#find_package(Threads REQUIRED)
+#add_subdirectory(external/lspdlog)
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON
 option(BUILD_TESTING "Build all tests." OFF)
 
-###################################
-## catkin specific configuration ##
-###################################
-#catkin_package(
-#  INCLUDE_DIRS include #${EIGEN_INCLUDE_DIRS}
-##  LIBRARIES ${PROJECT_NAME}
-##  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS Eigen
-#)
-
 ###########
 ## Build ##
 ###########
 
-include_directories(include)
-include_directories(external/lt)
-include_directories(SYSTEM
-  ${EIGEN_INCLUDE_DIRS}
-  ${LSPDLOG_INCLUDE_DIRS}
-  ${CERES_INCLUDE_DIRS}
+add_library(${PROJECT_NAME} INTERFACE)
+
+# @todo export c++11 dependency
+# @note A per-feature basis does
+# not seems to work
+
+# CMake 3.8 ...
+#set_target_properties(${PROJECT_NAME} PROPERTIES
+#  INTERFACE_COMPILE_FEATURES cxx_std_11
+#)
+
+target_include_directories(${PROJECT_NAME} INTERFACE
+  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}/external/lt>"
+  "$<INSTALL_INTERFACE:include>"
 )
+
+# Add Eigen interface dependency, depending on available cmake info
+if(TARGET Eigen3::Eigen)
+  target_link_libraries(${PROJECT_NAME} INTERFACE Eigen3::Eigen)
+  set(Eigen3_DEPENDENCY "find_dependency(Eigen3 ${Eigen3_VERSION})")
+else(TARGET Eigen3::Eigen)
+  target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${EIGEN3_INCLUDE_DIR})
+endif(TARGET Eigen3::Eigen)
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  target_compile_options(${PROJECT_NAME} INTERFACE -ftemplate-depth=512)
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  # GCC is not strict enough by default, so enable most of the warnings.
+  target_compile_options(${PROJECT_NAME} INTERFACE
+    -Werror=all
+    -Werror=extra
+    -Wno-unknown-pragmas
+    -Wno-sign-compare
+    -Wno-unused-parameter
+    -Wno-missing-field-initializers
+  )
+endif()
 
 #############
 ## Install ##
 #############
 
-#message(WARNING ${CMAKE_INSTALL_PREFIX})
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
 
-# Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}
+set(config_install_dir "share/${PROJECT_NAME}/cmake")
+set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
+
+# Targets:
+install(
+  TARGETS  ${PROJECT_NAME}
+  EXPORT   ${PROJECT_NAME}Targets
+  INCLUDES DESTINATION include
+)
+
+install(
+  EXPORT      ${PROJECT_NAME}Targets
+  NAMESPACE   ${PROJECT_NAME_CAPS}::
+  DESTINATION "${config_install_dir}"
+)
+
+export(
+  TARGETS ${PROJECT_NAME}
+  NAMESPACE ${PROJECT_NAME_CAPS}::
+  FILE ${PROJECT_NAME}Targets.cmake
+)
+
+export(PACKAGE ${PROJECT_NAME})
+
+## Configuration
+
+#
+configure_package_config_file(
+  "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+  "${generated_dir}/${PROJECT_NAME}Config.cmake"
+  INSTALL_DESTINATION "${config_install_dir}"
+)
+
+# Configure '<PROJECT-NAME>ConfigVersion.cmake'
+write_basic_package_version_file(
+  "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
+  VERSION 0.0.0
+  COMPATIBILITY AnyNewerVersion
+)
+
+# Config
+install(
+  FILES       "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
+              "${generated_dir}/${PROJECT_NAME}Config.cmake"
+  DESTINATION "${config_install_dir}"
+)
+
+# Headers:
+install(
+  FILES "${PROJECT_SOURCE_DIR}/external/lt/lt/optional.hpp"
+  DESTINATION include/lt
+)
+
+install(
+  DIRECTORY "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}"
   DESTINATION include
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
+)
+
+install(FILES package.xml
+  DESTINATION share/${PROJECT_NAME}
+#  DESTINATION "${config_install_dir}"
 )
 
 #############

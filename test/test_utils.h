@@ -5,6 +5,7 @@
 #include "manif/impl/utils.h"
 
 #include <random>
+#include <chrono>
 
 #define EXPECT_ANGLE_NEAR(e, a, eps) \
   EXPECT_LT(pi2pi(e-a), eps)

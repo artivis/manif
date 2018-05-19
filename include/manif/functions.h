@@ -94,10 +94,10 @@ random(ManifoldBase<_Derived>& manifold)
   manifold.random();
 }
 
-template <typename _Manifold>
-_Manifold Random()
+template <typename _Type>
+_Type Random()
 {
-  return _Manifold::Random();
+  return _Type::Random();
 }
 
 template <typename _Derived>
@@ -105,12 +105,6 @@ void
 random(TangentBase<_Derived>& tangent)
 {
   tangent.random();
-}
-
-template <typename Tangent>
-Tangent Random()
-{
-  return Tangent::Random();
 }
 
 template <typename _Derived>

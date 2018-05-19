@@ -6,8 +6,8 @@
 #include "manif/constants.h"
 #include "manif/impl/tangent_base.h"
 
-#include "optional.hpp"
-#include "lspdlog/logging.h"
+#include "lt/optional.hpp"
+//#include "lspdlog/logging.h"
 
 namespace manif
 {
