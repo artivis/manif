@@ -221,6 +221,7 @@ _Stream& operator << (
     const manif::TangentBase<_Derived>& m)
 {
   s << m.coeffs().transpose();
+  return s;
 }
 
 } /* namespace manif */
