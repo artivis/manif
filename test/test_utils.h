@@ -284,17 +284,21 @@ callOpTimeEq(ManifoldBase<_Derived0>& manifold_lhs,
 /// with Jacs
 
 template <typename _Derived>
-const typename _Derived::DataType*
-callInverseWithJac(const ManifoldBase<_Derived>& manifold)
+typename _Derived::Manifold
+callInverseWithJac(const ManifoldBase<_Derived>& manifold,
+                   typename ManifoldBase<_Derived>::Jacobian J_minv_m)
 {
-  return manifold.data();
+  return manifold.inverse(J_minv_m);
 }
 
-template <typename _Derived>
-const typename _Derived::DataType*
-callRplusWithJac(const ManifoldBase<_Derived>& manifold)
+template <typename _DerivedMan, typename _DerivedTan>
+const typename _DerivedMan::Manifold
+callRplusWithJac(const ManifoldBase<_DerivedMan>& manifold,
+                 const TangentBase<_DerivedTan>& tangent,
+                 typename ManifoldBase<_DerivedMan>::OptJacobianRef J_mout_m,
+                 typename ManifoldBase<_DerivedTan>::OptJacobianRef J_mout_t)
 {
-  return manifold.data();
+  return manifold.rplus(tangent, J_mout_m, J_mout_t);
 }
 
 template <typename _Derived>
