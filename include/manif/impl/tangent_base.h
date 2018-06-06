@@ -246,7 +246,8 @@ typename TangentBase<_DerivedOther>::Tangent
 operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
            const TangentBase<_DerivedOther>& t)
 {
-  return typename TangentBase<_DerivedOther>::Tangent(J*t.coeffs());
+  return typename TangentBase<_DerivedOther>::Tangent(
+        typename TangentBase<_DerivedOther>::DataType(J*t.coeffs()));
 }
 
 /// Utils
