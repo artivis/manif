@@ -593,6 +593,7 @@ _Stream& operator << (
     const manif::ManifoldBase<_Derived>& m)
 {
   s << m.coeffs().transpose();
+  return s;
 }
 
 } /* namespace manif */

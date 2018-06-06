@@ -83,6 +83,11 @@ public:
   template <typename _DerivedOther>
   _Derived& operator =(const TangentBase<_DerivedOther>& t);
 
+  template <class _DerivedOther>
+  friend typename TangentBase<_DerivedOther>::Tangent
+  operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
+             const TangentBase<_DerivedOther>& t);
+
   /// static helpers
 
   static Tangent Zero();
@@ -213,6 +218,14 @@ TangentBase<_Derived>::Random()
   return t;
 }
 
+template <class _DerivedOther>
+typename TangentBase<_DerivedOther>::Tangent
+operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
+           const TangentBase<_DerivedOther>& t)
+{
+  return typename TangentBase<_DerivedOther>::Tangent(J*t.coeffs());
+}
+
 /// Utils
 
 template <typename _Stream, typename _Derived>
@@ -221,6 +234,7 @@ _Stream& operator << (
     const manif::TangentBase<_Derived>& m)
 {
   s << m.coeffs().transpose();
+  return s;
 }
 
 } /* namespace manif */
