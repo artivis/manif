@@ -565,7 +565,10 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_DOUBLE_EQ(0, J_c_b(2,1));
   EXPECT_DOUBLE_EQ(1, J_c_b(2,2));
 
-  // Compose of two random rotations. Assert is through linearized equation
+
+  // GENERAL JACOBIANS
+  //
+  // Assert is through linearized equation
   // J = df/dR ==> f( R(+)w ) ~= f(R) (+) J*w, where (+) is right-plus
 
   so3a.setRandom();
