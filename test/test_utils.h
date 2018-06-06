@@ -134,8 +134,7 @@ isManifNear(const ManifoldBase<_DerivedA>& manifold_a,
 {
   return isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
                            (manifold_a-manifold_b).coeffs(),
-                           "expected",
-                           "actual",
+                           "expected", "actual",
                            tolerance);
 }
 
