@@ -286,7 +286,7 @@ callOpTimeEq(ManifoldBase<_Derived0>& manifold_lhs,
 template <typename _Derived>
 typename _Derived::Manifold
 callInverseWithJac(const ManifoldBase<_Derived>& manifold,
-                   typename ManifoldBase<_Derived>::Jacobian J_minv_m)
+                   typename ManifoldBase<_Derived>::OptJacobianRef J_minv_m)
 {
   return manifold.inverse(J_minv_m);
 }
