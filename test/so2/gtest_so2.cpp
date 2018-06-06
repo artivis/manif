@@ -1,7 +1,5 @@
-#include <gtest/gtest.h>
-
-#include "../eigen_gtest.h"
 #include "manif/SO2.h"
+#include "../test_utils.h"
 
 using namespace manif;
 
@@ -494,6 +492,8 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   EXPECT_EQ(1, J_between_b.cols());
   EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
+
+MANIF_TEST_JACOBIANS(SO2d);
 
 int main(int argc, char** argv)
 {

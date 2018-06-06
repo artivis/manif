@@ -2,6 +2,7 @@
 
 #include "manif/SO3.h"
 #include "manif/impl/utils.h"
+#include "../test_utils.h"
 
 using namespace manif;
 
@@ -613,6 +614,9 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
   EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 }
+
+MANIF_TEST_JACOBIANS(SO3d);
+
 /*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
 {

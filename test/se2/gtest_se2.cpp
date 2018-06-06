@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE2.h"
+#include "../test_utils.h"
 
 using namespace manif;
 
@@ -433,6 +434,8 @@ TEST(TEST_SE2, TEST_SE2_BETWEEN)
   EXPECT_DOUBLE_EQ(-1, se2c.y());
   EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
 }
+
+MANIF_TEST_JACOBIANS(SE2d);
 
 /*
 /// with Jacs
