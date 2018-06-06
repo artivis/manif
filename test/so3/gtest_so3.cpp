@@ -564,6 +564,41 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_DOUBLE_EQ(0, J_c_b(2,0));
   EXPECT_DOUBLE_EQ(0, J_c_b(2,1));
   EXPECT_DOUBLE_EQ(1, J_c_b(2,2));
+
+  // Compose of two random rotations. Assert is through linearized equation
+  // J = df/dR ==> f( R(+)w ) ~= f(R) (+) J*w, where (+) is right-plus
+
+  so3a.setRandom();
+  so3b.setRandom();
+  so3c = so3a.compose(so3b, J_c_a, J_c_b);
+
+  // Jac wrt first element
+
+  SO3d::Tangent w = SO3d::Tangent::Random(); w.coeffs() *= 1e-4;
+
+  SO3d so3c_pert = so3a.rplus(w).compose(so3b);
+
+  SO3d::Tangent v; v.coeffs() = J_c_a * w.coeffs();
+
+  SO3d so3c_lin = so3c.rplus(v);
+
+  EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
+  EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
+  EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
+  EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
+
+  // Jac wrt second element
+
+  so3c_pert = so3a.compose(so3b.rplus(w));
+
+  v.coeffs() = J_c_b * w.coeffs();
+
+  so3c_lin = so3c.rplus(v);
+
+  EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
+  EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
+  EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
+  EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 }
 /*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
