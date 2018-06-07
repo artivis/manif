@@ -34,7 +34,8 @@ struct traits<SO3<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 4;
 
-  using DataType       = Eigen::Quaternion<Scalar>;
+//  using DataType       = Eigen::Quaternion<Scalar>;
+  using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
@@ -61,6 +62,8 @@ private:
   using Base = SO3Base<SO3<_Scalar>>;
   using Type = SO3<_Scalar>;
 
+  using QuaternionDataType = Eigen::Quaternion<_Scalar>;
+
 public:
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
@@ -69,6 +72,8 @@ public:
   ~SO3() = default;
 
   SO3(const DataType& d);
+
+  SO3(const QuaternionDataType& q);
 
   SO3(const Scalar x, const Scalar y,
       const Scalar z, const Scalar w);
@@ -102,16 +107,23 @@ SO3<_Scalar>::SO3(const DataType& d)
 }
 
 template <typename _Scalar>
+SO3<_Scalar>::SO3(const QuaternionDataType& q)
+  : data_(q.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
 SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
                   const Scalar z, const Scalar w)
-  : data_(w, x, y, z) // Eigen Quaternion constructor uses 'w' in first place
+  : data_(x, y, z, w)
 {
   //
 }
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const Eigen::AngleAxis<Scalar>& angle_axis)
-  : data_(angle_axis)
+  : data_(QuaternionDataType(angle_axis).coeffs())
 {
 
 }
@@ -120,9 +132,10 @@ template <typename _Scalar>
 SO3<_Scalar>::SO3(const Scalar roll,
                   const Scalar pitch,
                   const Scalar yaw)
-  : data_( /*(*/Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX()) *
-            Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
-            Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ()) /*).toRotationMatrix()*/ )
+  : data_( QuaternionDataType(
+             Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX()) *
+             Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
+             Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ())  ).coeffs())
 {
   //
 }

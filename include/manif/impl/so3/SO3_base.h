@@ -27,6 +27,8 @@ public:
   MANIF_MANIFOLD_PROPERTIES
   MANIF_MANIFOLD_TYPEDEF
 
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
+
   /// Manifold common API
 
   Transformation transform() const;
@@ -58,6 +60,11 @@ public:
   Scalar z() const;
   Scalar w() const;
 
+  QuaternionDataType quat() const
+  {
+    return QuaternionDataType(coeffs());
+  }
+
 protected:
 
   void normalize();
@@ -76,14 +83,15 @@ template <typename _Derived>
 typename SO3Base<_Derived>::Rotation
 SO3Base<_Derived>::rotation() const
 {
-  return coeffs().matrix();
+  return quat().matrix();
 }
 
 template <typename _Derived>
 SO3Base<_Derived>&
 SO3Base<_Derived>::setIdentity()
 {
-  coeffs_nonconst().setIdentity();
+  coeffs_nonconst().setZero();
+  coeffs_nonconst()(3) = Scalar(1);
   return *this;
 }
 
@@ -99,7 +107,7 @@ SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
   /// @todo, conjugate doc :
   /// equal to the multiplicative inverse if
   /// the quaternion is normalized
-  return Manifold(coeffs().conjugate());
+  return Manifold(quat().conjugate());
 }
 
 template <typename _Derived>
@@ -115,7 +123,7 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
     MANIF_NOT_IMPLEMENTED_YET
   }
 
-  const Scalar sin_angle_squared = coeffs().vec().squaredNorm();
+  const Scalar sin_angle_squared = coeffs().template head<3>().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
   {
     const Scalar sin_angle = sqrt(sin_angle_squared);
@@ -136,12 +144,12 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
                                  atan2( sin_angle,  cos_angle);
 
     const Scalar k = two_angle / sin_angle;
-    return Tangent(coeffs().vec() * k);
+    return Tangent(coeffs().template head<3>() * k);
   }
   else
   {
     // small-angle approximation
-    return Tangent(coeffs().vec() * Scalar(2.0));
+    return Tangent(coeffs().template head<3>() * Scalar(2.0));
   }
 }
 
@@ -154,12 +162,13 @@ SO3Base<_Derived>::compose(
     OptJacobianRef J_mc_mb) const
 {
   if (J_mc_ma)
-    *J_mc_ma = coeffs().conjugate().matrix(); // R2.tr
+    *J_mc_ma = quat().conjugate().matrix(); // R2.tr
 
   if (J_mc_mb)
     J_mc_mb->setIdentity();
 
-  return Manifold(coeffs() * m.coeffs());
+  return Manifold(QuaternionDataType(coeffs()) *
+                  QuaternionDataType(m.coeffs()));
 }
 
 template <typename _Derived>
