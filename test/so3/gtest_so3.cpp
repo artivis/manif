@@ -771,6 +771,34 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
 
   EXPECT_EQ(3, J_between_b.rows());
   EXPECT_EQ(3, J_between_b.cols());
+
+
+  so3a.setRandom();
+  so3b.setRandom();
+  so3c = so3a.between(so3b, J_between_a, J_between_b);
+
+  // Jac wrt first element
+
+  SO3d::Tangent w = SO3d::Tangent::Random(); w.coeffs() *= 1e-4;
+
+  SO3d so3c_pert = (so3a + w).between(so3b);
+  SO3d so3c_lin = so3c + J_between_a * w;
+
+  EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
+  EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
+  EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
+  EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
+
+  // Jac wrt second element
+
+  so3c_pert = so3a.between(so3b + w);
+  so3c_lin = so3c + J_between_b * w;
+
+  EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
+  EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
+  EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
+  EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
+
 }
 
 TEST(TEST_SO3, TEST_SO3_TANGENT_SKEW)
