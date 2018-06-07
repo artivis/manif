@@ -395,41 +395,41 @@ ManifoldBase<_Derived>::lminus(
   /// @todo optimize this
   if (J_t_ma && J_t_mb)
   {
-    Jacobian J_inv_ma;
+    Jacobian J_inv_mb;
     Jacobian J_comp_inv;
-    Jacobian J_comp_mb;
+    Jacobian J_comp_ma;
     Jacobian J_rminus_comp;
 
-    t = m.compose(derived().inverse(J_inv_ma),
-                  J_comp_mb, J_comp_inv).lift(J_rminus_comp);
+    t = compose(m.inverse(J_inv_mb),
+                J_comp_ma, J_comp_inv).lift(J_rminus_comp);
 
-    J_t_ma->noalias() = J_rminus_comp * J_comp_inv * J_inv_ma;
-    J_t_mb->noalias() = J_rminus_comp * J_comp_mb;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_ma;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_inv * J_inv_mb;
   }
   else if (J_t_ma && !J_t_mb)
   {
-    Jacobian J_inv_ma;
-    Jacobian J_comp_inv;
+    Jacobian J_comp_a;
     Jacobian J_rminus_comp;
 
-    t = m.compose(derived().inverse(J_inv_ma),
-                  _, J_comp_inv).lift(J_rminus_comp);
+    t = compose(m.inverse(),
+                J_comp_a, _ ).lift(J_rminus_comp);
 
-    J_t_ma->noalias() = J_rminus_comp * J_comp_inv * J_inv_ma;
+    J_t_ma->noalias() = J_rminus_comp * J_comp_a;
   }
   else if (!J_t_ma && J_t_mb)
   {
-    Jacobian J_comp_mb;
+    Jacobian J_inv_mb;
+    Jacobian J_comp_inv;
     Jacobian J_rminus_comp;
 
-    t = m.compose(derived().inverse(),
-                  J_comp_mb, _).lift(J_rminus_comp);
+    t = compose(m.inverse(J_inv_mb),
+                _, J_comp_inv).lift(J_rminus_comp);
 
-    J_t_mb->noalias() = J_rminus_comp * J_comp_mb;
+    J_t_mb->noalias() = J_rminus_comp * J_comp_inv * J_inv_mb;
   }
   else
   {
-    t = derived().inverse().compose(m).lift();
+    t = compose(m.inverse()).lift();
   }
 
   return t;

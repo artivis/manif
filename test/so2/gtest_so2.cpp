@@ -226,7 +226,7 @@ TEST(TEST_SO2, TEST_SO2_LMINUS)
 
   auto so2c = so2a.lminus(so2b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_MINUS)
@@ -443,15 +443,15 @@ TEST(TEST_SO2, TEST_SO2_LMINUS_JAC)
 
   SO2Tangentd so2c = so2a.lminus(so2b, J_lminus_a, J_lminus_b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 
   EXPECT_EQ(1, J_lminus_a.rows());
   EXPECT_EQ(1, J_lminus_a.cols());
-  EXPECT_DOUBLE_EQ(-1, J_lminus_a(0));
+  EXPECT_DOUBLE_EQ(1, J_lminus_a(0));
 
   EXPECT_EQ(1, J_lminus_b.rows());
   EXPECT_EQ(1, J_lminus_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_lminus_b(0));
+  EXPECT_DOUBLE_EQ(-1, J_lminus_b(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
