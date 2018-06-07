@@ -150,6 +150,20 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
   tan = Tangent(coeffs().template head<3>() * lift_coeff);
 
+//  using std::atan2;
+//  Scalar n = coeffs().template head<3>().norm();
+//  Scalar angle(0);
+//  typename Tangent::DataType axis(1,0,0);
+//  if (n<Constants<Scalar>::eps)
+//    n = coeffs().template head<3>().stableNorm();
+//  if (n > Scalar(0))
+//  {
+//    angle = Scalar(2)*atan2(n, w());
+//    axis  = coeffs().template head<3>() / n;
+//  }
+
+//  tan = Tangent(axis*angle);
+
   if (J_t_m)
   {
     Scalar theta2 = tan.coeffs().squaredNorm();
