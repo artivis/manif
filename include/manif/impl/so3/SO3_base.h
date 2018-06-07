@@ -117,11 +117,8 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::sqrt;
   using std::atan2;
 
-  if (J_t_m)
-  {
-    /// @todo
-    MANIF_NOT_IMPLEMENTED_YET
-  }
+  Tangent tan;
+  Scalar lift_coeff;
 
   const Scalar sin_angle_squared = coeffs().template head<3>().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
@@ -139,18 +136,36 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
      * angle - pi = atan(sin(angle - pi), cos(angle - pi))
      *            = atan(-sin(angle), -cos(angle))
      */
-    const Scalar two_angle = (Scalar(2.0) * (cos_angle < Scalar(0.0))) ?
+    const Scalar two_angle = Scalar(2.0) * ((cos_angle < Scalar(0.0)) ?
                                  atan2(-sin_angle, -cos_angle) :
-                                 atan2( sin_angle,  cos_angle);
+                                 atan2( sin_angle,  cos_angle));
 
-    const Scalar k = two_angle / sin_angle;
-    return Tangent(coeffs().template head<3>() * k);
+    lift_coeff = two_angle / sin_angle;
   }
   else
   {
     // small-angle approximation
-    return Tangent(coeffs().template head<3>() * Scalar(2.0));
+    lift_coeff = Scalar(2.0);
   }
+
+  tan = Tangent(coeffs().template head<3>() * lift_coeff);
+
+  if (J_t_m)
+  {
+    Scalar theta2 = tan.coeffs().squaredNorm();
+    typename Tangent::LieType W = tan.skew();
+    if (theta2 <= Constants<Scalar>::eps)
+      (*J_t_m) = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
+    else
+    {
+      Scalar theta = sqrt(theta2);  // rotation angle
+      Jacobian M;
+      M.noalias() = (Scalar(1) / theta2 - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) * (W * W);
+      (*J_t_m) = Jacobian::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
+    }
+  }
+
+  return tan;
 }
 
 template <typename _Derived>
