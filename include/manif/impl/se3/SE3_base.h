@@ -167,7 +167,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
   }
 
   return Manifold(-rotation().transpose() * translation(),
-                   asSO3().inverse().coeffs());
+                   asSO3().inverse().quat());
 }
 
 template <typename _Derived>
@@ -245,7 +245,7 @@ SE3Base<_Derived>::compose(
   }
 
   return Manifold(rotation()*m_se3.translation() + translation(),
-                  asSO3().compose(m_se3.asSO3()).coeffs());
+                  asSO3().compose(m_se3.asSO3()).quat());
 }
 
 template <typename _Derived>

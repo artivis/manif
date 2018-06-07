@@ -5,9 +5,19 @@
 
 using namespace manif;
 
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_DATATYPE)
+{
+  SO3d so3(SO3d::DataType(0,0,0,1));
+
+  EXPECT_DOUBLE_EQ(0, so3.x());
+  EXPECT_DOUBLE_EQ(0, so3.y());
+  EXPECT_DOUBLE_EQ(0, so3.z());
+  EXPECT_DOUBLE_EQ(1, so3.w());
+}
+
 TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_QUAT)
 {
-  SO3d so3(SO3d::DataType(1,0,0,0));
+  SO3d so3(Eigen::Quaterniond(1,0,0,0));
 
   EXPECT_DOUBLE_EQ(0, so3.x());
   EXPECT_DOUBLE_EQ(0, so3.y());
