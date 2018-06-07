@@ -31,7 +31,7 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_TANGENT_ZERO)
 //{
 //  SO2Tangentd so2tan;
 
-//  callRandom(so2tan).random();
+//  callRandom(so2tan).setRandom();
 
 //  EXPECT_DOUBLE_EQ(0, so2tan.angle());
 //}

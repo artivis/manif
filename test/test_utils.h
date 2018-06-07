@@ -139,7 +139,7 @@ template <typename _Derived>
 void
 callZero(TangentBase<_Derived>& tangent)
 {
-  tangent.zero();
+  tangent.setZero();
 }
 
 template <typename _Derived>
@@ -153,7 +153,7 @@ template <typename _Derived>
 void
 callRandom(TangentBase<_Derived>& tangent)
 {
-  tangent.random();
+  tangent.setRandom();
 }
 
 template <typename _Derived>

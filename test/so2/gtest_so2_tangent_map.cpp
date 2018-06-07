@@ -31,7 +31,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO)
   double data(1);
   Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  so2tan.zero();
+  so2tan.setZero();
 
   EXPECT_DOUBLE_EQ(0, so2tan.angle());
 }
@@ -49,7 +49,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO2)
 //{
 //  SO2d so2;
 
-//  so2.random();
+//  so2.setRandom();
 
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}

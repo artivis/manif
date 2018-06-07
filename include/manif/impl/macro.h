@@ -62,8 +62,8 @@
   static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
 
 #define MANIF_INHERIT_TANGENT_API \
-  using Base::zero;               \
-  using Base::random;             \
+  using Base::setZero;            \
+  using Base::setRandom;          \
   using Base::retract;            \
   using Base::skew;
 

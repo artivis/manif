@@ -46,8 +46,8 @@ public:
 
   /// Common Tangent API
 
-  void zero();
-  void random();
+  _Derived& setZero();
+  _Derived& setRandom();
 
   LieType skew() const;
 
@@ -128,15 +128,17 @@ TangentBase<_Derived>::data() const
 }
 
 template <class _Derived>
-void TangentBase<_Derived>::zero()
+_Derived& TangentBase<_Derived>::setZero()
 {
   coeffs().setZero();
+  return derived();
 }
 
 template <class _Derived>
-void TangentBase<_Derived>::random()
+_Derived& TangentBase<_Derived>::setRandom()
 {
   coeffs().setRandom();
+  return derived();
 }
 
 template <class _Derived>
@@ -214,8 +216,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Random()
 {
-  static const Tangent t(DataType::Random());
-  return t;
+  return Tangent().setRandom();
 }
 
 template <class _DerivedOther>

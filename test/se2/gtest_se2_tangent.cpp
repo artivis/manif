@@ -24,7 +24,7 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_ZERO)
 {
   SE2Tangentd so2tan(4,2,M_PI);
 
-  so2tan.zero();
+  so2tan.setZero();
 
   EXPECT_DOUBLE_EQ(0, so2tan.x());
   EXPECT_DOUBLE_EQ(0, so2tan.y());
@@ -45,7 +45,7 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_ZERO2)
 //{
 //  SE2d so2;
 
-//  so2.random();
+//  so2.setRandom();
 
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}
