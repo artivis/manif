@@ -177,7 +177,7 @@ SO3Base<_Derived>::compose(
     OptJacobianRef J_mc_mb) const
 {
   if (J_mc_ma)
-    *J_mc_ma = quat().conjugate().matrix(); // R2.tr
+    *J_mc_ma = m.rotation().transpose();
 
   if (J_mc_mb)
     J_mc_mb->setIdentity();
