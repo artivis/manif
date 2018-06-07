@@ -69,14 +69,13 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   using std::sin;
 
   const DataType& theta_vec = coeffs();
-  const Scalar theta = sqrt(theta_vec.squaredNorm());
+  const Scalar theta_sq = theta_vec.squaredNorm();
+  const Scalar theta    = sqrt(theta_sq);
 
-  if (theta > Constants<Scalar>::eps)
+  if (theta_sq > Constants<Scalar>::eps)
   {
     if (J_m_t)
     {
-      const Scalar theta_sq = theta*theta;
-
       Jacobian M1, M2;
 
       const LieType W = skew();
@@ -104,9 +103,9 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::LieType
 SO3TangentBase<_Derived>::skew() const
 {
-  return (LieType() <<      0     , -coeffs()(2),  coeffs()(1),
-                       coeffs()(2),       0     , -coeffs()(0),
-                      -coeffs()(1),  coeffs()(0),      0      ).finished();
+  return (LieType() << Scalar(0)  , -coeffs()(2),  coeffs()(1),
+                       coeffs()(2),  Scalar(0)  , -coeffs()(0),
+                      -coeffs()(1),  coeffs()(0),  Scalar(0)    ).finished();
 }
 
 /// SO3Tangent specifics
