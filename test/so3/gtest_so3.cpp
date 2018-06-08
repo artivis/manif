@@ -590,11 +590,8 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 
   SO3d::Tangent w = SO3d::Tangent::Random(); w.coeffs() *= 1e-4;
 
-  SO3d so3c_pert = so3a.rplus(w).compose(so3b);
-
-  SO3d::Tangent v; v.coeffs() = J_c_a * w.coeffs();
-
-  SO3d so3c_lin = so3c.rplus(v);
+  SO3d so3c_pert = (so3a + w) * so3b;
+  SO3d so3c_lin  = so3c + J_c_a * w;
 
   EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
   EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
@@ -603,11 +600,8 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 
   // Jac wrt second element
 
-  so3c_pert = so3a.compose(so3b.rplus(w));
-
-  v.coeffs() = J_c_b * w.coeffs();
-
-  so3c_lin = so3c.rplus(v);
+  so3c_pert = so3a * (so3b + w);
+  so3c_lin  = so3c + J_c_b * w;
 
   EXPECT_NEAR(so3c_pert.w(), so3c_lin.w(), 1e-8);
   EXPECT_NEAR(so3c_pert.x(), so3c_lin.x(), 1e-8);
