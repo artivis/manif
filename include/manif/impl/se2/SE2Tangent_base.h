@@ -32,6 +32,8 @@ public:
 
   /// Tangent common API
 
+  LieType skew() const;
+
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   /// SE2Tangent specific API
@@ -40,6 +42,16 @@ public:
   Scalar y() const;
   Scalar angle() const;
 };
+
+template <typename _Derived>
+typename SE2TangentBase<_Derived>::LieType
+SE2TangentBase<_Derived>::skew() const
+{
+  return ( LieType() <<
+             Scalar(0), -angle(),   x(),
+             angle(),    Scalar(0), y(),
+             Scalar(0),  Scalar(0), Scalar(0) ).finished();
+}
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Manifold
