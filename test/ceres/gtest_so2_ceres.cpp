@@ -1,5 +1,3 @@
-#include <gtest/gtest.h>
-
 #include "../test_utils.h"
 
 #include "manif/SO2.h"
