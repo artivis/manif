@@ -1,7 +1,6 @@
 # Ceres tests
 
-manif_add_gtest(gtest_so2_autodiff gtest_so2_autodiff.cpp)
-manif_add_gtest(gtest_so2_analytic gtest_so2_analytic.cpp)
+manif_add_gtest(gtest_so2_ceres gtest_so2_ceres.cpp)
 
 manif_add_gtest(gtest_se2_autodiff gtest_se2_autodiff.cpp)
 
@@ -11,8 +10,7 @@ manif_add_gtest(gtest_se2_autodiff gtest_se2_autodiff.cpp)
 
 set(CXX_11_TEST_TARGETS_CERES
   # SO2
-  gtest_so2_autodiff
-  gtest_so2_analytic
+  gtest_so2_ceres
 
   # SO3
 #  gtest_so3_ceres
