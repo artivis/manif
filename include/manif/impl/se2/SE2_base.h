@@ -82,11 +82,8 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Rotation
 SE2Base<_Derived>::rotation() const
 {
-  using std::sin;
-  using std::cos;
-  const Scalar theta = angle();
-  return (Rotation() << cos(theta), -sin(theta),
-                        sin(theta),  cos(theta)).finished();
+  return (Rotation() << real(), -imag(),
+                        imag(),  real() ).finished();
 }
 
 template <typename _Derived>
@@ -112,29 +109,18 @@ SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
   using std::cos;
   using std::sin;
 
-  const Scalar theta_inv = -angle();
-
   if (J_minv_m)
   {
-    //  p  = T(1:2);
-    //  th = T(3);
-    //  R  = [cos(th)  -sin(th);  sin(th)  cos(th)];
-    //  Ri = R';
-    //  Ti = [-Ri*p; -th];
-    //  u_x = [[0 -1] ; [1 0]];
-    //  J_Ti_T = [-Ri Ri*u_x*p ; [0 0 -1]];
-
-    Jacobian& J_minv_m_ref = *J_minv_m;
-
-    J_minv_m_ref = -Jacobian::Identity();
-    J_minv_m_ref.template block<2,2>(0,0) = -rotation().transpose();
-    J_minv_m_ref(0,2) = -x()*sin(theta_inv) - y()*cos(theta_inv);
-    J_minv_m_ref(1,2) =  x()*cos(theta_inv) - y()*sin(theta_inv);
+    Jacobian adj = Jacobian::Identity();
+    adj.template topLeftCorner<2,2>() = rotation();
+    adj(0,2) =  y();
+    adj(1,2) = -x();
+    (*J_minv_m) = -adj;
   }
 
-  return Manifold(-(x()*cos(theta_inv) - y()*sin(theta_inv)),
-                  -(x()*sin(theta_inv) + y()*cos(theta_inv)),
-                   theta_inv );
+  return Manifold(-x()*real() - y()*imag(),
+                   x()*imag() - y()*real(),
+                           -angle()        );
 }
 
 template <typename _Derived>
@@ -146,7 +132,6 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::sin;
 
   const Scalar theta = angle();
-  const Scalar theta_sq = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
@@ -154,53 +139,38 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
+    const Scalar theta_sq = theta * theta;
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
     B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
   }
   else
   {
     A = sin(theta) / theta;
-    B = (Scalar(1) - cos(theta) ) / theta;
+    B = (Scalar(1) - cos(theta)) / theta;
   }
 
   if (J_t_m)
   {
+//    Jacobian rjac = Jacobian::Identity();
+//    rjac.template topLeftCorner<2,2>() =
+//        rotation().template transpose();
+
+//    // Jr^-1
+//    (*J_t_m) = rjac.template transpose();
+
+    // Jr^-1
     J_t_m->setIdentity();
-    J_t_m->template block<2,2>(0,0) = rotation();
-
-    Scalar d_sin_theta_by_theta;
-    Scalar d_one_minus_cos_theta_by_theta;
-
-    if (abs(theta) < Constants<Scalar>::eps)
-    {
-      d_sin_theta_by_theta = -theta / Scalar(3);
-      d_one_minus_cos_theta_by_theta =
-          Scalar(0.5) - theta_sq * Scalar(0.125);
-    }
-    else
-    {
-      const Scalar cos_theta = cos(theta);
-      const Scalar sin_theta = sin(theta);
-
-      d_sin_theta_by_theta =
-          (theta * cos_theta - sin_theta) / theta_sq;
-
-      d_one_minus_cos_theta_by_theta =
-          (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
-    }
-
-    (*J_t_m)(0,2) =  d_sin_theta_by_theta * x() +
-                     d_one_minus_cos_theta_by_theta * y();
-
-    (*J_t_m)(1,2) = -d_one_minus_cos_theta_by_theta * x() +
-                     d_sin_theta_by_theta * y();
+    J_t_m->template topLeftCorner<2,2>() = rotation();
   }
 
   const Scalar den = Scalar(1) / (A*A + B*B);
 
-  return Tangent( A * den * x() + B * den * y(),
-                 -B * den * x() + A * den * y(),
-                  theta );
+  A *= den;
+  B *= den;
+
+  return Tangent( A * x() + B * y(),
+                 -B * x() + A * y(),
+                        theta       );
 }
 
 template <typename _Derived>
@@ -224,28 +194,27 @@ SE2Base<_Derived>::compose(
 
   if (J_mc_ma)
   {
-    /// @note
-    ///
-    /// J = | I   R u_x tb
-    ///     | 0      1
-    ///
+    Jacobian adj = Jacobian::Identity();
+    adj.template topLeftCorner<2,2>() = m_se2.rotation();
+    adj(0,2) =  m_se2.y();
+    adj(1,2) = -m_se2.x();
 
-    J_mc_ma->setIdentity();
+    (*J_mc_ma) = adj.inverse();
 
-    J_mc_mb->template topRightCorner<Dim,1>() =
-        rotation() * Translation(-m.coeffs().y(), m.coeffs().x());
+//    std::cout << "J_mc_ma 1\n" << (*J_mc_ma) << "\n";
+
+//    Jacobian& refJ_mc_ma = (*J_mc_ma);
+//    refJ_mc_ma = Jacobian::Identity();
+//    refJ_mc_ma.template topLeftCorner<2,2>() = m_se2.rotation().template transpose();
+//    refJ_mc_ma(0,2) = -m_se2.real()*m_se2.x() - m_se2.imag()*m_se2.y();
+//    refJ_mc_ma(1,2) =  m_se2.imag()*m_se2.x() - m_se2.real()*m_se2.y();
+
+//    std::cout << "J_mc_ma 2\n" << (*J_mc_ma) << "\n";
   }
 
   if (J_mc_mb)
   {
-    /// @note
-    ///
-    /// J = | R 0
-    ///     | 0 I
-    ///
-
     J_mc_mb->setIdentity();
-    J_mc_mb->template block<2,2>(0,0) = rotation();
   }
 
   return Manifold(
