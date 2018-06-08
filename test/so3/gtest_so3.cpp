@@ -615,6 +615,8 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 }
 
+MANIF_TEST(SO3d);
+
 MANIF_TEST_JACOBIANS(SO3d);
 
 /*

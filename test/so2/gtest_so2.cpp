@@ -493,6 +493,8 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
 
+MANIF_TEST(SO2d);
+
 MANIF_TEST_JACOBIANS(SO2d);
 
 int main(int argc, char** argv)
