@@ -115,6 +115,9 @@ public:
         measurement_.retract()
           .between(state_past.between(state_future))
             .lift();
+
+      /// @todo
+//      residuals = measurement_ - (state_past - state_future);
     }
 
     return true;

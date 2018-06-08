@@ -549,14 +549,23 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
   //  p6 expected at -M_PI_2
   //  p7 expected at -M_PI/4.
 
-  SO2d state_0( /*0*/          + noise());
-  SO2d state_1( /*M_PI/4.*/    + noise());
-  SO2d state_2( /*M_PI_2*/     + noise());
-  SO2d state_3( /*3.*M_PI/4.*/ + noise());
-  SO2d state_4( /*M_PI*/       + noise());
-  SO2d state_5(/*-3.*M_PI/4 */ + noise());
-  SO2d state_6(/*-M_PI_2*/     + noise());
-  SO2d state_7(/*-M_PI/4.*/    + noise());
+  SO2d state_0( 0          + noise());
+  SO2d state_1( M_PI/4.    + noise());
+  SO2d state_2( M_PI_2     + noise());
+  SO2d state_3( 3.*M_PI/4. + noise());
+  SO2d state_4( M_PI       + noise());
+  SO2d state_5(-3.*M_PI/4  + noise());
+  SO2d state_6(-M_PI_2     + noise());
+  SO2d state_7(-M_PI/4.    + noise());
+
+//  SO2d state_0(0);
+//  SO2d state_1(0);
+//  SO2d state_2(0);
+//  SO2d state_3(0);
+//  SO2d state_4(0);
+//  SO2d state_5(0);
+//  SO2d state_6(0);
+//  SO2d state_7(0);
 
   std::cout << "Initial states :\n";
   std::cout << "p0 : [" << state_0.angle() << "]\n";
@@ -576,7 +585,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
   ConstraintSO2 constraint_4_5(M_PI/4.);
   ConstraintSO2 constraint_5_6(M_PI/4.);
   ConstraintSO2 constraint_6_7(M_PI/4.);
-//  ConstraintSO2 constraint_7_0(M_PI/4.);
+  ConstraintSO2 constraint_7_0(M_PI/4.);
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &constraint_0_1,
@@ -607,9 +616,9 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
                             nullptr,
                             state_6.data(), state_7.data() );
 
-//  problem.AddResidualBlock( &constraint_7_0,
-//                            nullptr,
-//                            state_7.data(), state_0.data() );
+  problem.AddResidualBlock( &constraint_7_0,
+                            nullptr,
+                            state_7.data(), state_0.data() );
 
   // Anchor state 0 at 0
   ObjectiveSO2 obj_origin(0);
@@ -658,8 +667,8 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
 
-  std::cout << "summary:\n" << summary.BriefReport() << "\n";
-//  std::cout << "summary:\n" << summary.FullReport() << "\n";
+//  std::cout << "summary:\n" << summary.BriefReport() << "\n";
+  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
   ASSERT_TRUE(summary.IsSolutionUsable());
 
