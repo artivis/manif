@@ -791,6 +791,8 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
   EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 
+  EXPECT_MANIF_NEAR(so3c_pert, so3c_lin, 1e-8);
+
   // Jac wrt second element
 
   so3c_pert = so3a.between(so3b + w);
@@ -801,6 +803,7 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   EXPECT_NEAR(so3c_pert.y(), so3c_lin.y(), 1e-8);
   EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 
+  EXPECT_MANIF_NEAR(so3c_pert, so3c_lin, 1e-8);
 }
 
 TEST(TEST_SO3, TEST_SO3_TANGENT_SKEW)
