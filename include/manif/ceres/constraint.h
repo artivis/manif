@@ -129,11 +129,6 @@ protected:
   mutable ManifoldJacobian J_res_pe_;
 };
 
-//using ConstraintSO2 = Constraint<SO2d>;
-//using ConstraintSO3 = Constraint<SO3d>;
-//using ConstraintSE2 = Constraint<SE2d>;
-//using ConstraintSE3 = Constraint<SE3d>;
-
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_CERES_CONSTRAINT_H_ */

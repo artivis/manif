@@ -78,11 +78,6 @@ public:
   virtual int LocalSize()  const override { return Manifold::DoF; }
 };
 
-//using LocalParameterizationSO2 = LocalParameterization<SO2d>;
-//using LocalParameterizationSO3 = LocalParameterization<SO3d>;
-//using LocalParameterizationSE2 = LocalParameterization<SE2d>;
-//using LocalParameterizationSE3 = LocalParameterization<SE3d>;
-
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_ */

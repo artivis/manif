@@ -78,11 +78,6 @@ protected:
   mutable ManifoldJacobian J_e_mb_;
 };
 
-//using ObjectiveSO2 = Objective<SO2d>;
-//using ObjectiveSO3 = Objective<SO3d>;
-//using ObjectiveSE2 = Objective<SE2d>;
-//using ObjectiveSE3 = Objective<SE3d>;
-
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_CERES_OBJECTIVE_H_ */
