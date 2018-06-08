@@ -32,6 +32,8 @@ public:
 
   /// Tangent common API
 
+  LieType skew() const;
+
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
   /// SE2Tangent specific API
@@ -42,6 +44,16 @@ public:
 };
 
 template <typename _Derived>
+typename SE2TangentBase<_Derived>::LieType
+SE2TangentBase<_Derived>::skew() const
+{
+  return ( LieType() <<
+             Scalar(0), -angle(),   x(),
+             angle(),    Scalar(0), y(),
+             Scalar(0),  Scalar(0), Scalar(0) ).finished();
+}
+
+template <typename _Derived>
 typename SE2TangentBase<_Derived>::Manifold
 SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
@@ -50,65 +62,49 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   using std::sin;
 
   const Scalar theta = angle();
-  const Scalar theta_sq = theta*theta;
+  const Scalar cos_theta = cos(theta);
+  const Scalar sin_theta = sin(theta);
 
-  Scalar sin_theta_by_theta;
-  Scalar one_minus_cos_theta_by_theta;
-
-  if (J_m_t)
-    J_m_t->setIdentity();
+  Scalar A,  // sin_theta_by_theta
+         B;  // one_minus_cos_theta_by_theta
 
   if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
     const Scalar theta_sq = theta * theta;
-    sin_theta_by_theta = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    one_minus_cos_theta_by_theta =
-        Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-
-    if (J_m_t)
-    {
-      const Scalar d_sin_theta_by_theta = -theta / Scalar(3);
-
-      const Scalar d_one_minus_cos_theta_by_theta =
-                    Scalar(0.5) - theta_sq * Scalar(0.125);
-
-      (*J_m_t)(0,2) = d_sin_theta_by_theta * x() -
-                      d_one_minus_cos_theta_by_theta * y();
-
-      (*J_m_t)(1,2) = d_one_minus_cos_theta_by_theta * x() +
-                      d_sin_theta_by_theta * y();
-    }
+    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
+    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
   }
   else
   {
     // Euler
-    sin_theta_by_theta = sin(theta) / theta;
-    one_minus_cos_theta_by_theta = (Scalar(1) - cos(theta)) / theta;
-
-    if (J_m_t)
-    {
-      const Scalar cos_theta = cos(theta);
-      const Scalar sin_theta = sin(theta);
-
-      const Scalar d_sin_theta_by_theta =
-          (theta * cos_theta - sin_theta) / theta_sq;
-
-      const Scalar d_one_minus_cos_theta_by_theta =
-          (theta * sin_theta + cos_theta - Scalar(1)) / theta_sq;
-
-      (*J_m_t)(0,2) = d_sin_theta_by_theta * x() -
-                      d_one_minus_cos_theta_by_theta * y();
-
-      (*J_m_t)(1,2) = d_one_minus_cos_theta_by_theta * x() +
-                      d_sin_theta_by_theta * y();
-    }
+    A = sin_theta / theta;
+    B = (Scalar(1) - cos_theta) / theta;
   }
 
-  return Manifold(
-    sin_theta_by_theta * x() - one_minus_cos_theta_by_theta * y(),
-    one_minus_cos_theta_by_theta * x() + sin_theta_by_theta * y(),
-    angle() );
+  Manifold ret( A * x() - B * y(),
+                B * x() + A * y(),
+                cos_theta, sin_theta );
+
+  if (J_m_t)
+  {
+//    Jacobian rjac = Jacobian::Identity();
+//    rjac.template topLeftCorner<2,2>() =
+//        ret.rotation().template transpose();
+
+//    (*J_m_t) = rjac;
+
+    // Jr
+    J_m_t->setIdentity();
+    (*J_m_t)(0,0) =  cos_theta;
+    (*J_m_t)(0,1) =  sin_theta;
+    (*J_m_t)(1,0) = -sin_theta;
+    (*J_m_t)(1,1) =  cos_theta;
+
+//    std::cout << "se2 Jr:\n" << (*J_m_t) << "\n";
+  }
+
+  return ret;
 }
 
 /// SE2Tangent specific API

@@ -197,6 +197,8 @@ isEigenMatrixSameSize(const Eigen::MatrixBase<Derived>& m0,
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_DerivedA>& matrix_a,
                                                     const Eigen::MatrixBase<_DerivedB>& matrix_b,
+                                                    const std::string matrix_a_name = "matrix_a",
+                                                    const std::string matrix_b_name = "matrix_b",
                                                     double tolerance = 1e-8)
 {
   const ::testing::AssertionResult size_check =
@@ -220,19 +222,19 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 
   return (result ? ::testing::AssertionSuccess()
                  : ::testing::AssertionFailure()
-                     << "matrix_a != matrix_b\n"
-                     << "matrix_a:\n" << matrix_a << "\n"
-                     << "matrix_b:\n" << matrix_b << "\n"
-                     << "diff: " << (matrix_a - matrix_b) << "\n");
+                   << matrix_a_name << " != " << matrix_b_name << "\n"
+                   << matrix_a_name << ":\n" << matrix_a << "\n"
+                   << matrix_b_name << ":\n" << matrix_b << "\n"
+                   << "diff:\n" << (matrix_a - matrix_b) << "\n");
 }
 
 } /* namespace manif */
 
-#define EXPECT_EIGEN_NEAR(a, b)               \
-  EXPECT_TRUE(manif::isEigenMatrixNear(a, b))
+#define EXPECT_EIGEN_NEAR(a, b)                       \
+  EXPECT_TRUE(manif::isEigenMatrixNear(a, b, #a, #b))
 
-#define ASSERT_EIGEN_NEAR(a, b)               \
-  ASSERT_TRUE(manif::isEigenMatrixNear(a, b))
+#define ASSERT_EIGEN_NEAR(a, b)                       \
+  ASSERT_TRUE(manif::isEigenMatrixNear(a, b, #a, #b))
 
 /*
  * E.g

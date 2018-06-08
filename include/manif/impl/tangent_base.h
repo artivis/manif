@@ -63,6 +63,9 @@ public:
    */
   Manifold plus(const Manifold& m) const;
 
+  template <typename _DerivedOther>
+  Tangent plus(const TangentBase<_DerivedOther>& t) const;
+
   /// Some operators
 
   /**
@@ -71,7 +74,10 @@ public:
    * @return
    * @see lplus
    */
-  Manifold operator +(const Manifold& t) const;
+  Manifold operator +(const Manifold& m) const;
+
+  template <typename _DerivedOther>
+  Tangent operator +(const TangentBase<_DerivedOther>& t) const;
 
   /**
    * @brief operator =, assignment oprator
@@ -95,8 +101,10 @@ public:
 
 private:
 
-  _Derived& derived() { return *static_cast< _Derived* >(this); }
-  const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
+  _Derived& derived()
+  { return *static_cast< _Derived* >(this); }
+  const _Derived& derived() const
+  { return *static_cast< const _Derived* >(this); }
 };
 
 template <typename _Derived>
@@ -176,13 +184,29 @@ TangentBase<_Derived>::plus(const Manifold& m) const
   return m.lplus(derived());
 }
 
+template <class _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t) const
+{
+  return Tangent(coeffs()+t.coeffs().template cast<Scalar>());
+}
+
 /// Operators
 
 template <typename _Derived>
 typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::operator +(const Manifold& t) const
+TangentBase<_Derived>::operator +(const Manifold& m) const
 {
-  return derived().lplus(t);
+  return m.lplus(derived());
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::operator +(const TangentBase<_DerivedOther>& t) const
+{
+  return plus(t);
 }
 
 template <typename _Derived>
@@ -224,7 +248,8 @@ typename TangentBase<_DerivedOther>::Tangent
 operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
            const TangentBase<_DerivedOther>& t)
 {
-  return typename TangentBase<_DerivedOther>::Tangent(J*t.coeffs());
+  return typename TangentBase<_DerivedOther>::Tangent(
+        typename TangentBase<_DerivedOther>::DataType(J*t.coeffs()));
 }
 
 /// Utils

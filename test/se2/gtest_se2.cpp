@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE2.h"
+#include "../test_utils.h"
 
 using namespace manif;
 
@@ -346,7 +347,7 @@ TEST(TEST_SE2, TEST_SE2_LMINUS)
   /// @todo
 //  EXPECT_DOUBLE_EQ(0, se2c.x());
 //  EXPECT_DOUBLE_EQ(0, se2c.y());
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MINUS)
@@ -434,226 +435,9 @@ TEST(TEST_SE2, TEST_SE2_BETWEEN)
   EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
 }
 
-/*
-/// with Jacs
+MANIF_TEST(SE2d);
 
-TEST(TEST_SE2, TEST_SE2_INVERSE_JAC)
-{
-  SE2d se2 = SE2d::Identity();
-
-  SE2d se2_inv;
-  SE2d::Jacobian J_inv;
-  se2.inverse(se2_inv, J_inv);
-
-  EXPECT_DOUBLE_EQ(se2.angle(), se2_inv.angle());
-  EXPECT_DOUBLE_EQ(1, se2_inv.real());
-  EXPECT_DOUBLE_EQ(0, se2_inv.imag());
-
-  EXPECT_EQ(1, J_inv.rows());
-  EXPECT_EQ(1, J_inv.cols());
-  EXPECT_DOUBLE_EQ(-1, J_inv(0));
-
-  se2 = SE2d(M_PI);
-  se2.inverse(se2_inv, J_inv);
-
-  EXPECT_DOUBLE_EQ(-M_PI, se2_inv.angle());
-
-  EXPECT_EQ(1, J_inv.rows());
-  EXPECT_EQ(1, J_inv.cols());
-  EXPECT_DOUBLE_EQ(-1, J_inv(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_LIFT_JAC)
-{
-  SE2d se2(M_PI);
-
-  SE2d::Tangent se2_lift;
-  SE2d::Tangent::Jacobian J_lift;
-
-  se2.lift(se2_lift, J_lift);
-
-  EXPECT_DOUBLE_EQ(M_PI, se2_lift.angle());
-
-  /// @todo check this J
-  EXPECT_EQ(1, J_lift.rows());
-  EXPECT_EQ(1, J_lift.cols());
-  EXPECT_DOUBLE_EQ(1, J_lift(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_COMPOSE_JAC)
-{
-  SE2d se2a(M_PI_2);
-  SE2d se2b(M_PI_2);
-
-  SE2d se2c;
-  SE2d::Jacobian J_c_a, J_c_b;
-
-  se2a.compose(se2b, se2c, J_c_a, J_c_b);
-
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
-
-  EXPECT_EQ(1, J_c_a.rows());
-  EXPECT_EQ(1, J_c_a.cols());
-  EXPECT_DOUBLE_EQ(1, J_c_a(0));
-
-  EXPECT_EQ(1, J_c_b.rows());
-  EXPECT_EQ(1, J_c_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_c_b(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_RPLUS_JAC)
-{
-  SE2d se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
-
-  SE2d se2c;
-  SE2d::Jacobian J_rplus_m;
-  SE2d::Jacobian J_rplus_t;
-
-  se2a.rplus(se2b, se2c, J_rplus_m, J_rplus_t);
-
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
-
-  EXPECT_EQ(1, J_rplus_m.rows());
-  EXPECT_EQ(1, J_rplus_m.cols());
-  EXPECT_DOUBLE_EQ(1, J_rplus_m(0));
-
-  EXPECT_EQ(1, J_rplus_t.rows());
-  EXPECT_EQ(1, J_rplus_t.cols());
-  EXPECT_DOUBLE_EQ(1, J_rplus_t(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_LPLUS_JAC)
-{
-  SE2d se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
-
-  SE2d se2c;
-  SE2d::Jacobian J_lplus_t;
-  SE2d::Jacobian J_lplus_m;
-
-  se2a.lplus(se2b, se2c, J_lplus_t, J_lplus_m);
-
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
-
-  EXPECT_EQ(1, J_lplus_t.rows());
-  EXPECT_EQ(1, J_lplus_t.cols());
-  EXPECT_DOUBLE_EQ(1, J_lplus_t(0));
-
-  EXPECT_EQ(1, J_lplus_m.rows());
-  EXPECT_EQ(1, J_lplus_m.cols());
-  EXPECT_DOUBLE_EQ(1, J_lplus_m(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_PLUS_JAC)
-{
-  SE2d se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
-
-  SE2d se2c;
-  SE2d::Jacobian J_plus_m;
-  SE2d::Jacobian J_plus_t;
-
-  se2a.plus(se2b, se2c, J_plus_m, J_plus_t);
-
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
-
-  EXPECT_EQ(1, J_plus_m.rows());
-  EXPECT_EQ(1, J_plus_m.cols());
-  EXPECT_DOUBLE_EQ(1, J_plus_m(0));
-
-  EXPECT_EQ(1, J_plus_t.rows());
-  EXPECT_EQ(1, J_plus_t.cols());
-  EXPECT_DOUBLE_EQ(1, J_plus_t(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_RMINUS_JAC)
-{
-  SE2d se2a(M_PI);
-  SE2d se2b(M_PI_2);
-
-  SE2Tangentd se2c;
-
-  SE2d::Jacobian J_rminus_a, J_rminus_b;
-
-  se2a.rminus(se2b, se2c, J_rminus_a, J_rminus_b);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
-
-  EXPECT_EQ(1, J_rminus_a.rows());
-  EXPECT_EQ(1, J_rminus_a.cols());
-  EXPECT_DOUBLE_EQ(1, J_rminus_a(0));
-
-  EXPECT_EQ(1, J_rminus_b.rows());
-  EXPECT_EQ(1, J_rminus_b.cols());
-  EXPECT_DOUBLE_EQ(-1, J_rminus_b(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_LMINUS_JAC)
-{
-  SE2d se2a(M_PI);
-  SE2d se2b(M_PI_2);
-
-  SE2Tangentd se2c;
-
-  SE2d::Jacobian J_lminus_a, J_lminus_b;
-
-  se2a.lminus(se2b, se2c, J_lminus_a, J_lminus_b);
-
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
-
-  EXPECT_EQ(1, J_lminus_a.rows());
-  EXPECT_EQ(1, J_lminus_a.cols());
-  EXPECT_DOUBLE_EQ(-1, J_lminus_a(0));
-
-  EXPECT_EQ(1, J_lminus_b.rows());
-  EXPECT_EQ(1, J_lminus_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_lminus_b(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_MINUS_JAC)
-{
-  SE2d se2a(M_PI);
-  SE2d se2b(M_PI_2);
-
-  SE2Tangentd se2c;
-
-  SE2d::Jacobian J_minus_a, J_minus_b;
-
-  se2a.minus(se2b, se2c, J_minus_a, J_minus_b);
-
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
-
-  EXPECT_EQ(1, J_minus_a.rows());
-  EXPECT_EQ(1, J_minus_a.cols());
-  EXPECT_DOUBLE_EQ(1, J_minus_a(0));
-
-  EXPECT_EQ(1, J_minus_b.rows());
-  EXPECT_EQ(1, J_minus_b.cols());
-  EXPECT_DOUBLE_EQ(-1, J_minus_b(0));
-}
-
-TEST(TEST_SE2, TEST_SE2_BETWEEN_JAC)
-{
-  SE2d se2a(M_PI);
-  SE2d se2b(M_PI_2);
-
-  SE2d::Jacobian J_between_a, J_between_b;
-  SE2d se2c;
-
-  se2a.between(se2b, se2c, J_between_a, J_between_b);
-
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
-
-  EXPECT_EQ(1, J_between_a.rows());
-  EXPECT_EQ(1, J_between_a.cols());
-  EXPECT_DOUBLE_EQ(-1, J_between_a(0));
-
-  EXPECT_EQ(1, J_between_b.rows());
-  EXPECT_EQ(1, J_between_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_between_b(0));
-}
-*/
+MANIF_TEST_JACOBIANS(SE2d);
 
 int main(int argc, char** argv)
 {

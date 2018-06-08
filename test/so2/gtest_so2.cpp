@@ -1,9 +1,15 @@
-#include <gtest/gtest.h>
-
-#include "../eigen_gtest.h"
 #include "manif/SO2.h"
+#include "../test_utils.h"
 
 using namespace manif;
+
+TEST(TEST_SO2, TEST_SO2_PROPS)
+{
+  EXPECT_EQ(2, SO2d::Dim);
+  EXPECT_EQ(1, SO2d::DoF);
+  EXPECT_EQ(3, SO2d::N);
+  EXPECT_EQ(2, SO2d::RepSize);
+}
 
 TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_DATATYPE)
 {
@@ -228,7 +234,7 @@ TEST(TEST_SO2, TEST_SO2_LMINUS)
 
   auto so2c = so2a.lminus(so2b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_MINUS)
@@ -445,15 +451,15 @@ TEST(TEST_SO2, TEST_SO2_LMINUS_JAC)
 
   SO2Tangentd so2c = so2a.lminus(so2b, J_lminus_a, J_lminus_b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 
   EXPECT_EQ(1, J_lminus_a.rows());
   EXPECT_EQ(1, J_lminus_a.cols());
-  EXPECT_DOUBLE_EQ(-1, J_lminus_a(0));
+  EXPECT_DOUBLE_EQ(1, J_lminus_a(0));
 
   EXPECT_EQ(1, J_lminus_b.rows());
   EXPECT_EQ(1, J_lminus_b.cols());
-  EXPECT_DOUBLE_EQ(1, J_lminus_b(0));
+  EXPECT_DOUBLE_EQ(-1, J_lminus_b(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_MINUS_JAC)
@@ -494,6 +500,10 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   EXPECT_EQ(1, J_between_b.cols());
   EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
+
+MANIF_TEST(SO2d);
+
+MANIF_TEST_JACOBIANS(SO2d);
 
 int main(int argc, char** argv)
 {
