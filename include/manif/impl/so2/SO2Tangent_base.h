@@ -53,7 +53,7 @@ SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     J_m_t->setConstant(Scalar(1));
   }
 
-  return Manifold(cos(angle()), sin(angle()));;
+  return Manifold(cos(coeffs()(0)), sin(coeffs()(0)));
 }
 
 template <typename _Derived>
@@ -61,8 +61,8 @@ typename SO2TangentBase<_Derived>::LieType
 SO2TangentBase<_Derived>::skew() const
 {
   return (LieType() <<
-    Scalar(0),       Scalar(-angle()),
-    Scalar(angle()), Scalar( 0)       ).finished();
+    Scalar(0)          , Scalar(-coeffs()(0)),
+    Scalar(coeffs()(0)), Scalar(0)            ).finished();
 }
 
 /// SO2Tangent specific API
