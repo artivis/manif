@@ -89,7 +89,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   Eigen::Map<SO2d> map_so2(x);
   map_so2 = SO2d(M_PI/4.);
 
-  delta[0] = M_PI;
+//  delta[0] = M_PI;
   x_plus_delta[0] = 0;
   x_plus_delta[1] = 0;
 

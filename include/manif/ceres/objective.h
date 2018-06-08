@@ -2,7 +2,6 @@
 #define _MANIF_MANIF_CERES_OBJECTIVE_H_
 
 #include "manif/ceres/ceres_traits.h"
-#include "manif/ceres/ceres_jacobian_helper.h"
 
 #include <ceres/cost_function.h>
 
@@ -14,9 +13,9 @@ class Objective : public ceres::CostFunction
 {
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
-  using Jacobian = typename _Manifold::Jacobian;
+  using ManifoldJacobian = typename _Manifold::Jacobian;
 
-  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
+  using JacobianMap = typename internal::traits_ceres<Manifold>::ObjectiveJacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
@@ -26,15 +25,14 @@ class Objective : public ceres::CostFunction
 
 public:
 
+  using Jacobian = typename internal::traits_ceres<Manifold>::ObjectiveJacobian;
+
   template <typename... Args>
   Objective(Args&&... args)
     : target_state_(std::forward<Args>(args)...)
   {
-    constexpr int DoF = Manifold::DoF;
-    constexpr int RepSize = Manifold::RepSize;
-
-    set_num_residuals(DoF);
-    mutable_parameter_block_sizes()->push_back(RepSize);
+    set_num_residuals(Manifold::DoF);
+    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
   }
 
   virtual ~Objective() = default;
@@ -46,21 +44,6 @@ public:
     Eigen::Map<TangentTemplate<T>> error(residuals_raw);
 
     error = target_state_.template cast<T>() - state;
-
-//    const auto casted = target_state_.template cast<T>();
-
-//    std::cout << "Objective\n";
-//    std::cout << "state r " << state.coeffs()(0) << "\n";
-//    std::cout << "state i " << state.coeffs()(1) << "\n";
-//    std::cout << "state a " << state.angle() << "\n";
-
-//    std::cout << "target r " << casted.coeffs()(0) << "\n";
-//    std::cout << "target i " << casted.coeffs()(1) << "\n";
-//    std::cout << "target a " << casted.angle() << "\n";
-
-//    std::cout << "error " << residuals_raw[0] << "\n";
-
-//    std::cout << "----------------------------------\n\n";
 
     return true;
   }
@@ -75,10 +58,11 @@ public:
 
     if (jacobians_raw != nullptr && jacobians_raw[0] != nullptr)
     {
-      error = target_state_.rminus(state, Manifold::_, J_rminus_mb_);
+      error = target_state_.rminus(state, Manifold::_, J_e_mb_);
 
       JacobianMap jacobian(jacobians_raw[0]);
-      jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rminus_mb_;
+      jacobian.template topLeftCorner<Manifold::DoF,Manifold::DoF>() = J_e_mb_;
+      jacobian.template rightCols<Manifold::RepSize-Manifold::DoF>().setZero();
     }
     else
     {
@@ -91,7 +75,7 @@ public:
 protected:
 
   const Manifold target_state_;
-  mutable Jacobian J_rminus_mb_;
+  mutable ManifoldJacobian J_e_mb_;
 };
 
 //using ObjectiveSO2 = Objective<SO2d>;

@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_CERES_CONSTRAINT_H_
 #define _MANIF_MANIF_CERES_CONSTRAINT_H_
 
-#include "manif/ceres/ceres_jacobian_helper.h"
+#include "manif/ceres/ceres_traits.h"
 
 #include <ceres/cost_function.h>
 
@@ -14,9 +14,9 @@ class Constraint
 {
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
-  using Jacobian = typename _Manifold::Jacobian;
+  using ManifoldJacobian = typename _Manifold::Jacobian;
 
-  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
+  using JacobianMap = typename internal::traits_ceres<Manifold>::ConstraintJacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
@@ -24,18 +24,20 @@ class Constraint
   template <typename _Scalar>
   using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
 
+  static constexpr int DoF = Manifold::DoF;
+  static constexpr int RepSize = Manifold::RepSize;
+
 public:
+
+  using Jacobian = typename internal::traits_ceres<Manifold>::ConstraintJacobian;
 
   template <typename... Args>
   Constraint(Args&&... args)
     : measurement_(std::forward<Args>(args)...)
   {
-    constexpr int DoF = Manifold::DoF;
-    constexpr int RepSize = Manifold::RepSize;
-
     set_num_residuals(DoF);
-    mutable_parameter_block_sizes()->push_back(RepSize);
-    mutable_parameter_block_sizes()->push_back(RepSize);
+    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
+    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
   }
 
   virtual ~Constraint() = default;
@@ -93,15 +95,17 @@ public:
         if (jacobians_raw[0] != nullptr)
         {
           JacobianMap J_res_past(jacobians_raw[0]);
-          J_res_past.noalias() =
-            computeLiftJacobianGlobal(state_past) * J_res_pe_ * J_pe_pi_ * J_pi_past_;
+          J_res_past.template topLeftCorner<DoF,DoF>().noalias() =
+            J_res_pe_ * J_pe_pi_ * J_pi_past_;
+          J_res_past.template rightCols<RepSize-DoF>().setZero();
         }
 
         if (jacobians_raw[1] != nullptr)
         {
           JacobianMap J_res_future(jacobians_raw[1]);
-          J_res_future.noalias() =
-            computeLiftJacobianGlobal(state_future) * J_res_pe_ * J_pe_pi_ * J_pi_future_;
+          J_res_future.template topLeftCorner<DoF,DoF>().noalias() =
+            J_res_pe_ * J_pe_pi_ * J_pi_future_;
+          J_res_future.template rightCols<RepSize-DoF>().setZero();
         }
       }
     }
@@ -120,9 +124,9 @@ protected:
 
   const Tangent measurement_;
 
-  mutable Jacobian J_pi_past_,  J_pi_future_;
-  mutable Jacobian J_pe_pi_;
-  mutable Jacobian J_res_pe_;
+  mutable ManifoldJacobian J_pi_past_,  J_pi_future_;
+  mutable ManifoldJacobian J_pe_pi_;
+  mutable ManifoldJacobian J_res_pe_;
 };
 
 //using ConstraintSO2 = Constraint<SO2d>;

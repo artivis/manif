@@ -22,7 +22,7 @@ using ConstraintSO2 = Constraint<SO2d>;
 
 using namespace manif;
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
+TEST(TEST_SO2_CERES, TEST_SO2_OBJECTIVE)
 {
   // Create 4 objectives spread arround pi
   ObjectiveSO2 obj_pi_over_4(     M_PI/4.);
@@ -58,7 +58,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_OBJECTIVE)
   EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION)
+TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION)
 {
   LocalParameterizationSO2 local_parameterization;
 
@@ -91,14 +91,88 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_LOCAL_PARAMETRIZATION)
 
   EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
 
-  double J_rplus[2];
-  local_parameterization.ComputeJacobian(x, J_rplus);
+//  double J_rplus[2];
+//  local_parameterization.ComputeJacobian(x, J_rplus);
 
-  EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
-  EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
+//  EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
+//  EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM)
+TEST(TEST_SO2_CERES, TEST_JACOBIANS)
+{
+  SO2d state(M_PI/4.);
+  SO2Tangentd delta(M_PI);
+
+  SO2d state_plus_delta_analytic(0);
+  SO2d state_plus_delta_autodiff(0);
+
+  // expected state+delta
+  SO2d state_plus_delta_result(-3.*M_PI/4.);
+
+  // Analytic
+
+  ObjectiveSO2 analytic_obj_pi_over_4(M_PI/4.);
+
+  double*  parameter;
+  double** parameters;
+  parameter  = state.data();
+  parameters = &parameter;
+  double residuals = 0.0;
+
+  ObjectiveSO2::Jacobian analyticJ_y_r;
+
+  double*  jacobian;
+  double** jacobians;
+  jacobian  = analyticJ_y_r.data();
+  jacobians = &jacobian;
+
+  analytic_obj_pi_over_4.Evaluate(parameters, &residuals, jacobians);
+  EXPECT_DOUBLE_EQ(0, residuals);
+
+  LocalParameterizationSO2 analytic_local_parameterization;
+
+  analytic_local_parameterization.Plus(state.data(), delta.data(),
+                                       state_plus_delta_analytic.data());
+
+  LocalParameterizationSO2::Jacobian analyticJ_r_R;
+  analytic_local_parameterization.ComputeJacobian(state.data(),
+                                                  analyticJ_r_R.data());
+
+  // Autodiff
+
+  std::shared_ptr<ceres::CostFunction> autodiff_obj_pi_over_4 =
+      make_objective_autodiff<SO2d>(M_PI/4.);
+
+  ObjectiveSO2::Jacobian autodiffJ_y_r;
+
+  jacobian = autodiffJ_y_r.data();
+
+  autodiff_obj_pi_over_4->Evaluate(parameters, &residuals, jacobians);
+  EXPECT_DOUBLE_EQ(0, residuals);
+
+  std::shared_ptr<ceres::LocalParameterization>
+    auto_diff_local_parameterization =
+      make_local_parametrization_autodiff<SO2d>();
+
+  auto_diff_local_parameterization->Plus(state.data(), delta.data(),
+                                         state_plus_delta_autodiff.data());
+
+  LocalParameterizationSO2::Jacobian autodiffJ_r_R;
+  auto_diff_local_parameterization->ComputeJacobian(state.data(),
+                                                    autodiffJ_r_R.data());
+
+  EXPECT_MANIF_NEAR(state_plus_delta_analytic,
+                    state_plus_delta_result);
+  EXPECT_MANIF_NEAR(state_plus_delta_analytic,
+                    state_plus_delta_autodiff);
+
+  SO2d::Jacobian analyticJ_y_R = analyticJ_y_r * analyticJ_r_R;
+  SO2d::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
+
+  EXPECT_EIGEN_NEAR(analyticJ_y_R, autodiffJ_y_R);
+}
+
+TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -157,7 +231,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_SMALL_PROBLEM)
   EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
 
-TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
+TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
 {
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
@@ -177,14 +251,14 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
   //  p6 expected at -M_PI_2
   //  p7 expected at -M_PI/4.
 
-  SO2d state_0( 0          + noise());
-  SO2d state_1( M_PI/4.    + noise());
-  SO2d state_2( M_PI_2     + noise());
-  SO2d state_3( 3.*M_PI/4. + noise());
-  SO2d state_4( M_PI       + noise());
-  SO2d state_5(-3.*M_PI/4  + noise());
-  SO2d state_6(-M_PI_2     + noise());
-  SO2d state_7(-M_PI/4.    + noise());
+  SO2d state_0( /*0*/          + noise());
+  SO2d state_1( /*M_PI/4.*/    + noise());
+  SO2d state_2( /*M_PI_2*/     + noise());
+  SO2d state_3( /*3.*M_PI/4.*/ + noise());
+  SO2d state_4( /*M_PI*/       + noise());
+  SO2d state_5(/*-3.*M_PI/4 */ + noise());
+  SO2d state_6(/*-M_PI_2*/     + noise());
+  SO2d state_7(/*-M_PI/4.*/    + noise());
 
   std::cout << "Initial states :\n";
   std::cout << "p0 : [" << state_0.angle() << "]\n";
@@ -204,7 +278,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
   ConstraintSO2 constraint_4_5(M_PI/4.);
   ConstraintSO2 constraint_5_6(M_PI/4.);
   ConstraintSO2 constraint_6_7(M_PI/4.);
-  ConstraintSO2 constraint_7_0(M_PI/4.);
+//  ConstraintSO2 constraint_7_0(M_PI/4.);
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( &constraint_0_1,
@@ -235,9 +309,9 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SO2_CONSTRAINT)
                             nullptr,
                             state_6.data(), state_7.data() );
 
-  problem.AddResidualBlock( &constraint_7_0,
-                            nullptr,
-                            state_7.data(), state_0.data() );
+//  problem.AddResidualBlock( &constraint_7_0,
+//                            nullptr,
+//                            state_7.data(), state_0.data() );
 
   // Anchor state 0 at 0
   ObjectiveSO2 obj_origin(0);

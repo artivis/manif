@@ -1,12 +1,7 @@
 #ifndef _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_
 #define _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_
 
-/// @todo should I include them all ?
-/// most likely
-//#include "manif/impl/SO2_map.h"
-
 #include "manif/ceres/ceres_traits.h"
-#include "manif/ceres/ceres_jacobian_helper.h"
 
 #include <ceres/local_parameterization.h>
 
@@ -19,9 +14,8 @@ class LocalParameterization
 {
   using Manifold = _Manifold;
   using Tangent  = typename _Manifold::Tangent;
-  using Jacobian = typename _Manifold::Jacobian;
 
-  using JacobianMap = typename internal::traits_ceres<Manifold>::JacobianMap;
+  using JacobianMap = typename internal::traits_ceres<Manifold>::LocalParamJacobianMap;
 
   template <typename _Scalar>
   using ManifoldTemplate =
@@ -33,7 +27,9 @@ class LocalParameterization
 
 public:
 
-  LocalParameterization() : tangent_zero_(Tangent::Zero()) {}
+  using Jacobian = typename internal::traits_ceres<Manifold>::LocalParamJacobian;
+
+  LocalParameterization() = default;
   virtual ~LocalParameterization() = default;
 
   template<typename T>
@@ -47,23 +43,6 @@ public:
     Eigen::Map<ManifoldTemplate<T>> state_plus_delta(state_plus_delta_raw);
 
     state_plus_delta = state + delta;
-
-//    auto ttt = delta.retract();
-
-//    std::cout << "state r " << state.coeffs()(0) << "\n";
-//    std::cout << "state i " << state.coeffs()(1) << "\n";
-//    std::cout << "state a " << state.angle() << "\n";
-
-//    std::cout << "delta " << delta.coeffs()(0) << "\n";
-
-//    std::cout << "delta_ret r " << ttt.coeffs()(0) << "\n";
-//    std::cout << "delta_ret i " << ttt.coeffs()(1) << "\n";
-//    std::cout << "delta_ret a " << ttt.angle() << "\n";
-
-//    std::cout << "state_plus_delta r " << state_plus_delta.coeffs()(0) << "\n";
-//    std::cout << "state_plus_delta i " << state_plus_delta.coeffs()(1) << "\n";
-//    std::cout << "state_plus_delta a " << state_plus_delta.angle() << "\n";
-//    std::cout << "----------------------------------\n\n";
 
     return true;
   }
@@ -88,26 +67,15 @@ public:
    * @param jacobian_raw
    * @return
    */
-  virtual bool ComputeJacobian(double const* state_raw,
+  virtual bool ComputeJacobian(double const* /*state_raw*/,
                                double* rplus_jacobian_raw) const override
   {
-    const Eigen::Map<const Manifold> state(state_raw);
-
-    Jacobian J_rplus_t_;
-    state.rplus(tangent_zero_, Manifold::_, J_rplus_t_);
-
-    JacobianMap rplus_jacobian(rplus_jacobian_raw);
-    rplus_jacobian.noalias() = computeLiftJacobianGlobal(state) * J_rplus_t_;
-
+    JacobianMap(rplus_jacobian_raw).setIdentity();
     return true;
   }
 
   virtual int GlobalSize() const override { return Manifold::RepSize; }
   virtual int LocalSize()  const override { return Manifold::DoF; }
-
-protected:
-
-  const Tangent tangent_zero_;
 };
 
 //using LocalParameterizationSO2 = LocalParameterization<SO2d>;
