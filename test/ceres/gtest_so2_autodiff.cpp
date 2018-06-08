@@ -3,22 +3,9 @@
 #include "../test_utils.h"
 
 #include "manif/SO2.h"
-#include "manif/ceres/local_parametrization.h"
-#include "manif/ceres/objective.h"
-#include "manif/ceres/constraint.h"
-
-#include "manif/ceres/ceres_utils.h"
+#include "manif/ceres/ceres.h"
 
 #include <ceres/ceres.h>
-
-namespace manif
-{
-
-using LocalParameterizationSO2 = LocalParameterization<SO2d>;
-using ObjectiveSO2  = Objective<SO2d>;
-using ConstraintSO2 = Constraint<SO2d>;
-
-} /* namespace manif */
 
 using namespace manif;
 
