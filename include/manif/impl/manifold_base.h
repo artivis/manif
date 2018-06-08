@@ -187,6 +187,15 @@ private:
 };
 
 template <typename _Derived>
+constexpr int ManifoldBase<_Derived>::Dim;
+template <typename _Derived>
+constexpr int ManifoldBase<_Derived>::DoF;
+template <typename _Derived>
+constexpr int ManifoldBase<_Derived>::N;
+template <typename _Derived>
+constexpr int ManifoldBase<_Derived>::RepSize;
+
+template <typename _Derived>
 const typename ManifoldBase<_Derived>::OptJacobianRef
 ManifoldBase<_Derived>::_ = {};
 
