@@ -69,6 +69,9 @@ public:
   template <typename _DerivedOther>
   Tangent plus(const TangentBase<_DerivedOther>& t) const;
 
+  template <typename _DerivedOther>
+  Tangent minus(const TangentBase<_DerivedOther>& t) const;
+
   /// Some operators
 
   /**
@@ -81,6 +84,9 @@ public:
 
   template <typename _DerivedOther>
   Tangent operator +(const TangentBase<_DerivedOther>& t) const;
+
+  template <typename _DerivedOther>
+  Tangent operator -(const TangentBase<_DerivedOther>& t) const;
 
   /**
    * @brief operator =, assignment oprator
@@ -203,6 +209,14 @@ TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t) const
   return Tangent(coeffs()+t.coeffs().template cast<Scalar>());
 }
 
+template <class _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t) const
+{
+  return Tangent(coeffs()-t.coeffs().template cast<Scalar>());
+}
+
 /// Operators
 
 template <typename _Derived>
@@ -218,6 +232,14 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::operator +(const TangentBase<_DerivedOther>& t) const
 {
   return plus(t);
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::operator -(const TangentBase<_DerivedOther>& t) const
+{
+  return minus(t);
 }
 
 template <typename _Derived>
