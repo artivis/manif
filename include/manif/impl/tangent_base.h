@@ -44,6 +44,9 @@ public:
   Scalar* data();
   const Scalar* data() const;
 
+  template <class _NewScalar>
+  TangentTemplate<_NewScalar> cast() const;
+
   /// Common Tangent API
 
   _Derived& setZero();
@@ -133,6 +136,14 @@ const typename TangentBase<_Derived>::Scalar*
 TangentBase<_Derived>::data() const
 {
   return derived().coeffs().data();
+}
+
+template <typename _Derived>
+template <class _NewScalar>
+typename TangentBase<_Derived>::template TangentTemplate<_NewScalar>
+TangentBase<_Derived>::cast() const
+{
+  return TangentTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
 }
 
 template <class _Derived>
