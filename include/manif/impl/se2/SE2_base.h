@@ -131,7 +131,10 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::cos;
   using std::sin;
 
-  const Scalar theta = angle();
+  const Scalar theta     = angle();
+  const Scalar cos_theta = cos(theta);
+  const Scalar sin_theta = sin(theta);
+  const Scalar theta_sq  = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
@@ -139,28 +142,14 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   if (abs(theta) < Constants<Scalar>::eps)
   {
     // Taylor approximation
-    const Scalar theta_sq = theta * theta;
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
     B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
   }
   else
   {
-    A = sin(theta) / theta;
-    B = (Scalar(1) - cos(theta)) / theta;
-  }
-
-  if (J_t_m)
-  {
-//    Jacobian rjac = Jacobian::Identity();
-//    rjac.template topLeftCorner<2,2>() =
-//        rotation().template transpose();
-
-//    // Jr^-1
-//    (*J_t_m) = rjac.template transpose();
-
-    // Jr^-1
-    J_t_m->setIdentity();
-    J_t_m->template topLeftCorner<2,2>() = rotation();
+    // Euler
+    A = sin_theta / theta;
+    B = (Scalar(1) - cos_theta) / theta;
   }
 
   const Scalar den = Scalar(1) / (A*A + B*B);
@@ -168,9 +157,42 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   A *= den;
   B *= den;
 
-  return Tangent( A * x() + B * y(),
-                 -B * x() + A * y(),
-                        theta       );
+  Tangent tan( A * x() + B * y(),
+              -B * x() + A * y(),
+               theta       );
+
+  A /= den;
+  B /= den;
+
+  if (J_t_m)
+  {
+    // Jr^-1
+    Jacobian rjac = Jacobian::Identity();
+    rjac(0,0) =  A;
+    rjac(0,1) =  B;
+    rjac(1,0) = -B;
+    rjac(1,1) =  A;
+
+    rjac(0,2) = (-tan.y() + theta*tan.x() + tan.y()*cos_theta - tan.x()*sin_theta)/theta_sq;
+    rjac(1,2) = ( tan.x() + theta*tan.y() - tan.x()*cos_theta - tan.y()*sin_theta)/theta_sq;
+
+    (*J_t_m) = rjac.inverse();
+
+//    Scalar theta_by_2 = theta / Scalar(2);
+
+//    Jacobian rjacinv = Jacobian::Identity();
+//    rjacinv(0,0) =  (theta*sin_theta)/(Scalar(2)-Scalar(2)*cos_theta);
+//    rjacinv(0,1) = -theta_by_2;
+//    rjacinv(1,0) =  theta_by_2;
+//    rjacinv(1,1) =  rjacinv(0,0);
+
+//    rjacinv(0,2) = theta * (theta_by_2*(x()*sin_theta + y()*cos_theta - y()) + cos_theta*x() - x()) / (cos_theta - Scalar(1));
+//    rjacinv(1,2) = theta * (theta_by_2*(y()*sin_theta - x()*cos_theta + x()) + cos_theta*y() - y()) / (cos_theta - Scalar(1));
+
+//    (*J_t_m) = rjacinv;
+  }
+
+  return tan;
 }
 
 template <typename _Derived>
