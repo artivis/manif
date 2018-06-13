@@ -1,7 +1,5 @@
-#include "../test_utils.h"
-
 #include "manif/SO2.h"
-#include "manif/ceres/ceres.h"
+#include "ceres_test_utils.h"
 
 #include <ceres/ceres.h>
 
@@ -694,6 +692,8 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT)
   EXPECT_ANGLE_NEAR(-M_PI_2,    state_6.angle(), ceres_eps);
   EXPECT_ANGLE_NEAR(-M_PI/4.,   state_7.angle(), ceres_eps);
 }
+
+MANIF_TEST_JACOBIANS_CERES(SO2d);
 
 int main(int argc, char** argv)
 {
