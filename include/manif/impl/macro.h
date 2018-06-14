@@ -68,7 +68,10 @@
   using Base::setZero;            \
   using Base::setRandom;          \
   using Base::retract;            \
-  using Base::skew;
+  using Base::skew;               \
+  using Base::rjac;               \
+  using Base::ljac;               \
+  using Base::adj;
 
 #define MANIF_INHERIT_TANGENT_OPERATOR \
   using Base::operator +;              \
