@@ -159,24 +159,12 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
   Tangent tan( A * x() + B * y(),
               -B * x() + A * y(),
-               theta       );
-
-  A /= den;
-  B /= den;
+                     theta       );
 
   if (J_t_m)
   {
     // Jr^-1
-    Jacobian rjac = Jacobian::Identity();
-    rjac(0,0) =  A;
-    rjac(0,1) =  B;
-    rjac(1,0) = -B;
-    rjac(1,1) =  A;
-
-    rjac(0,2) = (-tan.y() + theta*tan.x() + tan.y()*cos_theta - tan.x()*sin_theta)/theta_sq;
-    rjac(1,2) = ( tan.x() + theta*tan.y() - tan.x()*cos_theta - tan.y()*sin_theta)/theta_sq;
-
-    (*J_t_m) = rjac.inverse();
+    (*J_t_m) = tan.rjac().inverse();
 
 //    Scalar theta_by_2 = theta / Scalar(2);
 
