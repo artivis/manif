@@ -3,6 +3,7 @@
 
 #include "manif/impl/se3/SE3_properties.h"
 #include "manif/impl/tangent_base.h"
+#include "manif/impl/so3/SO3Tangent_map.h"
 
 namespace manif
 {
@@ -37,6 +38,13 @@ public:
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
+  LieType skew() const;
+
+  Jacobian rjac() const;
+  Jacobian ljac() const;
+
+  Jacobian adj() const;
+
   /// SE3Tangent specific API
 
   Scalar x() const;
@@ -46,6 +54,18 @@ public:
   //Scalar roll() const;
   //Scalar pitch() const;
   //Scalar yaw() const;
+
+protected:
+
+  Eigen::Map<const SO3Tangent<Scalar>> asSO3() const
+  {
+    return Eigen::Map<const SO3Tangent<Scalar>>(coeffs().data()+3);
+  }
+
+  Eigen::Map<SO3Tangent<Scalar>> asSO3()
+  {
+    return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
+  }
 };
 
 template <typename _Derived>
@@ -68,10 +88,52 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
   if (J_m_t)
   {
+    // e.q. 10.95
+    J_m_t->setZero();
+    J_m_t->template topLeftCorner<3,3>() = asSO3().rjac();
+    J_m_t->template bottomRightCorner<3,3>() =
+        J_m_t->template topLeftCorner<3,3>();
 
+    //J_m_t->template bottomLeftCorner<3,3>() = damn;
   }
 
   return Manifold();
+}
+
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::LieType
+SE3TangentBase<_Derived>::skew() const
+{
+  return (LieType() <<
+    Scalar(0)           , Scalar(-coeffs()(2)), Scalar( coeffs()(1)), Scalar(coeffs()(3)),
+    Scalar( coeffs()(2)), Scalar(0)           , Scalar(-coeffs()(0)), Scalar(coeffs()(4)),
+    Scalar(-coeffs()(1)), Scalar( coeffs()(0)), Scalar(0)           , Scalar(coeffs()(5)),
+    Scalar(0)           , Scalar(0)           , Scalar(0)           , Scalar(0)
+          ).finished();
+}
+
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::Jacobian
+SE3TangentBase<_Derived>::rjac() const
+{
+  MANIF_NOT_IMPLEMENTED_YET
+  return Jacobian::Constant(Scalar(1));
+}
+
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::Jacobian
+SE3TangentBase<_Derived>::ljac() const
+{
+  MANIF_NOT_IMPLEMENTED_YET
+  return Jacobian::Constant(Scalar(1));
+}
+
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::Jacobian
+SE3TangentBase<_Derived>::adj() const
+{
+  MANIF_NOT_IMPLEMENTED_YET
+  return Jacobian::Constant(Scalar(1));
 }
 
 /// SE3Tangent specific API
