@@ -159,7 +159,7 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_LMINUS)
 
   auto so2c = callLminus(so2a, so2b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so2c.angle());
+  EXPECT_DOUBLE_EQ(M_PI_2, so2c.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_MINUS)
