@@ -609,6 +609,26 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   EXPECT_NEAR(so3c_pert.z(), so3c_lin.z(), 1e-8);
 }
 
+TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC_ADJ)
+{
+  SO3Tangentd tan = SO3Tangentd::Zero();
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.retract().rotation()*tan.rjac());
+
+  tan = SO3Tangentd::Random();
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.retract().rotation()*tan.rjac());
+}
+
+TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC)
+{
+  SO3Tangentd tan = SO3Tangentd::Zero();
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.rjac().transpose());
+  EXPECT_EIGEN_NEAR(tan.rjac(), tan.ljac().transpose());
+
+  tan = SO3Tangentd::Random();
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.rjac().transpose());
+  EXPECT_EIGEN_NEAR(tan.rjac(), tan.ljac().transpose());
+}
+
 MANIF_TEST(SO3d);
 
 MANIF_TEST_JACOBIANS(SO3d);
