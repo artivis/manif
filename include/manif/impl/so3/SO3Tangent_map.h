@@ -13,7 +13,7 @@ struct traits< Eigen::Map<SO3Tangent<_Scalar>,0> >
     : public traits<SO3Tangent<_Scalar>>
 {
   using typename traits<SO3Tangent<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<Eigen::Quaternion<Scalar, 3, 1>, 0>;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 3, 1>, 0>;
 };
 
 template <typename _Scalar>
