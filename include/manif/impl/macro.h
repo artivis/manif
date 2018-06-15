@@ -6,6 +6,9 @@
 #define MANIF_NOT_IMPLEMENTED_YET \
   throw std::runtime_error("Not implemented yet !");
 
+#define MANIF_CHECK(cond, msg) \
+  if (!(cond)) throw std::runtime_error(msg);
+
 /// Manifold - related macros
 
 #define MANIF_MANIFOLD_PROPERTIES                                     \
