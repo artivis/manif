@@ -96,8 +96,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_RANDOM)              \
   { evalRandom(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
-  { evalZero(); }
-
+  { evalZero(); }                                                         \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP10)            \
+  { evalInterp01(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -306,6 +307,17 @@ public:
   {
     EXPECT_EIGEN_NEAR(Tangent::Zero().coeffs(),
                       Tangent::DataType::Zero());
+  }
+
+  void evalInterp01()
+  {
+    Manifold interp = state.interp(state_other, 0);
+
+    EXPECT_MANIF_NEAR(state, interp, tol_);
+
+    interp = state.interp(state_other, 1);
+
+    EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
 
 protected:

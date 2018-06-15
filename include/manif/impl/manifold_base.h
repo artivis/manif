@@ -126,7 +126,11 @@ public:
 
   /// @todo
 //  LieType lie() const {return derived().lie();}
-//  Manifold interpolate() {return derived().interpolate();}
+  template <typename _DerivedOther, typename _ScalarOther>
+  Manifold interp(const ManifoldBase<_DerivedOther>& m,
+                  const _ScalarOther s,
+                  OptJacobianRef J_mc_ma = {},
+                  OptJacobianRef J_mc_mb = {});
 
   /// Some operators
 
@@ -497,6 +501,88 @@ ManifoldBase<_Derived>::between(
   }
 
   return mc;
+}
+
+template <typename _Derived>
+template <typename _DerivedOther, typename _ScalarOther>
+typename ManifoldBase<_Derived>::Manifold
+ManifoldBase<_Derived>::interp(const ManifoldBase<_DerivedOther>& m,
+                               const _ScalarOther s,
+                               OptJacobianRef J_mc_ma,
+                               OptJacobianRef J_mc_mb)
+{
+  Scalar interp_factor(s);
+  MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
+              "s must be be in [0, 1].");
+
+  Manifold mc;
+
+  /// @todo optimize this
+  if (J_mc_ma && J_mc_mb)
+  {
+    Jacobian J_rmin_ma, J_rmin_mb;
+    Jacobian J_ret_rmin;
+    Jacobian J_mc_ret, p1J_mc_ma;
+
+    mc = compose(
+      (m.rminus(derived(), J_rmin_mb, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
+        p1J_mc_ma, J_mc_ret );
+
+    (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
+    (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
+  }
+  else if (J_mc_ma)
+  {
+    Jacobian J_rmin_ma;
+    Jacobian J_ret_rmin;
+    Jacobian J_mc_ret, p1J_mc_ma;
+
+    mc = compose(
+      (m.rminus(derived(), _, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
+        p1J_mc_ma, J_mc_ret );
+
+    (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
+  }
+  else if (J_mc_mb)
+  {
+    Jacobian J_rmin_mb;
+    Jacobian J_ret_rmin;
+    Jacobian J_mc_ret;
+
+    mc = compose(
+      (m.rminus(derived(), J_rmin_mb, _) * interp_factor).retract(J_ret_rmin),
+        _, J_mc_ret );
+
+    (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
+  }
+  else
+  {
+    mc = compose( (m.rminus(derived()) * interp_factor).retract() );
+  }
+
+  return mc;
+
+  ///
+
+//  Jacobian J_rmin_ma, J_rmin_mb;
+//  Jacobian J_ret_rmin;
+//  Jacobian J_mc_ret, p1J_mc_ma;
+
+//  Manifold mc = compose(
+//    (m.rminus(derived(), J_rmin_mb, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
+//      p1J_mc_ma, J_mc_ret );
+
+//  if (J_mc_ma)
+//  {
+//    (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
+//  }
+
+//  if (J_mc_mb)
+//  {
+//    (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
+//  }
+
+//  return mc;
 }
 
 template <typename _Derived>
