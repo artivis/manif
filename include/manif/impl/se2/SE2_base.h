@@ -52,6 +52,8 @@ public:
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  Jacobian adj() const;
+
   using Base::coeffs;
   using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
@@ -251,6 +253,17 @@ SE2Base<_Derived>::act(const Vector &v,
   }
 
   return transform() * v;
+}
+
+template <typename _Derived>
+typename SE2Base<_Derived>::Jacobian
+SE2Base<_Derived>::adj() const
+{
+  Jacobian Adj = Jacobian::Identity();
+  Adj.template topLeftCorner<2,2>() = rotation();
+  Adj(0,2) =  y();
+  Adj(0,2) = -x();
+  return Adj;
 }
 
 /// SE2 specific function

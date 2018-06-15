@@ -52,6 +52,8 @@ public:
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  Jacobian adj() const;
+
   using Base::coeffs;
   using Base::coeffs_nonconst;
   using Base::data;
@@ -111,8 +113,8 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Transformation
 SE3Base<_Derived>::transform() const
 {
-  Transformation T(Transformation::Identity());
-  T.template block<3,3>(0,0) = rotation();
+  Transformation T = Transformation::Identity();
+  T.template topLeftCorner<3,3>() = rotation();
   T(0,2) = x();
   T(1,2) = y();
   T(2,2) = z();
@@ -130,7 +132,7 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Translation
 SE3Base<_Derived>::translation() const
 {
-  return coeffs().template block<Dim,1>(0,0);
+  return coeffs().template head<3>();
 }
 
 template <typename _Derived>
@@ -162,8 +164,10 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
           );
 
     J_minv_m->setIdentity();
-    J_minv_m->template block<Dim,Dim>(0,0) = rotation().transpose();
-    J_minv_m->template block<Dim,1>(0,3) = rotation().transpose() * u_x * translation();
+    J_minv_m->template topLeftCorner<Dim,Dim>() =
+        rotation().transpose();
+    J_minv_m->template topRightCorner<Dim,1>() =
+        J_minv_m->template topLeftCorner<Dim,Dim>() * u_x * translation();
   }
 
   return Manifold(-rotation().transpose() * translation(),
@@ -265,6 +269,25 @@ SE3Base<_Derived>::act(const Vector &v,
   }
 
   return transform() * v;
+}
+
+template <typename _Derived>
+typename SE3Base<_Derived>::Jacobian
+SE3Base<_Derived>::adj() const
+{
+  Rotation T;
+  T <<  Scalar(0), -z()      ,  y(),
+        z()      ,  Scalar(0), -x(),
+       -y()      ,  x()      ,  Scalar(0);
+
+  Jacobian Adj = Jacobian::Zero();
+  Adj.template topLeftCorner<3,3>() = rotation();
+  Adj.template bottomRightCorner<3,3>() =
+      Adj.template topLeftCorner<3,3>();
+  Adj.template bottomLeftCorner<3,3>() =
+    T * Adj.template topLeftCorner<3,3>();
+
+  return Adj;
 }
 
 /// SE3 specific function

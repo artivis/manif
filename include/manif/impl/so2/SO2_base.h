@@ -57,6 +57,8 @@ public:
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  Jacobian adj() const;
+
   using Base::coeffs;
   using Base::setRandom;
   using Base::rplus;
@@ -179,6 +181,13 @@ SO2Base<_Derived>::act(const Vector &v,
   }
 
   return rotation() * v;
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Jacobian
+SO2Base<_Derived>::adj() const
+{
+  return rotation();
 }
 
 /// SO2 specific function
