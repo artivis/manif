@@ -30,7 +30,8 @@
   using Base::rotation;             \
   using Base::setIdentity;          \
   using Base::inverse;              \
-  using Base::lift;
+  using Base::lift;                 \
+  using Base::adj;
 
 #define MANIF_INHERIT_MANIFOLD_OPERATOR \
   using Base::operator +;               \
