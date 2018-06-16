@@ -84,7 +84,7 @@ public:
 
 protected:
 
-  DataType data_;
+  const DataType data_;
 };
 
 } /* namespace Eigen */
