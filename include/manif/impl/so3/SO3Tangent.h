@@ -23,18 +23,15 @@ struct traits<SO3Tangent<_Scalar>>
   using Manifold = SO3<_Scalar>;
   using Tangent  = SO3Tangent<_Scalar>;
 
-  /// @todo is it useful ???
   using Base = SO3TangentBase<_Scalar>;
 
   static constexpr int Dim     = ManifoldProperties<Base>::Dim;
   static constexpr int DoF     = ManifoldProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
-  using DataType  = Eigen::Matrix<Scalar, DoF, 1>;
-
+  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-
-  using LieType = Eigen::Matrix<Scalar, 3, 3>;
+  using LieType  = Eigen::Matrix<Scalar, 3, 3>;
 };
 
 } /* namespace internal */
@@ -59,9 +56,7 @@ private:
 
 public:
 
-  using Scalar = typename Base::Scalar;
-  using Manifold = typename Base::Manifold;
-  using DataType = typename Base::DataType;
+  MANIF_TANGENT_TYPEDEF
 
   SO3Tangent() = default;
 
@@ -73,6 +68,7 @@ public:
   const DataType& coeffs() const;
 
   MANIF_INHERIT_TANGENT_API;
+  MANIF_INHERIT_TANGENT_OPERATOR;
 
   /// SO3Tangent specific API
 

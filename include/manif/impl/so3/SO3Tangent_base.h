@@ -4,8 +4,6 @@
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
-#include <Eigen/Geometry>
-
 namespace manif
 {
 
@@ -28,14 +26,11 @@ public:
   MANIF_TANGENT_PROPERTIES
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   /// Tangent common API
 
-  using Base::data;
   using Base::coeffs;
-
-  void zero();
-  void random();
 
   LieType skew() const;
 
@@ -47,18 +42,6 @@ public:
   Scalar y() const;
   Scalar z() const;
 };
-
-template <typename _Derived>
-void SO3TangentBase<_Derived>::zero()
-{
-  coeffs().setZero();
-}
-
-template <typename _Derived>
-void SO3TangentBase<_Derived>::random()
-{
-  coeffs().setRandom();
-}
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Manifold

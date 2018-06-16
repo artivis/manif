@@ -19,10 +19,10 @@ namespace internal
 template <typename _Scalar>
 struct traits<SO3<_Scalar>>
 {
-  using Scalar = _Scalar;
-
   template <typename T>
   using ManifoldTemplate = SO3<T>;
+
+  using Scalar = _Scalar;
 
   using Manifold = SO3<_Scalar>;
   using Tangent  = SO3Tangent<_Scalar>;
@@ -34,7 +34,6 @@ struct traits<SO3<_Scalar>>
   static constexpr int N       = ManifoldProperties<Base>::N;
   static constexpr int RepSize = 4;
 
-//  using DataType       = Eigen::Quaternion<Scalar>;
   using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;
