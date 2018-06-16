@@ -14,12 +14,32 @@ struct traits_ceres
 {
   using Manifold = _Manifold;
 
-  using JacobianMap =
-    Eigen::Map<
-      Eigen::Matrix<typename Manifold::Scalar,
-                    Manifold::RepSize,
-                    Manifold::DoF/*,
-                    Eigen::RowMajor*/>>;
+  using ObjectiveJacobian =
+    Eigen::Matrix<typename Manifold::Scalar,
+                  Manifold::DoF,
+                  Manifold::RepSize,
+                  Eigen::RowMajor>;
+
+  using ObjectiveJacobianMap =
+    Eigen::Map<ObjectiveJacobian>;
+
+  using ConstraintJacobian    = ObjectiveJacobian;
+  using ConstraintJacobianMap = ObjectiveJacobianMap;
+
+  using LocalParamJacobian =
+    Eigen::Matrix<typename Manifold::Scalar,
+                  Manifold::RepSize,
+                  Manifold::DoF,
+                  (Manifold::DoF>1)?
+                    Eigen::RowMajor:
+                    Eigen::ColMajor>;
+
+  /// @note Without the ternary op
+  /// error: static assertion failed: INVALID_MATRIX_TEMPLATE_PARAMETERS
+  /// EIGEN_STATIC_ASSERT((EIGEN_IMPLIES(MaxRowsAtCompileTime==1 && MaxColsAtCompileTime!=1, (Options&RowMajor)==RowMajor)
+
+  using LocalParamJacobianMap =
+    Eigen::Map<LocalParamJacobian>;
 };
 
 } /* namespace internal */

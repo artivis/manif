@@ -13,7 +13,8 @@ struct traits< Eigen::Map<SO3Tangent<_Scalar>,0> >
     : public traits<SO3Tangent<_Scalar>>
 {
   using typename traits<SO3Tangent<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, 3, 1>, 0>;
+  using traits<SO3Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 template <typename _Scalar>
@@ -21,7 +22,8 @@ struct traits< Eigen::Map<const SO3Tangent<_Scalar>,0> >
     : public traits<const SO3Tangent<_Scalar>>
 {
   using typename traits<const SO3Tangent<_Scalar>>::Scalar;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, 3, 1>, 0>;
+  using traits<const SO3Tangent<_Scalar>>::DoF;
+  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
 } /* namespace internal */
@@ -35,7 +37,6 @@ class Map<manif::SO3Tangent<_Scalar>, 0>
     : public manif::SO3TangentBase<Map<manif::SO3Tangent<_Scalar>, 0> >
 {
   using Base = manif::SO3TangentBase<Map<manif::SO3Tangent<_Scalar>, 0> >;
-  using Type = Map<manif::SO3Tangent<_Scalar>, 0>;
 
 public:
 
@@ -71,7 +72,7 @@ public:
 
 protected:
 
-  DataType data_;
+  const DataType data_;
 };
 
 } /* namespace Eigen */

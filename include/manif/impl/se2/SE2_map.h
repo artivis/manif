@@ -37,12 +37,10 @@ class Map<manif::SE2<_Scalar>, 0>
     : public manif::SE2Base<Map<manif::SE2<_Scalar>, 0> >
 {
   using Base = manif::SE2Base<Map<manif::SE2<_Scalar>, 0> >;
-  using Type = Map<manif::SE2<_Scalar>, 0>;
 
 public:
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
-
   MANIF_INHERIT_MANIFOLD_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
@@ -72,7 +70,6 @@ class Map<const manif::SE2<_Scalar>, 0>
 public:
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
-
   MANIF_INHERIT_MANIFOLD_API
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
@@ -87,7 +84,7 @@ public:
 
 protected:
 
-  DataType data_;
+  const DataType data_;
 };
 
 } /* namespace Eigen */

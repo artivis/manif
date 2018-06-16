@@ -24,7 +24,6 @@ private:
 
 public:
 
-  MANIF_MANIFOLD_PROPERTIES
   MANIF_MANIFOLD_TYPEDEF
 
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
@@ -49,7 +48,6 @@ public:
              OptJacobianRef J_vout_v = {}) const;
 
   using Base::coeffs;
-  using Base::coeffs_nonconst;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
 
@@ -66,6 +64,8 @@ public:
   }
 
 protected:
+
+  using Base::coeffs_nonconst;
 
   void normalize();
 };
