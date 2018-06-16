@@ -3,8 +3,6 @@
 
 #include "manif/impl/so2/SO2_base.h"
 
-#include <Eigen/Core>
-
 namespace manif
 {
 
@@ -38,15 +36,11 @@ struct traits<SO2<_Scalar>>
 
   /// @todo move those to some traits ?
 
-  using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
-
-  using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-
+  using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
+  using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, N, N>;
-
-  using Rotation = Eigen::Matrix<Scalar, Dim, Dim>;
-
-  using Vector = Eigen::Matrix<Scalar, DoF, 1>;
+  using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
+  using Vector         = Eigen::Matrix<Scalar, DoF, 1>;
 };
 
 } /* namespace internal */
