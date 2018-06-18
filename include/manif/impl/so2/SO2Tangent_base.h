@@ -53,6 +53,9 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Manifold
 SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
+  using std::cos;
+  using std::sin;
+
   if (J_m_t)
   {
     (*J_m_t) = rjac();
