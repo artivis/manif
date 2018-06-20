@@ -18,16 +18,16 @@
 #define __GET_4TH_ARG(arg1,arg2,arg3,arg4, ...) arg4
 
 #define EXPECT_MANIF_NEAR_DEFAULT_TOL(A,B) \
-  EXPECT_TRUE(manif::isManifNear(A, B))
+  EXPECT_TRUE(manif::isManifNear(A, B, #A, #B))
 
 #define EXPECT_MANIF_NEAR_TOL(A,B,tol) \
-  EXPECT_TRUE(manif::isManifNear(A, B, tol))
+  EXPECT_TRUE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define EXPECT_MANIF_NOT_NEAR_DEFAULT_TOL(A,B) \
-  EXPECT_FALSE(manif::isManifNear(A, B))
+  EXPECT_FALSE(manif::isManifNear(A, B, #A, #B))
 
 #define EXPECT_MANIF_NOT_NEAR_TOL(A,B,tol) \
-  EXPECT_FALSE(manif::isManifNear(A, B, tol))
+  EXPECT_FALSE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define __EXPECT_MANIF_NEAR_CHOOSER(...) \
   __GET_4TH_ARG(__VA_ARGS__, EXPECT_MANIF_NEAR_TOL, \
@@ -44,10 +44,10 @@
   __EXPECT_MANIF_NOT_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
 #define ASSERT_MANIF_NEAR_DEFAULT_TOL(A,B) \
-  ASSERT_TRUE(manif::isManifNear(A, B))
+  ASSERT_TRUE(manif::isManifNear(A, B, #A, #B))
 
 #define ASSERT_MANIF_NEAR_TOL(A,B,tol) \
-  ASSERT_TRUE(manif::isManifNear(A, B, tol))
+  ASSERT_TRUE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define __ASSERT_MANIF_NEAR_CHOOSER(...) \
   __GET_4TH_ARG(__VA_ARGS__, ASSERT_MANIF_NEAR_TOL, \
@@ -134,22 +134,33 @@ template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const ManifoldBase<_DerivedA>& manifold_a,
             const ManifoldBase<_DerivedB>& manifold_b,
+            const std::string manifold_a_name = "manifold_a",
+            const std::string manifold_b_name = "manifold_b",
             double tolerance = 1e-5)
 {
-  return isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
-                           (manifold_a-manifold_b).coeffs(),
-                           "expected", "actual",
-                           tolerance);
+  auto result =
+      isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
+                        (manifold_a-manifold_b).coeffs(),
+                        "", "", tolerance);
+
+  return (result ? ::testing::AssertionSuccess()
+                 : ::testing::AssertionFailure()
+                   << manifold_a_name << " != " << manifold_b_name << "\n"
+                   << manifold_a_name << ":\n" << manifold_a << "\n"
+                   << manifold_b_name << ":\n" << manifold_b << "\n"
+                   << "rminus:\n" << (manifold_a - manifold_b) << "\n");
 }
 
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const TangentBase<_DerivedA>& tangent_a,
             const TangentBase<_DerivedB>& tangent_b,
+            const std::string tangent_a_name = "tangent_a",
+            const std::string tangent_b_name = "tangent_b",
             double tolerance = 1e-5)
 {
   return isEigenMatrixNear(tangent_a.coeffs(), tangent_b.coeffs(),
-                           "rhs tangent", "lhs tangent",
+                           tangent_a_name, tangent_b_name,
                            tolerance);
 }
 
