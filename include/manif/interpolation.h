@@ -91,61 +91,61 @@ struct InterpolationHelper<INTERP_METHOD::CUBIC>
     MANIF_CHECK(interp_factor >= _Scalar(0) && interp_factor <= _Scalar(1),
                 "s must be be in [0, 1].");
 
-    const _Scalar t2 = t*t;
-    const _Scalar t3 = t2*t;
+//    const _Scalar t2 = t*t;
+//    const _Scalar t3 = t2*t;
 
     using Manifold = typename ManifoldBase<_Derived>::Manifold;
-    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+//    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
 
     Manifold mc;
 
-    /// @todo optimize this
-    if (J_mc_ma && J_mc_mb)
-    {
-      Jacobian J_rmin_ma, J_rmin_mb;
-      Jacobian J_ret_rmin;
-      Jacobian J_mc_ret, p1J_mc_ma;
+//    /// @todo optimize this
+//    if (J_mc_ma && J_mc_mb)
+//    {
+//      Jacobian J_rmin_ma, J_rmin_mb;
+//      Jacobian J_ret_rmin;
+//      Jacobian J_mc_ret, p1J_mc_ma;
 
-      mc = ma.compose(
-        (mb.rminus(ma, J_rmin_mb, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
-          p1J_mc_ma, J_mc_ret );
+//      mc = ma.compose(
+//        (mb.rminus(ma, J_rmin_mb, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
+//          p1J_mc_ma, J_mc_ret );
 
-      (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
-      (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
-    }
-    else if (J_mc_ma)
-    {
-      Jacobian J_rmin_ma;
-      Jacobian J_ret_rmin;
-      Jacobian J_mc_ret, p1J_mc_ma;
+//      (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
+//      (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
+//    }
+//    else if (J_mc_ma)
+//    {
+//      Jacobian J_rmin_ma;
+//      Jacobian J_ret_rmin;
+//      Jacobian J_mc_ret, p1J_mc_ma;
 
-      mc = ma.compose(
-        (mb.rminus(ma, ManifoldBase<_Derived>::_, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
-          p1J_mc_ma, J_mc_ret );
+//      mc = ma.compose(
+//        (mb.rminus(ma, ManifoldBase<_Derived>::_, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
+//          p1J_mc_ma, J_mc_ret );
 
-      (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
-    }
-    else if (J_mc_mb)
-    {
-      Jacobian J_rmin_mb;
-      Jacobian J_ret_rmin;
-      Jacobian J_mc_ret;
+//      (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
+//    }
+//    else if (J_mc_mb)
+//    {
+//      Jacobian J_rmin_mb;
+//      Jacobian J_ret_rmin;
+//      Jacobian J_mc_ret;
 
-      mc = ma.compose(
-        (mb.rminus(ma, J_rmin_mb, ManifoldBase<_Derived>::_) * interp_factor).retract(J_ret_rmin),
-          ManifoldBase<_Derived>::_, J_mc_ret );
+//      mc = ma.compose(
+//        (mb.rminus(ma, J_rmin_mb, ManifoldBase<_Derived>::_) * interp_factor).retract(J_ret_rmin),
+//          ManifoldBase<_Derived>::_, J_mc_ret );
 
-      (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
-    }
-    else
-    {
-      const auto ta = ma.lift();
-      const auto tb = mb.lift();
+//      (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
+//    }
+//    else
+//    {
+//      const auto ta = ma.lift();
+//      const auto tb = mb.lift();
 
-      mc = ((mb.rminus(ma) * (_Scalar(3)*t2 - _Scalar(2)*t3)) +
-            ta * (t3 - _Scalar(2)*t2 + t) +
-            tb * (t3 - t2)).lift();
-    }
+//      mc = ((mb.rminus(ma) * (_Scalar(3)*t2 - _Scalar(2)*t3)) +
+//            ta * (t3 - _Scalar(2)*t2 + t) +
+//            tb * (t3 - t2)).lift();
+//    }
 
     return mc;
   }
@@ -170,6 +170,8 @@ interpolate(const ManifoldBase<_Derived>& ma,
   default:
     break;
   }
+
+  return typename ManifoldBase<_Derived>::Manifold();
 }
 
 } /* namespace manif */
