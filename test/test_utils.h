@@ -2,6 +2,7 @@
 #define _MANIF_MANIF_TEST_UTILS_H_
 
 #include "manif/impl/manifold_base.h"
+#include "manif/average.h"
 #include "manif/impl/utils.h"
 
 #include "eigen_gtest.h"
@@ -98,7 +99,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
   { evalZero(); }                                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP10)            \
-  { evalInterp01(); }
+  { evalInterp01(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
+  { evalAvgBiInvariant(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -157,7 +160,8 @@ template <typename _Manifold>
 class CommonTester : public ::testing::Test
 {
   using Manifold = _Manifold;
-  using Tangent  = typename _Manifold::Tangent;
+  using Scalar   = typename Manifold::Scalar;
+  using Tangent  = typename Manifold::Tangent;
 
 public:
 
@@ -320,9 +324,31 @@ public:
     EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
 
+  void evalAvgBiInvariant()
+  {
+    std::vector<Manifold> mans;
+
+    const int N = 15;
+    for (int i=0; i<N; ++i)
+      mans.emplace_back(Manifold::Random());
+
+    const auto avg = average_biinvariant(mans);
+
+    // A proper mean function should always return
+    // the same mean no matter the initial pivot.
+    for (int i=0; i<20; ++i)
+    {
+      std::random_shuffle( mans.begin(), mans.end() );
+
+      const auto avg_shu = average_biinvariant(mans);
+
+      EXPECT_MANIF_NEAR(avg, avg_shu, tol_);
+    }
+  }
+
 protected:
 
-  double tol_ = 1e-15;
+  Scalar tol_ = Constants<Scalar>::eps;
 
   Manifold state;
   Manifold state_other;
