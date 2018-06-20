@@ -9,7 +9,7 @@ template <typename E, typename... Args>
 constexpr void
 __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 {
-    throw E(std::forward<Args>(args)...);
+  throw E(std::forward<Args>(args)...);
 }
 } /* namespace detail */
 } /* namespace manif */

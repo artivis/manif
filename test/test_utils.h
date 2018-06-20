@@ -337,6 +337,10 @@ public:
 
   void evalAvgBiInvariant()
   {
+    const auto dummy = Manifold::Random();
+    EXPECT_MANIF_NEAR(dummy,
+     average_biinvariant(std::vector<Manifold>{dummy}), tol_);
+
     std::vector<Manifold> mans;
 
     const int N = 15;
