@@ -89,7 +89,7 @@ struct InterpolationHelper<INTERP_METHOD::CUBIC>
   {
     using Scalar   = typename ManifoldBase<_Derived>::Scalar;
     using Manifold = typename ManifoldBase<_Derived>::Manifold;
-    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+//    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
 
     Scalar interp_factor(t);
     MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
