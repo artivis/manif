@@ -2,6 +2,7 @@
 #define _MANIF_MANIF_TEST_UTILS_H_
 
 #include "manif/impl/manifold_base.h"
+#include "manif/interpolation.h"
 #include "manif/average.h"
 #include "manif/impl/utils.h"
 
@@ -98,8 +99,10 @@
   { evalRandom(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
   { evalZero(); }                                                         \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP10)            \
-  { evalInterp01(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SLERP10)             \
+  { evalSlerp01(); }                                                      \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
+  { evalCubic01(); }                                                      \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
   { evalAvgBiInvariant(); }
 
@@ -324,13 +327,24 @@ public:
                       Tangent::DataType::Zero());
   }
 
-  void evalInterp01()
+  void evalSlerp01()
   {
     Manifold interp = state.interp(state_other, 0);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
     interp = state.interp(state_other, 1);
+
+    EXPECT_MANIF_NEAR(state_other, interp, tol_);
+  }
+
+  void evalCubic01()
+  {
+    Manifold interp = interpolate(state, state_other, 0);
+
+    EXPECT_MANIF_NEAR(state, interp, tol_);
+
+    interp = interpolate(state, state_other, 1);
 
     EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
