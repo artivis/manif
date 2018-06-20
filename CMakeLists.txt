@@ -29,6 +29,7 @@ find_package(Eigen3 REQUIRED)
 # catkin build manif --cmake-args -DBUILD_TESTING=ON
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
+option(BUILD_EXAMPLES "Build all examples." OFF)
 
 ###########
 ## Build ##
@@ -141,6 +142,16 @@ install(FILES package.xml
   DESTINATION share/${PROJECT_NAME}
 #  DESTINATION "${config_install_dir}"
 )
+
+##############
+## Examples ##
+##############
+
+if(BUILD_EXAMPLES)
+
+  add_subdirectory(examples)
+
+endif(BUILD_EXAMPLES)
 
 #############
 ## Testing ##
