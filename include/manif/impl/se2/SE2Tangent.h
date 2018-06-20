@@ -3,7 +3,7 @@
 
 #include "manif/impl/se2/SE2Tangent_base.h"
 
-#include <Eigen/Core>
+#include <Eigen/Dense>
 
 namespace manif
 {
