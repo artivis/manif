@@ -9,16 +9,15 @@ namespace manif
 enum class INTERP_METHOD
 {
   SLERP,
-  CUBIC
+  CUBIC,
+  TWOSTEPS,
 };
 
-namespace detail {
-
 template <INTERP_METHOD Method>
-struct InterpolationHelper;
+struct Interpolater;
 
 template <>
-struct InterpolationHelper<INTERP_METHOD::SLERP>
+struct Interpolater<INTERP_METHOD::SLERP>
 {
   template <typename _Derived, typename _Scalar>
   static typename ManifoldBase<_Derived>::Manifold
@@ -77,7 +76,7 @@ struct InterpolationHelper<INTERP_METHOD::SLERP>
 };
 
 template <>
-struct InterpolationHelper<INTERP_METHOD::CUBIC>
+struct Interpolater<INTERP_METHOD::CUBIC>
 {
   template <typename _Derived, typename _Scalar>
   static typename ManifoldBase<_Derived>::Manifold
@@ -132,7 +131,79 @@ struct InterpolationHelper<INTERP_METHOD::CUBIC>
   }
 };
 
-} /* namespace detail */
+/**
+ * @note "A two-step algorithm of smooth spline
+ * generation on Riemannian manifolds",
+ * Janusz Jakubiak and Fátima Silva Leite and Rui C. Rodrigues.
+ */
+template <>
+struct Interpolater<INTERP_METHOD::TWOSTEPS>
+{
+  template <typename _Derived, typename _Scalar>
+  static typename ManifoldBase<_Derived>::Manifold
+  interp(const ManifoldBase<_Derived>& ma,
+         const ManifoldBase<_Derived>& mb,
+         const _Scalar t,
+         const int m = 2,
+         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma = ManifoldBase<_Derived>::_,
+         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb = ManifoldBase<_Derived>::_)
+  {
+    using Scalar   = typename ManifoldBase<_Derived>::Scalar;
+    using Manifold = typename ManifoldBase<_Derived>::Manifold;
+//    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+
+    Scalar interp_factor(t);
+    MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
+                "s must be be in [0, 1].");
+
+    const Scalar t2 = t*t;
+    const Scalar t3 = t2*t;
+    const Scalar t4 = t3*t;
+    const Scalar t5 = t4*t;
+    const Scalar t6 = t5*t;
+    const Scalar t7 = t6*t;
+    const Scalar t8 = t7*t;
+    const Scalar t9 = t8*t;
+
+    Scalar psi;
+
+    switch (m) {
+    case 1:
+      psi = Scalar(3)*t2 - Scalar(2)*t3;
+      break;
+    case 2:
+      psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+      break;
+    case 3:
+      psi = Scalar(35)*t4 - Scalar(84)*t5 + Scalar(70)*t6 - Scalar(20)*t7;
+      break;
+    case 4:
+      psi = Scalar(126)*t5 - Scalar(420)*t6 + Scalar(540)*t7 - Scalar(315)*t8 + Scalar(70)*t9;
+      break;
+    default:
+      // m = 2
+      psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+      break;
+    }
+
+    Manifold mc;
+
+    const auto ta  = ma.lift();
+    const auto tb  = mb.lift();
+//    const auto tab = mb.rminus(ma);
+    //      const auto tba = ma.rminus(mb);
+
+    const auto l = (ta*t).retract().compose(ma);
+    const auto r = (tb*(t-Scalar(1))).retract().compose(mb);
+    const auto B = r.lminus(l);
+
+    mc = (B*psi).retract().compose(l);
+
+    return mc;
+  }
+
+
+};
 
 template <typename _Derived, typename _Scalar>
 typename ManifoldBase<_Derived>::Manifold
@@ -145,9 +216,11 @@ interpolate(const ManifoldBase<_Derived>& ma,
 {
   switch (method) {
   case INTERP_METHOD::SLERP:
-    return detail::InterpolationHelper<INTERP_METHOD::SLERP>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
+    return Interpolater<INTERP_METHOD::SLERP>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
   case INTERP_METHOD::CUBIC:
-    return detail::InterpolationHelper<INTERP_METHOD::CUBIC>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
+    return Interpolater<INTERP_METHOD::CUBIC>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
+  case INTERP_METHOD::TWOSTEPS:
+    return Interpolater<INTERP_METHOD::TWOSTEPS>::interp(ma, mb, t, 2, J_mc_ma, J_mc_mb);
   default:
     break;
   }
