@@ -3,6 +3,27 @@
 
 #include <iostream>
 
+template <typename T>
+constexpr T binomial_coefficient(const T n, const T k)
+{
+  return (n >= k) ? (k >= 0) ?
+  (k*2 > n) ? binomial_coefficient(n, n-k) :
+                     k ? binomial_coefficient(n, k - 1) * (n - k + 1) / k : 1
+  // assert n ≥ k ≥ 0
+  : (throw std::logic_error("k >= 0 !")) : (throw std::logic_error("n >= k !"));
+}
+
+template <typename Manifold>
+std::vector<typename Manifold::Manifold>
+computeBezierCurve(const std::vector<Manifold>& control_points,
+                   const int degree)
+{
+  MANIF_CHECK(degree <= control_points, "Oups");
+
+  return std::vector<typename Manifold::Manifold>();
+}
+
+
 int main(int argc, char** argv)
 {
   manif::INTERP_METHOD interp_method =
