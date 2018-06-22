@@ -36,6 +36,11 @@ public:
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
+  Jacobian rjac() const;
+  Jacobian ljac() const;
+
+  Jacobian adj() const;
+
   /// SO3Tangent specific API
 
   Scalar x() const;
@@ -80,6 +85,49 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
     return Manifold(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
   }
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::rjac() const
+{
+//  Jacobian Jr;
+//  retract(Jr);
+
+//  return Jr;
+
+  return ljac().transpose();
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::ljac() const
+{
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta_sq = coeffs().squaredNorm();
+
+  const LieType W = skew();
+
+  // Small angle approximation
+  if (theta_sq <= Constants<Scalar>::eps)
+    return Jacobian::Identity() - Scalar(0.5) * W;
+
+  const Scalar theta = sqrt(theta_sq); // rotation angle
+  Jacobian M1, M2;
+  M1.noalias() = (Scalar(1) - cos(theta)) / theta_sq * W;
+  M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);
+
+  return Jacobian::Identity() + M1 + M2;
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::adj() const
+{
+  return skew();
 }
 
 template <typename _Derived>

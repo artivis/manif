@@ -47,6 +47,8 @@ public:
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  Jacobian adj() const;
+
   using Base::coeffs;
   MANIF_INHERIT_MANIFOLD_AUTO_API
   MANIF_INHERIT_MANIFOLD_OPERATOR
@@ -217,6 +219,13 @@ SO3Base<_Derived>::act(const Vector &v,
   }
 
   return rotation() * v;
+}
+
+template <typename _Derived>
+typename SO3Base<_Derived>::Jacobian
+SO3Base<_Derived>::adj() const
+{
+  return rotation();
 }
 
 /// SO3 specific

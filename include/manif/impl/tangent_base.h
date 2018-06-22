@@ -72,6 +72,11 @@ public:
   template <typename _DerivedOther>
   Tangent minus(const TangentBase<_DerivedOther>& t) const;
 
+  Jacobian rjac() const;
+  Jacobian ljac() const;
+
+  Jacobian adj() const;
+
   /// Some operators
 
   /**
@@ -223,6 +228,28 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t) const
 {
   return Tangent(coeffs()-t.coeffs().template cast<Scalar>());
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Jacobian
+TangentBase<_Derived>::rjac() const
+{
+  return derived().rjac();
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Jacobian
+TangentBase<_Derived>::ljac() const
+{
+  return derived().ljac();
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Jacobian
+TangentBase<_Derived>::adj() const
+{
+  //  return derived().ljac()*derived().rjac().inverse();
+  return derived().adj();
 }
 
 /// Operators

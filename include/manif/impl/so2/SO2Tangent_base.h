@@ -37,6 +37,11 @@ public:
 
   LieType skew() const;
 
+  Jacobian rjac() const;
+  Jacobian ljac() const;
+
+  Jacobian adj() const;
+
   /// SO2Tangent specific API
 
   //const Scalar& angle() const;
@@ -48,9 +53,12 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Manifold
 SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
+  using std::cos;
+  using std::sin;
+
   if (J_m_t)
   {
-    J_m_t->setConstant(Scalar(1));
+    (*J_m_t) = rjac();
   }
 
   return Manifold(cos(coeffs()(0)), sin(coeffs()(0)));
@@ -63,6 +71,30 @@ SO2TangentBase<_Derived>::skew() const
   return (LieType() <<
     Scalar(0)          , Scalar(-coeffs()(0)),
     Scalar(coeffs()(0)), Scalar(0)            ).finished();
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::rjac() const
+{
+  static const Jacobian Jr = Jacobian::Constant(Scalar(1));
+  return Jr;
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::ljac() const
+{
+  MANIF_NOT_IMPLEMENTED_YET
+  return Jacobian::Constant(Scalar(1));
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::adj() const
+{
+  static const Jacobian adj = Jacobian::Constant(Scalar(1));
+  return adj;
 }
 
 /// SO2Tangent specific API

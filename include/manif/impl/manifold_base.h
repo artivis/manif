@@ -124,6 +124,8 @@ public:
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  Jacobian adj() const;
+
   /// @todo
 //  LieType lie() const {return derived().lie();}
   template <typename _DerivedOther, typename _ScalarOther>
@@ -583,6 +585,13 @@ ManifoldBase<_Derived>::interp(const ManifoldBase<_DerivedOther>& m,
 //  }
 
 //  return mc;
+}
+
+template <typename _Derived>
+typename ManifoldBase<_Derived>::Jacobian
+ManifoldBase<_Derived>::adj() const
+{
+  return derived().adj();
 }
 
 template <typename _Derived>
