@@ -188,14 +188,23 @@ struct Interpolater<INTERP_METHOD::TWOSTEPS>
 
     Manifold mc;
 
-    const auto ta  = ma.lift();
-    const auto tb  = mb.lift();
+    const auto ta = ma.lift();
+    const auto tb = mb.lift();
 
     const auto l = (ta*t).retract().compose(ma);
     const auto r = (tb*(t-Scalar(1))).retract().compose(mb);
     const auto B = r.lminus(l);
 
     mc = (B*psi).retract().compose(l);
+
+//    const auto ta = ma.lift();
+//    const auto tb = mb.lift();
+
+//    const auto l = ma.lplus(ta*t);
+//    const auto r = mb.lplus(tb*(t-Scalar(1)));
+//    const auto B = r.lminus(l);
+
+//    mc = l.lplus(B*psi);
 
     return mc;
   }

@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 
   const double x = std::cos(0);
   const double y = std::sin(0)/2;
-  states.emplace_back(manif::SE2d(x,y,M_PI/2));
+  states.emplace_back(x,y,M_PI/2);
 
   double t = 0;
   for (double i=1; i<n_k_pts; ++i)
@@ -66,12 +66,28 @@ int main(int argc, char** argv)
     const double t = std::atan2(y-states.back().y(),
                                 x-states.back().x());
 
-    states.emplace_back(manif::SE2d(x,y,t));
+    states.emplace_back(x,y,t);
 
     std::cout << x << ","
               << y << ","
               << t << "\n";
   }
+
+
+//  std::cout << 5 << ","
+//            << n_pts << ","
+//            << 0   << "\n";
+
+//  states.emplace_back(0  ,0  , M_PI/2.);
+//  states.emplace_back(2.5,3.5,-M_PI/4.);
+//  states.emplace_back(4  ,2.5, 0);
+//  states.emplace_back(9  ,  1,-M_PI/2.);
+//  states.emplace_back(6  , -1,-M_PI);
+
+//  for (const auto& p : states)
+//    std::cout << p.x() << ","
+//              << p.y() << ","
+//              << p.angle() << "\n";
 
   // Interpolate between k-points
 
