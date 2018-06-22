@@ -190,8 +190,6 @@ struct Interpolater<INTERP_METHOD::TWOSTEPS>
 
     const auto ta  = ma.lift();
     const auto tb  = mb.lift();
-//    const auto tab = mb.rminus(ma);
-    //      const auto tba = ma.rminus(mb);
 
     const auto l = (ta*t).retract().compose(ma);
     const auto r = (tb*(t-Scalar(1))).retract().compose(mb);
@@ -201,8 +199,6 @@ struct Interpolater<INTERP_METHOD::TWOSTEPS>
 
     return mc;
   }
-
-
 };
 
 template <typename _Derived, typename _Scalar>

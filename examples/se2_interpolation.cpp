@@ -50,18 +50,27 @@ int main(int argc, char** argv)
 
   std::vector<manif::SE2d> states;
   states.reserve(n_k_pts);
+
+  const double x = std::cos(0);
+  const double y = std::sin(0)/2;
+  states.emplace_back(manif::SE2d(x,y,M_PI/2));
+
   double t = 0;
-  for (double i=0; i<n_k_pts; ++i)
+  for (double i=1; i<n_k_pts; ++i)
   {
+    t += M_PI*2. / n_k_pts;
+
     const double x = std::cos(t);
     const double y = std::sin(2*t) / 2;
-    states.emplace_back(manif::SE2d(x,y,std::sin(M_PI*2.)));
 
-    t += M_PI*2. / n_k_pts;
+    const double t = std::atan2(y-states.back().y(),
+                                x-states.back().x());
+
+    states.emplace_back(manif::SE2d(x,y,t));
 
     std::cout << x << ","
               << y << ","
-              << 0 << "\n";
+              << t << "\n";
   }
 
   // Interpolate between k-points
@@ -77,10 +86,10 @@ int main(int argc, char** argv)
               << s0.y() << ","
               << s0.angle() << "\n";
 
-    for (int j=1; j<n_pts; ++j)
+    for (int j=1; j<=n_pts; ++j)
     {
       interp = interpolate(s0, s1,
-                           static_cast<double>(j)/n_pts,
+                           static_cast<double>(j)/(n_pts+1),
                            interp_method);
 
       std::cout << interp.x() << ","
@@ -92,6 +101,30 @@ int main(int argc, char** argv)
               << s1.y() << ","
               << s1.angle() << "\n";
   }
+
+  // Close the loop
+
+  const manif::SE2d& s0 = states.back();
+  const manif::SE2d& s1 = states[0];
+
+  std::cout << s0.x() << ","
+            << s0.y() << ","
+            << s0.angle() << "\n";
+
+  for (int j=1; j<=n_pts; ++j)
+  {
+    interp = interpolate(s0, s1,
+                         static_cast<double>(j)/(n_pts+1),
+                         interp_method);
+
+    std::cout << interp.x() << ","
+              << interp.y() << ","
+              << interp.angle() << "\n";
+  }
+
+  std::cout << s1.x() << ","
+            << s1.y() << ","
+            << s1.angle() << "\n";
 
 //  manif::SE2d state(0,0,M_PI/2.),
 //              state_other(2,0,0);
