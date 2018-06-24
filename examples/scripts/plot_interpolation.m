@@ -16,7 +16,7 @@ data = load(file);
 'num k points'
 num_k_pts = data(1,1)
 'num interpolated points'
-num_pts = data(1,2)
+total_pts = size(data(2+num_k_pts:end,1), 1)
 
 r = 0.1; % magnitude (length) of arrow to plot
 

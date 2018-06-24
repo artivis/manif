@@ -50,23 +50,23 @@ int main(int argc, char** argv)
 {
   double n_k_pts = 10;
 
-  if (argc >= 3)
+  if (argc >= 2)
   {
-    n_k_pts = atof(argv[2]);
+    n_k_pts = atof(argv[1]);
   }
 
   double n_pts = 10;
 
-  if (argc >= 4)
+  if (argc >= 3)
   {
-    n_pts = atof(argv[3]);
+    n_pts = atof(argv[2]);
   }
 
   double degree = 3;
 
-  if (argc >= 5)
+  if (argc >= 4)
   {
-    degree = atof(argv[4]);
+    degree = atof(argv[3]);
   }
 
   heightShapeDeCasteljau(degree, n_k_pts, n_pts);
