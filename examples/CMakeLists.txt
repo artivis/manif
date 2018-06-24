@@ -1,10 +1,11 @@
 add_executable(se2_interpolation se2_interpolation.cpp)
-
+add_executable(se2_decasteljau se2_DeCasteljau.cpp)
 
 set(CXX_11_EXAMPLE_TARGETS
 
   # SE2
   se2_interpolation
+  se2_decasteljau
 )
 
 # Link to manif
