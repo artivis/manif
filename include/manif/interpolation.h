@@ -143,7 +143,10 @@ struct Interpolater<INTERP_METHOD::TWOSTEPS>
   static typename ManifoldBase<_Derived>::Manifold
   interp(const ManifoldBase<_Derived>& ma,
          const ManifoldBase<_Derived>& mb,
+         const typename ManifoldBase<_Derived>::Tangent& ta,
+         const typename ManifoldBase<_Derived>::Tangent& tb,
          const _Scalar t,
+         const unsigned int m,
          typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma = ManifoldBase<_Derived>::_,
          typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb = ManifoldBase<_Derived>::_)
   {
@@ -151,36 +154,56 @@ struct Interpolater<INTERP_METHOD::TWOSTEPS>
     using Manifold = typename ManifoldBase<_Derived>::Manifold;
 //    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
 
+    MANIF_CHECK(m >= Scalar(1), "m >= 1 !");
     Scalar interp_factor(t);
     MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
                 "s must be be in [0, 1].");
 
-    const Scalar t3 = t*t*t;
+    const Scalar t2 = t*t;
+    const Scalar t3 = t2*t;
     const Scalar t4 = t3*t;
     const Scalar t5 = t4*t;
+    const Scalar t6 = t5*t;
+    const Scalar t7 = t6*t;
+    const Scalar t8 = t7*t;
+    const Scalar t9 = t8*t;
 
-    // m=2
-    const Scalar psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+    Scalar psi;
 
-    Manifold mc;
+    switch (m) {
+      case 1:
+        psi = Scalar(3)*t2 - Scalar(2)*t3;
+        break;
+      case 2:
+        psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+        break;
+      case 3:
+        psi = Scalar(35)*t4 - Scalar(84)*t5 + Scalar(70)*t6 - Scalar(20)*t7;
+        break;
+      case 4:
+        psi = Scalar(126)*t5 - Scalar(420)*t6 + Scalar(540)*t7 - Scalar(315)*t8 + Scalar(70)*t9;
+        break;
+      default:
+        // m = 2
+        psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+        break;
+    }
 
-    const auto ta = ma.lift();
-    const auto tb = mb.lift();
-
-    const auto l = (ta*t).retract().compose(ma);
-    const auto r = (tb*(t-Scalar(1))).retract().compose(mb);
-    const auto B = r.lminus(l);
-
-    mc = (B*psi).retract().compose(l);
-
-//    const auto ta = ma.lift();
-//    const auto tb = mb.lift();
+    // with lplus
 
 //    const auto l = ma.lplus(ta*t);
 //    const auto r = mb.lplus(tb*(t-Scalar(1)));
 //    const auto B = r.lminus(l);
 
-//    mc = l.lplus(B*psi);
+//    Manifold mc = l.lplus(B*psi);
+
+    // with rplus
+
+    const auto l = ma.rplus(ta*t);
+    const auto r = mb.rplus(tb*(t-Scalar(1)));
+    const auto B = l.rminus(r);
+
+    Manifold mc = r.rplus(B*psi);
 
     return mc;
   }
@@ -201,7 +224,10 @@ interpolate(const ManifoldBase<_Derived>& ma,
   case INTERP_METHOD::CUBIC:
     return Interpolater<INTERP_METHOD::CUBIC>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
   case INTERP_METHOD::TWOSTEPS:
-    return Interpolater<INTERP_METHOD::TWOSTEPS>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
+    return Interpolater<INTERP_METHOD::TWOSTEPS>::interp(ma, mb,
+                                                         ManifoldBase<_Derived>::Tangent::Zero(),
+                                                         ManifoldBase<_Derived>::Tangent::Zero(),
+                                                         t, 4, J_mc_ma, J_mc_mb);
   default:
     break;
   }
