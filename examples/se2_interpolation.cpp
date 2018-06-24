@@ -30,8 +30,9 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
                    const unsigned int degree,
                    const unsigned int k_interp)
 {
-  MANIF_CHECK(degree <= control_points.size(), "Oups");
-  MANIF_CHECK(k_interp > 0, "Oups");
+  MANIF_CHECK(control_points.size() > 2, "Oups0");
+  MANIF_CHECK(degree <= control_points.size(), "Oups1");
+  MANIF_CHECK(k_interp > 0, "Oups2");
 
   bool verbose = false;
 
@@ -67,112 +68,37 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
     std::cout << "\n";
   }
 
-  for (unsigned int t=0; t<n_segments; ++t)
+  const int segment_k_interp = (degree == 2) ?
+        k_interp : k_interp * degree;
+
+  // Actual curve fitting
+  std::vector<Manifold> curve;
+  for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
-//    if (verbose)
-//    std::cout << "Computing segment " << t << " "
-//              << "from control points : ";
-
-//    std::vector<const Manifold*> segment_control_points;
-//    for (int n=0; n<degree; ++n)
-//    {
-//      if (verbose)
-//      std::cout << (t*degree+n) << ", ";
-
-//      segment_control_points.push_back( &control_points[t*degree+n] );
-//    }
-//    if (verbose)
-//    std::cout << "\n";
-
-//    if (verbose)
-//    std::cout << "Retrieved the " << segment_control_points.size()
-//              << " control points of segment " << t << ".\n";
-
-//    std::cout << s0.x() << ","
-//              << s0.y() << ","
-//              << s0.angle() << "\n";
-
-    const int segment_k_interp = (degree == 2) ?
-          k_interp : k_interp * degree;
-
-    // Actual curve fitting
-    std::vector<Manifold> curve;
-    for (unsigned int s=0; s<segments_control_points.size(); ++s)
+    for (int t=1; t<=segment_k_interp; ++t)
     {
-      for (int t=1; t<=segment_k_interp; ++t)
+      // t in [0,1]
+      const double t_01 = static_cast<double>(t)/(segment_k_interp);
+
+      Manifold Qc = Manifold::Identity();
+
+      // recursive chunk of the algo,
+      // compute tmp control points.
+      for (int i=0; i<degree-1; ++i)
       {
-        // t in [0,1]
-        const double t_01 = static_cast<double>(t)/(segment_k_interp);
+        if (verbose)
+          std::cout << "Control point " << i
+                    << " has polynomial "
+                    << polynomialBernstein((double)degree, (double)i, (double)t_01)
+                    << "\n";
 
-        std::vector<Manifold> Qs, Qs_tmp;
-
-        for (const auto m : segments_control_points[s])
-          Qs.emplace_back(*m);
-
-        // recursive chunk of the algo,
-        // compute tmp control points.
-        for (int i=0; i<degree-1; ++i)
-        {
-          for (int q=0; q<Qs.size()-1; ++q)
-          {
-            Qs_tmp.push_back( Qs[q].rplus(Qs[q+1].rminus(Qs[q]) * t_01) );
-          }
-
-          Qs = Qs_tmp;
-          Qs_tmp.clear();
-        }
-
-        curve.push_back(Qs[0]);
+        Qc = Qc.lplus(segments_control_points[s][i]->lift() *
+                      polynomialBernstein((double)degree, (double)i, (double)t_01));
       }
+
+      curve.push_back(Qc);
     }
-
-//    for (int t=1; t<=k_interp; ++t)
-//    {
-//      const double t_01 = static_cast<double>(t)/(k_interp+1);
-
-//      if (verbose)
-//      std::cout << "Computing interp point " << t_01 << "\n";
-
-//      Manifold interp = Manifold::Identity();
-
-//      std::vector<Manifold> Qs;
-//      std::vector<Manifold> Qs_tmp;
-
-//      for (const auto m : segment_control_points)
-//        Qs.emplace_back(*m);
-
-//      for (int i=0; i<degree-1; ++i)
-//      {
-//        if (verbose)
-//        std::cout << "At i=" << i << " Qs : " << Qs.size() << "\n";
-
-//        for (int q=0; q<Qs.size()-1; ++q)
-//        {
-//          const auto Qs_interp = Qs[q].rplus(Qs[q+1].rminus(Qs[q]) * t_01);
-
-//          Qs_tmp.push_back( Qs_interp );
-
-//          if (verbose)
-//          std::cout << "[" << Qs[q].x() << "," << Qs[q].y() << "," << Qs[q].angle() << "]"
-//                    << " (+) "
-//                    << "[" << Qs[q+1].x() << "," << Qs[q+1].y() << "," << Qs[q+1].angle() << "]"
-//                    << " * " << t_01
-//                    << " = "
-//                    << "[" << Qs_interp.x() << "," << Qs_interp.y() << "," << Qs_interp.angle() << "]\n";
-//        }
-
-//        Qs = Qs_tmp;
-//        Qs_tmp.clear();
-//      }
-
-//      if (verbose)
-//      std::cout << "Qs : " << Qs.size() << "\n";
-
-//      std::cout << Qs[0].x() << ","
-//                << Qs[0].y() << ","
-//                << Qs[0].angle() << "\n";
-
-
+  }
 
 ////      for (int i=0; i<degree/*-1*/; ++i)
 ////      {
@@ -189,17 +115,8 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
 //////                  polynomialBernstein((double)degree, (double)i, (double)t_01);
 ////      }
 
-////      std::cout << interp.x() << ","
-////                << interp.y() << ","
-////                << interp.angle() << "\n";
-//    }
 
-//    std::cout << s1.x() << ","
-//              << s1.y() << ","
-//              << s1.angle() << "\n";
-  }
-
-  return std::vector<typename Manifold::Manifold>();
+  return curve;
 }
 
 
@@ -208,7 +125,7 @@ void twoPointsInterp(const manif::INTERP_METHOD interp_method,
 {
   std::cout << 2 << ","
             << n_pts << ","
-            << 0   << "\n";
+            << static_cast<typename std::underlying_type<manif::INTERP_METHOD>::type>(interp_method)   << "\n";
 
   manif::SE2d state(0,0,M_PI/2.),
               state_other(2,0,0);
@@ -465,9 +382,11 @@ int main(int argc, char** argv)
 
   (void)interp_method;
 
+  int selected = 0;
+
   if (argc >= 2)
   {
-    int selected = atoi(argv[1]);
+    selected = atoi(argv[1]);
 
     switch (selected) {
     case 0:
@@ -502,7 +421,7 @@ int main(int argc, char** argv)
 
 //  std::cout << 3 << ","
 //            << n_pts << ","
-//            << 0   << std::endl;
+//            << selected << std::endl;
 
   twoPointsInterp(interp_method, n_pts);
 //  fivePointsInterp(interp_method, n_pts);

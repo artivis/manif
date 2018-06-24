@@ -83,8 +83,14 @@ struct Interpolater<INTERP_METHOD::CUBIC>
   interp(const ManifoldBase<_Derived>& ma,
          const ManifoldBase<_Derived>& mb,
          const _Scalar t,
-         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma,
-         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb)
+         const typename ManifoldBase<_Derived>::Tangent& ta =
+          ManifoldBase<_Derived>::Tangent::Zero(),
+         const typename ManifoldBase<_Derived>::Tangent& tb =
+          ManifoldBase<_Derived>::Tangent::Zero(),
+         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma =
+          ManifoldBase<_Derived>::_,
+         typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb =
+          ManifoldBase<_Derived>::_)
   {
     using Scalar   = typename ManifoldBase<_Derived>::Scalar;
     using Manifold = typename ManifoldBase<_Derived>::Manifold;
@@ -114,8 +120,6 @@ struct Interpolater<INTERP_METHOD::CUBIC>
     }
     else
     {
-      const auto ta  = ma.lift();
-      const auto tb  = mb.lift();
       const auto tab = mb.rminus(ma);
 //      const auto tba = ma.rminus(mb);
 
@@ -124,7 +128,14 @@ struct Interpolater<INTERP_METHOD::CUBIC>
       const Scalar h10 =  t3 - Scalar(2)*t2 + t;
       const Scalar h11 =  t3 - t2;
 
-      mc = (ta*h00 + tb*h01 + tab*h10 + tab*h11).retract();
+//      mc = (ta*h00 + tb*h01 + tab*h10 + tab*h11).retract();
+
+
+      const auto l = ma.rplus(tab*h00).rplus(ta*h10);
+      const auto r = mb.rplus(tab*(-h01)).rplus(tb*h11);
+      const auto B = l.rminus(r);
+
+      mc = r.rplus(B);
     }
 
     return mc;
@@ -222,7 +233,10 @@ interpolate(const ManifoldBase<_Derived>& ma,
   case INTERP_METHOD::SLERP:
     return Interpolater<INTERP_METHOD::SLERP>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
   case INTERP_METHOD::CUBIC:
-    return Interpolater<INTERP_METHOD::CUBIC>::interp(ma, mb, t, J_mc_ma, J_mc_mb);
+    return Interpolater<INTERP_METHOD::CUBIC>::interp(ma, mb, t,
+                                                      ManifoldBase<_Derived>::Tangent::Zero(),
+                                                      ManifoldBase<_Derived>::Tangent::Zero(),
+                                                      J_mc_ma, J_mc_mb);
   case INTERP_METHOD::TWOSTEPS:
     return Interpolater<INTERP_METHOD::TWOSTEPS>::interp(ma, mb,
                                                          ManifoldBase<_Derived>::Tangent::Zero(),

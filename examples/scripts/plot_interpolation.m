@@ -1,7 +1,7 @@
 clc; clear; 
 %close all;
 
-file = "/home/jeremiederay/workspaces/universe/build/manif/examples/se2_interp.csv";
+file = "/home/jeremie/workspaces/universe/build/manif/examples/se2_interp.csv";
 %file = "se2_cubic.csv";
 
 
