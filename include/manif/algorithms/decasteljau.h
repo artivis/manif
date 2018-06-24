@@ -13,7 +13,8 @@ namespace manif
  * @param trajectory, a discretized trajectory.
  * @param degree, the degree of smoothness of the fitted curve
  * @param k_interp, the number of points to interpolate
- * between two consecutive points of the trajectory
+ * between two consecutive points of the trajectory.
+ * interpolate k_interp for t in ]0,1].
  * @return The interpolated smooth trajectory
  *
  * @note A naive implementation of the DeCasteljau algorithm
@@ -48,11 +49,10 @@ decasteljau(const std::vector<Manifold>& trajectory,
     }
   }
 
-  const int last_pts_idx = (n_segments)*(degree-1);
-
   // Close the curve if there are left-over points
-  if (closed_curve && last_pts_idx <= trajectory.size()-1)
+  if (closed_curve && (n_segments*(degree-1)) <= trajectory.size()-1)
   {
+    const int last_pts_idx = n_segments*(degree-1);
     const int left_over = trajectory.size()-1-last_pts_idx;
     segments_control_points.emplace_back(std::vector<const Manifold*>());
 
@@ -85,6 +85,8 @@ decasteljau(const std::vector<Manifold>& trajectory,
       for (const auto m : segments_control_points[s])
         Qs.emplace_back(*m);
 
+      // recursive chunk of the algo,
+      // compute tmp control points.
       for (int i=0; i<degree-1; ++i)
       {
         for (int q=0; q<Qs.size()-1; ++q)
