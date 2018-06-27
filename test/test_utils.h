@@ -2,8 +2,8 @@
 #define _MANIF_MANIF_TEST_UTILS_H_
 
 #include "manif/impl/manifold_base.h"
-#include "manif/interpolation.h"
-#include "manif/average.h"
+#include "manif/algorithms/interpolation.h"
+#include "manif/algorithms/average.h"
 #include "manif/impl/utils.h"
 
 #include "eigen_gtest.h"

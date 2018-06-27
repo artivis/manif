@@ -1,5 +1,5 @@
 #include "manif/SE2.h"
-#include "manif/interpolation.h"
+#include "manif/algorithms/interpolation.h"
 
 #include <iostream>
 
