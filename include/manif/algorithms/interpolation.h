@@ -208,7 +208,7 @@ enum class INTERP_METHOD
 {
   SLERP,
   CUBIC,
-  TWOSTEPS,
+  CNSMOOTH,
 };
 
 /**
@@ -231,7 +231,7 @@ interpolate(const ManifoldBase<_Derived>& ma,
                              ManifoldBase<_Derived>::Tangent::Zero(),
                              ManifoldBase<_Derived>::Tangent::Zero(),
                              J_mc_ma, J_mc_mb);
-  case INTERP_METHOD::TWOSTEPS:
+  case INTERP_METHOD::CNSMOOTH:
     return interpolate_smooth(ma, mb, t, 3,
                               ManifoldBase<_Derived>::Tangent::Zero(),
                               ManifoldBase<_Derived>::Tangent::Zero(),

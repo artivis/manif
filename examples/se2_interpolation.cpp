@@ -396,7 +396,7 @@ int main(int argc, char** argv)
       interp_method = manif::INTERP_METHOD::CUBIC;
       break;
     case 2:
-      interp_method = manif::INTERP_METHOD::TWOSTEPS;
+      interp_method = manif::INTERP_METHOD::CNSMOOTH;
       break;
     default:
       interp_method = manif::INTERP_METHOD::SLERP;
