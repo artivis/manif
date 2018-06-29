@@ -32,6 +32,11 @@ dist: trusty
 
 sudo: false
 
+branches:
+  only:
+    - master
+    - devel
+
 #
 # Build Dependencies
 #
