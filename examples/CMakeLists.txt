@@ -2,12 +2,18 @@ add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
 add_executable(se2_cn_smooth se2_cn_smooth.cpp)
 
+add_executable(se2_smooth_trajectory se2_smooth_trajectory.cpp)
+target_link_libraries(se2_smooth_trajectory ${CERES_LIBRARIES})
+
 set(CXX_11_EXAMPLE_TARGETS
 
   # SE2
   se2_interpolation
   se2_decasteljau
   se2_cn_smooth
+
+  # Ceres
+  se2_smooth_trajectory
 
 )
 
