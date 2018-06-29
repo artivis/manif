@@ -80,6 +80,48 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 
 Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf\mathcal{Y}" alt="\mathcal{Y}" /> represents a manifold element, <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi" alt="small phi" />  or `w` represents an element of the tangent space and <img src="https://latex.codecogs.com/png.latex?\mathbf{v}" alt="v" /> or `v` represents any element of <img src="https://latex.codecogs.com/png.latex?\mathbb{R}^n" />.
 
+### Jacobians
+
+All operations come with their respectives analytical Jacobian matrices.   
+Thoughout `manif`, **Jacobians are differentiated with respect to a perturbation on the tangent space**.
+
+<img src="https://latex.codecogs.com/png.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}"/>
+
+The Jacobians of any of the aforementionned operations can then be evaluated, e.g.,
+
+```cpp
+  SO2 X = SO2::Random(),
+      Y = SO2::Random();
+
+  SO2::Jacobian J_c_x, J_c_y;
+  auto compose = x.compose(Y, J_c_x, J_c_y);
+
+  SO2::Jacobian J_m_x, J_m_y;
+  auto minus   = x.minus(Y, J_m_x, J_m_y);
+
+  SO2::Jacobian J_i_x;
+  auto inverse   = x.inverse(J_i_x);
+
+  // etc...
+```
+
+Shall you be interested only in a specific Jacobian, it can be retrieved without evaluating the other:
+
+```cpp
+  auto composition = x.compose(Y, J_c_x);
+```
+or conversely,
+```cpp
+  auto composition = x.compose(Y, SO2::_, J_c_y);
+```
+
+#### A note on Jacobians
+
+While the `manif` package differentiates Jacobians wrt a perturbation on the tangent space, many non-linear solvers
+(e.g. Ceres) expect them to be differentiated wrt the representation vector of the manifold element
+(e.g. wrt to quaternion vector in <img src="https://latex.codecogs.com/png.latex?SO^3"/>).  
+For this reason `manif` is Ceres auto-differentiation compliant and support `ceres::Jet` type.
+
 ## Documentation and Tutorials
 @todo
 <!--Some documentation that may point to a [wiki-page](https://github.com/artivis/manif/wiki/blablapage).  
