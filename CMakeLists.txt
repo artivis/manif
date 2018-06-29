@@ -16,6 +16,10 @@ else()
     "has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+# Set search directory for looking for our custom CMake scripts to
+# look for SuiteSparse, QGLViewer, and Eigen3.
+LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
 find_package(Eigen3 REQUIRED)
 
 #find_package(Threads REQUIRED)
