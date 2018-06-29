@@ -1,0 +1,252 @@
+#
+# CI Hello World
+#
+# Copyright (C) 2017 Assured Information Security, Inc.
+# Author: Rian Quinn        <quinnr@ainfosec.com>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+#
+# Configuration
+#
+#sudo: required
+language: cpp
+
+dist: trusty
+
+sudo: false
+
+branches:
+  only:
+    - master
+    - devel
+
+#
+# Build Dependencies
+#
+before_script:
+  #
+  # Build Folder
+  #
+  - mkdir build
+  - cd build
+
+  # Update / Install Eigen
+  - wget http://bitbucket.org/eigen/eigen/get/3.3.4.tar.gz && tar xzf 3.3.4.tar.gz && sudo cp -Rp eigen-eigen-5a0156e40feb /usr/local/include/eigen3;
+
+  # #
+  # # Update / Install CMake
+  # #
+  # - |
+  #  if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+  #    mkdir -p external/cmake
+  #    pushd external/cmake
+  #    wget https://cmake.org/files/v3.8/cmake-3.8.0-Linux-x86_64.sh
+  #    chmod +x cmake-*-Linux-x86_64.sh
+  #    ./cmake-*-Linux-x86_64.sh --exclude-subdir --skip-license
+  #    export PATH="${PWD}/bin:$PATH"
+  #    popd
+  #  else
+  #    if ! brew ls --version cmake &>/dev/null; then brew update; brew install cmake; fi
+  #  fi
+
+#
+# Build Matrix
+#
+matrix:
+  include:
+  #
+  # Doxygen
+  #
+  - os: linux
+    env:
+      - TEST="Doxygen"
+    addons:
+      apt:
+        packages:
+          - doxygen
+    script:
+      - cd ..
+      - doxygen .doxygen.txt
+      - |
+        if [[ -s doxygen_warnings.txt ]]; then
+          echo "You must fix doxygen before submitting a pull request"
+          echo ""
+          cat doxygen_warnings.txt
+          exit -1
+        fi
+
+  # #
+  # # CppCheck
+  # #
+  # - os: linux
+  #   env:
+  #     - TEST="CppCheck"
+  #   addons:
+  #     apt:
+  #       sources:
+  #         - ubuntu-toolchain-r-test
+  #       packages:
+  #         - gcc-6
+  #         - g++-6
+  #         - cppcheck
+  #   script:
+  #     - cmake -DENABLE_CPPCHECK=ON -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+  #     - make
+  #     - make check
+
+  #
+  # Codecov
+  #
+  - os: linux
+    env:
+      - TEST="Codecov"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+    script:
+      - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+      - cd ..
+      - bash <(curl -s https://codecov.io/bash)
+
+  # #
+  # # Valgrind
+  # #
+  # - os: linux
+  #   env:
+  #     - TEST="Valgrind"
+  #   addons:
+  #     apt:
+  #       sources:
+  #         - ubuntu-toolchain-r-test
+  #       packages:
+  #         - gcc-6
+  #         - g++-6
+  #         - valgrind
+  #   script:
+  #     - cmake -DCMAKE_CXX_COMPILER="g++-6" ..
+  #     - make
+  #     - ctest -T memcheck
+
+  #
+  # G++ 5
+  #
+  - os: linux
+    env:
+      - TEST="G++ 5"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-5
+          - g++-5
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-5" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
+  # G++ 6
+  #
+  - os: linux
+    env:
+      - TEST="G++ 6"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
+  # Clang 3.8
+  #
+  - os: linux
+    env:
+      - TEST="Clang 3.8"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-trusty-4.0
+        packages:
+          - clang-3.8
+          - gcc-6
+          - g++-6
+    script:
+      - cmake -DCMAKE_C_COMPILER=clang-3.8 -DCMAKE_CXX_COMPILER=clang++-3.8 -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
+  # Clang 3.9
+  #
+  - os: linux
+    env:
+      - TEST="Clang 3.9"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-trusty-3.9
+        packages:
+          - clang-3.9
+          - gcc-6
+          - g++-6
+    script:
+      - cmake -DCMAKE_C_COMPILER=clang-3.9 -DCMAKE_CXX_COMPILER=clang++-3.9 -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
+  # Clang 4.0
+  #
+  - os: linux
+    env:
+      - TEST="Clang 4.0"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-trusty-4.0
+        packages:
+          - clang-4.0
+          - gcc-6
+          - g++-6
+    script:
+      - cmake -DCMAKE_C_COMPILER=clang-4.0 -DCMAKE_CXX_COMPILER=clang++-4.0 -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  allow_failures:
+    - os: linux
+      env:
+        - TEST="Doxygen"

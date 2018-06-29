@@ -16,6 +16,10 @@ else()
     "has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+# Set search directory for looking for our custom CMake scripts to
+# look for SuiteSparse, QGLViewer, and Eigen3.
+LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
 find_package(Eigen3 REQUIRED)
 
 #find_package(Threads REQUIRED)
@@ -24,6 +28,7 @@ find_package(Eigen3 REQUIRED)
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON
 option(BUILD_TESTING "Build all tests." OFF)
+option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 
 ###########
 ## Build ##
@@ -140,6 +145,58 @@ install(FILES package.xml
 #############
 ## Testing ##
 #############
+
+# ------------------------------------------------------------------------------
+# Coverage
+# ------------------------------------------------------------------------------
+
+if(ENABLE_COVERAGE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
+# ------------------------------------------------------------------------------
+# CppCheck
+# ------------------------------------------------------------------------------
+
+# if(ENABLE_CPPCHECK)
+#
+#   list(APPEND CPPCHECK_ARGS
+#     --enable=warning,style,performance,portability,unusedFunction
+#     --std=c++11
+#     --verbose
+#     --error-exitcode=1
+#     --language=c++
+#     -DMAIN=main
+#     -I ${CMAKE_SOURCE_DIR}/include
+#       ${CMAKE_SOURCE_DIR}/include/*.h
+#       #${CMAKE_SOURCE_DIR}/examples/*.cpp
+#       ${CMAKE_SOURCE_DIR}/test/*.cpp
+#   )
+#
+#
+#   add_custom_target(check
+#     COMMAND cppcheck ${CPPCHECK_ARGS}
+#     COMMENT "running cppcheck"
+#   )
+#
+# endif()
+
+# ------------------------------------------------------------------------------
+# Valgrind
+# ------------------------------------------------------------------------------
+
+# set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --leak-check=full")
+# set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --track-fds=yes")
+# set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --trace-children=yes")
+# set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --error-exitcode=1")
+
+# ------------------------------------------------------------------------------
+# Unit Tests
+# ------------------------------------------------------------------------------
 
 if(BUILD_TESTING)
 
