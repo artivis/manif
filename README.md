@@ -67,7 +67,7 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 | Inverse | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}^{-1}" title="\mathbf \Phi^{-1}" /> | `X.inverse()` |
 | Composition | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}&space;\circ&space;\mathbf&space;\mathcal{Y}" title="\mathbf \mathcal{X} \circ \mathbf \mathcal{Y}" /> | <ul class="list-unstyled"><li>`X * Y`</li><li>`X.compose(Y)`</li></ul> |
 | Retract to manifold space | <img src="https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi)" title="\exp(\mathbf \varphi)" /> | `w.retract()` |
-| Act on vector | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf v"/> | `X.act(v)` |
+| Act on vector | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&space;v"/> | `X.act(v)` |
 | Lift to tangent space | <img src="https://latex.codecogs.com/png.latex?\log(\mathbf&space;\mathcal{X})" title="\log(\mathbf \Phi)" /> | `X.lift()` |
 | Manifold Adjoint | <img src="https://latex.codecogs.com/png.latex?Adj(\mathbf&space;\mathcal{X})" /> | `X.adj()` |
 | Tangent adjoint | <img src="https://latex.codecogs.com/png.latex?adj(\mathbf&space;\varphi)" /> | `w.adj()` |
