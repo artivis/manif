@@ -3,8 +3,73 @@
 
 #include "manif/impl/manifold_base.h"
 
+#include <iostream>
+
 namespace manif
 {
+
+template <typename T>
+constexpr T binomial_coefficient(const T n, const T k)
+{
+  return (n >= k) ? (k >= 0) ?
+  (k*2 > n) ? binomial_coefficient(n, n-k) :
+                     k ? binomial_coefficient(n, k - 1) * (n - k + 1) / k : 1
+  // assert n ≥ k ≥ 0
+  : (throw std::logic_error("k >= 0 !")) : (throw std::logic_error("n >= k !"));
+}
+
+template <typename T>
+constexpr T ipow(const T base, const int exp, T carry = 1) {
+  return exp < 1 ? carry : ipow(base*base, exp/2, (exp % 2) ? carry*base : carry);
+}
+
+template <typename T>
+constexpr T polynomialBernstein(const T n, const T i, const T t)
+{
+  return binomial_coefficient(n, i) * ipow(T(1)-t, n-i) * ipow(t,i);
+}
+
+
+template <typename T>
+T smoothing_phi(const T t, const std::size_t degree)
+{
+//  if (degree < 5)
+//  {
+
+    const T t2 = t*t;
+    const T t3 = t2*t;
+    const T t4 = t3*t;
+    const T t5 = t4*t;
+    const T t6 = t5*t;
+    const T t7 = t6*t;
+    const T t8 = t7*t;
+    const T t9 = t8*t;
+
+    return degree == 1 ? (T(3.)  *t2 - T(2.)  *t3)                                      :
+           degree == 2 ? (T(10.) *t3 - T(15.) *t4 + T(6.)  *t5)                         :
+           degree == 3 ? (T(35.) *t4 - T(84.) *t5 + T(70.) *t6 - T(20.) *t7)            :
+           degree == 4 ? (T(126.)*t5 - T(420.)*t6 + T(540.)*t7 - T(315.)*t8 + T(70.)*t9):
+           (throw std::logic_error("Not implemented yet !"));
+
+//  }
+
+//  T sum = 0;
+//  T sum_gamma = 0;
+
+//  for (std::size_t i=0; i<=degree; ++i)
+//  {
+//    const T am = (i % 2 == 0? T(1.) : T(-1.)) * binomial_coefficient(degree, i);
+
+//    sum_gamma += (am / (degree + 1. + i));
+
+//    sum += ((am / (degree + 1. + i)) * ipow(t, degree + 1. + i));
+//  }
+
+//  return (double(1) / sum_gamma) * sum;
+}
+
+
+
 
 template <typename _Derived, typename _Scalar>
 static typename ManifoldBase<_Derived>::Manifold
@@ -161,29 +226,37 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
   const Scalar t8 = t7*t;
   const Scalar t9 = t8*t;
 
-  Scalar psi;
+  Scalar phi;
 
   switch (m) {
     case 1:
-      psi = Scalar(3)*t2 - Scalar(2)*t3;
+    {
+      phi = Scalar(3)*t2 - Scalar(2)*t3;
       break;
+    }
     case 2:
-      psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+      phi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
       break;
     case 3:
-      psi = Scalar(35)*t4 - Scalar(84)*t5 + Scalar(70)*t6 - Scalar(20)*t7;
+      phi = Scalar(35)*t4 - Scalar(84)*t5 + Scalar(70)*t6 - Scalar(20)*t7;
       break;
     case 4:
-      psi = Scalar(126)*t5 - Scalar(420)*t6 + Scalar(540)*t7 - Scalar(315)*t8 + Scalar(70)*t9;
+      phi = Scalar(126)*t5 - Scalar(420)*t6 + Scalar(540)*t7 - Scalar(315)*t8 + Scalar(70)*t9;
       break;
     default:
-      // @todo impl actual psi
-      // m = 2
-      psi = Scalar(10)*t3 - Scalar(15)*t4 + Scalar(6)*t5;
+      phi = smoothing_phi(t, m);
       break;
   }
 
-//  std::cout << "psi = " << psi << "\n";
+  auto phis = smoothing_phi(t, m);
+
+  if (std::abs(phi - phis) > 1e-8)
+  {
+    std::cout << "phi : " << phi << "\n";
+    std::cout << "smoothing_phi : " << phis << "\n";
+    std::cout << "abs diff : " << std::abs(phi - phis) << "\n";
+    MANIF_THROW("PHI AINT EQUAL !");
+  }
 
   // with lplus
 
@@ -191,7 +264,7 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
   //    const auto r = mb.lplus(tb*(t-Scalar(1)));
   //    const auto B = r.lminus(l);
 
-  //    Manifold mc = l.lplus(B*psi);
+  //    Manifold mc = l.lplus(B*phi);
 
   // with rplus
 
@@ -199,7 +272,7 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
   const auto r = mb.rplus(tb*(t-Scalar(1)));
   const auto B = l.rminus(r);
 
-  Manifold mc = r.rplus(B*psi);
+  Manifold mc = r.rplus(B*phi);
 
   return mc;
 }
