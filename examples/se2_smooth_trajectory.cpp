@@ -48,7 +48,9 @@ public:
   bool operator()(const T* const initial_raw,
                   const T* const mid_raw,
                   const T* const final_raw,
+                  const T* const initial_stamp,
                   const T* const mid_stamp,
+                  const T* const final_stamp,
                   T* residuals_raw) const
   {
     const Eigen::Map<const ManifoldTemplate<T>> initial(initial_raw);
@@ -57,10 +59,18 @@ public:
 
     Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
 
-    const ManifoldTemplate<T> r = final   + (TangentTemplate<T>::Zero()*(*mid_stamp));
-    const ManifoldTemplate<T> l = initial + (TangentTemplate<T>::Zero()*(*mid_stamp));
+    const T stamp = ((*mid_stamp)   - (*initial_stamp)) /
+                    ((*final_stamp) - (*initial_stamp));
 
-    const T phi = smoothing_phi(*mid_stamp, degree_);
+//    std::cout << "initial_stamp : " << (*initial_stamp) << "\n";
+//    std::cout << "mid_stamp : " << (*mid_stamp) << "\n";
+//    std::cout << "final_stamp : " << (*final_stamp) << "\n";
+//    std::cout << "stamp : " << stamp << "\n";
+
+    const ManifoldTemplate<T> r = final   + (TangentTemplate<T>::Zero()*stamp);
+    const ManifoldTemplate<T> l = initial + (TangentTemplate<T>::Zero()*stamp);
+
+    const T phi = smoothing_phi(stamp, degree_);
 
     residuals = r + ((l - r) * T(phi)) - mid;
 
@@ -93,13 +103,14 @@ class ConstraintMinimizeScalar
 public:
 
   ConstraintMinimizeScalar() = default;
+  ConstraintMinimizeScalar(const double w) : w_(w) { }
   virtual ~ConstraintMinimizeScalar() = default;
 
   template<typename T>
   bool operator()(const T* const scalar_raw,
                   T* residuals_raw) const
   {
-    residuals_raw[0] = -scalar_raw[0];
+    residuals_raw[0] = - w_ * scalar_raw[0];
     return true;
   }
 
@@ -114,14 +125,26 @@ public:
 
     if (jacobians_raw != nullptr && jacobians_raw[0] != nullptr)
     {
-      jacobians_raw[0][0] = -1;
+      jacobians_raw[0][0] = -w_;
     }
 
     return true;
   }
+
+protected:
+
+  double w_ = 1;
 };
 
-/*
+template <typename T>
+inline T intervalCost(const T& var,const T& a,
+                      const T& b, const T& epsilon)
+{
+  return (var < a+epsilon)  ? (-var + (a + epsilon)) :
+         (var <= b-epsilon) ? T(0)                   :
+                              (var - (b - epsilon));
+}
+
 template <typename _Manifold>
 class VelocityConstraint
     : public ceres::CostFunction
@@ -161,7 +184,7 @@ public:
     mutable_parameter_block_sizes()->push_back(1);
   }
 
-  virtual ~SmoothnessConstraint() = default;
+  virtual ~VelocityConstraint() = default;
 
   template<typename T>
   bool operator()(const T* const past_raw,
@@ -175,9 +198,31 @@ public:
 
     Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
 
-    const T dt = future_stamp - past_stamp;
+    /// div by zero
+    /// @todo prevent it
+    if ((*future_stamp) == (*past_stamp))
+      return false;
 
-    residuals = (future - past) * (T(1) / dt);
+    T dt = (*future_stamp) - (*past_stamp);
+
+    const TangentTemplate<T> vel = (future - past) * (T(1) / dt);
+
+//    std::cout << "future stamp : " << (*future_stamp) << "\n";
+//    std::cout << "past stamp : " << (*past_stamp) << "\n";
+//    std::cout << "dt : " << dt << "\n";
+//    std::cout << "vel : " << vel.coeffs()[0] << ","
+//                          << vel.coeffs()[1] << ","
+//                          << vel.coeffs()[2] << "\n";
+//    std::cout << "lower_bound : " << lower_bound_.transpose() << "\n";
+//    std::cout << "upper_bound : " << upper_bound_.transpose() << "\n\n";
+
+    for (int i=0; i<DoF; ++i)
+    {
+      residuals.coeffs()[i] = intervalCost(vel.coeffs()[i],
+                                           T(lower_bound_[i]),
+                                           T(upper_bound_[i]),
+                                           T(1e-5));
+    }
 
     return true;
   }
@@ -195,13 +240,13 @@ protected:
   const Velocity lower_bound_;
   const Velocity upper_bound_;
 };
-*/
 
 }
 
 using namespace manif;
 
 using SmoothnessConstraintSE2 = SmoothnessConstraint<SE2d>;
+using VelocityConstraintSE2   = VelocityConstraint<SE2d>;
 
 void use()
 {
@@ -250,17 +295,24 @@ int main(int argc, char** argv)
   ceres::Problem problem(problem_options);
 
   std::vector<SE2d> trajectory;
-  std::vector<double> pose_stamps;
 
-//  Eigen::Matrix<double, Eigen::Dynamic, 1> stamps =
-//      Eigen::Matrix<double, Eigen::Dynamic, 1>::Constant(n_pts, 0.001);
+  Eigen::Matrix<double, Eigen::Dynamic, 1> stamps =
+      Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero(n_pts);
 
   for (int i=0; i<n_pts; ++i)
   {
     trajectory.emplace_back(0,0,0);
-    pose_stamps.emplace_back(0.5);
+    stamps[i] = i;
   }
 
+  // Force T_0 == 0
+  std::shared_ptr<ceres::CostFunction> T0_constraint = std::make_shared< ConstraintMinimizeScalar >();
+
+  problem.AddResidualBlock( T0_constraint.get(),
+                            nullptr,
+                            &stamps[0]          ) ;
+
+  // Smoothness constraints
   std::vector<std::shared_ptr<ceres::CostFunction>> smoothness_constraints;
   for (int i=1; i<trajectory.size()-1;++i)
   {
@@ -273,23 +325,49 @@ int main(int argc, char** argv)
                   SE2d::RepSize,
                   SE2d::RepSize,
                   SE2d::RepSize,
-                  1> >( new SmoothnessConstraintSE2( degree ) )
+                  1,1,1> >( new SmoothnessConstraintSE2( degree ) )
         );
 
     // Add constraint to Ceres
-
     problem.AddResidualBlock( smoothness_constraints.back().get(),
                               nullptr,
                               trajectory[i-1].data(),
                               trajectory[ i ].data(),
                               trajectory[i+1].data(),
-                              &pose_stamps[ i ]            );
-
-    // Set bounds on stamps, they must be in [0,1]
-    problem.SetParameterLowerBound(&pose_stamps[i], 0, 0);
-    problem.SetParameterUpperBound(&pose_stamps[i], 0, 1);
+                              &stamps[i-1],
+                              &stamps[ i ],
+                              &stamps[i+1]);
   }
 
+  // Velocity constraints
+  const Eigen::Vector3d velocity_lower_bound(-0.5,-0.1,-0.4);
+  const Eigen::Vector3d velocity_upper_bound( 1,   0.1, 0.8);
+
+  std::vector<std::shared_ptr<ceres::CostFunction>> velocity_constraints;
+  for (int i=0; i<trajectory.size()-1; ++i)
+  {
+    // Create the smoothness constraint
+    velocity_constraints.push_back(
+          std::make_shared<
+                ceres::AutoDiffCostFunction<
+                  VelocityConstraintSE2,
+                  SE2d::DoF,
+                  SE2d::RepSize,
+                  SE2d::RepSize,
+                  1, 1> >( new VelocityConstraintSE2( velocity_lower_bound,
+                                                      velocity_upper_bound) )
+        );
+
+    // Add constraint to Ceres
+    problem.AddResidualBlock( velocity_constraints.back().get(),
+                              nullptr,
+                              trajectory[ i ].data(),
+                              trajectory[i+1].data(),
+                              &stamps[ i ],
+                              &stamps[i+1]);
+  }
+
+  // Time constraints
 //  std::vector<std::shared_ptr<ceres::CostFunction>> time_constraints;
 //  for (int i=0; i<trajectory.size();++i)
 //  {
@@ -301,7 +379,7 @@ int main(int argc, char** argv)
 //    // Minimize time
 //    problem.AddResidualBlock( time_constraints.back().get(),
 //                              nullptr,
-//                              &pose_stamps[i]              );
+//                              &stamps[i]              );
 //  }
 
   // Objective initial
@@ -354,7 +432,7 @@ int main(int argc, char** argv)
   for (const auto& s : trajectory)
     std::cout << s.x() << "," << s.y() << "," << s.angle() << "\n";
 
-//  std::cout << stamps << "\n";
+  std::cout << stamps << "\n";
 
 //  for (const auto& t : pose_stamps)
 //    std::cout << t << "\n";
