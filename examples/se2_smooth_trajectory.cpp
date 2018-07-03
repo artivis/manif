@@ -14,7 +14,7 @@
 namespace manif {
 
 template <typename _Manifold>
-class SmoothnessConstraint
+class ConstraintSmoothness
     : public ceres::CostFunction
 {
   using Manifold = _Manifold;
@@ -36,21 +36,24 @@ public:
 
   using Jacobian = typename internal::traits_ceres<Manifold>::ConstraintJacobian;
 
-  template <typename... Args>
-  SmoothnessConstraint(Args&&... args)
-    : degree_(std::forward<Args>(args)...)
+  ConstraintSmoothness(const std::size_t degree)
+    : degree_(degree)
   {
     set_num_residuals(DoF);
     mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
     mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
     mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
+    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
+    mutable_parameter_block_sizes()->push_back(1);
+    mutable_parameter_block_sizes()->push_back(1);
     mutable_parameter_block_sizes()->push_back(1);
   }
 
-  virtual ~SmoothnessConstraint() = default;
+  virtual ~ConstraintSmoothness() = default;
 
   template<typename T>
-  bool operator()(const T* const initial_raw,
+  bool operator()(const T* const pre_raw,
+                  const T* const initial_raw,
                   const T* const mid_raw,
                   const T* const final_raw,
                   const T* const initial_stamp,
@@ -58,6 +61,7 @@ public:
                   const T* const final_stamp,
                   T* residuals_raw) const
   {
+    const Eigen::Map<const ManifoldTemplate<T>> pre(pre_raw);
     const Eigen::Map<const ManifoldTemplate<T>> initial(initial_raw);
     const Eigen::Map<const ManifoldTemplate<T>> mid(mid_raw);
     const Eigen::Map<const ManifoldTemplate<T>> final(final_raw);
@@ -72,8 +76,11 @@ public:
 //    std::cout << "final_stamp : " << (*final_stamp) << "\n";
 //    std::cout << "stamp : " << stamp << "\n";
 
-    const ManifoldTemplate<T> r = final   + (TangentTemplate<T>::Zero()*stamp);
-    const ManifoldTemplate<T> l = initial + (TangentTemplate<T>::Zero()*stamp);
+    const TangentTemplate<T> V_i = initial - pre;
+    const TangentTemplate<T> V_f = final   - initial;
+
+    const ManifoldTemplate<T> r = final   + (V_f*stamp);
+    const ManifoldTemplate<T> l = initial + (V_i*stamp);
 
     const T phi = smoothing_phi(stamp, degree_);
 
@@ -151,7 +158,7 @@ inline T intervalCost(const T& var,const T& a,
 }
 
 template <typename _Manifold>
-class VelocityConstraint
+class ConstraintVelocity
     : public ceres::CostFunction
 {
   using Scalar = typename _Manifold::Scalar;
@@ -177,7 +184,7 @@ public:
   using Velocity = Eigen::Matrix<Scalar, DoF, 1>;
 
   template <typename... Args>
-  VelocityConstraint(const Velocity& lower_bound,
+  ConstraintVelocity(const Velocity& lower_bound,
                      const Velocity& upper_bound)
     : lower_bound_(lower_bound)
     , upper_bound_(upper_bound)
@@ -189,7 +196,7 @@ public:
     mutable_parameter_block_sizes()->push_back(1);
   }
 
-  virtual ~VelocityConstraint() = default;
+  virtual ~ConstraintVelocity() = default;
 
   template<typename T>
   bool operator()(const T* const past_raw,
@@ -313,12 +320,12 @@ public:
     const T dt_1 = (*future_stamp) - (*mid_stamp);
 
     static const T one(1);
-    static const T two(2);
+//    static const T two(2);
 
     const TangentTemplate<T> vel_0 = (mid - past)   * (one / dt_0);
     const TangentTemplate<T> vel_1 = (future - mid) * (one / dt_1);
 
-    const TangentTemplate<T> acc = (vel_1 - vel_0) * two *
+    const TangentTemplate<T> acc = (vel_1 - vel_0) /** two*/ *
                                    ( one / (dt_0 + dt_1) );
 
 //    std::cout << "future stamp : " << (*future_stamp) << "\n";
@@ -359,8 +366,8 @@ protected:
 
 using namespace manif;
 
-using SmoothnessConstraintSE2   = SmoothnessConstraint<SE2d>;
-using VelocityConstraintSE2     = VelocityConstraint<SE2d>;
+using ConstraintSmoothnessSE2   = ConstraintSmoothness<SE2d>;
+using ConstraintVelocitySE2     = ConstraintVelocity<SE2d>;
 using ConstraintAccelerationSE2 = ConstraintAcceleration<SE2d>;
 
 void use()
@@ -369,7 +376,7 @@ void use()
 }
 
 /*constexpr*/ bool VERBOSE = true;
-//constexpr bool VERBOSE = false;
+///*constexpr*/ bool VERBOSE = false;
 
 int main(int argc, char** argv)
 {
@@ -397,17 +404,11 @@ int main(int argc, char** argv)
     final_y = atof(argv[4]);
     final_t = atof(argv[5]);
   }
-
-  if (argc == 7)
+  else if (argc > 3)
   {
-    VERBOSE = atoi(argv[6]);
+    use();
+    return EXIT_FAILURE;
   }
-
-//  else if (argc > 3)
-//  {
-//    use();
-//    return EXIT_FAILURE;
-//  }
 
   std::cout << 2 << "," << n_pts << "," << degree << "\n";
 
@@ -429,28 +430,81 @@ int main(int argc, char** argv)
     stamps[i] = i;
   }
 
+  /////////////////////////////////
+  /// Initial/final constraints ///
+  /////////////////////////////////
+
+  // Objective initial
+  SE2d initial_pose(0,0,0);
+
+  std::shared_ptr<ceres::CostFunction> initial_pose_constraint =
+      make_constraint_autodiff<SE2d>(0,0,0);
+
+  problem.AddResidualBlock( initial_pose_constraint.get(),
+                            nullptr,
+                            initial_pose.data(),
+                            trajectory[0].data() );
+
+  problem.SetParameterBlockConstant(initial_pose.data());
+
+  // Objective final
+  std::shared_ptr<ceres::CostFunction> obj_final =
+      make_objective_autodiff<SE2d>(final_x,final_y,final_t);
+
+  problem.AddResidualBlock( obj_final.get(),
+                            nullptr,
+                            trajectory.back().data() );
+
   //////////////////////////////
   /// Smoothness constraints ///
   //////////////////////////////
 
+  //
   std::vector<std::shared_ptr<ceres::CostFunction>> smoothness_constraints;
-  for (int i=1; i<trajectory.size()-1;++i)
+
+  // Create the smoothness constraint
+  smoothness_constraints.push_back(
+        std::make_shared<
+              ceres::AutoDiffCostFunction<
+                ConstraintSmoothnessSE2,
+                SE2d::DoF,
+                SE2d::RepSize,
+                SE2d::RepSize,
+                SE2d::RepSize,
+                SE2d::RepSize,
+                1,1,1> >( new ConstraintSmoothnessSE2( degree ) )
+      );
+
+  // Add constraint to Ceres
+  problem.AddResidualBlock( smoothness_constraints.back().get(),
+                            nullptr,
+                            initial_pose.data(),
+                            trajectory[0].data(),
+                            trajectory[1].data(),
+                            trajectory[2].data(),
+                            &stamps[0],
+                            &stamps[1],
+                            &stamps[2]);
+
+  for (int i=2; i<trajectory.size()-1;++i)
   {
     // Create the smoothness constraint
     smoothness_constraints.push_back(
           std::make_shared<
                 ceres::AutoDiffCostFunction<
-                  SmoothnessConstraintSE2,
+                  ConstraintSmoothnessSE2,
                   SE2d::DoF,
                   SE2d::RepSize,
                   SE2d::RepSize,
                   SE2d::RepSize,
-                  1,1,1> >( new SmoothnessConstraintSE2( degree ) )
+                  SE2d::RepSize,
+                  1,1,1> >( new ConstraintSmoothnessSE2( degree ) )
         );
 
     // Add constraint to Ceres
     problem.AddResidualBlock( smoothness_constraints.back().get(),
                               nullptr,
+                              trajectory[i-2].data(),
                               trajectory[i-1].data(),
                               trajectory[ i ].data(),
                               trajectory[i+1].data(),
@@ -475,11 +529,11 @@ int main(int argc, char** argv)
   velocity_constraints.push_back(
         std::make_shared<
               ceres::AutoDiffCostFunction<
-                VelocityConstraintSE2,
+                ConstraintVelocitySE2,
                 SE2d::DoF,
                 SE2d::RepSize,
                 SE2d::RepSize,
-                1, 1> >( new VelocityConstraintSE2( initial_velocity,
+                1, 1> >( new ConstraintVelocitySE2( initial_velocity,
                                                     initial_velocity ))
       );
 
@@ -500,11 +554,11 @@ int main(int argc, char** argv)
     velocity_constraints.push_back(
           std::make_shared<
                 ceres::AutoDiffCostFunction<
-                  VelocityConstraintSE2,
+                  ConstraintVelocitySE2,
                   SE2d::DoF,
                   SE2d::RepSize,
                   SE2d::RepSize,
-                  1, 1> >( new VelocityConstraintSE2( velocity_lower_bound,
+                  1, 1> >( new ConstraintVelocitySE2( velocity_lower_bound,
                                                       velocity_upper_bound ))
         );
 
@@ -566,34 +620,6 @@ int main(int argc, char** argv)
 //                              &stamps[i]              );
 //  }
 
-  // Objective initial
-  SE2d initial_pose(0,0,0);
-
-  std::shared_ptr<ceres::CostFunction> initial_pose_constraint =
-      make_constraint_autodiff<SE2d>(0,0,0);
-
-  problem.AddResidualBlock( initial_pose_constraint.get(),
-                            nullptr,
-                            initial_pose.data(),
-                            trajectory[0].data() );
-
-  problem.SetParameterBlockConstant(initial_pose.data());
-
-//  std::shared_ptr<ceres::CostFunction> obj_initial =
-//      make_objective_autodiff<SE2d>(0,0,0);
-
-//  problem.AddResidualBlock( obj_initial.get(),
-//                            nullptr,
-//                            trajectory[0].data() );
-
-  // Objective final
-  std::shared_ptr<ceres::CostFunction> obj_final =
-      make_objective_autodiff<SE2d>(final_x,final_y,final_t);
-
-  problem.AddResidualBlock( obj_final.get(),
-                            nullptr,
-                            trajectory.back().data() );
-
   std::cout << 0 << "," << 0 << "," << 0 << "\n";
   std::cout << final_x << "," << final_y << "," << final_t << "\n";
 
@@ -652,7 +678,7 @@ int main(int argc, char** argv)
       const auto vel_0 = (trajectory[i]   - trajectory[i-1]) * (1. / dt_0);
       const auto vel_1 = (trajectory[i+1] - trajectory[i])   * (1. / dt_1);
 
-      const auto acc = (vel_1 - vel_0) * 2. *
+      const auto acc = (vel_1 - vel_0) /** 2.*/ *
           ( 1. / (dt_0 + dt_1) );
 
       std::cout << acc << "\n";
