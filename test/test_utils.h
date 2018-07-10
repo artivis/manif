@@ -101,12 +101,15 @@
   { evalZero(); }                                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SLERP10)             \
   { evalSlerp01(); }                                                      \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
-  { evalCubic01(); }                                                      \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
   { evalAvgBiInvariant(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
   { evalIsApprox(); }
+
+/*
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
+  { evalCubic01(); }                                                      \
+*/
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -331,22 +334,22 @@ public:
 
   void evalSlerp01()
   {
-    Manifold interp = state.interp(state_other, 0);
+    Manifold interp = interpolate(state, state_other, 0);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
-    interp = state.interp(state_other, 1);
+    interp = interpolate(state, state_other, 1);
 
     EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
 
   void evalCubic01()
   {
-    Manifold interp = interpolate(state, state_other, 0);
+    Manifold interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
-    interp = interpolate(state, state_other, 1);
+    interp = interpolate(state, state_other, 1, INTERP_METHOD::CUBIC);
 
     EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
