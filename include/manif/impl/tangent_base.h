@@ -122,6 +122,9 @@ public:
   template <typename T>
   Tangent operator *(const T scalar) const;
 
+  template <typename T>
+  Tangent operator /(const T scalar) const;
+
   /// static helpers
 
   static Tangent Zero();
@@ -352,6 +355,14 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::operator *(const T scalar) const
 {
   return Tangent(derived().coeffs() * scalar);
+}
+
+template <typename _Derived>
+template <typename T>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::operator /(const T scalar) const
+{
+  return Tangent(derived().coeffs() / scalar);
 }
 
 template <class _Derived>
