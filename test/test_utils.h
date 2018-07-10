@@ -104,7 +104,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
   { evalCubic01(); }                                                      \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
-  { evalAvgBiInvariant(); }
+  { evalAvgBiInvariant(); }                                               \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
+  { evalIsApprox(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -373,6 +375,15 @@ public:
 
       EXPECT_MANIF_NEAR(avg, avg_shu, tol_);
     }
+  }
+
+  void evalIsApprox()
+  {
+    EXPECT_TRUE(state.isApprox(state, tol_));
+    EXPECT_FALSE(state.isApprox(state_other, tol_));
+
+    EXPECT_TRUE(state == state);
+    EXPECT_FALSE(state == state_other);
   }
 
 protected:

@@ -134,6 +134,9 @@ public:
                   OptJacobianRef J_mc_ma = {},
                   OptJacobianRef J_mc_mb = {});
 
+  template <typename _DerivedOther>
+  bool isApprox(const ManifoldBase<_DerivedOther>& m, const Scalar eps) const;
+
   /// Some operators
 
   /**
@@ -145,6 +148,9 @@ public:
 
   template <typename _DerivedOther>
   _Derived& operator =(const ManifoldBase<_DerivedOther>& m);
+
+  template <typename _DerivedOther>
+  bool operator ==(const ManifoldBase<_DerivedOther>& m);
 
   /**
    * @brief operator +, rplus
@@ -563,28 +569,14 @@ ManifoldBase<_Derived>::interp(const ManifoldBase<_DerivedOther>& m,
   }
 
   return mc;
+}
 
-  ///
-
-//  Jacobian J_rmin_ma, J_rmin_mb;
-//  Jacobian J_ret_rmin;
-//  Jacobian J_mc_ret, p1J_mc_ma;
-
-//  Manifold mc = compose(
-//    (m.rminus(derived(), J_rmin_mb, J_rmin_ma) * interp_factor).retract(J_ret_rmin),
-//      p1J_mc_ma, J_mc_ret );
-
-//  if (J_mc_ma)
-//  {
-//    (*J_mc_ma) = p1J_mc_ma + J_mc_ret * J_ret_rmin * J_rmin_ma;
-//  }
-
-//  if (J_mc_mb)
-//  {
-//    (*J_mc_mb) = J_mc_ret * J_ret_rmin * J_rmin_mb;
-//  }
-
-//  return mc;
+template <typename _Derived>
+template <typename _DerivedOther>
+bool ManifoldBase<_Derived>::isApprox(const ManifoldBase<_DerivedOther>& m,
+                                      const Scalar eps) const
+{
+  return rminus(m).isApprox(Tangent::Zero(), eps);
 }
 
 template <typename _Derived>
@@ -622,6 +614,14 @@ ManifoldBase<_Derived>::operator =(
 {
   derived().coeffs_nonconst() = m.coeffs();
   return derived();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+bool ManifoldBase<_Derived>::operator ==(
+    const ManifoldBase<_DerivedOther>& m)
+{
+  return isApprox(m, Constants<Scalar>::eps);
 }
 
 template <typename _Derived>

@@ -77,6 +77,9 @@ public:
 
   Jacobian adj() const;
 
+  template <typename _DerivedOther>
+  bool isApprox(const TangentBase<_DerivedOther>& t, const Scalar eps) const;
+
   /// Some operators
 
   /**
@@ -95,6 +98,9 @@ public:
 
   template <typename _DerivedOther>
   Tangent operator -(const TangentBase<_DerivedOther>& t) const;
+
+  template <typename _DerivedOther>
+  bool operator ==(const TangentBase<_DerivedOther>& t) const;
 
   /**
    * @brief operator =, assignment oprator
@@ -252,6 +258,26 @@ TangentBase<_Derived>::adj() const
   return derived().adj();
 }
 
+template <typename _Derived>
+template <typename _DerivedOther>
+bool TangentBase<_Derived>::isApprox(const TangentBase<_DerivedOther>& t,
+                                     const Scalar eps) const
+{
+  using std::min;
+  bool result = false;
+
+  if (min(coeffs().norm(), t.coeffs().norm()) < eps)
+  {
+    result = ((coeffs() - t.coeffs()).isZero(eps));
+  }
+  else
+  {
+    result = (coeffs().isApprox(t.coeffs(), eps));
+  }
+
+  return result;
+}
+
 /// Operators
 
 template <typename _Derived>
@@ -284,6 +310,14 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::operator -(const TangentBase<_DerivedOther>& t) const
 {
   return minus(t);
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+bool
+TangentBase<_Derived>::operator ==(const TangentBase<_DerivedOther>& t) const
+{
+  return isApprox(t, Constants<Scalar>::eps);
 }
 
 template <typename _Derived>
