@@ -32,7 +32,7 @@ public:
 
   /// Tangent common API
 
-  LieType skew() const;
+  LieType hat() const;
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
@@ -50,7 +50,7 @@ public:
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::LieType
-SE2TangentBase<_Derived>::skew() const
+SE2TangentBase<_Derived>::hat() const
 {
   return ( LieType() <<
              Scalar(0), -angle(),   x(),

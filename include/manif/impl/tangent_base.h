@@ -52,7 +52,7 @@ public:
   _Derived& setZero();
   _Derived& setRandom();
 
-  LieType skew() const;
+  LieType hat() const;
 
   Manifold retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
@@ -197,9 +197,9 @@ TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieType
-TangentBase<_Derived>::skew() const
+TangentBase<_Derived>::hat() const
 {
-  return derived().skew();
+  return derived().hat();
 }
 
 template <class _Derived>

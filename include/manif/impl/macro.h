@@ -83,7 +83,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::setZero;            \
   using Base::setRandom;          \
   using Base::retract;            \
-  using Base::skew;               \
+  using Base::hat;                \
   using Base::rjac;               \
   using Base::ljac;               \
   using Base::adj;
