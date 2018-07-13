@@ -79,6 +79,8 @@ public:
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  Jacobian adj() const;
+
   // Deduced API
 
   template <typename _DerivedOther>
@@ -123,8 +125,6 @@ public:
   Manifold between(const ManifoldBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
-
-  Jacobian adj() const;
 
   /// @todo
 //  LieType lie() const {return derived().lie();}
