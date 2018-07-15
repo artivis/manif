@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE3.h"
+#include "../test_utils.h"
 
 #include <Eigen/Geometry>
 
@@ -563,6 +564,11 @@ TEST(TEST_SE3, TEST_SE3_BETWEEN_JAC)
   EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
 */
+
+MANIF_TEST(SE3d);
+
+//MANIF_TEST_JACOBIANS(SE3d);
+
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);

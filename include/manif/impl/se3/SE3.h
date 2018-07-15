@@ -70,6 +70,7 @@ public:
 
   MANIF_COMPLETE_MANIFOLD_TYPEDEF
   using Translation = typename Base::Translation;
+  using Quaternion = Eigen::Quaternion<Scalar>;
 
   SE3()  = default;
   ~SE3() = default;
