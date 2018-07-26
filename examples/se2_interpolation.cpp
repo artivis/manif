@@ -1,6 +1,7 @@
 #include "manif/SE2.h"
 #include "manif/algorithms/interpolation.h"
 
+#include <vector>
 #include <iostream>
 
 template <typename T>

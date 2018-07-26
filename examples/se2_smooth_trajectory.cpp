@@ -4,6 +4,7 @@
 
 #include <ceres/ceres.h>
 
+#include <vector>
 #include <iostream>
 
 

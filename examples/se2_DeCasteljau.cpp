@@ -1,6 +1,7 @@
 #include "manif/SE2.h"
 #include "manif/algorithms/decasteljau.h"
 
+#include <vector>
 #include <iostream>
 
 void heightShapeDeCasteljau(const double degree,
