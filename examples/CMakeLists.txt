@@ -2,9 +2,6 @@ add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
 add_executable(se2_cn_smooth se2_cn_smooth.cpp)
 
-add_executable(se2_smooth_trajectory se2_smooth_trajectory.cpp)
-target_link_libraries(se2_smooth_trajectory ${CERES_LIBRARIES})
-
 set(CXX_11_EXAMPLE_TARGETS
 
   # SE2
@@ -20,6 +17,8 @@ if(CERES_FOUND)
 
   message(STATUS "Found ceres_solver, building ceres examples.")
 
+  add_executable(se2_smooth_trajectory se2_smooth_trajectory.cpp)
+
   set(CXX_11_CERES_EXAMPLE_TARGETS
 
     # Ceres
@@ -32,12 +31,7 @@ if(CERES_FOUND)
     target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
   endforeach()
 
-  set(CXX_11_EXAMPLE_TARGETS
-
-    ${CXX_11_EXAMPLE_TARGETS}
-    ${CXX_11_CERES_EXAMPLE_TARGETS}
-
-  )
+  list(APPEND CXX_11_EXAMPLE_TARGETS ${CXX_11_CERES_EXAMPLE_TARGETS})
 
 else()
   message(STATUS "Could not find ceres_solver, ceres examples will not be built.")
