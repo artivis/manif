@@ -154,8 +154,8 @@ isManifNear(const ManifoldBase<_DerivedA>& manifold_a,
   return (result ? ::testing::AssertionSuccess()
                  : ::testing::AssertionFailure()
                    << manifold_a_name << " != " << manifold_b_name << "\n"
-                   << manifold_a_name << ":\n" << manifold_a << "\n"
-                   << manifold_b_name << ":\n" << manifold_b << "\n"
+                   << manifold_a_name << ":\n" << manifold_a.coeffs().transpose() << "\n"
+                   << manifold_b_name << ":\n" << manifold_b.coeffs().transpose() << "\n"
                    << "rminus:\n" << (manifold_a - manifold_b) << "\n");
 }
 
