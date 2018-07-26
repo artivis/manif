@@ -3,6 +3,8 @@
 
 #include "manif/impl/manifold_base.h"
 
+#include <vector>
+
 namespace manif
 {
 
