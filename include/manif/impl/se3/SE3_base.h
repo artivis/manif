@@ -70,7 +70,7 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
-protected:
+//protected:
 
   /// Helper
 
@@ -115,9 +115,9 @@ SE3Base<_Derived>::transform() const
 {
   Transformation T = Transformation::Identity();
   T.template topLeftCorner<3,3>() = rotation();
-  T(0,2) = x();
-  T(1,2) = y();
-  T(2,2) = z();
+  T(0,3) = x();
+  T(1,3) = y();
+  T(2,3) = z();
   return T;
 }
 
@@ -158,9 +158,9 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
     static const Eigen::Matrix<Scalar,Dim,Dim> u_x(
          ( Eigen::Matrix<Scalar,Dim,Dim>() <<
-            0, -1,  1,
-            1,  0, -1,
-           -1,  1,  0   ).finished()
+            Scalar(0), -Scalar(1),  Scalar(1),
+            Scalar(1),  Scalar(0), -Scalar(1),
+           -Scalar(1),  Scalar(1),  Scalar(0) ).finished()
           );
 
     J_minv_m->setIdentity();
@@ -178,14 +178,55 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
 SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
+  using std::abs;
+  using std::sqrt;
+
+//  using SO3Lie = typename SO3Tangent<Scalar>::LieType;
+
+  const SO3Tangent<Scalar> so3tan = asSO3().lift();
+/*
+  const SO3Lie W = so3tan.hat();
+
+  const Scalar theta_sq = so3tan.coeffs().squaredNorm();
+  const Scalar theta = sqrt( theta_sq );
+
+  Scalar A,  // sin_theta_by_theta
+         B;  // one_minus_cos_theta_by_theta_squared
+
+  if (abs(theta) < Constants<Scalar>::eps)
+  {
+    // Taylor approximation
+    A = Scalar(1.) - Scalar(1. / 6.)  * theta_sq;
+    B = Scalar(1. / 2.) - Scalar(1. / 24.) * theta_sq;
+  }
+  else
+  {
+    // Euler
+    A = sin(theta) /  theta;
+    B = (Scalar(1) - cos(theta)) / theta*theta;
+  }
+
+  const SO3Lie Vinv = SO3Lie::Identity() -
+      Scalar(1./2.) * W +
+      Scalar(1./theta_sq) * (Scalar(1) - A/(Scalar(2)*B)) * (W*W);
 
   if (J_t_m)
   {
-
+    MANIF_NOT_IMPLEMENTED_YET;
   }
 
-  return Tangent();
+  return Tangent((typename Tangent::DataType() <<
+                  Vinv*translation(), so3tan.coeffs()).finished());
+*/
+
+  if (J_t_m)
+  {
+    MANIF_NOT_IMPLEMENTED_YET;
+  }
+
+  return Tangent((typename Tangent::DataType() <<
+                  so3tan.ljac().inverse()*translation(),
+                  so3tan.coeffs()).finished());
 }
 
 template <typename _Derived>

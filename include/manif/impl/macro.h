@@ -3,11 +3,29 @@
 
 #include <stdexcept> // for std::runtime_error
 
+namespace manif {
+namespace detail {
+template <typename E, typename... Args>
+#ifdef _MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_
+constexpr void
+#else
+void
+#endif
+__attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
+{
+  throw E(std::forward<Args>(args)...);
+}
+} /* namespace detail */
+} /* namespace manif */
+
+#define MANIF_THROW(msg) \
+  manif::detail::raise<std::runtime_error>(msg);
+
 #define MANIF_NOT_IMPLEMENTED_YET \
-  throw std::runtime_error("Not implemented yet !");
+  MANIF_THROW("Not implemented yet !");
 
 #define MANIF_CHECK(cond, msg) \
-  if (!(cond)) throw std::runtime_error(msg);
+  if (!(cond)) MANIF_THROW(msg);
 
 /// Manifold - related macros
 
@@ -69,7 +87,7 @@
   using Base::setZero;            \
   using Base::setRandom;          \
   using Base::retract;            \
-  using Base::skew;               \
+  using Base::hat;                \
   using Base::rjac;               \
   using Base::ljac;               \
   using Base::adj;

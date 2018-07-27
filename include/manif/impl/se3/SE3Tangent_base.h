@@ -38,7 +38,7 @@ public:
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
-  LieType skew() const;
+  LieType hat() const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
@@ -55,7 +55,7 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
-protected:
+//protected:
 
   Eigen::Map<const SO3Tangent<Scalar>> asSO3() const
   {
@@ -84,7 +84,38 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Manifold
 SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+//  using SO3Lie = typename SO3Tangent<Scalar>::LieType;
+
+  const Eigen::Matrix<Scalar,3,1>& u = coeffs().template head<3>();
+  /*
+  const Eigen::Matrix<Scalar,3,1>& w = coeffs().template tail<3>();
+
+  const Scalar theta_sq = w.squaredNorm();
+  const Scalar theta = sqrt( theta_sq );
+
+  const SO3Lie W = asSO3().hat();
+
+  Scalar A, B, C;
+
+  if (theta < Constants<Scalar>::eps)
+  {
+    // Taylor approximation
+    A = Scalar(1.) - Scalar(1. / 6.)  * theta_sq;
+    B = Scalar(1. / 2.) - Scalar(1. / 24.) * theta_sq;
+    C = Scalar(1. / 6.) - Scalar(1. / 120.) * theta_sq;
+  }
+  else
+  {
+    A = sin(theta) /  theta;
+    B = (Scalar(1) - cos(theta)) / theta*theta;
+    C = (Scalar(1) - A) / theta*theta;
+  }
+
+  const SO3Lie V = SO3Lie::Identity() + B*W + C*(W*W);
 
   if (J_m_t)
   {
@@ -94,15 +125,26 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     J_m_t->template bottomRightCorner<3,3>() =
         J_m_t->template topLeftCorner<3,3>();
 
+    MANIF_NOT_IMPLEMENTED_YET;
+
     //J_m_t->template bottomLeftCorner<3,3>() = damn;
   }
 
-  return Manifold();
+  return Manifold(V*u, asSO3().retract().quat());
+
+  */
+
+  if (J_m_t)
+  {
+    MANIF_NOT_IMPLEMENTED_YET;
+  }
+
+  return Manifold(asSO3().ljac()*u, asSO3().retract().quat());
 }
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::LieType
-SE3TangentBase<_Derived>::skew() const
+SE3TangentBase<_Derived>::hat() const
 {
   return (LieType() <<
     Scalar(0)           , Scalar(-coeffs()(2)), Scalar( coeffs()(1)), Scalar(coeffs()(3)),

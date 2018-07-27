@@ -169,7 +169,7 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   if (J_t_m)
   {
     Scalar theta2 = tan.coeffs().squaredNorm();
-    typename Tangent::LieType W = tan.skew();
+    typename Tangent::LieType W = tan.hat();
     if (theta2 <= Constants<Scalar>::eps)
       (*J_t_m) = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
     else
@@ -210,7 +210,7 @@ SO3Base<_Derived>::act(const Vector &v,
 {
   if (J_vout_m)
   {
-    (*J_vout_m) = -rotation() * skew(v);
+    (*J_vout_m) = -rotation() * hat(v);
   }
 
   if (J_vout_v)

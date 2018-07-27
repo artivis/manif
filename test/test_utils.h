@@ -2,6 +2,8 @@
 #define _MANIF_MANIF_TEST_UTILS_H_
 
 #include "manif/impl/manifold_base.h"
+#include "manif/algorithms/interpolation.h"
+#include "manif/algorithms/average.h"
 #include "manif/impl/utils.h"
 
 #include "eigen_gtest.h"
@@ -17,16 +19,16 @@
 #define __GET_4TH_ARG(arg1,arg2,arg3,arg4, ...) arg4
 
 #define EXPECT_MANIF_NEAR_DEFAULT_TOL(A,B) \
-  EXPECT_TRUE(manif::isManifNear(A, B))
+  EXPECT_TRUE(manif::isManifNear(A, B, #A, #B))
 
 #define EXPECT_MANIF_NEAR_TOL(A,B,tol) \
-  EXPECT_TRUE(manif::isManifNear(A, B, tol))
+  EXPECT_TRUE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define EXPECT_MANIF_NOT_NEAR_DEFAULT_TOL(A,B) \
-  EXPECT_FALSE(manif::isManifNear(A, B))
+  EXPECT_FALSE(manif::isManifNear(A, B, #A, #B))
 
 #define EXPECT_MANIF_NOT_NEAR_TOL(A,B,tol) \
-  EXPECT_FALSE(manif::isManifNear(A, B, tol))
+  EXPECT_FALSE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define __EXPECT_MANIF_NEAR_CHOOSER(...) \
   __GET_4TH_ARG(__VA_ARGS__, EXPECT_MANIF_NEAR_TOL, \
@@ -43,10 +45,10 @@
   __EXPECT_MANIF_NOT_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
 #define ASSERT_MANIF_NEAR_DEFAULT_TOL(A,B) \
-  ASSERT_TRUE(manif::isManifNear(A, B))
+  ASSERT_TRUE(manif::isManifNear(A, B, #A, #B))
 
 #define ASSERT_MANIF_NEAR_TOL(A,B,tol) \
-  ASSERT_TRUE(manif::isManifNear(A, B, tol))
+  ASSERT_TRUE(manif::isManifNear(A, B, #A, #B, tol))
 
 #define __ASSERT_MANIF_NEAR_CHOOSER(...) \
   __GET_4TH_ARG(__VA_ARGS__, ASSERT_MANIF_NEAR_TOL, \
@@ -97,8 +99,17 @@
   { evalRandom(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
   { evalZero(); }                                                         \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP10)            \
-  { evalInterp01(); }
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SLERP10)             \
+  { evalSlerp01(); }                                                      \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
+  { evalAvgBiInvariant(); }                                               \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
+  { evalIsApprox(); }
+
+/*
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
+  { evalCubic01(); }                                                      \
+*/
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -131,22 +142,33 @@ template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const ManifoldBase<_DerivedA>& manifold_a,
             const ManifoldBase<_DerivedB>& manifold_b,
+            const std::string manifold_a_name = "manifold_a",
+            const std::string manifold_b_name = "manifold_b",
             double tolerance = 1e-5)
 {
-  return isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
-                           (manifold_a-manifold_b).coeffs(),
-                           "expected", "actual",
-                           tolerance);
+  auto result =
+      isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
+                        (manifold_a-manifold_b).coeffs(),
+                        "", "", tolerance);
+
+  return (result ? ::testing::AssertionSuccess()
+                 : ::testing::AssertionFailure()
+                   << manifold_a_name << " != " << manifold_b_name << "\n"
+                   << manifold_a_name << ":\n" << manifold_a.coeffs().transpose() << "\n"
+                   << manifold_b_name << ":\n" << manifold_b.coeffs().transpose() << "\n"
+                   << "rminus:\n" << (manifold_a - manifold_b) << "\n");
 }
 
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const TangentBase<_DerivedA>& tangent_a,
             const TangentBase<_DerivedB>& tangent_b,
+            const std::string tangent_a_name = "tangent_a",
+            const std::string tangent_b_name = "tangent_b",
             double tolerance = 1e-5)
 {
   return isEigenMatrixNear(tangent_a.coeffs(), tangent_b.coeffs(),
-                           "rhs tangent", "lhs tangent",
+                           tangent_a_name, tangent_b_name,
                            tolerance);
 }
 
@@ -157,7 +179,8 @@ template <typename _Manifold>
 class CommonTester : public ::testing::Test
 {
   using Manifold = _Manifold;
-  using Tangent  = typename _Manifold::Tangent;
+  using Scalar   = typename Manifold::Scalar;
+  using Tangent  = typename Manifold::Tangent;
 
 public:
 
@@ -309,20 +332,66 @@ public:
                       Tangent::DataType::Zero());
   }
 
-  void evalInterp01()
+  void evalSlerp01()
   {
-    Manifold interp = state.interp(state_other, 0);
+    Manifold interp = interpolate(state, state_other, 0);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
-    interp = state.interp(state_other, 1);
+    interp = interpolate(state, state_other, 1);
 
     EXPECT_MANIF_NEAR(state_other, interp, tol_);
   }
 
+  void evalCubic01()
+  {
+    Manifold interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
+
+    EXPECT_MANIF_NEAR(state, interp, tol_);
+
+    interp = interpolate(state, state_other, 1, INTERP_METHOD::CUBIC);
+
+    EXPECT_MANIF_NEAR(state_other, interp, tol_);
+  }
+
+  void evalAvgBiInvariant()
+  {
+    const auto dummy = Manifold::Random();
+    EXPECT_MANIF_NEAR(dummy,
+     average_biinvariant(std::vector<Manifold>{dummy}), tol_);
+
+    std::vector<Manifold> mans;
+
+    const int N = 15;
+    for (int i=0; i<N; ++i)
+      mans.emplace_back(Manifold::Random());
+
+    const auto avg = average_biinvariant(mans);
+
+    // A proper mean function should always return
+    // the same mean no matter the initial pivot.
+    for (int i=0; i<20; ++i)
+    {
+      std::random_shuffle( mans.begin(), mans.end() );
+
+      const auto avg_shu = average_biinvariant(mans);
+
+      EXPECT_MANIF_NEAR(avg, avg_shu, tol_);
+    }
+  }
+
+  void evalIsApprox()
+  {
+    EXPECT_TRUE(state.isApprox(state, tol_));
+    EXPECT_FALSE(state.isApprox(state_other, tol_));
+
+    EXPECT_TRUE(state == state);
+    EXPECT_FALSE(state == state_other);
+  }
+
 protected:
 
-  double tol_ = 1e-15;
+  Scalar tol_ = Constants<Scalar>::eps;
 
   Manifold state;
   Manifold state_other;

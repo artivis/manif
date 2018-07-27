@@ -52,7 +52,7 @@ public:
   _Derived& setZero();
   _Derived& setRandom();
 
-  LieType skew() const;
+  LieType hat() const;
 
   Manifold retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
@@ -77,6 +77,9 @@ public:
 
   Jacobian adj() const;
 
+  template <typename _DerivedOther>
+  bool isApprox(const TangentBase<_DerivedOther>& t, const Scalar eps) const;
+
   /// Some operators
 
   /**
@@ -96,6 +99,9 @@ public:
   template <typename _DerivedOther>
   Tangent operator -(const TangentBase<_DerivedOther>& t) const;
 
+  template <typename _DerivedOther>
+  bool operator ==(const TangentBase<_DerivedOther>& t) const;
+
   /**
    * @brief operator =, assignment oprator
    * @param t
@@ -114,7 +120,10 @@ public:
              const TangentBase<_DerivedOther>& t);
 
   template <typename T>
-  Tangent operator *(const T scalar);
+  Tangent operator *(const T scalar) const;
+
+  template <typename T>
+  Tangent operator /(const T scalar) const;
 
   /// static helpers
 
@@ -188,9 +197,9 @@ TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieType
-TangentBase<_Derived>::skew() const
+TangentBase<_Derived>::hat() const
 {
-  return derived().skew();
+  return derived().hat();
 }
 
 template <class _Derived>
@@ -252,6 +261,26 @@ TangentBase<_Derived>::adj() const
   return derived().adj();
 }
 
+template <typename _Derived>
+template <typename _DerivedOther>
+bool TangentBase<_Derived>::isApprox(const TangentBase<_DerivedOther>& t,
+                                     const Scalar eps) const
+{
+  using std::min;
+  bool result = false;
+
+  if (min(coeffs().norm(), t.coeffs().norm()) < eps)
+  {
+    result = ((coeffs() - t.coeffs()).isZero(eps));
+  }
+  else
+  {
+    result = (coeffs().isApprox(t.coeffs(), eps));
+  }
+
+  return result;
+}
+
 /// Operators
 
 template <typename _Derived>
@@ -287,6 +316,14 @@ TangentBase<_Derived>::operator -(const TangentBase<_DerivedOther>& t) const
 }
 
 template <typename _Derived>
+template <typename _DerivedOther>
+bool
+TangentBase<_Derived>::operator ==(const TangentBase<_DerivedOther>& t) const
+{
+  return isApprox(t, Constants<Scalar>::eps);
+}
+
+template <typename _Derived>
 _Derived&
 TangentBase<_Derived>::operator =(
     const TangentBase<_Derived>& t)
@@ -315,9 +352,17 @@ _Derived& TangentBase<_Derived>::operator =(const DataType& t)
 template <typename _Derived>
 template <typename T>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator *(const T scalar)
+TangentBase<_Derived>::operator *(const T scalar) const
 {
   return Tangent(derived().coeffs() * scalar);
+}
+
+template <typename _Derived>
+template <typename T>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::operator /(const T scalar) const
+{
+  return Tangent(derived().coeffs() / scalar);
 }
 
 template <class _Derived>
