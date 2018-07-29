@@ -3,10 +3,8 @@
 
 #include <type_traits>
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename T> struct traits;
 
@@ -32,15 +30,22 @@ template <typename _ManifoldBase> struct ManifoldProperties;
 //  using Base = TangentBase<_Derived>;
 //};
 
+template <typename _Class, typename _NewScalar>
+struct traitscast;
+
+template <template <typename> class _Class, typename _NewScalar, typename _Scalar>
+struct traitscast<_Class<_Scalar>, _NewScalar>
+{
+  using cast = _Class<_NewScalar>;
+};
+
 } /* namespace internal */
 } /* namespace manif */
 
 ////// Garbage / messing arround
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template<class, typename T> struct has_rplus_impl : std::false_type {};
 template<typename T> struct

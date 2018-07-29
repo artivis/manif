@@ -31,10 +31,8 @@ struct ManifoldBase
 
   using OptJacobianRef = tl::optional<Jacobian&>;
 
-  /// @todo find something sexier
-  template <typename T>
-  using ManifoldTemplate =
-  typename internal::traits<_Derived>::template ManifoldTemplate<T>;
+  template <typename _Scalar>
+  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -634,6 +632,15 @@ _Stream& operator << (
   return s;
 }
 
+/// Traits specialization
+
+namespace internal {
+template <template <typename> class _Derived, typename _NewScalar, typename _Scalar>
+struct traitscast<ManifoldBase<_Derived<_Scalar>>, _NewScalar>
+{
+  using cast = ManifoldBase<_Derived<_NewScalar>>;
+};
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_MANIFOLD_BASE_H_ */

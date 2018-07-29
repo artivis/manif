@@ -23,9 +23,6 @@ struct traits<SE3<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  template <typename T>
-  using ManifoldTemplate = SE3<T>;
-
   using Manifold = SE3<_Scalar>;
   using Tangent  = SE3Tangent<_Scalar>;
 

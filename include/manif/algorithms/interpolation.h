@@ -3,7 +3,7 @@
 
 #include "manif/impl/manifold_base.h"
 
-#include <iostream>
+//#include <iostream>
 
 namespace manif
 {
@@ -252,9 +252,9 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
 
   if (std::abs(phi - phis) > 1e-8)
   {
-    std::cout << "phi : " << phi << "\n";
-    std::cout << "smoothing_phi : " << phis << "\n";
-    std::cout << "abs diff : " << std::abs(phi - phis) << "\n";
+//    std::cout << "phi : " << phi << "\n";
+//    std::cout << "smoothing_phi : " << phis << "\n";
+//    std::cout << "abs diff : " << std::abs(phi - phis) << "\n";
     MANIF_THROW("PHI AINT EQUAL !");
   }
 

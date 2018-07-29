@@ -15,9 +15,6 @@ namespace internal
 template <typename _Scalar>
 struct traits<SE2Tangent<_Scalar>>
 {
-  template <typename T>
-  using TangentTemplate = SE2Tangent<T>;
-
   using Scalar = _Scalar;
 
   using Manifold = SE2<_Scalar>;

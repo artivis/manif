@@ -1,5 +1,8 @@
-#ifndef _EIGEN_CHECKS_H_
-#define _EIGEN_CHECKS_H_
+#ifndef _MANIF_MANIF_EIGEN_H_
+#define _MANIF_MANIF_EIGEN_H_
+
+
+#include <Eigen/Core>
 
 /**
  * @note static_cast<int> to avoid -Wno-enum-compare
@@ -97,4 +100,44 @@
   assert_is_colmajor_vector(x); \
   assert_cols_dim(x, dim);
 
-#endif /* _EIGEN_CHECKS_H_ */
+namespace manif {
+namespace internal {
+
+/**
+ * @brief traitscast specialization that come handy when writing thing like
+ * using Matrix3f = typename traitscast<Matrix3d, float>::cast;
+ */
+template <typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols, typename NewScalar>
+struct traitscast<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>, NewScalar>
+{
+  using cast = Eigen::Matrix<NewScalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>;
+};
+
+} /* namespace internal */
+
+template <typename _Scalar>
+Eigen::Matrix<_Scalar, 2, 2>
+skew2(const _Scalar v)
+{
+  return (Eigen::Matrix<_Scalar, 2, 2>() <<
+             _Scalar(0.), -v,
+             v, _Scalar(0.) ).finished();
+}
+
+template <typename _Derived>
+Eigen::Matrix<typename _Derived::Scalar, 3, 3>
+skew3(const Eigen::MatrixBase<_Derived>& v)
+{
+  assert_vector_dim(v, 3);
+
+  using T = typename _Derived::Scalar;
+
+  return (Eigen::Matrix<T, 3, 3>() <<
+             T(0.),  -v(2),   +v(1),
+            +v(2),    T(0.),  -v(0),
+            -v(1),   +v(0),    T(0.) ).finished();
+}
+
+} /* namespace manif */
+
+#endif /* _MANIF_MANIF_EIGEN_H_ */

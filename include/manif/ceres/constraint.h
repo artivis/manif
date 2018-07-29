@@ -19,10 +19,10 @@ class Constraint
   using JacobianMap = typename internal::traits_ceres<Manifold>::ConstraintJacobianMap;
 
   template <typename _Scalar>
-  using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
+  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
 
   template <typename _Scalar>
-  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+  using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
 
   static constexpr int DoF = Manifold::DoF;
   static constexpr int RepSize = Manifold::RepSize;
