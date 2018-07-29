@@ -19,9 +19,6 @@ namespace internal
 template <typename _Scalar>
 struct traits<SO3<_Scalar>>
 {
-  template <typename T>
-  using ManifoldTemplate = SO3<T>;
-
   using Scalar = _Scalar;
 
   using Manifold = SO3<_Scalar>;

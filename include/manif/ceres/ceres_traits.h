@@ -2,7 +2,7 @@
 #define _MANIF_MANIF_CERES_TRAITS_H_
 
 #include "manif/impl/manifold_base.h"
-#include <Eigen/Core>
+#include "manif/impl/eigen.h"
 
 namespace manif
 {

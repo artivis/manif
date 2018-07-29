@@ -27,9 +27,8 @@ struct TangentBase
 
   using OptJacobianRef = tl::optional<Jacobian&>;
 
-  template <typename T>
-  using TangentTemplate =
-  typename internal::traits<_Derived>::template TangentTemplate<T>;
+  template <typename _Scalar>
+  using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -399,6 +398,16 @@ _Stream& operator << (
   s << m.coeffs().transpose();
   return s;
 }
+
+/// Traits specialization
+
+namespace internal {
+template <template <typename> class _Derived, typename _NewScalar, typename _Scalar>
+struct traitscast<TangentBase<_Derived<_Scalar>>, _NewScalar>
+{
+  using cast = TangentBase<_Derived<_NewScalar>>;
+};
+} /* namespace internal */
 
 } /* namespace manif */
 

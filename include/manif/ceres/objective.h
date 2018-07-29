@@ -18,10 +18,10 @@ class Objective : public ceres::CostFunction
   using JacobianMap = typename internal::traits_ceres<Manifold>::ObjectiveJacobianMap;
 
   template <typename _Scalar>
-  using ManifoldTemplate = typename _Manifold::template ManifoldTemplate<_Scalar>;
+  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
 
   template <typename _Scalar>
-  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+  using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
 
 public:
 
