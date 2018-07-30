@@ -399,16 +399,6 @@ _Stream& operator << (
   return s;
 }
 
-/// Traits specialization
-
-namespace internal {
-template <template <typename> class _Derived, typename _NewScalar, typename _Scalar>
-struct traitscast<TangentBase<_Derived<_Scalar>>, _NewScalar>
-{
-  using cast = TangentBase<_Derived<_NewScalar>>;
-};
-} /* namespace internal */
-
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_TANGENT_BASE_H_ */

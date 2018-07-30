@@ -632,15 +632,6 @@ _Stream& operator << (
   return s;
 }
 
-/// Traits specialization
-
-namespace internal {
-template <template <typename> class _Derived, typename _NewScalar, typename _Scalar>
-struct traitscast<ManifoldBase<_Derived<_Scalar>>, _NewScalar>
-{
-  using cast = ManifoldBase<_Derived<_NewScalar>>;
-};
-} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_MANIFOLD_BASE_H_ */
