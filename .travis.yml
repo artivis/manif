@@ -246,6 +246,28 @@ matrix:
       - make
       - make test
 
+  #
+  # Ceres-related tests
+  #
+  - os: linux
+    env:
+      - TEST="Ceres"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-5
+          - g++-5
+    script:
+      - git clone --branch=master git://github.com/ceres-solver/ceres-solver.git /tmp/ceres-solver &&
+        mkdir /tmp/ceres-solver-build && cd /tmp/ceres-solver-build &&
+        cmake /tmp/ceres-solver -DMINIGLOG=ON -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF &&
+        make -j2 && sudo make install && cd -;
+      - cmake -DCMAKE_CXX_COMPILER="g++-5" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make -j2
+      - make test
+
   allow_failures:
     - os: linux
       env:
