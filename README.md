@@ -6,12 +6,12 @@
 **manif** is a header-only C++ library for operations on Manifold targeted at robotics applications.
 
 
-- Maintainer status: maintained
-- Maintainer: Jeremie Deray <deray.jeremie@gmail.com>
-- Author: Jeremie Deray <deray.jeremie@gmail.com>
-- License: APACHE-2.0
-- Bug / feature tracker: https://github.com/artivis/manif/issues
-- Source: git https://github.com/artivis/manif.git (branch: devel)
+-   Maintainer status: maintained
+-   Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+-   Author: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+-   License: APACHE-2.0
+-   Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
+-   Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
 
 [![Build Status](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
 ---
@@ -65,27 +65,28 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 | :---       |   :---:   | :---: |
 |       |   Base Operation   |  |
 | Inverse | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}^{-1}" title="\mathbf \Phi^{-1}" /> | `X.inverse()` |
-| Composition | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}&space;\circ&space;\mathbf&space;\mathcal{Y}" title="\mathbf \mathcal{X} \circ \mathbf \mathcal{Y}" /> | <ul class="list-unstyled"><li>`X * Y`</li><li>`X.compose(Y)`</li></ul> |
+| Composition | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}&space;\circ&space;\mathbf&space;\mathcal{Y}" title="\mathbf \mathcal{X} \circ \mathbf \mathcal{Y}" /> | `X * Y`<br/>`X.compose(Y)` |
 | Retract to manifold space | <img src="https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi)" title="\exp(\mathbf \varphi)" /> | `w.retract()` |
 | Act on vector | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&space;v"/> | `X.act(v)` |
 | Lift to tangent space | <img src="https://latex.codecogs.com/png.latex?\log(\mathbf&space;\mathcal{X})" title="\log(\mathbf \Phi)" /> | `X.lift()` |
 | Manifold Adjoint | <img src="https://latex.codecogs.com/png.latex?Adj(\mathbf&space;\mathcal{X})" /> | `X.adj()` |
 | Tangent adjoint | <img src="https://latex.codecogs.com/png.latex?adj(\mathbf&space;\varphi)" /> | `w.adj()` |
 |       |   Composed Operation   |  |
-| Manifold right plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi)" /> | <ul class="list-unstyled"><li>`X + w`</li><li>`X.plus(w)`</li><li>`X.rplus(w)`</li></ul> |
-| Manifold left plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi)\circ\mathbf\mathcal{X}" /> | <ul class="list-unstyled"><li>`w + X`</li><li>`w.plus(X)`</li><li>`w.lplus(X)`</li></ul> |
-| Manifold right minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})"  /> | <ul class="list-unstyled"><li>`X - Y`</li><li>`X.minus(Y)`</li><li>`X.rminus(Y)`</li></ul> |
+| Manifold right plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi)" /> | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
+| Manifold left plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi)\circ\mathbf\mathcal{X}" /> | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
+| Manifold right minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})"  /> | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
 | Manifold left minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{Y}\ominus\mathbf\mathcal{X}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})"  /> | `X.lminus(Y)` |
-| Between | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}"/> | `X.compose(Y)` |
+| Between | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}"/> | `X.between(Y)` |
 
 Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf\mathcal{Y}" alt="\mathcal{Y}" /> represents a manifold element, <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi" alt="small phi" />  or `w` represents an element of the tangent space and <img src="https://latex.codecogs.com/png.latex?\mathbf{v}" alt="v" /> or `v` represents any element of <img src="https://latex.codecogs.com/png.latex?\mathbb{R}^n" />.
 
 ### Jacobians
 
-All operations come with their respectives analytical Jacobian matrices.   
+All operations come with their respectives analytical Jacobian matrices.  
 Thoughout `manif`, **Jacobians are differentiated with respect to a perturbation on the tangent space**.
 
-<img src="https://latex.codecogs.com/png.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}"/>
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" title="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus f(\mathbf\mathcal{X})}{\varphi}" /></a></center>&nbsp;
+
 
 The Jacobians of any of the aforementionned operations can then be evaluated, e.g.,
 
@@ -100,7 +101,7 @@ The Jacobians of any of the aforementionned operations can then be evaluated, e.
   auto minus   = x.minus(Y, J_m_x, J_m_y);
 
   SO2::Jacobian J_i_x;
-  auto inverse   = x.inverse(J_i_x);
+  auto inverse = x.inverse(J_i_x);
 
   // etc...
 ```
@@ -130,8 +131,8 @@ Although I like packages using [readthedocs](https://readthedocs.org/) and [code
 ## Contributing
 @todo  
 These are the contribution guidelines.
-- `master` branch is for release only.
-- `devel` is the target for PR adding new features etc.
+-   `master` branch is for release only.
+-   `devel` is the target for PR adding new features etc.
 
 <!--## Credits
 I wanna thanks my European project-->
