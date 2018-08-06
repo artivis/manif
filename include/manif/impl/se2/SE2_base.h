@@ -113,11 +113,7 @@ SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
   if (J_minv_m)
   {
-    Jacobian adj = Jacobian::Identity();
-    adj.template topLeftCorner<2,2>() = rotation();
-    adj(0,2) =  y();
-    adj(1,2) = -x();
-    (*J_minv_m) = -adj;
+    (*J_minv_m) = -adj();
   }
 
   return Manifold(-x()*real() - y()*imag(),
@@ -167,19 +163,6 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   {
     // Jr^-1
     (*J_t_m) = tan.rjac().inverse();
-
-//    Scalar theta_by_2 = theta / Scalar(2);
-
-//    Jacobian rjacinv = Jacobian::Identity();
-//    rjacinv(0,0) =  (theta*sin_theta)/(Scalar(2)-Scalar(2)*cos_theta);
-//    rjacinv(0,1) = -theta_by_2;
-//    rjacinv(1,0) =  theta_by_2;
-//    rjacinv(1,1) =  rjacinv(0,0);
-
-//    rjacinv(0,2) = theta * (theta_by_2*(x()*sin_theta + y()*cos_theta - y()) + cos_theta*x() - x()) / (cos_theta - Scalar(1));
-//    rjacinv(1,2) = theta * (theta_by_2*(y()*sin_theta - x()*cos_theta + x()) + cos_theta*y() - y()) / (cos_theta - Scalar(1));
-
-//    (*J_t_m) = rjacinv;
   }
 
   return tan;
@@ -206,22 +189,7 @@ SE2Base<_Derived>::compose(
 
   if (J_mc_ma)
   {
-    Jacobian adj = Jacobian::Identity();
-    adj.template topLeftCorner<2,2>() = m_se2.rotation();
-    adj(0,2) =  m_se2.y();
-    adj(1,2) = -m_se2.x();
-
-    (*J_mc_ma) = adj.inverse();
-
-//    std::cout << "J_mc_ma 1\n" << (*J_mc_ma) << "\n";
-
-//    Jacobian& refJ_mc_ma = (*J_mc_ma);
-//    refJ_mc_ma = Jacobian::Identity();
-//    refJ_mc_ma.template topLeftCorner<2,2>() = m_se2.rotation().template transpose();
-//    refJ_mc_ma(0,2) = -m_se2.real()*m_se2.x() - m_se2.imag()*m_se2.y();
-//    refJ_mc_ma(1,2) =  m_se2.imag()*m_se2.x() - m_se2.real()*m_se2.y();
-
-//    std::cout << "J_mc_ma 2\n" << (*J_mc_ma) << "\n";
+    (*J_mc_ma) = m.adj().inverse();
   }
 
   if (J_mc_mb)
@@ -262,7 +230,7 @@ SE2Base<_Derived>::adj() const
   Jacobian Adj = Jacobian::Identity();
   Adj.template topLeftCorner<2,2>() = rotation();
   Adj(0,2) =  y();
-  Adj(0,2) = -x();
+  Adj(1,2) = -x();
   return Adj;
 }
 
