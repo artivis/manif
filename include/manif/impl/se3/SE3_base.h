@@ -150,24 +150,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   if (J_minv_m)
   {
-    /// @note
-    ///
-    /// J = | R^T  -R u_x t
-    ///     |  0       I
-    ///
-
-    static const Eigen::Matrix<Scalar,Dim,Dim> u_x(
-         ( Eigen::Matrix<Scalar,Dim,Dim>() <<
-            Scalar(0), -Scalar(1),  Scalar(1),
-            Scalar(1),  Scalar(0), -Scalar(1),
-           -Scalar(1),  Scalar(1),  Scalar(0) ).finished()
-          );
-
-    J_minv_m->setIdentity();
-    J_minv_m->template topLeftCorner<Dim,Dim>() =
-        rotation().transpose();
-    J_minv_m->template topRightCorner<Dim,1>() =
-        J_minv_m->template topLeftCorner<Dim,Dim>() * u_x * translation();
+    (*J_minv_m) = -adj();
   }
 
   return Manifold(-rotation().transpose() * translation(),
@@ -181,52 +164,19 @@ SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::abs;
   using std::sqrt;
 
-//  using SO3Lie = typename SO3Tangent<Scalar>::LieType;
-
   const SO3Tangent<Scalar> so3tan = asSO3().lift();
-/*
-  const SO3Lie W = so3tan.hat();
 
-  const Scalar theta_sq = so3tan.coeffs().squaredNorm();
-  const Scalar theta = sqrt( theta_sq );
-
-  Scalar A,  // sin_theta_by_theta
-         B;  // one_minus_cos_theta_by_theta_squared
-
-  if (abs(theta) < Constants<Scalar>::eps)
-  {
-    // Taylor approximation
-    A = Scalar(1.) - Scalar(1. / 6.)  * theta_sq;
-    B = Scalar(1. / 2.) - Scalar(1. / 24.) * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin(theta) /  theta;
-    B = (Scalar(1) - cos(theta)) / theta*theta;
-  }
-
-  const SO3Lie Vinv = SO3Lie::Identity() -
-      Scalar(1./2.) * W +
-      Scalar(1./theta_sq) * (Scalar(1) - A/(Scalar(2)*B)) * (W*W);
+  Tangent tan((typename Tangent::DataType() <<
+               so3tan.ljac().inverse()*translation(),
+               so3tan.coeffs()).finished());
 
   if (J_t_m)
   {
-    MANIF_NOT_IMPLEMENTED_YET;
+    // Jr^-1
+    (*J_t_m) = tan.rjac().inverse();
   }
 
-  return Tangent((typename Tangent::DataType() <<
-                  Vinv*translation(), so3tan.coeffs()).finished());
-*/
-
-  if (J_t_m)
-  {
-    MANIF_NOT_IMPLEMENTED_YET;
-  }
-
-  return Tangent((typename Tangent::DataType() <<
-                  so3tan.ljac().inverse()*translation(),
-                  so3tan.coeffs()).finished());
+  return tan;
 }
 
 template <typename _Derived>
@@ -245,48 +195,12 @@ SE3Base<_Derived>::compose(
 
   if (J_mc_ma)
   {
-    /// @note
-    ///
-    /// J = | I  -R tb_x
-    ///     | 0    Rb^T
-    ///
-
-    J_mc_ma->setIdentity();
-
-    J_mc_ma->template bottomRightCorner<Dim,Dim>() =
-        m_se3.rotation().transpose();
-
-    J_mc_ma->template topRightCorner<Dim,Dim>() =
-        -rotation() * skew3(translation());
+    (*J_mc_ma) = m.adj().inverse();
   }
 
   if (J_mc_mb)
   {
-    /// @note
-    ///
-    /// J = | R 0
-    ///     | 0 I
-    ///
-
     J_mc_mb->setIdentity();
-    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
-
-    /// @note
-    ///
-    /// J = | R  t_x R
-    ///     | 0    R
-    ///
-/*
-    J_mc_mb->setIdentity();
-
-    J_mc_mb->template topLeftCorner<Dim,Dim>() = rotation();
-
-    J_mc_mb->template bottomRightCorner<Dim,Dim>() =
-        J_mc_mb->template topLeftCorner<Dim,Dim>();
-
-    J_mc_mb->template topRightCorner<Dim,1>() =
-        skew(translation()) * J_mc_mb->template topLeftCorner<Dim,Dim>();
-*/
   }
 
   return Manifold(rotation()*m_se3.translation() + translation(),
@@ -306,7 +220,7 @@ SE3Base<_Derived>::act(const Vector &v,
 
   if (J_vout_v)
   {
-    MANIF_NOT_IMPLEMENTED_YET
+    (*J_vout_v) = rotation();
   }
 
   return transform() * v;
@@ -316,7 +230,7 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Jacobian
 SE3Base<_Derived>::adj() const
 {
-  Rotation T;
+  typename Tangent::LieType T;
   T <<  Scalar(0), -z()      ,  y(),
         z()      ,  Scalar(0), -x(),
        -y()      ,  x()      ,  Scalar(0);
