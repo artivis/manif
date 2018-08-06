@@ -28,6 +28,9 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
+  using BlockV = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using BlockW = typename DataType::template FixedSegmentReturnType<3>::Type;
+
   using Base::data;
   using Base::coeffs;
 
@@ -46,6 +49,15 @@ public:
   Jacobian adj() const;
 
   /// SE3Tangent specific API
+
+  /// @todo
+  /*
+
+    typename DataType::template FixedSegmentReturnType<3>::Type
+    ?Type? v const();
+    ?Type? w const();
+
+   */
 
   Scalar x() const;
   Scalar y() const;
