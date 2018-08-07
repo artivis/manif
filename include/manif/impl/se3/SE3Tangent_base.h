@@ -104,7 +104,7 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
   if (J_m_t)
   {
-    MANIF_NOT_IMPLEMENTED_YET;
+    *J_m_t = rjac().inverse();
   }
 
   /// @note Eq. 10.93
@@ -123,11 +123,16 @@ SE3TangentBase<_Derived>::hat() const
           ).finished();
 }
 
+/// @note Eq. 10.95
+/// @note barfoot14tro Eq. 102
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::rjac() const
 {
-  MANIF_NOT_IMPLEMENTED_YET;
+  using std::cos;
+  using std::sin;
+  using std::sqrt;
+//  MANIF_NOT_IMPLEMENTED_YET;
 
   /// @note Eq. 10.95
   Jacobian Jr = Jacobian::Zero();
@@ -136,6 +141,66 @@ SE3TangentBase<_Derived>::rjac() const
       Jr.template topLeftCorner<3,3>();
 
 //  Jr.template bottomLeftCorner<3,3>() = /** @todo */(asSO3().ljac()*coeffs().template head<3>());
+
+
+  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
+  const LieType V = skew3(coeffs().template head<3>());
+  const LieType W = asSO3().hat();
+
+  Scalar A, B, C;
+
+  // Small angle approximation
+  if (theta_sq <= Constants<Scalar>::eps)
+  {
+    A = Scalar(1./6.);
+    B = Scalar(1./24.);
+    C = Scalar(1./24.) + Scalar(3./120.);
+//    sin_theta =
+//    Jr.template bottomLeftCorner<3,3>().noalias() =
+//        - Scalar(0.5)*V + Scalar(1./6.)*(W*V + V*W - W*V*W)
+//        + Scalar(1./24.)*(W*W*V + V*W*W - Scalar(3)*W*V*W)
+//        - Scalar(0.5)*(Scalar(1./24.) + Scalar(3./120.))*(W*V*W*W + W*W*V*W);
+  }
+  else
+  {
+//    const double sinPhi = sin(phi), cosPhi = cos(phi);
+//    const double phi2 = phi * phi, phi3 = phi2 * phi, phi4 = phi3 * phi, phi5 = phi4 * phi;
+//    // Invert the sign of odd-order terms to have the right Jacobian
+//    Q = -0.5*V + (phi-sinPhi)/phi3 * (W*V + V*W - W*V*W)
+//        + (1-phi2/2-cosPhi)/phi4 * (W*W*V + V*W*W - 3*W*V*W)
+//        - 0.5*((1-phi2/2-cosPhi)/phi4 - 3*(phi-sinPhi-phi3/6.)/phi5)*(W*V*W*W + W*W*V*W);
+
+   const Scalar theta     = sqrt(theta_sq);
+   const Scalar sin_theta = sin(theta);
+   const Scalar cos_theta = cos(theta);
+
+    A = (theta - sin_theta) / (theta_sq*theta);
+    B = ((Scalar(1) - theta_sq) / (Scalar(2) - cos_theta)) / (theta_sq*theta_sq);
+    C = (((Scalar(1) - theta_sq) / (Scalar(2) - cos_theta)) / (theta_sq*theta_sq)) -
+        Scalar(3)*(theta - sin_theta - theta_sq*theta/Scalar(6))/(theta_sq*theta_sq*theta);
+  }
+
+  Jr.template bottomLeftCorner<3,3>().noalias() =
+      - Scalar(0.5) * V
+      + A * (W*V + V*W - W*V*W)
+      + B * (W*W*V + V*W*W - Scalar(3)*W*V*W)
+      - C * Scalar(0.5) * (W*V*W*W + W*W*V*W);
+
+    /////////////
+//  double phi = w.norm();
+//  if (fabs(phi)>1e-5) {
+//    const double sinPhi = sin(phi), cosPhi = cos(phi);
+//    const double phi2 = phi * phi, phi3 = phi2 * phi, phi4 = phi3 * phi, phi5 = phi4 * phi;
+//    // Invert the sign of odd-order terms to have the right Jacobian
+//    Q = -0.5*V + (phi-sinPhi)/phi3*(W*V + V*W - W*V*W)
+//        + (1-phi2/2-cosPhi)/phi4*(W*W*V + V*W*W - 3*W*V*W)
+//        - 0.5*((1-phi2/2-cosPhi)/phi4 - 3*(phi-sinPhi-phi3/6.)/phi5)*(W*V*W*W + W*W*V*W);
+//  }
+//  else {
+//    Q = -0.5*V + 1./6.*(W*V + V*W - W*V*W)
+//        + 1./24.*(W*W*V + V*W*W - 3*W*V*W)
+//        - 0.5*(1./24. + 3./120.)*(W*V*W*W + W*W*V*W);
+//  }
 
   return Jacobian::Constant(Scalar(1));
 }
