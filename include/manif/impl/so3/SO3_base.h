@@ -60,10 +60,7 @@ public:
   Scalar z() const;
   Scalar w() const;
 
-  QuaternionDataType quat() const
-  {
-    return QuaternionDataType(coeffs());
-  }
+  QuaternionDataType quat() const;
 
 protected:
 
@@ -210,7 +207,7 @@ SO3Base<_Derived>::act(const Vector &v,
 {
   if (J_vout_m)
   {
-    (*J_vout_m) = -rotation() * hat(v);
+    (*J_vout_m) = -rotation() * skew(v);
   }
 
   if (J_vout_v)
@@ -256,6 +253,13 @@ typename SO3Base<_Derived>::Scalar
 SO3Base<_Derived>::w() const
 {
   return coeffs().w();
+}
+
+template <typename _Derived>
+typename SO3Base<_Derived>::QuaternionDataType
+SO3Base<_Derived>::quat() const
+{
+  return QuaternionDataType(coeffs());
 }
 
 template <typename _Derived>

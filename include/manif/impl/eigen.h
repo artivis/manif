@@ -116,8 +116,9 @@ struct traitscast<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxC
 } /* namespace internal */
 
 template <typename _Scalar>
-Eigen::Matrix<_Scalar, 2, 2>
-skew2(const _Scalar v)
+typename std::enable_if<std::is_arithmetic<_Scalar>::value,
+                        Eigen::Matrix<_Scalar, 2, 2>>::type
+skew(const _Scalar v)
 {
   return (Eigen::Matrix<_Scalar, 2, 2>() <<
              _Scalar(0.), -v,
@@ -125,8 +126,11 @@ skew2(const _Scalar v)
 }
 
 template <typename _Derived>
-Eigen::Matrix<typename _Derived::Scalar, 3, 3>
-skew3(const Eigen::MatrixBase<_Derived>& v)
+typename std::enable_if<std::is_base_of<Eigen::MatrixBase<_Derived>,
+                                        _Derived>::value and
+                        _Derived::RowsAtCompileTime == 3,
+                        Eigen::Matrix<typename _Derived::Scalar, 3, 3>>::type
+skew(const Eigen::MatrixBase<_Derived>& v)
 {
   assert_vector_dim(v, 3);
 
@@ -137,6 +141,29 @@ skew3(const Eigen::MatrixBase<_Derived>& v)
             +v(2),    T(0.),  -v(0),
             -v(1),   +v(0),    T(0.) ).finished();
 }
+
+//template <typename _Scalar>
+//Eigen::Matrix<_Scalar, 2, 2>
+//skew2(const _Scalar v)
+//{
+//  return (Eigen::Matrix<_Scalar, 2, 2>() <<
+//             _Scalar(0.), -v,
+//             v, _Scalar(0.) ).finished();
+//}
+
+//template <typename _Derived>
+//Eigen::Matrix<typename _Derived::Scalar, 3, 3>
+//skew3(const Eigen::MatrixBase<_Derived>& v)
+//{
+//  assert_vector_dim(v, 3);
+
+//  using T = typename _Derived::Scalar;
+
+//  return (Eigen::Matrix<T, 3, 3>() <<
+//             T(0.),  -v(2),   +v(1),
+//            +v(2),    T(0.),  -v(0),
+//            -v(1),   +v(0),    T(0.) ).finished();
+//}
 
 } /* namespace manif */
 

@@ -172,7 +172,7 @@ SO2Base<_Derived>::act(const Vector &v,
 {
   if (J_vout_m)
   {
-    (*J_vout_m) = rotation() * skew2(1) * v;
+    (*J_vout_m) = rotation() * skew(1) * v;
   }
 
   if (J_vout_v)

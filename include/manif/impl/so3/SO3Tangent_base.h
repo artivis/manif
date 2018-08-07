@@ -91,11 +91,6 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::Jacobian
 SO3TangentBase<_Derived>::rjac() const
 {
-//  Jacobian Jr;
-//  retract(Jr);
-
-//  return Jr;
-
   return ljac().transpose();
 }
 
@@ -134,9 +129,7 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::LieType
 SO3TangentBase<_Derived>::hat() const
 {
-  return (LieType() << Scalar(0)  , -coeffs()(2),  coeffs()(1),
-                       coeffs()(2),  Scalar(0)  , -coeffs()(0),
-                      -coeffs()(1),  coeffs()(0),  Scalar(0)    ).finished();
+  return skew(coeffs());
 }
 
 /// SO3Tangent specifics
