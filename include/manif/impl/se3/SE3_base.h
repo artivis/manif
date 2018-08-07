@@ -114,10 +114,8 @@ typename SE3Base<_Derived>::Transformation
 SE3Base<_Derived>::transform() const
 {
   Transformation T = Transformation::Identity();
-  T.template topLeftCorner<3,3>() = rotation();
-  T(0,3) = x();
-  T(1,3) = y();
-  T(2,3) = z();
+  T.template topLeftCorner<3,3>()  = rotation();
+  T.template topRightCorner<3,1>() = translation();
   return T;
 }
 
@@ -153,7 +151,8 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     (*J_minv_m) = -adj();
   }
 
-  return Manifold(-rotation().transpose() * translation(),
+  return Manifold(/*-asSO3().inverse().act(translation()),*/
+                  -rotation().transpose() * translation(),
                    asSO3().inverse().quat());
 }
 
@@ -230,17 +229,12 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Jacobian
 SE3Base<_Derived>::adj() const
 {
-  typename Tangent::LieType T;
-  T <<  Scalar(0), -z()      ,  y(),
-        z()      ,  Scalar(0), -x(),
-       -y()      ,  x()      ,  Scalar(0);
-
   Jacobian Adj = Jacobian::Zero();
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
   Adj.template bottomLeftCorner<3,3>() =
-    T * Adj.template topLeftCorner<3,3>();
+    skew(translation()) * Adj.template topLeftCorner<3,3>();
 
   return Adj;
 }

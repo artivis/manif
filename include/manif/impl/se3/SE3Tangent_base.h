@@ -30,6 +30,8 @@ public:
 
   using BlockV = typename DataType::template FixedSegmentReturnType<3>::Type;
   using BlockW = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using ConstBlockV = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using ConstBlockW = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
 
   using Base::data;
   using Base::coeffs;
@@ -50,18 +52,15 @@ public:
 
   /// SE3Tangent specific API
 
-  /// @todo
-  /*
+  BlockV v();
+  const ConstBlockV v() const;
 
-    typename DataType::template FixedSegmentReturnType<3>::Type
-    ?Type? v const();
-    ?Type? w const();
+  BlockW w();
+  const ConstBlockW w() const;
 
-   */
-
-  Scalar x() const;
-  Scalar y() const;
-  Scalar z() const;
+//  Scalar x() const;
+//  Scalar y() const;
+//  Scalar z() const;
 
   //Scalar roll() const;
   //Scalar pitch() const;
@@ -69,7 +68,7 @@ public:
 
 //protected:
 
-  Eigen::Map<const SO3Tangent<Scalar>> asSO3() const
+  const Eigen::Map<const SO3Tangent<Scalar>> asSO3() const
   {
     return Eigen::Map<const SO3Tangent<Scalar>>(coeffs().data()+3);
   }
@@ -100,15 +99,13 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   using std::cos;
   using std::sin;
 
-  const Eigen::Matrix<Scalar,3,1>& v = coeffs().template head<3>();
-
   if (J_m_t)
   {
-    *J_m_t = rjac().inverse();
+    *J_m_t = rjac();
   }
 
   /// @note Eq. 10.93
-  return Manifold(asSO3().ljac()*v, asSO3().retract().quat());
+  return Manifold(asSO3().ljac()*v(), asSO3().retract().quat());
 }
 
 template <typename _Derived>
@@ -140,11 +137,8 @@ SE3TangentBase<_Derived>::rjac() const
   Jr.template bottomRightCorner<3,3>() =
       Jr.template topLeftCorner<3,3>();
 
-//  Jr.template bottomLeftCorner<3,3>() = /** @todo */(asSO3().ljac()*coeffs().template head<3>());
-
-
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieType V = skew3(coeffs().template head<3>());
+  const LieType V = skew(v());
   const LieType W = asSO3().hat();
 
   Scalar A, B, C;
@@ -155,21 +149,9 @@ SE3TangentBase<_Derived>::rjac() const
     A = Scalar(1./6.);
     B = Scalar(1./24.);
     C = Scalar(1./24.) + Scalar(3./120.);
-//    sin_theta =
-//    Jr.template bottomLeftCorner<3,3>().noalias() =
-//        - Scalar(0.5)*V + Scalar(1./6.)*(W*V + V*W - W*V*W)
-//        + Scalar(1./24.)*(W*W*V + V*W*W - Scalar(3)*W*V*W)
-//        - Scalar(0.5)*(Scalar(1./24.) + Scalar(3./120.))*(W*V*W*W + W*W*V*W);
   }
   else
   {
-//    const double sinPhi = sin(phi), cosPhi = cos(phi);
-//    const double phi2 = phi * phi, phi3 = phi2 * phi, phi4 = phi3 * phi, phi5 = phi4 * phi;
-//    // Invert the sign of odd-order terms to have the right Jacobian
-//    Q = -0.5*V + (phi-sinPhi)/phi3 * (W*V + V*W - W*V*W)
-//        + (1-phi2/2-cosPhi)/phi4 * (W*W*V + V*W*W - 3*W*V*W)
-//        - 0.5*((1-phi2/2-cosPhi)/phi4 - 3*(phi-sinPhi-phi3/6.)/phi5)*(W*V*W*W + W*W*V*W);
-
    const Scalar theta     = sqrt(theta_sq);
    const Scalar sin_theta = sin(theta);
    const Scalar cos_theta = cos(theta);
@@ -202,7 +184,7 @@ SE3TangentBase<_Derived>::rjac() const
 //        - 0.5*(1./24. + 3./120.)*(W*V*W*W + W*W*V*W);
 //  }
 
-  return Jacobian::Constant(Scalar(1));
+  return Jr;
 }
 
 template <typename _Derived>
@@ -222,40 +204,61 @@ SE3TangentBase<_Derived>::adj() const
   adj.template bottomRightCorner<3,3>() =
       adj.template topLeftCorner<3,3>();
 
-  adj.template bottomLeftCorner<3,3>()(0,1) = -coeffs()(2);
-  adj.template bottomLeftCorner<3,3>()(0,2) =  coeffs()(1);
-
-  adj.template bottomLeftCorner<3,3>()(1,0) =  coeffs()(2);
-  adj.template bottomLeftCorner<3,3>()(1,2) = -coeffs()(0);
-
-  adj.template bottomLeftCorner<3,3>()(2,0) = -coeffs()(1);
-  adj.template bottomLeftCorner<3,3>()(2,1) =  coeffs()(0);
+  adj.template bottomLeftCorner<3,3>() = skew(v());
 
   return adj;
 }
 
 /// SE3Tangent specific API
 
+
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Scalar
-SE3TangentBase<_Derived>::x() const
+typename SE3TangentBase<_Derived>::BlockV
+SE3TangentBase<_Derived>::v()
 {
-  return data()->x();
+  return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Scalar
-SE3TangentBase<_Derived>::y() const
+const typename SE3TangentBase<_Derived>::ConstBlockV
+SE3TangentBase<_Derived>::v() const
 {
-  return data()->y();
+  return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Scalar
-SE3TangentBase<_Derived>::z() const
+typename SE3TangentBase<_Derived>::BlockW SE3TangentBase<_Derived>::w()
 {
-  return data()->z();
+  return coeffs().template tail<3>();
 }
+
+template <typename _Derived>
+const typename SE3TangentBase<_Derived>::ConstBlockW
+SE3TangentBase<_Derived>::w() const
+{
+  return coeffs().template tail<3>();
+}
+
+//template <typename _Derived>
+//typename SE3TangentBase<_Derived>::Scalar
+//SE3TangentBase<_Derived>::x() const
+//{
+//  return data()->x();
+//}
+
+//template <typename _Derived>
+//typename SE3TangentBase<_Derived>::Scalar
+//SE3TangentBase<_Derived>::y() const
+//{
+//  return data()->y();
+//}
+
+//template <typename _Derived>
+//typename SE3TangentBase<_Derived>::Scalar
+//SE3TangentBase<_Derived>::z() const
+//{
+//  return data()->z();
+//}
 
 } /* namespace manif */
 
