@@ -38,7 +38,7 @@ template <typename _Scalar>
 struct Constants
 {
   static constexpr _Scalar eps      = _Scalar(1e-10);
-  static constexpr _Scalar eps_sq   = eps*eps ;
+  static constexpr _Scalar eps_s    = _Scalar(1e-15); // ~
   static constexpr _Scalar eps_sqrt = internal::csqrt(eps);
 
   static constexpr _Scalar to_rad = _Scalar(M_PI / 180);

@@ -69,7 +69,7 @@ average_biinvariant(const Container<Manifold, Args...>& mans,
 
     auto avg = m0.rplus(ts);
 
-    if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_sq)
+    if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_s)
       return avg;
 
     m0 = avg;

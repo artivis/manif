@@ -74,7 +74,7 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (abs(theta) < Constants<Scalar>::eps)
+  if (theta_sq < Constants<Scalar>::eps_s)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -159,7 +159,7 @@ SE2TangentBase<_Derived>::ljac() const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (abs(theta) < Constants<Scalar>::eps)
+  if (theta_sq < Constants<Scalar>::eps_s)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;

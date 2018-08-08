@@ -60,7 +60,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   const Scalar theta_sq = theta_vec.squaredNorm();
   const Scalar theta    = sqrt(theta_sq);
 
-  if (theta_sq > Constants<Scalar>::eps)
+  if (theta_sq > Constants<Scalar>::eps_s)
   {
     if (J_m_t)
     {
@@ -107,7 +107,7 @@ SO3TangentBase<_Derived>::ljac() const
   const LieType W = hat();
 
   // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps)
+  if (theta_sq <= Constants<Scalar>::eps_s)
     return Jacobian::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
