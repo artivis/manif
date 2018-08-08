@@ -129,7 +129,6 @@ SE3TangentBase<_Derived>::rjac() const
   using std::cos;
   using std::sin;
   using std::sqrt;
-//  MANIF_NOT_IMPLEMENTED_YET;
 
   /// @note Eq. 10.95
   Jacobian Jr = Jacobian::Zero();
@@ -141,14 +140,18 @@ SE3TangentBase<_Derived>::rjac() const
   const LieType V = skew(v());
   const LieType W = asSO3().hat();
 
-  Scalar A, B, C;
+  Scalar A(0.5), B, C, D;
 
   // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps)
+  if (theta_sq <= Constants<Scalar>::eps_s)
   {
-    A = Scalar(1./6.);
-    B = Scalar(1./24.);
-    C = Scalar(1./24.) + Scalar(3./120.);
+    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
+
+//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
+//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
+//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
   }
   else
   {
@@ -156,33 +159,20 @@ SE3TangentBase<_Derived>::rjac() const
    const Scalar sin_theta = sin(theta);
    const Scalar cos_theta = cos(theta);
 
-    A = (theta - sin_theta) / (theta_sq*theta);
-    B = ((Scalar(1) - theta_sq) / (Scalar(2) - cos_theta)) / (theta_sq*theta_sq);
-    C = (((Scalar(1) - theta_sq) / (Scalar(2) - cos_theta)) / (theta_sq*theta_sq)) -
-        Scalar(3)*(theta - sin_theta - theta_sq*theta/Scalar(6))/(theta_sq*theta_sq*theta);
+    B = (theta - sin_theta) / (theta_sq*theta);
+    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
+    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+
+    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
+//    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
+//    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
   }
 
   Jr.template bottomLeftCorner<3,3>().noalias() =
-      - Scalar(0.5) * V
-      + A * (W*V + V*W - W*V*W)
-      + B * (W*W*V + V*W*W - Scalar(3)*W*V*W)
-      - C * Scalar(0.5) * (W*V*W*W + W*W*V*W);
-
-    /////////////
-//  double phi = w.norm();
-//  if (fabs(phi)>1e-5) {
-//    const double sinPhi = sin(phi), cosPhi = cos(phi);
-//    const double phi2 = phi * phi, phi3 = phi2 * phi, phi4 = phi3 * phi, phi5 = phi4 * phi;
-//    // Invert the sign of odd-order terms to have the right Jacobian
-//    Q = -0.5*V + (phi-sinPhi)/phi3*(W*V + V*W - W*V*W)
-//        + (1-phi2/2-cosPhi)/phi4*(W*W*V + V*W*W - 3*W*V*W)
-//        - 0.5*((1-phi2/2-cosPhi)/phi4 - 3*(phi-sinPhi-phi3/6.)/phi5)*(W*V*W*W + W*W*V*W);
-//  }
-//  else {
-//    Q = -0.5*V + 1./6.*(W*V + V*W - W*V*W)
-//        + 1./24.*(W*W*V + V*W*W - 3*W*V*W)
-//        - 0.5*(1./24. + 3./120.)*(W*V*W*W + W*W*V*W);
-//  }
+      - A * V
+      + B * (W*V + V*W - W*V*W)
+      + C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
+      - D * (W*V*W*W + W*W*V*W);
 
   return Jr;
 }
@@ -191,8 +181,56 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::ljac() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
-  return Jacobian::Constant(Scalar(1));
+  using std::cos;
+  using std::sin;
+  using std::sqrt;
+
+  /// @note Eq. 10.95
+  Jacobian Jl = Jacobian::Zero();
+  Jl.template topLeftCorner<3,3>() = asSO3().ljac();
+  Jl.template bottomRightCorner<3,3>() =
+      Jl.template topLeftCorner<3,3>();
+
+  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
+  const LieType V = skew(v());
+  const LieType W = asSO3().hat();
+
+  Scalar A(0.5), B, C, D;
+
+  // Small angle approximation
+  if (theta_sq <= Constants<Scalar>::eps_s)
+  {
+    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
+
+//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
+//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
+//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
+  }
+  else
+  {
+    const Scalar theta     = sqrt(theta_sq);
+    const Scalar sin_theta = sin(theta);
+    const Scalar cos_theta = cos(theta);
+
+    B = (theta - sin_theta) / (theta_sq*theta);
+    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
+    D = Scalar(0.5) * (C - Scalar(3)*((theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta))) ;
+
+    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
+//    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
+//    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
+  }
+
+  Jl.template bottomLeftCorner<3,3>().noalias() =
+//  Jl.template topRightCorner<3,3>().noalias() =
+      + A * V
+      + B * (W*V + V*W - W*V*W)
+      - C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
+      - D * (W*V*W*W + W*W*V*W);
+
+  return Jl;
 }
 
 template <typename _Derived>

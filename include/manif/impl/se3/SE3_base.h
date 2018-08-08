@@ -151,8 +151,8 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     (*J_minv_m) = -adj();
   }
 
-  return Manifold(/*-asSO3().inverse().act(translation()),*/
-                  -rotation().transpose() * translation(),
+  return Manifold(-asSO3().inverse().act(translation()),
+                  /*-rotation().transpose() * translation(),*/
                    asSO3().inverse().quat());
 }
 
