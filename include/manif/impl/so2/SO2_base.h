@@ -187,7 +187,8 @@ template <typename _Derived>
 typename SO2Base<_Derived>::Jacobian
 SO2Base<_Derived>::adj() const
 {
-  return rotation();
+  static const Jacobian adj = Jacobian::Constant(Scalar(1));
+  return adj;
 }
 
 /// SO2 specific function

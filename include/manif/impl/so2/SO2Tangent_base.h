@@ -85,8 +85,8 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Jacobian
 SO2TangentBase<_Derived>::ljac() const
 {
-  MANIF_NOT_IMPLEMENTED_YET
-  return Jacobian::Constant(Scalar(1));
+  static const Jacobian Jl = Jacobian::Constant(Scalar(1));
+  return Jl;
 }
 
 template <typename _Derived>
