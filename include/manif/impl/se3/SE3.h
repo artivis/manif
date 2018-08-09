@@ -79,6 +79,9 @@ public:
   SE3(const Translation& t,
       const Eigen::Quaternion<Scalar>& q);
 
+  SE3(const Translation& t,
+      const SO3<Scalar>& so3);
+
   /// Manifold common API
 
   const DataType& coeffs() const;
@@ -107,8 +110,17 @@ SE3<_Scalar>::SE3(const DataType& d)
 template <typename _Scalar>
 SE3<_Scalar>::SE3(const Translation& t,
                   const Eigen::Quaternion<Scalar>& q)
+  : SE3((DataType() << t, q.coeffs() ).finished())
 {
-  coeffs_nonconst() << t, q.coeffs();
+  //
+}
+
+template <typename _Scalar>
+SE3<_Scalar>::SE3(const Translation& t,
+                  const SO3<Scalar>& so3)
+  : SE3((DataType() << t, so3.coeffs() ).finished())
+{
+  //
 }
 
 template <typename _Scalar>

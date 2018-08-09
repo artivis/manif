@@ -231,16 +231,14 @@ TEST(TEST_SE3, TEST_SE3_COMPOSE)
 
 MANIF_TEST(SE3d);
 
-//MANIF_TEST_JACOBIANS(SE3d);
+MANIF_TEST_JACOBIANS(SE3d);
 
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
 
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE3.TEST_SE3_INVERSE";
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE3d_JACOBIANS_TESTER.TEST_SE3d_INVERSE_JACOBIANS";
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE3d_JACOBIANS_TESTER.TEST_SE3d_ADJ_JL_JR";
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE3d_JACOBIANS_TESTER.*";
+  /// @todo Disabled test, fix it.
+  ::testing::GTEST_FLAG(filter) = "-TEST_SE3d_JACOBIANS_TESTER.TEST_SE3d_ADJ_JL_JR";
 
   return RUN_ALL_TESTS();
 }

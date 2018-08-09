@@ -151,9 +151,10 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     (*J_minv_m) = -adj();
   }
 
-  return Manifold(-asSO3().inverse().act(translation()),
-                  /*-rotation().transpose() * translation(),*/
-                   asSO3().inverse().quat());
+  const SO3<Scalar> so3inv = asSO3().inverse();
+
+  return Manifold(-so3inv.act(translation()),
+                   so3inv);
 }
 
 template <typename _Derived>
@@ -215,6 +216,7 @@ SE3Base<_Derived>::act(const Vector &v,
   if (J_vout_m)
   {
     MANIF_NOT_IMPLEMENTED_YET
+    (*J_vout_v) = -skew(v);
   }
 
   if (J_vout_v)
@@ -229,11 +231,25 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Jacobian
 SE3Base<_Derived>::adj() const
 {
+  /// @note Chirikjian (close to Eq.10.94)
+  /// says
+  ///       Ad(g) = |  R  0 |
+  ///               | T.R R |
+  ///
+  /// considering vee(log(g)) = (w;v)
+  /// with T = [t]_x
+  ///
+  /// but this is
+  ///       Ad(g) = | R T.R |
+  ///               | 0  R  |
+  ///
+  /// considering vee(log(g)) = (v;w)
+
   Jacobian Adj = Jacobian::Zero();
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
-  Adj.template bottomLeftCorner<3,3>() =
+  Adj.template topRightCorner<3,3>() =
     skew(translation()) * Adj.template topLeftCorner<3,3>();
 
   return Adj;

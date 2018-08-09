@@ -168,7 +168,8 @@ SE3TangentBase<_Derived>::rjac() const
 //    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
   }
 
-  Jr.template bottomLeftCorner<3,3>().noalias() =
+  /// @note Barfoot14tro Eq. 102
+  Jr.template topRightCorner<3,3>().noalias() =
       - A * V
       + B * (W*V + V*W - W*V*W)
       + C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
@@ -216,15 +217,15 @@ SE3TangentBase<_Derived>::ljac() const
 
     B = (theta - sin_theta) / (theta_sq*theta);
     C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = Scalar(0.5) * (C - Scalar(3)*((theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta))) ;
+    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6) / (theta_sq*theta_sq*theta)));
 
     // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
 //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
 //    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
   }
 
-  Jl.template bottomLeftCorner<3,3>().noalias() =
-//  Jl.template topRightCorner<3,3>().noalias() =
+  /// @note Barfoot14tro Eq. 102
+  Jl.template topRightCorner<3,3>().noalias() =
       + A * V
       + B * (W*V + V*W - W*V*W)
       - C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
