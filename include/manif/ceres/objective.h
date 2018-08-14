@@ -43,7 +43,7 @@ public:
     const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
     Eigen::Map<TangentTemplate<T>> error(residuals_raw);
 
-    error = target_state_.template cast<T>() - state;
+    error = (target_state_.template cast<T>() - state) * T(weight_);
 
     return true;
   }
@@ -72,11 +72,18 @@ public:
     return true;
   }
 
+  inline void weight(const double weight) { weight_ = weight; }
+  inline double weight() const noexcept { return weight_; }
+
 protected:
 
+  double weight_ = 1;
   const Manifold target_state_;
   mutable ManifoldJacobian J_e_mb_;
 };
+
+template <typename _Manifold>
+using ObjectivePtr = std::shared_ptr<Objective<_Manifold>>;
 
 } /* namespace manif */
 
