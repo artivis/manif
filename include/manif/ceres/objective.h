@@ -3,6 +3,7 @@
 
 #include "manif/ceres/ceres_traits.h"
 
+#include <memory>
 #include <ceres/cost_function.h>
 
 namespace manif
