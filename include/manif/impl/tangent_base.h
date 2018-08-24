@@ -23,7 +23,7 @@ struct TangentBase
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
-  using LieType  = typename internal::traits<_Derived>::LieType;
+  using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
   using OptJacobianRef = tl::optional<Jacobian&>;
 
@@ -51,7 +51,7 @@ public:
   _Derived& setZero();
   _Derived& setRandom();
 
-  LieType hat() const;
+  LieAlg hat() const;
 
   Manifold retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
@@ -195,7 +195,7 @@ TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::LieType
+typename TangentBase<_Derived>::LieAlg
 TangentBase<_Derived>::hat() const
 {
   return derived().hat();

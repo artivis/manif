@@ -102,7 +102,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Tangent  = typename Base::Tangent;  \
   using Jacobian = typename Base::Jacobian; \
   using DataType = typename Base::DataType; \
-  using LieType  = typename Base::LieType;  \
+  using LieAlg   = typename Base::LieAlg;   \
   using OptJacobianRef = typename Base::OptJacobianRef;
 
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \

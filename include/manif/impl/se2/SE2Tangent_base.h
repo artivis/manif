@@ -32,7 +32,7 @@ public:
 
   /// Tangent common API
 
-  LieType hat() const;
+  LieAlg hat() const;
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
@@ -49,10 +49,10 @@ public:
 };
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::LieType
+typename SE2TangentBase<_Derived>::LieAlg
 SE2TangentBase<_Derived>::hat() const
 {
-  return ( LieType() <<
+  return ( LieAlg() <<
              Scalar(0), -angle(),   x(),
              angle(),    Scalar(0), y(),
              Scalar(0),  Scalar(0), Scalar(0) ).finished();
