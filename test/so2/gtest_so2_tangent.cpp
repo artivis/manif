@@ -76,7 +76,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_SKEW)
 
   EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
 
-  SO2Tangentd::LieType so2_lie = so2_tan.hat();
+  SO2Tangentd::LieAlg so2_lie = so2_tan.hat();
 
   EXPECT_DOUBLE_EQ( 0,    so2_lie(0,0));
   EXPECT_DOUBLE_EQ(-M_PI, so2_lie(0,1));

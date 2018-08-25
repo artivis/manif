@@ -32,7 +32,7 @@ public:
 
   using Base::coeffs;
 
-  LieType hat() const;
+  LieAlg hat() const;
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
@@ -66,7 +66,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     {
       Jacobian M1, M2;
 
-      const LieType W = hat();
+      const LieAlg W = hat();
 
       M1.noalias() = (Scalar(1.0) - cos(theta)) / theta_sq * W;
       M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);;
@@ -104,7 +104,7 @@ SO3TangentBase<_Derived>::ljac() const
 
   const Scalar theta_sq = coeffs().squaredNorm();
 
-  const LieType W = hat();
+  const LieAlg W = hat();
 
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
@@ -126,7 +126,7 @@ SO3TangentBase<_Derived>::adj() const
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::LieType
+typename SO3TangentBase<_Derived>::LieAlg
 SO3TangentBase<_Derived>::hat() const
 {
   return skew(coeffs());

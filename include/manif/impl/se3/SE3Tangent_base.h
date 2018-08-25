@@ -43,7 +43,7 @@ public:
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
-  LieType hat() const;
+  LieAlg hat() const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
@@ -109,10 +109,10 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::LieType
+typename SE3TangentBase<_Derived>::LieAlg
 SE3TangentBase<_Derived>::hat() const
 {
-  return (LieType() <<
+  return (LieAlg() <<
     Scalar(0)           , Scalar(-coeffs()(5)), Scalar( coeffs()(4)), Scalar(coeffs()(0)),
     Scalar( coeffs()(5)), Scalar(0)           , Scalar(-coeffs()(3)), Scalar(coeffs()(1)),
     Scalar(-coeffs()(4)), Scalar( coeffs()(3)), Scalar(0)           , Scalar(coeffs()(2)),
@@ -137,8 +137,8 @@ SE3TangentBase<_Derived>::rjac() const
       Jr.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieType V = skew(v());
-  const LieType W = asSO3().hat();
+  const LieAlg V = skew(v());
+  const LieAlg W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 
@@ -193,8 +193,8 @@ SE3TangentBase<_Derived>::ljac() const
       Jl.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieType V = skew(v());
-  const LieType W = asSO3().hat();
+  const LieAlg V = skew(v());
+  const LieAlg W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 

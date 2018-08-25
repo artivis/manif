@@ -124,9 +124,6 @@ public:
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
-  /// @todo
-//  LieType lie() const {return derived().lie();}
-
   template <typename _DerivedOther>
   bool isApprox(const ManifoldBase<_DerivedOther>& m, const Scalar eps) const;
 
