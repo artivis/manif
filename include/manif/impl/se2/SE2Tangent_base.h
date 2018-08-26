@@ -96,9 +96,16 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     (*J_m_t)(1,0) = -B;
     (*J_m_t)(1,1) =  A;
 
-    /// @todo theta_sq == = ??!!
-    (*J_m_t)(0,2) = (-y() + theta*x() + y()*cos_theta - x()*sin_theta)/theta_sq;
-    (*J_m_t)(1,2) = ( x() + theta*y() - x()*cos_theta - y()*sin_theta)/theta_sq;
+    if (theta_sq < Constants<Scalar>::eps_s)
+    {
+      (*J_m_t)(0,2) = -y() / Scalar(2);
+      (*J_m_t)(1,2) =  x() / Scalar(2);;
+    }
+    else
+    {
+      (*J_m_t)(0,2) = (-y() + theta*x() + y()*cos_theta - x()*sin_theta)/theta_sq;
+      (*J_m_t)(1,2) = ( x() + theta*y() - x()*cos_theta - y()*sin_theta)/theta_sq;
+    }
   }
 
   return Manifold( A * x() - B * y(),
