@@ -98,8 +98,8 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
     if (theta_sq < Constants<Scalar>::eps_s)
     {
-      (*J_m_t)(0,2) = -y() / Scalar(2);
-      (*J_m_t)(1,2) =  x() / Scalar(2);;
+      (*J_m_t)(0,2) = -y() / Scalar(2) + theta * x() / Scalar(6);
+      (*J_m_t)(1,2) =  x() / Scalar(2) + theta * y() / Scalar(6);
     }
     else
     {
