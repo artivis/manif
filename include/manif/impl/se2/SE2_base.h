@@ -130,8 +130,8 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::sin;
 
   const Scalar theta     = angle();
-  const Scalar cos_theta = cos(theta);
-  const Scalar sin_theta = sin(theta);
+  const Scalar cos_theta = coeffs()[2];
+  const Scalar sin_theta = coeffs()[3];
   const Scalar theta_sq  = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
