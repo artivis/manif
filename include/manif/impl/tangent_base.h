@@ -137,6 +137,13 @@ private:
   { return *static_cast< const _Derived* >(this); }
 };
 
+} // namespace manif
+
+// --- Includes for the implementation
+#include <algorithm>
+
+namespace manif{
+
 template <typename _Derived>
 typename TangentBase<_Derived>::DataType&
 TangentBase<_Derived>::coeffs()
