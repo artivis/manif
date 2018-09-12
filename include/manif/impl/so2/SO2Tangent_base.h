@@ -35,7 +35,7 @@ public:
 
   Manifold retract(OptJacobianRef J_m_t = {}) const;
 
-  LieType hat() const;
+  LieAlg hat() const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
@@ -65,10 +65,10 @@ SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::LieType
+typename SO2TangentBase<_Derived>::LieAlg
 SO2TangentBase<_Derived>::hat() const
 {
-  return (LieType() <<
+  return (LieAlg() <<
     Scalar(0)          , Scalar(-coeffs()(0)),
     Scalar(coeffs()(0)), Scalar(0)            ).finished();
 }

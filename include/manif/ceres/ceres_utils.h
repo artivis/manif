@@ -89,8 +89,25 @@ make_objective_autodiff(Args&&... args)
 
   return std::make_shared<
       ceres::AutoDiffCostFunction<Objective<_Manifold>, DoF, RepSize>>(
-        new Objective<_Manifold>(_Manifold(std::forward<Args>(args)...))
+        new Objective<_Manifold>(std::forward<Args>(args)...)
       );
+}
+
+/// @todo find a way to merge with make_objective_autodiff
+template <typename _Manifold, typename... Args>
+std::shared_ptr<
+  ceres::AutoDiffCostFunction<
+    Objective<_Manifold>, _Manifold::DoF, _Manifold::RepSize>>
+make_weighted_objective_autodiff(const double weight, Args&&... args)
+{
+  constexpr int DoF = _Manifold::DoF;
+  constexpr int RepSize = _Manifold::RepSize;
+
+  Objective<_Manifold>* obj = new Objective<_Manifold>(std::forward<Args>(args)...);
+  obj->weight(weight);
+
+  return std::make_shared<
+      ceres::AutoDiffCostFunction<Objective<_Manifold>, DoF, RepSize>>(obj);
 }
 
 template <typename _Manifold, typename... Args>
@@ -112,8 +129,7 @@ make_constraint_autodiff(Args&&... args)
         _Manifold::DoF,
         _Manifold::RepSize,
         _Manifold::RepSize>>(
-            new Constraint<_Manifold>(
-             typename _Manifold::Tangent(std::forward<Args>(args)...)));
+            new Constraint<_Manifold>(std::forward<Args>(args)...));
 }
 
 } /* namespace manif */

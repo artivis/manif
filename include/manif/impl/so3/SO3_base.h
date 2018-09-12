@@ -166,15 +166,15 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   if (J_t_m)
   {
     Scalar theta2 = tan.coeffs().squaredNorm();
-    typename Tangent::LieType W = tan.hat();
+    typename Tangent::LieAlg W = tan.hat();
     if (theta2 <= Constants<Scalar>::eps)
-      (*J_t_m) = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
+      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
     else
     {
       Scalar theta = sqrt(theta2);  // rotation angle
       Jacobian M;
       M.noalias() = (Scalar(1) / theta2 - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) * (W * W);
-      (*J_t_m) = Jacobian::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
+      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
     }
   }
 
