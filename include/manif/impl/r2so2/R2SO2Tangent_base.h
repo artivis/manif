@@ -66,7 +66,6 @@ R2SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 
   if (J_m_t)
   {
-    // Jr
     (*J_m_t) = rjac();
   }
 
@@ -101,7 +100,11 @@ template <typename _Derived>
 typename R2SO2TangentBase<_Derived>::Jacobian
 R2SO2TangentBase<_Derived>::adj() const
 {
-  return rjac() + ljac();
+  Jacobian adj = Jacobian::Identity();
+  adj.template topLeftCorner<2,2>() = rotation();
+  adj(0,2) =  y();
+  adj(1,2) = -x();
+  return adj;
 }
 
 /// R2SO2Tangent specific API
