@@ -104,7 +104,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
   { evalAvgBiInvariant(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
-  { evalIsApprox(); }
+  { evalIsApprox(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNARY_MINUS)         \
+  { evalUnaryMinus(); }
 
 /*
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
@@ -391,6 +393,15 @@ public:
 
     EXPECT_TRUE(state == state);
     EXPECT_FALSE(state == state_other);
+  }
+
+  void evalUnaryMinus()
+  {
+    Tangent minus_delta = -delta;
+    typename Tangent::DataType delta_data = delta.coeffs();
+    typename Tangent::DataType minus_delta_data = minus_delta.coeffs();
+    EXPECT_EIGEN_NEAR(-delta_data, minus_delta_data);
+    EXPECT_EIGEN_NEAR(-delta.coeffs(), minus_delta.coeffs());
   }
 
 protected:
