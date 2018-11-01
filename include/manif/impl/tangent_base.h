@@ -98,6 +98,8 @@ public:
   template <typename _DerivedOther>
   Tangent operator -(const TangentBase<_DerivedOther>& t) const;
 
+  Tangent operator -() const;
+
   template <typename _DerivedOther>
   bool operator ==(const TangentBase<_DerivedOther>& t) const;
 
@@ -312,6 +314,13 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::operator -(const TangentBase<_DerivedOther>& t) const
 {
   return minus(t);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Tangent
+TangentBase<_Derived>::operator -() const
+{
+  return Tangent(-coeffs());
 }
 
 template <typename _Derived>
