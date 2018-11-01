@@ -347,49 +347,15 @@ ManifoldBase<_Derived>::rminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  Tangent t;
+  Tangent t = m.inverse().compose(derived()).lift();
 
-  /// @todo optimize this
-  if (J_t_ma && J_t_mb)
+  if (J_t_ma)
   {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
-
-    t = m.inverse(J_inv_mb).
-          compose(derived(), J_comp_inv, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
+    (*J_t_ma) = t.rjacinv();
   }
-  else if (J_t_ma && !J_t_mb)
+  if (J_t_mb)
   {
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
-
-    t = m.inverse().
-          compose(derived(), _, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-  }
-  else if (!J_t_ma && J_t_mb)
-  {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_t_comp;
-
-    t = m.inverse(J_inv_mb).
-          compose(derived(), J_comp_inv, _).
-            lift(J_t_comp);
-
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else
-  {
-    t = m.inverse().compose(derived()).lift();
+    (*J_t_mb) = -(-t).rjacinv();
   }
 
   return t;
