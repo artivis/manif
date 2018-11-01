@@ -347,34 +347,10 @@ ManifoldBase<_Derived>::rminus(
 {
   Tangent t;
 
-  /// @todo optimize this
-  if (J_t_ma && J_t_mb)
+  if (J_t_mb)
   {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
+//    (*J_t_mb) = -t.rjac().inverse();
 
-    t = m.inverse(J_inv_mb).
-          compose(derived(), J_comp_inv, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else if (J_t_ma && !J_t_mb)
-  {
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
-
-    t = m.inverse().
-          compose(derived(), _, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-  }
-  else if (!J_t_ma && J_t_mb)
-  {
     Jacobian J_inv_mb;
     Jacobian J_comp_inv;
     Jacobian J_t_comp;
@@ -388,6 +364,11 @@ ManifoldBase<_Derived>::rminus(
   else
   {
     t = m.inverse().compose(derived()).lift();
+
+    if (J_t_ma)
+    {
+      (*J_t_ma) = t.rjac().inverse();
+    }
   }
 
   return t;
