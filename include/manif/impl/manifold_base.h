@@ -3,8 +3,10 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
-#include "manif/constants.h"
+#include "manif/impl/eigen.h"
 #include "manif/impl/tangent_base.h"
+
+#include "manif/constants.h"
 
 #include "lt/optional.hpp"
 //#include "lspdlog/logging.h"
@@ -29,7 +31,7 @@ struct ManifoldBase
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
-  using OptJacobianRef = tl::optional<Jacobian&>;
+  using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
   using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;

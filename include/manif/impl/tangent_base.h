@@ -3,6 +3,8 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
+#include "manif/impl/eigen.h"
+
 #include "manif/constants.h"
 
 #include "lt/optional.hpp"
@@ -25,7 +27,7 @@ struct TangentBase
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
-  using OptJacobianRef = tl::optional<Jacobian&>;
+  using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
   using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
