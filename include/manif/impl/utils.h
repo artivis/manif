@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_UTILS_H_
 #define _MANIF_MANIF_UTILS_H_
 
-#include "manif/impl/eigen.h"
+#include "manif/constants.h"
 
 namespace manif
 {
