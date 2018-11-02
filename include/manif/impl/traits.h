@@ -39,6 +39,18 @@ struct traitscast<_Class<_Scalar>, _NewScalar>
   using cast = _Class<_NewScalar>;
 };
 
+////////////////////////////
+
+template<class, typename T> struct has_rjacinv_impl : std::false_type {};
+template<typename T> struct
+has_rjacinv_impl<decltype( void(std::declval<T>().rjacinv()) ), T> : std::true_type {};
+template<typename T> struct has_rjacinv : has_rjacinv_impl<void, T> {};
+
+template<class, typename T> struct has_ljacinv_impl : std::false_type {};
+template<typename T> struct
+has_ljacinv_impl<decltype( void(std::declval<T>().ljacinv()) ), T> : std::true_type {};
+template<typename T> struct has_ljacinv : has_ljacinv_impl<void, T> {};
+
 } /* namespace internal */
 } /* namespace manif */
 
