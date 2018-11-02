@@ -40,6 +40,9 @@ public:
   Jacobian rjac() const;
   Jacobian ljac() const;
 
+  Jacobian rjacinv() const;
+  Jacobian ljacinv() const;
+
   Jacobian adj() const;
 
   /// SO2Tangent specific API
@@ -87,6 +90,20 @@ SO2TangentBase<_Derived>::ljac() const
 {
   static const Jacobian Jl = Jacobian::Constant(Scalar(1));
   return Jl;
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::rjacinv() const
+{
+  return rjac();
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::ljacinv() const
+{
+  return ljac();
 }
 
 template <typename _Derived>
