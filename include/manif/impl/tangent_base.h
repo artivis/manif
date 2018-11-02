@@ -76,6 +76,30 @@ public:
   Jacobian rjac() const;
   Jacobian ljac() const;
 
+  /// @note Calls Derived's 'overload'
+  template <typename U = _Derived>
+  typename std::enable_if<
+    internal::has_rjacinv<U>::value,
+    typename TangentBase<U>::Jacobian>::type rjacinv() const;
+
+  /// @note Calls Base default impl
+  template <typename U = _Derived>
+  typename std::enable_if<
+    not internal::has_rjacinv<U>::value,
+    typename TangentBase<U>::Jacobian>::type rjacinv() const;
+
+  /// @note Calls Derived's 'overload'
+  template <typename U = _Derived>
+  typename std::enable_if<
+    internal::has_ljacinv<U>::value,
+    typename TangentBase<U>::Jacobian>::type ljacinv() const;
+
+  /// @note Calls Base default impl
+  template <typename U = _Derived>
+  typename std::enable_if<
+    not internal::has_ljacinv<U>::value,
+    typename TangentBase<U>::Jacobian>::type ljacinv() const;
+
   Jacobian adj() const;
 
   template <typename _DerivedOther>
@@ -254,6 +278,47 @@ typename TangentBase<_Derived>::Jacobian
 TangentBase<_Derived>::ljac() const
 {
   return derived().ljac();
+}
+
+
+template <class _Derived>
+template <typename U>
+typename std::enable_if<
+  internal::has_rjacinv<U>::value,
+  typename TangentBase<U>::Jacobian>::type
+TangentBase<_Derived>::rjacinv() const
+{
+  return derived().rjacinv();
+}
+
+template <class _Derived>
+template <typename U>
+typename std::enable_if<
+  not internal::has_rjacinv<U>::value,
+  typename TangentBase<U>::Jacobian>::type
+TangentBase<_Derived>::rjacinv() const
+{
+  return derived().rjac().inverse();
+}
+
+template <class _Derived>
+template <typename U>
+typename std::enable_if<
+  internal::has_ljacinv<U>::value,
+  typename TangentBase<U>::Jacobian>::type
+TangentBase<_Derived>::ljacinv() const
+{
+  return derived().ljacinv();
+}
+
+template <class _Derived>
+template <typename U>
+typename std::enable_if<
+  not internal::has_ljacinv<U>::value,
+  typename TangentBase<U>::Jacobian>::type
+TangentBase<_Derived>::ljacinv() const
+{
+  return derived().ljac().inverse();
 }
 
 template <class _Derived>

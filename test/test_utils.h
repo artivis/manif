@@ -140,7 +140,11 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ADJ)               \
   { evalAdj(); }                                                                  \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ADJ_JL_JR)         \
-  { evalAdjJlJr(); }
+  { evalAdjJlJr(); }                                                              \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_JLJLinv_JRJRinv)   \
+  { evalJrJrinvJlJlinv(); }
+
+
 
 namespace manif {
 
@@ -674,6 +678,23 @@ public:
 
     EXPECT_EIGEN_NEAR(Jl, Adj*Jr);
     EXPECT_EIGEN_NEAR(Adj, Jl*Jr.inverse());
+  }
+
+  void evalJrJrinvJlJlinv()
+  {
+    using Jac = typename Manifold::Jacobian;
+    Jac Jr, Jrinv, Jl, Jlinv;
+
+    const Tangent tan = state.lift();
+
+    Jr = tan.rjac();
+    Jl = tan.ljac();
+
+    Jrinv = tan.rjacinv();
+    Jlinv = tan.ljacinv();
+
+    EXPECT_EIGEN_NEAR(Jac::Identity(), Jr*Jrinv);
+    EXPECT_EIGEN_NEAR(Jac::Identity(), Jl*Jlinv);
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }
