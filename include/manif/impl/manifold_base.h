@@ -43,31 +43,47 @@ struct ManifoldBase
 
 protected:
 
+  //! @brief Access the underlying data by reference
   DataType& coeffs_nonconst();
 
 public:
 
   static const OptJacobianRef _;
 
+  //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
 
+  //! @brief Access the underlying data by pointer
   Scalar* data();
   const Scalar* data() const;
 
+  //! @brief Cast the Manifold object to a copy object
+  //! of a different scalar type
   template <class _NewScalar>
   ManifoldTemplate<_NewScalar> cast() const;
+
+  /// @todo 'cast' across manifolds
+  /// SO3 so3 = so2.as<SO3>()
+//  template <class _DerivedOther>
+//  ManifoldTemplate<_DerivedOther> as() const;
 
   Transformation transform() const;
 
   Rotation rotation() const;
 
+  //! @brief Set the current Manifold object to Identity
   _Derived& setIdentity();
+
+  //! @brief Set the current Manifold object with random value
   _Derived& setRandom();
 
   // Minimum API
+  // Those are the functions the Derived class must implement !
 
+  //! @brief Return the inverse of the current Manifold object
   Manifold inverse(OptJacobianRef J_m_t = {}) const;
 
+  //! @brief Return the Tangent of the current Manifold object
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
