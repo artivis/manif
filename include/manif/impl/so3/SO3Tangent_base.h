@@ -39,7 +39,7 @@ public:
   Jacobian rjac() const;
   Jacobian ljac() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SO3Tangent specific API
 
@@ -120,7 +120,7 @@ SO3TangentBase<_Derived>::ljac() const
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Jacobian
-SO3TangentBase<_Derived>::adj() const
+SO3TangentBase<_Derived>::smallAdj() const
 {
   return hat();
 }

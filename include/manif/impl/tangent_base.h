@@ -100,7 +100,7 @@ public:
     not internal::has_ljacinv<U>::value,
     typename TangentBase<U>::Jacobian>::type ljacinv() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   template <typename _DerivedOther>
   bool isApprox(const TangentBase<_DerivedOther>& t, const Scalar eps) const;
@@ -323,10 +323,9 @@ TangentBase<_Derived>::ljacinv() const
 
 template <class _Derived>
 typename TangentBase<_Derived>::Jacobian
-TangentBase<_Derived>::adj() const
+TangentBase<_Derived>::smallAdj() const
 {
-  //  return derived().ljac()*derived().rjac().inverse();
-  return derived().adj();
+  return derived().smallAdj();
 }
 
 template <typename _Derived>

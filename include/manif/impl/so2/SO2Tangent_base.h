@@ -43,7 +43,7 @@ public:
   Jacobian rjacinv() const;
   Jacobian ljacinv() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SO2Tangent specific API
 
@@ -108,10 +108,10 @@ SO2TangentBase<_Derived>::ljacinv() const
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::Jacobian
-SO2TangentBase<_Derived>::adj() const
+SO2TangentBase<_Derived>::smallAdj() const
 {
-  static const Jacobian adj = Jacobian::Constant(Scalar(1));
-  return adj;
+  static const Jacobian smallAdj = Jacobian::Constant(Scalar(1));
+  return smallAdj;
 }
 
 /// SO2Tangent specific API

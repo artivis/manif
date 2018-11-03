@@ -48,7 +48,7 @@ public:
   Jacobian rjac() const;
   Jacobian ljac() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SE3Tangent specific API
 
@@ -236,16 +236,16 @@ SE3TangentBase<_Derived>::ljac() const
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
-SE3TangentBase<_Derived>::adj() const
+SE3TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian adj = Jacobian::Zero();
-  adj.template topLeftCorner<3,3>() = asSO3().hat();
-  adj.template bottomRightCorner<3,3>() =
-      adj.template topLeftCorner<3,3>();
+  Jacobian smallAdj = Jacobian::Zero();
+  smallAdj.template topLeftCorner<3,3>() = asSO3().hat();
+  smallAdj.template bottomRightCorner<3,3>() =
+      smallAdj.template topLeftCorner<3,3>();
 
-  adj.template bottomLeftCorner<3,3>() = skew(v());
+  smallAdj.template bottomLeftCorner<3,3>() = skew(v());
 
-  return adj;
+  return smallAdj;
 }
 
 /// SE3Tangent specific API
