@@ -90,7 +90,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::hat;                \
   using Base::rjac;               \
   using Base::ljac;               \
-  using Base::adj;
+  using Base::smallAdj;
 
 #define MANIF_INHERIT_TANGENT_OPERATOR \
   using Base::operator +;              \
