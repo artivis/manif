@@ -43,31 +43,47 @@ struct ManifoldBase
 
 protected:
 
+  //! @brief Access the underlying data by reference
   DataType& coeffs_nonconst();
 
 public:
 
   static const OptJacobianRef _;
 
+  //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
 
+  //! @brief Access the underlying data by pointer
   Scalar* data();
   const Scalar* data() const;
 
+  //! @brief Cast the Manifold object to a copy object
+  //! of a different scalar type
   template <class _NewScalar>
   ManifoldTemplate<_NewScalar> cast() const;
+
+  /// @todo 'cast' across manifolds
+  /// SO3 so3 = so2.as<SO3>()
+//  template <class _DerivedOther>
+//  ManifoldTemplate<_DerivedOther> as() const;
 
   Transformation transform() const;
 
   Rotation rotation() const;
 
+  //! @brief Set the current Manifold object to Identity
   _Derived& setIdentity();
+
+  //! @brief Set the current Manifold object with random value
   _Derived& setRandom();
 
   // Minimum API
+  // Those are the functions the Derived class must implement !
 
+  //! @brief Return the inverse of the current Manifold object
   Manifold inverse(OptJacobianRef J_m_t = {}) const;
 
+  //! @brief Return the Tangent of the current Manifold object
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
@@ -347,49 +363,15 @@ ManifoldBase<_Derived>::rminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  Tangent t;
+  Tangent t = m.inverse().compose(derived()).lift();
 
-  /// @todo optimize this
-  if (J_t_ma && J_t_mb)
+  if (J_t_ma)
   {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
-
-    t = m.inverse(J_inv_mb).
-          compose(derived(), J_comp_inv, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
+    (*J_t_ma) = t.rjacinv();
   }
-  else if (J_t_ma && !J_t_mb)
+  if (J_t_mb)
   {
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
-
-    t = m.inverse().
-          compose(derived(), _, J_comp_ma).
-            lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-  }
-  else if (!J_t_ma && J_t_mb)
-  {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_t_comp;
-
-    t = m.inverse(J_inv_mb).
-          compose(derived(), J_comp_inv, _).
-            lift(J_t_comp);
-
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else
-  {
-    t = m.inverse().compose(derived()).lift();
+    (*J_t_mb) = -(-t).rjacinv();
   }
 
   return t;

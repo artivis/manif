@@ -678,6 +678,11 @@ public:
 
     EXPECT_EIGEN_NEAR(Jl, Adj*Jr);
     EXPECT_EIGEN_NEAR(Adj, Jl*Jr.inverse());
+
+    // Jr(-tau) = Jl(tau)
+
+    typename Manifold::Jacobian Jr_mtau = (-tan).rjac();
+    EXPECT_EIGEN_NEAR(Jl, Jr_mtau);
   }
 
   void evalJrJrinvJlJlinv()

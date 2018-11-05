@@ -24,12 +24,8 @@ template<typename T> struct traits<const T> : traits<T> {};
  */
 template <typename _ManifoldBase> struct ManifoldProperties;
 
-//template <template <typename _Derived> class _Base>
-//struct TangentBaseHelper
-//{
-//  using Base = TangentBase<_Derived>;
-//};
-
+//! @brief A traits helper to cast
+//! e.g. template <typename NewScalar> using ManifoldTemplate = typename traitscast<Manifold, NewScalar>::cast;
 template <typename _Class, typename _NewScalar>
 struct traitscast;
 
@@ -41,11 +37,13 @@ struct traitscast<_Class<_Scalar>, _NewScalar>
 
 ////////////////////////////
 
+//! @brief Has function 'rjacinv' traits
 template<class, typename T> struct has_rjacinv_impl : std::false_type {};
 template<typename T> struct
 has_rjacinv_impl<decltype( void(std::declval<T>().rjacinv()) ), T> : std::true_type {};
 template<typename T> struct has_rjacinv : has_rjacinv_impl<void, T> {};
 
+//! @brief Has function 'ljacinv' traits
 template<class, typename T> struct has_ljacinv_impl : std::false_type {};
 template<typename T> struct
 has_ljacinv_impl<decltype( void(std::declval<T>().ljacinv()) ), T> : std::true_type {};
