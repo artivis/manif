@@ -3,16 +3,14 @@
 
 #include "manif/impl/so3/SO3_base.h"
 
-namespace manif
-{
+namespace manif {
 
 // Forward declare for type traits specialization
 
 template <typename _Scalar> struct SO3;
 template <typename _Scalar> struct SO3Tangent;
 
-namespace internal
-{
+namespace internal {
 
 // Traits specialization
 
@@ -41,8 +39,7 @@ struct traits<SO3<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///

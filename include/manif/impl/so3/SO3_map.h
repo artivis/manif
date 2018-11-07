@@ -3,10 +3,8 @@
 
 #include "manif/impl/so3/SO3.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename _Scalar>
 struct traits< Eigen::Map<SO3<_Scalar>,0> >

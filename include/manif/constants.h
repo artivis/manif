@@ -4,11 +4,8 @@
 #include <cmath>
 #include <limits>
 
-namespace manif
-{
-
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
 {
