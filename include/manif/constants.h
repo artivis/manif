@@ -1,5 +1,5 @@
-#ifndef _MANIF_CONSTANTS_H_
-#define _MANIF_CONSTANTS_H_
+#ifndef _MANIF_MANIF_CONSTANTS_H_
+#define _MANIF_MANIF_CONSTANTS_H_
 
 #include <cmath>
 #include <limits>
@@ -42,6 +42,17 @@ struct Constants
   static constexpr _Scalar to_deg = _Scalar(180.0 / M_PI);
 };
 
+template <typename _Scalar>
+constexpr _Scalar Constants<_Scalar>::eps;
+template <typename _Scalar>
+constexpr _Scalar Constants<_Scalar>::eps_s;
+template <typename _Scalar>
+constexpr _Scalar Constants<_Scalar>::eps_sqrt;
+template <typename _Scalar>
+constexpr _Scalar Constants<_Scalar>::to_rad;
+template <typename _Scalar>
+constexpr _Scalar Constants<_Scalar>::to_deg;
+
 } /* namespace manif  */
 
-#endif /* _MANIF_CONSTANTS_H_ */
+#endif /* _MANIF_MANIF_CONSTANTS_H_ */
