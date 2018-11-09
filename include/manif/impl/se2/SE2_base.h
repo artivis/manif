@@ -3,6 +3,7 @@
 
 #include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/manifold_base.h"
+#include "manif/impl/conditional_op.h"
 #include "manif/impl/utils.h"
 
 namespace manif
@@ -134,30 +135,40 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   const Scalar sin_theta = coeffs()[3];
   const Scalar theta_sq  = theta * theta;
 
-  Scalar A,  // sin_theta_by_theta
-         B;  // one_minus_cos_theta_by_theta
+  // sin_theta_by_theta
+  Scalar A = if_lt(abs(theta), Constants<Scalar>::eps,
+                   Scalar(1) - Scalar(1. / 6.) * theta_sq,
+                   sin_theta / theta);
 
-  if (abs(theta) < Constants<Scalar>::eps)
-  {
-    // Taylor approximation
-    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+  // one_minus_cos_theta_by_theta
+  Scalar B = if_lt(abs(theta), Constants<Scalar>::eps,
+                   Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq,
+                   (Scalar(1) - cos_theta) / theta);
+
+//  Scalar A,  // sin_theta_by_theta
+//         B;  // one_minus_cos_theta_by_theta
+
+//  if (abs(theta) < Constants<Scalar>::eps)
+//  {
+//    // Taylor approximation
+//    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
+//    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
+//  }
+//  else
+//  {
+//    // Euler
+//    A = sin_theta / theta;
+//    B = (Scalar(1) - cos_theta) / theta;
+//  }
 
   const Scalar den = Scalar(1) / (A*A + B*B);
 
   A *= den;
   B *= den;
 
-  Tangent tan( A * x() + B * y(),
-              -B * x() + A * y(),
-                     theta       );
+  const Tangent tan( A * x() + B * y(),
+                    -B * x() + A * y(),
+                           theta       );
 
   if (J_t_m)
   {

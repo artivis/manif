@@ -71,21 +71,28 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   const Scalar sin_theta = sin(theta);
   const Scalar theta_sq = theta * theta;
 
-  Scalar A,  // sin_theta_by_theta
-         B;  // one_minus_cos_theta_by_theta
+  const Scalar A = if_lt(theta_sq, Constants<Scalar>::eps_s,
+                         Scalar(1) - Scalar(1. / 6.) * theta_sq,
+                         sin_theta / theta);
+  const Scalar B = if_lt(theta_sq, Constants<Scalar>::eps_s,
+                         Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq,
+                         (Scalar(1) - cos_theta) / theta);
 
-  if (theta_sq < Constants<Scalar>::eps_s)
-  {
-    // Taylor approximation
-    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+//  Scalar A,  // sin_theta_by_theta
+//         B;  // one_minus_cos_theta_by_theta
+
+//  if (theta_sq < Constants<Scalar>::eps_s)
+//  {
+//    // Taylor approximation
+//    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
+//    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
+//  }
+//  else
+//  {
+//    // Euler
+//    A = sin_theta / theta;
+//    B = (Scalar(1) - cos_theta) / theta;
+//  }
 
   if (J_m_t)
   {
