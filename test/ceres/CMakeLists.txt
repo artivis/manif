@@ -6,8 +6,8 @@ manif_add_gtest(gtest_se2_autodiff gtest_se2_autodiff.cpp)
 manif_add_gtest(gtest_se2_ceres gtest_se2_ceres.cpp)
 
 manif_add_gtest(gtest_so3_ceres gtest_so3_ceres.cpp)
-#manif_add_gtest(gtest_se2_ceres gtest_se2_ceres.cpp)
-#manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
+
+manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
 set(CXX_11_TEST_TARGETS_CERES
   # SO2
@@ -21,7 +21,7 @@ set(CXX_11_TEST_TARGETS_CERES
   gtest_se2_ceres
 
   # SE3
-#  gtest_se3_ceres
+  gtest_se3_ceres
 )
 
 foreach(target ${CXX_11_TEST_TARGETS_CERES})

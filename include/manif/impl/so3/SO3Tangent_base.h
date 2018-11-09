@@ -4,8 +4,7 @@
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///

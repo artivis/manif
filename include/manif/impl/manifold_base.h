@@ -11,8 +11,7 @@
 #include "lt/optional.hpp"
 //#include "lspdlog/logging.h"
 
-namespace manif
-{
+namespace manif {
 
 template <class _Derived>
 struct ManifoldBase
@@ -363,7 +362,7 @@ ManifoldBase<_Derived>::rminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  Tangent t = m.inverse().compose(derived()).lift();
+  const Tangent t = m.inverse().compose(derived()).lift();
 
   if (J_t_ma)
   {

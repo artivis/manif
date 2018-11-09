@@ -162,7 +162,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
       make_objective_autodiff<SE2d>(1,1,5.*M_PI/8.);
 
   std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
-      make_objective_autodiff<SE2d>(3,1,3.*M_PI/4.);
+      make_objective_autodiff<SE2d>(1,3,3.*M_PI/4.);
 
   SE2d average_state(0,0,0);
 
@@ -210,8 +210,15 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
   std::cout << "summary:\n" << summary.BriefReport() << "\n\n";
 //  std::cout << "summary:\n" << summary.FullReport() << "\n";
 
-  ASSERT_TRUE(summary.IsSolutionUsable());
+  std::cout << "Final state:\nx:" << average_state.x()
+            << "\ny:" << average_state.y()
+            << "\nt:" << average_state.angle()
+            << "\n\n";
 
+  EXPECT_TRUE(summary.IsSolutionUsable());
+
+  EXPECT_NEAR(2,      average_state.x(),     1e-1);
+  EXPECT_NEAR(2,      average_state.y(),     1e-1);
   EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-1);
 }
 
