@@ -188,8 +188,15 @@ SO3Base<_Derived>::compose(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
+  static_assert(
+    std::is_base_of<SO3Base<_DerivedOther>, _DerivedOther>::value,
+    "Argument does not inherit from S03Base !");
+
   if (J_mc_ma)
-    *J_mc_ma = m.rotation().transpose();
+  {
+    const auto& m_SO3 = static_cast<const SO3Base<_DerivedOther>&>(m);
+    *J_mc_ma = m_SO3.rotation().transpose();
+  }
 
   if (J_mc_mb)
     J_mc_mb->setIdentity();
