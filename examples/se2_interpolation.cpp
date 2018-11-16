@@ -25,9 +25,9 @@ constexpr T polynomialBernstein(const T n, const T i, const T t)
   return binomial_coefficient(n, i) * ipow(T(1)-t, n-i) * ipow(t,i);
 }
 
-template <typename Manifold>
-std::vector<typename Manifold::Manifold>
-computeBezierCurve(const std::vector<Manifold>& control_points,
+template <typename LieGroup>
+std::vector<typename LieGroup::LieGroup>
+computeBezierCurve(const std::vector<LieGroup>& control_points,
                    const unsigned int degree,
                    const unsigned int k_interp)
 {
@@ -49,14 +49,14 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
   if (verbose)
   std::cout << "Will compute " << n_segments << " segments.\n";
 
-  std::vector<std::vector<const Manifold*>> segments_control_points;
+  std::vector<std::vector<const LieGroup*>> segments_control_points;
   for (unsigned int t=0; t<n_segments; ++t)
   {
     if (verbose)
     std::cout << "Computing segment " << t << " "
               << "from control points : ";
 
-    segments_control_points.emplace_back(std::vector<const Manifold*>());
+    segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Retrieve control points of the current segment
     for (int n=0; n<degree; ++n)
@@ -73,7 +73,7 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
         k_interp : k_interp * degree;
 
   // Actual curve fitting
-  std::vector<Manifold> curve;
+  std::vector<LieGroup> curve;
   for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
     for (int t=1; t<=segment_k_interp; ++t)
@@ -81,7 +81,7 @@ computeBezierCurve(const std::vector<Manifold>& control_points,
       // t in [0,1]
       const double t_01 = static_cast<double>(t)/(segment_k_interp);
 
-      Manifold Qc = Manifold::Identity();
+      LieGroup Qc = LieGroup::Identity();
 
       // recursive chunk of the algo,
       // compute tmp control points.

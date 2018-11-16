@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_TEST_UTILS_H_
 #define _MANIF_MANIF_TEST_UTILS_H_
 
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/algorithms/interpolation.h"
 #include "manif/algorithms/average.h"
 #include "manif/impl/utils.h"
@@ -150,14 +150,14 @@ namespace manif {
 
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
-isManifNear(const ManifoldBase<_DerivedA>& manifold_a,
-            const ManifoldBase<_DerivedB>& manifold_b,
+isManifNear(const LieGroupBase<_DerivedA>& manifold_a,
+            const LieGroupBase<_DerivedB>& manifold_b,
             const std::string manifold_a_name = "manifold_a",
             const std::string manifold_b_name = "manifold_b",
             double tolerance = 1e-5)
 {
   auto result =
-      isEigenMatrixNear(ManifoldBase<_DerivedA>::Tangent::DataType::Zero(),
+      isEigenMatrixNear(LieGroupBase<_DerivedA>::Tangent::DataType::Zero(),
                         (manifold_a-manifold_b).coeffs(),
                         "", "", tolerance);
 
@@ -185,12 +185,12 @@ isManifNear(const TangentBase<_DerivedA>& tangent_a,
 /**
  * @brief A helper class to test some common functionalities
  */
-template <typename _Manifold>
+template <typename _LieGroup>
 class CommonTester : public ::testing::Test
 {
-  using Manifold = _Manifold;
-  using Scalar   = typename Manifold::Scalar;
-  using Tangent  = typename Manifold::Tangent;
+  using LieGroup = _LieGroup;
+  using Scalar   = typename LieGroup::Scalar;
+  using Tangent  = typename LieGroup::Tangent;
 
 public:
 
@@ -201,21 +201,21 @@ public:
   {
     std::srand((unsigned int) time(0));
 
-    state       = Manifold::Random();
-    state_other = Manifold::Random();
+    state       = LieGroup::Random();
+    state_other = LieGroup::Random();
 
     delta = Tangent::Random();
   }
 
   void evalCopyConstructor()
   {
-    Manifold state_copy(state);
+    LieGroup state_copy(state);
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
   }
 
   void evalAssignment()
   {
-    Manifold state_copy;
+    LieGroup state_copy;
     state_copy = state;
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
   }
@@ -251,7 +251,7 @@ public:
 
   void evalPlusEq()
   {
-    Manifold ret = state;
+    LieGroup ret = state;
     ret += delta;
 
     EXPECT_MANIF_NEAR(state + delta, ret, tol_);
@@ -265,7 +265,7 @@ public:
 
   void evalCompEq()
   {
-    Manifold ret = state;
+    LieGroup ret = state;
     ret *= state_other;
 
     EXPECT_MANIF_NEAR(state * state_other, ret, tol_);
@@ -283,25 +283,25 @@ public:
 
   void evalComposeWithInv()
   {
-    EXPECT_MANIF_NEAR(Manifold::Identity(),
+    EXPECT_MANIF_NEAR(LieGroup::Identity(),
                       state.compose(state.inverse()), tol_);
-    EXPECT_MANIF_NEAR(Manifold::Identity(),
+    EXPECT_MANIF_NEAR(LieGroup::Identity(),
                       state * state.inverse(), tol_);
 
-    Manifold tmp = state; tmp *= state.inverse();
-    EXPECT_MANIF_NEAR(Manifold::Identity(), tmp, tol_);
+    LieGroup tmp = state; tmp *= state.inverse();
+    EXPECT_MANIF_NEAR(LieGroup::Identity(), tmp, tol_);
   }
 
   void evalBetweenSelf()
   {
-    EXPECT_MANIF_NEAR(Manifold::Identity(),
+    EXPECT_MANIF_NEAR(LieGroup::Identity(),
                       state.between(state), tol_);
   }
 
   void evalPlusZero()
   {
-    EXPECT_MANIF_NEAR(Manifold::Identity(),
-                      Manifold::Identity() + Tangent::Zero(), tol_);
+    EXPECT_MANIF_NEAR(LieGroup::Identity(),
+                      LieGroup::Identity() + Tangent::Zero(), tol_);
     EXPECT_MANIF_NEAR(state,
                       state + Tangent::Zero(), tol_);
   }
@@ -309,21 +309,21 @@ public:
   void evalMinusSelf()
   {
     EXPECT_MANIF_NEAR(Tangent::Zero(),
-                      Manifold::Identity() - Manifold::Identity(), tol_);
+                      LieGroup::Identity() - LieGroup::Identity(), tol_);
     EXPECT_MANIF_NEAR(Tangent::Zero(),
                       state - state, tol_);
   }
 
   void evalRetrZero()
   {
-    EXPECT_MANIF_NEAR(Manifold::Identity(),
+    EXPECT_MANIF_NEAR(LieGroup::Identity(),
                       Tangent::Zero().retract(), tol_);
   }
 
   void evalLiftIdentity()
   {
     EXPECT_MANIF_NEAR(Tangent::Zero(),
-                      Manifold::Identity().lift(), tol_);
+                      LieGroup::Identity().lift(), tol_);
   }
 
   void evalRandom()
@@ -344,7 +344,7 @@ public:
 
   void evalSlerp01()
   {
-    Manifold interp = interpolate(state, state_other, 0);
+    LieGroup interp = interpolate(state, state_other, 0);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
@@ -355,7 +355,7 @@ public:
 
   void evalCubic01()
   {
-    Manifold interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
+    LieGroup interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
 
     EXPECT_MANIF_NEAR(state, interp, tol_);
 
@@ -366,15 +366,15 @@ public:
 
   void evalAvgBiInvariant()
   {
-    const auto dummy = Manifold::Random();
+    const auto dummy = LieGroup::Random();
     EXPECT_MANIF_NEAR(dummy,
-     average_biinvariant(std::vector<Manifold>{dummy}), tol_);
+     average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
 
-    std::vector<Manifold> mans;
+    std::vector<LieGroup> mans;
 
     const int N = 15;
     for (int i=0; i<N; ++i)
-      mans.emplace_back(Manifold::Random());
+      mans.emplace_back(LieGroup::Random());
 
     const auto avg = average_biinvariant(mans);
 
@@ -412,8 +412,8 @@ protected:
 
   Scalar tol_ = Constants<Scalar>::eps;
 
-  Manifold state;
-  Manifold state_other;
+  LieGroup state;
+  LieGroup state_other;
   Tangent  delta;
 };
 
@@ -439,11 +439,11 @@ protected:
  * - rminus / lminus / minus
  *
  */
-template <typename _Manifold>
+template <typename _LieGroup>
 class JacobianTester : public ::testing::Test
 {
-  using Manifold = _Manifold;
-  using Tangent  = typename _Manifold::Tangent;
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
 
 public:
 
@@ -454,8 +454,8 @@ public:
   {
     std::srand((unsigned int) time(0));
 
-    state       = Manifold::Random();
-    state_other = Manifold::Random();
+    state       = LieGroup::Random();
+    state_other = LieGroup::Random();
 
     delta = Tangent::Random();
     w     = Tangent(Tangent::DataType::Random()*w_order_);
@@ -463,18 +463,18 @@ public:
 
   void evalInverseJac()
   {
-    typename Manifold::Jacobian J_sout_s;
-    Manifold state_out = state.inverse(J_sout_s);
+    typename LieGroup::Jacobian J_sout_s;
+    LieGroup state_out = state.inverse(J_sout_s);
 
-    Manifold state_pert = (state+w).inverse();
-    Manifold state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_pert = (state+w).inverse();
+    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalLiftJac()
   {
-    typename Manifold::Jacobian J_sout_s;
+    typename LieGroup::Jacobian J_sout_s;
     Tangent state_out = state.lift(J_sout_s);
 
     Tangent state_pert = (state+w).lift();
@@ -485,24 +485,24 @@ public:
 
   void evalRetractJac()
   {
-    typename Manifold::Jacobian J_sout_s;
-    Manifold state_out = delta.retract(J_sout_s);
+    typename LieGroup::Jacobian J_sout_s;
+    LieGroup state_out = delta.retract(J_sout_s);
 
-    Manifold state_pert = (delta+w).retract();
-    Manifold state_lin  = state_out + (J_sout_s*w);
+    LieGroup state_pert = (delta+w).retract();
+    LieGroup state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalComposeJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_sout_so;
-    Manifold state_out = state.compose(state_other, J_sout_s, J_sout_so);
+    typename LieGroup::Jacobian J_sout_s, J_sout_so;
+    LieGroup state_out = state.compose(state_other, J_sout_s, J_sout_so);
 
     // Jac wrt first element
 
-    Manifold state_pert = (state+w).compose(state_other);
-    Manifold state_lin  = state_out + J_sout_s*w;
+    LieGroup state_pert = (state+w).compose(state_other);
+    LieGroup state_lin  = state_out + J_sout_s*w;
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
@@ -516,13 +516,13 @@ public:
 
   void evalBetweenJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_sout_so;
-    Manifold state_out = state.between(state_other, J_sout_s, J_sout_so);
+    typename LieGroup::Jacobian J_sout_s, J_sout_so;
+    LieGroup state_out = state.between(state_other, J_sout_s, J_sout_so);
 
     // Jac wrt first element
 
-    Manifold state_pert = (state + w).between(state_other);
-    Manifold state_lin  = state_out + (J_sout_s * w);
+    LieGroup state_pert = (state + w).between(state_other);
+    LieGroup state_lin  = state_out + (J_sout_s * w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
@@ -536,13 +536,13 @@ public:
 
   void evalRplusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_sout_t;
-    Manifold state_out = state.rplus(delta, J_sout_s, J_sout_t);
+    typename LieGroup::Jacobian J_sout_s, J_sout_t;
+    LieGroup state_out = state.rplus(delta, J_sout_s, J_sout_t);
 
     // Jac wrt first element
 
-    Manifold state_pert = (state+w).rplus(delta);
-    Manifold state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_pert = (state+w).rplus(delta);
+    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
@@ -556,13 +556,13 @@ public:
 
   void evalLplusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_sout_t;
-    Manifold state_out = state.lplus(delta, J_sout_s, J_sout_t);
+    typename LieGroup::Jacobian J_sout_s, J_sout_t;
+    LieGroup state_out = state.lplus(delta, J_sout_s, J_sout_t);
 
     // Jac wrt first element
 
-    Manifold state_pert = (state+w).lplus(delta);
-    Manifold state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_pert = (state+w).lplus(delta);
+    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
@@ -576,13 +576,13 @@ public:
 
   void evalPlusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_mout_t;
-    Manifold state_out = state.plus(delta, J_sout_s, J_mout_t);
+    typename LieGroup::Jacobian J_sout_s, J_mout_t;
+    LieGroup state_out = state.plus(delta, J_sout_s, J_mout_t);
 
     // Jac wrt first element
 
-    Manifold state_pert = (state+w).plus(delta);
-    Manifold state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_pert = (state+w).plus(delta);
+    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
@@ -596,7 +596,7 @@ public:
 
   void evalRminusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_mout_so;
+    typename LieGroup::Jacobian J_sout_s, J_mout_so;
     Tangent state_out = state.rminus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -616,7 +616,7 @@ public:
 
   void evalLminusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_mout_so;
+    typename LieGroup::Jacobian J_sout_s, J_mout_so;
     Tangent state_out = state.lminus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -636,7 +636,7 @@ public:
 
   void evalMinusJac()
   {
-    typename Manifold::Jacobian J_sout_s, J_mout_so;
+    typename LieGroup::Jacobian J_sout_s, J_mout_so;
     Tangent state_out = state.minus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -656,7 +656,7 @@ public:
 
   void evalAdj()
   {
-    typename Manifold::Jacobian Adja, Adjb, Adjc;
+    typename LieGroup::Jacobian Adja, Adjb, Adjc;
 
     Adja = state.adj();
     Adjb = state_other.adj();
@@ -667,7 +667,7 @@ public:
 
   void evalAdjJlJr()
   {
-    typename Manifold::Jacobian Adj, Jr, Jl;
+    typename LieGroup::Jacobian Adj, Jr, Jl;
 
     Adj = state.adj();
 
@@ -681,13 +681,13 @@ public:
 
     // Jr(-tau) = Jl(tau)
 
-    typename Manifold::Jacobian Jr_mtau = (-tan).rjac();
+    typename LieGroup::Jacobian Jr_mtau = (-tan).rjac();
     EXPECT_EIGEN_NEAR(Jl, Jr_mtau);
   }
 
   void evalJrJrinvJlJlinv()
   {
-    using Jac = typename Manifold::Jacobian;
+    using Jac = typename LieGroup::Jacobian;
     Jac Jr, Jrinv, Jl, Jlinv;
 
     const Tangent tan = state.lift();
@@ -713,8 +713,8 @@ protected:
   double w_order_ = 1e-4;
   double tol_ = 1e-8;
 
-  Manifold state;
-  Manifold state_other;
+  LieGroup state;
+  LieGroup state_other;
   Tangent  delta;
   Tangent  w; //
 };
@@ -753,7 +753,7 @@ protected:
 
 template <typename _Derived>
 const typename _Derived::DataType&
-callCoeffs(const ManifoldBase<_Derived>& manifold)
+callCoeffs(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.coeffs();
 }
@@ -767,21 +767,21 @@ callCoeffs(const TangentBase<_Derived>& tangent)
 
 template <typename _Derived>
 typename _Derived::Transformation
-callTransform(const ManifoldBase<_Derived>& manifold)
+callTransform(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.transform();
 }
 
 template <typename _Derived>
 typename _Derived::Rotation
-callRotation(const ManifoldBase<_Derived>& manifold)
+callRotation(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.rotation();
 }
 
 template <typename _Derived>
 void
-callIdentity(ManifoldBase<_Derived>& manifold)
+callIdentity(LieGroupBase<_Derived>& manifold)
 {
   manifold.setIdentity();
 }
@@ -795,7 +795,7 @@ callZero(TangentBase<_Derived>& tangent)
 
 template <typename _Derived>
 void
-callRandom(ManifoldBase<_Derived>& manifold)
+callRandom(LieGroupBase<_Derived>& manifold)
 {
   manifold.setRandom();
 }
@@ -808,31 +808,31 @@ callRandom(TangentBase<_Derived>& tangent)
 }
 
 template <typename _Derived>
-typename _Derived::Manifold
-callInverse(const ManifoldBase<_Derived>& manifold)
+typename _Derived::LieGroup
+callInverse(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.inverse();
 }
 
 template <typename _DerivedMan, typename _DerivedTan>
-typename _DerivedMan::Manifold
-callRplus(const ManifoldBase<_DerivedMan>& manifold,
+typename _DerivedMan::LieGroup
+callRplus(const LieGroupBase<_DerivedMan>& manifold,
           const TangentBase<_DerivedTan>& tangent)
 {
   return manifold.rplus(tangent);
 }
 
 template <typename _DerivedMan, typename _DerivedTan>
-typename _DerivedMan::Manifold
-callLplus(const ManifoldBase<_DerivedMan>& manifold,
+typename _DerivedMan::LieGroup
+callLplus(const LieGroupBase<_DerivedMan>& manifold,
           const TangentBase<_DerivedTan>& tangent)
 {
   return manifold.lplus(tangent);
 }
 
 template <typename _DerivedMan, typename _DerivedTan>
-typename _DerivedMan::Manifold
-callPlus(const ManifoldBase<_DerivedMan>& manifold,
+typename _DerivedMan::LieGroup
+callPlus(const LieGroupBase<_DerivedMan>& manifold,
          const TangentBase<_DerivedTan>& tangent)
 {
   return manifold.plus(tangent);
@@ -840,61 +840,61 @@ callPlus(const ManifoldBase<_DerivedMan>& manifold,
 
 template <typename _Derived0, typename _Derived1>
 typename _Derived0::Tangent
-callRminus(const ManifoldBase<_Derived0>& manifold_lhs,
-           const ManifoldBase<_Derived1>& manifold_rhs)
+callRminus(const LieGroupBase<_Derived0>& manifold_lhs,
+           const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs.rminus(manifold_rhs);
 }
 
 template <typename _Derived0, typename _Derived1>
 typename _Derived0::Tangent
-callLminus(const ManifoldBase<_Derived0>& manifold_lhs,
-           const ManifoldBase<_Derived1>& manifold_rhs)
+callLminus(const LieGroupBase<_Derived0>& manifold_lhs,
+           const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs.lminus(manifold_rhs);
 }
 
 template <typename _Derived0, typename _Derived1>
 typename _Derived0::Tangent
-callMinus(const ManifoldBase<_Derived0>& manifold_lhs,
-          const ManifoldBase<_Derived1>& manifold_rhs)
+callMinus(const LieGroupBase<_Derived0>& manifold_lhs,
+          const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs.minus(manifold_rhs);
 }
 
 template <typename _Derived>
 typename _Derived::Tangent
-callLift(const ManifoldBase<_Derived>& manifold)
+callLift(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.lift();
 }
 
 template <typename _Derived>
-typename _Derived::Manifold
+typename _Derived::LieGroup
 callRetract(const TangentBase<_Derived>& tangent)
 {
   return tangent.retract();
 }
 
 template <typename _Derived0, typename _Derived1>
-typename _Derived0::Manifold
-callCompose(const ManifoldBase<_Derived0>& manifold_lhs,
-            const ManifoldBase<_Derived1>& manifold_rhs)
+typename _Derived0::LieGroup
+callCompose(const LieGroupBase<_Derived0>& manifold_lhs,
+            const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs.compose(manifold_rhs);
 }
 
 template <typename _Derived0, typename _Derived1>
-typename _Derived0::Manifold
-callBetween(const ManifoldBase<_Derived0>& manifold_lhs,
-            const ManifoldBase<_Derived1>& manifold_rhs)
+typename _Derived0::LieGroup
+callBetween(const LieGroupBase<_Derived0>& manifold_lhs,
+            const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs.between(manifold_rhs);
 }
 
 template <typename _DerivedMan, typename _DerivedTan>
-typename _DerivedMan::Manifold
-callOpPlus(const ManifoldBase<_DerivedMan>& manifold,
+typename _DerivedMan::LieGroup
+callOpPlus(const LieGroupBase<_DerivedMan>& manifold,
            const TangentBase<_DerivedTan>& tangent)
 {
   return manifold + tangent;
@@ -902,7 +902,7 @@ callOpPlus(const ManifoldBase<_DerivedMan>& manifold,
 
 template <typename _DerivedMan, typename _DerivedTan>
 void
-callOpPlusEq(ManifoldBase<_DerivedMan>& manifold,
+callOpPlusEq(LieGroupBase<_DerivedMan>& manifold,
              const TangentBase<_DerivedTan>& tangent)
 {
   manifold += tangent;
@@ -910,24 +910,24 @@ callOpPlusEq(ManifoldBase<_DerivedMan>& manifold,
 
 template <typename _Derived0, typename _Derived1>
 typename _Derived0::Tangent
-callOpMinus(const ManifoldBase<_Derived0>& manifold_lhs,
-            const ManifoldBase<_Derived0>& manifold_rhs)
+callOpMinus(const LieGroupBase<_Derived0>& manifold_lhs,
+            const LieGroupBase<_Derived0>& manifold_rhs)
 {
   return manifold_lhs - manifold_rhs;
 }
 
 template <typename _Derived0, typename _Derived1>
-const typename _Derived0::Manifold
-callOpTime(const ManifoldBase<_Derived0>& manifold_lhs,
-           const ManifoldBase<_Derived1>& manifold_rhs)
+const typename _Derived0::LieGroup
+callOpTime(const LieGroupBase<_Derived0>& manifold_lhs,
+           const LieGroupBase<_Derived1>& manifold_rhs)
 {
   return manifold_lhs * manifold_rhs;
 }
 
 template <typename _Derived0, typename _Derived1>
 void
-callOpTimeEq(ManifoldBase<_Derived0>& manifold_lhs,
-             const ManifoldBase<_Derived1>& manifold_rhs)
+callOpTimeEq(LieGroupBase<_Derived0>& manifold_lhs,
+             const LieGroupBase<_Derived1>& manifold_rhs)
 {
   manifold_lhs *= manifold_rhs;
 }
@@ -935,18 +935,18 @@ callOpTimeEq(ManifoldBase<_Derived0>& manifold_lhs,
 /// with Jacs
 
 template <typename _Derived>
-typename _Derived::Manifold
-callInverseWithJac(const ManifoldBase<_Derived>& manifold,
-                   typename ManifoldBase<_Derived>::OptJacobianRef J_minv_m)
+typename _Derived::LieGroup
+callInverseWithJac(const LieGroupBase<_Derived>& manifold,
+                   typename LieGroupBase<_Derived>::OptJacobianRef J_minv_m)
 {
   return manifold.inverse(J_minv_m);
 }
 
 template <typename _DerivedMan, typename _DerivedTan>
-const typename _DerivedMan::Manifold
-callRplusWithJac(const ManifoldBase<_DerivedMan>& manifold,
+const typename _DerivedMan::LieGroup
+callRplusWithJac(const LieGroupBase<_DerivedMan>& manifold,
                  const TangentBase<_DerivedTan>& tangent,
-                 typename ManifoldBase<_DerivedMan>::OptJacobianRef J_mout_m,
+                 typename LieGroupBase<_DerivedMan>::OptJacobianRef J_mout_m,
                  typename TangentBase<_DerivedTan>::OptJacobianRef J_mout_t)
 {
   return manifold.rplus(tangent, J_mout_m, J_mout_t);
@@ -954,48 +954,48 @@ callRplusWithJac(const ManifoldBase<_DerivedMan>& manifold,
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callLplusWithJac(const ManifoldBase<_Derived>& manifold)
+callLplusWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callPlusWithJac(const ManifoldBase<_Derived>& manifold)
+callPlusWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callRminusWithJac(const ManifoldBase<_Derived>& manifold)
+callRminusWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callLminusWithJac(const ManifoldBase<_Derived>& manifold)
+callLminusWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callMinusWithJac(const ManifoldBase<_Derived>& manifold)
+callMinusWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callLiftWithJac(const ManifoldBase<_Derived>& manifold)
+callLiftWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
-typename _Derived::Manifold
+typename _Derived::LieGroup
 callRetractWithJac(const TangentBase<_Derived>& tangent,
                    typename _Derived::Jacobian& J)
 {
@@ -1004,14 +1004,14 @@ callRetractWithJac(const TangentBase<_Derived>& tangent,
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callComposeWithJac(const ManifoldBase<_Derived>& manifold)
+callComposeWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }
 
 template <typename _Derived>
 const typename _Derived::DataType*
-callBetweenWithJac(const ManifoldBase<_Derived>& manifold)
+callBetweenWithJac(const LieGroupBase<_Derived>& manifold)
 {
   return manifold.data();
 }

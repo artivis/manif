@@ -2,7 +2,7 @@
 #define _MANIF_SO3_H_
 
 #include "manif/impl/macro.h"
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/tangent_base.h"
 
 #include "manif/impl/so3/SO3_properties.h"

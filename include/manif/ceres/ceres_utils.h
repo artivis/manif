@@ -53,83 +53,83 @@ std::string getReason(const ceres::TerminationType flag)
   }
 }
 
-template <typename _Manifold>
-std::shared_ptr<LocalParameterization<_Manifold>>
+template <typename _LieGroup>
+std::shared_ptr<LocalParameterization<_LieGroup>>
 make_local_parametrization()
 {
-  return std::make_shared<LocalParameterization<_Manifold>>();
+  return std::make_shared<LocalParameterization<_LieGroup>>();
 }
 
-template <typename _Manifold>
+template <typename _LieGroup>
 std::shared_ptr<
-  ceres::AutoDiffLocalParameterization<LocalParameterization<_Manifold>,
-  _Manifold::RepSize, _Manifold::DoF>>
+  ceres::AutoDiffLocalParameterization<LocalParameterization<_LieGroup>,
+  _LieGroup::RepSize, _LieGroup::DoF>>
 make_local_parametrization_autodiff()
 {
   return std::make_shared<
       ceres::AutoDiffLocalParameterization<
-        LocalParameterization<_Manifold>, _Manifold::RepSize, _Manifold::DoF>>();
+        LocalParameterization<_LieGroup>, _LieGroup::RepSize, _LieGroup::DoF>>();
 }
 
-template <typename _Manifold, typename... Args>
-std::shared_ptr<Objective<_Manifold>>
+template <typename _LieGroup, typename... Args>
+std::shared_ptr<Objective<_LieGroup>>
 make_objective(Args&&... args)
 {
-  return std::make_shared<Objective<_Manifold>>(std::forward<Args>(args)...);
+  return std::make_shared<Objective<_LieGroup>>(std::forward<Args>(args)...);
 }
 
-template <typename _Manifold, typename... Args>
+template <typename _LieGroup, typename... Args>
 std::shared_ptr<
   ceres::AutoDiffCostFunction<
-    Objective<_Manifold>, _Manifold::DoF, _Manifold::RepSize>>
+    Objective<_LieGroup>, _LieGroup::DoF, _LieGroup::RepSize>>
 make_objective_autodiff(Args&&... args)
 {
-  constexpr int DoF = _Manifold::DoF;
-  constexpr int RepSize = _Manifold::RepSize;
+  constexpr int DoF = _LieGroup::DoF;
+  constexpr int RepSize = _LieGroup::RepSize;
 
   return std::make_shared<
-      ceres::AutoDiffCostFunction<Objective<_Manifold>, DoF, RepSize>>(
-        new Objective<_Manifold>(std::forward<Args>(args)...)
+      ceres::AutoDiffCostFunction<Objective<_LieGroup>, DoF, RepSize>>(
+        new Objective<_LieGroup>(std::forward<Args>(args)...)
       );
 }
 
 /// @todo find a way to merge with make_objective_autodiff
-template <typename _Manifold, typename... Args>
+template <typename _LieGroup, typename... Args>
 std::shared_ptr<
   ceres::AutoDiffCostFunction<
-    Objective<_Manifold>, _Manifold::DoF, _Manifold::RepSize>>
+    Objective<_LieGroup>, _LieGroup::DoF, _LieGroup::RepSize>>
 make_weighted_objective_autodiff(const double weight, Args&&... args)
 {
-  constexpr int DoF = _Manifold::DoF;
-  constexpr int RepSize = _Manifold::RepSize;
+  constexpr int DoF = _LieGroup::DoF;
+  constexpr int RepSize = _LieGroup::RepSize;
 
-  Objective<_Manifold>* obj = new Objective<_Manifold>(std::forward<Args>(args)...);
+  Objective<_LieGroup>* obj = new Objective<_LieGroup>(std::forward<Args>(args)...);
   obj->weight(weight);
 
   return std::make_shared<
-      ceres::AutoDiffCostFunction<Objective<_Manifold>, DoF, RepSize>>(obj);
+      ceres::AutoDiffCostFunction<Objective<_LieGroup>, DoF, RepSize>>(obj);
 }
 
-template <typename _Manifold, typename... Args>
-std::shared_ptr<Constraint<_Manifold>>
+template <typename _LieGroup, typename... Args>
+std::shared_ptr<Constraint<_LieGroup>>
 make_constraint(Args&&... args)
 {
-  return std::make_shared<Constraint<_Manifold>>(std::forward<Args>(args)...);
+  return std::make_shared<Constraint<_LieGroup>>(std::forward<Args>(args)...);
 }
 
-template <typename _Manifold, typename... Args>
+template <typename _LieGroup, typename... Args>
 std::shared_ptr<
   ceres::AutoDiffCostFunction<
-    Constraint<_Manifold>, _Manifold::DoF, _Manifold::RepSize, _Manifold::RepSize>>
+    Constraint<_LieGroup>, _LieGroup::DoF, _LieGroup::RepSize, _LieGroup::RepSize>>
 make_constraint_autodiff(Args&&... args)
 {
   return std::make_shared<
       ceres::AutoDiffCostFunction<
-        Constraint<_Manifold>,
-        _Manifold::DoF,
-        _Manifold::RepSize,
-        _Manifold::RepSize>>(
-            new Constraint<_Manifold>(std::forward<Args>(args)...));
+        Constraint<_LieGroup>,
+        _LieGroup::DoF,
+        _LieGroup::RepSize,
+        _LieGroup::RepSize>>(
+            new Constraint<_LieGroup>(std::forward<Args>(args)...));
 }
 
 } /* namespace manif */

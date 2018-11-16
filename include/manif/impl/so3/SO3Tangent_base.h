@@ -33,7 +33,7 @@ public:
 
   LieAlg hat() const;
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
@@ -48,7 +48,7 @@ public:
 };
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Manifold
+typename SO3TangentBase<_Derived>::LieGroup
 SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
@@ -73,7 +73,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
       *J_m_t = Jacobian::Identity() - M1 + M2;
     }
 
-    return Manifold( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
+    return LieGroup( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
   }
   else
   {
@@ -82,7 +82,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
       *J_m_t = Jacobian::Identity() - Scalar(0.5) * hat();
     }
 
-    return Manifold(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
+    return LieGroup(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
   }
 }
 

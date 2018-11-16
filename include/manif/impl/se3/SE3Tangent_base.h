@@ -41,7 +41,7 @@ public:
   void zero();
   void random();
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   LieAlg hat() const;
 
@@ -92,7 +92,7 @@ void SE3TangentBase<_Derived>::random()
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Manifold
+typename SE3TangentBase<_Derived>::LieGroup
 SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
@@ -105,7 +105,7 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   }
 
   /// @note Eq. 10.93
-  return Manifold(asSO3().ljac()*v(), asSO3().retract().quat());
+  return LieGroup(asSO3().ljac()*v(), asSO3().retract().quat());
 }
 
 template <typename _Derived>

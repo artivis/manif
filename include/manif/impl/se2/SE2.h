@@ -23,14 +23,14 @@ struct traits<SE2<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SE2<_Scalar>;
+  using LieGroup = SE2<_Scalar>;
   using Tangent  = SE2Tangent<_Scalar>;
 
   using Base = SE2Base<SE2<_Scalar>>;
 
-  static constexpr int Dim     = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF     = ManifoldProperties<Base>::DoF;
-  static constexpr int N       = ManifoldProperties<Base>::N;
+  static constexpr int Dim     = LieGroupProperties<Base>::Dim;
+  static constexpr int DoF     = LieGroupProperties<Base>::DoF;
+  static constexpr int N       = LieGroupProperties<Base>::N;
   static constexpr int RepSize = 4;
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
@@ -50,7 +50,7 @@ namespace manif
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
@@ -64,7 +64,7 @@ private:
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  MANIF_COMPLETE_GROUP_TYPEDEF
 
   SE2()  = default;
   ~SE2() = default;
@@ -73,11 +73,11 @@ public:
   SE2(const Scalar x, const Scalar y, const Scalar theta);
   SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag);
 
-  /// Manifold common API
+  /// LieGroup common API
 
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_INHERIT_GROUP_API
 
   /// SE2 specific API
 
@@ -89,13 +89,13 @@ public:
 
 protected:
 
-  friend class ManifoldBase<SE2<Scalar>>;
+  friend class LieGroupBase<SE2<Scalar>>;
   DataType& coeffs_nonconst();
 
   DataType data_;
 };
 
-MANIF_EXTRA_MANIFOLD_TYPEDEF(SE2)
+MANIF_EXTRA_GROUP_TYPEDEF(SE2)
 
 template <typename _Scalar>
 SE2<_Scalar>::SE2(const DataType& d)

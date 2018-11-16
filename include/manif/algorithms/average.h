@@ -1,25 +1,25 @@
 #ifndef _MANIF_MANIF_AVERAGE_H_
 #define _MANIF_MANIF_AVERAGE_H_
 
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 //#include "manif/interpolation.h"
 
 namespace manif
 {
 
-//template <template <typename Manifold, typename...Args> class Container,
-//          typename Manifold, typename...Args>
-//Manifold
-//average_slerp(const Container<Manifold, Args...>& mans)
+//template <template <typename LieGroup, typename...Args> class Container,
+//          typename LieGroup, typename...Args>
+//LieGroup
+//average_slerp(const Container<LieGroup, Args...>& mans)
 //{
 //  if (mans.empty())
-//    return Manifold();
+//    return LieGroup();
 //  else if (mans.size() == 1)
 //    return *mans.begin();
 
 //  auto it = mans.begin();
 
-//  Manifold carry = *it;
+//  LieGroup carry = *it;
 
 //  ++it;
 //  double i = 2;
@@ -42,22 +42,22 @@ namespace manif
  * mass on compact Lie groups."
  * @link http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.721.8010&rep=rep1&type=pdf
  */
-template <template <typename Manifold, typename...Args> class Container,
-          typename Manifold, typename...Args>
-Manifold
-average_biinvariant(const Container<Manifold, Args...>& mans,
+template <template <typename LieGroup, typename...Args> class Container,
+          typename LieGroup, typename...Args>
+LieGroup
+average_biinvariant(const Container<LieGroup, Args...>& mans,
                     int max_iterations = 20)
 {
-  using Scalar  = typename Manifold::Scalar;
-  using Tangent = typename Manifold::Tangent;
+  using Scalar  = typename LieGroup::Scalar;
+  using Tangent = typename LieGroup::Tangent;
 
   if (mans.empty())
-    return Manifold();
+    return LieGroup();
   else if (mans.size() == 1)
     return *mans.begin();
 
   auto m0 = *mans.begin();
-  Manifold avg;
+  LieGroup avg;
 
   const Scalar w = Scalar(1./mans.size());
 

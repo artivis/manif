@@ -16,7 +16,7 @@ namespace internal
 // traits specialization
 
 template <typename _Derived>
-struct ManifoldProperties<SE3Base<_Derived>>
+struct LieGroupProperties<SE3Base<_Derived>>
 {
   static constexpr int Dim = 3; /// @brief Space dimension
   static constexpr int DoF = 6; /// @brief Degrees of freedom
@@ -24,7 +24,7 @@ struct ManifoldProperties<SE3Base<_Derived>>
 };
 
 template <typename _Derived>
-struct ManifoldProperties<SE3TangentBase<_Derived>>
+struct LieGroupProperties<SE3TangentBase<_Derived>>
 {
   static constexpr int Dim = 3; /// @brief Space dimension
   static constexpr int DoF = 6; /// @brief Degrees of freedom

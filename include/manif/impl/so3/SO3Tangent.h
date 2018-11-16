@@ -17,13 +17,13 @@ struct traits<SO3Tangent<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SO3<_Scalar>;
+  using LieGroup = SO3<_Scalar>;
   using Tangent  = SO3Tangent<_Scalar>;
 
   using Base = SO3TangentBase<_Scalar>;
 
-  static constexpr int Dim     = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF     = ManifoldProperties<Base>::DoF;
+  static constexpr int Dim     = LieGroupProperties<Base>::Dim;
+  static constexpr int DoF     = LieGroupProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
