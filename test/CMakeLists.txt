@@ -30,16 +30,35 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
+##################
+## Ceres Solver ##
+##################
+
 find_package(Ceres QUIET)
 
 if(CERES_FOUND)
 
-  message(STATUS "Found ceres_solver, building ceres tests.")
+  message(STATUS "Found ceres_solver, building related tests.")
   add_subdirectory(ceres)
 
 else()
-  message(STATUS "Could not find ceres_solver, ceres tests will not be built.")
+  message(STATUS "Could not find ceres_solver, related tests will not be built.")
 endif()
+
+###########
+## CppAD ##
+###########
+
+#find_package(CppAD QUIET)
+
+#if(CppAD_FOUND)
+
+#  message(STATUS "Found CppAD, building related tests.")
+#  add_subdirectory(cppad)
+
+#else()
+#  message(STATUS "Could not find CppAD, related tests will not be built.")
+#endif()
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")
