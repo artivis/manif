@@ -41,9 +41,9 @@ class Map<manif::SE3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  MANIF_COMPLETE_GROUP_TYPEDEF
 
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_INHERIT_GROUP_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
@@ -51,7 +51,7 @@ public:
 
 protected:
 
-  friend class manif::ManifoldBase<Map<manif::SE3<_Scalar>, 0>>;
+  friend class manif::LieGroupBase<Map<manif::SE3<_Scalar>, 0>>;
   DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
@@ -65,9 +65,9 @@ class Map<const manif::SE3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  MANIF_COMPLETE_GROUP_TYPEDEF
 
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_INHERIT_GROUP_API
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 

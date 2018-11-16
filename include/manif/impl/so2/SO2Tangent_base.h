@@ -23,8 +23,8 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
+  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim;
+  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -33,7 +33,7 @@ public:
 
   /// Tangent common API
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   LieAlg hat() const;
 
@@ -53,7 +53,7 @@ public:
 };
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Manifold
+typename SO2TangentBase<_Derived>::LieGroup
 SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::cos;
@@ -64,7 +64,7 @@ SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     (*J_m_t) = rjac();
   }
 
-  return Manifold(cos(coeffs()(0)), sin(coeffs()(0)));
+  return LieGroup(cos(coeffs()(0)), sin(coeffs()(0)));
 }
 
 template <typename _Derived>

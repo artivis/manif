@@ -2,7 +2,7 @@
 #define _MANIF_MANIF_SO3_BASE_H_
 
 #include "manif/impl/so3/SO3_properties.h"
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/utils.h"
 
 namespace manif
@@ -10,36 +10,36 @@ namespace manif
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
 template <typename _Derived>
-struct SO3Base : ManifoldBase<_Derived>
+struct SO3Base : LieGroupBase<_Derived>
 {
 private:
 
-  using Base = ManifoldBase<_Derived>;
+  using Base = LieGroupBase<_Derived>;
   using Type = SO3Base<_Derived>;
 
 public:
 
-  MANIF_MANIFOLD_TYPEDEF
+  MANIF_GROUP_TYPEDEF
 
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
-  /// Manifold common API
+  /// LieGroup common API
 
   Transformation transform() const;
   Rotation rotation() const;
 
   SO3Base<_Derived>& setIdentity();
 
-  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
@@ -50,8 +50,8 @@ public:
   Jacobian adj() const;
 
   using Base::coeffs;
-  MANIF_INHERIT_MANIFOLD_AUTO_API
-  MANIF_INHERIT_MANIFOLD_OPERATOR
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
   /// SO3 specific functions
 
@@ -95,7 +95,7 @@ SO3Base<_Derived>::setIdentity()
 }
 
 template <typename _Derived>
-typename SO3Base<_Derived>::Manifold
+typename SO3Base<_Derived>::LieGroup
 SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   if (J_minv_m)
@@ -106,7 +106,7 @@ SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
   /// @todo, conjugate doc :
   /// equal to the multiplicative inverse if
   /// the quaternion is normalized
-  return Manifold(quat().conjugate());
+  return LieGroup(quat().conjugate());
 }
 
 template <typename _Derived>
@@ -183,9 +183,9 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename SO3Base<_Derived>::Manifold
+typename SO3Base<_Derived>::LieGroup
 SO3Base<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m,
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
@@ -195,7 +195,7 @@ SO3Base<_Derived>::compose(
   if (J_mc_mb)
     J_mc_mb->setIdentity();
 
-  return Manifold(QuaternionDataType(coeffs()) *
+  return LieGroup(QuaternionDataType(coeffs()) *
                   QuaternionDataType(m.coeffs()));
 }
 

@@ -1,5 +1,5 @@
-#ifndef _MANIF_MANIF_MANIFOLD_BASE_H_
-#define _MANIF_MANIF_MANIFOLD_BASE_H_
+#ifndef _MANIF_MANIF_LIE_GROUP_BASE_H_
+#define _MANIF_MANIF_LIE_GROUP_BASE_H_
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
@@ -14,7 +14,7 @@
 namespace manif {
 
 template <class _Derived>
-struct ManifoldBase
+struct LieGroupBase
 {
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
@@ -22,7 +22,7 @@ struct ManifoldBase
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
   using Scalar         = typename internal::traits<_Derived>::Scalar;
-  using Manifold       = typename internal::traits<_Derived>::Manifold;
+  using LieGroup       = typename internal::traits<_Derived>::LieGroup;
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
@@ -33,7 +33,7 @@ struct ManifoldBase
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
-  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
+  using LieGroupTemplate = typename manif::internal::traitscast<LieGroup, _Scalar>::cast;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
@@ -56,37 +56,37 @@ public:
   Scalar* data();
   const Scalar* data() const;
 
-  //! @brief Cast the Manifold object to a copy object
+  //! @brief Cast the LieGroup object to a copy object
   //! of a different scalar type
   template <class _NewScalar>
-  ManifoldTemplate<_NewScalar> cast() const;
+  LieGroupTemplate<_NewScalar> cast() const;
 
-  /// @todo 'cast' across manifolds
+  /// @todo 'cast' across groups
   /// SO3 so3 = so2.as<SO3>()
 //  template <class _DerivedOther>
-//  ManifoldTemplate<_DerivedOther> as() const;
+//  LieGroupTemplate<_DerivedOther> as() const;
 
   Transformation transform() const;
 
   Rotation rotation() const;
 
-  //! @brief Set the current Manifold object to Identity
+  //! @brief Set the current LieGroup object to Identity
   _Derived& setIdentity();
 
-  //! @brief Set the current Manifold object with random value
+  //! @brief Set the current LieGroup object with random value
   _Derived& setRandom();
 
   // Minimum API
   // Those are the functions the Derived class must implement !
 
-  //! @brief Return the inverse of the current Manifold object
-  Manifold inverse(OptJacobianRef J_m_t = {}) const;
+  //! @brief Return the inverse of the current LieGroup object
+  LieGroup inverse(OptJacobianRef J_m_t = {}) const;
 
-  //! @brief Return the Tangent of the current Manifold object
+  //! @brief Return the Tangent of the current LieGroup object
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
@@ -99,12 +99,12 @@ public:
   // Deduced API
 
   template <typename _DerivedOther>
-  Manifold rplus(const TangentBase<_DerivedOther>& t,
+  LieGroup rplus(const TangentBase<_DerivedOther>& t,
                  OptJacobianRef J_mout_m = {},
                  OptJacobianRef J_mout_t = {}) const;
 
   template <typename _DerivedOther>
-  Manifold lplus(const TangentBase<_DerivedOther>& t,
+  LieGroup lplus(const TangentBase<_DerivedOther>& t,
                  OptJacobianRef J_mout_m = {},
                  OptJacobianRef J_mout_t = {}) const;
 
@@ -113,17 +113,17 @@ public:
    * @see rplus
    */
   template <typename _DerivedOther>
-  Manifold plus(const TangentBase<_DerivedOther>& t,
+  LieGroup plus(const TangentBase<_DerivedOther>& t,
                 OptJacobianRef J_mout_m = {},
                 OptJacobianRef J_mout_t = {}) const;
 
   template <typename _DerivedOther>
-  Tangent rminus(const ManifoldBase<_DerivedOther>& m,
+  Tangent rminus(const LieGroupBase<_DerivedOther>& m,
                  OptJacobianRef J_t_ma = {},
                  OptJacobianRef J_t_mb = {}) const;
 
   template <typename _DerivedOther>
-  Tangent lminus(const ManifoldBase<_DerivedOther>& m,
+  Tangent lminus(const LieGroupBase<_DerivedOther>& m,
                  OptJacobianRef J_t_ma = {},
                  OptJacobianRef J_t_mb = {}) const;
 
@@ -132,17 +132,17 @@ public:
    * @see rminus
    */
   template <typename _DerivedOther>
-  Tangent minus(const ManifoldBase<_DerivedOther>& m,
+  Tangent minus(const LieGroupBase<_DerivedOther>& m,
                 OptJacobianRef J_t_ma = {},
                 OptJacobianRef J_t_mb = {}) const;
 
   template <typename _DerivedOther>
-  Manifold between(const ManifoldBase<_DerivedOther>& m,
+  LieGroup between(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
   template <typename _DerivedOther>
-  bool isApprox(const ManifoldBase<_DerivedOther>& m, const Scalar eps) const;
+  bool isApprox(const LieGroupBase<_DerivedOther>& m, const Scalar eps) const;
 
   /// Some operators
 
@@ -151,20 +151,20 @@ public:
    * @param t
    * @return
    */
-  _Derived& operator =(const ManifoldBase<_Derived>& m);
+  _Derived& operator =(const LieGroupBase<_Derived>& m);
 
   template <typename _DerivedOther>
-  _Derived& operator =(const ManifoldBase<_DerivedOther>& m);
+  _Derived& operator =(const LieGroupBase<_DerivedOther>& m);
 
   template <typename _DerivedOther>
-  bool operator ==(const ManifoldBase<_DerivedOther>& m);
+  bool operator ==(const LieGroupBase<_DerivedOther>& m);
 
   /**
    * @brief operator +, rplus
    * @see rplus
    */
   template <typename _DerivedOther>
-  Manifold operator +(const TangentBase<_DerivedOther>& t) const;
+  LieGroup operator +(const TangentBase<_DerivedOther>& t) const;
 
   /**
    * @brief operator +=, in-place rplus
@@ -178,26 +178,26 @@ public:
    * @see rminus
    */
   template <typename _DerivedOther>
-  Tangent operator -(const ManifoldBase<_DerivedOther>& m) const;
+  Tangent operator -(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief operator *, compose
    * @see compose
    */
   template <typename _DerivedOther>
-  Manifold operator *(const ManifoldBase<_DerivedOther>& m) const;
+  LieGroup operator *(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief operator *=, in-place compose
    * @see compose
    */
   template <typename _DerivedOther>
-  _Derived& operator *=(const ManifoldBase<_DerivedOther>& m);
+  _Derived& operator *=(const LieGroupBase<_DerivedOther>& m);
 
   /// Some static helpers
 
-  static Manifold Identity();
-  static Manifold Random();
+  static LieGroup Identity();
+  static LieGroup Random();
 
 private:
 
@@ -206,71 +206,71 @@ private:
 };
 
 template <typename _Derived>
-constexpr int ManifoldBase<_Derived>::Dim;
+constexpr int LieGroupBase<_Derived>::Dim;
 template <typename _Derived>
-constexpr int ManifoldBase<_Derived>::DoF;
+constexpr int LieGroupBase<_Derived>::DoF;
 template <typename _Derived>
-constexpr int ManifoldBase<_Derived>::N;
+constexpr int LieGroupBase<_Derived>::N;
 template <typename _Derived>
-constexpr int ManifoldBase<_Derived>::RepSize;
+constexpr int LieGroupBase<_Derived>::RepSize;
 
 template <typename _Derived>
-const typename ManifoldBase<_Derived>::OptJacobianRef
-ManifoldBase<_Derived>::_ = {};
+const typename LieGroupBase<_Derived>::OptJacobianRef
+LieGroupBase<_Derived>::_ = {};
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::DataType&
-ManifoldBase<_Derived>::coeffs_nonconst()
+typename LieGroupBase<_Derived>::DataType&
+LieGroupBase<_Derived>::coeffs_nonconst()
 {
   return derived().coeffs_nonconst();
 }
 
 template <typename _Derived>
-const typename ManifoldBase<_Derived>::DataType&
-ManifoldBase<_Derived>::coeffs() const
+const typename LieGroupBase<_Derived>::DataType&
+LieGroupBase<_Derived>::coeffs() const
 {
   return derived().coeffs();
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Scalar*
-ManifoldBase<_Derived>::data()
+typename LieGroupBase<_Derived>::Scalar*
+LieGroupBase<_Derived>::data()
 {
   return derived().coeffs_nonconst().data();
 }
 
 template <typename _Derived>
-const typename ManifoldBase<_Derived>::Scalar*
-ManifoldBase<_Derived>::data() const
+const typename LieGroupBase<_Derived>::Scalar*
+LieGroupBase<_Derived>::data() const
 {
   derived().coeffs().data();
 }
 
 template <typename _Derived>
 template <class _NewScalar>
-typename ManifoldBase<_Derived>::template ManifoldTemplate<_NewScalar>
-ManifoldBase<_Derived>::cast() const
+typename LieGroupBase<_Derived>::template LieGroupTemplate<_NewScalar>
+LieGroupBase<_Derived>::cast() const
 {
-  return ManifoldTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
+  return LieGroupTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Transformation
-ManifoldBase<_Derived>::transform() const
+typename LieGroupBase<_Derived>::Transformation
+LieGroupBase<_Derived>::transform() const
 {
   return derived().transform();
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Rotation
-ManifoldBase<_Derived>::rotation() const
+typename LieGroupBase<_Derived>::Rotation
+LieGroupBase<_Derived>::rotation() const
 {
   return derived().rotation();
 }
 
 template <typename _Derived>
 _Derived&
-ManifoldBase<_Derived>::setIdentity()
+LieGroupBase<_Derived>::setIdentity()
 {
   derived().setIdentity();
   return derived();
@@ -278,28 +278,28 @@ ManifoldBase<_Derived>::setIdentity()
 
 template <typename _Derived>
 _Derived&
-ManifoldBase<_Derived>::setRandom()
+LieGroupBase<_Derived>::setRandom()
 {
   coeffs_nonconst() = Tangent::Random().retract().coeffs();
   return derived();
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::inverse(OptJacobianRef J_m_t) const
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::inverse(OptJacobianRef J_m_t) const
 {
   return derived().inverse(J_m_t);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::rplus(
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::rplus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  Manifold mout;
+  LieGroup mout;
 
   if (J_mout_t)
   {
@@ -318,13 +318,13 @@ ManifoldBase<_Derived>::rplus(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::lplus(
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::lplus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  Manifold mout;
+  LieGroup mout;
 
   if (J_mout_t)
   {
@@ -345,8 +345,8 @@ ManifoldBase<_Derived>::lplus(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::plus(
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::plus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
@@ -356,9 +356,9 @@ ManifoldBase<_Derived>::plus(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::rminus(
-    const ManifoldBase<_DerivedOther>& m,
+typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::rminus(
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
@@ -378,9 +378,9 @@ ManifoldBase<_Derived>::rminus(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::lminus(
-    const ManifoldBase<_DerivedOther>& m,
+typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::lminus(
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
@@ -431,9 +431,9 @@ ManifoldBase<_Derived>::lminus(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::minus(
-    const ManifoldBase<_DerivedOther>& m,
+typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::minus(
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
@@ -441,17 +441,17 @@ ManifoldBase<_Derived>::minus(
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::lift(OptJacobianRef J_t_m) const
+typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::lift(OptJacobianRef J_t_m) const
 {
   return derived().lift(J_t_m);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m,
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::compose(
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
@@ -460,13 +460,13 @@ ManifoldBase<_Derived>::compose(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::between(
-    const ManifoldBase<_DerivedOther>& m,
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::between(
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  Manifold mc;
+  LieGroup mc;
 
   if (J_mc_ma)
   {
@@ -486,22 +486,22 @@ ManifoldBase<_Derived>::between(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-bool ManifoldBase<_Derived>::isApprox(const ManifoldBase<_DerivedOther>& m,
+bool LieGroupBase<_Derived>::isApprox(const LieGroupBase<_DerivedOther>& m,
                                       const Scalar eps) const
 {
   return rminus(m).isApprox(Tangent::Zero(), eps);
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Jacobian
-ManifoldBase<_Derived>::adj() const
+typename LieGroupBase<_Derived>::Jacobian
+LieGroupBase<_Derived>::adj() const
 {
   return derived().adj();
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Vector
-ManifoldBase<_Derived>::act(const Vector& v,
+typename LieGroupBase<_Derived>::Vector
+LieGroupBase<_Derived>::act(const Vector& v,
                             OptJacobianRef J_vout_m,
                             OptJacobianRef J_vout_v) const
 {
@@ -512,8 +512,8 @@ ManifoldBase<_Derived>::act(const Vector& v,
 
 template <typename _Derived>
 _Derived&
-ManifoldBase<_Derived>::operator =(
-    const ManifoldBase<_Derived>& m)
+LieGroupBase<_Derived>::operator =(
+    const LieGroupBase<_Derived>& m)
 {
   derived().coeffs_nonconst() = m.coeffs();
   return derived();
@@ -522,8 +522,8 @@ ManifoldBase<_Derived>::operator =(
 template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
-ManifoldBase<_Derived>::operator =(
-    const ManifoldBase<_DerivedOther>& m)
+LieGroupBase<_Derived>::operator =(
+    const LieGroupBase<_DerivedOther>& m)
 {
   derived().coeffs_nonconst() = m.coeffs();
   return derived();
@@ -531,16 +531,16 @@ ManifoldBase<_Derived>::operator =(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-bool ManifoldBase<_Derived>::operator ==(
-    const ManifoldBase<_DerivedOther>& m)
+bool LieGroupBase<_Derived>::operator ==(
+    const LieGroupBase<_DerivedOther>& m)
 {
   return isApprox(m, Constants<Scalar>::eps);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::operator +(
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::operator +(
     const TangentBase<_DerivedOther>& t) const
 {
   return derived().rplus(t);
@@ -549,7 +549,7 @@ ManifoldBase<_Derived>::operator +(
 template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
-ManifoldBase<_Derived>::operator +=(
+LieGroupBase<_Derived>::operator +=(
     const TangentBase<_DerivedOther>& t)
 {
   derived() = derived().rplus(t);
@@ -558,18 +558,18 @@ ManifoldBase<_Derived>::operator +=(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Tangent
-ManifoldBase<_Derived>::operator -(
-    const ManifoldBase<_DerivedOther>& m) const
+typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::operator -(
+    const LieGroupBase<_DerivedOther>& m) const
 {
   return derived().rminus(m);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::operator *(
-    const ManifoldBase<_DerivedOther>& m) const
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::operator *(
+    const LieGroupBase<_DerivedOther>& m) const
 {
   return derived().compose(m);
 }
@@ -577,8 +577,8 @@ ManifoldBase<_Derived>::operator *(
 template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
-ManifoldBase<_Derived>::operator *=(
-    const ManifoldBase<_DerivedOther>& m)
+LieGroupBase<_Derived>::operator *=(
+    const LieGroupBase<_DerivedOther>& m)
 {
   derived() = derived().compose(m);
   return derived();
@@ -587,18 +587,18 @@ ManifoldBase<_Derived>::operator *=(
 /// Static helpers
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::Identity()
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::Identity()
 {
-  const static Manifold I(Manifold().setIdentity());
+  const static LieGroup I(LieGroup().setIdentity());
   return I;
 }
 
 template <typename _Derived>
-typename ManifoldBase<_Derived>::Manifold
-ManifoldBase<_Derived>::Random()
+typename LieGroupBase<_Derived>::LieGroup
+LieGroupBase<_Derived>::Random()
 {
-  return Manifold().setRandom();
+  return LieGroup().setRandom();
 }
 
 /// Utils
@@ -606,7 +606,7 @@ ManifoldBase<_Derived>::Random()
 template <typename _Stream, typename _Derived>
 _Stream& operator << (
     _Stream& s,
-    const manif::ManifoldBase<_Derived>& m)
+    const manif::LieGroupBase<_Derived>& m)
 {
   s << m.coeffs().transpose();
   return s;
@@ -614,4 +614,4 @@ _Stream& operator << (
 
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_MANIFOLD_BASE_H_ */
+#endif /* _MANIF_MANIF_LIE_GROUP_BASE_H_ */

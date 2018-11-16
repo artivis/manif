@@ -8,24 +8,24 @@
 namespace manif
 {
 
-template <typename _Manifold>
+template <typename _LieGroup>
 class LocalParameterization
     : public ceres::LocalParameterization
 {
-  using Manifold = _Manifold;
-  using Tangent  = typename _Manifold::Tangent;
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
 
-  using JacobianMap = typename internal::traits_ceres<Manifold>::LocalParamJacobianMap;
+  using JacobianMap = typename internal::traits_ceres<LieGroup>::LocalParamJacobianMap;
 
   template <typename _Scalar>
-  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
+  using LieGroupTemplate = typename manif::internal::traitscast<LieGroup, _Scalar>::cast;
 
   template <typename _Scalar>
   using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
 
 public:
 
-  using Jacobian = typename internal::traits_ceres<Manifold>::LocalParamJacobian;
+  using Jacobian = typename internal::traits_ceres<LieGroup>::LocalParamJacobian;
 
   LocalParameterization() = default;
   virtual ~LocalParameterization() = default;
@@ -35,10 +35,10 @@ public:
                   const T* delta_raw,
                   T* state_plus_delta_raw) const
   {
-    const Eigen::Map<const ManifoldTemplate<T>> state(state_raw);
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
     const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
 
-    Eigen::Map<ManifoldTemplate<T>> state_plus_delta(state_plus_delta_raw);
+    Eigen::Map<LieGroupTemplate<T>> state_plus_delta(state_plus_delta_raw);
 
     state_plus_delta = state + delta;
 
@@ -72,8 +72,8 @@ public:
     return true;
   }
 
-  virtual int GlobalSize() const override { return Manifold::RepSize; }
-  virtual int LocalSize()  const override { return Manifold::DoF; }
+  virtual int GlobalSize() const override { return LieGroup::RepSize; }
+  virtual int LocalSize()  const override { return LieGroup::DoF; }
 };
 
 } /* namespace manif */

@@ -8,36 +8,36 @@
 namespace manif
 {
 
-template <typename _Manifold>
+template <typename _LieGroup>
 class Constraint
     : public ceres::CostFunction
 {
-  using Manifold = _Manifold;
-  using Tangent  = typename _Manifold::Tangent;
-  using ManifoldJacobian = typename _Manifold::Jacobian;
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
+  using LieGroupJacobian = typename _LieGroup::Jacobian;
 
-  using JacobianMap = typename internal::traits_ceres<Manifold>::ConstraintJacobianMap;
+  using JacobianMap = typename internal::traits_ceres<LieGroup>::ConstraintJacobianMap;
 
   template <typename _Scalar>
-  using ManifoldTemplate = typename manif::internal::traitscast<Manifold, _Scalar>::cast;
+  using LieGroupTemplate = typename manif::internal::traitscast<LieGroup, _Scalar>::cast;
 
   template <typename _Scalar>
   using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
 
-  static constexpr int DoF = Manifold::DoF;
-  static constexpr int RepSize = Manifold::RepSize;
+  static constexpr int DoF = LieGroup::DoF;
+  static constexpr int RepSize = LieGroup::RepSize;
 
 public:
 
-  using Jacobian = typename internal::traits_ceres<Manifold>::ConstraintJacobian;
+  using Jacobian = typename internal::traits_ceres<LieGroup>::ConstraintJacobian;
 
   template <typename... Args>
   Constraint(Args&&... args)
     : measurement_(std::forward<Args>(args)...)
   {
     set_num_residuals(DoF);
-    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
-    mutable_parameter_block_sizes()->push_back(Manifold::RepSize);
+    mutable_parameter_block_sizes()->push_back(LieGroup::RepSize);
+    mutable_parameter_block_sizes()->push_back(LieGroup::RepSize);
   }
 
   virtual ~Constraint() = default;
@@ -47,8 +47,8 @@ public:
                   const T* const futur_raw,
                   T* residuals_raw) const
   {
-    const Eigen::Map<const ManifoldTemplate<T>> state_past(past_raw);
-    const Eigen::Map<const ManifoldTemplate<T>> state_future(futur_raw);
+    const Eigen::Map<const LieGroupTemplate<T>> state_past(past_raw);
+    const Eigen::Map<const LieGroupTemplate<T>> state_future(futur_raw);
 
     Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
 
@@ -64,8 +64,8 @@ public:
                         double* residuals_raw,
                         double** jacobians_raw) const
   {
-    const Eigen::Map<const Manifold> state_past(parameters_raw[0]);
-    const Eigen::Map<const Manifold> state_future(parameters_raw[1]);
+    const Eigen::Map<const LieGroup> state_past(parameters_raw[0]);
+    const Eigen::Map<const LieGroup> state_future(parameters_raw[1]);
 
     Eigen::Map<Tangent> residuals(residuals_raw);
 
@@ -74,8 +74,8 @@ public:
       if (jacobians_raw[0] != nullptr ||
           jacobians_raw[1] != nullptr)
       {
-        typename Manifold::OptJacobianRef J_pi_past;
-        typename Manifold::OptJacobianRef J_pi_future;
+        typename LieGroup::OptJacobianRef J_pi_past;
+        typename LieGroup::OptJacobianRef J_pi_future;
 
         if (jacobians_raw[0] != nullptr)
         {
@@ -89,7 +89,7 @@ public:
 
         residuals = measurement_.retract().
                       between( state_past.between(state_future,
-                                J_pi_past, J_pi_future) ,      Manifold::_, J_pe_pi_).
+                                J_pi_past, J_pi_future) ,      LieGroup::_, J_pe_pi_).
                         lift(J_res_pe_);
 
         if (jacobians_raw[0] != nullptr)
@@ -127,9 +127,9 @@ protected:
 
   const Tangent measurement_;
 
-  mutable ManifoldJacobian J_pi_past_,  J_pi_future_;
-  mutable ManifoldJacobian J_pe_pi_;
-  mutable ManifoldJacobian J_res_pe_;
+  mutable LieGroupJacobian J_pi_past_,  J_pi_future_;
+  mutable LieGroupJacobian J_pe_pi_;
+  mutable LieGroupJacobian J_res_pe_;
 };
 
 } /* namespace manif */

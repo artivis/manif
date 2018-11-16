@@ -34,7 +34,7 @@ public:
 
   LieAlg hat() const;
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
@@ -59,7 +59,7 @@ SE2TangentBase<_Derived>::hat() const
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Manifold
+typename SE2TangentBase<_Derived>::LieGroup
 SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::abs;
@@ -108,7 +108,7 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     }
   }
 
-  return Manifold( A * x() - B * y(),
+  return LieGroup( A * x() - B * y(),
                    B * x() + A * y(),
                    cos_theta, sin_theta );
 }

@@ -17,15 +17,15 @@ template <typename T> struct traits;
 //              traits<const Map<T> > == traits<Map<T> >
 template<typename T> struct traits<const T> : traits<T> {};
 
-/// @brief ManifoldProperties
+/// @brief LieGroupProperties
 /**
- * @brief ManifoldProperties, a traits for defining some
- * manifold properties. E.g. Space dimension, Degrees of Freedom ...
+ * @brief LieGroupProperties, a traits for defining some
+ * group properties. E.g. Space dimension, Degrees of Freedom ...
  */
-template <typename _ManifoldBase> struct ManifoldProperties;
+template <typename _LieGroupBase> struct LieGroupProperties;
 
 //! @brief A traits helper to cast
-//! e.g. template <typename NewScalar> using ManifoldTemplate = typename traitscast<Manifold, NewScalar>::cast;
+//! e.g. template <typename NewScalar> using LieGroupTemplate = typename traitscast<LieGroup, NewScalar>::cast;
 template <typename _Class, typename _NewScalar>
 struct traitscast;
 
@@ -78,7 +78,7 @@ template<typename T> struct
 implement_inverse_impl<decltype(
     typename std::enable_if<
 //    std::true_type::value &&
-      std::is_same<typename T::Manifold (T::Base::*)() const, decltype(&T::ttt)>::value
+      std::is_same<typename T::LieGroup (T::Base::*)() const, decltype(&T::ttt)>::value
       , void
     >::type()
     ), T> : std::true_type
@@ -97,8 +97,8 @@ template<typename T> struct implement_inverse : implement_inverse_impl<void, T> 
 //      typename std::enable_if<
 //      !has_foo<T>::value
 ////      &&
-////      std::is_same<typename T::Manifold (T::Base::Base::*)(), decltype(&T2::foo)>::value,
-////      !std::is_same<typename T::Manifold (T::*)() const, decltype(&T2::bar)>::value
+////      std::is_same<typename T::LieGroup (T::Base::Base::*)(), decltype(&T2::foo)>::value,
+////      !std::is_same<typename T::LieGroup (T::*)() const, decltype(&T2::bar)>::value
 //      ,
 //      int
 //      >::type );
@@ -114,7 +114,7 @@ struct implement_rplus
 
   template< class T2 > static YesType Test(
       typename std::enable_if<
-      std::is_same<typename T::Manifold (T::*)(const typename T::Tangent&)const, decltype(&T2::rplus)>::value,
+      std::is_same<typename T::LieGroup (T::*)(const typename T::Tangent&)const, decltype(&T2::rplus)>::value,
       int
       >::type );
   template< class T2 > static NoType  Test( ... );
@@ -134,7 +134,7 @@ struct implement_foo
 
   template< class T2 > static YesType Test(
       typename std::enable_if<
-      std::is_same<typename T::Manifold (T::*)()const, decltype(&T2::foo)>::value,
+      std::is_same<typename T::LieGroup (T::*)()const, decltype(&T2::foo)>::value,
       int
       >::type );
   template< class T2 > static NoType  Test( ... );

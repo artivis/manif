@@ -21,7 +21,7 @@ struct TangentBase
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
 
   using Scalar   = typename internal::traits<_Derived>::Scalar;
-  using Manifold = typename internal::traits<_Derived>::Manifold;
+  using LieGroup = typename internal::traits<_Derived>::LieGroup;
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
@@ -55,17 +55,17 @@ public:
 
   LieAlg hat() const;
 
-  Manifold retract(OptJacobianRef J_m_t =
+  LieGroup retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
 
-  Manifold rplus(const Manifold& m) const;
-  Manifold lplus(const Manifold& m) const;
+  LieGroup rplus(const LieGroup& m) const;
+  LieGroup lplus(const LieGroup& m) const;
 
   /**
    * @brief plus, calls lplus
    * @see lplus
    */
-  Manifold plus(const Manifold& m) const;
+  LieGroup plus(const LieGroup& m) const;
 
   template <typename _DerivedOther>
   Tangent plus(const TangentBase<_DerivedOther>& t) const;
@@ -113,7 +113,7 @@ public:
    * @return
    * @see lplus
    */
-  Manifold operator +(const Manifold& m) const;
+  LieGroup operator +(const LieGroup& m) const;
 
   template <typename _DerivedOther>
   Tangent operator +(const TangentBase<_DerivedOther>& t) const;
@@ -216,7 +216,7 @@ _Derived& TangentBase<_Derived>::setRandom()
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Manifold
+typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   return derived().retract(J_m_t);
@@ -230,22 +230,22 @@ TangentBase<_Derived>::hat() const
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::rplus(const Manifold& m) const
+typename TangentBase<_Derived>::LieGroup
+TangentBase<_Derived>::rplus(const LieGroup& m) const
 {
   return m.rplus(derived());
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::lplus(const Manifold& m) const
+typename TangentBase<_Derived>::LieGroup
+TangentBase<_Derived>::lplus(const LieGroup& m) const
 {
   return m.lplus(derived());
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::plus(const Manifold& m) const
+typename TangentBase<_Derived>::LieGroup
+TangentBase<_Derived>::plus(const LieGroup& m) const
 {
   return m.lplus(derived());
 }
@@ -351,8 +351,8 @@ bool TangentBase<_Derived>::isApprox(const TangentBase<_DerivedOther>& t,
 /// Operators
 
 template <typename _Derived>
-typename TangentBase<_Derived>::Manifold
-TangentBase<_Derived>::operator +(const Manifold& m) const
+typename TangentBase<_Derived>::LieGroup
+TangentBase<_Derived>::operator +(const LieGroup& m) const
 {
   return m.lplus(derived());
 }

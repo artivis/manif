@@ -21,14 +21,14 @@ struct traits<SO2<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SO2<_Scalar>;
+  using LieGroup = SO2<_Scalar>;
   using Tangent  = SO2Tangent<_Scalar>;
 
   using Base = SO2Base<SO2<_Scalar>>;
 
-  static constexpr int Dim     = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF     = ManifoldProperties<Base>::DoF;
-  static constexpr int N       = ManifoldProperties<Base>::N;
+  static constexpr int Dim     = LieGroupProperties<Base>::Dim;
+  static constexpr int DoF     = LieGroupProperties<Base>::DoF;
+  static constexpr int N       = LieGroupProperties<Base>::N;
   static constexpr int RepSize = 2;
 
   /// @todo move those to some traits ?
@@ -48,7 +48,7 @@ namespace manif
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
@@ -62,7 +62,7 @@ private:
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  MANIF_COMPLETE_GROUP_TYPEDEF
 
   SO2()  = default;
   ~SO2() = default;
@@ -71,11 +71,11 @@ public:
   SO2(const Scalar real, const Scalar imag);
   SO2(const Scalar theta);
 
-  /// Manifold common API
+  /// LieGroup common API
 
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_INHERIT_GROUP_API
 
   /// SO2 specific API
 
@@ -83,13 +83,13 @@ public:
 
 protected:
 
-  friend class ManifoldBase<SO2<Scalar>>;
+  friend class LieGroupBase<SO2<Scalar>>;
   DataType& coeffs_nonconst();
 
   DataType data_;
 };
 
-MANIF_EXTRA_MANIFOLD_TYPEDEF(SO2)
+MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
 SO2<_Scalar>::SO2(const DataType& d)
