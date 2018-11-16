@@ -3,10 +3,8 @@
 
 #include "manif/impl/se3/SE3Tangent.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename _Scalar>
 struct traits< Eigen::Map<SE3Tangent<_Scalar>,0> >
@@ -29,8 +27,7 @@ struct traits< Eigen::Map<const SE3Tangent<_Scalar>,0> >
 } /* namespace internal */
 } /* namespace manif */
 
-namespace Eigen
-{
+namespace Eigen {
 
 template <class _Scalar>
 class Map<manif::SE3Tangent<_Scalar>, 0>

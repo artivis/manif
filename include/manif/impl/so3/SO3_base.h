@@ -5,8 +5,7 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/utils.h"
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///

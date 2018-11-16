@@ -5,8 +5,7 @@
 
 #include <vector>
 
-namespace manif
-{
+namespace manif {
 
 /**
  * @brief Curve fitting using the DeCasteljau algorithm

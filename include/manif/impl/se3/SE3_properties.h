@@ -3,15 +3,13 @@
 
 #include "manif/impl/traits.h"
 
-namespace manif
-{
+namespace manif {
 
 // Forward declaration
 template <typename _Derived> struct SE3Base;
 template <typename _Derived> struct SE3TangentBase;
 
-namespace internal
-{
+namespace internal {
 
 // traits specialization
 

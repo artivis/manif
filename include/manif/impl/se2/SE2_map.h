@@ -3,10 +3,8 @@
 
 #include "manif/impl/se2/SE2.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename _Scalar>
 struct traits< Eigen::Map<SE2<_Scalar>,0> >
@@ -29,8 +27,7 @@ struct traits< Eigen::Map<const SE2<_Scalar>,0> >
 } /* namespace internal */
 } /* namespace manif */
 
-namespace Eigen
-{
+namespace Eigen {
 
 template <class _Scalar>
 class Map<manif::SE2<_Scalar>, 0>

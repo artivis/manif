@@ -10,8 +10,7 @@
 #include "lt/optional.hpp"
 //#include "lspdlog/logging.h"
 
-namespace manif
-{
+namespace manif {
 
 template <class _Derived>
 struct TangentBase

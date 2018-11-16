@@ -3,10 +3,8 @@
 
 #include "manif/impl/so2/SO2.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename _Scalar>
 struct traits< Eigen::Map<SO2<_Scalar>,0> >
@@ -29,8 +27,7 @@ struct traits< Eigen::Map<const SO2<_Scalar>,0> >
 } /* namespace internal */
 } /* namespace manif */
 
-namespace Eigen
-{
+namespace Eigen {
 
 template <class _Scalar>
 class Map<manif::SO2<_Scalar>, 0>

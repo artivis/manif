@@ -27,8 +27,7 @@ struct traits< Eigen::Map<const SO3<_Scalar>,0> >
 } /* namespace internal */
 } /* namespace manif */
 
-namespace Eigen
-{
+namespace Eigen {
 
 template <class _Scalar>
 class Map<manif::SO3<_Scalar>, 0>

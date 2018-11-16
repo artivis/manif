@@ -5,8 +5,7 @@
 
 //#include <iostream>
 
-namespace manif
-{
+namespace manif {
 
 template <typename T>
 constexpr T binomial_coefficient(const T n, const T k)
