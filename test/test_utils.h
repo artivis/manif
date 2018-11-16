@@ -766,20 +766,6 @@ callCoeffs(const TangentBase<_Derived>& tangent)
 }
 
 template <typename _Derived>
-typename _Derived::Transformation
-callTransform(const LieGroupBase<_Derived>& manifold)
-{
-  return manifold.transform();
-}
-
-template <typename _Derived>
-typename _Derived::Rotation
-callRotation(const LieGroupBase<_Derived>& manifold)
-{
-  return manifold.rotation();
-}
-
-template <typename _Derived>
 void
 callIdentity(LieGroupBase<_Derived>& manifold)
 {

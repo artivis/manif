@@ -66,10 +66,6 @@ public:
 //  template <class _DerivedOther>
 //  LieGroupTemplate<_DerivedOther> as() const;
 
-  Transformation transform() const;
-
-  Rotation rotation() const;
-
   //! @brief Set the current LieGroup object to Identity
   _Derived& setIdentity();
 
@@ -252,20 +248,6 @@ typename LieGroupBase<_Derived>::template LieGroupTemplate<_NewScalar>
 LieGroupBase<_Derived>::cast() const
 {
   return LieGroupTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
-}
-
-template <typename _Derived>
-typename LieGroupBase<_Derived>::Transformation
-LieGroupBase<_Derived>::transform() const
-{
-  return derived().transform();
-}
-
-template <typename _Derived>
-typename LieGroupBase<_Derived>::Rotation
-LieGroupBase<_Derived>::rotation() const
-{
-  return derived().rotation();
 }
 
 template <typename _Derived>

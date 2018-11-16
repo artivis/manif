@@ -56,26 +56,6 @@ TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_RANDOM)
 //  EXPECT_DOUBLE_EQ(0, so2.angle());
 //}
 
-TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_MATRIX)
-{
-  SO2d::Transformation t = callTransform(SO2d::Identity());
-
-  EXPECT_EQ(3, t.rows());
-  EXPECT_EQ(3, t.cols());
-
-  /// @todo Eigen matrix comparison
-}
-
-TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_ROTATION)
-{
-  SO2d::Rotation r = callRotation(SO2d::Identity());
-
-  EXPECT_EQ(2, r.rows());
-  EXPECT_EQ(2, r.cols());
-
-  /// @todo Eigen matrix comparison
-}
-
 TEST(TEST_SO2, TEST_SO2_BASE_TEMPLATE_INVERSE)
 {
   SO2d so2 = SO2d::Identity();
