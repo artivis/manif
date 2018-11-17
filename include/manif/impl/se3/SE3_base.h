@@ -5,8 +5,7 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/so3/SO3_map.h"
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///

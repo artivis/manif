@@ -3,18 +3,14 @@
 
 #include "manif/impl/se2/SE2_base.h"
 
-#include <Eigen/Dense>
-
-namespace manif
-{
+namespace manif {
 
 // Forward declare for type traits specialization
 
 template <typename _Scalar> struct SE2;
 template <typename _Scalar> struct SE2Tangent;
 
-namespace internal
-{
+namespace internal {
 
 // Traits specialization
 
@@ -45,8 +41,7 @@ struct traits<SE2<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///

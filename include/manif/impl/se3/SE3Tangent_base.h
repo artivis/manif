@@ -5,8 +5,7 @@
 #include "manif/impl/tangent_base.h"
 #include "manif/impl/so3/SO3Tangent_map.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///

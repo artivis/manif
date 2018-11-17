@@ -5,16 +5,14 @@
 
 #include <Eigen/Core>
 
-namespace manif
-{
+namespace manif {
 
 // Forward declare for type traits specialization
 
 template <typename _Scalar> struct SE3;
 template <typename _Scalar> struct SE3Tangent;
 
-namespace internal
-{
+namespace internal {
 
 // Traits specialization
 

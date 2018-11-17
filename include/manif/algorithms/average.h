@@ -4,8 +4,7 @@
 #include "manif/impl/lie_group_base.h"
 //#include "manif/interpolation.h"
 
-namespace manif
-{
+namespace manif {
 
 //template <template <typename LieGroup, typename...Args> class Container,
 //          typename LieGroup, typename...Args>

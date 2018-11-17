@@ -3,8 +3,7 @@
 
 #include "manif/constants.h"
 
-namespace manif
-{
+namespace manif {
 
 template <typename T>
 T pi2pi(T angle)

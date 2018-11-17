@@ -4,8 +4,7 @@
 #include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/tangent_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///

@@ -5,10 +5,8 @@
 
 #include <Eigen/Core>
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 // Traits specialization
 
@@ -34,8 +32,7 @@ struct traits<SE3Tangent<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///

@@ -23,8 +23,6 @@ private:
 
 public:
 
-  MANIF_GROUP_PROPERTIES
-
   MANIF_GROUP_TYPEDEF
 
   /// @todo find a mechanism to fetch it from base
