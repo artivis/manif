@@ -144,13 +144,9 @@ SE3TangentBase<_Derived>::rjac() const
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
   {
-    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
-
-//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
-//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
+    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./60.);
   }
   else
   {
@@ -160,7 +156,7 @@ SE3TangentBase<_Derived>::rjac() const
 
     B = (theta - sin_theta) / (theta_sq*theta);
     C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
 
     // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
 //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
@@ -168,11 +164,12 @@ SE3TangentBase<_Derived>::rjac() const
   }
 
   /// @note Barfoot14tro Eq. 102
+  /// invert sign of odd blocks to obtain Jr
   Jr.template topRightCorner<3,3>().noalias() =
       - A * V
-      + B * (W*V + V*W - W*V*W)
-      + C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
-      - D * (W*V*W*W + W*W*V*W);
+      + B * (W*V + V*W - (W*V)*W)
+      + C * ((W*W)*V + (V*W)*W - Scalar(3)*(W*V)*W)
+      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jr;
 }
@@ -200,13 +197,9 @@ SE3TangentBase<_Derived>::ljac() const
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
   {
-    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
-
-//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
-//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
+    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./60.);
   }
   else
   {
@@ -216,7 +209,7 @@ SE3TangentBase<_Derived>::ljac() const
 
     B = (theta - sin_theta) / (theta_sq*theta);
     C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6) / (theta_sq*theta_sq*theta)));
+    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
 
     // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
 //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
@@ -226,9 +219,9 @@ SE3TangentBase<_Derived>::ljac() const
   /// @note Barfoot14tro Eq. 102
   Jl.template topRightCorner<3,3>().noalias() =
       + A * V
-      + B * (W*V + V*W - W*V*W)
-      - C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
-      - D * (W*V*W*W + W*W*V*W);
+      + B * (W*V + V*W + (W*V)*W)
+      - C * ((W*W)*V + (V*W)*W - ((Scalar(3)*W)*V)*W)
+      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jl;
 }

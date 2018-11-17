@@ -236,9 +236,5 @@ MANIF_TEST_JACOBIANS(SE3d);
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
-
-  /// @todo Disabled test, fix it.
-  ::testing::GTEST_FLAG(filter) = "-TEST_SE3d_JACOBIANS_TESTER.TEST_SE3d_ADJ_JL_JR";
-
   return RUN_ALL_TESTS();
 }
