@@ -9,7 +9,6 @@
 #include "manif/constants.h"
 
 #include "lt/optional.hpp"
-//#include "lspdlog/logging.h"
 
 namespace manif {
 
