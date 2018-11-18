@@ -33,7 +33,7 @@ struct LieGroupBase
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
-  using LieGroupTemplate = typename manif::internal::traitscast<LieGroup, _Scalar>::cast;
+  using LieGroupTemplate = typename internal::traitscast<LieGroup, _Scalar>::cast;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
