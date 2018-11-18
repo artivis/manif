@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE3.h"
-#include "../test_utils.h"
+#include "../common_tester.h"
 
 #include <Eigen/Geometry>
 
