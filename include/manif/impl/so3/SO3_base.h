@@ -32,8 +32,6 @@ public:
   Transformation transform() const;
   Rotation rotation() const;
 
-  SO3Base<_Derived>& setIdentity();
-
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
@@ -82,15 +80,6 @@ typename SO3Base<_Derived>::Rotation
 SO3Base<_Derived>::rotation() const
 {
   return quat().matrix();
-}
-
-template <typename _Derived>
-SO3Base<_Derived>&
-SO3Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setZero();
-  coeffs_nonconst()(3) = Scalar(1);
-  return *this;
 }
 
 template <typename _Derived>

@@ -35,8 +35,6 @@ public:
   Rotation rotation() const;
   Translation translation() const;
 
-  SE2Base<_Derived>& setIdentity();
-
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
@@ -90,15 +88,6 @@ typename SE2Base<_Derived>::Translation
 SE2Base<_Derived>::translation() const
 {
   return Translation(x(), y());
-}
-
-template <typename _Derived>
-SE2Base<_Derived>&
-SE2Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setZero();
-  coeffs_nonconst()(2) = 1;
-  return *this;
 }
 
 template <typename _Derived>
