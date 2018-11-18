@@ -1,46 +1,45 @@
 #ifndef _MANIF_MANIF_CERES_CONSTRAINT_H_
 #define _MANIF_MANIF_CERES_CONSTRAINT_H_
 
-#include "manif/ceres/ceres_traits.h"
+#include <Eigen/Core>
+#include <Eigen/Cholesky>
 
-#include <ceres/cost_function.h>
-
-namespace manif
-{
+namespace manif {
 
 template <typename _LieGroup>
-class Constraint
-    : public ceres::CostFunction
+class CeresConstraintFunctor
 {
   using LieGroup = _LieGroup;
   using Tangent  = typename _LieGroup::Tangent;
-  using LieGroupJacobian = typename _LieGroup::Jacobian;
-
-  using JacobianMap = typename internal::traits_ceres<LieGroup>::ConstraintJacobianMap;
 
   template <typename _Scalar>
-  using LieGroupTemplate = typename manif::internal::traitscast<LieGroup, _Scalar>::cast;
+  using LieGroupTemplate = typename LieGroup::template LieGroupTemplate<_Scalar>;
 
   template <typename _Scalar>
-  using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
-
-  static constexpr int DoF = LieGroup::DoF;
-  static constexpr int RepSize = LieGroup::RepSize;
+  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
 
 public:
 
-  using Jacobian = typename internal::traits_ceres<LieGroup>::ConstraintJacobian;
+  using Covariance = Eigen::Matrix<double, LieGroup::DoF, LieGroup::DoF>;
+  using InformationMatrix = Covariance;
 
   template <typename... Args>
-  Constraint(Args&&... args)
+  CeresConstraintFunctor(Args&&... args)
     : measurement_(std::forward<Args>(args)...)
   {
-    set_num_residuals(DoF);
-    mutable_parameter_block_sizes()->push_back(LieGroup::RepSize);
-    mutable_parameter_block_sizes()->push_back(LieGroup::RepSize);
+    computeInformationMatrix();
   }
 
-  virtual ~Constraint() = default;
+  template <typename... Args>
+  CeresConstraintFunctor(const Tangent& measurement,
+                         const Covariance& measurement_covariance = Covariance::Identity())
+    : measurement_(measurement)
+    , measurement_covariance_(measurement_covariance)
+  {
+    computeInformationMatrix();
+  }
+
+  virtual ~CeresConstraintFunctor() = default;
 
   template<typename T>
   bool operator()(const T* const past_raw,
@@ -52,85 +51,95 @@ public:
 
     Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
 
-    residuals =
-      measurement_.retract().template cast<T>()
-        .between(state_past.between(state_future))
-          .lift();
+    /// r = m - ( future (-) past )
+    residuals = measurement_.template cast<T>() - (state_future - state_past);
+
+    /// @todo
+//    residuals = measurement_sqrt_info_upper_.template cast<T>() * residuals;
+
+    /// r = exp( log(m)^-1 . ( past^-1 . future ) )
+
+//    residuals =
+//      measurement_.retract().template cast<T>()
+//        .between(state_past.between(state_future)).lift();
+
+//    residuals = measurement_sqrt_info_upper_.template cast<T>() * residuals;
 
     return true;
   }
 
-  virtual bool Evaluate(double const* const* parameters_raw,
-                        double* residuals_raw,
-                        double** jacobians_raw) const
-  {
-    const Eigen::Map<const LieGroup> state_past(parameters_raw[0]);
-    const Eigen::Map<const LieGroup> state_future(parameters_raw[1]);
+  Tangent getMeasurement() const;
+  void setMeasurement(const Tangent& measurement);
 
-    Eigen::Map<Tangent> residuals(residuals_raw);
-
-    if (jacobians_raw != nullptr)
-    {
-      if (jacobians_raw[0] != nullptr ||
-          jacobians_raw[1] != nullptr)
-      {
-        typename LieGroup::OptJacobianRef J_pi_past;
-        typename LieGroup::OptJacobianRef J_pi_future;
-
-        if (jacobians_raw[0] != nullptr)
-        {
-          J_pi_past = J_pi_past_;
-        }
-
-        if (jacobians_raw[1] != nullptr)
-        {
-          J_pi_future = J_pi_future_;
-        }
-
-        residuals = measurement_.retract().
-                      between( state_past.between(state_future,
-                                J_pi_past, J_pi_future) ,      LieGroup::_, J_pe_pi_).
-                        lift(J_res_pe_);
-
-        if (jacobians_raw[0] != nullptr)
-        {
-          JacobianMap J_res_past(jacobians_raw[0]);
-          J_res_past.template topLeftCorner<DoF,DoF>().noalias() =
-            J_res_pe_ * J_pe_pi_ * J_pi_past_;
-          J_res_past.template rightCols<RepSize-DoF>().setZero();
-        }
-
-        if (jacobians_raw[1] != nullptr)
-        {
-          JacobianMap J_res_future(jacobians_raw[1]);
-          J_res_future.template topLeftCorner<DoF,DoF>().noalias() =
-            J_res_pe_ * J_pe_pi_ * J_pi_future_;
-          J_res_future.template rightCols<RepSize-DoF>().setZero();
-        }
-      }
-    }
-    else
-    {
-      residuals =
-        measurement_.retract()
-          .between(state_past.between(state_future))
-            .lift();
-
-      /// @todo
-//      residuals = measurement_ - (state_past - state_future);
-    }
-
-    return true;
-  }
+  Covariance getMeasurementCovariance() const;
+  void setMeasurementCovariance(const Covariance covariance);
 
 protected:
 
-  const Tangent measurement_;
+  void computeInformationMatrix();
 
-  mutable LieGroupJacobian J_pi_past_,  J_pi_future_;
-  mutable LieGroupJacobian J_pe_pi_;
-  mutable LieGroupJacobian J_res_pe_;
+protected:
+
+  Tangent measurement_;
+
+  Covariance measurement_covariance_;
+  InformationMatrix measurement_sqrt_info_upper_;
 };
+
+template <typename _LieGroup>
+typename CeresConstraintFunctor<_LieGroup>::Tangent
+CeresConstraintFunctor<_LieGroup>::getMeasurement() const
+{
+  return measurement_;
+}
+
+template <typename _LieGroup>
+void CeresConstraintFunctor<_LieGroup>::setMeasurement(
+    const Tangent& measurement)
+{
+  measurement_ = measurement;
+}
+
+template <typename _LieGroup>
+typename CeresConstraintFunctor<_LieGroup>::Covariance
+CeresConstraintFunctor<_LieGroup>::getMeasurementCovariance() const
+{
+  return measurement_covariance_;
+}
+
+template <typename _LieGroup>
+void CeresConstraintFunctor<_LieGroup>::setMeasurementCovariance(
+    const Covariance covariance)
+{
+  // Ensuring symmetry
+  measurement_covariance_ = covariance.template selfadjointView<Eigen::Upper>();
+  computeInformationMatrix();
+}
+
+template <typename _LieGroup>
+void CeresConstraintFunctor<_LieGroup>::computeInformationMatrix()
+{
+  // compute square root information upper matrix
+
+  // ensuring symmetry
+  const InformationMatrix info =
+      measurement_covariance_.inverse().template selfadjointView<Eigen::Upper>();
+
+  // Normal Cholesky factorization
+  Eigen::LLT<InformationMatrix> llt_of_info(info);
+  InformationMatrix R = llt_of_info.matrixU();
+
+  // Factorization not good enough
+  if (! info.isApprox(R.transpose() * R, 1e-6))
+  {
+    Eigen::SelfAdjointEigenSolver<InformationMatrix> es(info);
+    Eigen::VectorXd eval = es.eigenvalues().real().cwiseMax(1e-6);
+
+    R = eval.cwiseSqrt().asDiagonal() * es.eigenvectors().real().transpose();
+  }
+
+  measurement_sqrt_info_upper_ = R;
+}
 
 } /* namespace manif */
 

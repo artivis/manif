@@ -1,11 +1,11 @@
 #ifndef _MANIF_MANIF_CERES_CERES_H_
 #define _MANIF_MANIF_CERES_CERES_H_
 
-#include "manif/ceres/ceres_traits.h"
-#include "manif/ceres/ceres_utils.h"
+#include "manif/ceres/constants.h"
 #include "manif/ceres/constraint.h"
 #include "manif/ceres/local_parametrization.h"
 #include "manif/ceres/objective.h"
+#include "manif/ceres/ceres_utils.h"
 
 namespace manif {
 namespace internal {
@@ -13,43 +13,43 @@ struct YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS{};
 } /* namespace internal */
 
 #ifdef _MANIF_MANIF_SO2_H_
-using ConstraintSO2 = Constraint<SO2d>;
-using LocalParameterizationSO2 = LocalParameterization<SO2d>;
-using ObjectiveSO2 = Objective<SO2d>;
+using CeresConstraintSO2 = CeresConstraintFunctor<SO2d>;
+using CeresLocalParameterizationSO2 = CeresLocalParameterizationFunctor<SO2d>;
+using CeresObjectiveSO2 = CeresObjectiveFunctor<SO2d>;
 #else
-using ConstraintSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using LocalParameterizationSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using ObjectiveSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresConstraintSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresLocalParameterizationSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresObjectiveSO2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
 #endif
 
 #ifdef _MANIF_MANIF_SO3_H_
-using ConstraintSO3 = Constraint<SO3d>;
-using LocalParameterizationSO3 = LocalParameterization<SO3d>;
-using ObjectiveSO3 = Objective<SO3d>;
+using CeresConstraintSO3 = CeresConstraintFunctor<SO3d>;
+using CeresLocalParameterizationSO3 = CeresLocalParameterizationFunctor<SO3d>;
+using CeresObjectiveSO3 = CeresObjectiveFunctor<SO3d>;
 #else
-using ConstraintSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using LocalParameterizationSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using ObjectiveSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresConstraintSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresLocalParameterizationSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresObjectiveSO3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
 #endif
 
 #ifdef _MANIF_MANIF_SE2_H_
-using ConstraintSE2 = Constraint<SE2d>;
-using LocalParameterizationSE2 = LocalParameterization<SE2d>;
-using ObjectiveSE2 = Objective<SE2d>;
+using CeresConstraintSE2 = CeresConstraintFunctor<SE2d>;
+using CeresLocalParameterizationSE2 = CeresLocalParameterizationFunctor<SE2d>;
+using CeresObjectiveSE2 = CeresObjectiveFunctor<SE2d>;
 #else
-using ConstraintSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using LocalParameterizationSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using ObjectiveSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresConstraintSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresLocalParameterizationSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresObjectiveSE2 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
 #endif
 
 #ifdef _MANIF_MANIF_SE3_H_
-using ConstraintSE3 = Constraint<SE3d>;
-using LocalParameterizationSE3 = LocalParameterization<SE3d>;
-using ObjectiveSE3 = Objective<SE3d>;
+using CeresConstraintSE3 = CeresConstraintFunctor<SE3d>;
+using CeresLocalParameterizationSE3 = CeresLocalParameterizationFunctor<SE3d>;
+using CeresObjectiveSE3 = CeresObjectiveFunctor<SE3d>;
 #else
-using ConstraintSE3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using LocalParameterizationSE3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
-using ObjectiveSE3= internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresConstraintSE3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresLocalParameterizationSE3 = internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
+using CeresObjectiveSE3= internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS;
 #endif
 
 } /* namespace manif */
