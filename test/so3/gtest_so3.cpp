@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
 #include "manif/SO3.h"
-#include "manif/impl/utils.h"
-#include "../test_utils.h"
+
+#include "../common_tester.h"
 
 using namespace manif;
 

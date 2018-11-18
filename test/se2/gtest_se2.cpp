@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/SE2.h"
-#include "../test_utils.h"
+#include "../common_tester.h"
 
 using namespace manif;
 

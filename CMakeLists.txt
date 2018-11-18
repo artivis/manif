@@ -26,7 +26,7 @@ find_package(Eigen3 REQUIRED)
 #add_subdirectory(external/lspdlog)
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
-# catkin build manif --cmake-args -DBUILD_TESTING=ON
+# catkin build manif --cmake-args -DBUILD_TESTING=ON -BUILD_EXAMPLES=ON
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
