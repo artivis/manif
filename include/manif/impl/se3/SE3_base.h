@@ -37,8 +37,6 @@ public:
   Rotation rotation() const;
   Translation translation() const;
 
-  SE3Base<_Derived>& setIdentity();
-
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
@@ -130,15 +128,6 @@ typename SE3Base<_Derived>::Translation
 SE3Base<_Derived>::translation() const
 {
   return coeffs().template head<3>();
-}
-
-template <typename _Derived>
-SE3Base<_Derived>&
-SE3Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setZero();
-  asSO3().setIdentity();
-  return *this;
 }
 
 template <typename _Derived>

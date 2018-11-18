@@ -200,6 +200,9 @@ public:
 
     LieGroup tmp = state; tmp *= state.inverse();
     EXPECT_MANIF_NEAR(LieGroup::Identity(), tmp, tol_);
+
+    EXPECT_MANIF_NEAR(state, state * LieGroup::Identity(), tol_);
+    EXPECT_MANIF_NEAR(state, LieGroup::Identity() * state, tol_);
   }
 
   void evalBetweenSelf()
@@ -234,6 +237,10 @@ public:
   {
     EXPECT_MANIF_NEAR(Tangent::Zero(),
                       LieGroup::Identity().lift(), tol_);
+
+    Tangent t; t.setZero();
+    LieGroup l; l.setIdentity();
+    EXPECT_MANIF_NEAR(t, l.lift(), tol_);
   }
 
   void evalRandom()

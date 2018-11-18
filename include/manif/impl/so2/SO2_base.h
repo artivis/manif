@@ -41,8 +41,6 @@ public:
   Transformation transform() const;
   Rotation rotation() const;
 
-  SO2Base<_Derived>& setIdentity();
-
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
@@ -101,14 +99,6 @@ SO2Base<_Derived>::rotation() const
   const Scalar theta = angle();
   return (Rotation() << cos(theta), -sin(theta),
                         sin(theta),  cos(theta)).finished();
-}
-
-template <typename _Derived>
-SO2Base<_Derived>&
-SO2Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setIdentity();
-  return *this;
 }
 
 template <typename _Derived>

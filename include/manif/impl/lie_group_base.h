@@ -9,7 +9,6 @@
 #include "manif/constants.h"
 
 #include "lt/optional.hpp"
-//#include "lspdlog/logging.h"
 
 namespace manif {
 
@@ -254,7 +253,8 @@ template <typename _Derived>
 _Derived&
 LieGroupBase<_Derived>::setIdentity()
 {
-  derived().setIdentity();
+  const static Tangent zero = Tangent::Zero();
+  derived() = zero.retract();
   return derived();
 }
 
