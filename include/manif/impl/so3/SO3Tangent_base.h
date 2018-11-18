@@ -37,6 +37,8 @@ public:
 
   Jacobian rjac() const;
   Jacobian ljac() const;
+  Jacobian rjacinv() const;
+  Jacobian ljacinv() const;
 
   Jacobian smallAdj() const;
 
@@ -115,6 +117,55 @@ SO3TangentBase<_Derived>::ljac() const
   M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);
 
   return Jacobian::Identity() + M1 + M2;
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::rjacinv() const
+{
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta_sq = coeffs().squaredNorm();
+
+  const LieAlg W = hat();
+
+  // Small angle approximation
+  if (theta_sq <= Constants<Scalar>::eps_s)
+    return Jacobian::Identity() + Scalar(0.5) * W;
+
+  const Scalar theta = sqrt(theta_sq); // rotation angle
+  Jacobian M;
+  M.noalias() = (Scalar(1) / theta_sq -
+                 (Scalar(1) + cos(theta)) /
+                 (Scalar(2) * theta * sin(theta))) * (W * W);
+
+  return Jacobian::Identity() + Scalar(0.5) * W + M;
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::ljacinv() const
+{
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta_sq = coeffs().squaredNorm();
+
+  const LieAlg W = hat();
+
+  if (theta_sq <= Constants<Scalar>::eps_s)
+    return Jacobian::Identity() + Scalar(0.5) * W;
+
+  const Scalar theta = sqrt(theta_sq); // rotation angle
+  Jacobian M;
+  M.noalias() = (Scalar(1) / theta_sq -
+                 (Scalar(1) + cos(theta)) /
+                 (Scalar(2) * theta * sin(theta))) * (W * W);
+
+  return Jacobian::Identity() - Scalar(0.5) * W + M;
 }
 
 template <typename _Derived>

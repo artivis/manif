@@ -28,7 +28,7 @@ struct TangentBase
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
-  using TangentTemplate = typename manif::internal::traitscast<Tangent, _Scalar>::cast;
+  using TangentTemplate = typename internal::traitscast<Tangent, _Scalar>::cast;
 
   /// @todo this is an implicit conversion operator,
   /// evaluate how bad it is to use it.
