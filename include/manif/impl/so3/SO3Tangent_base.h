@@ -123,25 +123,7 @@ template <typename _Derived>
 typename SO3TangentBase<_Derived>::Jacobian
 SO3TangentBase<_Derived>::rjacinv() const
 {
-  using std::sqrt;
-  using std::cos;
-  using std::sin;
-
-  const Scalar theta_sq = coeffs().squaredNorm();
-
-  const LieAlg W = hat();
-
-  // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps_s)
-    return Jacobian::Identity() + Scalar(0.5) * W;
-
-  const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M;
-  M.noalias() = (Scalar(1) / theta_sq -
-                 (Scalar(1) + cos(theta)) /
-                 (Scalar(2) * theta * sin(theta))) * (W * W);
-
-  return Jacobian::Identity() + Scalar(0.5) * W + M;
+  return ljacinv().transpose();
 }
 
 template <typename _Derived>
