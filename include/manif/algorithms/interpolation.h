@@ -1,12 +1,11 @@
 #ifndef _MANIF_MANIF_INTERPOLATION_H_
 #define _MANIF_MANIF_INTERPOLATION_H_
 
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 
 //#include <iostream>
 
-namespace manif
-{
+namespace manif {
 
 template <typename T>
 constexpr T binomial_coefficient(const T n, const T k)
@@ -72,22 +71,22 @@ T smoothing_phi(const T t, const std::size_t degree)
 
 
 template <typename _Derived, typename _Scalar>
-static typename ManifoldBase<_Derived>::Manifold
-interpolate_slerp(const ManifoldBase<_Derived>& ma,
-                  const ManifoldBase<_Derived>& mb,
+static typename LieGroupBase<_Derived>::LieGroup
+interpolate_slerp(const LieGroupBase<_Derived>& ma,
+                  const LieGroupBase<_Derived>& mb,
                   const _Scalar t,
-                  typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma = ManifoldBase<_Derived>::_,
-                  typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb = ManifoldBase<_Derived>::_)
+                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = LieGroupBase<_Derived>::_,
+                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_)
 {
   MANIF_CHECK(t >= _Scalar(0) && t <= _Scalar(1),
               "s must be be in [0, 1].");
 
-  using Manifold = typename ManifoldBase<_Derived>::Manifold;
-  using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
+  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
-  Manifold mc;
+  LieGroup mc;
 
-  const auto _ = ManifoldBase<_Derived>::_;
+  const auto _ = LieGroupBase<_Derived>::_;
 
   /// @todo optimize this
   if (J_mc_ma && J_mc_mb)
@@ -127,22 +126,22 @@ interpolate_slerp(const ManifoldBase<_Derived>& ma,
 }
 
 template <typename _Derived, typename _Scalar>
-static typename ManifoldBase<_Derived>::Manifold
-interpolate_cubic(const ManifoldBase<_Derived>& ma,
-                  const ManifoldBase<_Derived>& mb,
+static typename LieGroupBase<_Derived>::LieGroup
+interpolate_cubic(const LieGroupBase<_Derived>& ma,
+                  const LieGroupBase<_Derived>& mb,
                   const _Scalar t,
-                  const typename ManifoldBase<_Derived>::Tangent& ta =
-                    ManifoldBase<_Derived>::Tangent::Zero(),
-                  const typename ManifoldBase<_Derived>::Tangent& tb =
-                    ManifoldBase<_Derived>::Tangent::Zero(),
-                  typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma =
-                    ManifoldBase<_Derived>::_,
-                  typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb =
-                    ManifoldBase<_Derived>::_)
+                  const typename LieGroupBase<_Derived>::Tangent& ta =
+                    LieGroupBase<_Derived>::Tangent::Zero(),
+                  const typename LieGroupBase<_Derived>::Tangent& tb =
+                    LieGroupBase<_Derived>::Tangent::Zero(),
+                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
+                    LieGroupBase<_Derived>::_,
+                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
+                    LieGroupBase<_Derived>::_)
 {
-  using Scalar   = typename ManifoldBase<_Derived>::Scalar;
-  using Manifold = typename ManifoldBase<_Derived>::Manifold;
-  //    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+  using Scalar   = typename LieGroupBase<_Derived>::Scalar;
+  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
+  //    using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   Scalar interp_factor(t);
   MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
@@ -151,7 +150,7 @@ interpolate_cubic(const ManifoldBase<_Derived>& ma,
   const Scalar t2 = t*t;
   const Scalar t3 = t2*t;
 
-  Manifold mc;
+  LieGroup mc;
 
   /// @todo optimize this
   if (J_mc_ma && J_mc_mb)
@@ -196,21 +195,21 @@ interpolate_cubic(const ManifoldBase<_Derived>& ma,
  */
 
 template <typename _Derived, typename _Scalar>
-static typename ManifoldBase<_Derived>::Manifold
-interpolate_smooth(const ManifoldBase<_Derived>& ma,
-                   const ManifoldBase<_Derived>& mb,
+static typename LieGroupBase<_Derived>::LieGroup
+interpolate_smooth(const LieGroupBase<_Derived>& ma,
+                   const LieGroupBase<_Derived>& mb,
                    const _Scalar t,
                    const unsigned int m,
-                   const typename ManifoldBase<_Derived>::Tangent& ta =
-                     ManifoldBase<_Derived>::Tangent::Zero(),
-                   const typename ManifoldBase<_Derived>::Tangent& tb =
-                     ManifoldBase<_Derived>::Tangent::Zero(),
-                   typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma = ManifoldBase<_Derived>::_,
-                   typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb = ManifoldBase<_Derived>::_)
+                   const typename LieGroupBase<_Derived>::Tangent& ta =
+                     LieGroupBase<_Derived>::Tangent::Zero(),
+                   const typename LieGroupBase<_Derived>::Tangent& tb =
+                     LieGroupBase<_Derived>::Tangent::Zero(),
+                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = LieGroupBase<_Derived>::_,
+                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_)
 {
-  using Scalar   = typename ManifoldBase<_Derived>::Scalar;
-  using Manifold = typename ManifoldBase<_Derived>::Manifold;
-  //    using Jacobian = typename ManifoldBase<_Derived>::Jacobian;
+  using Scalar   = typename LieGroupBase<_Derived>::Scalar;
+  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
+  //    using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   MANIF_CHECK(m >= Scalar(1), "m >= 1 !");
   Scalar interp_factor(t);
@@ -264,7 +263,7 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
   //    const auto r = mb.lplus(tb*(t-Scalar(1)));
   //    const auto B = r.lminus(l);
 
-  //    Manifold mc = l.lplus(B*phi);
+  //    LieGroup mc = l.lplus(B*phi);
 
   // with rplus
 
@@ -272,7 +271,7 @@ interpolate_smooth(const ManifoldBase<_Derived>& ma,
   const auto r = mb.rplus(tb*(t-Scalar(1)));
   const auto B = l.rminus(r);
 
-  Manifold mc = r.rplus(B*phi);
+  LieGroup mc = r.rplus(B*phi);
 
   return mc;
 }
@@ -288,32 +287,32 @@ enum class INTERP_METHOD
  * @brief A helper function
  */
 template <typename _Derived, typename _Scalar>
-typename ManifoldBase<_Derived>::Manifold
-interpolate(const ManifoldBase<_Derived>& ma,
-            const ManifoldBase<_Derived>& mb,
+typename LieGroupBase<_Derived>::LieGroup
+interpolate(const LieGroupBase<_Derived>& ma,
+            const LieGroupBase<_Derived>& mb,
             const _Scalar t,
             const INTERP_METHOD method = INTERP_METHOD::SLERP,
-            typename ManifoldBase<_Derived>::OptJacobianRef J_mc_ma = ManifoldBase<_Derived>::_,
-            typename ManifoldBase<_Derived>::OptJacobianRef J_mc_mb = ManifoldBase<_Derived>::_)
+            typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = LieGroupBase<_Derived>::_,
+            typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_)
 {
   switch (method) {
   case INTERP_METHOD::SLERP:
     return interpolate_slerp(ma, mb, t, J_mc_ma, J_mc_mb);
   case INTERP_METHOD::CUBIC:
     return interpolate_cubic(ma, mb, t,
-                             ManifoldBase<_Derived>::Tangent::Zero(),
-                             ManifoldBase<_Derived>::Tangent::Zero(),
+                             LieGroupBase<_Derived>::Tangent::Zero(),
+                             LieGroupBase<_Derived>::Tangent::Zero(),
                              J_mc_ma, J_mc_mb);
   case INTERP_METHOD::CNSMOOTH:
     return interpolate_smooth(ma, mb, t, 3,
-                              ManifoldBase<_Derived>::Tangent::Zero(),
-                              ManifoldBase<_Derived>::Tangent::Zero(),
+                              LieGroupBase<_Derived>::Tangent::Zero(),
+                              LieGroupBase<_Derived>::Tangent::Zero(),
                               J_mc_ma, J_mc_mb);
   default:
     break;
   }
 
-  return typename ManifoldBase<_Derived>::Manifold();
+  return typename LieGroupBase<_Derived>::LieGroup();
 }
 
 } /* namespace manif */

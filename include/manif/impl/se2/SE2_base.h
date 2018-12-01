@@ -2,49 +2,44 @@
 #define _MANIF_MANIF_SE2_BASE_H_
 
 #include "manif/impl/se2/SE2_properties.h"
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/utils.h"
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
 template <typename _Derived>
-struct SE2Base : ManifoldBase<_Derived>
+struct SE2Base : LieGroupBase<_Derived>
 {
 private:
 
-  using Base = ManifoldBase<_Derived>;
+  using Base = LieGroupBase<_Derived>;
   using Type = SE2Base<_Derived>;
 
 public:
 
-  MANIF_MANIFOLD_PROPERTIES
-
-  MANIF_MANIFOLD_TYPEDEF
+  MANIF_GROUP_TYPEDEF
 
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
 
-  /// Manifold common API
+  /// LieGroup common API
 
   Transformation transform() const;
   Rotation rotation() const;
   Translation translation() const;
 
-  SE2Base<_Derived>& setIdentity();
-
-  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
@@ -56,8 +51,8 @@ public:
 
   using Base::coeffs;
   using Base::coeffs_nonconst;
-  MANIF_INHERIT_MANIFOLD_AUTO_API
-  MANIF_INHERIT_MANIFOLD_OPERATOR
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
   /// SE2 specific functions
 
@@ -96,16 +91,7 @@ SE2Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-SE2Base<_Derived>&
-SE2Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setZero();
-  coeffs_nonconst()(2) = 1;
-  return *this;
-}
-
-template <typename _Derived>
-typename SE2Base<_Derived>::Manifold
+typename SE2Base<_Derived>::LieGroup
 SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   using std::cos;
@@ -116,7 +102,7 @@ SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
     (*J_minv_m) = -adj();
   }
 
-  return Manifold(-x()*real() - y()*imag(),
+  return LieGroup(-x()*real() - y()*imag(),
                    x()*imag() - y()*real(),
                            -angle()        );
 }
@@ -130,8 +116,8 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
   using std::sin;
 
   const Scalar theta     = angle();
-  const Scalar cos_theta = cos(theta);
-  const Scalar sin_theta = sin(theta);
+  const Scalar cos_theta = coeffs()[2];
+  const Scalar sin_theta = coeffs()[3];
   const Scalar theta_sq  = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
@@ -170,9 +156,9 @@ SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename SE2Base<_Derived>::Manifold
+typename SE2Base<_Derived>::LieGroup
 SE2Base<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m,
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
@@ -197,7 +183,7 @@ SE2Base<_Derived>::compose(
     J_mc_mb->setIdentity();
   }
 
-  return Manifold(
+  return LieGroup(
         lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
         lhs_imag * m_se2.x() + lhs_real * m_se2.y() + y(),
         lhs_real * rhs_real  - lhs_imag * rhs_imag,

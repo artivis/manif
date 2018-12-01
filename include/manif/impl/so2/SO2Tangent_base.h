@@ -4,8 +4,7 @@
 #include "manif/impl/so2/SO2_properties.h"
 #include "manif/impl/tangent_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///
@@ -23,8 +22,8 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim;
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
+  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim;
+  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -33,14 +32,17 @@ public:
 
   /// Tangent common API
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   LieAlg hat() const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
 
-  Jacobian adj() const;
+  Jacobian rjacinv() const;
+  Jacobian ljacinv() const;
+
+  Jacobian smallAdj() const;
 
   /// SO2Tangent specific API
 
@@ -50,7 +52,7 @@ public:
 };
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Manifold
+typename SO2TangentBase<_Derived>::LieGroup
 SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::cos;
@@ -61,7 +63,7 @@ SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     (*J_m_t) = rjac();
   }
 
-  return Manifold(cos(coeffs()(0)), sin(coeffs()(0)));
+  return LieGroup(cos(coeffs()(0)), sin(coeffs()(0)));
 }
 
 template <typename _Derived>
@@ -91,10 +93,24 @@ SO2TangentBase<_Derived>::ljac() const
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::Jacobian
-SO2TangentBase<_Derived>::adj() const
+SO2TangentBase<_Derived>::rjacinv() const
 {
-  static const Jacobian adj = Jacobian::Constant(Scalar(1));
-  return adj;
+  return rjac();
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::ljacinv() const
+{
+  return ljac();
+}
+
+template <typename _Derived>
+typename SO2TangentBase<_Derived>::Jacobian
+SO2TangentBase<_Derived>::smallAdj() const
+{
+  static const Jacobian smallAdj = Jacobian::Constant(Scalar(1));
+  return smallAdj;
 }
 
 /// SO2Tangent specific API

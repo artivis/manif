@@ -3,20 +3,18 @@
 
 #include "manif/impl/traits.h"
 
-namespace manif
-{
+namespace manif {
 
 // Forward declaration
 template <typename _Derived> struct SO2Base;
 template <typename _Derived> struct SO2TangentBase;
 
-namespace internal
-{
+namespace internal {
 
 // traits specialization
 
 template <typename _Derived>
-struct ManifoldProperties<SO2Base<_Derived>>
+struct LieGroupProperties<SO2Base<_Derived>>
 {
   static constexpr int Dim = 2; /// @brief Space dimension
   static constexpr int DoF = 1; /// @brief Degrees of freedom
@@ -24,7 +22,7 @@ struct ManifoldProperties<SO2Base<_Derived>>
 };
 
 template <typename _Derived>
-struct ManifoldProperties<SO2TangentBase<_Derived>>
+struct LieGroupProperties<SO2TangentBase<_Derived>>
 {
   static constexpr int Dim = 2; /// @brief Space dimension
   static constexpr int DoF = 1; /// @brief Degrees of freedom

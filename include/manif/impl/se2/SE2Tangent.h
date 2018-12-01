@@ -5,10 +5,8 @@
 
 #include <Eigen/Dense>
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 // Traits specialization
 
@@ -17,13 +15,13 @@ struct traits<SE2Tangent<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SE2<_Scalar>;
+  using LieGroup = SE2<_Scalar>;
   using Tangent  = SE2Tangent<_Scalar>;
 
   using Base = SE2TangentBase<_Scalar>;
 
-  static constexpr int Dim     = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF     = ManifoldProperties<Base>::DoF;
+  static constexpr int Dim     = LieGroupProperties<Base>::Dim;
+  static constexpr int DoF     = LieGroupProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
   using DataType = Eigen::Matrix<Scalar, DoF, 1>;
@@ -34,8 +32,7 @@ struct traits<SE2Tangent<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///

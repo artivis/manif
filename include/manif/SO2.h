@@ -2,7 +2,7 @@
 #define _MANIF_SO2_H_
 
 #include "manif/impl/macro.h"
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/tangent_base.h"
 
 #include "manif/impl/so2/SO2_properties.h"

@@ -5,16 +5,14 @@
 
 #include <Eigen/Core>
 
-namespace manif
-{
+namespace manif {
 
 // Forward declare for type traits specialization
 
 template <typename _Scalar> struct SE3;
 template <typename _Scalar> struct SE3Tangent;
 
-namespace internal
-{
+namespace internal {
 
 // Traits specialization
 
@@ -23,14 +21,14 @@ struct traits<SE3<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using Manifold = SE3<_Scalar>;
+  using LieGroup = SE3<_Scalar>;
   using Tangent  = SE3Tangent<_Scalar>;
 
   using Base = SE3Base<SE3<_Scalar>>;
 
-  static constexpr int Dim = ManifoldProperties<Base>::Dim;
-  static constexpr int DoF = ManifoldProperties<Base>::DoF;
-  static constexpr int N   = ManifoldProperties<Base>::N;
+  static constexpr int Dim = LieGroupProperties<Base>::Dim;
+  static constexpr int DoF = LieGroupProperties<Base>::DoF;
+  static constexpr int N   = LieGroupProperties<Base>::N;
   static constexpr int RepSize = 7;
 
   /// @todo would be nice to concat vec3 + quaternion
@@ -51,7 +49,7 @@ namespace manif
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
@@ -67,7 +65,7 @@ public:
 
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
+  MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
@@ -82,23 +80,23 @@ public:
   SE3(const Translation& t,
       const SO3<Scalar>& so3);
 
-  /// Manifold common API
+  /// LieGroup common API
 
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_INHERIT_GROUP_API
 
   /// SE3 specific API
 
 protected:
 
-  friend class ManifoldBase<SE3<Scalar>>;
+  friend class LieGroupBase<SE3<Scalar>>;
   DataType& coeffs_nonconst();
 
   DataType data_;
 };
 
-MANIF_EXTRA_MANIFOLD_TYPEDEF(SE3)
+MANIF_EXTRA_GROUP_TYPEDEF(SE3)
 
 template <typename _Scalar>
 SE3<_Scalar>::SE3(const DataType& d)

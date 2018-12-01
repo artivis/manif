@@ -3,10 +3,8 @@
 
 #include "manif/impl/so3/SO3.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 template <typename _Scalar>
 struct traits< Eigen::Map<SO3<_Scalar>,0> >
@@ -29,8 +27,7 @@ struct traits< Eigen::Map<const SO3<_Scalar>,0> >
 } /* namespace internal */
 } /* namespace manif */
 
-namespace Eigen
-{
+namespace Eigen {
 
 template <class _Scalar>
 class Map<manif::SO3<_Scalar>, 0>
@@ -40,8 +37,8 @@ class Map<manif::SO3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
@@ -49,7 +46,7 @@ public:
 
 protected:
 
-  friend class manif::ManifoldBase<Map<manif::SO3<_Scalar>, 0>>;
+  friend class manif::LieGroupBase<Map<manif::SO3<_Scalar>, 0>>;
   DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
@@ -63,8 +60,8 @@ class Map<const manif::SO3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_MANIFOLD_TYPEDEF
-  MANIF_INHERIT_MANIFOLD_API
+  MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 

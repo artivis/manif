@@ -1,12 +1,11 @@
 #ifndef _MANIF_MANIF_DECASTELJAU_H_
 #define _MANIF_MANIF_DECASTELJAU_H_
 
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 
 #include <vector>
 
-namespace manif
-{
+namespace manif {
 
 /**
  * @brief Curve fitting using the DeCasteljau algorithm
@@ -24,9 +23,9 @@ namespace manif
  *
  * https://www.wikiwand.com/en/De_Casteljau%27s_algorithm
  */
-template <typename Manifold>
-std::vector<typename Manifold::Manifold>
-decasteljau(const std::vector<Manifold>& trajectory,
+template <typename LieGroup>
+std::vector<typename LieGroup::LieGroup>
+decasteljau(const std::vector<LieGroup>& trajectory,
             const unsigned int degree,
             const unsigned int k_interp,
             const bool closed_curve = false)
@@ -39,10 +38,10 @@ decasteljau(const std::vector<Manifold>& trajectory,
   const unsigned int n_segments =
       std::floor(double(trajectory.size()-degree)/(degree-1)+1);
 
-  std::vector<std::vector<const Manifold*>> segments_control_points;
+  std::vector<std::vector<const LieGroup*>> segments_control_points;
   for (unsigned int t=0; t<n_segments; ++t)
   {
-    segments_control_points.emplace_back(std::vector<const Manifold*>());
+    segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Retrieve control points of the current segment
     for (int n=0; n<degree; ++n)
@@ -56,7 +55,7 @@ decasteljau(const std::vector<Manifold>& trajectory,
   {
     const int last_pts_idx = n_segments*(degree-1);
     const int left_over = trajectory.size()-1-last_pts_idx;
-    segments_control_points.emplace_back(std::vector<const Manifold*>());
+    segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Get the left-over points
     for (int p=last_pts_idx; p<trajectory.size(); ++p)
@@ -74,7 +73,7 @@ decasteljau(const std::vector<Manifold>& trajectory,
         k_interp : k_interp * degree;
 
   // Actual curve fitting
-  std::vector<Manifold> curve;
+  std::vector<LieGroup> curve;
   for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
     for (int t=1; t<=segment_k_interp; ++t)
@@ -82,7 +81,7 @@ decasteljau(const std::vector<Manifold>& trajectory,
       // t in [0,1]
       const double t_01 = static_cast<double>(t)/(segment_k_interp);
 
-      std::vector<Manifold> Qs, Qs_tmp;
+      std::vector<LieGroup> Qs, Qs_tmp;
 
       for (const auto m : segments_control_points[s])
         Qs.emplace_back(*m);

@@ -5,8 +5,7 @@
 #include "manif/impl/tangent_base.h"
 #include "manif/impl/so3/SO3Tangent_map.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///
@@ -41,14 +40,14 @@ public:
   void zero();
   void random();
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   LieAlg hat() const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SE3Tangent specific API
 
@@ -92,7 +91,7 @@ void SE3TangentBase<_Derived>::random()
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Manifold
+typename SE3TangentBase<_Derived>::LieGroup
 SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
@@ -105,7 +104,7 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   }
 
   /// @note Eq. 10.93
-  return Manifold(asSO3().ljac()*v(), asSO3().retract().quat());
+  return LieGroup(asSO3().ljac()*v(), asSO3().retract().quat());
 }
 
 template <typename _Derived>
@@ -145,13 +144,9 @@ SE3TangentBase<_Derived>::rjac() const
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
   {
-    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
-
-//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
-//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
+    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./60.);
   }
   else
   {
@@ -161,7 +156,7 @@ SE3TangentBase<_Derived>::rjac() const
 
     B = (theta - sin_theta) / (theta_sq*theta);
     C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
 
     // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
 //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
@@ -169,11 +164,12 @@ SE3TangentBase<_Derived>::rjac() const
   }
 
   /// @note Barfoot14tro Eq. 102
+  /// invert sign of odd blocks to obtain Jr
   Jr.template topRightCorner<3,3>().noalias() =
       - A * V
-      + B * (W*V + V*W - W*V*W)
-      + C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
-      - D * (W*V*W*W + W*W*V*W);
+      + B * (W*V + V*W - (W*V)*W)
+      + C * ((W*W)*V + (V*W)*W - Scalar(3)*(W*V)*W)
+      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jr;
 }
@@ -201,13 +197,9 @@ SE3TangentBase<_Derived>::ljac() const
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
   {
-    B =  Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.)  + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./120.) + Scalar(1./2520.) * theta_sq;
-
-//    B = Scalar(1./6.)   + Scalar(1./120.)  * theta_sq;
-//    C = Scalar(1./24.)  - Scalar(1./720.)  * theta_sq;
-//    D = Scalar(1./120.) - Scalar(1./2520.) * theta_sq;
+    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+    D = -Scalar(1./60.);
   }
   else
   {
@@ -217,7 +209,7 @@ SE3TangentBase<_Derived>::ljac() const
 
     B = (theta - sin_theta) / (theta_sq*theta);
     C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = Scalar(0.5) * (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6) / (theta_sq*theta_sq*theta)));
+    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
 
     // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
 //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
@@ -227,25 +219,25 @@ SE3TangentBase<_Derived>::ljac() const
   /// @note Barfoot14tro Eq. 102
   Jl.template topRightCorner<3,3>().noalias() =
       + A * V
-      + B * (W*V + V*W - W*V*W)
-      - C * (W*W*V + V*W*W - Scalar(3)*W*V*W)
-      - D * (W*V*W*W + W*W*V*W);
+      + B * (W*V + V*W + (W*V)*W)
+      - C * ((W*W)*V + (V*W)*W - ((Scalar(3)*W)*V)*W)
+      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jl;
 }
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
-SE3TangentBase<_Derived>::adj() const
+SE3TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian adj = Jacobian::Zero();
-  adj.template topLeftCorner<3,3>() = asSO3().hat();
-  adj.template bottomRightCorner<3,3>() =
-      adj.template topLeftCorner<3,3>();
+  Jacobian smallAdj = Jacobian::Zero();
+  smallAdj.template topLeftCorner<3,3>() = asSO3().hat();
+  smallAdj.template bottomRightCorner<3,3>() =
+      smallAdj.template topLeftCorner<3,3>();
 
-  adj.template bottomLeftCorner<3,3>() = skew(v());
+  smallAdj.template bottomLeftCorner<3,3>() = skew(v());
 
-  return adj;
+  return smallAdj;
 }
 
 /// SE3Tangent specific API

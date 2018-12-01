@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_CERES_TRAITS_H_
 #define _MANIF_MANIF_CERES_TRAITS_H_
 
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/eigen.h"
 
 namespace manif
@@ -9,15 +9,15 @@ namespace manif
 namespace internal
 {
 
-template <typename _Manifold>
+template <typename _LieGroup>
 struct traits_ceres
 {
-  using Manifold = _Manifold;
+  using LieGroup = _LieGroup;
 
   using ObjectiveJacobian =
-    Eigen::Matrix<typename Manifold::Scalar,
-                  Manifold::DoF,
-                  Manifold::RepSize,
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::DoF,
+                  LieGroup::RepSize,
                   Eigen::RowMajor>;
 
   using ObjectiveJacobianMap =
@@ -27,10 +27,10 @@ struct traits_ceres
   using ConstraintJacobianMap = ObjectiveJacobianMap;
 
   using LocalParamJacobian =
-    Eigen::Matrix<typename Manifold::Scalar,
-                  Manifold::RepSize,
-                  Manifold::DoF,
-                  (Manifold::DoF>1)?
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::DoF,
+                  (LieGroup::DoF>1)?
                     Eigen::RowMajor:
                     Eigen::ColMajor>;
 

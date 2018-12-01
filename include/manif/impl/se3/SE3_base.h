@@ -2,49 +2,46 @@
 #define _MANIF_MANIF_SE3_BASE_H_
 
 #include "manif/impl/se3/SE3_properties.h"
-#include "manif/impl/manifold_base.h"
+#include "manif/impl/lie_group_base.h"
 #include "manif/impl/so3/SO3_map.h"
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
 template <typename _Derived>
-struct SE3Base : ManifoldBase<_Derived>
+struct SE3Base : LieGroupBase<_Derived>
 {
 private:
 
-  using Base = ManifoldBase<_Derived>;
+  using Base = LieGroupBase<_Derived>;
   using Type = SE3Base<_Derived>;
 
 public:
 
-  MANIF_MANIFOLD_PROPERTIES
+  MANIF_GROUP_PROPERTIES
 
-  MANIF_MANIFOLD_TYPEDEF
+  MANIF_GROUP_TYPEDEF
 
   /// @todo find a mechanism to fetch it from base
   /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
 
-  /// Manifold common API
+  /// LieGroup common API
 
   Transformation transform() const;
   Rotation rotation() const;
   Translation translation() const;
 
-  SE3Base<_Derived>& setIdentity();
-
-  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
@@ -57,8 +54,8 @@ public:
   using Base::coeffs;
   using Base::coeffs_nonconst;
   using Base::data;
-  MANIF_INHERIT_MANIFOLD_AUTO_API
-  MANIF_INHERIT_MANIFOLD_OPERATOR
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
   /// SE3 specific functions
 
@@ -134,16 +131,7 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-SE3Base<_Derived>&
-SE3Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setZero();
-  asSO3().setIdentity();
-  return *this;
-}
-
-template <typename _Derived>
-typename SE3Base<_Derived>::Manifold
+typename SE3Base<_Derived>::LieGroup
 SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   if (J_minv_m)
@@ -153,7 +141,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
   const SO3<Scalar> so3inv = asSO3().inverse();
 
-  return Manifold(-so3inv.act(translation()),
+  return LieGroup(-so3inv.act(translation()),
                    so3inv);
 }
 
@@ -181,9 +169,9 @@ SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename SE3Base<_Derived>::Manifold
+typename SE3Base<_Derived>::LieGroup
 SE3Base<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m,
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
@@ -203,7 +191,7 @@ SE3Base<_Derived>::compose(
     J_mc_mb->setIdentity();
   }
 
-  return Manifold(rotation()*m_se3.translation() + translation(),
+  return LieGroup(rotation()*m_se3.translation() + translation(),
                   asSO3().compose(m_se3.asSO3()).quat());
 }
 

@@ -13,14 +13,14 @@
 
 namespace manif {
 
-template <typename _Manifold>
+template <typename _LieGroup>
 class JacobianCeresTester : public ::testing::Test
 {
-  using Manifold  = _Manifold;
-  using Tangent   = typename _Manifold::Tangent;
+  using LieGroup  = _LieGroup;
+  using Tangent   = typename _LieGroup::Tangent;
 
-  using ManifObjective = Objective<Manifold>;
-  using ManifLocalParameterization = LocalParameterization<Manifold>;
+  using ManifObjective = Objective<LieGroup>;
+  using ManifLocalParameterization = LocalParameterization<LieGroup>;
 
 public:
 
@@ -31,14 +31,14 @@ public:
   {
     std::srand((unsigned int) time(0));
 
-    state = Manifold::Random();
+    state = LieGroup::Random();
 
     delta = Tangent::Random();
 
-    objective_value = Manifold::Random();
+    objective_value = LieGroup::Random();
 
-    state_plus_delta_analytic = Manifold::Identity();
-    state_plus_delta_autodiff = Manifold::Identity();
+    state_plus_delta_analytic = LieGroup::Identity();
+    state_plus_delta_autodiff = LieGroup::Identity();
   }
 
   void evalObjectiveJacs()
@@ -75,7 +75,7 @@ public:
     // Autodiff
 
     std::shared_ptr<ceres::CostFunction> autodiff_obj =
-        make_objective_autodiff<Manifold>(objective_value);
+        make_objective_autodiff<LieGroup>(objective_value);
 
     typename ManifObjective::Jacobian autodiffJ_y_r;
 
@@ -86,7 +86,7 @@ public:
 
     std::shared_ptr<ceres::LocalParameterization>
       auto_diff_local_parameterization =
-        make_local_parametrization_autodiff<Manifold>();
+        make_local_parametrization_autodiff<LieGroup>();
 
     auto_diff_local_parameterization->Plus(state.data(), delta.data(),
                                            state_plus_delta_autodiff.data());
@@ -100,8 +100,8 @@ public:
     EXPECT_MANIF_NEAR(state_plus_delta_analytic,
                       state_plus_delta_autodiff, tol_);
 
-    typename Manifold::Jacobian analyticJ_y_R = analyticJ_y_r * analyticJ_r_R;
-    typename Manifold::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
+    typename LieGroup::Jacobian analyticJ_y_R = analyticJ_y_r * analyticJ_r_R;
+    typename LieGroup::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
 
     EXPECT_EIGEN_NEAR(analyticJ_y_R, autodiffJ_y_R);
   }
@@ -126,7 +126,7 @@ public:
     // Autodiff
 
     std::shared_ptr<ceres::CostFunction> autodiff_obj =
-        make_objective_autodiff<Manifold>(objective_value);
+        make_objective_autodiff<LieGroup>(objective_value);
 
     typename ManifObjective::Jacobian autodiffJ_y_r;
     jacobian = autodiffJ_y_r.data();
@@ -136,7 +136,7 @@ public:
 
     std::shared_ptr<ceres::LocalParameterization>
       auto_diff_local_parameterization =
-        make_local_parametrization_autodiff<Manifold>();
+        make_local_parametrization_autodiff<LieGroup>();
 
     auto_diff_local_parameterization->Plus(state.data(), delta.data(),
                                            state_plus_delta_autodiff.data());
@@ -145,10 +145,10 @@ public:
     auto_diff_local_parameterization->ComputeJacobian(state.data(),
                                                       autodiffJ_r_R.data());
 
-    typename Manifold::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
+    typename LieGroup::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
 
-    typename Manifold::Jacobian manifJ_y_R;
-    objective_value.rminus(state, Manifold::_, manifJ_y_R);
+    typename LieGroup::Jacobian manifJ_y_R;
+    objective_value.rminus(state, LieGroup::_, manifJ_y_R);
 
     EXPECT_EIGEN_NEAR(autodiffJ_y_R, manifJ_y_R);
   }
@@ -157,13 +157,13 @@ protected:
 
   double tol_ = 1e-8;
 
-  Manifold state;
+  LieGroup state;
   Tangent  delta;
 
-  Manifold objective_value;
+  LieGroup objective_value;
 
-  Manifold state_plus_delta_analytic;
-  Manifold state_plus_delta_autodiff;
+  LieGroup state_plus_delta_analytic;
+  LieGroup state_plus_delta_autodiff;
 };
 
 } /* namespace manif */

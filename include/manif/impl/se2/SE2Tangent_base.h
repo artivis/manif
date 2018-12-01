@@ -4,8 +4,7 @@
 #include "manif/impl/se2/SE2_properties.h"
 #include "manif/impl/tangent_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///
@@ -34,12 +33,12 @@ public:
 
   LieAlg hat() const;
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SE2Tangent specific API
 
@@ -59,7 +58,7 @@ SE2TangentBase<_Derived>::hat() const
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Manifold
+typename SE2TangentBase<_Derived>::LieGroup
 SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::abs;
@@ -108,7 +107,7 @@ SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
     }
   }
 
-  return Manifold( A * x() - B * y(),
+  return LieGroup( A * x() - B * y(),
                    B * x() + A * y(),
                    cos_theta, sin_theta );
 }
@@ -194,16 +193,16 @@ SE2TangentBase<_Derived>::ljac() const
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
-SE2TangentBase<_Derived>::adj() const
+SE2TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian adj = Jacobian::Zero();
+  Jacobian smallAdj = Jacobian::Zero();
 
-  adj(0,1) = -angle();
-  adj(1,0) =  angle();
-  adj(0,2) =  y();
-  adj(1,2) = -x();
+  smallAdj(0,1) = -angle();
+  smallAdj(1,0) =  angle();
+  smallAdj(0,2) =  y();
+  smallAdj(1,2) = -x();
 
-  return adj;
+  return smallAdj;
 }
 
 /// SE2Tangent specific API

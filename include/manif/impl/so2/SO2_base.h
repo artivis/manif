@@ -2,31 +2,29 @@
 #define _MANIF_MANIF_SO2_BASE_H_
 
 #include "manif/impl/so2/SO2_properties.h"
-#include "manif/impl/manifold_base.h"
-#include "manif/impl/utils.h"
+#include "manif/impl/lie_group_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///
-/// Manifold ///
+/// LieGroup ///
 ///          ///
 ////////////////
 
 template <typename _Derived>
-struct SO2Base : ManifoldBase<_Derived>
+struct SO2Base : LieGroupBase<_Derived>
 {
 private:
 
-  using Base = ManifoldBase<_Derived>;
+  using Base = LieGroupBase<_Derived>;
   using Type = SO2Base<_Derived>;
 
 public:
 
   using Scalar   = typename Base::Scalar;
 
-  using Manifold = typename Base::Manifold;
+  using LieGroup = typename Base::LieGroup;
   using Tangent  = typename Base::Tangent;
   using Jacobian = typename Base::Jacobian;
 
@@ -38,18 +36,16 @@ public:
   using Rotation       = typename Base::Rotation;
   using Vector         = typename Base::Vector;
 
-  /// Manifold common API
+  /// LieGroup common API
 
   Transformation transform() const;
   Rotation rotation() const;
 
-  SO2Base<_Derived>& setIdentity();
-
-  Manifold inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   template <typename _DerivedOther>
-  Manifold compose(const ManifoldBase<_DerivedOther>& m,
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
@@ -106,21 +102,13 @@ SO2Base<_Derived>::rotation() const
 }
 
 template <typename _Derived>
-SO2Base<_Derived>&
-SO2Base<_Derived>::setIdentity()
-{
-  coeffs_nonconst().setIdentity();
-  return *this;
-}
-
-template <typename _Derived>
-typename SO2Base<_Derived>::Manifold
+typename SO2Base<_Derived>::LieGroup
 SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
   if (J_minv_m)
     J_minv_m->setConstant(Scalar(-1));
 
-  return Manifold(real(), -imag());
+  return LieGroup(real(), -imag());
 }
 
 template <typename _Derived>
@@ -135,9 +123,9 @@ SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename SO2Base<_Derived>::Manifold
+typename SO2Base<_Derived>::LieGroup
 SO2Base<_Derived>::compose(
-    const ManifoldBase<_DerivedOther>& m,
+    const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
@@ -158,7 +146,7 @@ SO2Base<_Derived>::compose(
   if (J_mc_mb)
     J_mc_mb->setConstant(Scalar(1));
 
-  return Manifold(
+  return LieGroup(
         lhs_real * rhs_real - lhs_imag * rhs_imag,
         lhs_real * rhs_imag + lhs_imag * rhs_real
         );

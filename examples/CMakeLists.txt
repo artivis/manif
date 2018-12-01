@@ -17,21 +17,19 @@ if(CERES_FOUND)
 
   message(STATUS "Found ceres_solver, building ceres examples.")
 
-  add_executable(se2_smooth_trajectory se2_smooth_trajectory.cpp)
+#  add_executable(none none.cpp)
 
-  set(CXX_11_CERES_EXAMPLE_TARGETS
+#  set(CXX_11_CERES_EXAMPLE_TARGETS
+#    # Ceres
 
-    # Ceres
-    se2_smooth_trajectory
+#  )
 
-  )
+#  foreach(target ${CXX_11_CERES_EXAMPLE_TARGETS})
+#    target_link_libraries(${target} ${CERES_LIBRARIES})
+#    target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
+#  endforeach()
 
-  foreach(target ${CXX_11_CERES_EXAMPLE_TARGETS})
-    target_link_libraries(${target} ${CERES_LIBRARIES})
-    target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
-  endforeach()
-
-  list(APPEND CXX_11_EXAMPLE_TARGETS ${CXX_11_CERES_EXAMPLE_TARGETS})
+#  list(APPEND CXX_11_EXAMPLE_TARGETS ${CXX_11_CERES_EXAMPLE_TARGETS})
 
 else()
   message(STATUS "Could not find ceres_solver, ceres examples will not be built.")

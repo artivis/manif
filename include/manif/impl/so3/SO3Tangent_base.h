@@ -4,8 +4,7 @@
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/tangent_base.h"
 
-namespace manif
-{
+namespace manif {
 
 ///////////////
 ///         ///
@@ -34,12 +33,14 @@ public:
 
   LieAlg hat() const;
 
-  Manifold retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   Jacobian rjac() const;
   Jacobian ljac() const;
+  Jacobian rjacinv() const;
+  Jacobian ljacinv() const;
 
-  Jacobian adj() const;
+  Jacobian smallAdj() const;
 
   /// SO3Tangent specific API
 
@@ -49,7 +50,7 @@ public:
 };
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Manifold
+typename SO3TangentBase<_Derived>::LieGroup
 SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
@@ -74,7 +75,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
       *J_m_t = Jacobian::Identity() - M1 + M2;
     }
 
-    return Manifold( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
+    return LieGroup( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
   }
   else
   {
@@ -83,7 +84,7 @@ SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
       *J_m_t = Jacobian::Identity() - Scalar(0.5) * hat();
     }
 
-    return Manifold(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
+    return LieGroup(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
   }
 }
 
@@ -120,7 +121,38 @@ SO3TangentBase<_Derived>::ljac() const
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Jacobian
-SO3TangentBase<_Derived>::adj() const
+SO3TangentBase<_Derived>::rjacinv() const
+{
+  return ljacinv().transpose();
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::ljacinv() const
+{
+  using std::sqrt;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta_sq = coeffs().squaredNorm();
+
+  const LieAlg W = hat();
+
+  if (theta_sq <= Constants<Scalar>::eps_s)
+    return Jacobian::Identity() + Scalar(0.5) * W;
+
+  const Scalar theta = sqrt(theta_sq); // rotation angle
+  Jacobian M;
+  M.noalias() = (Scalar(1) / theta_sq -
+                 (Scalar(1) + cos(theta)) /
+                 (Scalar(2) * theta * sin(theta))) * (W * W);
+
+  return Jacobian::Identity() - Scalar(0.5) * W + M;
+}
+
+template <typename _Derived>
+typename SO3TangentBase<_Derived>::Jacobian
+SO3TangentBase<_Derived>::smallAdj() const
 {
   return hat();
 }

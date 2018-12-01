@@ -27,14 +27,14 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 #define MANIF_CHECK(cond, msg) \
   if (!(cond)) MANIF_THROW(msg);
 
-/// Manifold - related macros
+/// LieGroup - related macros
 
-#define MANIF_MANIFOLD_PROPERTIES                                     \
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF; \
-  static constexpr int N   = internal::ManifoldProperties<Type>::N;
+#define MANIF_GROUP_PROPERTIES                                        \
+  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
+  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF; \
+  static constexpr int N   = internal::LieGroupProperties<Type>::N;
 
-#define MANIF_INHERIT_MANIFOLD_AUTO_API \
+#define MANIF_INHERIT_GROUP_AUTO_API    \
   using Base::setRandom;                \
   using Base::rplus;                    \
   using Base::lplus;                    \
@@ -42,8 +42,8 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::lminus;                   \
   using Base::between;
 
-#define MANIF_INHERIT_MANIFOLD_API  \
-  MANIF_INHERIT_MANIFOLD_AUTO_API   \
+#define MANIF_INHERIT_GROUP_API     \
+  MANIF_INHERIT_GROUP_AUTO_API      \
   using Base::transform;            \
   using Base::rotation;             \
   using Base::setIdentity;          \
@@ -51,16 +51,16 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::lift;                 \
   using Base::adj;
 
-#define MANIF_INHERIT_MANIFOLD_OPERATOR \
+#define MANIF_INHERIT_GROUP_OPERATOR    \
   using Base::operator +;               \
   using Base::operator +=;              \
   using Base::operator *;               \
   using Base::operator *=;              \
   using Base::operator =;
 
-#define MANIF_MANIFOLD_TYPEDEF                          \
+#define MANIF_GROUP_TYPEDEF                             \
   using Scalar         = typename Base::Scalar;         \
-  using Manifold       = typename Base::Manifold;       \
+  using LieGroup       = typename Base::LieGroup;       \
   using Tangent        = typename Base::Tangent;        \
   using Jacobian       = typename Base::Jacobian;       \
   using DataType       = typename Base::DataType;       \
@@ -69,19 +69,19 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Vector         = typename Base::Vector;         \
   using OptJacobianRef = typename Base::OptJacobianRef;
 
-#define MANIF_COMPLETE_MANIFOLD_TYPEDEF \
-  MANIF_MANIFOLD_TYPEDEF                \
-  MANIF_INHERIT_MANIFOLD_OPERATOR
+#define MANIF_COMPLETE_GROUP_TYPEDEF \
+  MANIF_GROUP_TYPEDEF                \
+  MANIF_INHERIT_GROUP_OPERATOR
 
-#define MANIF_EXTRA_MANIFOLD_TYPEDEF(manifold) \
-  using manifold##f = manifold<float>;         \
-  using manifold##d = manifold<double>;
+#define MANIF_EXTRA_GROUP_TYPEDEF(group) \
+  using group##f = group<float>;         \
+  using group##d = group<double>;
 
 /// Tangent - related macros
 
 #define MANIF_TANGENT_PROPERTIES                                      \
-  static constexpr int Dim = internal::ManifoldProperties<Type>::Dim; \
-  static constexpr int DoF = internal::ManifoldProperties<Type>::DoF;
+  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
+  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
 
 #define MANIF_INHERIT_TANGENT_API \
   using Base::setZero;            \
@@ -90,7 +90,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::hat;                \
   using Base::rjac;               \
   using Base::ljac;               \
-  using Base::adj;
+  using Base::smallAdj;
 
 #define MANIF_INHERIT_TANGENT_OPERATOR \
   using Base::operator +;              \
@@ -98,7 +98,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 
 #define MANIF_TANGENT_TYPEDEF               \
   using Scalar   = typename Base::Scalar;   \
-  using Manifold = typename Base::Manifold; \
+  using LieGroup = typename Base::LieGroup; \
   using Tangent  = typename Base::Tangent;  \
   using Jacobian = typename Base::Jacobian; \
   using DataType = typename Base::DataType; \
