@@ -12,7 +12,7 @@ authors:
    affiliation: 1
  - name: Joan Sola
    orcid: 0000-0002-2933-3381
-   affiliation: 2
+   affiliation: 1
 affiliations:
  - name: Institut de Rob\`otica i Inform\`atica Industrial, CSIC-UPC, Llorens Artigas 4-6, 08028, Barcelona, Spain.
    index: 1
