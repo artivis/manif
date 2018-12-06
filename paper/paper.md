@@ -22,35 +22,35 @@ bibliography: paper.bib
 
 # Summary
 
-A Lie group is an old mathematical abstract object
-dating back to the XIX century, when mathematician Sophus Lie
-laid the foundations of the theory of continuous transformation
-groups.
+`manif` is a micro Lie theory library targeted at 
+state estimation in robotics application.
+With a single dependency on [@eigenweb] and 
+a requierement on c++11 only it is
+developped as a header-only library making 
+it easily integrable to existing project.
+
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
 properly. This is motivated by an increasing demand for
-precision, consistency and stability of the solutions. Indeed, a
-proper modeling of the states and measurements, the functions
-relating them, and their uncertainties, is crucial to achieve
-these goals. This has led to designs involving what has been
+precision, consistency and stability of the solutions.
+Indeed, a proper modeling of the states and measurements,
+the functions relating them, and their uncertainties,
+is crucial to achieve these goals.
+It has led to problems formulation involving what has been
 known as ‘manifolds’, which in this context are no less
 than the smooth topologic surfaces of the Lie groups where
-the state representations evolve. Relying on the Lie theory
-we are able to construct a rigorous calculus corpus to
-handle uncertainties, derivatives and integrals with precision
-and ease. Typically, these works have focused on the well
-known manifolds of rotation SO(3) and rigid motion SE(3).
+the state representations evolve.
 
-`manif` is a micro Lie theory library targeted at 
-state estimation in robotics application.
-With a minimal dependency on [@eigenweb] and a requierement on c++11 only it is
-developped as a header-only library making it easily integrable to existing project.
+The `manif` library has been developped to make easily accessible
+the most common operations on Lie groups in state estimation.
+Its design is similar to that of [@eigenweb] so that 
+all Lie group classes defined in `manif` have in common that 
+they inherit from a templated base class using static polymorphism.
+This allows for the possibility the write generic code without
+paying the price of pointer indirection.
 
-# Manif
-
-The `manif` library design is similar to that of [@eigenweb]. 
-All Lie group classes defined in `manif` have in common that they inherit from a templated base class.
-The `manif` library is mathematically grounded in [@Sola18] and often refers to it in it documentation
+The library is mathematically grounded in [@Sola18] 
+and often refers to it in it documentation
 especially for mathematical developments.
 
 # Related work
