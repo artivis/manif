@@ -7,7 +7,7 @@
 -   Maintainer status: maintained
 -   Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
 -   Author: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
--   License: APACHE-2.0
+-   License: MIT
 -   Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
 -   Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
 
