@@ -16,14 +16,11 @@ else()
     "has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-# Set search directory for looking for our custom CMake scripts to
-# look for SuiteSparse, QGLViewer, and Eigen3.
+# Set search directory for looking for our custom CMake scripts
+# to look Eigen3.
 LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 find_package(Eigen3 REQUIRED)
-
-#find_package(Threads REQUIRED)
-#add_subdirectory(external/lspdlog)
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON -BUILD_EXAMPLES=ON
@@ -35,6 +32,7 @@ option(BUILD_EXAMPLES "Build all examples." OFF)
 set(CMAKE_REQUIRED_FLAGS_BK ${CMAKE_REQUIRED_FLAGS})
 include(CheckCXXSourceCompiles)
 set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+# Check if compiler support constexpr functions
 CHECK_CXX_SOURCE_COMPILES(
 "
   constexpr void f() {};
