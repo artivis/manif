@@ -22,7 +22,7 @@ bibliography: paper.bib
 
 # Summary
 
-`manif` is a micro Lie theory library targeted at 
+`manif` [@manif] is a micro Lie theory library targeted at 
 state estimation in robotics application.
 With a single dependency on [@eigenweb] and 
 a requierement on c++11 only it is
@@ -63,7 +63,7 @@ allowing complex chain of operations to be differentiate through the chain rule.
 
 [@wave_geometry] Manifold geometry with fast automatic derivatives and coordinate frame semantics checking.
 Our work differs from [@wave_geometry] in that it offers analitically computed Jacobian matrix whereas
-[@wave_geometry] relies on automatic-differentiation.
+the later relies on automatic-differentiation.
 
 Finally, Jacobian matrix in `manif` are defined with respect to a local perturbation on the Lie groups
 unlink both [@Sophus] and [@wave_geometry] which defines them with respect 
