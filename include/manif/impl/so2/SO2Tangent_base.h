@@ -32,22 +32,55 @@ public:
 
   /// Tangent common API
 
+  /**
+   * @brief Get the SO2 element.
+   * @param[out] -optional- J_m_t Jacobian of the SO2 element wrt this.
+   * @return The SO2 element.
+   */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
+  /**
+   * @brief Hat operator of SO2.
+   * @return The so2 skew-symmetric matrix.
+   * @note See Eq. (93).
+   */
   LieAlg hat() const;
 
+  /**
+   * @brief Get the right Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian rjac() const;
+
+  /**
+   * @brief Get the left Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian ljac() const;
 
+  /**
+   * @brief Get the inverse of the right Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian rjacinv() const;
+
+  /**
+   * @brief Get the inverse of the right Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian ljacinv() const;
 
+  /**
+   * @brief
+   * @return [description]
+   */
   Jacobian smallAdj() const;
 
   /// SO2Tangent specific API
 
   //const Scalar& angle() const;
 
+  //! @brief Get the angle (rad.).
   Scalar angle() const;
 };
 

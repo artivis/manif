@@ -76,7 +76,7 @@ public:
 
   /**
    * @brief Hat operator of the Tangent element.
-   * @return The Lie algebra.
+   * @return An element of the Lie algebra.
    * @note See Eq. (10).
    */
   LieAlg hat() const;

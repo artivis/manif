@@ -6,7 +6,8 @@
 namespace manif {
 namespace internal {
 
-template <typename _Scalar/*, int _MapOptions, typename _StrideType*/>
+//! @brief traits specialization for Eigen Map
+template <typename _Scalar>
 struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
     : public traits<SO2Tangent<_Scalar>>
 {
@@ -15,6 +16,7 @@ struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
+//! @brief traits specialization for Eigen Map const
 template <typename _Scalar>
 struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
     : public traits<const SO2Tangent<_Scalar>>
@@ -29,6 +31,7 @@ struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
 
 namespace Eigen {
 
+//! @brief Specialization of Map for manif::SO2Tangent
 template <class _Scalar>
 class Map<manif::SO2Tangent<_Scalar>, 0>
     : public manif::SO2TangentBase<Map<manif::SO2Tangent<_Scalar>, 0> >
@@ -51,6 +54,7 @@ protected:
   DataType data_;
 };
 
+//! @brief Specialization of Map for const manif::SO2Tangent
 template <class _Scalar>
 class Map<const manif::SO2Tangent<_Scalar>, 0>
     : public manif::SO2TangentBase<Map<const manif::SO2Tangent<_Scalar>, 0> >

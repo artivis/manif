@@ -6,9 +6,7 @@
 namespace manif {
 namespace internal {
 
-/**
- * @brief traits specialization for Eigen Map
- */
+//! @brief traits specialization for Eigen Map
 template <typename _Scalar>
 struct traits< Eigen::Map<SO2<_Scalar>,0> >
     : public traits<SO2<_Scalar>>
@@ -18,9 +16,7 @@ struct traits< Eigen::Map<SO2<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
-/**
- * @brief traits specialization for Eigen Map const
- */
+//! @brief traits specialization for Eigen Map const
 template <typename _Scalar>
 struct traits< Eigen::Map<const SO2<_Scalar>,0> >
     : public traits<const SO2<_Scalar>>
