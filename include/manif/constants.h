@@ -7,6 +7,9 @@
 namespace manif {
 namespace internal {
 
+/**
+ * Constexpr Newton-Raphson iterative algorithm for the sqrt aprrox.
+ */
 double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
 {
   return curr == prev
@@ -14,14 +17,15 @@ double constexpr sqrtNewtonRaphson(double x, double curr, double prev)
           : sqrtNewtonRaphson(x, 0.5 * (curr + x / curr), curr);
 }
 
-/*
-* Constexpr version of the square root
-* Return value:
-*   - For a finite and non-negative value of "x", returns an approximation for the square root of "x"
-*   - Otherwise, returns NaN
-*
-* credits : https://stackoverflow.com/a/34134071/9709397
-*/
+/**
+ * Constexpr version of the square root
+ * Return value:
+ *   - For a finite and non-negative value of "x",
+ *     returns an approximation for the square root of "x"
+ *   - Otherwise, returns NaN
+ *
+ * credits : https://stackoverflow.com/a/34134071/9709397
+ */
 double constexpr csqrt(double x)
 {
   return x >= 0 && x < std::numeric_limits<double>::infinity()
@@ -31,6 +35,9 @@ double constexpr csqrt(double x)
 
 } /* namespace internal */
 
+/**
+ * Traits to define some constant scalar.
+ */
 template <typename _Scalar>
 struct Constants
 {

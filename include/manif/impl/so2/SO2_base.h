@@ -12,6 +12,10 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief The base class of the SO2 group.
+ * @note See Appendix A of the paper.
+ */
 template <typename _Derived>
 struct SO2Base : LieGroupBase<_Derived>
 {
@@ -38,21 +42,64 @@ public:
 
   /// LieGroup common API
 
+  /**
+   * @brief Get the associated transformation matrix (isometry)
+   * of size 3x3.
+   * @note T = | R 0 |
+   *           | 0 1 |
+   */
   Transformation transform() const;
+
+  /**
+   * @brief Get the rotation matrix R.
+   */
   Rotation rotation() const;
 
+  /**
+   * @brief Get the inverse.
+   * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
+   * @note z^-1 = z*
+   * @note See Eq. (104).
+   */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+
+  /**
+   * @brief Get the SO2 tangent at the point represented by this.
+   * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
+   * @return The SO2 tangent at this.
+   * @note See Eq. (95) & Eq. (106).
+   * @see SO2Tangent.
+   */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
+  /**
+   * @brief Composition of this and another SO2 element.
+   * @param[in]  m       Another SO2 element.
+   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
+   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
+   * @return The composition of 'this . m'.
+   * @note z_c = z_a z_b.
+   */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  /**
+   * @brief TODO tofix
+   * @param  v        [description]
+   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
+   * @return          [description]
+   */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  /**
+   * @brief Get the Adjoint.
+   * @note See Eq. (103).
+   */
   Jacobian adj() const;
 
   using Base::coeffs;
@@ -65,8 +112,19 @@ public:
 
   /// SO2 specific functions
 
+  /**
+   * @brief Get the real part of the underlying complex number.
+   */
   /*const*/ Scalar/*&*/ real() const;
+
+  /**
+   * @brief Get the imaginary part of the underlying complex number.
+   */
   /*const*/ Scalar/*&*/ imag() const;
+
+  /**
+   * @brief Get the angle (rad.).
+   */
   Scalar angle() const;
 
 protected:

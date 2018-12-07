@@ -27,11 +27,16 @@ targeted at robotics applications.
 
 ## Quick Start
 
+### Dependencies
+
+-   Eigen 3 : ```apt-get install libeigen3-dev```
+-   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
+
 ### Installation
 <!--
 #### Binaries
 ```terminal
-$ apt-get install ros-indigo-my-package
+$ apt-get install manif
 ```
 -->
 #### From source
@@ -52,6 +57,11 @@ $ git clone https://github.com/artivis/manif.git
 $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 ```
 
+###### Generate the documentation
+```terminal
+doxygen .doxygen.txt
+```
+
 #### Use `manif` in your project
 In your project `CMakeLists.txt` :
 ```cmake
@@ -62,7 +72,7 @@ find_package(manif REQUIRED)
 
 add_executable(${PROJECT_NAME} src/foo.cpp)
 
-# Add include directories to the target
+# Add manif include directories to the target
 target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 ```
 
@@ -126,13 +136,19 @@ or conversely,
 
 #### A note on Jacobians
 
-While the `manif` package differentiates Jacobians wrt a perturbation on the tangent space, many non-linear solvers
-(e.g. Ceres) expect them to be differentiated wrt the representation vector of the group element
+While the `manif` package differentiates Jacobians with respect to a
+local perturbation on the tangent space, many non-linear solvers
+(e.g. [Ceres](http://ceres-solver.org/)) expect them to be differentiated wrt the underlying
+representation vector of the group element
 (e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
-For this reason `manif` is compliant with Ceres auto-differentiation and support `ceres::Jet` type.
+For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
+auto-differentiation and the
+[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.
 
 ## Documentation and Tutorials
 
+Throughout the code documentation we refer to 'the paper' which you can
+find in the section <a href="#publications">Publications</a>.
 Some general documentation on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
 <!--Although I like packages using [readthedocs](https://readthedocs.org/) and [codedocs](https://codedocs.xyz/).-->
 
@@ -154,6 +170,8 @@ If you use this work, please consider citing as follows:
     Year = {2018}
 }
 ```
+Notice that this reference is the one referred to throughout
+the code documentation.
 
 ## Contributing
 

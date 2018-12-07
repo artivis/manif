@@ -1,7 +1,6 @@
 #ifndef _MANIF_MANIF_EIGEN_H_
 #define _MANIF_MANIF_EIGEN_H_
 
-
 #include <Eigen/Core>
 
 /**
@@ -11,6 +10,8 @@
 //////////////////////
 /// Static Asserts ///
 //////////////////////
+
+/// Define some custom static_assert macros
 
 #define static_assert_rows_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim, \
@@ -49,6 +50,8 @@
 ///////////////
 /// Asserts ///
 ///////////////
+
+/// Define some custom assert macros
 
 #define assert_rows_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim or \
@@ -115,6 +118,11 @@ struct traitscast<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxC
 
 } /* namespace internal */
 
+/**
+ * @brief Return a 2x2 skew matrix given a scalar.
+ * @note [x] = | 0 -x |
+ *             | x  0 |
+ */
 template <typename _Scalar>
 typename std::enable_if<std::is_arithmetic<_Scalar>::value,
                         Eigen::Matrix<_Scalar, 2, 2>>::type
@@ -125,6 +133,12 @@ skew(const _Scalar v)
              v, _Scalar(0.) ).finished();
 }
 
+/**
+ * @brief Return a 3x3 skew matrix given 3-vector.
+ * @note [v] = | 0     -v(2) +v(1) |
+ *             | +v(2)  0    -v(0) |
+ *             | -v(1) +v(0)  0    |
+ */
 template <typename _Derived>
 typename std::enable_if<std::is_base_of<Eigen::MatrixBase<_Derived>,
                                         _Derived>::value and
@@ -141,29 +155,6 @@ skew(const Eigen::MatrixBase<_Derived>& v)
             +v(2),    T(0.),  -v(0),
             -v(1),   +v(0),    T(0.) ).finished();
 }
-
-//template <typename _Scalar>
-//Eigen::Matrix<_Scalar, 2, 2>
-//skew2(const _Scalar v)
-//{
-//  return (Eigen::Matrix<_Scalar, 2, 2>() <<
-//             _Scalar(0.), -v,
-//             v, _Scalar(0.) ).finished();
-//}
-
-//template <typename _Derived>
-//Eigen::Matrix<typename _Derived::Scalar, 3, 3>
-//skew3(const Eigen::MatrixBase<_Derived>& v)
-//{
-//  assert_vector_dim(v, 3);
-
-//  using T = typename _Derived::Scalar;
-
-//  return (Eigen::Matrix<T, 3, 3>() <<
-//             T(0.),  -v(2),   +v(1),
-//            +v(2),    T(0.),  -v(0),
-//            -v(1),   +v(0),    T(0.) ).finished();
-//}
 
 } /* namespace manif */
 

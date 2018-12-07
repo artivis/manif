@@ -12,6 +12,11 @@
 
 namespace manif {
 
+/**
+ * @brief Base class for Lie groups.
+ * @class Defines the minimum common API.
+ * @see TangentBase.
+ */
 template <class _Derived>
 struct LieGroupBase
 {
@@ -24,7 +29,7 @@ struct LieGroupBase
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
-  using Transformation = typename internal::traits<_Derived>::Transformation; /// @todo rename ActionMat?
+  using Transformation = typename internal::traits<_Derived>::Transformation;
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
@@ -45,6 +50,7 @@ protected:
 
 public:
 
+  //! @brief Helper for skipping an optional parameter.
   static const OptJacobianRef _;
 
   //! @brief Access the underlying data by const reference
@@ -52,6 +58,7 @@ public:
 
   //! @brief Access the underlying data by pointer
   Scalar* data();
+  //! @brief Access the underlying data by const pointer
   const Scalar* data() const;
 
   //! @brief Cast the LieGroup object to a copy object
@@ -59,51 +66,105 @@ public:
   template <class _NewScalar>
   LieGroupTemplate<_NewScalar> cast() const;
 
-  /// @todo 'cast' across groups
+  // @todo 'cast' across groups
   /// SO3 so3 = so2.as<SO3>()
 //  template <class _DerivedOther>
 //  LieGroupTemplate<_DerivedOther> as() const;
 
-  //! @brief Set the current LieGroup object to Identity
+  /**
+   * @brief Set the LieGroup object this to Identity.
+   * @return A reference to this.
+   * @see Eq. (2).
+   */
   _Derived& setIdentity();
 
-  //! @brief Set the current LieGroup object with random value
+  /**
+   * @brief Set the LieGroup object this to a random value.
+   * @return A reference to this.
+   * @note Randomization happens in the tangent space so that
+   * M = Log(tau.random)
+   */
   _Derived& setRandom();
 
   // Minimum API
-  // Those are the functions the Derived class must implement !
+  // Those functions must be implemented in the Derived class !
 
-  //! @brief Return the inverse of the current LieGroup object
+  /**
+   * @brief Get the inverse of the LieGroup object this.
+   * @param[out] -optional-  J_m_t The Jacobian of the inverse wrt this.
+   * @return The Inverse of this.
+   * @note See Eq. (3).
+   * @see TangentBase.
+   */
   LieGroup inverse(OptJacobianRef J_m_t = {}) const;
 
-  //! @brief Return the Tangent of the current LieGroup object
+  /**
+   * @brief Get the tangent of the Lie group at the point this.
+   * @param[out] -optional-  J_t_m The Jacobian of the tangent wrt this.
+   * @return The tangent of the Lie group at this.
+   */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
+  /**
+   * @brief Composition of this and another element of the same Lie group.
+   * @param[in]  m Another element of the same Lie group.
+   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
+   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
+   * @return The composition of 'this . m'.
+   * @note See Eqs. (1,2,3,4).
+   */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  /**
+   * @brief TODO tofix
+   * @param  v        [description]
+   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
+   * @return          [description]
+   */
   Vector act(const Vector& v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  /**
+   * @brief Get the Adjoint of the Lie group element this.
+   * @note See Eq. (29).
+   */
   Jacobian adj() const;
 
   // Deduced API
 
+  /**
+   * @brief Right oplus operation of the Lie group.
+   * @param[in]  t An element of the tangent of the Lie group.
+   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt this.
+   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt the tangent element.
+   * @return An element of the Lie group.
+   * @note See Eq. (25).
+   */
   template <typename _DerivedOther>
   LieGroup rplus(const TangentBase<_DerivedOther>& t,
                  OptJacobianRef J_mout_m = {},
                  OptJacobianRef J_mout_t = {}) const;
 
+  /**
+   * @brief Left oplus operation of the Lie group.
+   * @param[in]  t An element of the tangent of the Lie group.
+   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt this.
+   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt the tangent element.
+   * @return An element of the Lie group.
+   * @note See Eq. (27).
+   */
   template <typename _DerivedOther>
   LieGroup lplus(const TangentBase<_DerivedOther>& t,
                  OptJacobianRef J_mout_m = {},
                  OptJacobianRef J_mout_t = {}) const;
 
   /**
-   * @brief plus, calls rplus
+   * @brief An alias for the right oplus operation.
    * @see rplus
    */
   template <typename _DerivedOther>
@@ -111,18 +172,34 @@ public:
                 OptJacobianRef J_mout_m = {},
                 OptJacobianRef J_mout_t = {}) const;
 
+  /**
+   * @brief Right ominus operation of the Lie group.
+   * @param[in]  m Another element of the same Lie group.
+   * @param[out] -optional- J_t_ma Jacobian of the ominus operation wrt this.
+   * @param[out] -optional- J_t_mb Jacobian of the ominus operation wrt the other element.
+   * @return An element of the tangent space of the Lie group.
+   * @note See Eq. (26).
+   */
   template <typename _DerivedOther>
   Tangent rminus(const LieGroupBase<_DerivedOther>& m,
                  OptJacobianRef J_t_ma = {},
                  OptJacobianRef J_t_mb = {}) const;
 
+  /**
+   * @brief Left ominus operation of the Lie group.
+   * @param[in]  m Another element of the same Lie group.
+   * @param[out] -optional- J_t_ma Jacobian of the ominus operation wrt this.
+   * @param[out] -optional- J_t_mb Jacobian of the ominus operation wrt the other element.
+   * @return An element of the tangent space of the Lie group.
+   * @note See Eq. (28).
+   */
   template <typename _DerivedOther>
   Tangent lminus(const LieGroupBase<_DerivedOther>& m,
                  OptJacobianRef J_t_ma = {},
                  OptJacobianRef J_t_mb = {}) const;
 
   /**
-   * @brief minus, calls rminus
+   * @brief An alias for the right ominus operation.
    * @see rminus
    */
   template <typename _DerivedOther>
@@ -130,60 +207,88 @@ public:
                 OptJacobianRef J_t_ma = {},
                 OptJacobianRef J_t_mb = {}) const;
 
+  /**
+   * @brief
+   * @param[in]  m [description]
+   * @param[out] -optional-  J_mc_ma [description]
+   * @param[out] -optional-  J_mc_mb [description]
+   * @return [description]
+   */
   template <typename _DerivedOther>
   LieGroup between(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  /**
+   * @brief Equality operator.
+   * @param[in] m An element of the same Lie Group.
+   * @param[in] eps Threshold for equality copmarison.
+   * @return true if the Lie group element m is 'close' to this,
+   * false otherwise.
+   * @see TangentBase::isApprox
+   */
   template <typename _DerivedOther>
-  bool isApprox(const LieGroupBase<_DerivedOther>& m, const Scalar eps) const;
+  bool isApprox(const LieGroupBase<_DerivedOther>& m,
+                const Scalar eps) const;
 
   /// Some operators
 
   /**
-   * @brief operator =, assignment oprator
-   * @param t
-   * @return
+   * @brief Assignment operator.
+   * @param[in] An element of the Lie group.
+   * @return A reference to this.
    */
   _Derived& operator =(const LieGroupBase<_Derived>& m);
 
+  /**
+   * @brief Assignment operator.
+   * @param[in] An element of the Lie group.
+   * @return A reference to this.
+   */
   template <typename _DerivedOther>
   _Derived& operator =(const LieGroupBase<_DerivedOther>& m);
 
+  /**
+   * @brief Equality operator.
+   * @param[in] An element of the same Lie Group.
+   * @return true if the Lie group element m is 'close' to this,
+   * false otherwise.
+   * @see isApprox.
+   */
   template <typename _DerivedOther>
   bool operator ==(const LieGroupBase<_DerivedOther>& m);
 
   /**
-   * @brief operator +, rplus
-   * @see rplus
+   * @brief Right oplus operator.
+   * @see rplus.
    */
   template <typename _DerivedOther>
   LieGroup operator +(const TangentBase<_DerivedOther>& t) const;
 
   /**
-   * @brief operator +=, in-place rplus
-   * @see rplus
+   * @brief Right in-place oplus operator.
+   * @see rplus.
    */
   template <typename _DerivedOther>
   _Derived& operator +=(const TangentBase<_DerivedOther>& t);
 
   /**
-   * @brief operator -, rminus
-   * @see rminus
+   * @brief Right ominus operator.
+   * @see rminus.
    */
   template <typename _DerivedOther>
   Tangent operator -(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
-   * @brief operator *, compose
-   * @see compose
+   * @brief Lie group composition operator.
+   * @see compose.
    */
   template <typename _DerivedOther>
   LieGroup operator *(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
-   * @brief operator *=, in-place compose
-   * @see compose
+   * @brief Lie group in-place composition operator.
+   * @see compose.
    */
   template <typename _DerivedOther>
   _Derived& operator *=(const LieGroupBase<_DerivedOther>& m);
