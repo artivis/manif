@@ -12,7 +12,7 @@ template <typename _Scalar> struct SE2Tangent;
 
 namespace internal {
 
-// Traits specialization
+//! traits specialization
 
 template <typename _Scalar>
 struct traits<SE2<_Scalar>>
@@ -48,6 +48,9 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief Represents an element of SE2.
+ */
 template <typename _Scalar>
 struct SE2 : SE2Base<SE2<_Scalar>>
 {

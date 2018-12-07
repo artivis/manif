@@ -31,22 +31,63 @@ public:
 
   /// LieGroup common API
 
+  /**
+   * @brief Get the transformation matrix (isometry).
+   * @note T = | R t |
+   *           | 0 1 |
+   */
   Transformation transform() const;
+
+  //! @brief Get the rotational part of this as a rotation matrix.
   Rotation rotation() const;
+
+  //! @brief Get the translational part of this as a vector.
   Translation translation() const;
 
+  /**
+   * @brief Get the inverse.
+   * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
+   * @note See Eq. (132).
+   */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+
+  /**
+   * @brief Get the SE2 tangent at the point represented by this.
+   * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
+   * @return The SE2 tangent at this.
+   * @note See Eq. (135) & Eq. (141).
+   * @see SE2Tangent.
+   */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
+  /**
+   * @brief Composition of this and another SE2 element.
+   * @param[in] m Another SE2 element.
+   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
+   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
+   * @return The composition of 'this . m'.
+   * @note See Eq. (133) & Eqs. (139,140).
+   */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  /**
+   * @brief TODO tofix
+   * @param  v        [description]
+   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
+   * @return          [description]
+   */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  /**
+   * @brief Get the Adjoint.
+   * @note See Eq. (137).
+   */
   Jacobian adj() const;
 
   using Base::coeffs;
@@ -56,11 +97,31 @@ public:
 
   /// SE2 specific functions
 
+  /**
+   * @brief Get the real part of the underlying complex number representing
+   * the rotational part.
+   */
   Scalar real() const;
+
+  /**
+   * @brief Get the imaginary part of the underlying complex number representing
+   * the rotational part.
+   */
   Scalar imag() const;
+
+  /**
+   * @brief Get the angle (rad.) of the rotational part.
+   */
   Scalar angle() const;
 
+  /**
+   * @brief Get the x component of the translational part.
+   */
   Scalar x() const;
+
+  /**
+   * @brief Get the y component of the translational part.
+   */
   Scalar y() const;
 };
 

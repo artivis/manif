@@ -43,7 +43,7 @@ public:
   /// LieGroup common API
 
   /**
-   * @brief Get the associated transformation matrix (isometry)
+   * @brief Get the transformation matrix (isometry)
    * of size 3x3.
    * @note T = | R 0 |
    *           | 0 1 |
@@ -74,11 +74,12 @@ public:
 
   /**
    * @brief Composition of this and another SO2 element.
-   * @param[in]  m       Another SO2 element.
+   * @param[in] m Another SO2 element.
    * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
    * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
    * @return The composition of 'this . m'.
    * @note z_c = z_a z_b.
+   * @note See Eq. (105).
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,

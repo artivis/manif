@@ -11,7 +11,7 @@ template <typename _Derived> struct SO2TangentBase;
 
 namespace internal {
 
-// traits specialization
+//! traits specialization
 
 template <typename _Derived>
 struct LieGroupProperties<SO2Base<_Derived>>
@@ -19,6 +19,8 @@ struct LieGroupProperties<SO2Base<_Derived>>
   static constexpr int Dim = 2; /// @brief Space dimension
   static constexpr int DoF = 1; /// @brief Degrees of freedom
 };
+
+//! traits specialization
 
 template <typename _Derived>
 struct LieGroupProperties<SO2TangentBase<_Derived>>

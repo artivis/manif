@@ -233,14 +233,24 @@ public:
    */
   _Derived& operator =(const DataType& t);
 
+  /**
+   * @brief
+   * @return [description]
+   */
   template <class _DerivedOther>
   friend typename TangentBase<_DerivedOther>::Tangent
   operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
              const TangentBase<_DerivedOther>& t);
 
+  /**
+   * @brief Multiply the underlying vector with a scalar.
+   */
   template <typename T>
   Tangent operator *(const T scalar) const;
 
+  /**
+   * @brief Divide the underlying vector with a scalar.
+   */
   template <typename T>
   Tangent operator /(const T scalar) const;
 

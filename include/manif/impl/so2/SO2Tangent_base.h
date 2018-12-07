@@ -12,6 +12,10 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief
+ * @note See Appendix A.
+ */
 template <typename _Derived>
 struct SO2TangentBase : TangentBase<_Derived>
 {
@@ -41,7 +45,7 @@ public:
 
   /**
    * @brief Hat operator of SO2.
-   * @return The so2 skew-symmetric matrix.
+   * @return An element of the Lie algebra so2 (skew-symmetric matrix).
    * @note See Eq. (93).
    */
   LieAlg hat() const;
@@ -72,7 +76,7 @@ public:
 
   /**
    * @brief
-   * @return [description]
+   * @return
    */
   Jacobian smallAdj() const;
 

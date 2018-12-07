@@ -16,6 +16,8 @@ targeted at robotics applications.
 -   Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
 -   Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
 
+___
+
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#features">Features</a> •
@@ -24,6 +26,8 @@ targeted at robotics applications.
   <a href="#contributing">Contributing</a> <!--•
   <a href="#authors">Authors</a> -->
 </p>
+
+___
 
 ## Quick Start
 

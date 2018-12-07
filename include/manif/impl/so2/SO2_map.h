@@ -32,7 +32,7 @@ struct traits< Eigen::Map<const SO2<_Scalar>,0> >
 namespace Eigen {
 
 /**
- * @brief Specialization of Map for manif::SO2Base
+ * @brief Specialization of Map for manif::SO2
  */
 template <class _Scalar>
 class Map<manif::SO2<_Scalar>, 0>
@@ -58,7 +58,7 @@ protected:
 };
 
 /**
- * @brief Specialization of Map for const manif::SO2Base
+ * @brief Specialization of Map for const manif::SO2
  */
 template <class _Scalar>
 class Map<const manif::SO2<_Scalar>, 0>
