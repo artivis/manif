@@ -12,7 +12,7 @@
 namespace manif {
 
 /**
- * @brief Base class for Lie groups tangent.
+ * @brief Base class for Lie groups' tangents.
  * @class Defines the minimum common API.
  * @see LieGroupBase.
  */
@@ -57,7 +57,7 @@ public:
   template <class _NewScalar>
   TangentTemplate<_NewScalar> cast() const;
 
-  /// Common Tangent API
+  // Common Tangent API
 
   /**
    * @brief Set the Tangent object this to Zero.
@@ -70,6 +70,9 @@ public:
    * @return A reference to this.
    */
   _Derived& setRandom();
+
+  // Minimum API
+  // Those functions must be implemented in the Derived class !
 
   /**
    * @brief Hat operator of the Tangent element.
@@ -174,7 +177,7 @@ public:
   bool isApprox(const TangentBase<_DerivedOther>& t,
                 const Scalar eps) const;
 
-  /// Some operators
+  // Some operators
 
   /**
    * @brief Left oplus operator.

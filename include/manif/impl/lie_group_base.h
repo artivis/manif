@@ -232,7 +232,7 @@ public:
   bool isApprox(const LieGroupBase<_DerivedOther>& m,
                 const Scalar eps) const;
 
-  /// Some operators
+  // Some operators
 
   /**
    * @brief Assignment operator.
