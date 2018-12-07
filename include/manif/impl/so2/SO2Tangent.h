@@ -8,8 +8,7 @@
 namespace manif {
 namespace internal {
 
-/// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SO2Tangent<_Scalar>>
 {
@@ -41,7 +40,7 @@ namespace manif {
 ///////////////
 
 /**
- * @brief Represents an element of tangent space of SO2
+ * @brief Represents an element of tangent space of SO2.
  */
 template <typename _Scalar>
 struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>

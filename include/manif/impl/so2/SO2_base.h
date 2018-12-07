@@ -40,20 +40,7 @@ public:
   using Rotation       = typename Base::Rotation;
   using Vector         = typename Base::Vector;
 
-  /// LieGroup common API
-
-  /**
-   * @brief Get the transformation matrix (isometry)
-   * of size 3x3.
-   * @note T = | R 0 |
-   *           | 0 1 |
-   */
-  Transformation transform() const;
-
-  /**
-   * @brief Get the rotation matrix R.
-   */
-  Rotation rotation() const;
+  // LieGroup common API
 
   /**
    * @brief Get the inverse.
@@ -88,10 +75,10 @@ public:
 
   /**
    * @brief TODO tofix
-   * @param  v        [description]
+   * @param  v
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return          [description]
+   * @return
    */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
@@ -111,7 +98,19 @@ public:
   using Base::lminus;
   using Base::operator=;
 
-  /// SO2 specific functions
+  // SO2 specific functions
+
+  /**
+   * @brief Get the transformation matrix (2D isometry).
+   * @note T = | R 0 |
+   *           | 0 1 |
+   */
+  Transformation transform() const;
+
+  /**
+   * @brief Get the rotation matrix R.
+   */
+  Rotation rotation() const;
 
   /**
    * @brief Get the real part of the underlying complex number.

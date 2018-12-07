@@ -14,8 +14,7 @@ template <typename _Scalar> struct SE3Tangent;
 
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SE3<_Scalar>>
 {
@@ -52,6 +51,9 @@ namespace manif
 ///          ///
 ////////////////
 
+/**
+ * @brief Represent an element of SE3.
+ */
 template <typename _Scalar>
 struct SE3 : SE3Base<SE3<_Scalar>>
 {
@@ -73,19 +75,29 @@ public:
 
   SE3(const DataType& d);
 
+  /**
+   * @brief Constructor given a translation and a quaternion.
+   * @param[in] t A translation vector.
+   * @param[in] q A quaternion.
+   */
   SE3(const Translation& t,
       const Eigen::Quaternion<Scalar>& q);
 
+  /**
+   * @brief Constructor given a translation and SO3 element.
+   * @param[in] t A translation vector.
+   * @param[in] SO3 An element of SO3.
+   */
   SE3(const Translation& t,
-      const SO3<Scalar>& so3);
+      const SO3<Scalar>& SO3);
 
-  /// LieGroup common API
+  // LieGroup common API
 
   const DataType& coeffs() const;
 
   MANIF_INHERIT_GROUP_API
 
-  /// SE3 specific API
+  // SE3 specific API
 
 protected:
 

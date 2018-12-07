@@ -6,6 +6,7 @@
 namespace manif {
 namespace internal {
 
+//! @brief traits specialization for Eigen Map
 template <typename _Scalar>
 struct traits< Eigen::Map<SE3Tangent<_Scalar>,0> >
     : public traits<SE3Tangent<_Scalar>>
@@ -15,6 +16,7 @@ struct traits< Eigen::Map<SE3Tangent<_Scalar>,0> >
   using DataType = Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
 };
 
+//! @brief traits specialization for Eigen Map
 template <typename _Scalar>
 struct traits< Eigen::Map<const SE3Tangent<_Scalar>,0> >
     : public traits<const SE3Tangent<_Scalar>>
@@ -29,6 +31,9 @@ struct traits< Eigen::Map<const SE3Tangent<_Scalar>,0> >
 
 namespace Eigen {
 
+/**
+ * @brief Specialization of Map for manif::SE3
+ */
 template <class _Scalar>
 class Map<manif::SE3Tangent<_Scalar>, 0>
     : public manif::SE3TangentBase<Map<manif::SE3Tangent<_Scalar>, 0> >
@@ -51,6 +56,9 @@ protected:
   DataType data_;
 };
 
+/**
+ * @brief Specialization of Map for const manif::SE3
+ */
 template <class _Scalar>
 class Map<const manif::SE3Tangent<_Scalar>, 0>
     : public manif::SE3TangentBase<Map<const manif::SE3Tangent<_Scalar>, 0> >

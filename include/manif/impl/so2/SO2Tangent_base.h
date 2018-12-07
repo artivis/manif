@@ -13,7 +13,7 @@ namespace manif {
 ///////////////
 
 /**
- * @brief
+ * @brief The base class of the SO2 tangent.
  * @note See Appendix A.
  */
 template <typename _Derived>
