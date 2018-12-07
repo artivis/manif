@@ -8,7 +8,6 @@ TEST(TEST_SO2, TEST_SO2_PROPS)
 {
   EXPECT_EQ(2, SO2d::Dim);
   EXPECT_EQ(1, SO2d::DoF);
-  EXPECT_EQ(3, SO2d::N);
   EXPECT_EQ(2, SO2d::RepSize);
 }
 

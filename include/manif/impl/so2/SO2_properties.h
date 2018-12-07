@@ -18,7 +18,6 @@ struct LieGroupProperties<SO2Base<_Derived>>
 {
   static constexpr int Dim = 2; /// @brief Space dimension
   static constexpr int DoF = 1; /// @brief Degrees of freedom
-  static constexpr int N   = 3; /// @brief Dimension of transformation matrix
 };
 
 template <typename _Derived>

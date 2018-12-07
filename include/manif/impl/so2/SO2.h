@@ -26,15 +26,14 @@ struct traits<SO2<_Scalar>>
 
   static constexpr int Dim     = LieGroupProperties<Base>::Dim;
   static constexpr int DoF     = LieGroupProperties<Base>::DoF;
-  static constexpr int N       = LieGroupProperties<Base>::N;
   static constexpr int RepSize = 2;
 
   /// @todo move those to some traits ?
 
   using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
-  using Transformation = Eigen::Matrix<Scalar, N, N>;
-  using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
+  using Transformation = Eigen::Matrix<Scalar, 3, 3>;
+  using Rotation       = Eigen::Matrix<Scalar, 2, 2>;
   using Vector         = Eigen::Matrix<Scalar, DoF, 1>;
 };
 

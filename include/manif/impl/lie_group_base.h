@@ -17,7 +17,6 @@ struct LieGroupBase
 {
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
-  static constexpr int N       = internal::traits<_Derived>::N;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
 
   using Scalar         = typename internal::traits<_Derived>::Scalar;
@@ -204,8 +203,6 @@ template <typename _Derived>
 constexpr int LieGroupBase<_Derived>::Dim;
 template <typename _Derived>
 constexpr int LieGroupBase<_Derived>::DoF;
-template <typename _Derived>
-constexpr int LieGroupBase<_Derived>::N;
 template <typename _Derived>
 constexpr int LieGroupBase<_Derived>::RepSize;
 
