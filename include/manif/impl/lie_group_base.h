@@ -61,7 +61,7 @@ public:
   //! @brief Access the underlying data by const pointer
   const Scalar* data() const;
 
-  //! @brief Cast the LieGroup object to a copy object
+  //! @brief Cast the LieGroup object to a copy
   //! of a different scalar type
   template <class _NewScalar>
   LieGroupTemplate<_NewScalar> cast() const;
@@ -91,7 +91,7 @@ public:
 
   /**
    * @brief Get the inverse of the LieGroup object this.
-   * @param[out] -optional-  J_m_t The Jacobian of the inverse wrt this.
+   * @param[out] -optional-  J_m_t Jacobian of the inverse wrt this.
    * @return The Inverse of this.
    * @note See Eq. (3).
    * @see TangentBase.
@@ -100,8 +100,9 @@ public:
 
   /**
    * @brief Get the tangent of the Lie group at the point this.
-   * @param[out] -optional-  J_t_m The Jacobian of the tangent wrt this.
+   * @param[out] -optional- J_t_m Jacobian of the tangent wrt this.
    * @return The tangent of the Lie group at this.
+   * @see Eq. (21).
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
@@ -121,8 +122,8 @@ public:
   /**
    * @brief TODO tofix
    * @param  v        [description]
-   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
-   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
+   * @param[out] -optional- J_vout_m Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
    * @return          [description]
    */
   Vector act(const Vector& v,
@@ -220,7 +221,7 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @brief Equality operator.
+   * @brief Evaluate whether this and m are 'close'.
    * @param[in] m An element of the same Lie Group.
    * @param[in] eps Threshold for equality copmarison.
    * @return true if the Lie group element m is 'close' to this,
@@ -250,7 +251,7 @@ public:
 
   /**
    * @brief Equality operator.
-   * @param[in] An element of the same Lie Group.
+   * @param[in] An element of the same Lie group.
    * @return true if the Lie group element m is 'close' to this,
    * false otherwise.
    * @see isApprox.
@@ -293,9 +294,11 @@ public:
   template <typename _DerivedOther>
   _Derived& operator *=(const LieGroupBase<_DerivedOther>& m);
 
-  /// Some static helpers
+  // Some static helpers
 
+  //! Static helper the create a Lie group object set at Identity.
   static LieGroup Identity();
+  //! Static helper the create a random object of the Lie group.
   static LieGroup Random();
 
 private:
