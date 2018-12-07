@@ -48,20 +48,6 @@ data(TangentBase<_Derived>& tangent)
 }
 
 template <typename _Derived>
-typename _Derived::Transformation
-transform(const LieGroupBase<_Derived>& lie_group)
-{
-  return lie_group.transform();
-}
-
-template <typename _Derived>
-typename _Derived::Rotation
-rotation(const LieGroupBase<_Derived>& lie_group)
-{
-  return lie_group.rotation();
-}
-
-template <typename _Derived>
 void
 identity(LieGroupBase<_Derived>& lie_group)
 {
