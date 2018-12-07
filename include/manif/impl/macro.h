@@ -31,8 +31,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 
 #define MANIF_GROUP_PROPERTIES                                        \
   static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
-  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF; \
-  static constexpr int N   = internal::LieGroupProperties<Type>::N;
+  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
 
 #define MANIF_INHERIT_GROUP_AUTO_API    \
   using Base::setRandom;                \
