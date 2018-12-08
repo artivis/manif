@@ -7,6 +7,9 @@
 
 namespace manif {
 
+/**
+ * @brief Constexpr function to compute binomial coefficient.
+ */
 template <typename T>
 constexpr T binomial_coefficient(const T n, const T k)
 {
@@ -17,18 +20,26 @@ constexpr T binomial_coefficient(const T n, const T k)
   : (throw std::logic_error("k >= 0 !")) : (throw std::logic_error("n >= k !"));
 }
 
+/**
+ * @brief Constexpr function to compute power.
+ */
 template <typename T>
 constexpr T ipow(const T base, const int exp, T carry = 1) {
   return exp < 1 ? carry : ipow(base*base, exp/2, (exp % 2) ? carry*base : carry);
 }
 
+/**
+ * @brief Constexpr function to compute the Bernstein polynomial
+ */
 template <typename T>
 constexpr T polynomialBernstein(const T n, const T i, const T t)
 {
   return binomial_coefficient(n, i) * ipow(T(1)-t, n-i) * ipow(t,i);
 }
 
-
+/**
+ * @brief
+ */
 template <typename T>
 T smoothing_phi(const T t, const std::size_t degree)
 {
@@ -67,9 +78,17 @@ T smoothing_phi(const T t, const std::size_t degree)
 //  return (double(1) / sum_gamma) * sum;
 }
 
-
-
-
+/**
+ * @brief Slerp interpolation.
+ * @detail Interpolate a point mc between ma and mb at t in [0,1].
+ * mc=ma if t=0
+ * mc=mb if t=1
+ * @param[in] ma Initial point.
+ * @param[in] mb Final Point.
+ * @param[in] t Time at which to interpolate in [0,1].
+ * @param[in] -optional- J_mc_ma Jacobian of the interpolated point wrt ma.
+ * @param[in] -optional- J_mc_mb Jacobian of the interpolated point wrt mb.
+ */
 template <typename _Derived, typename _Scalar>
 static typename LieGroupBase<_Derived>::LieGroup
 interpolate_slerp(const LieGroupBase<_Derived>& ma,
@@ -125,6 +144,19 @@ interpolate_slerp(const LieGroupBase<_Derived>& ma,
   return mc;
 }
 
+/**
+ * @brief Cubic interpolation.
+ * @detail Interpolate a point mc between ma and mb at t in [0,1].
+ * mc=ma if t=0
+ * mc=mb if t=1
+ * @param[in] ma Initial point.
+ * @param[in] mb Final Point.
+ * @param[in] t Time at which to interpolate in [0,1].
+ * @param[in] -optional- ta.
+ * @param[in] -optional- tb.
+ * @param[out] -optional- J_mc_ma Jacobian of the interpolated point wrt ma.
+ * @param[out] -optional- J_mc_mb Jacobian of the interpolated point wrt mb.
+ */
 template <typename _Derived, typename _Scalar>
 static typename LieGroupBase<_Derived>::LieGroup
 interpolate_cubic(const LieGroupBase<_Derived>& ma,
@@ -177,7 +209,6 @@ interpolate_cubic(const LieGroupBase<_Derived>& ma,
 
     //      mc = (ta*h00 + tb*h01 + tab*h10 + tab*h11).retract();
 
-
     const auto l = ma.rplus(tab*h00).rplus(ta*h10);
     const auto r = mb.rplus(tab*(-h01)).rplus(tb*h11);
     const auto B = l.rminus(r);
@@ -189,11 +220,22 @@ interpolate_cubic(const LieGroupBase<_Derived>& ma,
 }
 
 /**
+ * @brief Smooth interpolation.
+ * @detail Interpolate a point mc between ma and mb at t in [0,1].
+ * mc=ma if t=0
+ * mc=mb if t=1
+ * @param[in] ma Initial point.
+ * @param[in] mb Final Point.
+ * @param[in] t Time at which to interpolate in [0,1].
+ * @param[in] -optional- ta.
+ * @param[in] -optional- tb.
+ * @param[out] -optional- J_mc_ma Jacobian of the interpolated point wrt ma.
+ * @param[out] -optional- J_mc_mb Jacobian of the interpolated point wrt mb.
+ *
  * @note "A two-step algorithm of smooth spline
  * generation on Riemannian manifolds",
  * Janusz Jakubiak and Fátima Silva Leite and Rui C. Rodrigues.
  */
-
 template <typename _Derived, typename _Scalar>
 static typename LieGroupBase<_Derived>::LieGroup
 interpolate_smooth(const LieGroupBase<_Derived>& ma,
@@ -284,7 +326,10 @@ enum class INTERP_METHOD
 };
 
 /**
- * @brief A helper function
+ * @brief A helper function for interpolation.
+ * @see interpolate_slerp.
+ * @see interpolate_cubic.
+ * @see interpolate_smooth.
  */
 template <typename _Derived, typename _Scalar>
 typename LieGroupBase<_Derived>::LieGroup

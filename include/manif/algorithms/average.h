@@ -31,6 +31,11 @@ namespace manif {
 //}
 
 /**
+ * @brief Compute an average point on Lie groups given a list of
+ * 'close' points.
+ * @param[in] points A list of 'close' points to compute an average point from.
+ * @return The average point of the input points.
+ *
  * @note see (a)
  * "Bi-invariant Means in Lie Groups.
  * Application to Left-in variant Polyaffine Transformations" p. 21 Sec. 4.2
@@ -44,27 +49,27 @@ namespace manif {
 template <template <typename LieGroup, typename...Args> class Container,
           typename LieGroup, typename...Args>
 LieGroup
-average_biinvariant(const Container<LieGroup, Args...>& mans,
+average_biinvariant(const Container<LieGroup, Args...>& points,
                     int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
 
-  if (mans.empty())
+  if (points.empty())
     return LieGroup();
-  else if (mans.size() == 1)
-    return *mans.begin();
+  else if (points.size() == 1)
+    return *points.begin();
 
-  auto m0 = *mans.begin();
+  auto m0 = *points.begin();
   LieGroup avg;
 
-  const Scalar w = Scalar(1./mans.size());
+  const Scalar w = Scalar(1./points.size());
 
   Tangent ts;
   for (int i=0; i<max_iterations; ++i)
   {
-    auto it        = mans.begin();
-    const auto end = mans.end();
+    auto it        = points.begin();
+    const auto end = points.end();
 
     ts = Tangent::Zero();
     for (; it != end; ++it)

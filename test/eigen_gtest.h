@@ -190,7 +190,7 @@ isEigenMatrixSameSize(const Eigen::MatrixBase<Derived>& m0,
 
 /**
  * @brief isZero() is not very suitable for comparing vectors which have norms
- * significantly larger than 0, isApporox(), on the other hand, does not work
+ * significantly larger than 0, isApprox(), on the other hand, does not work
  * with small norms.
  * https://eigen.tuxfamily.org/dox/classEigen_1_1DenseBase.html#ae8443357b808cd393be1b51974213f9c
  */
