@@ -37,9 +37,6 @@ public:
 
   /// Tangent common API
 
-  void zero();
-  void random();
-
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   LieAlg hat() const;
@@ -77,18 +74,6 @@ public:
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
   }
 };
-
-template <typename _Derived>
-void SE3TangentBase<_Derived>::zero()
-{
-  coeffs().setZero();
-}
-
-template <typename _Derived>
-void SE3TangentBase<_Derived>::random()
-{
-  coeffs().setRandom();
-}
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::LieGroup
