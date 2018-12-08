@@ -98,7 +98,7 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 | Manifold right plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" /> | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
 | Manifold left plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" /> | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
 | Manifold right minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee"  /> | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
-| Manifold left minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{Y}\ominus\mathbf\mathcal{X}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee"  /> | `X.lminus(Y)` |
+| Manifold left minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee"  /> | `X.lminus(Y)` |
 | Between | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}"/> | `X.between(Y)` |
 
 <!-- JS: I would use Y(-)X instead of X(-)Y since it's the opposite of Y=X(+)v. -->
