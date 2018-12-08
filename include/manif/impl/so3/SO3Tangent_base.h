@@ -12,6 +12,10 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief The base class of the SO3 tangent.
+ * @note See Appendix B.
+ */
 template <typename _Derived>
 struct SO3TangentBase : TangentBase<_Derived>
 {
@@ -31,21 +35,58 @@ public:
 
   using Base::coeffs;
 
+  /**
+   * @brief Hat operator of SO3.
+   * @return An element of the Lie algebra so3 (skew-symmetric matrix).
+   */
   LieAlg hat() const;
 
+  /**
+   * @brief Get the SO3 element.
+   * @param[out] -optional- J_m_t Jacobian of the SO3 element wrt this.
+   * @return The SO3 element.
+   */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
+  /**
+   * Get the right Jacobian of SO3.
+   * @note See Eq. (123).
+   */
   Jacobian rjac() const;
+
+  /**
+   * Get the left Jacobian of SO3.
+   * @note See Eq. (125).
+   */
   Jacobian ljac() const;
+
+  /**
+   * Get the inverse of the right Jacobian of SO3.
+   * @note See Eq. (124).
+   * @see rjac.
+   */
   Jacobian rjacinv() const;
+
+  /**
+   * Get the inverse of the left Jacobian of SO3.
+   * @note See Eq. (126).
+   * @see ljac.
+   */
   Jacobian ljacinv() const;
 
+  /**
+   * @brief
+   * @return
+   */
   Jacobian smallAdj() const;
 
-  /// SO3Tangent specific API
+  // SO3Tangent specific API
 
+  //! @brief
   Scalar x() const;
+  //! @brief
   Scalar y() const;
+  //! @brief
   Scalar z() const;
 };
 

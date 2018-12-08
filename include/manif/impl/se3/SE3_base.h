@@ -31,8 +31,6 @@ public:
 
   MANIF_GROUP_TYPEDEF
 
-  /// @todo find a mechanism to fetch it from base
-  /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
 
   // LieGroup common API
@@ -89,7 +87,7 @@ public:
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
 
-  /// SE3 specific functions
+  // SE3 specific functions
 
   /**
    * Get the transformation matrix (3D isometry).

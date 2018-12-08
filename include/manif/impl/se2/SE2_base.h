@@ -25,24 +25,9 @@ public:
 
   MANIF_GROUP_TYPEDEF
 
-  /// @todo find a mechanism to fetch it from base
-  /// just like the other typedefs
   using Translation = typename internal::traits<_Derived>::Translation;
 
-  /// LieGroup common API
-
-  /**
-   * @brief Get the transformation matrix (isometry).
-   * @note T = | R t |
-   *           | 0 1 |
-   */
-  Transformation transform() const;
-
-  //! @brief Get the rotational part of this as a rotation matrix.
-  Rotation rotation() const;
-
-  //! @brief Get the translational part of this as a vector.
-  Translation translation() const;
+  // LieGroup common API
 
   /**
    * @brief Get the inverse.
@@ -95,7 +80,20 @@ public:
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
 
-  /// SE2 specific functions
+  // SE2 specific functions
+
+  /**
+   * @brief Get the transformation matrix (2D isometry).
+   * @note T = | R t |
+   *           | 0 1 |
+   */
+  Transformation transform() const;
+
+  //! @brief Get the rotational part of this as a rotation matrix.
+  Rotation rotation() const;
+
+  //! @brief Get the translational part of this as a vector.
+  Translation translation() const;
 
   /**
    * @brief Get the real part of the underlying complex number representing

@@ -65,12 +65,14 @@ public:
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
    * @note See Eq. (106).
+   * @see rjac.
    */
   Jacobian rjacinv() const;
 
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
    * @note See Eq. (106).
+   * @see ljac.
    */
   Jacobian ljacinv() const;
 
