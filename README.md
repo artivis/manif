@@ -1,5 +1,5 @@
 # manif
-## A small header-only library for Lie algebra.
+## A small header-only library for Lie theory. <!-- JS: why small? -->
 
 [![Build Status](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
