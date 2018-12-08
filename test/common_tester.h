@@ -2,6 +2,8 @@
 #define _MANIF_MANIF_TEST_COMMON_TESTER_H_
 
 #include "test_utils.h"
+#include "manif/algorithms/interpolation.h"
+#include "manif/algorithms/average.h"
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
