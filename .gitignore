@@ -3,4 +3,5 @@
 .project
 .settings
 build
-
+doc
+doxygen_warnings.txt
