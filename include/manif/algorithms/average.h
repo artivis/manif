@@ -63,7 +63,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
   auto m0 = *points.begin();
   LieGroup avg;
 
-  const Scalar w = Scalar(1./points.size());
+  const Scalar w = Scalar(1) / Scalar(points.size());
 
   Tangent ts;
   for (int i=0; i<max_iterations; ++i)
@@ -82,7 +82,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 //      return avg;
 
     // This stopping criterion is from (a)
-    auto avg = m0.rplus(ts);
+    avg = m0.rplus(ts);
 
     if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_s)
       return avg;

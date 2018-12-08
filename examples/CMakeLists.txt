@@ -5,43 +5,26 @@ add_executable(se2_localization se2_localization.cpp)
 add_executable(se3_localization se3_localization.cpp)
 add_executable(se3_sam se3_sam.cpp)
 
+add_executable(so2_average so2_average.cpp)
+add_executable(se2_average se2_average.cpp)
+
 set(CXX_11_EXAMPLE_TARGETS
+
+  # SO2
+  so2_average
 
   # SE2
   se2_interpolation
   se2_decasteljau
   se2_cn_smooth
+  se2_average
   se2_localization
-  
+
   # SE3
   se3_localization
   se3_sam
-  
+
 )
-
-find_package(Ceres QUIET)
-
-if(CERES_FOUND)
-
-  message(STATUS "Found ceres_solver, building ceres examples.")
-
-#  add_executable(none none.cpp)
-
-#  set(CXX_11_CERES_EXAMPLE_TARGETS
-#    # Ceres
-
-#  )
-
-#  foreach(target ${CXX_11_CERES_EXAMPLE_TARGETS})
-#    target_link_libraries(${target} ${CERES_LIBRARIES})
-#    target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
-#  endforeach()
-
-#  list(APPEND CXX_11_EXAMPLE_TARGETS ${CXX_11_CERES_EXAMPLE_TARGETS})
-
-else()
-  message(STATUS "Could not find ceres_solver, ceres examples will not be built.")
-endif()
 
 # Link to manif
 foreach(target ${CXX_11_EXAMPLE_TARGETS})
