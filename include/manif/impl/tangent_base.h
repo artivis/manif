@@ -171,7 +171,6 @@ public:
    * @param[in] eps Threshold for equality copmarison.
    * @return true if the Tangent element t is 'close' to this,
    * false otherwise.
-   * @see Eigen::Matrix::isApprox
    */
   template <typename _DerivedOther>
   bool isApprox(const TangentBase<_DerivedOther>& t,
@@ -197,7 +196,7 @@ public:
   template <typename _DerivedOther>
   Tangent operator -(const TangentBase<_DerivedOther>& t) const;
 
-  //! @brief Equivalent to v * -1.
+  //! @brief Equivalent to -1 * v.
   Tangent operator -() const;
 
   /**

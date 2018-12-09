@@ -27,11 +27,14 @@ private:
 
 public:
 
-  MANIF_GROUP_PROPERTIES
-
   MANIF_GROUP_TYPEDEF
 
   using Translation = typename internal::traits<_Derived>::Translation;
+
+  using Base::coeffs;
+  using Base::coeffs_nonconst;
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
   // LieGroup common API
 
@@ -69,23 +72,17 @@ public:
    * @param  v
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return         [description]
+   * @return
    */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
   /**
-   * @brief Get the Adjoint.
+   * @brief Get the adjoint matrix of SE3 at this.
    * @note See Eq. (151).
    */
   Jacobian adj() const;
-
-  using Base::coeffs;
-  using Base::coeffs_nonconst;
-  using Base::data;
-  MANIF_INHERIT_GROUP_AUTO_API
-  MANIF_INHERIT_GROUP_OPERATOR
 
   // SE3 specific functions
 
@@ -97,7 +94,7 @@ public:
   Transformation transform() const;
 
   /**
-   * @brief Get the rotation matrix R.
+   * @brief Get the rotational part of this as a rotation matrix.
    */
   Rotation rotation() const;
 

@@ -39,12 +39,10 @@ class Map<manif::SE3<_Scalar>, 0>
     : public manif::SE3Base<Map<manif::SE3<_Scalar>, 0> >
 {
   using Base = manif::SE3Base<Map<manif::SE3<_Scalar>, 0> >;
-  using Type = Map<manif::SE3<_Scalar>, 0>;
 
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
-
   MANIF_INHERIT_GROUP_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }

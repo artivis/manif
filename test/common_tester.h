@@ -582,6 +582,10 @@ public:
     Adjc = state.compose(state_other).adj();
 
     EXPECT_EIGEN_NEAR(Adja*Adjb, Adjc);
+
+    //EXPECT_MANIF_NEAR(state.adj()*delta, (state*delta*state.inverse()).vee());
+    EXPECT_MANIF_NEAR(state+delta, state.adj()*delta+state);
+    EXPECT_EIGEN_NEAR(state.adj().inverse(), state.inverse().adj());
   }
 
   void evalAdjJlJr()

@@ -42,8 +42,7 @@ struct traits<SE3<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///
@@ -64,11 +63,14 @@ private:
 
 public:
 
+  // Needed this underlying vector is size 7
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
   using Quaternion = Eigen::Quaternion<Scalar>;
+
+  MANIF_INHERIT_GROUP_API
 
   SE3()  = default;
   ~SE3() = default;
@@ -94,8 +96,6 @@ public:
   // LieGroup common API
 
   const DataType& coeffs() const;
-
-  MANIF_INHERIT_GROUP_API
 
   // SE3 specific API
 

@@ -13,7 +13,6 @@ template <typename _Scalar> struct SE2Tangent;
 namespace internal {
 
 //! traits specialization
-
 template <typename _Scalar>
 struct traits<SE2<_Scalar>>
 {
@@ -62,6 +61,7 @@ private:
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   SE2()  = default;
   ~SE2() = default;
@@ -73,8 +73,6 @@ public:
   /// LieGroup common API
 
   const DataType& coeffs() const;
-
-  MANIF_INHERIT_GROUP_API
 
   /// SE2 specific API
 

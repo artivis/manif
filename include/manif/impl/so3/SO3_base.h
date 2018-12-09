@@ -38,7 +38,7 @@ public:
   // LieGroup common API
 
   /**
-   * @brief Get the inverse.
+   * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note q^-1 = q* .
    */
@@ -79,7 +79,7 @@ public:
              OptJacobianRef J_vout_v = {}) const;
 
   /**
-   * @brief Get the Adjoint.
+   * @brief Get the adjoint of SO3 at this.
    * @note See Eq. (119).
    */
   Jacobian adj() const;

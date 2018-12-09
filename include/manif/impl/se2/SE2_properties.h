@@ -12,7 +12,6 @@ template <typename _Derived> struct SE2TangentBase;
 namespace internal {
 
 //! traits specialization
-
 template <typename _Derived>
 struct LieGroupProperties<SE2Base<_Derived>>
 {
@@ -21,7 +20,6 @@ struct LieGroupProperties<SE2Base<_Derived>>
 };
 
 //! traits specialization
-
 template <typename _Derived>
 struct LieGroupProperties<SE2TangentBase<_Derived>>
 {

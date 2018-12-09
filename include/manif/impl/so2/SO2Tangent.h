@@ -53,6 +53,8 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO2Tangent() = default;
 
@@ -60,15 +62,12 @@ public:
   SO2Tangent(const Scalar theta);
   SO2Tangent(const DataType& theta);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
-
-  /// SO2Tangent specific API
+  // SO2Tangent specific API
 
   using Base::angle;
 

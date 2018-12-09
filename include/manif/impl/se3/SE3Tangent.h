@@ -53,20 +53,19 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SE3Tangent() = default;
 
   SE3Tangent(const DataType& v);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
-
-  /// SE3Tangent specific API
+  // SE3Tangent specific API
 
 protected:
 

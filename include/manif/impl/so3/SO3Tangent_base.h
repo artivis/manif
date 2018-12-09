@@ -38,6 +38,7 @@ public:
   /**
    * @brief Hat operator of SO3.
    * @return An element of the Lie algebra so3 (skew-symmetric matrix).
+   * @note See example 3 of the paper.
    */
   LieAlg hat() const;
 

@@ -53,21 +53,20 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SE2Tangent() = default;
 
   SE2Tangent(const DataType& v);
   SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
-
-  /// SE2Tangent specific API
+  // SE2Tangent specific API
 
   using Base::angle;
 

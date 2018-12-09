@@ -61,6 +61,7 @@ private:
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   SO3()  = default;
   ~SO3() = default;
@@ -91,8 +92,6 @@ public:
 
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_GROUP_API
-
 protected:
 
   friend class LieGroupBase<SO3<Scalar>>;
@@ -102,8 +101,6 @@ protected:
 };
 
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
-
-/// SO3 functions definitions
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const DataType& d)

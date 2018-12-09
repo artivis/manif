@@ -40,10 +40,18 @@ public:
   using Rotation       = typename Base::Rotation;
   using Vector         = typename Base::Vector;
 
+  using Base::coeffs;
+  using Base::setRandom;
+  using Base::rplus;
+  using Base::lplus;
+  using Base::rminus;
+  using Base::lminus;
+  using Base::operator=;
+
   // LieGroup common API
 
   /**
-   * @brief Get the inverse.
+   * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note z^-1 = z*
    * @note See Eq. (104).
@@ -85,18 +93,10 @@ public:
              OptJacobianRef J_vout_v = {}) const;
 
   /**
-   * @brief Get the Adjoint.
+   * @brief Get the ajoint matrix of SO2 at this.
    * @note See Eq. (103).
    */
   Jacobian adj() const;
-
-  using Base::coeffs;
-  using Base::setRandom;
-  using Base::rplus;
-  using Base::lplus;
-  using Base::rminus;
-  using Base::lminus;
-  using Base::operator=;
 
   // SO2 specific functions
 
@@ -115,12 +115,12 @@ public:
   /**
    * @brief Get the real part of the underlying complex number.
    */
-  /*const*/ Scalar/*&*/ real() const;
+  Scalar real() const;
 
   /**
    * @brief Get the imaginary part of the underlying complex number.
    */
-  /*const*/ Scalar/*&*/ imag() const;
+  Scalar imag() const;
 
   /**
    * @brief Get the angle (rad.).

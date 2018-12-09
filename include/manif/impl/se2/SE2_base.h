@@ -13,6 +13,10 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief The base class of the SE2 group.
+ * @note See Appendix C of the paper.
+ */
 template <typename _Derived>
 struct SE2Base : LieGroupBase<_Derived>
 {
@@ -27,10 +31,15 @@ public:
 
   using Translation = typename internal::traits<_Derived>::Translation;
 
+  using Base::coeffs;
+  using Base::coeffs_nonconst;
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
+
   // LieGroup common API
 
   /**
-   * @brief Get the inverse.
+   * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note See Eq. (132).
    */
@@ -60,25 +69,20 @@ public:
 
   /**
    * @brief TODO tofix
-   * @param  v        [description]
+   * @param  v
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return          [description]
+   * @return
    */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
   /**
-   * @brief Get the Adjoint.
+   * @brief Get the adjoint matrix of SE2 at this.
    * @note See Eq. (137).
    */
   Jacobian adj() const;
-
-  using Base::coeffs;
-  using Base::coeffs_nonconst;
-  MANIF_INHERIT_GROUP_AUTO_API
-  MANIF_INHERIT_GROUP_OPERATOR
 
   // SE2 specific functions
 

@@ -34,14 +34,7 @@ public:
 
   using Base::coeffs;
 
-  /// Tangent common API
-
-  /**
-   * @brief Get the SO2 element.
-   * @param[out] -optional- J_m_t Jacobian of the SO2 element wrt this.
-   * @return The SO2 element.
-   */
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+  // Tangent common API
 
   /**
    * @brief Hat operator of SO2.
@@ -49,6 +42,13 @@ public:
    * @note See Eq. (93).
    */
   LieAlg hat() const;
+
+  /**
+   * @brief Get the SO2 element.
+   * @param[out] -optional- J_m_t Jacobian of the SO2 element wrt this.
+   * @return The SO2 element.
+   */
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SO2.
@@ -82,7 +82,7 @@ public:
    */
   Jacobian smallAdj() const;
 
-  /// SO2Tangent specific API
+  // SO2Tangent specific API
 
   //const Scalar& angle() const;
 
@@ -152,7 +152,7 @@ SO2TangentBase<_Derived>::smallAdj() const
   return smallAdj;
 }
 
-/// SO2Tangent specific API
+// SO2Tangent specific API
 
 //template <typename _Derived>
 //const typename SO2TangentBase<_Derived>::Scalar&

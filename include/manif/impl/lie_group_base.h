@@ -121,10 +121,10 @@ public:
 
   /**
    * @brief TODO tofix
-   * @param  v        [description]
+   * @param  v
    * @param[out] -optional- J_vout_m Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
-   * @return          [description]
+   * @return
    */
   Vector act(const Vector& v,
              OptJacobianRef J_vout_m = {},

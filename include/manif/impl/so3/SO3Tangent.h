@@ -53,20 +53,19 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO3Tangent() = default;
 
   SO3Tangent(const DataType& vec);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API;
-  MANIF_INHERIT_TANGENT_OPERATOR;
-
-  /// SO3Tangent specific API
+  // SO3Tangent specific API
 
 protected:
 

@@ -42,17 +42,17 @@ public:
   // Tangent common API
 
   /**
+   * @brief Hat operator of SE3.
+   * @return An element of the Lie algebra se3.
+   */
+  LieAlg hat() const;
+
+  /**
    * @brief Get the SE3 element.
    * @param[out] -optional- J_m_t Jacobian of the SE3 element wrt this.
    * @return The SE3 element.
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
-
-  /**
-   * @brief Hat operator of SE3.
-   * @return An element of the Lie algebra se3.
-   */
-  LieAlg hat() const;
 
   /**
    * @brief Get the right Jacobian of SE3.
