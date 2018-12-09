@@ -12,6 +12,10 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief The base class of the SO2 tangent.
+ * @note See Appendix A.
+ */
 template <typename _Derived>
 struct SO2TangentBase : TangentBase<_Derived>
 {
@@ -30,24 +34,59 @@ public:
 
   using Base::coeffs;
 
-  /// Tangent common API
+  // Tangent common API
 
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
-
+  /**
+   * @brief Hat operator of SO2.
+   * @return An element of the Lie algebra so2 (skew-symmetric matrix).
+   * @note See Eq. (93).
+   */
   LieAlg hat() const;
 
+  /**
+   * @brief Get the SO2 element.
+   * @param[out] -optional- J_m_t Jacobian of the SO2 element wrt this.
+   * @return The SO2 element.
+   */
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+
+  /**
+   * @brief Get the right Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian rjac() const;
+
+  /**
+   * @brief Get the left Jacobian of SO2.
+   * @note See Eq. (106).
+   */
   Jacobian ljac() const;
 
+  /**
+   * @brief Get the inverse of the right Jacobian of SO2.
+   * @note See Eq. (106).
+   * @see rjac.
+   */
   Jacobian rjacinv() const;
+
+  /**
+   * @brief Get the inverse of the right Jacobian of SO2.
+   * @note See Eq. (106).
+   * @see ljac.
+   */
   Jacobian ljacinv() const;
 
+  /**
+   * @brief
+   * @return
+   */
   Jacobian smallAdj() const;
 
-  /// SO2Tangent specific API
+  // SO2Tangent specific API
 
   //const Scalar& angle() const;
 
+  //! @brief Get the angle (rad.).
   Scalar angle() const;
 };
 
@@ -113,7 +152,7 @@ SO2TangentBase<_Derived>::smallAdj() const
   return smallAdj;
 }
 
-/// SO2Tangent specific API
+// SO2Tangent specific API
 
 //template <typename _Derived>
 //const typename SO2TangentBase<_Derived>::Scalar&

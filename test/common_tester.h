@@ -2,6 +2,8 @@
 #define _MANIF_MANIF_TEST_COMMON_TESTER_H_
 
 #include "test_utils.h"
+#include "manif/algorithms/interpolation.h"
+#include "manif/algorithms/average.h"
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
@@ -580,6 +582,10 @@ public:
     Adjc = state.compose(state_other).adj();
 
     EXPECT_EIGEN_NEAR(Adja*Adjb, Adjc);
+
+    //EXPECT_MANIF_NEAR(state.adj()*delta, (state*delta*state.inverse()).vee());
+    EXPECT_MANIF_NEAR(state+delta, state.adj()*delta+state);
+    EXPECT_EIGEN_NEAR(state.adj().inverse(), state.inverse().adj());
   }
 
   void evalAdjJlJr()

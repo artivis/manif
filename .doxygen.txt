@@ -32,13 +32,13 @@
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Manif"
+PROJECT_NAME           = "manif"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "A library for on-Manifold operations."
+PROJECT_BRIEF          = "A small library for Lie group theory with application to state estimation in robotics."
 
 # The INPUT tag is used to specify the files and/or directories that contain
 # documented source files. You may enter file names like myfile.cpp or
@@ -46,7 +46,8 @@ PROJECT_BRIEF          = "A library for on-Manifold operations."
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = include
+INPUT = include
+INPUT += README.md
 
 #---------------------------------------------------------------------------
 # Shared
@@ -882,7 +883,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE =
+USE_MDFILE_AS_MAINPAGE = README.md
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing

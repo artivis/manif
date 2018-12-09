@@ -12,6 +12,10 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief The base class of the SE2 tangent.
+ * @note See Appendix C.
+ */
 template <typename _Derived>
 struct SE2TangentBase : TangentBase<_Derived>
 {
@@ -29,21 +33,47 @@ public:
   using Base::data;
   using Base::coeffs;
 
-  /// Tangent common API
+  // Tangent common API
 
+  /**
+   * @brief Hat operator of SE2.
+   * @return An element of the Lie algebra se2 (skew-symmetric matrix).
+   * @note See Eq. (x).
+   */
   LieAlg hat() const;
 
+  /**
+   * @brief Get the SE2 element.
+   * @param[out] -optional- J_m_t Jacobian of the SE2 element wrt this.
+   * @return The SE2 element.
+   */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
+  /**
+   * @brief Get the right Jacobian of SE2.
+   * @note See Eq. (141).
+   */
   Jacobian rjac() const;
+
+  /**
+   * @brief Get the left Jacobian of SE2.
+   * @note See Eq. (142).
+   */
   Jacobian ljac() const;
 
+  /**
+   * @brief
+   * @return
+   */
   Jacobian smallAdj() const;
 
-  /// SE2Tangent specific API
+  // SE2Tangent specific API
 
+  //! @brief Get the x component of the translational part.
   Scalar x() const;
+  //! @brief Get the y component of the translational part.
   Scalar y() const;
+  //! @brief Get the rotational part.
   Scalar angle() const;
 };
 

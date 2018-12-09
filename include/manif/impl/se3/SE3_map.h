@@ -6,6 +6,7 @@
 namespace manif {
 namespace internal {
 
+//! @brief traits specialization for Eigen Map
 template <typename _Scalar>
 struct traits< Eigen::Map<SE3<_Scalar>,0> >
     : public traits<SE3<_Scalar>>
@@ -15,6 +16,7 @@ struct traits< Eigen::Map<SE3<_Scalar>,0> >
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
+//! @brief traits specialization for Eigen Map const
 template <typename _Scalar>
 struct traits< Eigen::Map<const SE3<_Scalar>,0> >
     : public traits<const SE3<_Scalar>>
@@ -29,17 +31,18 @@ struct traits< Eigen::Map<const SE3<_Scalar>,0> >
 
 namespace Eigen {
 
+/**
+ * @brief Specialization of Map for manif::SE3
+ */
 template <class _Scalar>
 class Map<manif::SE3<_Scalar>, 0>
     : public manif::SE3Base<Map<manif::SE3<_Scalar>, 0> >
 {
   using Base = manif::SE3Base<Map<manif::SE3<_Scalar>, 0> >;
-  using Type = Map<manif::SE3<_Scalar>, 0>;
 
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
-
   MANIF_INHERIT_GROUP_API
 
   Map(Scalar* coeffs) : data_(coeffs) { }
@@ -54,6 +57,9 @@ protected:
   DataType data_;
 };
 
+/**
+ * @brief Specialization of Map for const manif::SE3
+ */
 template <class _Scalar>
 class Map<const manif::SE3<_Scalar>, 0>
     : public manif::SE3Base<Map<const manif::SE3<_Scalar>, 0> >

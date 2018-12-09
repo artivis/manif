@@ -12,16 +12,19 @@ namespace manif {
  * on Lie groups.
  *
  * @param trajectory, a discretized trajectory.
- * @param degree, the degree of smoothness of the fitted curve
+ * @param degree, the degree of smoothness of the fitted curve.
  * @param k_interp, the number of points to interpolate
  * between two consecutive points of the trajectory.
  * interpolate k_interp for t in ]0,1].
+ * @param closed_curve Whether the input trajectory is closed or not.
+ * If true, the first and the last points of the input trajectory are used
+ * to interpolate points inbetween. Default false.
  * @return The interpolated smooth trajectory
  *
  * @note A naive implementation of the DeCasteljau algorithm
  * on Lie groups.
  *
- * https://www.wikiwand.com/en/De_Casteljau%27s_algorithm
+ * @link https://www.wikiwand.com/en/De_Casteljau%27s_algorithm
  */
 template <typename LieGroup>
 std::vector<typename LieGroup::LieGroup>
@@ -30,9 +33,12 @@ decasteljau(const std::vector<LieGroup>& trajectory,
             const unsigned int k_interp,
             const bool closed_curve = false)
 {
-  MANIF_CHECK(trajectory.size() > 2, "Oups");
-  MANIF_CHECK(degree <= trajectory.size(), "Oups");
-  MANIF_CHECK(k_interp > 0, "Oups");
+  MANIF_CHECK(trajectory.size() > 2,
+    "Input trajectory must have more than two points!");
+  MANIF_CHECK(degree <= trajectory.size(),
+    "Degree must be less or equal to the number of input points!");
+  MANIF_CHECK(k_interp > 0,
+    "k_interp must be greater than zero!");
 
   // Number of connected, non-overlapping segments
   const unsigned int n_segments =

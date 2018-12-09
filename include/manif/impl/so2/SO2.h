@@ -12,8 +12,7 @@ template <typename _Scalar> struct SO2Tangent;
 
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SO2<_Scalar>>
 {
@@ -48,6 +47,9 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief Represents an element of SO2.
+ */
 template <typename _Scalar>
 struct SO2 : SO2Base<SO2<_Scalar>>
 {
@@ -59,21 +61,28 @@ private:
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   SO2()  = default;
   ~SO2() = default;
 
   SO2(const DataType& d);
+
+  /**
+   * @brief Constructor given the real and imaginary part
+   * of a unit complex number representing the angle.
+   */
   SO2(const Scalar real, const Scalar imag);
+
+  //! @brief Constructor given an angle (rad.)
   SO2(const Scalar theta);
 
-  /// LieGroup common API
+  // LieGroup common API
 
+  //! Get a const reference to the underlying DataType.
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_GROUP_API
-
-  /// SO2 specific API
+  // SO2 specific API
 
   using Base::angle;
 

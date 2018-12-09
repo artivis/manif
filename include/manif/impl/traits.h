@@ -9,7 +9,6 @@ namespace internal {
 template <typename T> struct traits;
 
 /// @note the following is from the Eigen library
-
 // here we say once and for all that traits<const T> == traits<T>
 // When constness must affect traits, it has to be constness on
 // template parameters on which T itself depends.
@@ -29,6 +28,11 @@ template <typename _LieGroupBase> struct LieGroupProperties;
 template <typename _Class, typename _NewScalar>
 struct traitscast;
 
+/**
+ * @brief Traits to change the scalar type of a template class
+ * @note given using FooDouble = Foo<double>
+ * using FooFloat = typename traitscast<FooDouble, float>::cast;
+ */
 template <template <typename> class _Class, typename _NewScalar, typename _Scalar>
 struct traitscast<_Class<_Scalar>, _NewScalar>
 {

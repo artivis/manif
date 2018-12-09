@@ -5,6 +5,11 @@
 
 namespace manif {
 
+/**
+ * @brief Wrap an angle in -pi,pi.
+ * @param[in] angle The angle to be wrapped in radians
+ * @return The wrapped angle.
+ */
 template <typename T>
 T pi2pi(T angle)
 {
@@ -16,7 +21,7 @@ T pi2pi(T angle)
 
 /**
  * @brief Conversion to radians
- * @param deg angle in degrees
+ * @param[in] deg angle in degrees
  * @return angle in radians
  */
 template<typename T>
@@ -27,7 +32,7 @@ constexpr T toRad(const T deg)
 
 /**
  * @brief Conversion to degrees
- * @param rad angle in radians
+ * @param[in] rad angle in radians
  * @return angle in degrees
  */
 template<typename T>

@@ -8,8 +8,7 @@
 namespace manif {
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SO3Tangent<_Scalar>>
 {
@@ -40,6 +39,9 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief Represents an element of tangent space of SO3.
+ */
 template <typename _Scalar>
 struct SO3Tangent : SO3TangentBase<SO3Tangent<_Scalar>>
 {
@@ -51,20 +53,19 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO3Tangent() = default;
 
   SO3Tangent(const DataType& vec);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API;
-  MANIF_INHERIT_TANGENT_OPERATOR;
-
-  /// SO3Tangent specific API
+  // SO3Tangent specific API
 
 protected:
 

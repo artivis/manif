@@ -12,8 +12,7 @@ template <typename _Scalar> struct SO3Tangent;
 
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SO3<_Scalar>>
 {
@@ -46,6 +45,9 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief Represents an element of SO3.
+ */
 template <typename _Scalar>
 struct SO3 : SO3Base<SO3<_Scalar>>
 {
@@ -59,25 +61,36 @@ private:
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_API
 
   SO3()  = default;
   ~SO3() = default;
 
   SO3(const DataType& d);
 
+  /**
+   * @brief Constructor given a quaternion.
+   */
   SO3(const QuaternionDataType& q);
 
+  /**
+   * @brief Constructor given the quaternion's coefficients.
+   */
   SO3(const Scalar x, const Scalar y,
       const Scalar z, const Scalar w);
 
+  /**
+   * @brief Constructor given an angle axis.
+   */
   SO3(const Eigen::AngleAxis<Scalar>& angle_axis);
 
+  /**
+   * @brief Constructor given Euler angles.
+   */
   SO3(const Scalar roll, const Scalar pitch,
       const Scalar yaw);
 
   const DataType& coeffs() const;
-
-  MANIF_INHERIT_GROUP_API
 
 protected:
 
@@ -88,8 +101,6 @@ protected:
 };
 
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
-
-/// SO3 functions definitions
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const DataType& d)

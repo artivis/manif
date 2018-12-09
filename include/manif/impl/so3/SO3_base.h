@@ -13,6 +13,10 @@ namespace manif {
 ///          ///
 ////////////////
 
+/**
+ * @brief The base class of the SO3 group.
+ * @note See Appendix B of the paper.
+ */
 template <typename _Derived>
 struct SO3Base : LieGroupBase<_Derived>
 {
@@ -27,36 +31,81 @@ public:
 
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
-  /// LieGroup common API
+  using Base::coeffs;
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
-  Transformation transform() const;
-  Rotation rotation() const;
+  // LieGroup common API
 
+  /**
+   * @brief Get the inverse of this.
+   * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
+   * @note q^-1 = q* .
+   */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+
+  /**
+   * @brief Get the SO3 tangent at the point represented by this.
+   * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
+   * @return The SO3 tangent at this.
+   * @note See Eq. (113) & Eq. (124).
+   * @see SO3Tangent.
+   */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
+  /**
+   * @brief Composition of this and another SO3 element.
+   * @param[in] m Another SO3 element.
+   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
+   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
+   * @return The composition of 'this . m'.
+   * @note Quaternion product.
+   * @note See Eqs. (121,122).
+   */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
                    OptJacobianRef J_mc_ma = {},
                    OptJacobianRef J_mc_mb = {}) const;
 
+  /**
+   * @brief TODO tofix
+   * @param  v
+   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
+   * @return
+   */
   Vector act(const Vector &v,
              OptJacobianRef J_vout_m = {},
              OptJacobianRef J_vout_v = {}) const;
 
+  /**
+   * @brief Get the adjoint of SO3 at this.
+   * @note See Eq. (119).
+   */
   Jacobian adj() const;
 
-  using Base::coeffs;
-  MANIF_INHERIT_GROUP_AUTO_API
-  MANIF_INHERIT_GROUP_OPERATOR
+  // SO3 specific functions
 
-  /// SO3 specific functions
+  /**
+   * @brief Get the transformation matrix (3D isometry).
+   * @note T = | R 0 |
+   *           | 0 1 |
+   */
+  Transformation transform() const;
 
+  //! @brief Get a rotation matrix.
+  Rotation rotation() const;
+
+  //! @brief Get the x component of the quaternion.
   Scalar x() const;
+  //! @brief Get the y component of the quaternion.
   Scalar y() const;
+  //! @brief Get the z component of the quaternion.
   Scalar z() const;
+  //! @brief Get the w component of the quaternion.
   Scalar w() const;
 
+  //! @brief Get quaternion.
   QuaternionDataType quat() const;
 
 protected:

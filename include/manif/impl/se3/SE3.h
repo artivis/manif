@@ -14,8 +14,7 @@ template <typename _Scalar> struct SE3Tangent;
 
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SE3<_Scalar>>
 {
@@ -43,8 +42,7 @@ struct traits<SE3<_Scalar>>
 } /* namespace internal */
 } /* namespace manif */
 
-namespace manif
-{
+namespace manif {
 
 ////////////////
 ///          ///
@@ -52,6 +50,9 @@ namespace manif
 ///          ///
 ////////////////
 
+/**
+ * @brief Represent an element of SE3.
+ */
 template <typename _Scalar>
 struct SE3 : SE3Base<SE3<_Scalar>>
 {
@@ -62,30 +63,41 @@ private:
 
 public:
 
+  // Needed this underlying vector is size 7
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
+  MANIF_INHERIT_GROUP_API
+
   SE3()  = default;
   ~SE3() = default;
 
   SE3(const DataType& d);
 
+  /**
+   * @brief Constructor given a translation and a quaternion.
+   * @param[in] t A translation vector.
+   * @param[in] q A quaternion.
+   */
   SE3(const Translation& t,
       const Eigen::Quaternion<Scalar>& q);
 
+  /**
+   * @brief Constructor given a translation and SO3 element.
+   * @param[in] t A translation vector.
+   * @param[in] SO3 An element of SO3.
+   */
   SE3(const Translation& t,
-      const SO3<Scalar>& so3);
+      const SO3<Scalar>& SO3);
 
-  /// LieGroup common API
+  // LieGroup common API
 
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_GROUP_API
-
-  /// SE3 specific API
+  // SE3 specific API
 
 protected:
 

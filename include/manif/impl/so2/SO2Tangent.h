@@ -8,8 +8,7 @@
 namespace manif {
 namespace internal {
 
-// Traits specialization
-
+//! Traits specialization
 template <typename _Scalar>
 struct traits<SO2Tangent<_Scalar>>
 {
@@ -40,6 +39,9 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief Represents an element of tangent space of SO2.
+ */
 template <typename _Scalar>
 struct SO2Tangent : SO2TangentBase<SO2Tangent<_Scalar>>
 {
@@ -51,21 +53,21 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
+  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO2Tangent() = default;
 
+  //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
   SO2Tangent(const DataType& theta);
 
-  /// Tangent common API
+  // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
-
-  /// SO2Tangent specific API
+  // SO2Tangent specific API
 
   using Base::angle;
 

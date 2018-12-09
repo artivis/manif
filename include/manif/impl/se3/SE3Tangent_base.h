@@ -13,6 +13,10 @@ namespace manif {
 ///         ///
 ///////////////
 
+/**
+ * @brief The base class of the SE3 tangent.
+ * @note See Appendix D of the paper.
+ */
 template <typename _Derived>
 struct SE3TangentBase : TangentBase<_Derived>
 {
@@ -35,22 +39,46 @@ public:
   using Base::data;
   using Base::coeffs;
 
-  /// Tangent common API
+  // Tangent common API
 
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
-
+  /**
+   * @brief Hat operator of SE3.
+   * @return An element of the Lie algebra se3.
+   */
   LieAlg hat() const;
 
+  /**
+   * @brief Get the SE3 element.
+   * @param[out] -optional- J_m_t Jacobian of the SE3 element wrt this.
+   * @return The SE3 element.
+   */
+  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+
+  /**
+   * @brief Get the right Jacobian of SE3.
+   * @note See Eq. (155) and following notes.
+   */
   Jacobian rjac() const;
+
+  /**
+   * @brief Get the left Jacobian of SE3.
+   * @note See Eq. (155).
+   */
   Jacobian ljac() const;
 
+  /**
+   * @brief
+   * @return
+   */
   Jacobian smallAdj() const;
 
-  /// SE3Tangent specific API
+  // SE3Tangent specific API
 
+  //! @brief Get the linear part.
   BlockV v();
   const ConstBlockV v() const;
 
+  //! @brief Get the angular part.
   BlockW w();
   const ConstBlockW w() const;
 
