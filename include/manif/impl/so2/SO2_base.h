@@ -26,27 +26,11 @@ private:
 
 public:
 
-  using Scalar   = typename Base::Scalar;
-
-  using LieGroup = typename Base::LieGroup;
-  using Tangent  = typename Base::Tangent;
-  using Jacobian = typename Base::Jacobian;
-
-  using OptJacobianRef = typename Base::OptJacobianRef;
-
-  using DataType = typename Base::DataType;
-
-  using Transformation = typename Base::Transformation;
-  using Rotation       = typename Base::Rotation;
-  using Vector         = typename Base::Vector;
+  MANIF_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
 
   using Base::coeffs;
-  using Base::setRandom;
-  using Base::rplus;
-  using Base::lplus;
-  using Base::rminus;
-  using Base::lminus;
-  using Base::operator=;
 
   // LieGroup common API
 
