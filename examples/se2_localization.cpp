@@ -17,6 +17,7 @@ int main()
     manif::SE2d X, X_simulation;
     Eigen::Matrix3d P;
 
+    X_simulation.setIdentity();
     X.setIdentity();
     P.setZero();
 
