@@ -89,7 +89,7 @@ int main()
         /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
 
         // expectation
-        Eigen::Vector3d e = X.inverse(J_xi_x).act(b, J_e_xi);
+        Eigen::Vector2d e = X.inverse(J_xi_x).act(b, J_e_xi);
         H = J_e_xi * J_xi_x; // H = J_e_x
         Eigen::Matrix2d E = H * P * H.transpose();
 
