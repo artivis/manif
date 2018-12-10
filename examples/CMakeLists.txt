@@ -1,6 +1,7 @@
 add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
 add_executable(se2_cn_smooth se2_cn_smooth.cpp)
+add_executable(se2_localization se2_localization.cpp)
 
 set(CXX_11_EXAMPLE_TARGETS
 
@@ -8,7 +9,8 @@ set(CXX_11_EXAMPLE_TARGETS
   se2_interpolation
   se2_decasteljau
   se2_cn_smooth
-
+  se2_localization
+  
 )
 
 find_package(Ceres QUIET)

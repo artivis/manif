@@ -1,0 +1,112 @@
+/*
+ * se2_localization.cpp
+ *
+ *  Created on: Dec 10, 2018
+ *      Author: jsola
+ */
+
+#include "manif/SE2.h"
+
+#include "Eigen/Dense"
+
+#include <vector>
+
+int main()
+{
+    // Define the robot pose element and its covariance
+    manif::SE2d X, X_simulation;
+    Eigen::Matrix3d P;
+
+    X.setIdentity();
+    P.setZero();
+
+    // Define a control vector and its noise and covariance
+    manif::SE2Tangentd u, u_noisy;
+    Eigen::Vector3d u_sigmas, u_noise;
+    Eigen::Matrix3d U;
+
+    u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
+    u_sigmas << 0.1, 0.1, 0.1;
+    U = (u_sigmas.array() * u_sigmas.array()).matrix().asDiagonal();
+
+    // Declare the Jacobians of the motion wrt robot and control
+    manif::SE2d::Jacobian J_x, J_u;
+
+    // Define three landmarks in R^2
+    Eigen::Vector2d b0, b1, b2;
+    b0 << 1.0, 0.0;
+    b1 << 1.0, 1.0;
+    b2 << 1.0, -1.0;
+    std::vector<Eigen::Vector2d> landmarks;
+    landmarks.push_back(b0);
+    landmarks.push_back(b1);
+    landmarks.push_back(b2);
+
+    // Define the beacon's measurements
+    Eigen::Vector2d y;
+    Eigen::Matrix2d N;
+    Eigen::Vector2d n_sigmas, n; 
+    
+    n_sigmas << 0.1, 0.1;
+    N = (n_sigmas.array() * n_sigmas.array()).matrix().asDiagonal();
+
+    // Declare the Jacobian of the measurements wrt the robot pose
+    Eigen::Matrix<double, 2, 3> H; // H = J_e_x
+
+    // Declare some temporary Jacobians
+    manif::SE2d::Jacobian J_xi_x;
+    Eigen::Matrix<double, 2, 3> J_e_xi;
+
+    // Make 10 steps. Measure one landmark each time
+    for (int t = 0; t < 10; t++)
+    {
+        //// I. Simulation --------------------------------------------------------------------
+
+        /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        u_noise = (u_sigmas.array() * Eigen::Matrix<double, 3, 1>::Random().array()).matrix(); // control noise
+        u_noisy = u + manif::SE2Tangentd(u_noise);                                                  // noisy control
+
+        X_simulation = X_simulation + u_noisy;                                  // overloaded X.rplus(u) = X * exp(u)
+
+        /// then we measure one landmark - - - - - - - - - - - - - -
+
+        int i = t%3;                                                            // landmark to measure
+        Eigen::Vector2d b = landmarks.at(i);                                    // lmk coordinates in world frame
+        n = n_sigmas.array() * Eigen::Matrix<double, 2, 1>::Random().array();   // measurement noise
+
+        y = X_simulation.inverse().act(b);                                      // landmark measurement before adding noise
+        y = y + n;                                                              // landmark measurement, noisy
+
+
+        //// II. Estimation -------------------------------------------------------------------
+        
+        /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        X = X.plus(u, J_x, J_u);
+        P = J_x*P*J_x.transpose() + J_u*U*J_u.transpose();
+
+        /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
+
+        // expectation
+        Eigen::Vector3d e = X.inverse(J_xi_x).act(b, J_e_xi);
+        H = J_e_xi * J_xi_x; // H = J_e_x
+        Eigen::Matrix2d E = H * P * H.transpose();
+
+        // innovation
+        Eigen::Vector2d z = y - e;
+        Eigen::Matrix2d Z = E + N;
+        
+        // Kalman gain
+        Eigen::Matrix<double, 3, 2> K = P * H.transpose() * Z.inverse();
+
+        // Correction step
+        manif::SE2Tangentd dx = (K * z).eval();
+
+        // Update
+        X = X + dx;                                                     // overloaded X.rplus(dx) = X * exp(dx)
+        P = P - K * Z * K.transpose();
+    }
+
+    return 0;
+}
