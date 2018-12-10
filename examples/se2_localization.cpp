@@ -53,9 +53,13 @@ int main()
     // Declare the Jacobian of the measurements wrt the robot pose
     Eigen::Matrix<double, 2, 3> H; // H = J_e_x
 
-    // Declare some temporary Jacobians
-    manif::SE2d::Jacobian J_xi_x;
-    Eigen::Matrix<double, 2, 3> J_e_xi;
+    // Declare some temporaries
+    Eigen::Vector2d e, z;               // expectation, innovation
+    Eigen::Matrix2d E, Z;               // covs of the above
+    Eigen::Matrix<double, 3, 2> K;      // Kalman gain
+    manif::SE2Tangentd dx;              // optimal update step, or error-state
+    manif::SE2d::Jacobian J_xi_x;       // Jacobian
+    Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
 
     // Make 10 steps. Measure one landmark each time
     for (int t = 0; t < 10; t++)
@@ -84,27 +88,27 @@ int main()
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         X = X.plus(u, J_x, J_u);
-        P = J_x*P*J_x.transpose() + J_u*U*J_u.transpose();
+        P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
         /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
 
         // expectation
-        Eigen::Vector2d e = X.inverse(J_xi_x).act(b, J_e_xi);
-        H = J_e_xi * J_xi_x; // H = J_e_x
-        Eigen::Matrix2d E = H * P * H.transpose();
+        e = X.inverse(J_xi_x).act(b, J_e_xi);                   // note: e = R.tr * ( b - t ), for X = (R,t).
+        H = J_e_xi * J_xi_x;                                    // note: H = J_e_x = J_e_xi * J_xi_x
+        E = H * P * H.transpose();
 
         // innovation
-        Eigen::Vector2d z = y - e;
-        Eigen::Matrix2d Z = E + N;
+        z = y - e;
+        Z = E + N;
         
         // Kalman gain
-        Eigen::Matrix<double, 3, 2> K = P * H.transpose() * Z.inverse();
+        K = P * H.transpose() * Z.inverse();                    // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
 
         // Correction step
-        manif::SE2Tangentd dx = (K * z).eval();
+        dx = (K * z).eval();                                    // eval() is here because the `=` does not accept expressions as right-value.
 
         // Update
-        X = X + dx;                                                     // overloaded X.rplus(dx) = X * exp(dx)
+        X = X + dx;                                             // overloaded X.rplus(dx) = X * exp(dx)
         P = P - K * Z * K.transpose();
     }
 
