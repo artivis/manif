@@ -57,9 +57,9 @@ especially for mathematical developments.
 
 [@Sophus] C++ implementation of Lie Groups using Eigen.
 Our work differs from [@Sophus] in that all our classes inherit from a common templated base class
-which ensure a common minimal API. This allows for writing generic algorithms on Lie groups.
+which allows a common minimal API. This permits writing generic algorithms on Lie groups.
 Moreover, the Jacobian matrix are available to the user for most of the operation on groups
-allowing complex chain of operations to be differentiate through the chain rule.
+allowing complex chain of operations to be differentiated through the chain rule.
 
 [@wave_geometry] Manifold geometry with fast automatic derivatives and coordinate frame semantics checking.
 Our work differs from [@wave_geometry] in that it offers analitically computed Jacobian matrix whereas
