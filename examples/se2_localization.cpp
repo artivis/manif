@@ -69,19 +69,19 @@ int main()
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        u_noise = (u_sigmas.array() * Eigen::Matrix<double, 3, 1>::Random().array()).matrix(); // control noise
-        u_noisy = u + manif::SE2Tangentd(u_noise);                                                  // noisy control
+        u_noise = (u_sigmas.array() * Eigen::Matrix<double, 3, 1>::Random().array()).matrix();  // control noise
+        u_noisy = u + manif::SE2Tangentd(u_noise);                                              // noisy control
 
-        X_simulation = X_simulation + u_noisy;                                  // overloaded X.rplus(u) = X * exp(u)
+        X_simulation = X_simulation + u_noisy;                              // overloaded X.rplus(u) = X * exp(u)
 
         /// then we measure one landmark - - - - - - - - - - - - - -
 
-        int i = t%3;                                                            // landmark to measure
-        Eigen::Vector2d b = landmarks.at(i);                                    // lmk coordinates in world frame
+        int i = t % 3;                                                      // landmark to measure
+        Eigen::Vector2d b = landmarks.at(i);                                // lmk coordinates in world frame
         n = n_sigmas.array() * Eigen::Matrix<double, 2, 1>::Random().array();   // measurement noise
 
-        y = X_simulation.inverse().act(b);                                      // landmark measurement before adding noise
-        y = y + n;                                                              // landmark measurement, noisy
+        y = X_simulation.inverse().act(b);                                  // landmark measurement before adding noise
+        y = y + n;                                                          // landmark measurement, noisy
 
 
         //// II. Estimation -------------------------------------------------------------------
@@ -103,13 +103,13 @@ int main()
         Z = E + N;
         
         // Kalman gain
-        K = P * H.transpose() * Z.inverse();                    // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
+        K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
 
         // Correction step
-        dx = (K * z).eval();                                    // eval() is here because the `=` does not accept expressions as right-value.
+        dx = (K * z).eval();                        // eval() is here because the `=` does not accept expressions as right-value.
 
         // Update
-        X = X + dx;                                             // overloaded X.rplus(dx) = X * exp(dx)
+        X = X + dx;                                 // overloaded X.rplus(dx) = X * exp(dx)
         P = P - K * Z * K.transpose();
     }
 
