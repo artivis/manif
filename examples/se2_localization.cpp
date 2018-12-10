@@ -27,7 +27,7 @@ int main()
     Eigen::Matrix3d U;
 
     u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
-    u_sigmas << 0.1, 0.1, 0.1;
+    u_sigmas << 0.001, 0.001, 0.001;
     U = (u_sigmas.array() * u_sigmas.array()).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
