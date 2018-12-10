@@ -69,8 +69,8 @@ int main()
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        u_noise = (u_sigmas.array() * Eigen::Matrix<double, 3, 1>::Random().array()).matrix();  // control noise
-        u_noisy = u + manif::SE2Tangentd(u_noise);                                              // noisy control
+        u_noise = (u_sigmas.array() * Eigen::Array<double, 3, 1>::Random()).matrix();   // control noise
+        u_noisy = u + manif::SE2Tangentd(u_noise);                                      // noisy control
 
         X_simulation = X_simulation + u_noisy;                              // overloaded X.rplus(u) = X * exp(u)
 
@@ -78,7 +78,7 @@ int main()
 
         int i = t % 3;                                                      // landmark to measure
         Eigen::Vector2d b = landmarks.at(i);                                // lmk coordinates in world frame
-        n = n_sigmas.array() * Eigen::Matrix<double, 2, 1>::Random().array();   // measurement noise
+        n = n_sigmas.array() * Eigen::Array<double, 2, 1>::Random();        // measurement noise
 
         y = X_simulation.inverse().act(b);                                  // landmark measurement before adding noise
         y = y + n;                                                          // landmark measurement, noisy
