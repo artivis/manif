@@ -23,11 +23,11 @@ bibliography: paper.bib
 # Summary
 
 `manif` [@manif] is a micro Lie theory library targeted at 
-state estimation in robotics application.
+state estimation in robotics applications.
 With a single dependency on [@eigenweb] and 
 a requierement on c++11 only it is
 developped as a header-only library making 
-it easily integrable to existing project.
+it easily integrable to existing projects.
 
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
@@ -58,15 +58,15 @@ especially for mathematical developments.
 [@Sophus] C++ implementation of Lie Groups using Eigen.
 Our work differs from [@Sophus] in that all our classes inherit from a common templated base class
 which allows a common minimal API. This permits writing generic algorithms on Lie groups.
-Moreover, the Jacobian matrix are available to the user for most of the operation on groups
+Moreover, the Jacobian matrices are available to the user for most of the operation on groups,
 allowing complex chain of operations to be differentiated through the chain rule.
 
 [@wave_geometry] Manifold geometry with fast automatic derivatives and coordinate frame semantics checking.
 Our work differs from [@wave_geometry] in that it offers analitically computed Jacobian matrix whereas
 the later relies on automatic-differentiation.
 
-Finally, Jacobian matrix in `manif` are defined with respect to a local perturbation on the Lie groups
-unlink both [@Sophus] and [@wave_geometry] which defines them with respect 
-to the representation vector that underlie the implemtation.
+Finally, Jacobian matrices in `manif` are defined with respect to a local perturbation on the Lie group's tangent space,
+unlike both [@Sophus] and [@wave_geometry] which define them with respect 
+to the representation vector that underlie the implemetation.
 
 # References
