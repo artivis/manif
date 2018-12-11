@@ -70,7 +70,7 @@ int main()
     Eigen::Matrix3d U;
 
     u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
-    u_sigmas << 0.1, 0.01, 0.1;
+    u_sigmas << 0.1, 0.1, 0.1;
     U = (u_sigmas.array() * u_sigmas.array()).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
@@ -114,10 +114,10 @@ int main()
 
     // DEBUG
     cout << std::setprecision(3) << std::fixed << endl;
-    cout << "X STATE:   X     Y   | THETA  " << endl;
-    cout << "-----------------------------" << endl;
-    cout << "X init : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-    cout << "-----------------------------" << endl;
+    cout << "X STATE     :   X     Y   | THETA  " << endl;
+    cout << "----------------------------------" << endl;
+    cout << "X initial   : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
+    cout << "----------------------------------" << endl;
     // END DEBUG
 
 
@@ -168,8 +168,8 @@ int main()
 
 
         // DEBUG
-        cout << "X simu : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-        cout << "X pred : " << X.translation().transpose() << " | " << X.angle() << endl;
+        cout << "X simulated : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
+        cout << "X predicted : " << X.translation().transpose() << " | " << X.angle() << endl;
         // END DEBUG
 
 
@@ -205,8 +205,8 @@ int main()
 
 
         // DEBUG
-        cout << "X corr : " << X.translation().transpose() << " | " << X.angle() << endl;
-        cout << "-----------------------------" << endl;
+        cout << "X corrected : " << X.translation().transpose() << " | " << X.angle() << endl;
+        cout << "----------------------------------" << endl;
         // END DEBUG
 
     }
