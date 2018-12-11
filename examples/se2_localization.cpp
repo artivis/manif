@@ -1,8 +1,40 @@
-/*
- * se2_localization.cpp
+/**
+ * \file se2_localization.cpp
  *
  *  Created on: Dec 10, 2018
- *      Author: jsola
+ *     \author: jsola
+ *
+ *
+ *  Robot localization based on observation of fixed beacons.
+ *  ---------------------------------------------------------
+ *
+ *  This demo corresponds to the application in chapter V, section A in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
+ *  The following is an abstract of the content of the paper.
+ *  Please consult the paper for better reference.
+ *
+ *  We consider a robot in the plane surrounded by a small number of punctual landmarks or \emph{beacons}.
+ *  The robot receives control actions in the form of axial and angular velocities,
+ *  and is able to measure the location of the beacons \wrt its own reference frame.
+ *
+ *  The robot pose is in $\SE(2)$ and the beacon positions in $\bbR^2$,
+ *
+ *  The control signal $\bfu$ is a twist in $\se(2)$ comprising longitudinal velocity $v$
+ *  and angular velocity $\omega$, with no lateral velocity component, integrated over the sampling time $\dt$.
+ *
+ *  The control is corrupted by additive Gaussian noise $\bfw\sim\cN(\bf0,\bfQ)$,
+ *  with covariance $Q=diagonal(\sigma_v^2, \sigma_s^2, \sigma_\omega^2)$.
+ *  This noise accounts for possible lateral slippages $u_s$ through a value of $\sigma_s\ne0$,
+ *
+ *  At the arrival of a control $\bfu$, the robot pose is updated with X <-- X * Exp(u) = X + u.
+ *
+ *  Landmark measurements are of the range and bearing type, though they are put in Cartesian form for simplicity.
+ *  Their noise $\bfn\sim\cN({\bf0},\bfR)$ is zero mean Gaussian,% and is specified with a covariances matrix $R$.
+ *  We notice the rigid motion action $\cX\inv\cdot\bfb_k$ (see appendix C).
+ *
+ *  We consider the beacons $\bfb_k$ situated at known positions.
+ *  We define the pose to estimate as $\hat\cX\in\SE(2)$.
+ *  The estimation error $\dx$ and its covariance $\bfP$ are expressed in the tangent space at $\hat\cX$.
+ *
  */
 
 #include "manif/SE2.h"
@@ -33,8 +65,8 @@ int main()
     P.setZero();
 
     // Define a control vector and its noise and covariance
-    manif::SE2Tangentd u, u_noisy, u_simu, u_est;
-    Eigen::Vector3d u_sigmas, u_noise;
+    manif::SE2Tangentd u_simu, u_est;
+    Eigen::Vector3d u, u_noisy, u_sigmas, u_noise;
     Eigen::Matrix3d U;
 
     u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
@@ -56,12 +88,12 @@ int main()
 
     // Define the beacon's measurements
     Eigen::Vector2d y;
-    Eigen::Matrix2d N;
+    Eigen::Matrix2d R;
     Eigen::Vector2d n_sigmas, y_noise; 
     std::vector<Eigen::Vector2d> measurements(landmarks.size());
 
     n_sigmas << 0.01, 0.01;
-    N = (n_sigmas.array() * n_sigmas.array()).matrix().asDiagonal();
+    R = (n_sigmas.array() * n_sigmas.array()).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
     Eigen::Matrix<double, 2, 3> H; // H = J_e_x
@@ -158,10 +190,10 @@ int main()
 
             // innovation
             z = y - e;
-            Z = E + N;
+            Z = E + R;
 
             // Kalman gain
-            K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
+            K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + R).inv
 
             // Correction step
             dx = K * z;                                 // dx is in the tangent space at X
