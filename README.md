@@ -43,7 +43,7 @@ ___
 $ apt-get install manif
 ```
 -->
-#### From source
+<!--#### From source-->
 ```terminal
 $ git clone https://github.com/artivis/manif.git
 $ cd manif && mkdir build && cd build
@@ -111,7 +111,7 @@ Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf
 All operations come with their respective analytical Jacobian matrices.  
 Throughout `manif`, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
 
-<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" title="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus f(\mathbf\mathcal{X})}{\varphi}" /></a></center>&nbsp;
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}=\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}=\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" title="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus f(\mathbf\mathcal{X})}{\varphi}" /></a></center>&nbsp;
 
 The Jacobians of any of the aforementionned operations can then be evaluated, e.g.,
 
@@ -171,14 +171,12 @@ These demos are:
 
 ## Publications
 
-If you use this work, please consider citing as follows:
+If you use this work, please consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
 
 ```
 @techreport{SOLA-18-Lie,
     Address = {Barcelona},
     Author = {Joan Sol\`a and Jeremie Deray and Dinesh Atchuthan},
-    Date-Added = {2018-12-04 17:45:11 +0100},
-    Date-Modified = {2018-12-04 17:46:58 +0100},
     Institution = {{Institut de Rob\`otica i Inform\`atica Industrial}},
     Number = {IRI-TR-18-01},
     Title = {A micro {L}ie theory for state estimation in robotics},
@@ -186,8 +184,9 @@ If you use this work, please consider citing as follows:
     Year = {2018}
 }
 ```
-Notice that this reference is the one referred to throughout
-the code documentation.
+Notice that this reference is the one referred to throughout the code documentation.
+Since this is a versioned work, please refer to [version 1, available here](http://arxiv.org/abs/1812.01537v1), of the paper when corss-referencing with the `manif` documentation.
+This will give the appropriate equation numbers.
 
 ## Contributing
 
