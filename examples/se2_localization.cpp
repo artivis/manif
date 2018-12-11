@@ -4,37 +4,79 @@
  *  Created on: Dec 10, 2018
  *     \author: jsola
  *
+ *  (c) 2018 Joan Sola @ IRI-CSIC, Barcelona, Catalonia
+ *
+ *  ---------------------------------------------------------
+ *  This file is part of `manif`, a C++ template-only library
+ *  for Lie theory targeted at estimation for robotics.
+ *  (c) 2018 Jeremie Deray @ PAL Robotics, Barcelona
+ *  ---------------------------------------------------------
+ *
+ *  ---------------------------------------------------------
+ *  Demonstration example:
  *
  *  Robot localization based on observation of fixed beacons.
- *  -------------------------------------
+ *  ---------------------------------------------------------
  *
- *  This demo corresponds to the application in chapter V, section A in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
+ *  This demo corresponds to the application in chapter V, section A
+ *  in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
+ *
  *  The following is an abstract of the content of the paper.
  *  Please consult the paper for better reference.
  *
- *  We consider a robot in the plane surrounded by a small number of punctual landmarks or \emph{beacons}.
- *  The robot receives control actions in the form of axial and angular velocities,
- *  and is able to measure the location of the beacons \wrt its own reference frame.
  *
- *  The robot pose is in $\SE(2)$ and the beacon positions in $\bbR^2$,
+ *  We consider a robot in the plane surrounded by a small
+ *  number of punctual landmarks or _beacons_.
+ *  The robot receives control actions in the form of axial
+ *  and angular velocities, and is able to measure the location
+ *  of the beacons w.r.t its own reference frame.
  *
- *  The control signal $\bfu$ is a twist in $\se(2)$ comprising longitudinal velocity $v$
- *  and angular velocity $\omega$, with no lateral velocity component, integrated over the sampling time $\dt$.
+ *  The robot pose is in SE(2) and the beacon positions in R^2,
  *
- *  The control is corrupted by additive Gaussian noise $\bfw\sim\cN(\bf0,\bfQ)$,
- *  with covariance $Q=diagonal(\sigma_v^2, \sigma_s^2, \sigma_\omega^2)$.
- *  This noise accounts for possible lateral slippages $u_s$ through a value of $\sigma_s\ne0$,
+ *  The control signal u is a twist in se(2) comprising longitudinal
+ *  velocity v and angular velocity w, with no lateral velocity
+ *  component, integrated over the sampling time dt.
  *
- *  At the arrival of a control $\bfu$, the robot pose is updated with X <-- X * Exp(u) = X + u.
+ *  The control is corrupted by additive Gaussian noise u_noise,
+ *  with covariance Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
+ *  This noise accounts for possible lateral slippage u_s
+ *  through a non-zero value of sigma_s,
  *
- *  Landmark measurements are of the range and bearing type, though they are put in Cartesian form for simplicity.
- *  Their noise $\bfn\sim\cN({\bf0},\bfR)$ is zero mean Gaussian, and is specified with a covariances matrix $R$.
- *  We notice the rigid motion action $\cX\inv\cdot\bfb_k$ (see appendix C).
+ *  At the arrival of a control u, the robot pose is updated
+ *  with X <-- X * Exp(u) = X + u.
  *
- *  We consider the beacons $\bfb_k$ situated at known positions.
- *  We define the pose to estimate as $\hat\cX\in\SE(2)$.
- *  The estimation error $\dx$ and its covariance $\bfP$ are expressed in the tangent space at $\hat\cX$.
+ *  Landmark measurements are of the range and bearing type,
+ *  though they are put in Cartesian form for simplicity.
+ *  Their noise n is zero mean Gaussian, and is specified
+ *  with a covariances matrix R.
+ *  We notice the rigid motion action y = h(X,b) = X^-1 * b
+ *  (see appendix C).
  *
+ *  We consider the beacons b_k situated at known positions.
+ *  We define the pose to estimate as X in SE(2).
+ *  The estimation error dx and its covariance P are expressed
+ *  in the tangent space at X.
+ *
+ *  All these variables are summarized again as follows
+ *
+ *    X   : robot pose, SE(2)
+ *    u   : robot control, [v*dt ; 0 ; w*dt] in se(2)
+ *    Q   : control perturbation covariance
+ *    b_k : k-th landmark position, R^2
+ *    y   : Cartesian landmark measurement in robot frame, R^2
+ *    R   : covariance of the measurement noise
+ *
+ *  The motion and measurement models are
+ *
+ *    X_(t+1) = f(X_t, u) = X_t * Exp ( w )     // motion equation
+ *    y_k     = h(X, b_k) = X^-1 * b_k          // measurement equation
+ *
+ *  The algorithm below comprises first a simulator to
+ *  produce measurements, then uses these measurements
+ *  to estimate the state.
+ *
+ *  Printing simulated state and estimated state together
+ *  allows for evaluating the quality of the estimates.
  */
 
 #include "manif/SE2.h"
@@ -48,6 +90,9 @@
 
 using std::cout;
 using std::endl;
+
+typedef Eigen::Array<double, 2, 1> Array2d;
+typedef Eigen::Array<double, 3, 1> Array3d;
 
 int main()
 {
@@ -66,12 +111,13 @@ int main()
 
     // Define a control vector and its noise and covariance
     manif::SE2Tangentd u_simu, u_est;
-    Eigen::Vector3d u, u_noisy, u_sigmas, u_noise;
+    Eigen::Vector3d u, u_noisy, u_noise;
+    Array3d u_sigmas;
     Eigen::Matrix3d U;
 
     u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
     u_sigmas << 0.1, 0.1, 0.1;
-    U = (u_sigmas.array() * u_sigmas.array()).matrix().asDiagonal();
+    U = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
     manif::SE2d::Jacobian J_x, J_u;
@@ -89,18 +135,19 @@ int main()
     // Define the beacon's measurements
     Eigen::Vector2d y;
     Eigen::Matrix2d R;
-    Eigen::Vector2d y_sigmas, y_noise; 
+    Eigen::Vector2d y_noise;
+    Array2d y_sigmas;
     std::vector<Eigen::Vector2d> measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01;
-    R = (y_sigmas.array() * y_sigmas.array()).matrix().asDiagonal();
+    R = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
     Eigen::Matrix<double, 2, 3> H;      // H = J_e_x
 
     // Declare some temporaries
     Eigen::Vector2d e, z;               // expectation, innovation
-    Eigen::Matrix2d E, Z;               // covs of the above
+    Eigen::Matrix2d E, Z;               // covariances of the above
     Eigen::Matrix<double, 3, 2> K;      // Kalman gain
     manif::SE2Tangentd dx;              // optimal update step, or error-state
     manif::SE2d::Jacobian J_xi_x;       // Jacobian
@@ -113,8 +160,8 @@ int main()
 
 
     // DEBUG
-    cout << std::setprecision(3) << std::fixed << endl;
-    cout << "X STATE     :   X     Y   | THETA  " << endl;
+    cout << std::setprecision(3) << std::fixed   << endl;
+    cout << "X STATE     :   X     Y   | THETA " << endl;
     cout << "----------------------------------" << endl;
     cout << "X initial   : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
     cout << "----------------------------------" << endl;
@@ -127,31 +174,31 @@ int main()
     //
     //
 
-    // Make 10 steps. Measure one landmark each time
+    // Make 10 steps. Measure up to three landmarks each time.
     for (int t = 0; t < 10; t++)
     {
         //// I. Simulation ###############################################################################
 
         /// simulate noise
-        u_noise = u_sigmas.array() * Eigen::Array<double, 3, 1>::Random();  // control noise
-        y_noise = y_sigmas.array() * Eigen::Array<double, 2, 1>::Random();  // measurement noise
+        u_noise = u_sigmas * Array3d::Random();             // control noise
+        y_noise = y_sigmas * Array2d::Random();             // measurement noise
 
-        u_noisy = u + u_noise;                                      // noisy control
+        u_noisy = u + u_noise;                              // noisy control
 
         u_simu  = u;
         u_est   = u_noisy;
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        X_simulation = X_simulation + u_simu;                       // overloaded X.rplus(u) = X * exp(u)
+        X_simulation = X_simulation + u_simu;               // overloaded X.rplus(u) = X * exp(u)
 
         /// then we measure all landmarks - - - - - - - - - - - - - - - - - - - -
         for (int i = 0; i < 3; i++)
         {
-            b = landmarks[i];                                       // lmk coordinates in world frame
+            b = landmarks[i];                               // lmk coordinates in world frame
 
-            y = X_simulation.inverse().act(b);                      // landmark measurement, before adding noise
-            y = y + y_noise;                                        // landmark measurement, noisy
-            measurements[i] = y;                                    // store for the estimator just below
+            y = X_simulation.inverse().act(b);              // landmark measurement, before adding noise
+            y = y + y_noise;                                // landmark measurement, noisy
+            measurements[i] = y;                            // store for the estimator just below
         }
 
 
@@ -161,7 +208,7 @@ int main()
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        X = X.plus(u_est, J_x, J_u);                                // X * exp(u), with Jacobians
+        X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
 
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
@@ -178,14 +225,14 @@ int main()
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
         {
             // landmark
-            b = landmarks[i];                           // lmk coordinates in world frame
+            b = landmarks[i];                               // lmk coordinates in world frame
 
            // measurement
-            y = measurements[i];                        // lmk measurement, noisy
+            y = measurements[i];                            // lmk measurement, noisy
 
             // expectation
-            e = X.inverse(J_xi_x).act(b, J_e_xi);       // note: e = R.tr * ( b - t ), for X = (R,t).
-            H = J_e_xi * J_xi_x;                        // note: H = J_e_x = J_e_xi * J_xi_x
+            e = X.inverse(J_xi_x).act(b, J_e_xi);           // note: e = R.tr * ( b - t ), for X = (R,t).
+            H = J_e_xi * J_xi_x;                            // note: H = J_e_x = J_e_xi * J_xi_x
             E = H * P * H.transpose();
 
             // innovation
@@ -193,13 +240,13 @@ int main()
             Z = E + R;
 
             // Kalman gain
-            K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + R).inv
+            K = P * H.transpose() * Z.inverse();            // K = P * H.tr * ( H * P * H.tr + R).inv
 
             // Correction step
-            dx = K * z;                                 // dx is in the tangent space at X
+            dx = K * z;                                     // dx is in the tangent space at X
 
             // Update
-            X = X + dx;                                 // overloaded X.rplus(dx) = X * exp(dx)
+            X = X + dx;                                     // overloaded X.rplus(dx) = X * exp(dx)
             P = P - K * Z * K.transpose();
         }
 
