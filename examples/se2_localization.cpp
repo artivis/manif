@@ -104,10 +104,10 @@ int main()
         u_noise = (u_sigmas.array() * Eigen::Array<double, 3, 1>::Random()).matrix();   // control noise
         y_noise = n_sigmas.array() * Eigen::Array<double, 2, 1>::Random();              // measurement noise
 
-        u_noisy = u + manif::SE2Tangentd(u_noise);                                      // noisy control
+        u_noisy = u + u_noise;                                      // noisy control
 
-        u_simu = u;
-        u_est  = u_noisy;
+        u_simu  = u;
+        u_est   = u_noisy;
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         X_simulation = X_simulation + u_simu;                       // overloaded X.rplus(u) = X * exp(u)
@@ -164,7 +164,7 @@ int main()
             K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
 
             // Correction step
-            dx = (K * z).eval();                        // eval() is here because the `=` does not accept expressions as right-value.
+            dx = K * z;                                 // dx is in the tangent space at X
 
             // Update
             X = X + dx;                                 // overloaded X.rplus(dx) = X * exp(dx)
