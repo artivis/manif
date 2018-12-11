@@ -14,7 +14,6 @@
 #include <iostream>
 
 using std::cout;
-using std::endl;
 
 int main()
 {
@@ -40,8 +39,8 @@ int main()
 
     // Define three landmarks in R^2
     Eigen::Vector2d b0, b1, b2;
-    b0 << 1.0, 0.0;
-    b1 << 1.0, 1.0;
+    b0 << 1.0,  0.0;
+    b1 << 1.0,  1.0;
     b2 << 1.0, -1.0;
     std::vector<Eigen::Vector2d> landmarks;
     landmarks.push_back(b0);
@@ -67,8 +66,8 @@ int main()
     manif::SE2d::Jacobian J_xi_x;       // Jacobian
     Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
 
-    cout << "X simu : " << X_simulation.coeffs().transpose() << endl;
-    cout << "X      : " << X.coeffs().transpose() << endl;
+    cout << "X simu : " << X_simulation << "\n";
+    cout << "X      : " << X << "\n";
 
     // Make 10 steps. Measure one landmark each time
     for (int t = 0; t < 10; t++)
@@ -78,7 +77,7 @@ int main()
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         u_noise = (u_sigmas.array() * Eigen::Array<double, 3, 1>::Random()).matrix();   // control noise
-        u_noisy = u + manif::SE2Tangentd(u_noise);                                      // noisy control
+        u_noisy = u + u_noise;                                                          // noisy control
 
         X_simulation = X_simulation + u_noisy;                              // overloaded X.rplus(u) = X * exp(u)
 
@@ -89,7 +88,7 @@ int main()
         n = n_sigmas.array() * Eigen::Array<double, 2, 1>::Random();        // measurement noise
 
         y = X_simulation.inverse().act(b);                                  // landmark measurement before adding noise
-        y = y + n;                                                          // landmark measurement, noisy
+        y += n;                                                             // landmark measurement, noisy
 
 
         //// II. Estimation -------------------------------------------------------------------
@@ -99,8 +98,8 @@ int main()
         X = X.plus(u, J_x, J_u);                    // X * exp(u), with Jacobians
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
-        cout << "X simu : " << X_simulation.coeffs().transpose() << endl;
-        cout << "X pre  : " << X.coeffs().transpose() << endl;
+        cout << "X simu : " << X_simulation << "\n";
+        cout << "X pre  : " << X << "\n";
 
         /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
 
@@ -117,13 +116,13 @@ int main()
         K = P * H.transpose() * Z.inverse();        // this expands to  K = P * H.tr * ( H * P * H.tr + N).inv
 
         // Correction step
-        dx = (K * z).eval();                        // eval() is here because the `=` does not accept expressions as right-value.
+        dx = K * z;
 
         // Update
         X = X + dx;                                 // overloaded X.rplus(dx) = X * exp(dx)
         P = P - K * Z * K.transpose();
 
-        cout << "X post : " << X.coeffs().transpose() << endl;
+        cout << "X post : " << X << "\n";
     }
 
     return 0;
