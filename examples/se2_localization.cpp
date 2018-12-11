@@ -9,6 +9,7 @@
  *  ---------------------------------------------------------
  *  This file is part of `manif`, a C++ template-only library
  *  for Lie theory targeted at estimation for robotics.
+ *  Manif is:
  *  (c) 2018 Jeremie Deray @ PAL Robotics, Barcelona
  *  ---------------------------------------------------------
  *
@@ -31,11 +32,19 @@
  *  and angular velocities, and is able to measure the location
  *  of the beacons w.r.t its own reference frame.
  *
- *  The robot pose is in SE(2) and the beacon positions in R^2,
+ *  The robot pose X is in SE(2) and the beacon positions b_k in R^2,
+ *
+ *          | cos th  -sin th   x |
+ *      X = | sin th   cos th   y |  // position and orientation
+ *          |   0        0      1 |
+ *
+ *      b_k = (bx_k, by_k)           // lmk coordinates in world frame
  *
  *  The control signal u is a twist in se(2) comprising longitudinal
  *  velocity v and angular velocity w, with no lateral velocity
  *  component, integrated over the sampling time dt.
+ *
+ *      u = (v*dt, 0, w*dt)
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
  *  with covariance Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
@@ -52,6 +61,8 @@
  *  We notice the rigid motion action y = h(X,b) = X^-1 * b
  *  (see appendix C).
  *
+ *      y_k = (brx_k, bry_k)       // lmk coordinates in robot frame
+ *
  *  We consider the beacons b_k situated at known positions.
  *  We define the pose to estimate as X in SE(2).
  *  The estimation error dx and its covariance P are expressed
@@ -60,7 +71,7 @@
  *  All these variables are summarized again as follows
  *
  *    X   : robot pose, SE(2)
- *    u   : robot control, [v*dt ; 0 ; w*dt] in se(2)
+ *    u   : robot control, (v*dt ; 0 ; w*dt) in se(2)
  *    Q   : control perturbation covariance
  *    b_k : k-th landmark position, R^2
  *    y   : Cartesian landmark measurement in robot frame, R^2
@@ -76,6 +87,7 @@
  *  to estimate the state.
  *
  *  Printing simulated state and estimated state together
+ *  with an unfiltered state (i.e. without Kalman corrections)
  *  allows for evaluating the quality of the estimates.
  */
 
@@ -102,11 +114,12 @@ int main()
     const int NUMBER_OF_LMKS_TO_MEASURE = 3;
 
     // Define the robot pose element and its covariance
-    manif::SE2d X, X_simulation;
+    manif::SE2d X, X_simulation, X_unfiltered;
     Eigen::Matrix3d P;
 
     X_simulation.setIdentity();
     X.setIdentity();
+    X_unfiltered.setIdentity();
     P.setZero();
 
     // Define a control vector and its noise and covariance
@@ -213,14 +226,6 @@ int main()
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
 
-
-        // DEBUG
-        cout << "X simulated : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-        cout << "X predicted : " << X.translation().transpose() << " | " << X.angle() << endl;
-        // END DEBUG
-
-
-
         /// Then we correct using the measurements of the lmks - - - - - - - - -
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
         {
@@ -251,8 +256,22 @@ int main()
         }
 
 
+
+
+        //// III. Unfiltered ##############################################################################
+
+        // move also an unfiltered version for comparison purposes
+        X_unfiltered = X_unfiltered + u_est;
+
+
+
+
+        //// IV. Results ##############################################################################
+
         // DEBUG
-        cout << "X corrected : " << X.translation().transpose() << " | " << X.angle() << endl;
+        cout << "X simulated : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
+        cout << "X estimated : " << X.translation().transpose() << " | " << X.angle() << endl;
+        cout << "X unfilterd : " << X_unfiltered.translation().transpose() << " | " << X_unfiltered.angle() << endl;
         cout << "----------------------------------" << endl;
         // END DEBUG
 
