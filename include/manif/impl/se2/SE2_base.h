@@ -74,9 +74,11 @@ public:
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return
    */
-  Vector act(const Vector &v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+  template <typename _EigenDerived>
+  Eigen::Matrix<Scalar, 2, 1>
+  act(const Eigen::MatrixBase<_EigenDerived> &v,
+            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 3>>> J_vout_m = {},
+            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v = {}) const;
 
   /**
    * @brief Get the adjoint matrix of SE2 at this.
@@ -254,14 +256,16 @@ SE2Base<_Derived>::compose(
 }
 
 template <typename _Derived>
-typename SE2Base<_Derived>::Vector
-SE2Base<_Derived>::act(const Vector &v,
-                       OptJacobianRef J_vout_m,
-                       OptJacobianRef J_vout_v) const
+template <typename _EigenDerived>
+Eigen::Matrix<typename SE2Base<_Derived>::Scalar, 2, 1>
+SE2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 3>>> J_vout_m,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v) const
 {
   if (J_vout_m)
   {
-    (*J_vout_m) = rotation() * skew(1) * v;
+    J_vout_m->template topLeftCorner<2,2>()  = rotation();
+    J_vout_m->template topRightCorner<2,1>() = rotation() * (skew(Scalar(1)) * v);
   }
 
   if (J_vout_v)
@@ -269,7 +273,7 @@ SE2Base<_Derived>::act(const Vector &v,
     (*J_vout_v) = rotation();
   }
 
-  return transform() * v;
+  return translation() + rotation()*v;
 }
 
 template <typename _Derived>
