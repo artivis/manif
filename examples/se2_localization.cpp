@@ -6,7 +6,7 @@
  *
  *
  *  Robot localization based on observation of fixed beacons.
- *  ---------------------------------------------------------
+ *  -------------------------------------
  *
  *  This demo corresponds to the application in chapter V, section A in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
  *  The following is an abstract of the content of the paper.
@@ -28,7 +28,7 @@
  *  At the arrival of a control $\bfu$, the robot pose is updated with X <-- X * Exp(u) = X + u.
  *
  *  Landmark measurements are of the range and bearing type, though they are put in Cartesian form for simplicity.
- *  Their noise $\bfn\sim\cN({\bf0},\bfR)$ is zero mean Gaussian,% and is specified with a covariances matrix $R$.
+ *  Their noise $\bfn\sim\cN({\bf0},\bfR)$ is zero mean Gaussian, and is specified with a covariances matrix $R$.
  *  We notice the rigid motion action $\cX\inv\cdot\bfb_k$ (see appendix C).
  *
  *  We consider the beacons $\bfb_k$ situated at known positions.
@@ -70,7 +70,7 @@ int main()
     Eigen::Matrix3d U;
 
     u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
-    u_sigmas << 0.1, 0.1, 0.1;
+    u_sigmas << 0.1, 0.01, 0.1;
     U = (u_sigmas.array() * u_sigmas.array()).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
@@ -89,14 +89,14 @@ int main()
     // Define the beacon's measurements
     Eigen::Vector2d y;
     Eigen::Matrix2d R;
-    Eigen::Vector2d n_sigmas, y_noise; 
+    Eigen::Vector2d y_sigmas, y_noise; 
     std::vector<Eigen::Vector2d> measurements(landmarks.size());
 
-    n_sigmas << 0.01, 0.01;
-    R = (n_sigmas.array() * n_sigmas.array()).matrix().asDiagonal();
+    y_sigmas << 0.01, 0.01;
+    R = (y_sigmas.array() * y_sigmas.array()).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
-    Eigen::Matrix<double, 2, 3> H; // H = J_e_x
+    Eigen::Matrix<double, 2, 3> H;      // H = J_e_x
 
     // Declare some temporaries
     Eigen::Vector2d e, z;               // expectation, innovation
@@ -114,10 +114,10 @@ int main()
 
     // DEBUG
     cout << std::setprecision(3) << std::fixed << endl;
-    cout << "X STATE:   X     Y   |   THETA  " << endl;
-    cout << "-------------------------------------------------" << endl;
+    cout << "X STATE:   X     Y   | THETA  " << endl;
+    cout << "-----------------------------" << endl;
     cout << "X init : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-    cout << "-------------------------------------------------" << endl;
+    cout << "-----------------------------" << endl;
     // END DEBUG
 
 
@@ -133,8 +133,8 @@ int main()
         //// I. Simulation ###############################################################################
 
         /// simulate noise
-        u_noise = (u_sigmas.array() * Eigen::Array<double, 3, 1>::Random()).matrix();   // control noise
-        y_noise = n_sigmas.array() * Eigen::Array<double, 2, 1>::Random();              // measurement noise
+        u_noise = u_sigmas.array() * Eigen::Array<double, 3, 1>::Random();  // control noise
+        y_noise = y_sigmas.array() * Eigen::Array<double, 2, 1>::Random();  // measurement noise
 
         u_noisy = u + u_noise;                                      // noisy control
 
@@ -206,7 +206,7 @@ int main()
 
         // DEBUG
         cout << "X corr : " << X.translation().transpose() << " | " << X.angle() << endl;
-        cout << "-------------------------------------------------" << endl;
+        cout << "-----------------------------" << endl;
         // END DEBUG
 
     }
