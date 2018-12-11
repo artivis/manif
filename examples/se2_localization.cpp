@@ -88,7 +88,7 @@ int main()
         
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        X = X.plus(u, J_x, J_u);
+        X = X.plus(u, J_x, J_u);                    // X * exp(u), with Jacobians
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
         /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
