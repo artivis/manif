@@ -11,6 +11,11 @@
 
 #include <vector>
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 int main()
 {
     // Define the robot pose element and its covariance
@@ -62,6 +67,9 @@ int main()
     manif::SE2d::Jacobian J_xi_x;       // Jacobian
     Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
 
+    cout << "X simu : " << X_simulation.coeffs().transpose() << endl;
+    cout << "X      : " << X.coeffs().transpose() << endl;
+
     // Make 10 steps. Measure one landmark each time
     for (int t = 0; t < 10; t++)
     {
@@ -91,6 +99,9 @@ int main()
         X = X.plus(u, J_x, J_u);                    // X * exp(u), with Jacobians
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
+        cout << "X simu : " << X_simulation.coeffs().transpose() << endl;
+        cout << "X pre  : " << X.coeffs().transpose() << endl;
+
         /// Then we correct using the measure of the lmk - - - - - - - - - - - - - -
 
         // expectation
@@ -111,6 +122,8 @@ int main()
         // Update
         X = X + dx;                                 // overloaded X.rplus(dx) = X * exp(dx)
         P = P - K * Z * K.transpose();
+
+        cout << "X post : " << X.coeffs().transpose() << endl;
     }
 
     return 0;
