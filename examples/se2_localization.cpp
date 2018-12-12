@@ -4,9 +4,10 @@
  *  Created on: Dec 10, 2018
  *     \author: jsola
  *
+ *  ---------------------------------------------------------
+ *  This file is:
  *  (c) 2018 Joan Sola @ IRI-CSIC, Barcelona, Catalonia
  *
- *  ---------------------------------------------------------
  *  This file is part of `manif`, a C++ template-only library
  *  for Lie theory targeted at estimation for robotics.
  *  Manif is:
@@ -19,7 +20,7 @@
  *  Robot localization based on observation of fixed beacons.
  *  ---------------------------------------------------------
  *
- *  This demo corresponds to the application in chapter V, section A
+ *  This demo corresponds to the application in chapter V, section A,
  *  in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
  *
  *  The following is an abstract of the content of the paper.
@@ -123,14 +124,14 @@ int main()
     P.setZero();
 
     // Define a control vector and its noise and covariance
-    manif::SE2Tangentd u_simu, u_est;
-    Eigen::Vector3d u, u_noisy, u_noise;
+    manif::SE2Tangentd u_simu, u_est, u_unfilt;
+    Eigen::Vector3d u_nom, u_noisy, u_noise;
     Array3d u_sigmas;
     Eigen::Matrix3d U;
 
-    u = (Eigen::Vector3d() << 0.1, 0.0, 0.05).finished();
+    u_nom    << 0.1, 0.0, 0.05;
     u_sigmas << 0.1, 0.1, 0.1;
-    U = (u_sigmas * u_sigmas).matrix().asDiagonal();
+    U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
     manif::SE2d::Jacobian J_x, J_u;
@@ -146,24 +147,23 @@ int main()
     landmarks.push_back(b2);
 
     // Define the beacon's measurements
-    Eigen::Vector2d y;
-    Eigen::Matrix2d R;
-    Eigen::Vector2d y_noise;
-    Array2d y_sigmas;
+    Eigen::Vector2d     y, y_noise;
+    Array2d             y_sigmas;
+    Eigen::Matrix2d     R;
     std::vector<Eigen::Vector2d> measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01;
-    R = (y_sigmas * y_sigmas).matrix().asDiagonal();
+    R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
     Eigen::Matrix<double, 2, 3> H;      // H = J_e_x
 
     // Declare some temporaries
-    Eigen::Vector2d e, z;               // expectation, innovation
-    Eigen::Matrix2d E, Z;               // covariances of the above
+    Eigen::Vector2d             e, z;   // expectation, innovation
+    Eigen::Matrix2d             E, Z;   // covariances of the above
     Eigen::Matrix<double, 3, 2> K;      // Kalman gain
-    manif::SE2Tangentd dx;              // optimal update step, or error-state
-    manif::SE2d::Jacobian J_xi_x;       // Jacobian
+    manif::SE2Tangentd          dx;     // optimal update step, or error-state
+    manif::SE2d::Jacobian       J_xi_x; // Jacobian is typedef Eigen::Matrix
     Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
 
     //
@@ -196,10 +196,11 @@ int main()
         u_noise = u_sigmas * Array3d::Random();             // control noise
         y_noise = y_sigmas * Array2d::Random();             // measurement noise
 
-        u_noisy = u + u_noise;                              // noisy control
+        u_noisy = u_nom + u_noise;                          // noisy control
 
-        u_simu  = u;
-        u_est   = u_noisy;
+        u_simu   = u_nom;
+        u_est    = u_noisy;
+        u_unfilt = u_noisy;
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         X_simulation = X_simulation + u_simu;               // overloaded X.rplus(u) = X * exp(u)
@@ -226,7 +227,7 @@ int main()
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
 
 
-        /// Then we correct using the measurements of the lmks - - - - - - - - -
+        /// Then we correct using the measurements of each lmk - - - - - - - - -
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
         {
             // landmark
@@ -261,7 +262,7 @@ int main()
         //// III. Unfiltered ##############################################################################
 
         // move also an unfiltered version for comparison purposes
-        X_unfiltered = X_unfiltered + u_est;
+        X_unfiltered = X_unfiltered + u_unfilt;
 
 
 
