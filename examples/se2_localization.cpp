@@ -19,7 +19,7 @@
  *
  *  2D Robot localization based on fixed beacons.
  *
- *  See se3_localization.cpp for the 2D equivalent.
+ *  See se3_localization.cpp for the 3D equivalent.
  *  ---------------------------------------------------------
  *
  *  This demo corresponds to the application in chapter V, section A,
