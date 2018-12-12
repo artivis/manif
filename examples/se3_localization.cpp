@@ -184,7 +184,7 @@ int main()
 
     // DEBUG
     cout << std::fixed   << std::setprecision(3) << std::showpos << endl;
-    cout << "X STATE     :    X      Y      Z   |  ROLL   PITCH   YAW " << endl;
+    cout << "X STATE     :    X      Y      Z   |  TH_x   TH_y   TH_z " << endl;
     cout << "---------------------------------------------------------" << endl;
     cout << "X initial   : " << X_simulation.translation().transpose() << " | " << X_simulation.asSO3().lift().coeffs().transpose() << endl;
     cout << "---------------------------------------------------------" << endl;
