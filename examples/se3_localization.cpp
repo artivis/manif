@@ -1,7 +1,7 @@
 /**
  * \file se3_localization.cpp
  *
- *  Created on: Dec 10, 2018
+ *  Created on: Dec 12, 2018
  *     \author: jsola
  *
  *  ---------------------------------------------------------
@@ -44,8 +44,8 @@
  *      b_k = (bx_k, by_k, bz_k)           // lmk coordinates in world frame
  *
  *  The control signal u is a twist in se(3) comprising longitudinal
- *  velocity vx and angular velocity wz, with no lateral velocity
- *  component, integrated over the sampling time dt.
+ *  velocity vx and angular velocity wz, with no other velocity
+ *  components, integrated over the sampling time dt.
  *
  *      u = (vx*dt, 0, 0, 0, 0, w*dt)
  *
@@ -122,7 +122,7 @@ int main()
 
     // Define the robot pose element and its covariance
     manif::SE3d X, X_simulation, X_unfiltered;
-    Matrix<double, 6, 6> P;
+    Matrix6d    P;
 
     X_simulation.setIdentity();
     X.setIdentity();
@@ -130,10 +130,10 @@ int main()
     P.setZero();
 
     // Define a control vector and its noise and covariance
-    manif::SE3Tangentd u_simu, u_est, u_unfilt;
-    Vector6d u_nom, u_noisy, u_noise;
-    Array6d u_sigmas;
-    Matrix6d U;
+    manif::SE3Tangentd  u_simu, u_est, u_unfilt;
+    Vector6d            u_nom, u_noisy, u_noise;
+    Array6d             u_sigmas;
+    Matrix6d            U;
 
     u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
     u_sigmas << 0.1, 0.1, 0.1, 0.1, 0.1, 0.1;
@@ -157,24 +157,24 @@ int main()
     landmarks.push_back(b4);
 
     // Define the beacon's measurements
-    Vector3d     y, y_noise;
-    Array3d      y_sigmas;
-    Matrix3d     R;
-    std::vector<Vector3d> measurements(landmarks.size());
+    Vector3d                y, y_noise;
+    Array3d                 y_sigmas;
+    Matrix3d                R;
+    std::vector<Vector3d>   measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
-    Matrix<double, 3, 6> H;      // H = J_e_x
+    Matrix<double, 3, 6>    H;      // H = J_e_x
 
     // Declare some temporaries
-    Vector3d             e, z;   // expectation, innovation
-    Matrix3d             E, Z;   // covariances of the above
-    Matrix<double, 6, 3> K;      // Kalman gain
-    manif::SE3Tangentd          dx;     // optimal update step, or error-state
-    manif::SE3d::Jacobian       J_xi_x; // Jacobian is typedef Matrix
-    Matrix<double, 3, 6> J_e_xi; // Jacobian
+    Vector3d                e, z;   // expectation, innovation
+    Matrix3d                E, Z;   // covariances of the above
+    Matrix<double, 6, 3>    K;      // Kalman gain
+    manif::SE3Tangentd      dx;     // optimal update step, or error-state
+    manif::SE3d::Jacobian   J_xi_x; // Jacobian is typedef Matrix
+    Matrix<double, 3, 6>    J_e_xi; // Jacobian
 
     //
     //

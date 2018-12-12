@@ -106,8 +106,10 @@
 using std::cout;
 using std::endl;
 
-typedef Eigen::Array<double, 2, 1> Array2d;
-typedef Eigen::Array<double, 3, 1> Array3d;
+using namespace Eigen;
+
+typedef Array<double, 2, 1> Array2d;
+typedef Array<double, 3, 1> Array3d;
 
 int main()
 {
@@ -118,7 +120,7 @@ int main()
 
     // Define the robot pose element and its covariance
     manif::SE2d X, X_simulation, X_unfiltered;
-    Eigen::Matrix3d P;
+    Matrix3d    P;
 
     X_simulation.setIdentity();
     X.setIdentity();
@@ -126,10 +128,10 @@ int main()
     P.setZero();
 
     // Define a control vector and its noise and covariance
-    manif::SE2Tangentd u_simu, u_est, u_unfilt;
-    Eigen::Vector3d u_nom, u_noisy, u_noise;
-    Array3d u_sigmas;
-    Eigen::Matrix3d U;
+    manif::SE2Tangentd  u_simu, u_est, u_unfilt;
+    Vector3d            u_nom, u_noisy, u_noise;
+    Array3d             u_sigmas;
+    Matrix3d            U;
 
     u_nom    << 0.1, 0.0, 0.05;
     u_sigmas << 0.1, 0.1, 0.1;
@@ -139,34 +141,34 @@ int main()
     manif::SE2d::Jacobian J_x, J_u;
 
     // Define three landmarks in R^2
-    Eigen::Vector2d b0, b1, b2, b;
+    Vector2d b0, b1, b2, b;
     b0 << 2.0, 0.0;
     b1 << 2.0, 1.0;
     b2 << 2.0, -1.0;
-    std::vector<Eigen::Vector2d> landmarks;
+    std::vector<Vector2d> landmarks;
     landmarks.push_back(b0);
     landmarks.push_back(b1);
     landmarks.push_back(b2);
 
     // Define the beacon's measurements
-    Eigen::Vector2d     y, y_noise;
-    Array2d             y_sigmas;
-    Eigen::Matrix2d     R;
-    std::vector<Eigen::Vector2d> measurements(landmarks.size());
+    Vector2d                y, y_noise;
+    Array2d                 y_sigmas;
+    Matrix2d                R;
+    std::vector<Vector2d>   measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
-    Eigen::Matrix<double, 2, 3> H;      // H = J_e_x
+    Matrix<double, 2, 3>    H;      // H = J_e_x
 
     // Declare some temporaries
-    Eigen::Vector2d             e, z;   // expectation, innovation
-    Eigen::Matrix2d             E, Z;   // covariances of the above
-    Eigen::Matrix<double, 3, 2> K;      // Kalman gain
-    manif::SE2Tangentd          dx;     // optimal update step, or error-state
-    manif::SE2d::Jacobian       J_xi_x; // Jacobian is typedef Eigen::Matrix
-    Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
+    Vector2d                e, z;   // expectation, innovation
+    Matrix2d                E, Z;   // covariances of the above
+    Matrix<double, 3, 2>    K;      // Kalman gain
+    manif::SE2Tangentd      dx;     // optimal update step, or error-state
+    manif::SE2d::Jacobian   J_xi_x; // Jacobian is typedef Matrix
+    Matrix<double, 2, 3>    J_e_xi; // Jacobian
 
     //
     //
@@ -196,7 +198,6 @@ int main()
 
         /// simulate noise
         u_noise = u_sigmas * Array3d::Random();             // control noise
-
         u_noisy = u_nom + u_noise;                          // noisy control
 
         u_simu   = u_nom;
@@ -229,6 +230,7 @@ int main()
         X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
 
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
+
 
         /// Then we correct using the measurements of each lmk - - - - - - - - -
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
