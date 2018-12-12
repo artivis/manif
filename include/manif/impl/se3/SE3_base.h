@@ -74,9 +74,16 @@ public:
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return
    */
-  Vector act(const Vector &v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+//  Vector act(const Vector &v,
+//             OptJacobianRef J_vout_m = {},
+//             OptJacobianRef J_vout_v = {}) const;
+  template <typename _EigenDerived>
+//  Eigen::Matrix<Scalar, 3, 1>
+  Eigen::Matrix<typename SE3Base<_Derived>::Scalar, 3, 1>
+  act(const Eigen::MatrixBase<_EigenDerived> &v,
+            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
+            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
+
 
   /**
    * @brief Get the adjoint matrix of SE3 at this.
@@ -250,16 +257,37 @@ SE3Base<_Derived>::compose(
                   asSO3().compose(m_se3.asSO3()).quat());
 }
 
+//template <typename _Derived>
+//typename SE3Base<_Derived>::Vector
+//SE3Base<_Derived>::act(const Vector &v,
+//                       OptJacobianRef J_vout_m,
+//                       OptJacobianRef J_vout_v) const
+//{
+//  if (J_vout_m)
+//  {
+//    MANIF_NOT_IMPLEMENTED_YET
+//    (*J_vout_v) = -skew(v);
+//  }
+//
+//  if (J_vout_v)
+//  {
+//    (*J_vout_v) = rotation();
+//  }
+//
+//  return transform() * v;
+//}
+
 template <typename _Derived>
-typename SE3Base<_Derived>::Vector
-SE3Base<_Derived>::act(const Vector &v,
-                       OptJacobianRef J_vout_m,
-                       OptJacobianRef J_vout_v) const
+template <typename _EigenDerived>
+Eigen::Matrix<typename SE3Base<_Derived>::Scalar, 3, 1>
+SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
 {
   if (J_vout_m)
   {
-    MANIF_NOT_IMPLEMENTED_YET
-    (*J_vout_v) = -skew(v);
+    J_vout_m->template topLeftCorner<3,3>()  = rotation();
+    J_vout_m->template topRightCorner<3,3>() = -rotation() * (skew(v));
   }
 
   if (J_vout_v)
@@ -267,8 +295,9 @@ SE3Base<_Derived>::act(const Vector &v,
     (*J_vout_v) = rotation();
   }
 
-  return transform() * v;
+  return translation() + rotation()*v;
 }
+
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Jacobian
