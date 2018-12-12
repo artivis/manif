@@ -1,5 +1,5 @@
 /**
- * \file se2_localization.cpp
+ * \file se3_localization.cpp
  *
  *  Created on: Dec 10, 2018
  *     \author: jsola
@@ -17,13 +17,14 @@
  *  ---------------------------------------------------------
  *  Demonstration example:
  *
- *  2D Robot localization based on fixed beacons.
+ *  3D Robot localization based on fixed beacons.
  *
- *  See se3_localization.cpp for the 2D equivalent
+ *  See se2_localization.cpp for the 2D equivalent
  *  ---------------------------------------------------------
  *
  *  This demo corresponds to the application in chapter V, section A,
- *  in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
+ *  in the paper Sola-18, [https://arxiv.org/abs/1812.01537],
+ *  in this case in 3D.
  *
  *  The following is an abstract of the content of the paper.
  *  Please consult the paper for better reference.
@@ -35,24 +36,23 @@
  *  and angular velocities, and is able to measure the location
  *  of the beacons w.r.t its own reference frame.
  *
- *  The robot pose X is in SE(2) and the beacon positions b_k in R^2,
+ *  The robot pose X is in SE(3) and the beacon positions b_k in R^3,
  *
- *          | cos th  -sin th   x |
- *      X = | sin th   cos th   y |  // position and orientation
- *          |   0        0      1 |
+ *      X = |  R   t |  // position and orientation
+ *          |  0   1 |
  *
- *      b_k = (bx_k, by_k)           // lmk coordinates in world frame
+ *      b_k = (bx_k, by_k, bz_k)           // lmk coordinates in world frame
  *
- *  The control signal u is a twist in se(2) comprising longitudinal
- *  velocity v and angular velocity w, with no lateral velocity
+ *  The control signal u is a twist in se(3) comprising longitudinal
+ *  velocity vx and angular velocity wz, with no lateral velocity
  *  component, integrated over the sampling time dt.
  *
- *      u = (v*dt, 0, w*dt)
+ *      u = (vx*dt, 0, 0, 0, 0, w*dt)
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
- *  with covariance Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
- *  This noise accounts for possible lateral slippage u_s
- *  through a non-zero value of sigma_s,
+ *  with covariance Q=diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
+ *  This noise accounts for possible lateral and rotational slippage
+ *  through a non-zero values of sigma_y, sigma_z, sigma_roll, sigma_pitch,
  *
  *  At the arrival of a control u, the robot pose is updated
  *  with X <-- X * Exp(u) = X + u.
@@ -67,17 +67,17 @@
  *      y_k = (brx_k, bry_k)       // lmk coordinates in robot frame
  *
  *  We consider the beacons b_k situated at known positions.
- *  We define the pose to estimate as X in SE(2).
+ *  We define the pose to estimate as X in SE(3).
  *  The estimation error dx and its covariance P are expressed
  *  in the tangent space at X.
  *
  *  All these variables are summarized again as follows
  *
- *    X   : robot pose, SE(2)
- *    u   : robot control, (v*dt ; 0 ; w*dt) in se(2)
+ *    X   : robot pose, SE(3)
+ *    u   : robot control, (v*dt ; 0 ; w*dt) in se(3)
  *    Q   : control perturbation covariance
- *    b_k : k-th landmark position, R^2
- *    y   : Cartesian landmark measurement in robot frame, R^2
+ *    b_k : k-th landmark position, R^3
+ *    y   : Cartesian landmark measurement in robot frame, R^3
  *    R   : covariance of the measurement noise
  *
  *  The motion and measurement models are
@@ -94,7 +94,7 @@
  *  allows for evaluating the quality of the estimates.
  */
 
-#include "manif/SE2.h"
+#include "manif/SE3.h"
 
 #include <Eigen/Dense>
 
@@ -106,19 +106,23 @@
 using std::cout;
 using std::endl;
 
-typedef Eigen::Array<double, 2, 1> Array2d;
-typedef Eigen::Array<double, 3, 1> Array3d;
+using namespace Eigen;
+
+typedef Array<double, 3, 1> Array3d;
+typedef Array<double, 6, 1> Array6d;
+typedef Matrix<double, 6, 1> Vector6d;
+typedef Matrix<double, 6, 6> Matrix6d;
 
 int main()
 {
     // START CONFIGURATION
     //
     //
-    const int NUMBER_OF_LMKS_TO_MEASURE = 3;
+    const int NUMBER_OF_LMKS_TO_MEASURE = 5;
 
     // Define the robot pose element and its covariance
-    manif::SE2d X, X_simulation, X_unfiltered;
-    Eigen::Matrix3d P;
+    manif::SE3d X, X_simulation, X_unfiltered;
+    Matrix<double, 6, 6> P;
 
     X_simulation.setIdentity();
     X.setIdentity();
@@ -126,47 +130,51 @@ int main()
     P.setZero();
 
     // Define a control vector and its noise and covariance
-    manif::SE2Tangentd u_simu, u_est, u_unfilt;
-    Eigen::Vector3d u_nom, u_noisy, u_noise;
-    Array3d u_sigmas;
-    Eigen::Matrix3d U;
+    manif::SE3Tangentd u_simu, u_est, u_unfilt;
+    Vector6d u_nom, u_noisy, u_noise;
+    Array6d u_sigmas;
+    Matrix6d U;
 
-    u_nom    << 0.1, 0.0, 0.05;
-    u_sigmas << 0.1, 0.1, 0.1;
+    u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
+    u_sigmas << 0.1, 0.1, 0.1, 0.1, 0.1, 0.1;
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
-    manif::SE2d::Jacobian J_x, J_u;
+    manif::SE3d::Jacobian J_x, J_u;
 
-    // Define three landmarks in R^2
-    Eigen::Vector2d b0, b1, b2, b;
-    b0 << 2.0, 0.0;
-    b1 << 2.0, 1.0;
-    b2 << 2.0, -1.0;
-    std::vector<Eigen::Vector2d> landmarks;
+    // Define five landmarks in R^2
+    Vector3d b0, b1, b2, b3, b4, b;
+    b0 << 2.0,  0.0,  0.0;
+    b1 << 3.0, -1.0, -1.0;
+    b2 << 2.0, -1.0,  1.0;
+    b3 << 2.0,  1.0,  1.0;
+    b4 << 2.0,  1.0, -1.0;
+    std::vector<Vector3d> landmarks;
     landmarks.push_back(b0);
     landmarks.push_back(b1);
     landmarks.push_back(b2);
+    landmarks.push_back(b3);
+    landmarks.push_back(b4);
 
     // Define the beacon's measurements
-    Eigen::Vector2d     y, y_noise;
-    Array2d             y_sigmas;
-    Eigen::Matrix2d     R;
-    std::vector<Eigen::Vector2d> measurements(landmarks.size());
+    Vector3d     y, y_noise;
+    Array3d      y_sigmas;
+    Matrix3d     R;
+    std::vector<Vector3d> measurements(landmarks.size());
 
-    y_sigmas << 0.01, 0.01;
+    y_sigmas << 0.01, 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
-    Eigen::Matrix<double, 2, 3> H;      // H = J_e_x
+    Matrix<double, 3, 6> H;      // H = J_e_x
 
     // Declare some temporaries
-    Eigen::Vector2d             e, z;   // expectation, innovation
-    Eigen::Matrix2d             E, Z;   // covariances of the above
-    Eigen::Matrix<double, 3, 2> K;      // Kalman gain
-    manif::SE2Tangentd          dx;     // optimal update step, or error-state
-    manif::SE2d::Jacobian       J_xi_x; // Jacobian is typedef Eigen::Matrix
-    Eigen::Matrix<double, 2, 3> J_e_xi; // Jacobian
+    Vector3d             e, z;   // expectation, innovation
+    Matrix3d             E, Z;   // covariances of the above
+    Matrix<double, 6, 3> K;      // Kalman gain
+    manif::SE3Tangentd          dx;     // optimal update step, or error-state
+    manif::SE3d::Jacobian       J_xi_x; // Jacobian is typedef Matrix
+    Matrix<double, 3, 6> J_e_xi; // Jacobian
 
     //
     //
@@ -176,10 +184,10 @@ int main()
 
     // DEBUG
     cout << std::fixed   << std::setprecision(3) << std::showpos << endl;
-    cout << "X STATE     :    X      Y   | THETA " << endl;
-    cout << "------------------------------------" << endl;
-    cout << "X initial   : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-    cout << "------------------------------------" << endl;
+    cout << "X STATE     :    X      Y      Z   |  ROLL   PITCH   YAW " << endl;
+    cout << "---------------------------------------------------------" << endl;
+    cout << "X initial   : " << X_simulation.translation().transpose() << " | " << X_simulation.asSO3().lift().coeffs().transpose() << endl;
+    cout << "---------------------------------------------------------" << endl;
     // END DEBUG
 
 
@@ -195,8 +203,7 @@ int main()
         //// I. Simulation ###############################################################################
 
         /// simulate noise
-        u_noise = u_sigmas * Array3d::Random();             // control noise
-
+        u_noise = u_sigmas * Array6d::Random();             // control noise
         u_noisy = u_nom + u_noise;                          // noisy control
 
         u_simu   = u_nom;
@@ -212,7 +219,7 @@ int main()
             b = landmarks[i];                               // lmk coordinates in world frame
 
             /// simulate noise
-            y_noise = y_sigmas * Array2d::Random();         // measurement noise
+            y_noise = y_sigmas * Array3d::Random();         // measurement noise
 
             y = X_simulation.inverse().act(b);              // landmark measurement, before adding noise
             y = y + y_noise;                                // landmark measurement, noisy
@@ -229,6 +236,7 @@ int main()
         X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
 
         P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
+
 
         /// Then we correct using the measurements of each lmk - - - - - - - - -
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
@@ -273,10 +281,10 @@ int main()
         //// IV. Results ##############################################################################
 
         // DEBUG
-        cout << "X simulated : " << X_simulation.translation().transpose() << " | " << X_simulation.angle() << endl;
-        cout << "X estimated : " << X.translation().transpose() << " | " << X.angle() << endl;
-        cout << "X unfilterd : " << X_unfiltered.translation().transpose() << " | " << X_unfiltered.angle() << endl;
-        cout << "------------------------------------" << endl;
+        cout << "X simulated : " << X_simulation.translation().transpose() << " | " << X_simulation.asSO3().lift().coeffs().transpose() << endl;
+        cout << "X estimated : " << X.translation().transpose() << " | " << X.asSO3().lift().coeffs().transpose() << endl;
+        cout << "X unfilterd : " << X_unfiltered.translation().transpose() << " | " << X_unfiltered.asSO3().lift().coeffs().transpose() << endl;
+        cout << "---------------------------------------------------------" << endl;
         // END DEBUG
 
     }
