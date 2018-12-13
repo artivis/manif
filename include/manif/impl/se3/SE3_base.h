@@ -287,7 +287,7 @@ SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
   if (J_vout_m)
   {
     J_vout_m->template topLeftCorner<3,3>()  = rotation();
-    J_vout_m->template topRightCorner<3,3>() = -rotation() * (skew(v));
+    J_vout_m->template topRightCorner<3,3>() = -rotation() * skew(v);
   }
 
   if (J_vout_v)
@@ -295,7 +295,7 @@ SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
     (*J_vout_v) = rotation();
   }
 
-  return translation() + rotation()*v;
+  return translation() + rotation() * v;
 }
 
 
