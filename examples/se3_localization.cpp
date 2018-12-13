@@ -38,10 +38,10 @@
  *
  *  The robot pose X is in SE(3) and the beacon positions b_k in R^3,
  *
- *      X = |  R   t |  // position and orientation
+ *      X = |  R   t |              // position and orientation
  *          |  0   1 |
  *
- *      b_k = (bx_k, by_k, bz_k)           // lmk coordinates in world frame
+ *      b_k = (bx_k, by_k, bz_k)    // lmk coordinates in world frame
  *
  *  The control signal u is a twist in se(3) comprising longitudinal
  *  velocity vx and angular velocity wz, with no other velocity
@@ -51,7 +51,9 @@
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
  *  with covariance
- *    Q=diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
+ *
+ *    Q = diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
+ *
  *  This noise accounts for possible lateral and rotational slippage
  *  through a non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
  *

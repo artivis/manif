@@ -51,7 +51,9 @@
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
  *  with covariance
- *    Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
+ *
+ *    Q = diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
+ *
  *  This noise accounts for possible lateral slippage u_s
  *  through a non-zero value of sigma_s,
  *
