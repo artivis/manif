@@ -50,7 +50,8 @@
  *      u = (v*dt, 0, w*dt)
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
- *  with covariance Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
+ *  with covariance
+ *    Q=diagonal(sigma_v^2, sigma_s^2, sigma_w^2).
  *  This noise accounts for possible lateral slippage u_s
  *  through a non-zero value of sigma_s,
  *
@@ -62,7 +63,7 @@
  *  Their noise n is zero mean Gaussian, and is specified
  *  with a covariances matrix R.
  *  We notice the rigid motion action y = h(X,b) = X^-1 * b
- *  (see appendix C).
+ *  (see appendix C),
  *
  *      y_k = (brx_k, bry_k)       // lmk coordinates in robot frame
  *
@@ -87,7 +88,7 @@
  *
  *  The algorithm below comprises first a simulator to
  *  produce measurements, then uses these measurements
- *  to estimate the state.
+ *  to estimate the state, using a Lie-based error-state Kalman filter.
  *
  *  Printing simulated state and estimated state together
  *  with an unfiltered state (i.e. without Kalman corrections)

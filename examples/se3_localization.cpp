@@ -50,9 +50,10 @@
  *      u = (vx*dt, 0, 0, 0, 0, w*dt)
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
- *  with covariance Q=diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
+ *  with covariance
+ *    Q=diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
  *  This noise accounts for possible lateral and rotational slippage
- *  through a non-zero values of sigma_y, sigma_z, sigma_roll, sigma_pitch,
+ *  through a non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
  *
  *  At the arrival of a control u, the robot pose is updated
  *  with X <-- X * Exp(u) = X + u.
@@ -62,9 +63,9 @@
  *  Their noise n is zero mean Gaussian, and is specified
  *  with a covariances matrix R.
  *  We notice the rigid motion action y = h(X,b) = X^-1 * b
- *  (see appendix C).
+ *  (see appendix D),
  *
- *      y_k = (brx_k, bry_k)       // lmk coordinates in robot frame
+ *      y_k = (brx_k, bry_k, brz_k)    // lmk coordinates in robot frame
  *
  *  We consider the beacons b_k situated at known positions.
  *  We define the pose to estimate as X in SE(3).
@@ -74,7 +75,7 @@
  *  All these variables are summarized again as follows
  *
  *    X   : robot pose, SE(3)
- *    u   : robot control, (v*dt ; 0 ; w*dt) in se(3)
+ *    u   : robot control, (v*dt; 0; 0; 0; 0; w*dt) in se(3)
  *    Q   : control perturbation covariance
  *    b_k : k-th landmark position, R^3
  *    y   : Cartesian landmark measurement in robot frame, R^3
@@ -87,7 +88,7 @@
  *
  *  The algorithm below comprises first a simulator to
  *  produce measurements, then uses these measurements
- *  to estimate the state.
+ *  to estimate the state, using a Lie-based error-state Kalman filter.
  *
  *  Printing simulated state and estimated state together
  *  with an unfiltered state (i.e. without Kalman corrections)
