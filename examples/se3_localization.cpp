@@ -149,7 +149,7 @@ int main()
     // Declare the Jacobians of the motion wrt robot and control
     manif::SE3d::Jacobian J_x, J_u;
 
-    // Define five landmarks in R^2
+    // Define five landmarks in R^3
     Vector3d b0, b1, b2, b3, b4, b;
     b0 << 2.0,  0.0,  0.0;
     b1 << 3.0, -1.0, -1.0;
