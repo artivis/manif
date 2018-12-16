@@ -159,6 +159,15 @@ find in the section <a href="#publications">Publications</a>.
 Some general documentation on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
 <!--Although I like packages using [readthedocs](https://readthedocs.org/) and [codedocs](https://codedocs.xyz/).-->
 
+### Application demos
+
+We provide some self-contained and self-explained executables implementing some real problems.
+Their source code is located in `[manif]/examples/`.
+These demos are:
+
+-   [`se2_localization.cpp`](examples/se2_localization.cpp): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
+-   [`se3_localization.cpp`](examples/se3_localization.cpp): 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.
+-   [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
 
 ## Publications
 
