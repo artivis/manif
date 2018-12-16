@@ -55,27 +55,30 @@
  *      Q = diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
  *
  *  This noise accounts for possible lateral and rotational slippage
- *  through a non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
+ *  through non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
  *
  *  At the arrival of a control u, a new robot pose is created at
  *
  *      X_j = X_i * Exp(u) = X_i + u.
  *
- *  This new pose is added to the graph.
+ *  This new pose is then added to the graph.
  *
  *  Landmark measurements are of the range and bearing type,
- *  though they are put in Cartesian form for simplicity.
+ *  though they are put in Cartesian form for simplicity,
+ *
+ *      y = (yx, yy, yz)        // lmk coordinates in robot frame
+ *
  *  Their noise n is zero mean Gaussian, and is specified
  *  with a covariances matrix R.
- *  We notice the rigid motion action y_ik = h(X)i,b_k) = X_i^-1 * b_k
- *  (see appendix D),
+ *  We notice the rigid motion action y_ik = h(X_i,b_k) = X_i^-1 * b_k
+ *  (see appendix D).
  *
- *      y_k = (brx_k, bry_k, brz_k)    // lmk coordinates in robot frame
  *
  *  The world comprises 5 landmarks.
  *  Not all of them are observed from each pose.
  *  A set of pairs pose--landmark is created to establish which
  *  landmarks are observed from each pose.
+ *  These pairs can be observed in the factor graph, as follows.
  *
  *  The factor graph of the SAM problem looks like this:
  *
@@ -89,7 +92,7 @@
  *          *
  *
  *  where:
- *    - X_i are SE3 poses
+ *    - X_i are SE3 robot poses
  *    - b_k are R^3 landmarks or beacons
  *    - * is a pose prior to anchor the map and make the problem observable
  *    - segments indicate measurement factors:
@@ -97,7 +100,21 @@
  *      - landmark measurements from X_i to b_k
  *      - absolute pose measurement from X0 to * (the origin of coordinates)
  *
- *  All these variables are summarized again as follows
+ *  We thus declare 9 factors pose---landmark, as follows:
+ *
+ *    poses ---  lmks
+ *      x0  ---  b0
+ *      x0  ---  b1
+ *      x0  ---  b3
+ *      x1  ---  b0
+ *      x1  ---  b2
+ *      x1  ---  b4
+ *      x2  ---  b1
+ *      x2  ---  b2
+ *      x2  ---  b4
+ *
+ *
+ *  The main variables are summarized again as follows
  *
  *      Xi  : robot pose at time i, SE(3)
  *      u   : robot control, (v*dt; 0; 0; 0; 0; w*dt) in se(3)
@@ -109,12 +126,17 @@
  *
  *  We define the state to estimate as a manifold composite:
  *
- *      X = <X0, X1, X2, b0, b1, b2, b3, b4> in <SE3, SE3, SE3, R^3, R^3, R^3, R^3, R^3>
+ *      X in  < SE3, SE3, SE3, R^3, R^3, R^3, R^3, R^3 >
+ *
+ *      X  =  <  X0,  X1,  X2,  b0,  b1,  b2,  b3,  b4 >
  *
  *  The estimation error dX is expressed
  *  in the tangent space at X,
  *
- *      dX = [dx0, dx1, dx2, db0, db1, db2, db3, db4] in R^33
+ *      dX in  < se3, se3, se3, R^3, R^3, R^3, R^3, R^3 >
+ *          ~  < R^6, R^6, R^6, R^3, R^3, R^3, R^3, R^3 > = R^33
+ *
+ *      dX  =  [ dx0, dx1, dx2, db0, db1, db2, db3, db4 ] in R^33
  *
  *  with
  *      dx_i: pose error in se(3) ~ R^6
@@ -124,13 +146,15 @@
  *  The prior, motion and measurement models are
  *
  *    - for the prior factor:
- *        p_i     = X_i
+ *        p_0     = X_0
  *
  *    - for the motion factors:
  *        d_ij    = X_j (-) X_i = log(X_i.inv * X_j)  // motion expectation equation
  *
  *    - for the measurement factors:
  *        e_ik    = h(X_i, b_k) = X_i^-1 * b_k        // measurement expectation equation
+ *
+ *
  *
  *  The algorithm below comprises first a simulator to
  *  produce measurements, then uses these measurements
@@ -263,7 +287,7 @@ int main()
     ArrayY              y_sigmas;
     MatrixY             R; // Covariance
     MatrixY             S; // sqrt Info
-    vector<map<int,VectorY>>    measurements(landmarks_simu.size()); // y = measurements[pose_id][lmk_id]
+    vector<map<int,VectorY>>    measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
     y_sigmas << 0.001, 0.001, 0.001;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
@@ -277,7 +301,7 @@ int main()
     MatrixYT        J_e_ix;         // Jacobian of measurement expectation wrt inverse pose
     MatrixYT        J_e_x;          // Jacobian of measurement expectation wrt pose
     MatrixYB        J_e_b;          // Jacobian of measurement expectation wrt lmk
-    SE3Tangentd     dx;             // optimal motion correction step
+    SE3Tangentd     dx;             // optimal pose correction step
     VectorB         db;             // optimal landmark correction step
 
     // Problem-size variables
@@ -307,17 +331,6 @@ int main()
      * A pair pose -- lmk means that the lmk was measured from the pose
      * Each pair declares a factor in the factor graph
      * We declare 9 pairs, or 9 factors, as follows:
-     *
-     *    poses ---  lmks
-     *      x0  ---  b0
-     *      x0  ---  b1
-     *      x0  ---  b3
-     *      x1  ---  b0
-     *      x1  ---  b2
-     *      x1  ---  b4
-     *      x2  ---  b1
-     *      x2  ---  b2
-     *      x2  ---  b4
      */
     vector<list<int>> pairs(NUM_POSES);
     pairs[0].push_back(0);  // 0-0
@@ -399,14 +412,15 @@ int main()
         // 1. evaluate prior factor ---------------------
         /*
          *  NOTE (see Chapter 2, Section E, of Sola-18):
-         *  In case of a non-trivial prior measurement, we need to consider
-         *  the nature of it: is it a global or a local specification?
          *
          *  To compute any residual, we consider the following variables:
          *      r: residual
          *      e: expectation
          *      y: prior specification 'measurement'
          *      W: sqrt information matrix of the measurement noise.
+         *
+         *  In case of a non-trivial prior measurement, we need to consider
+         *  the nature of it: is it a global or a local specification?
          *
          *  When prior information `y` is provided in the global reference,
          *  we need a left-minus operation .- to compute the residual.
@@ -443,7 +457,7 @@ int main()
          */
 
         // residual : expectation - measurement, in global tangent space, in a one-liner :
-        r.segment(row,DoF)          = poses[0].lminus(SE3d::Identity()).coeffs();  // measurement is zero, so skipped in formula
+        r.segment(row,DoF)          = poses[0].lminus(SE3d::Identity()).coeffs();
 
         // Jacobian of residual wrt pose is the identity because of trivial relations
         J.block(row, col, DoF, DoF) = MatrixT::Identity();
