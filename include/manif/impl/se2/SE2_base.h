@@ -68,11 +68,12 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @brief TODO tofix
-   * @param  v
+   * @brief Rigid motion action on a 2D point.
+   * @param  v A 2D point.
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return
+   * @return The transformed 2D point.
+   * @note See Eq. (143) & Eqs. (144,145).
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 2, 1>

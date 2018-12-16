@@ -66,11 +66,12 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @brief TODO tofix
-   * @param  v
+   * @brief Rotation action on a 2-vector.
+   * @param  v A 2-vector.
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return
+   * @return The rotated 2-vector.
+   * @note See Eqs. (109, 110).
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 2, 1>
