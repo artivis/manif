@@ -629,10 +629,6 @@ TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC)
   EXPECT_EIGEN_NEAR(tan.rjac(), tan.ljac().transpose());
 }
 
-MANIF_TEST(SO3d);
-
-MANIF_TEST_JACOBIANS(SO3d);
-
 /*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
 {
@@ -788,7 +784,6 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   EXPECT_EQ(3, J_between_b.rows());
   EXPECT_EQ(3, J_between_b.cols());
 
-
   so3a.setRandom();
   so3b.setRandom();
   so3c = so3a.between(so3b, J_between_a, J_between_b);
@@ -837,6 +832,40 @@ TEST(TEST_SO3, TEST_SO3_TANGENT_SKEW)
   EXPECT_DOUBLE_EQ( 0, so3_lie(2,2));
 }
 
+TEST(TEST_SO3, TEST_SO3_ACT)
+{
+  SO3d so3 = SO3d::Identity();
+
+  auto transformed_point = so3.act(Eigen::Vector3d(1,1,1));
+
+  /// @todo precision issue ?
+  //EXPECT_DOUBLE_EQ(1, transformed_point.x());
+  //EXPECT_DOUBLE_EQ(1, transformed_point.y());
+
+  EXPECT_NEAR(+1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.z(), 1e-15);
+
+  so3 = SO3d(M_PI, M_PI_2, M_PI/4.);
+
+  transformed_point = so3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 0, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(-1.414213562373, transformed_point.y(), 1e-12);
+  EXPECT_NEAR(-1, transformed_point.z(), 1e-15);
+
+  so3 = SO3d(M_PI/4, -M_PI_2, -M_PI);
+
+  transformed_point = so3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 1.414213562373, transformed_point.x(), 1e-12);
+  EXPECT_NEAR(-0, transformed_point.y(), 1e-15);
+  EXPECT_NEAR( 1, transformed_point.z(), 1e-15);
+}
+
+MANIF_TEST(SO3d);
+
+MANIF_TEST_JACOBIANS(SO3d);
 
 int main(int argc, char** argv)
 {

@@ -229,6 +229,33 @@ TEST(TEST_SE3, TEST_SE3_COMPOSE)
   EXPECT_DOUBLE_EQ(1, se3c.coeffs()(6));
 }
 
+TEST(TEST_SE3, TEST_SE3_ACT)
+{
+  SE3d se3 = SE3d::Identity();
+
+  auto transformed_point = se3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR(+1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.z(), 1e-15);
+
+  se3 = SE3d(1,1,1,M_PI,M_PI_2,M_PI/4.);
+
+  transformed_point = se3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(-0.414213562373, transformed_point.y(), 1e-12);
+  EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
+
+  se3 = SE3d(-1,-1,-1,M_PI/4,-M_PI_2,-M_PI);
+
+  transformed_point = se3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 0.414213562373, transformed_point.x(), 1e-12);
+  EXPECT_NEAR(-1, transformed_point.y(), 1e-15);
+  EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
+}
+
 MANIF_TEST(SE3d);
 
 MANIF_TEST_JACOBIANS(SE3d);
