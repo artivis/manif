@@ -501,6 +501,34 @@ TEST(TEST_SO2, TEST_SO2_BETWEEN_JAC)
   EXPECT_DOUBLE_EQ(1, J_between_b(0));
 }
 
+TEST(TEST_SO2, TEST_SO2_ACT)
+{
+  SO2d so2(M_PI/2.);
+
+  auto transformed_point = so2.act(Eigen::Vector2d(1,1));
+
+  /// @todo precision issue ?
+  //EXPECT_DOUBLE_EQ(0.0, transformed_point.x());
+  //EXPECT_DOUBLE_EQ(0.0, transformed_point.y());
+
+  EXPECT_NEAR(-1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
+
+  so2 = SO2d(-M_PI/2.);
+
+  transformed_point = so2.act(Eigen::Vector2d(1,1));
+
+  EXPECT_NEAR(+1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(-1, transformed_point.y(), 1e-15);
+
+  so2 = SO2d::Identity();
+
+  transformed_point = so2.act(Eigen::Vector2d(1,1));
+
+  EXPECT_NEAR(+1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
+}
+
 MANIF_TEST(SO2d);
 
 MANIF_TEST_JACOBIANS(SO2d);

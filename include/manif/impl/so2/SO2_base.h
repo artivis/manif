@@ -66,15 +66,18 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @brief TODO tofix
-   * @param  v
+   * @brief Rotation action on a 2-vector.
+   * @param  v A 2-vector.
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return
+   * @return The rotated 2-vector.
+   * @note See Eqs. (109, 110).
    */
-  Vector act(const Vector &v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+  template <typename _EigenDerived>
+  Eigen::Matrix<Scalar, 2, 1>
+  act(const Eigen::MatrixBase<_EigenDerived> &v,
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 1>>> J_vout_m = {},
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v = {}) const;
 
   /**
    * @brief Get the ajoint matrix of SO2 at this.
@@ -195,22 +198,26 @@ SO2Base<_Derived>::compose(
 }
 
 template <typename _Derived>
-typename SO2Base<_Derived>::Vector
-SO2Base<_Derived>::act(const Vector &v,
-                       OptJacobianRef J_vout_m,
-                       OptJacobianRef J_vout_v) const
+template <typename _EigenDerived>
+Eigen::Matrix<typename SO2Base<_Derived>::Scalar, 2, 1>
+SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 1>>> J_vout_m,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v) const
 {
+  assert_vector_dim(v, 2);
+  const Rotation R(rotation());
+
   if (J_vout_m)
   {
-    (*J_vout_m) = rotation() * skew(1) * v;
+    (*J_vout_m) = R * skew(Scalar(1)) * v;
   }
 
   if (J_vout_v)
   {
-    (*J_vout_v) = rotation();
+    (*J_vout_v) = R;
   }
 
-  return rotation() * v;
+  return R * v;
 }
 
 template <typename _Derived>

@@ -435,6 +435,34 @@ TEST(TEST_SE2, TEST_SE2_BETWEEN)
   EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
 }
 
+TEST(TEST_SE2, TEST_SE2_ACT)
+{
+  SE2d se2(1,1,M_PI/2.);
+
+  auto transformed_point = se2.act(Eigen::Vector2d(1,1));
+
+  /// @todo precision issue ?
+  //EXPECT_DOUBLE_EQ(0.0, transformed_point.x());
+  //EXPECT_DOUBLE_EQ(0.0, transformed_point.y());
+
+  EXPECT_NEAR(0, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(2, transformed_point.y(), 1e-15);
+
+  se2 = SE2d(1,1,-M_PI/2.);
+
+  transformed_point = se2.act(Eigen::Vector2d(1,1));
+
+  EXPECT_NEAR(2, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(0, transformed_point.y(), 1e-15);
+
+  se2 = SE2d::Identity();
+
+  transformed_point = se2.act(Eigen::Vector2d(1,1));
+
+  EXPECT_NEAR(1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(1, transformed_point.y(), 1e-15);
+}
+
 MANIF_TEST(SE2d);
 
 MANIF_TEST_JACOBIANS(SE2d);
@@ -442,8 +470,6 @@ MANIF_TEST_JACOBIANS(SE2d);
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
-
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE2.TEST_SE2_INVERSE";
 
   return RUN_ALL_TESTS();
 }
