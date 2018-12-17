@@ -126,7 +126,7 @@ SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const Eigen::AngleAxis<Scalar>& angle_axis)
-  : data_(QuaternionDataType(angle_axis).coeffs())
+  : SO3(QuaternionDataType(angle_axis).coeffs())
 {
 
 }
@@ -135,10 +135,9 @@ template <typename _Scalar>
 SO3<_Scalar>::SO3(const Scalar roll,
                   const Scalar pitch,
                   const Scalar yaw)
-  : data_( QuaternionDataType(
-             Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX()) *
-             Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
-             Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ())  ).coeffs())
+  : SO3(Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ()) *
+        Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
+        Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX())  )
 {
   //
 }
