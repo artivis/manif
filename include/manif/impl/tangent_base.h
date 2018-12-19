@@ -593,21 +593,21 @@ operator -(const TangentBase<_Derived>& t,
 }
 
 template <typename _EigenDerived, typename _Derived>
-_EigenDerived
+auto
 operator +(const Eigen::MatrixBase<_EigenDerived>& v,
            const TangentBase<_Derived>& t)
+-> decltype(v + t.coeffs())
 {
-  _EigenDerived ret(v);
-  return ret += t.coeffs();
+  return v + t.coeffs();
 }
 
 template <typename _EigenDerived, typename _Derived>
-_EigenDerived
-operator -(const TangentBase<_Derived>& t,
-           const Eigen::MatrixBase<_EigenDerived>& v)
+auto
+operator -(const Eigen::MatrixBase<_EigenDerived>& v,
+           const TangentBase<_Derived>& t)
+-> decltype(v - t.coeffs())
 {
-  _EigenDerived ret(v);
-  return ret -= t.coeffs();
+  return v - t.coeffs();
 }
 
 template <typename _Derived>
