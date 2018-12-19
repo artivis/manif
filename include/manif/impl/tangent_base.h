@@ -243,15 +243,6 @@ public:
   template <typename _DerivedOther>
   bool operator ==(const TangentBase<_DerivedOther>& t) const;
 
-  /**
-   * @brief
-   * @return [description]
-   */
-  template <class _DerivedOther>
-  friend typename TangentBase<_DerivedOther>::Tangent
-  operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
-             const TangentBase<_DerivedOther>& t);
-
   // static helpers
 
   //! Static helper the create a Tangent object set to Zero.
