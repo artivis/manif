@@ -209,17 +209,12 @@ public:
    */
   LieGroup operator +(const LieGroup& m) const;
 
-  //! @brief Plus operator, simple vector plus operation.
-  template <typename _DerivedOther>
-  Tangent operator +(const TangentBase<_DerivedOther>& t) const;
-
   //! @brief In-place plus operator, simple vector in-place plus operation.
   template <typename _DerivedOther>
   _Derived& operator +=(const TangentBase<_DerivedOther>& t);
 
-  //! @brief In-place minus operator, simple vector minus operation.
   template <typename _DerivedOther>
-  Tangent operator -(const TangentBase<_DerivedOther>& t) const;
+  _Derived& operator -=(const TangentBase<_DerivedOther>& t);
 
   /**
    * @brief Multiply the underlying vector with a scalar.
@@ -346,7 +341,7 @@ template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t) const
 {
-  return Tangent(coeffs()+t.coeffs().template cast<Scalar>());
+  return *this + t;
 }
 
 template <class _Derived>
@@ -354,7 +349,7 @@ template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t) const
 {
-  return Tangent(coeffs()-t.coeffs().template cast<Scalar>());
+  return *this - t;
 }
 
 template <class _Derived>
@@ -504,27 +499,40 @@ TangentBase<_Derived>::operator +(const LieGroup& m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator +(const TangentBase<_DerivedOther>& t) const
+_Derived&
+TangentBase<_Derived>::operator +=(const TangentBase<_DerivedOther>& t)
 {
-  return plus(t);
+  coeffs() += t.coeffs();
+  return derived();
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
 _Derived&
-TangentBase<_Derived>::operator +=(const TangentBase<_DerivedOther>& t)
+TangentBase<_Derived>::operator -=(const TangentBase<_DerivedOther>& t)
 {
-  derived() = plus(t);
+  coeffs() -= t.coeffs();
   return derived();
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator -(const TangentBase<_DerivedOther>& t) const
+operator +(const TangentBase<_Derived>& ta,
+           const TangentBase<_DerivedOther>& tb)
 {
-  return minus(t);
+  typename TangentBase<_Derived>::Tangent tc(ta);
+  return tc += tb;
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent
+operator -(const TangentBase<_Derived>& ta,
+           const TangentBase<_DerivedOther>& tb)
+{
+  typename TangentBase<_Derived>::Tangent tc(ta);
+  return tc -= tb;
 }
 
 template <typename _Derived>
