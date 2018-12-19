@@ -160,8 +160,20 @@ public:
   Jacobian smallAdj() const;
 
   /**
-   * @brief Evaluate whether this and m are 'close'.
-   * @detail This evaluation is performed element-wise.
+   * @brief Evaluate whether this and v are 'close'.
+   * @details This evaluation is performed element-wise.
+   * @param[in] v A vector.
+   * @param[in] eps Threshold for equality copmarison.
+   * @return true if the Tangent element t is 'close' to this,
+   * false otherwise.
+   */
+  template <typename _EigenDerived>
+  bool isApprox(const Eigen::MatrixBase<_EigenDerived>& v,
+                const Scalar eps) const;
+
+  /**
+   * @brief Evaluate whether this and t are 'close'.
+   * @details This evaluation is performed element-wise.
    * @param[in] t An element of the same Tangent group.
    * @param[in] eps Threshold for equality copmarison.
    * @return true if the Tangent element t is 'close' to this,
@@ -233,16 +245,6 @@ public:
   //! @brief Divide the underlying vector with a scalar.
   template <typename T>
   Tangent operator /=(const T scalar) const;
-
-  /**
-   * @brief Equality operator.
-   * @param[in] t An element of the same Tangent group.
-   * @return true if the Tangent element t is 'close' to this,
-   * false otherwise.
-   * @see isApprox.
-   */
-  template <typename _DerivedOther>
-  bool operator ==(const TangentBase<_DerivedOther>& t) const;
 
   // static helpers
 
@@ -421,23 +423,33 @@ TangentBase<_Derived>::smallAdj() const
 }
 
 template <typename _Derived>
-template <typename _DerivedOther>
-bool TangentBase<_Derived>::isApprox(const TangentBase<_DerivedOther>& t,
-                                     const Scalar eps) const
+template <typename _EigenDerived>
+bool TangentBase<_Derived>::isApprox(
+    const Eigen::MatrixBase<_EigenDerived>& t,
+    const Scalar eps) const
 {
   using std::min;
   bool result = false;
 
-  if (min(coeffs().norm(), t.coeffs().norm()) < eps)
+  if (min(coeffs().norm(), t.norm()) < eps)
   {
-    result = ((coeffs() - t.coeffs()).isZero(eps));
+    result = ((coeffs() - t).isZero(eps));
   }
   else
   {
-    result = (coeffs().isApprox(t.coeffs(), eps));
+    result = (coeffs().isApprox(t, eps));
   }
 
   return result;
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+bool TangentBase<_Derived>::isApprox(
+    const TangentBase<_DerivedOther>& t,
+    const Scalar eps) const
+{
+  return isApprox(t.coeffs(), eps);
 }
 
 // Operators
@@ -644,13 +656,20 @@ operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
         typename TangentBase<_DerivedOther>::DataType(J*t.coeffs()));
 }
 
-template <typename _Derived>
-template <typename _DerivedOther>
-bool
-TangentBase<_Derived>::operator ==(
-    const TangentBase<_DerivedOther>& t) const
+template <typename _Derived, typename _DerivedOther>
+bool TangentBase<_Derived>::operator ==(
+    const TangentBase<_Derived>& ta,
+    const TangentBase<_DerivedOther>& tb) const
 {
-  return isApprox(t, Constants<Scalar>::eps);
+  return ta.isApprox(tb, Constants<Scalar>::eps);
+}
+
+template <typename _Derived, typename _EigenDerived>
+bool TangentBase<_Derived>::operator ==(
+    const TangentBase<_Derived>& t,
+    const Eigen::MatrixBase<_EigenDerived>& v) const
+{
+  return t.isApprox(v, Constants<Scalar>::eps);
 }
 
 /// Utils
