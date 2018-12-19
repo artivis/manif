@@ -67,7 +67,9 @@ public:
   template <typename _DerivedOther>
   SO3Tangent(const TangentBase<_DerivedOther>& o);
 
-  SO3Tangent(const DataType& vec);
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SO3Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
 
   // Tangent common API
 
@@ -109,8 +111,10 @@ SO3Tangent<_Scalar>::SO3Tangent(
 }
 
 template <typename _Scalar>
-SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)
-  : data_(vec)
+template <typename _EigenDerived>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const Eigen::MatrixBase<_EigenDerived>& v)
+  : data_(v)
 {
   //
 }

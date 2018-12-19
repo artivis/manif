@@ -67,7 +67,10 @@ public:
   template <typename _DerivedOther>
   SE2Tangent(const TangentBase<_DerivedOther>& o);
 
-  SE2Tangent(const DataType& v);
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SE2Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
+
   SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);
 
   // Tangent common API
@@ -112,8 +115,10 @@ SE2Tangent<_Scalar>::SE2Tangent(
 }
 
 template <typename _Scalar>
-SE2Tangent<_Scalar>::SE2Tangent(const DataType& theta)
-  : data_(theta)
+template <typename _EigenDerived>
+SE2Tangent<_Scalar>::SE2Tangent(
+    const Eigen::MatrixBase<_EigenDerived>& v)
+  : data_(v)
 {
   //
 }

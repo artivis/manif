@@ -67,9 +67,12 @@ public:
   template <typename _DerivedOther>
   SO2Tangent(const TangentBase<_DerivedOther>& o);
 
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SO2Tangent(const Eigen::MatrixBase<_EigenDerived>& theta);
+
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
-  SO2Tangent(const DataType& theta);
 
   // Tangent common API
 
@@ -130,7 +133,9 @@ SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)
 }
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const DataType& theta)
+template <typename _EigenDerived>
+SO2Tangent<_Scalar>::SO2Tangent(
+    const Eigen::MatrixBase<_EigenDerived>& theta)
   : data_(theta)
 {
   //
