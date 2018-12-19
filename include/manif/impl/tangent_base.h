@@ -218,6 +218,14 @@ public:
   template <typename _DerivedOther>
   _Derived& operator -=(const TangentBase<_DerivedOther>& t);
 
+  //! @brief In-place plus operator, simple vector in-place plus operation.
+  template <typename _EigenDerived>
+  _Derived& operator +=(const Eigen::MatrixBase<_EigenDerived>& v);
+
+  //! @brief In-place minus operator, simple vector in-place minus operation.
+  template <typename _EigenDerived>
+  _Derived& operator -=(const Eigen::MatrixBase<_EigenDerived>& v);
+
   //! @brief Multiply the underlying vector with a scalar.
   template <typename T>
   Tangent operator *=(const T scalar) const;
@@ -532,6 +540,64 @@ operator -(const TangentBase<_Derived>& ta,
   typename TangentBase<_Derived>::Tangent tc(ta);
   return tc -= tb;
 }
+
+///
+
+template <typename _Derived>
+template <typename _EigenDerived>
+_Derived& TangentBase<_Derived>::operator +=(
+    const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  coeffs() += v;
+  return derived();
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+_Derived& TangentBase<_Derived>::operator -=(
+    const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  coeffs() -= v;
+  return derived();
+}
+
+template <typename _Derived, typename _EigenDerived>
+typename TangentBase<_Derived>::Tangent
+operator +(const TangentBase<_Derived>& t,
+           const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  typename TangentBase<_Derived>::Tangent ret(t);
+  return ret += v;
+}
+
+template <typename _Derived, typename _EigenDerived>
+typename TangentBase<_Derived>::Tangent
+operator -(const TangentBase<_Derived>& t,
+           const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  typename TangentBase<_Derived>::Tangent ret(t);
+  return ret -= v;
+}
+
+template <typename _EigenDerived, typename _Derived>
+typename _EigenDerived
+operator +(const Eigen::MatrixBase<_EigenDerived>& v,
+           const TangentBase<_Derived>& t)
+{
+  _EigenDerived ret(v);
+  return ret += t.coeffs();
+}
+
+template <typename _EigenDerived, typename _Derived>
+typename _EigenDerived
+operator -(const TangentBase<_Derived>& t,
+           const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  _EigenDerived ret(v);
+  return ret -= t.coeffs();
+}
+
+///
 
 template <typename _Derived>
 template <typename T>
