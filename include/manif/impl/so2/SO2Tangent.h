@@ -56,7 +56,8 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  SO2Tangent() = default;
+  SO2Tangent()  = default;
+  ~SO2Tangent() = default;
 
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);

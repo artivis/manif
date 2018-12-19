@@ -556,8 +556,6 @@ operator -(const TangentBase<_Derived>& ta,
   return tc -= tb;
 }
 
-///
-
 template <typename _Derived>
 template <typename _EigenDerived>
 _Derived& TangentBase<_Derived>::operator +=(
@@ -611,8 +609,6 @@ operator -(const TangentBase<_Derived>& t,
   _EigenDerived ret(v);
   return ret -= t.coeffs();
 }
-
-///
 
 template <typename _Derived>
 template <typename T>

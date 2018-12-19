@@ -56,7 +56,8 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  SE2Tangent() = default;
+  SE2Tangent()  = default;
+  ~SE2Tangent() = default;
 
   SE2Tangent(const DataType& v);
   SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);

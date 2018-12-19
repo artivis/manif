@@ -56,7 +56,8 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  SE3Tangent() = default;
+  SE3Tangent()  = default;
+  ~SE3Tangent() = default;
 
   SE3Tangent(const DataType& v);
 
