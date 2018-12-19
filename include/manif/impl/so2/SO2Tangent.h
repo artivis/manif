@@ -59,6 +59,14 @@ public:
   SO2Tangent()  = default;
   ~SO2Tangent() = default;
 
+  // Copy constructor given base
+  SO2Tangent(const Base& o);
+  template <typename _DerivedOther>
+  SO2Tangent(const SO2TangentBase<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SO2Tangent(const TangentBase<_DerivedOther>& o);
+
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
   SO2Tangent(const DataType& theta);
@@ -88,6 +96,31 @@ protected:
 };
 
 MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent);
+
+template <typename _Scalar>
+SO2Tangent<_Scalar>::SO2Tangent(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO2Tangent<_Scalar>::SO2Tangent(
+    const SO2TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO2Tangent<_Scalar>::SO2Tangent(
+    const TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
 
 template <typename _Scalar>
 SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)

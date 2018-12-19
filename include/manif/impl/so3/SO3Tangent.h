@@ -59,6 +59,14 @@ public:
   SO3Tangent()  = default;
   ~SO3Tangent() = default;
 
+  // Copy constructor given base
+  SO3Tangent(const Base& o);
+  template <typename _DerivedOther>
+  SO3Tangent(const SO3TangentBase<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SO3Tangent(const TangentBase<_DerivedOther>& o);
+
   SO3Tangent(const DataType& vec);
 
   // Tangent common API
@@ -74,6 +82,31 @@ protected:
 };
 
 MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent);
+
+template <typename _Scalar>
+SO3Tangent<_Scalar>::SO3Tangent(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const SO3TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
 
 template <typename _Scalar>
 SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)

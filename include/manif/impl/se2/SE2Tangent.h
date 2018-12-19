@@ -59,6 +59,14 @@ public:
   SE2Tangent()  = default;
   ~SE2Tangent() = default;
 
+  // Copy constructor given base
+  SE2Tangent(const Base& o);
+  template <typename _DerivedOther>
+  SE2Tangent(const SE2TangentBase<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SE2Tangent(const TangentBase<_DerivedOther>& o);
+
   SE2Tangent(const DataType& v);
   SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);
 
@@ -77,6 +85,31 @@ protected:
 };
 
 MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent);
+
+template <typename _Scalar>
+SE2Tangent<_Scalar>::SE2Tangent(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE2Tangent<_Scalar>::SE2Tangent(
+    const SE2TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE2Tangent<_Scalar>::SE2Tangent(
+    const TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
 
 template <typename _Scalar>
 SE2Tangent<_Scalar>::SE2Tangent(const DataType& theta)
