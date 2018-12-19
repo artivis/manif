@@ -196,7 +196,8 @@ public:
    * @return A reference to this.
    * @see DataType.
    */
-  _Derived& operator =(const DataType& t);
+  template <typename _EigenDerived>
+  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 
   // Math
 
@@ -440,7 +441,7 @@ _Derived&
 TangentBase<_Derived>::operator =(
     const TangentBase<_Derived>& t)
 {
-  derived().coeffs() = t.coeffs();
+  coeffs() = t.coeffs();
   return derived();
 }
 
@@ -450,14 +451,16 @@ _Derived&
 TangentBase<_Derived>::operator =(
     const TangentBase<_DerivedOther>& t)
 {
-  derived().coeffs() = t.coeffs();
+  coeffs() = t.coeffs();
   return derived();
 }
 
 template <typename _Derived>
-_Derived& TangentBase<_Derived>::operator =(const DataType& t)
+template <typename _EigenDerived>
+_Derived& TangentBase<_Derived>::operator =(
+    const Eigen::MatrixBase<_EigenDerived>)
 {
-  derived().coeffs() = t;
+  coeffs() = t;
   return derived();
 }
 
