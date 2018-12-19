@@ -54,7 +54,10 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
   { evalIsApprox(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNARY_MINUS)         \
-  { evalUnaryMinus(); }
+  { evalUnaryMinus(); }                                                   \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_TANGENT_OPERATORS)   \
+  { evalSomeTangentOperators(); }
+
 
 /*
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
@@ -325,6 +328,23 @@ public:
     typename Tangent::DataType minus_delta_data = minus_delta.coeffs();
     EXPECT_EIGEN_NEAR(-delta_data, minus_delta_data);
     EXPECT_EIGEN_NEAR(-delta.coeffs(), minus_delta.coeffs());
+  }
+
+  void evalSomeTangentOperators()
+  {
+    typename Tangent::DataType delta_data(delta.coeffs());
+
+    // ret type is Tangent
+    EXPECT_EIGEN_NEAR(
+          (delta+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.).coeffs(),
+          delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
+          );
+
+    // ret type is Tangent::DataType
+    EXPECT_EIGEN_NEAR(
+          delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.,
+          delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
+          );
   }
 
 protected:
