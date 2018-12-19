@@ -37,6 +37,9 @@ struct TangentBase
 
 public:
 
+  TangentBase()  = default;
+  ~TangentBase() = default;
+
   //! @brief Access the underlying data by reference
   DataType& coeffs();
   //! @brief Access the underlying data by const reference
