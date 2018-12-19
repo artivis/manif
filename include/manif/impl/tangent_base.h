@@ -35,11 +35,6 @@ struct TangentBase
   template <typename _Scalar>
   using TangentTemplate = typename internal::traitscast<Tangent, _Scalar>::cast;
 
-  /// @todo this is an implicit conversion operator,
-  /// evaluate how bad it is to use it.
-  operator _Derived&() { return derived(); }
-  operator const _Derived& () const { return derived(); }
-
 public:
 
   //! @brief Access the underlying data by reference
