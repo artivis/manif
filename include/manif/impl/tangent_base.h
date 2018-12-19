@@ -496,8 +496,8 @@ TangentBase<_Derived>::operator +(const LieGroup& m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-_Derived&
-TangentBase<_Derived>::operator +=(const TangentBase<_DerivedOther>& t)
+_Derived& TangentBase<_Derived>::operator +=(
+    const TangentBase<_DerivedOther>& t)
 {
   coeffs() += t.coeffs();
   return derived();
@@ -505,8 +505,8 @@ TangentBase<_Derived>::operator +=(const TangentBase<_DerivedOther>& t)
 
 template <typename _Derived>
 template <typename _DerivedOther>
-_Derived&
-TangentBase<_Derived>::operator -=(const TangentBase<_DerivedOther>& t)
+_Derived& TangentBase<_Derived>::operator -=(
+    const TangentBase<_DerivedOther>& t)
 {
   coeffs() -= t.coeffs();
   return derived();
@@ -578,7 +578,8 @@ operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
 template <typename _Derived>
 template <typename _DerivedOther>
 bool
-TangentBase<_Derived>::operator ==(const TangentBase<_DerivedOther>& t) const
+TangentBase<_Derived>::operator ==(
+    const TangentBase<_DerivedOther>& t) const
 {
   return isApprox(t, Constants<Scalar>::eps);
 }
