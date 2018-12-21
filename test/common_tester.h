@@ -334,6 +334,42 @@ public:
   {
     typename Tangent::DataType delta_data(delta.coeffs());
 
+    // t+t
+    EXPECT_EIGEN_NEAR(delta.plus(delta).coeffs(), delta_data+delta_data);
+
+    // t-t
+    EXPECT_EIGEN_NEAR(delta.minus(delta).coeffs(), delta_data-delta_data);
+
+    // t+t
+    EXPECT_EIGEN_NEAR((delta+delta).coeffs(), delta_data+delta_data);
+
+    // t-t
+    EXPECT_EIGEN_NEAR((delta-delta).coeffs(), delta_data-delta_data);
+
+    // t+=t
+    EXPECT_EIGEN_NEAR((delta+=delta).coeffs(), delta_data+=delta_data);
+
+    // t-=t
+    EXPECT_EIGEN_NEAR((delta-=delta).coeffs(), delta_data-=delta_data);
+
+    // t+v
+    EXPECT_EIGEN_NEAR((delta+delta_data).coeffs(), delta_data+delta_data);
+
+    // t-v
+    EXPECT_EIGEN_NEAR((delta-delta_data).coeffs(), delta_data-delta_data);
+
+    // t+=v
+    EXPECT_EIGEN_NEAR((delta+=delta_data).coeffs(), delta_data+=delta_data);
+
+    // t-=v
+    EXPECT_EIGEN_NEAR((delta-=delta_data).coeffs(), delta_data-=delta_data);
+
+    // v+t
+    EXPECT_EIGEN_NEAR(delta_data+delta, delta_data+delta_data);
+
+    // v-t
+    EXPECT_EIGEN_NEAR(delta_data-delta, delta_data-delta_data);
+
     // ret type is Tangent
     EXPECT_EIGEN_NEAR(
           (delta+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.).coeffs(),
