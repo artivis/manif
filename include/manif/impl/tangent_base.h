@@ -216,7 +216,7 @@ public:
 
   // Math
 
-  //! @brief Equivalent to -1 * v.
+  //! @brief Equivalent to v * -1.
   Tangent operator -() const;
 
   /**
