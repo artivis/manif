@@ -66,7 +66,19 @@ public:
   SE2()  = default;
   ~SE2() = default;
 
-  SE2(const DataType& d);
+  // Copy constructor given base
+  SE2(const Base& o);
+
+  template <typename _DerivedOther>
+  SE2(const SE2Base<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SE2(const LieGroupBase<_DerivedOther>& o);
+
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SE2(const Eigen::MatrixBase<_EigenDerived>& data);
+
   SE2(const Scalar x, const Scalar y, const Scalar theta);
   SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag);
 
@@ -93,8 +105,34 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SE2)
 
 template <typename _Scalar>
-SE2<_Scalar>::SE2(const DataType& d)
-  : data_(d)
+SE2<_Scalar>::SE2(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE2<_Scalar>::SE2(
+    const SE2Base<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE2<_Scalar>::SE2(
+    const LieGroupBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _EigenDerived>
+SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
 {
   //
 }
