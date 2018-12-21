@@ -106,6 +106,11 @@ public:
   Rotation rotation() const;
 
   /**
+   * @brief Get the rotational part of this as a quaternion.
+   */
+  QuaternionDataType quat() const;
+
+  /**
    * @brief Get the translational part in vector form.
    */
   Translation translation() const;
@@ -161,6 +166,13 @@ typename SE3Base<_Derived>::Rotation
 SE3Base<_Derived>::rotation() const
 {
   return asSO3().rotation();
+}
+
+template <typename _Derived>
+typename SE3Base<_Derived>::QuaternionDataType
+SE3Base<_Derived>::quat() const
+{
+  return asSO3().quat();
 }
 
 template <typename _Derived>

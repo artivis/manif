@@ -63,6 +63,8 @@ public:
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
 
+  using Base::quat;
+
   SO3()  = default;
   ~SO3() = default;
 
