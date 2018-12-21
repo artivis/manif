@@ -53,6 +53,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 #define MANIF_INHERIT_GROUP_OPERATOR    \
   using Base::operator +;               \
   using Base::operator +=;              \
+  using Base::operator -;               \
   using Base::operator *;               \
   using Base::operator *=;              \
   using Base::operator =;
@@ -92,7 +93,10 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::smallAdj;
 
 #define MANIF_INHERIT_TANGENT_OPERATOR \
-  using Base::operator +;              \
+  using Base::operator +=;             \
+  using Base::operator -=;             \
+  using Base::operator *=;             \
+  using Base::operator /=;             \
   using Base::operator =;
 
 #define MANIF_TANGENT_TYPEDEF               \
