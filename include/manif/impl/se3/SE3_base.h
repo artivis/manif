@@ -28,13 +28,16 @@ private:
 public:
 
   MANIF_GROUP_TYPEDEF
-
-  using Translation = typename internal::traits<_Derived>::Translation;
-
-  using Base::coeffs;
-  using Base::coeffs_nonconst;
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
+
+  using Base::coeffs;
+
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Translation    = typename internal::traits<_Derived>::Translation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
+
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
 
@@ -126,33 +129,11 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
-//protected:
+protected:
 
-  /// Helper
+  using Base::coeffs_nonconst;
 
-//  auto trapart()
-//  -> decltype( std::declval<Type>().coeffs().template block<Dim, 1>(0,0) )
-//  {
-//    coeffs().block<Dim, 1>(0,0);
-//  }
-
-//  auto trapart() const
-//  -> decltype( std::declval<const Type>().coeffs().template block<Dim, 1>(0,0) )
-//  {
-//    coeffs().block<Dim, 1>(0,0);
-//  }
-
-//  auto rotpart() const
-//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
-//  {
-//    coeffs().block<4, 1>(3,0);
-//  }
-
-//  auto rotpart() const
-//  -> decltype( std::declval<const Type>().coeffs().template block<4, 1>(3,0) )
-//  {
-//    coeffs().block<4, 1>(3,0);
-//  }
+public: /// @todo make protected
 
   Eigen::Map<const SO3<Scalar>> asSO3() const
   {

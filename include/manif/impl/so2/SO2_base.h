@@ -32,6 +32,9 @@ public:
 
   using Base::coeffs;
 
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
+
   // LieGroup common API
 
   /**

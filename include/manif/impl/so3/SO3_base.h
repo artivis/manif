@@ -28,12 +28,14 @@ private:
 public:
 
   MANIF_GROUP_TYPEDEF
-
-  using QuaternionDataType = Eigen::Quaternion<Scalar>;
-
-  using Base::coeffs;
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
+
+  using Base::coeffs;
+
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
 

@@ -29,8 +29,6 @@ struct LieGroupBase
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
-  using Transformation = typename internal::traits<_Derived>::Transformation;
-  using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;

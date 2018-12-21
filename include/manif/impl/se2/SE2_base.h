@@ -28,13 +28,14 @@ private:
 public:
 
   MANIF_GROUP_TYPEDEF
-
-  using Translation = typename internal::traits<_Derived>::Translation;
-
-  using Base::coeffs;
-  using Base::coeffs_nonconst;
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
+
+  using Base::coeffs;
+
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Translation    = typename internal::traits<_Derived>::Translation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
 
   // LieGroup common API
 
