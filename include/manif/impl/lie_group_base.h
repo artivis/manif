@@ -386,21 +386,12 @@ LieGroupBase<_Derived>::rplus(
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  LieGroup mout;
-
   if (J_mout_t)
   {
-    Jacobian J_ret_t;
-    Jacobian J_mout_ret;
-    mout = compose(t.retract(J_ret_t), J_mout_m, J_mout_ret);
-    J_mout_t->noalias() = J_mout_ret * J_ret_t;
-  }
-  else
-  {
-    mout = compose(t.retract(), J_mout_m, _);
+    (*J_mout_t) = t.rjac();
   }
 
-  return mout;
+  return compose(t.retract(), J_mout_m, _);
 }
 
 template <typename _Derived>
