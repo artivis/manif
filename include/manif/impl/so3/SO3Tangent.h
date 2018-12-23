@@ -56,9 +56,20 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  SO3Tangent() = default;
+  SO3Tangent()  = default;
+  ~SO3Tangent() = default;
 
-  SO3Tangent(const DataType& vec);
+  // Copy constructor given base
+  SO3Tangent(const Base& o);
+  template <typename _DerivedOther>
+  SO3Tangent(const SO3TangentBase<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SO3Tangent(const TangentBase<_DerivedOther>& o);
+
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SO3Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
 
   // Tangent common API
 
@@ -75,8 +86,35 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent);
 
 template <typename _Scalar>
-SO3Tangent<_Scalar>::SO3Tangent(const DataType& vec)
-  : data_(vec)
+SO3Tangent<_Scalar>::SO3Tangent(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const SO3TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const TangentBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _EigenDerived>
+SO3Tangent<_Scalar>::SO3Tangent(
+    const Eigen::MatrixBase<_EigenDerived>& v)
+  : data_(v)
 {
   //
 }

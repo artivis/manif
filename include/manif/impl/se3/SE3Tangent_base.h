@@ -39,6 +39,9 @@ public:
   using Base::data;
   using Base::coeffs;
 
+  SE3TangentBase()  = default;
+  ~SE3TangentBase() = default;
+
   // Tangent common API
 
   /**

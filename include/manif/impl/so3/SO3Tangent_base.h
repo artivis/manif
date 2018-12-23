@@ -35,6 +35,9 @@ public:
 
   using Base::coeffs;
 
+  SO3TangentBase()  = default;
+  ~SO3TangentBase() = default;
+
   /**
    * @brief Hat operator of SO3.
    * @return An element of the Lie algebra so3 (skew-symmetric matrix).
