@@ -91,34 +91,44 @@ public:
   /**
    * @brief Right oplus operation of the Lie group.
    * @param[in]  t An element of the tangent of the Lie group.
-   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt this.
-   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt the tangent element.
+   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt this.
+   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt group element.
    * @return An element of the Lie group.
    * @note See Eq. (25).
    */
-  LieGroup rplus(const LieGroup& m) const;
+  LieGroup rplus(const LieGroup& m,
+                 OptJacobianRef J_mout_t = {},
+                 OptJacobianRef J_mout_m = {}) const;
 
   /**
    * @brief Left oplus operation of the Lie group.
    * @param[in]  t An element of the tangent of the Lie group.
-   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt this.
-   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt the tangent element.
+   * @param[out] -optional- J_mout_t Jacobian of the oplus operation wrt this.
+   * @param[out] -optional- J_mout_m Jacobian of the oplus operation wrt the group element.
    * @return An element of the Lie group.
    * @note See Eq. (27).
    */
-  LieGroup lplus(const LieGroup& m) const;
+  LieGroup lplus(const LieGroup& m,
+                 OptJacobianRef J_mout_t = {},
+                 OptJacobianRef J_mout_m = {}) const;
 
   /**
    * @brief An alias for the right oplus operation.
    * @see rplus
    */
-  LieGroup plus(const LieGroup& m) const;
+  LieGroup plus(const LieGroup& m,
+                OptJacobianRef J_mout_t = {},
+                OptJacobianRef J_mout_m = {}) const;
 
   template <typename _DerivedOther>
-  Tangent plus(const TangentBase<_DerivedOther>& t) const;
+  Tangent plus(const TangentBase<_DerivedOther>& t,
+               OptJacobianRef J_mout_ta = {},
+               OptJacobianRef J_mout_tb = {}) const;
 
   template <typename _DerivedOther>
-  Tangent minus(const TangentBase<_DerivedOther>& t) const;
+  Tangent minus(const TangentBase<_DerivedOther>& t,
+                OptJacobianRef J_mout_ta = {},
+                OptJacobianRef J_mout_tb = {}) const;
 
   /**
    * @brief Get the right Jacobian.
@@ -328,38 +338,63 @@ TangentBase<_Derived>::hat() const
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
-TangentBase<_Derived>::rplus(const LieGroup& m) const
+TangentBase<_Derived>::rplus(const LieGroup& m,
+                             OptJacobianRef J_mout_t,
+                             OptJacobianRef J_mout_m) const
 {
-  return m.rplus(derived());
+  return m.rplus(derived(), J_mout_m, J_mout_t);
 }
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
-TangentBase<_Derived>::lplus(const LieGroup& m) const
+TangentBase<_Derived>::lplus(const LieGroup& m,
+                             OptJacobianRef J_mout_t,
+                             OptJacobianRef J_mout_m) const
 {
-  return m.lplus(derived());
+  return m.lplus(derived(), J_mout_m, J_mout_t);
 }
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
-TangentBase<_Derived>::plus(const LieGroup& m) const
+TangentBase<_Derived>::plus(const LieGroup& m,
+                            OptJacobianRef J_mout_t,
+                            OptJacobianRef J_mout_m) const
 {
-  return m.lplus(derived());
+  return m.lplus(derived(), J_mout_m, J_mout_t);
 }
 
 template <class _Derived>
 template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t) const
+TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t,
+                            OptJacobianRef J_mout_ta,
+                            OptJacobianRef J_mout_tb) const
 {
+  if (J_mout_ta)
+    J_mout_ta->setIdentity();
+
+  if (J_mout_tb)
+    J_mout_tb->setIdentity();
+
   return *this + t;
 }
 
 template <class _Derived>
 template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t) const
+TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t,
+                             OptJacobianRef J_mout_ta,
+                             OptJacobianRef J_mout_tb) const
 {
+  if (J_mout_ta)
+    J_mout_ta->setIdentity();
+
+  if (J_mout_tb)
+  {
+    J_mout_tb->setIdentity();
+    (*J_mout_tb) *= Scalar(-1);
+  }
+
   return *this - t;
 }
 

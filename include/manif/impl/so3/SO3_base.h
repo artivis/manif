@@ -28,12 +28,14 @@ private:
 public:
 
   MANIF_GROUP_TYPEDEF
-
-  using QuaternionDataType = Eigen::Quaternion<Scalar>;
-
-  using Base::coeffs;
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
+
+  using Base::coeffs;
+
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
 
@@ -233,17 +235,17 @@ SO3Base<_Derived>::compose(
     std::is_base_of<SO3Base<_DerivedOther>, _DerivedOther>::value,
     "Argument does not inherit from S03Base !");
 
+  const auto& m_SO3 = static_cast<const SO3Base<_DerivedOther>&>(m);
+
   if (J_mc_ma)
   {
-    const auto& m_SO3 = static_cast<const SO3Base<_DerivedOther>&>(m);
     *J_mc_ma = m_SO3.rotation().transpose();
   }
 
   if (J_mc_mb)
     J_mc_mb->setIdentity();
 
-  return LieGroup(QuaternionDataType(coeffs()) *
-                  QuaternionDataType(m.coeffs()));
+  return LieGroup(quat() * m_SO3.quat());
 }
 
 template <typename _Derived>
