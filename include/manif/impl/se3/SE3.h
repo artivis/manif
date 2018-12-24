@@ -75,7 +75,18 @@ public:
   SE3()  = default;
   ~SE3() = default;
 
-  SE3(const DataType& d);
+  // Copy constructor given base
+  SE3(const Base& o);
+
+  template <typename _DerivedOther>
+  SE3(const SE3Base<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SE3(const LieGroupBase<_DerivedOther>& o);
+
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SE3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
    * @brief Constructor given a translation and a quaternion.
@@ -123,8 +134,34 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SE3)
 
 template <typename _Scalar>
-SE3<_Scalar>::SE3(const DataType& d)
-  : data_(d)
+SE3<_Scalar>::SE3(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE3<_Scalar>::SE3(
+    const SE3Base<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SE3<_Scalar>::SE3(
+    const LieGroupBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _EigenDerived>
+SE3<_Scalar>::SE3(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
 {
   //
 }

@@ -66,7 +66,18 @@ public:
   SO2()  = default;
   ~SO2() = default;
 
-  SO2(const DataType& d);
+  // Copy constructor given base
+  SO2(const Base& o);
+
+  template <typename _DerivedOther>
+  SO2(const SO2Base<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SO2(const LieGroupBase<_DerivedOther>& o);
+
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SO2(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
    * @brief Constructor given the real and imaginary part
@@ -97,8 +108,34 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
-SO2<_Scalar>::SO2(const DataType& d)
-  : data_(d)
+SO2<_Scalar>::SO2(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO2<_Scalar>::SO2(
+    const SO2Base<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO2<_Scalar>::SO2(
+    const LieGroupBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _EigenDerived>
+SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
 {
   //
 }

@@ -68,7 +68,18 @@ public:
   SO3()  = default;
   ~SO3() = default;
 
-  SO3(const DataType& d);
+  // Copy constructor given base
+  SO3(const Base& o);
+
+  template <typename _DerivedOther>
+  SO3(const SO3Base<_DerivedOther>& o);
+
+  template <typename _DerivedOther>
+  SO3(const LieGroupBase<_DerivedOther>& o);
+
+  // Copy constructor given Eigen
+  template <typename _EigenDerived>
+  SO3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
    * @brief Constructor given a quaternion.
@@ -105,8 +116,34 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
 
 template <typename _Scalar>
-SO3<_Scalar>::SO3(const DataType& d)
-  : data_(d)
+SO3<_Scalar>::SO3(const Base& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3<_Scalar>::SO3(
+    const SO3Base<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _DerivedOther>
+SO3<_Scalar>::SO3(
+    const LieGroupBase<_DerivedOther>& o)
+  : data_(o.coeffs())
+{
+  //
+}
+
+template <typename _Scalar>
+template <typename _EigenDerived>
+SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
 {
   //
 }
