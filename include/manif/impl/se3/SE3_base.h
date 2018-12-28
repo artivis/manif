@@ -44,7 +44,7 @@ public:
   /**
    * @brief Get the inverse.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
-   * @note See Eq. (146).
+   * @note See Eqs. (170,176).
    */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
@@ -52,7 +52,7 @@ public:
    * @brief Get the SE3 tangent at the point represented by this.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
    * @return The SE3 tangent at this.
-   * @note See Eq. (149) & Eq. (156) and following notes.
+   * @note See Eq. (173) & Eq. (79,179,180) and following notes.
    * @see SE3Tangent.
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -63,7 +63,7 @@ public:
    * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
    * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
    * @return The composition of 'this . m'.
-   * @note See Eq. (147) and Eqs. (153,154).
+   * @note See Eq. (171) and Eqs. (177,178).
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
@@ -76,7 +76,7 @@ public:
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return The transformed 3D point.
-   * @note See Eq. (157) & Eqs. (158,159).
+   * @note See Eq. (181) & Eqs. (182,183).
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 3, 1>
@@ -87,7 +87,7 @@ public:
 
   /**
    * @brief Get the adjoint matrix of SE3 at this.
-   * @note See Eq. (151).
+   * @note See Eq. (175).
    */
   Jacobian adj() const;
 
