@@ -41,7 +41,7 @@ public:
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note z^-1 = z*
-   * @note See Eq. (104).
+   * @note See Eqs. (118,124).
    */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
@@ -49,7 +49,7 @@ public:
    * @brief Get the SO2 tangent at the point represented by this.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
    * @return The SO2 tangent at this.
-   * @note See Eq. (95) & Eq. (106).
+   * @note See Eq. (115) & Eqs. (79,126).
    * @see SO2Tangent.
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -61,7 +61,7 @@ public:
    * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
    * @return The composition of 'this . m'.
    * @note z_c = z_a z_b.
-   * @note See Eq. (105).
+   * @note See Eq. (125).
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
@@ -74,7 +74,7 @@ public:
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return The rotated 2-vector.
-   * @note See Eqs. (109, 110).
+   * @note See Eqs. (129, 130).
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 2, 1>
@@ -84,7 +84,7 @@ public:
 
   /**
    * @brief Get the ajoint matrix of SO2 at this.
-   * @note See Eq. (103).
+   * @note See Eqs. (123).
    */
   Jacobian adj() const;
 
