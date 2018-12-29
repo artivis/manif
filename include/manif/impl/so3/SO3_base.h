@@ -42,7 +42,7 @@ public:
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
-   * @note q^-1 = q* .
+   * @note q^-1 = q*. See Eq. (140).
    */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
@@ -50,7 +50,7 @@ public:
    * @brief Get the SO3 tangent at the point represented by this.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
    * @return The SO3 tangent at this.
-   * @note See Eq. (113) & Eq. (124).
+   * @note See Eq. (133) & Eq. (144).
    * @see SO3Tangent.
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -62,7 +62,7 @@ public:
    * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
    * @return The composition of 'this . m'.
    * @note Quaternion product.
-   * @note See Eqs. (121,122).
+   * @note See Eqs. (141,142).
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
@@ -75,7 +75,7 @@ public:
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return The rotated 3-vector.
-   * @note See Eq (119), Eqs. (130,131)
+   * @note See Eq (136), Eqs. (150,151)
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 3, 1>
@@ -85,7 +85,7 @@ public:
 
   /**
    * @brief Get the adjoint of SO3 at this.
-   * @note See Eq. (119).
+   * @note See Eq. (139).
    */
   Jacobian adj() const;
 

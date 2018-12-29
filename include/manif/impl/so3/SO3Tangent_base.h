@@ -49,31 +49,32 @@ public:
    * @brief Get the SO3 element.
    * @param[out] -optional- J_m_t Jacobian of the SO3 element wrt this.
    * @return The SO3 element.
+   * @note See Eq. (132) and Eq. (143).
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
    * Get the right Jacobian of SO3.
-   * @note See Eq. (123).
+   * @note See Eq. (143).
    */
   Jacobian rjac() const;
 
   /**
    * Get the left Jacobian of SO3.
-   * @note See Eq. (125).
+   * @note See Eq. (145).
    */
   Jacobian ljac() const;
 
   /**
    * Get the inverse of the right Jacobian of SO3.
-   * @note See Eq. (124).
+   * @note See Eq. (144).
    * @see rjac.
    */
   Jacobian rjacinv() const;
 
   /**
    * Get the inverse of the left Jacobian of SO3.
-   * @note See Eq. (126).
+   * @note See Eq. (146).
    * @see ljac.
    */
   Jacobian ljacinv() const;

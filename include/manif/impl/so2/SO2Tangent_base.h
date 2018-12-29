@@ -42,7 +42,7 @@ public:
   /**
    * @brief Hat operator of SO2.
    * @return An element of the Lie algebra so2 (skew-symmetric matrix).
-   * @note See Eq. (93).
+   * @note See Eqs. (112, 113).
    */
   LieAlg hat() const;
 
@@ -50,31 +50,32 @@ public:
    * @brief Get the SO2 element.
    * @param[out] -optional- J_m_t Jacobian of the SO2 element wrt this.
    * @return The SO2 element.
+   * @note See Eqs. (114, 116) and Eq. (126).
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SO2.
-   * @note See Eq. (106).
+   * @note See Eq. (126).
    */
   Jacobian rjac() const;
 
   /**
    * @brief Get the left Jacobian of SO2.
-   * @note See Eq. (106).
+   * @note See Eq. (126).
    */
   Jacobian ljac() const;
 
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
-   * @note See Eq. (106).
+   * @note See Eq. (126).
    * @see rjac.
    */
   Jacobian rjacinv() const;
 
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
-   * @note See Eq. (106).
+   * @note See Eq. (126).
    * @see ljac.
    */
   Jacobian ljacinv() const;

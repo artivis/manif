@@ -47,6 +47,7 @@ public:
   /**
    * @brief Hat operator of SE3.
    * @return An element of the Lie algebra se3.
+   * @note See Eq. (169).
    */
   LieAlg hat() const;
 
@@ -54,18 +55,19 @@ public:
    * @brief Get the SE3 element.
    * @param[out] -optional- J_m_t Jacobian of the SE3 element wrt this.
    * @return The SE3 element.
+   * @note See Eq. (172) & Eqs. (179,180).
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SE3.
-   * @note See Eq. (155) and following notes.
+   * @note See note after Eqs. (179,180).
    */
   Jacobian rjac() const;
 
   /**
    * @brief Get the left Jacobian of SE3.
-   * @note See Eq. (155).
+   * @note See Eqs. (179,180).
    */
   Jacobian ljac() const;
 

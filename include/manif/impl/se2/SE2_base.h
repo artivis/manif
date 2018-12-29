@@ -42,7 +42,7 @@ public:
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
-   * @note See Eq. (132).
+   * @note See Eqs. (154, 160).
    */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
@@ -50,7 +50,7 @@ public:
    * @brief Get the SE2 tangent at the point represented by this.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
    * @return The SE2 tangent at this.
-   * @note See Eq. (135) & Eq. (141).
+   * @note See Eqs. (157, 158).
    * @see SE2Tangent.
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
@@ -61,7 +61,7 @@ public:
    * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
    * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
    * @return The composition of 'this . m'.
-   * @note See Eq. (133) & Eqs. (139,140).
+   * @note See Eq. (155) & Eqs. (161,162).
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
@@ -74,7 +74,7 @@ public:
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    * @return The transformed 2D point.
-   * @note See Eq. (143) & Eqs. (144,145).
+   * @note See Eq. (165) & Eqs. (166,167).
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 2, 1>
@@ -84,7 +84,7 @@ public:
 
   /**
    * @brief Get the adjoint matrix of SE2 at this.
-   * @note See Eq. (137).
+   * @note See Eq. (159).
    */
   Jacobian adj() const;
 

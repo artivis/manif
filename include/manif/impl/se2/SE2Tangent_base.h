@@ -41,7 +41,7 @@ public:
   /**
    * @brief Hat operator of SE2.
    * @return An element of the Lie algebra se2 (skew-symmetric matrix).
-   * @note See Eq. (x).
+   * @note See Eq. (153).
    */
   LieAlg hat() const;
 
@@ -49,18 +49,19 @@ public:
    * @brief Get the SE2 element.
    * @param[out] -optional- J_m_t Jacobian of the SE2 element wrt this.
    * @return The SE2 element.
+   * @note See Eqs. (156,158) & Eq. (163).
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SE2.
-   * @note See Eq. (141).
+   * @note See Eq. (163).
    */
   Jacobian rjac() const;
 
   /**
    * @brief Get the left Jacobian of SE2.
-   * @note See Eq. (142).
+   * @note See Eq. (164).
    */
   Jacobian ljac() const;
 
