@@ -1,5 +1,6 @@
 #include "manif/SE2.h"
 #include "manif/algorithms/interpolation.h"
+#include "se2_points_generator.h"
 
 #include <vector>
 #include <iostream>
@@ -128,94 +129,6 @@ void fivePointsInterp(const manif::INTERP_METHOD interp_method,
             << s1.angle() << "\n";
 }
 
-void heightShapeInterp(const manif::INTERP_METHOD interp_method,
-                       const double n_k_pts,
-                       const double n_pts)
-{
-  std::cout << n_k_pts << ","
-            << n_pts << ","
-            << 0   << "\n";
-
-  // Generate some k points on 8-shaped curve
-  std::vector<manif::SE2d> states;
-  states.reserve(n_k_pts);
-
-  const double x = std::cos(0);
-  const double y = std::sin(0)/2;
-  states.emplace_back(x,y,M_PI/2);
-
-  double t = 0;
-  for (double i=1; i<n_k_pts; ++i)
-  {
-    t += M_PI*2. / n_k_pts;
-
-    const double x = std::cos(t);
-    const double y = std::sin(2*t) / 2;
-
-    const double t = std::atan2(y-states.back().y(),
-                                x-states.back().x());
-
-    states.emplace_back(x,y,t);
-
-    std::cout << x << ","
-              << y << ","
-              << t << "\n";
-  }
-
-  // Interpolate between k-points
-
-  manif::SE2d interp;
-
-  for (int i=0; i<states.size()-1; ++i)
-  {
-    const manif::SE2d& s0 = states[i];
-    const manif::SE2d& s1 = states[i+1];
-
-    std::cout << s0.x() << ","
-              << s0.y() << ","
-              << s0.angle() << "\n";
-
-    for (int j=1; j<=n_pts; ++j)
-    {
-      interp = interpolate(s0, s1,
-                           static_cast<double>(j)/(n_pts+1),
-                           interp_method);
-
-      std::cout << interp.x() << ","
-                << interp.y() << ","
-                << interp.angle() << "\n";
-    }
-
-    std::cout << s1.x() << ","
-              << s1.y() << ","
-              << s1.angle() << "\n";
-  }
-
-//  Close the loop
-
-  const manif::SE2d& s0 = states.back();
-  const manif::SE2d& s1 = states[0];
-
-  std::cout << s0.x() << ","
-            << s0.y() << ","
-            << s0.angle() << "\n";
-
-  for (int j=1; j<=n_pts; ++j)
-  {
-    interp = interpolate(s0, s1,
-                         static_cast<double>(j)/(n_pts+1),
-                         interp_method);
-
-    std::cout << interp.x() << ","
-              << interp.y() << ","
-              << interp.angle() << "\n";
-  }
-
-  std::cout << s1.x() << ","
-            << s1.y() << ","
-            << s1.angle() << "\n";
-}
-
 /*
 void heightShapeBezier(const double degree,
                        const double n_k_pts,
@@ -263,80 +176,115 @@ void heightShapeBezier(const double degree,
 
 int main(int argc, char** argv)
 {
-  manif::INTERP_METHOD interp_method =
-      manif::INTERP_METHOD::SLERP;
-
-  (void)interp_method;
-
-  int selected = 0;
-
-  if (argc >= 2)
+  if (argc < 4)
   {
-    selected = atoi(argv[1]);
+    std::cout << "Usage: .se2_interpolation <k> <i> <p>\n";
+    std::cout << "\t with k: number of initial points on the 8-shaped curve.\n";
+    std::cout << "\t with i: interpolation algorithm to use.\n";
+    std::cout << "\t with p: number of points to generate between consecutive points of the initial curve.\n";
+    std::cout << "\t Interpolation algorithm are : 0-Slerp / 1-Cubic / 2-CN-Smooth.\n";
+    return EXIT_SUCCESS;
+  }
 
-    switch (selected) {
-    case 0:
-      interp_method = manif::INTERP_METHOD::SLERP;
-      break;
-    case 1:
-      interp_method = manif::INTERP_METHOD::CUBIC;
-      break;
-    case 2:
-      interp_method = manif::INTERP_METHOD::CNSMOOTH;
-      break;
-    default:
-      interp_method = manif::INTERP_METHOD::SLERP;
-      break;
+  int k, i, p;
+
+  k = atoi(argv[1]);
+  i = atoi(argv[2]);
+  p = atoi(argv[3]);
+
+  manif::INTERP_METHOD interp_method;
+  switch (i) {
+  case 0:
+    interp_method = manif::INTERP_METHOD::SLERP;
+    break;
+  case 1:
+    interp_method = manif::INTERP_METHOD::CUBIC;
+    break;
+  case 2:
+    interp_method = manif::INTERP_METHOD::CNSMOOTH;
+    break;
+  default:
+    std::cerr << "Interpolation method 'i' must be in [0,2] !\n";
+    return EXIT_FAILURE;
+    break;
+  }
+
+  const auto points = manif::generateSE2PointsOnHeightShape(k);
+
+  // Interpolate between k-points
+  // between each consecutive points
+  // of the initial curve.
+
+  std::vector<manif::SE2d> interpolated;
+
+  // Initial point with Tangent t0 = 0
+
+  manif::SE2Tangentd t0 = manif::SE2Tangentd::Zero();
+  manif::SE2Tangentd t1 = points[1] - points[0];
+
+  for (int j=1; j<=p; ++j)
+  {
+    interpolated.push_back(
+      interpolate(points[0], points[1],
+                  static_cast<double>(j)/(p+1),
+                  interp_method,
+                  t0, t1)
+    );
+  }
+
+  for (int i=1; i<points.size()-1; ++i)
+  {
+    const manif::SE2d& s0 = points[ i ];
+    const manif::SE2d& s1 = points[i+1];
+
+    t0 = points[ i ] - points[i-1];
+    t1 = points[i+1] - points[ i ];
+
+    for (int j=1; j<=p; ++j)
+    {
+      interpolated.push_back(
+        interpolate(s0, s1,
+                    static_cast<double>(j)/(p+1),
+                    interp_method,
+                    t0, t1)
+      );
     }
   }
 
-  double n_k_pts = 10;
+  // Close the loop
 
-  if (argc >= 3)
+  const manif::SE2d& s0 = points.back();
+  const manif::SE2d& s1 = points[0];
+
+  t0 = points.back() - points[points.size()-2];
+  t1 = manif::SE2Tangentd::Zero();
+
+  for (int j=1; j<=p; ++j)
   {
-    n_k_pts = atof(argv[2]);
+    interpolated.push_back(
+      interpolate(s0, s1,
+                  static_cast<double>(j)/(p+1),
+                  interp_method)
+    );
   }
-  (void)n_k_pts;
 
-  double n_pts = 10;
+  // Print in terminal
 
-  if (argc >= 4)
+  std::cout << k << ", " << i << ", " << p << "\n";
+
+  for (const auto& point : points)
   {
-    n_pts = atof(argv[3]);
+    std::cout << point.x() << ","
+              << point.y() << ","
+              << point.angle() << "\n";
   }
 
-//  std::cout << 3 << ","
-//            << n_pts << ","
-//            << selected << std::endl;
+  for (const auto& interp : interpolated)
+  {
+    std::cout << interp.x() << ","
+              << interp.y() << ","
+              << interp.angle() << "\n";
+  }
 
-  twoPointsInterp(interp_method, n_pts);
-//  fivePointsInterp(interp_method, n_pts);
-//  heightShapeInterp(interp_method, n_k_pts, n_pts);
-
-//  heightShapeBezier(5, n_k_pts, n_pts);
-
-//  std::cout << 3 << ","
-//            << n_pts << ","
-//            << 0   << std::endl;
-
-//  // Generate 3 points
-//  std::vector<manif::SE2d> states;
-//  states.emplace_back(0,0,-M_PI/2);
-//  states.emplace_back(0,2,-M_PI/4);
-//  states.emplace_back(2,2,0);
-
-//  for (const auto& p : states)
-//    std::cout << p.x() << ","
-//              << p.y() << ","
-//              << p.angle() << "\n";
-
-////  const auto curve = computeBezierCurve(states, 3, n_pts);
-//  const auto curve = computeBezierCurve(states, 3, n_pts);
-
-//  for (const auto& p : curve)
-//    std::cout << p.x() << ","
-//              << p.y() << ","
-//              << p.angle() << "\n";
-
-  return 0;
+  return EXIT_SUCCESS;
 }

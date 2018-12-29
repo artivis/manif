@@ -15,16 +15,16 @@ int main(int argc, char** argv)
     std::cout << "\t with k: number of initial points on the 8-shaped curve.\n";
     std::cout << "\t with d: degree of smoothness of the generated curve.\n";
     std::cout << "\t with p: number of points to generate between consecutive points of the initial curve.\n";
-    return 0;
+    return EXIT_SUCCESS;
   }
 
-  double n_k_pts, degree, n_pts;
+  int k, d, p;
 
-  n_k_pts = atof(argv[1]);
-  degree  = atof(argv[2]);
-  n_pts   = atof(argv[3]);
+  k = atoi(argv[1]);
+  d = atoi(argv[2]);
+  p = atoi(argv[3]);
 
-  const auto points = manif::generateSE2PointsOnHeightShape(n_k_pts);
+  const auto points = manif::generateSE2PointsOnHeightShape(k);
 
   std::cout << "Initial points:\n";
   for (const auto& p : points)
@@ -33,12 +33,12 @@ int main(int argc, char** argv)
               << p.angle() << "\n";
 
   std::cout << "Generated points:\n";
-  const auto curve = manif::decasteljau(points, degree, n_pts, true);
+  const auto curve = manif::decasteljau(points, d, p, true);
 
   for (const auto& p : curve)
     std::cout << p.x() << ","
               << p.y() << ","
               << p.angle() << "\n";
 
-  return 0;
+  return EXIT_SUCCESS;
 }

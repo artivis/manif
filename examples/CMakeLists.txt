@@ -23,7 +23,6 @@ set(CXX_11_EXAMPLE_TARGETS
   # SE3
   se3_localization
   se3_sam
-
 )
 
 # Link to manif
