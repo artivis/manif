@@ -46,9 +46,10 @@ public:
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
   /**
-   * @brief Get the SO2 tangent at the point represented by this.
+   * @brief Get the SO2 corresponding Lie algebra element in vector form.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
-   * @return The SO2 tangent at this.
+   * @return The SO2 tangent of this.
+   * @note This is the log() map in vector form.
    * @note See Eq. (115) & Eqs. (79,126).
    * @see SO2Tangent.
    */

@@ -49,9 +49,10 @@ public:
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
   /**
-   * @brief Get the SE3 tangent at the point represented by this.
+   * @brief Get the SE3 corresponding Lie algebra element in vector form.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
-   * @return The SE3 tangent at this.
+   * @return The SE3 tangent of this.
+   * @note This is the log() map in vector form.
    * @note See Eq. (173) & Eq. (79,179,180) and following notes.
    * @see SE3Tangent.
    */

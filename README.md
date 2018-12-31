@@ -44,6 +44,7 @@ $ apt-get install manif
 ```
 -->
 <!--#### From source-->
+
 ```terminal
 $ git clone https://github.com/artivis/manif.git
 $ cd manif && mkdir build && cd build
@@ -63,19 +64,18 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
+cd [manif]
 doxygen .doxygen.txt
 ```
 
 #### Use `manif` in your project
 In your project `CMakeLists.txt` :
+
 ```cmake
 project(foo)
-
 # Find the manif library
 find_package(manif REQUIRED)
-
 add_executable(${PROJECT_NAME} src/foo.cpp)
-
 # Add manif include directories to the target
 target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 ```
@@ -152,14 +152,27 @@ For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.
 
-## Documentation and Tutorials
+## Documentation
 
-Throughout the code documentation we refer to 'the paper' which you can
-find in the section <a href="#publications">Publications</a>.
 Some general documentation on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
 <!--Although I like packages using [readthedocs](https://readthedocs.org/) and [codedocs](https://codedocs.xyz/).-->
 
-### Application demos
+Type in the terminal
+
+```terminal
+cd [manif]
+doxygen .doxygen.txt
+```
+    
+to obtain the code documentation. Find it at `[manif]/doc/html/index.html`.
+
+Throughout the code documentation we refer to 'the paper' which you can
+find in the section <a href="#publications">Publications</a>.
+
+Use [version X of the paper](https://arxiv.org/abs/1812.01537v4) for cross-referencing with the code documentation (ie. equation numbers).
+
+
+## Tutorials and application demos
 
 We provide some self-contained and self-explained executables implementing some real problems.
 Their source code is located in `[manif]/examples/`.
@@ -185,7 +198,7 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 }
 ```
 Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version 1, available here](http://arxiv.org/abs/1812.01537v1), of the paper when corss-referencing with the `manif` documentation.
+Since this is a versioned work, please refer to [version X, available here](http://arxiv.org/abs/1812.01537v4), of the paper when corss-referencing with the `manif` documentation.
 This will give the appropriate equation numbers.
 
 ## Contributing
