@@ -169,7 +169,7 @@ to obtain the code documentation. Find it at `[manif]/doc/html/index.html`.
 Throughout the code documentation we refer to 'the paper' which you can
 find in the section <a href="#publications">Publications</a>.
 
-Use [version X of the paper](https://arxiv.org/abs/1812.01537v4) for cross-referencing with the code documentation (ie. equation numbers).
+Use [version 4 of the paper](https://arxiv.org/abs/1812.01537v4) for cross-referencing with the code documentation (ie. equation numbers).
 
 
 ## Tutorials and application demos
