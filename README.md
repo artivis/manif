@@ -120,13 +120,13 @@ The Jacobians of any of the aforementionned operations can then be evaluated, e.
       Y = SO2::Random();
 
   SO2::Jacobian J_c_x, J_c_y;
-  auto compose = x.compose(Y, J_c_x, J_c_y);
+  auto compose = X.compose(Y, J_c_x, J_c_y);
 
   SO2::Jacobian J_m_x, J_m_y;
-  auto minus   = x.minus(Y, J_m_x, J_m_y);
+  auto minus   = X.minus(Y, J_m_x, J_m_y);
 
   SO2::Jacobian J_i_x;
-  auto inverse = x.inverse(J_i_x);
+  auto inverse = X.inverse(J_i_x);
 
   // etc...
 ```
@@ -134,11 +134,13 @@ The Jacobians of any of the aforementionned operations can then be evaluated, e.
 Shall you be interested only in a specific Jacobian, it can be retrieved without evaluating the other:
 
 ```cpp
-  auto composition = x.compose(Y, J_c_x);
+  auto composition = X.compose(Y, J_c_x);
 ```
+
 or conversely,
+
 ```cpp
-  auto composition = x.compose(Y, SO2::_, J_c_y);
+  auto composition = X.compose(Y, SO2::_, J_c_y);
 ```
 
 #### A note on Jacobians
@@ -198,7 +200,7 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 }
 ```
 Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version X, available here](http://arxiv.org/abs/1812.01537v4), of the paper when corss-referencing with the `manif` documentation.
+Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when corss-referencing with the `manif` documentation.
 This will give the appropriate equation numbers.
 
 ## Contributing
