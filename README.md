@@ -169,14 +169,11 @@ Type in the terminal
 cd [manif]
 doxygen .doxygen.txt
 ```
-    
+
 to obtain the code documentation. Find it at `[manif]/doc/html/index.html`.
 
 Throughout the code documentation we refer to 'the paper' which you can
 find in the section <a href="#publications">Publications</a>.
-
-Use [version 4 of the paper](https://arxiv.org/abs/1812.01537v4) for cross-referencing with the code documentation (ie. equation numbers).
-
 
 ## Tutorials and application demos
 
@@ -204,7 +201,7 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 }
 ```
 Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when corss-referencing with the `manif` documentation.
+Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the `manif` documentation.
 This will give the appropriate equation numbers.
 
 ## Contributing
