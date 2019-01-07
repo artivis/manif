@@ -9,14 +9,14 @@
 **manif** is a header-only c++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
--   Maintainer status: maintained
--   Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
--   Authors:
-   *   Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
-   *   Joan Sola [jsola@iri.upc.edu](mailto:jsola@iri.upc.edu)
--   License: MIT
--   Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
--   Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
+- Maintainer status: maintained
+- Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+- Authors:
+  - Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+  - Joan Sola [jsola@iri.upc.edu](mailto:jsola@iri.upc.edu)
+- License: MIT
+- Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
+- Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
 
 ___
 
@@ -25,7 +25,7 @@ ___
   <a href="#features">Features</a> •
   <!--a href="#examples">Examples</a> • -->
   <a href="#documentation">Documentation</a> •
-  <a href="#tutorials">Tutorials</a> •
+  <a href="#tutorials-and-application-demos">Tutorials</a> •
   <a href="#publications">Publications</a> •
   <a href="#contributing">Contributing</a> <!--•
   <a href="#authors">Authors</a> -->
