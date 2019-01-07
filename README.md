@@ -24,6 +24,8 @@ ___
   <a href="#installation">Installation</a> •
   <a href="#features">Features</a> •
   <!--a href="#examples">Examples</a> • -->
+  <a href="#documentation">Documentation</a> •
+  <a href="#tutorials">Tutorials</a> •
   <a href="#publications">Publications</a> •
   <a href="#contributing">Contributing</a> <!--•
   <a href="#authors">Authors</a> -->
