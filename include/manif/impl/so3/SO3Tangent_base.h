@@ -49,6 +49,7 @@ public:
    * @brief Get the SO3 element.
    * @param[out] -optional- J_m_t Jacobian of the SO3 element wrt this.
    * @return The SO3 element.
+   * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (132) and Eq. (143).
    */
   LieGroup retract(OptJacobianRef J_m_t = {}) const;

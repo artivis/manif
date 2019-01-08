@@ -6,13 +6,14 @@
 
   <author>Jeremie Deray</author>
   <author>Joan Sola</author>
+
   <maintainer email="deray.jeremie@gmail.com">Jeremie Deray</maintainer>
 
 <!--  <url type="website">http://ros.org/wiki/todo</url>-->
   <url type="repository">https://github.com/artivis/manif.git</url>
   <url type="bugtracker">https://github.com/artivis/manif/issues</url>
 
-  <license>TODO</license>
+  <license>MIT</license>
 
   <buildtool_depend>cmake</buildtool_depend>
 

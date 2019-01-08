@@ -74,7 +74,7 @@ public:
 
   /**
    * @brief Hat operator of the Tangent element.
-   * @return An element of the Lie algebra.
+   * @return The isomorphic element in the Lie algebra.
    * @note See Eq. (10).
    */
   LieAlg hat() const;
@@ -83,7 +83,8 @@ public:
    * @brief Get the Lie group element
    * @param[out] -optional- J_m_t Jacobian of the Lie groupe element wrt this.
    * @return Associated Lie group element.
-   * @note See Eq. (22).
+   * @note This is the exp() map with the argument in vector form.
+   * @note See Eq. (23).
    */
   LieGroup retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
@@ -132,13 +133,17 @@ public:
 
   /**
    * @brief Get the right Jacobian.
-   * @note See Eq. (41).
+   * @note this is the right Jacobian of retract(), what is commonly known as "the right Jacobian".
+   * @note See Eq. (41) for the right Jacobian of general functions.
+   * @note See Eqs. (126,143,163,179,191) for implementations of the right Jacobian of retract().
    */
   Jacobian rjac() const;
 
   /**
    * @brief Get the left Jacobian.
-   * @note See Eq. (44).
+   * @note this is the left Jacobian of retract(), what is commonly known as "the left Jacobian".
+   * @note See Eq. (44) for the left Jacobian of general functions.
+   * @note See Eqs. (126,145,164,179,191) for implementations of the left Jacobian of retract().
    */
   Jacobian ljac() const;
 

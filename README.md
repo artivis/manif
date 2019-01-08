@@ -9,12 +9,14 @@
 **manif** is a header-only c++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
--   Maintainer status: maintained
--   Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
--   Author: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
--   License: MIT
--   Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
--   Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
+- Maintainer status: maintained
+- Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+- Authors:
+  - Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+  - Joan Sola [jsola@iri.upc.edu](mailto:jsola@iri.upc.edu)
+- License: MIT
+- Bug / feature tracker: [github.com/artivis/manif/issues](https://github.com/artivis/manif/issues)
+- Source: [github.com/artivis/manif.git](https://github.com/artivis/manif.git) (branch: devel)
 
 ___
 
@@ -22,6 +24,8 @@ ___
   <a href="#installation">Installation</a> •
   <a href="#features">Features</a> •
   <!--a href="#examples">Examples</a> • -->
+  <a href="#documentation">Documentation</a> •
+  <a href="#tutorials-and-application-demos">Tutorials</a> •
   <a href="#publications">Publications</a> •
   <a href="#contributing">Contributing</a> <!--•
   <a href="#authors">Authors</a> -->
@@ -44,6 +48,7 @@ $ apt-get install manif
 ```
 -->
 <!--#### From source-->
+
 ```terminal
 $ git clone https://github.com/artivis/manif.git
 $ cd manif && mkdir build && cd build
@@ -63,19 +68,18 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
+cd [manif]
 doxygen .doxygen.txt
 ```
 
 #### Use `manif` in your project
 In your project `CMakeLists.txt` :
+
 ```cmake
 project(foo)
-
 # Find the manif library
 find_package(manif REQUIRED)
-
 add_executable(${PROJECT_NAME} src/foo.cpp)
-
 # Add manif include directories to the target
 target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 ```
@@ -120,13 +124,13 @@ The Jacobians of any of the aforementionned operations can then be evaluated, e.
       Y = SO2::Random();
 
   SO2::Jacobian J_c_x, J_c_y;
-  auto compose = x.compose(Y, J_c_x, J_c_y);
+  auto compose = X.compose(Y, J_c_x, J_c_y);
 
   SO2::Jacobian J_m_x, J_m_y;
-  auto minus   = x.minus(Y, J_m_x, J_m_y);
+  auto minus   = X.minus(Y, J_m_x, J_m_y);
 
   SO2::Jacobian J_i_x;
-  auto inverse = x.inverse(J_i_x);
+  auto inverse = X.inverse(J_i_x);
 
   // etc...
 ```
@@ -134,11 +138,13 @@ The Jacobians of any of the aforementionned operations can then be evaluated, e.
 Shall you be interested only in a specific Jacobian, it can be retrieved without evaluating the other:
 
 ```cpp
-  auto composition = x.compose(Y, J_c_x);
+  auto composition = X.compose(Y, J_c_x);
 ```
+
 or conversely,
+
 ```cpp
-  auto composition = x.compose(Y, SO2::_, J_c_y);
+  auto composition = X.compose(Y, SO2::_, J_c_y);
 ```
 
 #### A note on Jacobians
@@ -152,14 +158,24 @@ For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.
 
-## Documentation and Tutorials
+## Documentation
 
-Throughout the code documentation we refer to 'the paper' which you can
-find in the section <a href="#publications">Publications</a>.
 Some general documentation on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
 <!--Although I like packages using [readthedocs](https://readthedocs.org/) and [codedocs](https://codedocs.xyz/).-->
 
-### Application demos
+Type in the terminal
+
+```terminal
+cd [manif]
+doxygen .doxygen.txt
+```
+
+to obtain the code documentation. Find it at `[manif]/doc/html/index.html`.
+
+Throughout the code documentation we refer to 'the paper' which you can
+find in the section <a href="#publications">Publications</a>.
+
+## Tutorials and application demos
 
 We provide some self-contained and self-explained executables implementing some real problems.
 Their source code is located in `[manif]/examples/`.
@@ -185,7 +201,7 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 }
 ```
 Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version 1, available here](http://arxiv.org/abs/1812.01537v1), of the paper when corss-referencing with the `manif` documentation.
+Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the `manif` documentation.
 This will give the appropriate equation numbers.
 
 ## Contributing

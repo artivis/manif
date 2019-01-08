@@ -92,10 +92,11 @@ public:
   LieGroup inverse(OptJacobianRef J_m_t = {}) const;
 
   /**
-   * @brief Get the tangent of the Lie group at the point this.
+   * @brief Get the corresponding Lie algebra element in vector form.
    * @param[out] -optional- J_t_m Jacobian of the tangent wrt this.
-   * @return The tangent of the Lie group at this.
-   * @see Eq. (21).
+   * @return The tangent element in vector form.
+   * @note This is the log() map in vector form.
+   * @see Eq. (24).
    */
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
