@@ -34,6 +34,8 @@ namespace manif {
  * @brief Compute an average point on Lie groups given a list of
  * 'close' points.
  * @param[in] points A list of 'close' points to compute an average point from.
+ * @param[in] eps, update norm threshold to break the iterative averaging.
+ * @param[in] max_iterations, max number of iterations.
  * @return The average point of the input points.
  *
  * @note see (a)
@@ -50,9 +52,9 @@ template <template <typename LieGroup, typename...Args> class Container,
           typename LieGroup, typename...Args>
 LieGroup
 average_biinvariant(const Container<LieGroup, Args...>& points,
-                    int max_iterations = 20,
                     typename LieGroup::Scalar eps =
-                      Constants<typename LieGroup::Scalar>::eps_s)
+                      Constants<typename LieGroup::Scalar>::eps_s,
+                    int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
@@ -62,14 +64,14 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
   else if (points.size() == 1)
     return *points.begin();
 
-  auto m0 = *points.begin();
-  LieGroup avg;
+  LieGroup avg = *points.begin();
 
   const Scalar w = Scalar(1) / Scalar(points.size());
 
   Tangent ts, tmp;
-  typename LieGroup::Jacobian Jr, G;
-  for (int i=0; i<max_iterations; ++i)
+  typename LieGroup::Jacobian Jr;
+  int i=0;
+  for (; i<max_iterations; ++i)
   {
     auto it        = points.begin();
     const auto end = points.end();
@@ -77,36 +79,47 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
     ts.setZero();
     for (; it != end; ++it)
     {
-      tmp = m0.between(*it).lift();
+      tmp = avg.between(*it).lift();
 
-      // Neither (a) nor (b) use G for weighting
+      // Neither (a) nor (b) use G (Jr'.Jr) for weighting
       Jr = tmp.rjac();
-      G.noalias() = Jr.transpose() * Jr;
 
-      ts += G * tmp * w;
+      ts += Jr.transpose() * Jr * tmp * w;
 
       // Update as in (a) & (b)
-//      ts += m0.between(*it).lift() * w;
+//      ts += avg.between(*it).lift() * w;
     }
 
-    // This stopping criterion is derived from (b)
-//    typename LieGroup::Jacobian G = ts.rjac().transpose() * ts.rjac();
-//    const Scalar n = ts.coeffs().transpose() * G * ts.coeffs();
+    //////////////
+    // Stopping criterion is derived from (b)
+    //////////////
 
-//    if (n < Constants<Scalar>::eps_s)
-//      break;
+    Jr = ts.rjac();
+    const Scalar n = ts.coeffs().transpose() * (Jr.transpose() * Jr) * ts.coeffs();
 
-    // This stopping criterion is from (b)
-    if (ts.coeffs().squaredNorm() < eps)
+    if (n < eps)
       break;
 
-    // This stopping criterion is from (a)
-    avg = m0 + ts;
+    avg += ts;
 
-//    if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_s)
+    //////////////
+    // Stopping criterion is from (b)
+    //////////////
+
+//    if (ts.coeffs().squaredNorm() < eps)
 //      break;
 
-    m0 = avg;
+//    avg += ts;
+
+    //////////////
+    // Stopping criterion is from (a)
+    //////////////
+
+//    const LieGroup avg_0 = avg;
+//    avg += ts;
+
+//    if (avg.between(avg_0).lift().coeffs().squaredNorm() < eps)
+//      break;
   }
 
   return avg;

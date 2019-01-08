@@ -25,7 +25,7 @@ int main(int /*argc*/, char** /*argv*/)
               << p.y() << ","
               << p.angle() << "\n";
 
-  auto average = manif::average_biinvariant(points);
+  auto average = manif::average_biinvariant(points, 1e-5);
 
   std::cout << "Average point:\n";
   std::cout << average.x() << ","
