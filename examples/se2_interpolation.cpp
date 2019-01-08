@@ -220,43 +220,54 @@ int main(int argc, char** argv)
   // Initial point with Tangent t0 = 0
 
   manif::SE2Tangentd t0 = manif::SE2Tangentd::Zero();
-  manif::SE2Tangentd t1 = points[1] - points[0];
+  manif::SE2Tangentd t1 = points[1].lminus(points[0]);
 
   for (int j=1; j<=p; ++j)
   {
     interpolated.push_back(
       interpolate(points[0], points[1],
-                  static_cast<double>(j)/(p+1),
-                  interp_method,
-                  t0, t1)
+                  double(j)/double(p+1),
+                  interp_method
+                  , t0, t1
+        )
     );
   }
+
+  // Intermediate points
 
   for (int i=1; i<points.size()-1; ++i)
   {
     const manif::SE2d& s0 = points[ i ];
     const manif::SE2d& s1 = points[i+1];
 
-    t0 = points[ i ] - points[i-1];
-    t1 = points[i+1] - points[ i ];
+//    t0 = points[ i ] - points[i-1];
+//    t1 = points[i+1] - points[ i ];
+
+    t0 = points[ i ].lminus(points[i-1]);
+    t1 = points[i+1].lminus(points[ i ]);
 
     for (int j=1; j<=p; ++j)
     {
       interpolated.push_back(
         interpolate(s0, s1,
                     static_cast<double>(j)/(p+1),
-                    interp_method,
-                    t0, t1)
+                    interp_method
+                    , t0, t1
+        )
       );
     }
   }
 
   // Close the loop
+  // Final point with Tangent t1 = 0
 
   const manif::SE2d& s0 = points.back();
   const manif::SE2d& s1 = points[0];
 
-  t0 = points.back() - points[points.size()-2];
+//  t0 = points.back() - points[points.size()-2];
+//  t1 = manif::SE2Tangentd::Zero();
+
+  t0 = points.back().lminus(points[points.size()-2]);
   t1 = manif::SE2Tangentd::Zero();
 
   for (int j=1; j<=p; ++j)
@@ -264,7 +275,9 @@ int main(int argc, char** argv)
     interpolated.push_back(
       interpolate(s0, s1,
                   static_cast<double>(j)/(p+1),
-                  interp_method)
+                  interp_method
+                  , t0, t1
+      )
     );
   }
 

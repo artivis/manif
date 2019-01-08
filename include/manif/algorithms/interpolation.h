@@ -260,19 +260,26 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
 
   // with lplus
 
-  //    const auto l = ma.lplus(ta*t);
-  //    const auto r = mb.lplus(tb*(t-Scalar(1)));
-  //    const auto B = r.lminus(l);
+  const auto r = mb.lplus(tb*(t-Scalar(1)));
+  const auto l = ma.lplus(ta*t);
+  const auto B = r.lminus(l);
 
-  //    LieGroup mc = l.lplus(B*phi);
+  LieGroup mc = l.lplus(B*phi);
 
   // with rplus
 
-  const auto l = ma.rplus(ta*t);
-  const auto r = mb.rplus(tb*(t-Scalar(1)));
-  const auto B = l.rminus(r);
+//  const auto l = ma.rplus(ta*t);
+//  const auto r = mb.rplus(tb*(t-Scalar(1)));
+////  const auto r = mb.rplus(tb*(Scalar(1)-t));
+//  const auto B = l.rminus(r);
 
-  LieGroup mc = r.rplus(B*phi);
+//  LieGroup mc = r.rplus(B*phi);
+
+//  const auto r = mb + (tb*(t-Scalar(1)));
+//  const auto l = ma + (ta*t);
+//  const auto B = l - r;
+
+//  LieGroup mc = r + (B*phi);
 
   return mc;
 }
