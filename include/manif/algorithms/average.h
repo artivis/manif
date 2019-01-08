@@ -50,7 +50,9 @@ template <template <typename LieGroup, typename...Args> class Container,
           typename LieGroup, typename...Args>
 LieGroup
 average_biinvariant(const Container<LieGroup, Args...>& points,
-                    int max_iterations = 20)
+                    int max_iterations = 20,
+                    typename LieGroup::Scalar eps =
+                      Constants<typename LieGroup::Scalar>::eps_s)
 {
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
@@ -65,27 +67,44 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 
   const Scalar w = Scalar(1) / Scalar(points.size());
 
-  Tangent ts;
+  Tangent ts, tmp;
+  typename LieGroup::Jacobian Jr, G;
   for (int i=0; i<max_iterations; ++i)
   {
     auto it        = points.begin();
     const auto end = points.end();
 
-    ts = Tangent::Zero();
+    ts.setZero();
     for (; it != end; ++it)
     {
-      ts.coeffs() += w * m0.between(*it).lift().coeffs();
+      tmp = m0.between(*it).lift();
+
+      // Neither (a) nor (b) use G for weighting
+      Jr = tmp.rjac();
+      G.noalias() = Jr.transpose() * Jr;
+
+      ts += G * tmp * w;
+
+      // Update as in (a) & (b)
+//      ts += m0.between(*it).lift() * w;
     }
 
+    // This stopping criterion is derived from (b)
+//    typename LieGroup::Jacobian G = ts.rjac().transpose() * ts.rjac();
+//    const Scalar n = ts.coeffs().transpose() * G * ts.coeffs();
+
+//    if (n < Constants<Scalar>::eps_s)
+//      break;
+
     // This stopping criterion is from (b)
-//    if (ts.coeffs().squaredNorm() < Constants<Scalar>::eps_s)
-//      return avg;
+    if (ts.coeffs().squaredNorm() < eps)
+      break;
 
     // This stopping criterion is from (a)
-    avg = m0.rplus(ts);
+    avg = m0 + ts;
 
-    if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_s)
-      return avg;
+//    if (avg.between(m0).lift().coeffs().squaredNorm() < Constants<Scalar>::eps_s)
+//      break;
 
     m0 = avg;
   }
