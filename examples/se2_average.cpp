@@ -8,13 +8,8 @@
  * @brief An example of the use of the average biinvariant algorithm.
  */
 
-int main(int argc, char** argv)
+int main(int /*argc*/, char** /*argv*/)
 {
-  if (argc > 1)
-  {
-    std::cout << "Usage: .so2_average\n";
-  }
-
   // Generate 4 'close' points
 
   std::vector<manif::SE2d> points;
@@ -37,5 +32,5 @@ int main(int argc, char** argv)
             << average.y() << ","
             << average.angle() << "\n";
 
-  return 0;
+  return EXIT_SUCCESS;
 }
