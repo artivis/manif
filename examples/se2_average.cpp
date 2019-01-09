@@ -37,19 +37,22 @@ int main(int /*argc*/, char** /*argv*/)
             << average.y() << ","
             << average.angle() << "\n\n";
 
-  average = manif::average_frechet_left(points, 1e-9, 100);
+  std::cout << "Approximate expected average:\n";
+  std::cout << "0.2171, 0, 0\n\n";
 
-  std::cout << "Average Frechet left:\n";
-  std::cout << average.x() << ","
-            << average.y() << ","
-            << average.angle() << "\n\n";
+//  average = manif::average_frechet_left(points, 1e-9, 100);
 
-  average = manif::average_frechet_right(points, 1e-9, 100);
+//  std::cout << "Average Frechet left:\n";
+//  std::cout << average.x() << ","
+//            << average.y() << ","
+//            << average.angle() << "\n\n";
 
-  std::cout << "Average Frechet right:\n";
-  std::cout << average.x() << ","
-            << average.y() << ","
-            << average.angle() << "\n\n";
+//  average = manif::average_frechet_right(points, 1e-9, 100);
+
+//  std::cout << "Average Frechet right:\n";
+//  std::cout << average.x() << ","
+//            << average.y() << ","
+//            << average.angle() << "\n\n";
 
   return EXIT_SUCCESS;
 }
