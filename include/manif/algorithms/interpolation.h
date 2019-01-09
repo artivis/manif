@@ -91,11 +91,11 @@ template <typename _Derived, typename _Scalar>
 static typename LieGroupBase<_Derived>::LieGroup
 interpolate_slerp(const LieGroupBase<_Derived>& ma,
                   const LieGroupBase<_Derived>& mb,
-                  const _Scalar t,
+                  const _Scalar t/*,
                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
                     LieGroupBase<_Derived>::_,
                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-                    LieGroupBase<_Derived>::_)
+                    LieGroupBase<_Derived>::_*/)
 {
   MANIF_CHECK(t >= _Scalar(0) && t <= _Scalar(1),
               "s must be be in [0, 1].");
@@ -165,11 +165,11 @@ interpolate_cubic(const LieGroupBase<_Derived>& ma,
                   const typename LieGroupBase<_Derived>::Tangent& ta =
                     LieGroupBase<_Derived>::Tangent::Zero(),
                   const typename LieGroupBase<_Derived>::Tangent& tb =
-                    LieGroupBase<_Derived>::Tangent::Zero(),
+                    LieGroupBase<_Derived>::Tangent::Zero()/*,
                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
                     LieGroupBase<_Derived>::_,
                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-                    LieGroupBase<_Derived>::_)
+                    LieGroupBase<_Derived>::_*/)
 {
   using Scalar   = typename LieGroupBase<_Derived>::Scalar;
   using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
@@ -243,9 +243,9 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
                    const typename LieGroupBase<_Derived>::Tangent& ta =
                      LieGroupBase<_Derived>::Tangent::Zero(),
                    const typename LieGroupBase<_Derived>::Tangent& tb =
-                     LieGroupBase<_Derived>::Tangent::Zero(),
+                     LieGroupBase<_Derived>::Tangent::Zero()/*,
                    typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = LieGroupBase<_Derived>::_,
-                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_)
+                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_*/)
 {
   using Scalar   = typename LieGroupBase<_Derived>::Scalar;
   using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
@@ -260,28 +260,17 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
 
   // with lplus
 
-  const auto r = mb.lplus(tb*(t-Scalar(1)));
-  const auto l = ma.lplus(ta*t);
-  const auto B = r.lminus(l);
-
-  LieGroup mc = l.lplus(B*phi);
+//  const auto r = mb.lplus(tb*(t-Scalar(1)));
+//  const auto l = ma.lplus(ta*t);
 
   // with rplus
 
-//  const auto l = ma.rplus(ta*t);
-//  const auto r = mb.rplus(tb*(t-Scalar(1)));
-////  const auto r = mb.rplus(tb*(Scalar(1)-t));
-//  const auto B = l.rminus(r);
+  const auto r = mb.rplus(tb*(t-Scalar(1)));
+  const auto l = ma.rplus(ta*t);
 
-//  LieGroup mc = r.rplus(B*phi);
+  const auto B = r.lminus(l);
 
-//  const auto r = mb + (tb*(t-Scalar(1)));
-//  const auto l = ma + (ta*t);
-//  const auto B = l - r;
-
-//  LieGroup mc = r + (B*phi);
-
-  return mc;
+  return l.lplus(B*phi);
 }
 
 enum class INTERP_METHOD
@@ -306,24 +295,25 @@ interpolate(const LieGroupBase<_Derived>& ma,
             const typename LieGroupBase<_Derived>::Tangent& ta =
               LieGroupBase<_Derived>::Tangent::Zero(),
             const typename LieGroupBase<_Derived>::Tangent& tb =
-              LieGroupBase<_Derived>::Tangent::Zero(),
+              LieGroupBase<_Derived>::Tangent::Zero()/*,
             typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
               LieGroupBase<_Derived>::_,
             typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-              LieGroupBase<_Derived>::_)
+              LieGroupBase<_Derived>::_*/)
 {
   switch (method) {
   case INTERP_METHOD::SLERP:
-    return interpolate_slerp(ma, mb, t, J_mc_ma, J_mc_mb);
+    return interpolate_slerp(ma, mb, t/*, J_mc_ma, J_mc_mb*/);
   case INTERP_METHOD::CUBIC:
     return interpolate_cubic(ma, mb, t,
-                             ta, tb,
-                             J_mc_ma, J_mc_mb);
+                             ta, tb/*,
+                             J_mc_ma, J_mc_mb*/);
   case INTERP_METHOD::CNSMOOTH:
     return interpolate_smooth(ma, mb, t, 3,
-                              ta, tb,
-                              J_mc_ma, J_mc_mb);
+                              ta, tb/*,
+                              J_mc_ma, J_mc_mb*/);
   default:
+    MANIF_THROW("Unknown interpolation method!");
     break;
   }
 
