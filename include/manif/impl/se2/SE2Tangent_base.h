@@ -220,8 +220,16 @@ SE2TangentBase<_Derived>::ljac() const
   Jl(1,0) =  B;
   Jl(1,1) =  A;
 
-  Jl(0,2) = ( y() + theta*x() - y()*cos_theta - x()*sin_theta)/theta_sq;
-  Jl(1,2) = (-x() + theta*y() + x()*cos_theta - y()*sin_theta)/theta_sq;
+  if (theta_sq < Constants<Scalar>::eps_s)
+  {
+    Jl(0,2) =  y() / Scalar(2) + theta * x() / Scalar(6);
+    Jl(1,2) = -x() / Scalar(2) + theta * y() / Scalar(6);
+  }
+  else
+  {
+    Jl(0,2) = ( y() + theta*x() - y()*cos_theta - x()*sin_theta)/theta_sq;
+    Jl(1,2) = (-x() + theta*y() + x()*cos_theta - y()*sin_theta)/theta_sq;
+  }
 
   return Jl;
 }
