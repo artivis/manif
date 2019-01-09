@@ -14,6 +14,8 @@ int main(int argc, char** argv)
     std::cout << "\t with i: interpolation algorithm to use.\n";
     std::cout << "\t with p: number of points to generate between consecutive points of the initial curve.\n";
     std::cout << "\t Interpolation algorithm are : 0-Slerp / 1-Cubic / 2-CN-Smooth.\n";
+    std::cout << "\t Please mind the Matlab script 'plot_interpolation.m' for visualizing the results exported in a csv file.\n";
+    std::cout << "\t To export to csv, e.g.: ./se2_interpolation 9 2 40 > se2_interp_cnsmooth.csv \n";
     return EXIT_SUCCESS;
   }
 

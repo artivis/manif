@@ -249,7 +249,7 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
 {
   using Scalar   = typename LieGroupBase<_Derived>::Scalar;
 //  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
-  //    using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
+//  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   MANIF_CHECK(m >= Scalar(1), "m >= 1 !");
   Scalar interp_factor(t);
