@@ -101,42 +101,42 @@ interpolate_slerp(const LieGroupBase<_Derived>& ma,
               "s must be be in [0, 1].");
 
   using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
-  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
+//  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   LieGroup mc;
 
   const auto _ = LieGroupBase<_Derived>::_;
 
   /// @todo optimize this
-  if (J_mc_ma && J_mc_mb)
-  {
-    Jacobian J_rmin_ma, J_rmin_mb;
-    Jacobian p1J_mc_ma;
-    Jacobian J_mc_rmin;
+//  if (J_mc_ma && J_mc_mb)
+//  {
+//    Jacobian J_rmin_ma, J_rmin_mb;
+//    Jacobian p1J_mc_ma;
+//    Jacobian J_mc_rmin;
 
-    mc = ma.rplus( mb.rminus(ma, J_rmin_mb, J_rmin_ma) * t, p1J_mc_ma, J_mc_rmin);
+//    mc = ma.rplus( mb.rminus(ma, J_rmin_mb, J_rmin_ma) * t, p1J_mc_ma, J_mc_rmin);
 
-    (*J_mc_ma) = p1J_mc_ma + J_mc_rmin * (J_rmin_ma * t);
-    (*J_mc_mb) = J_mc_rmin * (J_rmin_mb * t);
-  }
-  else if (J_mc_ma)
-  {
-    Jacobian J_rmin_ma, p1J_mc_ma;
-    Jacobian J_mc_rmin;
+//    (*J_mc_ma) = p1J_mc_ma + J_mc_rmin * (J_rmin_ma * t);
+//    (*J_mc_mb) = J_mc_rmin * (J_rmin_mb * t);
+//  }
+//  else if (J_mc_ma)
+//  {
+//    Jacobian J_rmin_ma, p1J_mc_ma;
+//    Jacobian J_mc_rmin;
 
-    mc = ma.rplus( mb.rminus(ma, _, J_rmin_ma) * t, p1J_mc_ma, J_mc_rmin);
+//    mc = ma.rplus( mb.rminus(ma, _, J_rmin_ma) * t, p1J_mc_ma, J_mc_rmin);
 
-    (*J_mc_ma) = p1J_mc_ma + J_mc_rmin * (J_rmin_ma * t);
-  }
-  else if (J_mc_mb)
-  {
-    Jacobian J_rmin_mb, J_mc_rmin;
+//    (*J_mc_ma) = p1J_mc_ma + J_mc_rmin * (J_rmin_ma * t);
+//  }
+//  else if (J_mc_mb)
+//  {
+//    Jacobian J_rmin_mb, J_mc_rmin;
 
-    mc = ma.rplus( mb.rminus(ma, J_rmin_mb, _) * t, _, J_mc_rmin);
+//    mc = ma.rplus( mb.rminus(ma, J_rmin_mb, _) * t, _, J_mc_rmin);
 
-    (*J_mc_mb) = J_mc_rmin * (J_rmin_mb * t);
-  }
-  else
+//    (*J_mc_mb) = J_mc_rmin * (J_rmin_mb * t);
+//  }
+//  else
   {
     mc = ma.rplus( mb.rminus(ma) * t );
   }
@@ -184,20 +184,20 @@ interpolate_cubic(const LieGroupBase<_Derived>& ma,
 
   LieGroup mc;
 
-  /// @todo optimize this
-  if (J_mc_ma && J_mc_mb)
-  {
-    /// @todo
-  }
-  else if (J_mc_ma)
-  {
-    /// @todo
-  }
-  else if (J_mc_mb)
-  {
-    /// @todo
-  }
-  else
+//  /// @todo optimize this
+//  if (J_mc_ma && J_mc_mb)
+//  {
+//    /// @todo
+//  }
+//  else if (J_mc_ma)
+//  {
+//    /// @todo
+//  }
+//  else if (J_mc_mb)
+//  {
+//    /// @todo
+//  }
+//  else
   {
     const auto tab = mb.rminus(ma);
     //      const auto tba = ma.rminus(mb);
@@ -248,7 +248,7 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
                    typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_*/)
 {
   using Scalar   = typename LieGroupBase<_Derived>::Scalar;
-  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
+//  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
   //    using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   MANIF_CHECK(m >= Scalar(1), "m >= 1 !");
