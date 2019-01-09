@@ -3,7 +3,7 @@
 
 #include "manif/impl/lie_group_base.h"
 //#include "manif/interpolation.h"
-
+#include <iostream>
 namespace manif {
 
 //template <template <typename LieGroup, typename...Args> class Container,
@@ -68,8 +68,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 
   const Scalar w = Scalar(1) / Scalar(points.size());
 
-  Tangent ts, tmp;
-  typename LieGroup::Jacobian Jr;
+  Tangent ts;
   int i=0;
   for (; i<max_iterations; ++i)
   {
@@ -79,37 +78,18 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
     ts.setZero();
     for (; it != end; ++it)
     {
-      tmp = avg.between(*it).lift();
-
-      // Neither (a) nor (b) use G (Jr'.Jr) for weighting
-      Jr = tmp.rjac();
-
-      ts += Jr.transpose() * Jr * tmp * w;
-
       // Update as in (a) & (b)
-//      ts += avg.between(*it).lift() * w;
+      ts += ((*it) - avg) * w;
     }
-
-    //////////////
-    // Stopping criterion is derived from (b)
-    //////////////
-
-    Jr = ts.rjac();
-    const Scalar n = ts.coeffs().transpose() * (Jr.transpose() * Jr) * ts.coeffs();
-
-    if (n < eps)
-      break;
-
-    avg += ts;
 
     //////////////
     // Stopping criterion is from (b)
     //////////////
 
-//    if (ts.coeffs().squaredNorm() < eps)
-//      break;
+    if (ts.coeffs().squaredNorm() < eps)
+      break;
 
-//    avg += ts;
+    avg += ts;
 
     //////////////
     // Stopping criterion is from (a)
@@ -121,6 +101,172 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 //    if (avg.between(avg_0).lift().coeffs().squaredNorm() < eps)
 //      break;
   }
+
+  std::cout << "Biinvariant stopped after " << i << " iterations.\n";
+
+  return avg;
+}
+
+template <template <typename LieGroup, typename...Args> class Container,
+          typename LieGroup, typename...Args>
+LieGroup
+average(const Container<LieGroup, Args...>& points,
+        typename LieGroup::Scalar eps =
+          Constants<typename LieGroup::Scalar>::eps_s,
+        int max_iterations = 20)
+{
+  using Scalar  = typename LieGroup::Scalar;
+  using Tangent = typename LieGroup::Tangent;
+
+  if (points.empty())
+    return LieGroup();
+  else if (points.size() == 1)
+    return *points.begin();
+
+  LieGroup avg = *points.begin();
+
+  const Scalar w = Scalar(1) / Scalar(points.size());
+
+  Tangent ts, tmp;
+  typename LieGroup::Jacobian Jr, G;
+  for (int i=0; i<max_iterations; ++i)
+  {
+    auto it        = points.begin();
+    const auto end = points.end();
+
+    ts.setZero();
+    for (; it != end; ++it)
+    {
+      tmp = avg.between(*it).lift();
+
+      // Neither (a) nor (b) use G for weighting
+      Jr = tmp.rjac();
+      G.noalias() = Jr.transpose() * Jr;
+
+      ts += G * tmp * w;
+    }
+
+    // This stopping criterion is derived from (b)
+    typename LieGroup::Jacobian G = ts.rjac().transpose() * ts.rjac();
+    const Scalar n = ts.coeffs().transpose() * G * ts.coeffs();
+
+    if (n < Constants<Scalar>::eps_s)
+      break;
+
+    avg += ts;
+  }
+
+  return avg;
+}
+
+// ftp://ftp-sop.inria.fr/epidaure/Publications/Arsigny/arsigny_rr_biinvariant_mean.pdf
+// page 38
+// https://hal.inria.fr/hal-00938320/document#subsection.118
+// page 94
+template <template <typename LieGroup, typename...Args> class Container,
+          typename LieGroup, typename...Args>
+LieGroup
+average_frechet_left(const Container<LieGroup, Args...>& points,
+                     typename LieGroup::Scalar eps =
+                       Constants<typename LieGroup::Scalar>::eps_s,
+                     int max_iterations = 20)
+{
+  using Scalar  = typename LieGroup::Scalar;
+  using Tangent = typename LieGroup::Tangent;
+
+  if (points.empty())
+    return LieGroup();
+  else if (points.size() == 1)
+    return *points.begin();
+
+  LieGroup avg = *points.begin();
+
+  const Scalar w = Scalar(1) / Scalar(points.size());
+
+  Tangent ts, tmp;
+  typename LieGroup::Jacobian Jl;
+  int i=0;
+  for (; i<max_iterations; ++i)
+  {
+    auto it        = points.begin();
+    const auto end = points.end();
+
+    ts.setZero();
+    const LieGroup avg_0 = avg;
+
+    for (; it != end; ++it)
+    {
+      tmp = (*it) - avg_0; // Log( Avg^-1 . Xi )
+
+      Jl = avg_0.lift().ljac(); // Jl(Avg)
+
+      ts += Jl * tmp * w;
+    }
+
+    // Avg = Avg . Exp( Jl^-1(Avg) . ts )
+    avg = avg_0 + ( avg_0.lift().ljacinv() * ts );
+
+    tmp = avg_0.lift().ljac() * (avg - avg_0);
+
+    if (tmp.coeffs().squaredNorm() < eps)
+      break;
+  }
+
+  std::cout << "Frechet Left stopped after " << i << " iterations.\n";
+
+  return avg;
+}
+
+template <template <typename LieGroup, typename...Args> class Container,
+          typename LieGroup, typename...Args>
+LieGroup
+average_frechet_right(const Container<LieGroup, Args...>& points,
+                      typename LieGroup::Scalar eps =
+                        Constants<typename LieGroup::Scalar>::eps_s,
+                      int max_iterations = 20)
+{
+  using Scalar  = typename LieGroup::Scalar;
+  using Tangent = typename LieGroup::Tangent;
+
+  if (points.empty())
+    return LieGroup();
+  else if (points.size() == 1)
+    return *points.begin();
+
+  LieGroup avg = *points.begin();
+
+  const Scalar w = Scalar(1) / Scalar(points.size());
+
+  Tangent ts, tmp;
+  typename LieGroup::Jacobian Jr;
+  int i=0;
+  for (; i<max_iterations; ++i)
+  {
+    auto it        = points.begin();
+    const auto end = points.end();
+
+    ts.setZero();
+    const LieGroup avg_0 = avg;
+
+    for (; it != end; ++it)
+    {
+      tmp = it->lminus(avg_0); // Log( Xi . Avg^-1 )
+
+      Jr = avg_0.lift().rjac(); // Jr(Avg)
+
+      ts += Jr * tmp * w;
+    }
+
+    // Avg = Exp(Jr^-1(Avg) . ts) * Avg
+    avg = avg_0.lplus( avg_0.lift().rjacinv() * ts );
+
+    tmp = avg_0.lift().rjac() * (avg.lminus(avg_0));
+
+    if (tmp.coeffs().squaredNorm() < eps)
+      break;
+  }
+
+  std::cout << "Frechet Right stopped after " << i << " iterations.\n";
 
   return avg;
 }
