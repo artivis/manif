@@ -81,7 +81,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
       // Update as in (a) & (b)
       ts += ((*it) - avg);
     }
-    ts *= w;
+    ts *= w; // doing the common product by 1/N just once
 
     //////////////
     // Stopping criterion is from (b)
@@ -144,8 +144,9 @@ average(const Container<LieGroup, Args...>& points,
       Jr = tmp.rjac();
       G.noalias() = Jr.transpose() * Jr;
 
-      ts += G * tmp * w;
+      ts += G * tmp;
     }
+    ts *= w; // doing the common product by 1/N just once
 
     // This stopping criterion is derived from (b)
     typename LieGroup::Jacobian G = ts.rjac().transpose() * ts.rjac();
