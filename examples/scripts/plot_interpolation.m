@@ -1,20 +1,36 @@
-clc; clear; 
-%close all;
+clc; clear; #close all;
 
-file = "/home/jeremie/workspaces/universe/build/manif/examples/se2_interp.csv";
-%file = "se2_cubic.csv";
+path = "/home/user/";
 
+%file_base = "se2_interp_slerp";
+%file_base = "se2_interp_cubic";
+file_base = "se2_interp_cnsmooth";
 
-method = 'SLERP'
-method = 'CUBIC-like'
-method = 'C2 smooth'
+extension = ".csv";
 
-title = strcat('SE2 Interpolation (', method, ')');
+file = fullfile(path, [file_base extension]);
 
 data = load(file);
 
 'num k points'
 num_k_pts = data(1,1)
+
+'Interpolation method'
+interp_method = data(1,2)
+
+switch interp_method
+  case 0
+    method = 'SLERP'
+  case 1
+    method = 'CUBIC'
+  case 2
+    method = 'CN smooth'
+  otherwise
+    method = 'Unknown'
+end
+
+title = strcat('SE2 Interpolation (', method, ')');
+
 'num interpolated points'
 total_pts = size(data(2+num_k_pts:end,1), 1)
 
@@ -31,14 +47,10 @@ figure;
 quiver(x(1:num_k_pts),y(1:num_k_pts),u(1:num_k_pts),v(1:num_k_pts),'color',[0 0 1]);
 hold on
 quiver(x(num_k_pts+1:end),y(num_k_pts+1:end),u(num_k_pts+1:end),v(num_k_pts+1:end),'color',[1 0 0]);
+set(get(gca, 'title'), 'string', title);
 hold off
+
+img_file = fullfile(path, [file_base '.png']);
+saveas(gcf, img_file);
+
 return;
-
-figure;
-h = quiver(x(1:num_k_pts),y(1:num_k_pts),u(1:num_k_pts),v(1:num_k_pts),'color',[0 0 1]);
-set(gca, 'XLim', [-1.5 1.5], 'YLim', [-1 1]);
-set(get(gca, 'title'), 'string', title);
-
-quiver(x(num_k_pts+1:end),y(num_k_pts+1:end),u(num_k_pts+1:end),v(num_k_pts+1:end),'color',[1 0 0]);
-set(gca, 'XLim', [-1.5 1.5], 'YLim', [-1 1]);
-set(get(gca, 'title'), 'string', title);

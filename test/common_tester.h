@@ -308,7 +308,7 @@ public:
 
       const auto avg_shu = average_biinvariant(mans);
 
-      EXPECT_MANIF_NEAR(avg, avg_shu, 1e-8);
+      EXPECT_MANIF_NEAR(avg, avg_shu, 1e-5);
     }
   }
 
