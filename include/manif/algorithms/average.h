@@ -79,8 +79,9 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
     for (; it != end; ++it)
     {
       // Update as in (a) & (b)
-      ts += ((*it) - avg) * w;
+      ts += ((*it) - avg);
     }
+    ts *= w;
 
     //////////////
     // Stopping criterion is from (b)
