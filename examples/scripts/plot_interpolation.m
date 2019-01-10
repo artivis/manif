@@ -1,7 +1,14 @@
 clc; clear; #close all;
 
 path = "/home/user/";
-file = strcat(path, "se2_interp.csv");
+
+%file_base = "se2_interp_slerp";
+%file_base = "se2_interp_cubic";
+file_base = "se2_interp_cnsmooth";
+
+extension = ".csv";
+
+file = fullfile(path, [file_base extension]);
 
 data = load(file);
 
@@ -42,5 +49,8 @@ hold on
 quiver(x(num_k_pts+1:end),y(num_k_pts+1:end),u(num_k_pts+1:end),v(num_k_pts+1:end),'color',[1 0 0]);
 set(get(gca, 'title'), 'string', title);
 hold off
+
+img_file = fullfile(path, [file_base '.png']);
+saveas(gcf, img_file);
 
 return;
