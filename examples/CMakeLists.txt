@@ -1,12 +1,12 @@
+add_executable(so2_average so2_average.cpp)
+
+add_executable(se2_average se2_average.cpp)
 add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
-add_executable(se2_cn_smooth se2_cn_smooth.cpp)
 add_executable(se2_localization se2_localization.cpp)
+
 add_executable(se3_localization se3_localization.cpp)
 add_executable(se3_sam se3_sam.cpp)
-
-add_executable(so2_average so2_average.cpp)
-add_executable(se2_average se2_average.cpp)
 
 set(CXX_11_EXAMPLE_TARGETS
 
@@ -16,7 +16,6 @@ set(CXX_11_EXAMPLE_TARGETS
   # SE2
   se2_interpolation
   se2_decasteljau
-  se2_cn_smooth
   se2_average
   se2_localization
 
