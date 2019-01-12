@@ -270,6 +270,26 @@ SO2Base<_Derived>::angle() const
 //  return coeffs.y();
 //}
 
+namespace internal {
+
+/**
+ * E = | 0 -1 |
+ *     | 1  0 |
+ */
+template <typename Derived>
+struct GeneratorEvaluator<SO2Base<Derived>>
+{
+  static typename SO2Base<Derived>::Basis
+  run(const int i)
+  {
+    MANIF_CHECK(i==0 && i<SO2Base<Derived>::DoF,
+                "Index i must be 0!");
+
+    return skew(typename SO2Base<Derived>::Scalar(1));
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SO2_BASE_H_ */
