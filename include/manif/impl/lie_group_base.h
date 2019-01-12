@@ -4,7 +4,6 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/impl/eigen.h"
-#include "manif/impl/generator.h"
 #include "manif/impl/tangent_base.h"
 
 #include "manif/constants.h"
