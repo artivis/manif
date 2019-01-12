@@ -322,6 +322,56 @@ void SO3Base<_Derived>::normalize()
   coeffs().normalize();
 }
 
+namespace internal {
+
+template <typename Derived>
+struct GeneratorEvaluator<SO3Base<Derived>>
+{
+  static typename SO3Base<Derived>::Basis
+  run(const int i)
+  {
+    MANIF_CHECK(i>=0 && i<SO3Base<Derived>::DoF,
+                "Index i must be in [0,2]!");
+
+    using Basis  = typename SO3Base<Derived>::Basis;
+    using Scalar = typename SO3Base<Derived>::Scalar;
+
+    switch (i)
+    {
+      case 0:
+      {
+        static Basis E0(
+              (Basis() << Scalar(0), Scalar(0), Scalar( 0),
+                          Scalar(0), Scalar(0), Scalar(-1),
+                          Scalar(0), Scalar(1), Scalar( 0) ).finished());
+        return E0;
+      }
+      case 1:
+      {
+        static Basis E1(
+              (Basis() << Scalar( 0), Scalar(0), Scalar(1),
+                          Scalar( 0), Scalar(0), Scalar(0),
+                          Scalar(-1), Scalar(0), Scalar(0) ).finished());
+        return E1;
+      }
+      case 2:
+      {
+        static Basis E2(
+              (Basis() << Scalar(0), Scalar(-1), Scalar(0),
+                          Scalar(1), Scalar( 0), Scalar(0),
+                          Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        return E2;
+      }
+      default:
+        MANIF_THROW("Index i must be in [0,2]!");
+        break;
+    }
+
+    return Basis{};
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SO3_BASE_H_ */
