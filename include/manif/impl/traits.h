@@ -6,6 +6,14 @@
 namespace manif {
 namespace internal {
 
+//template <typename T>
+//inline constexpr bool constexpr_false() {
+//    return false;
+//}
+
+template <typename T>
+struct constexpr_false : std::false_type {};
+
 template <typename T> struct traits;
 
 /// @note the following is from the Eigen library
