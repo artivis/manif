@@ -27,6 +27,7 @@ struct TangentBase
   using LieGroup = typename internal::traits<_Derived>::LieGroup;
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
+  using Basis    = typename internal::traits<_Derived>::Basis;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
@@ -71,6 +72,12 @@ public:
 
   // Minimum API
   // Those functions must be implemented in the Derived class !
+
+  /**
+   * @brief generator
+   * @return
+   */
+  Basis generator(const int i) const;
 
   /**
    * @brief Hat operator of the Tangent element.
@@ -270,6 +277,8 @@ public:
   static Tangent Zero();
   //! Static helper the create a random Tangent object.
   static Tangent Random();
+  //! Static helper to get a Basis of the Lie group.
+  static Basis Generator(const int i);
 
 private:
 
@@ -332,6 +341,13 @@ typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   return derived().retract(J_m_t);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Basis
+TangentBase<_Derived>::generator(const int i) const
+{
+  return Generator(i);
 }
 
 template <class _Derived>
@@ -542,6 +558,14 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Random()
 {
   return Tangent().setRandom();
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Basis
+TangentBase<_Derived>::Generator(const int i)
+{
+  return internal::GeneratorEvaluator<
+      typename internal::traits<_Derived>::Base>::run(i);
 }
 
 // Math

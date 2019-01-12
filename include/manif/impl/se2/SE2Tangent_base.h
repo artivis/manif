@@ -271,6 +271,56 @@ SE2TangentBase<_Derived>::angle() const
   return coeffs().z();
 }
 
+namespace internal {
+
+template <typename Derived>
+struct GeneratorEvaluator<SE2TangentBase<Derived>>
+{
+  static typename SE2TangentBase<Derived>::Basis
+  run(const int i)
+  {
+    MANIF_CHECK(i>=0 && i<SE2TangentBase<Derived>::DoF,
+                "Index i must be in [0,2]!");
+
+    using Basis  = typename SE2TangentBase<Derived>::Basis;
+    using Scalar = typename SE2TangentBase<Derived>::Scalar;
+
+    switch (i)
+    {
+      case 0:
+      {
+        static Basis E0(
+                (Basis() << Scalar(0), Scalar(0), Scalar(1),
+                            Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E0;
+      }
+      case 1:
+      {
+        static Basis E1(
+                (Basis() << Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(1),
+                            Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E1;
+      }
+      case 2:
+      {
+        static Basis E2(
+                (Basis() << Scalar(0), Scalar(-1), Scalar(0),
+                            Scalar(1), Scalar( 0), Scalar(0),
+                            Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        return E2;
+      }
+      default:
+        MANIF_THROW("Index i must be in [0,2]!");
+        break;
+    }
+
+    return Basis{};
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE2_BASE_H_ */

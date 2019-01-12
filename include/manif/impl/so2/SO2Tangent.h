@@ -17,13 +17,15 @@ struct traits<SO2Tangent<_Scalar>>
   using LieGroup = SO2<_Scalar>;
   using Tangent  = SO2Tangent<_Scalar>;
 
-  using Base = SO2TangentBase<_Scalar>;
+  using Base = SO2TangentBase<Tangent>;
 
   static constexpr int Dim     = LieGroupProperties<Base>::Dim;
   static constexpr int DoF     = LieGroupProperties<Base>::DoF;
   static constexpr int RepSize = DoF;
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
+
+  using Basis    = Eigen::Matrix<Scalar, 2, 2>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
   using LieAlg   = Eigen::Matrix<Scalar, 2, 2>;
 };

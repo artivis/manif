@@ -389,9 +389,9 @@ public:
     typename Tangent::LieAlg sum_delta_hat;
     sum_delta_hat.setZero();
 
-    for (int i=0; i<LieGroup::DoF; ++i)
+    for (int i=0; i<Tangent::DoF; ++i)
     {
-      sum_delta_hat += delta.coeffs()(i) * LieGroup::Generator(i);
+      sum_delta_hat += delta.coeffs()(i) * Tangent::Generator(i);
     }
 
     EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);

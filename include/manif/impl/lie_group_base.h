@@ -29,7 +29,6 @@ struct LieGroupBase
   using LieGroup       = typename internal::traits<_Derived>::LieGroup;
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
-  using Basis          = typename internal::traits<_Derived>::Basis;
   using Jacobian       = typename internal::traits<_Derived>::Jacobian;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
@@ -131,12 +130,6 @@ public:
    * @note See Eq. (29).
    */
   Jacobian adj() const;
-
-  /**
-   * @brief generator
-   * @return
-   */
-  Basis generator(const int i) const;
 
   // Deduced API
 
@@ -302,8 +295,6 @@ public:
   static LieGroup Identity();
   //! Static helper to create a random object of the Lie group.
   static LieGroup Random();
-  //! Static helper to get a Basis of the Lie group.
-  static Basis Generator(const int i);
 
 private:
 
@@ -582,13 +573,6 @@ LieGroupBase<_Derived>::adj() const
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Basis
-LieGroupBase<_Derived>::generator(const int i) const
-{
-  return Generator(i);
-}
-
-template <typename _Derived>
 typename LieGroupBase<_Derived>::Vector
 LieGroupBase<_Derived>::act(const Vector& v,
                             OptJacobianRef J_vout_m,
@@ -688,14 +672,6 @@ typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::Random()
 {
   return LieGroup().setRandom();
-}
-
-template <typename _Derived>
-typename LieGroupBase<_Derived>::Basis
-LieGroupBase<_Derived>::Generator(const int i)
-{
-  return internal::GeneratorEvaluator<
-      typename internal::traits<_Derived>::Base>::run(i);
 }
 
 /// Utils

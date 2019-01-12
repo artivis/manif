@@ -310,6 +310,86 @@ SE3TangentBase<_Derived>::w() const
 //  return data()->z();
 //}
 
+namespace internal {
+
+template <typename Derived>
+struct GeneratorEvaluator<SE3TangentBase<Derived>>
+{
+  static typename SE3TangentBase<Derived>::Basis
+  run(const int i)
+  {
+    MANIF_CHECK(i>=0 && i<SE3TangentBase<Derived>::DoF,
+                "Index i must be in [0,5]!");
+
+    using Basis  = typename SE3TangentBase<Derived>::Basis;
+    using Scalar = typename SE3TangentBase<Derived>::Scalar;
+
+    switch (i)
+    {
+      case 0:
+      {
+        static Basis E0(
+                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E0;
+      }
+      case 1:
+      {
+        static Basis E1(
+                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E1;
+      }
+      case 2:
+      {
+        static Basis E2(
+                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E2;
+      }
+      case 3:
+      {
+        static Basis E3(
+                (Basis() << Scalar(0), Scalar(0), Scalar( 0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar(-1), Scalar(0),
+                            Scalar(0), Scalar(1), Scalar( 0), Scalar(0),
+                            Scalar(0), Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        return E3;
+      }
+      case 4:
+      {
+        static Basis E4(
+                (Basis() << Scalar( 0), Scalar(0), Scalar(1), Scalar(0),
+                            Scalar( 0), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar(-1), Scalar(0), Scalar(0), Scalar(0),
+                            Scalar( 0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E4;
+      }
+      case 5:
+      {
+        static Basis E5(
+                (Basis() << Scalar(0), Scalar(-1), Scalar(0), Scalar(0),
+                            Scalar(1), Scalar( 0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar( 0), Scalar(0), Scalar(0),
+                            Scalar(0), Scalar( 0), Scalar(0), Scalar(0) ).finished());
+        return E5;
+      }
+      default:
+        MANIF_THROW("Index i must be in [0,5]!");
+        break;
+    }
+
+    return Basis{};
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE3_BASE_H_ */

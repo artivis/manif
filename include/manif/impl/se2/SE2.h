@@ -29,7 +29,6 @@ struct traits<SE2<_Scalar>>
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using Basis          = Eigen::Matrix<Scalar, 3, 3>;
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, 3, 3>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;

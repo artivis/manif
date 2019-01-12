@@ -7,7 +7,7 @@ namespace internal {
 template <typename Derived>
 struct GeneratorEvaluator
 {
-  static typename Derived::Jacobian
+  static typename Derived::Basis
   run(const int)
   {
     /// @todo print actual Derived type
