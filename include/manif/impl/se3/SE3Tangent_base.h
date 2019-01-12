@@ -155,8 +155,8 @@ SE3TangentBase<_Derived>::rjac() const
       Jr.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieAlg V = skew(v());
-  const LieAlg W = asSO3().hat();
+  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 
@@ -208,8 +208,8 @@ SE3TangentBase<_Derived>::ljac() const
       Jl.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieAlg V = skew(v());
-  const LieAlg W = asSO3().hat();
+  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 
