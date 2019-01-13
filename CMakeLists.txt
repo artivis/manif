@@ -23,7 +23,7 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 find_package(Eigen3 REQUIRED)
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
-# catkin build manif --cmake-args -DBUILD_TESTING=ON -BUILD_EXAMPLES=ON
+# catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
