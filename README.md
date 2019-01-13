@@ -93,6 +93,7 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 |       |   Base Operation   |  |
 | Inverse | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}^{-1}" title="\mathbf \Phi^{-1}" /> | `X.inverse()` |
 | Composition | <img src="https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}&space;\circ&space;\mathbf&space;\mathcal{Y}" title="\mathbf \mathcal{X} \circ \mathbf \mathcal{Y}" /> | `X * Y`<br/>`X.compose(Y)` |
+| Hat | <img src="https://latex.codecogs.com/png.latex?\varphi^\wedge"/> | `w.hat()` |
 | Retract to group element | <img src="https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi^\wedge)" title="\exp(\mathbf \varphi^{^})" /> | `w.retract()` |
 | Act on vector | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&space;v"/> | `X.act(v)` |
 | Lift to tangent space | <img src="https://latex.codecogs.com/png.latex?\log(\mathbf&space;\mathcal{X})^\vee" title="\log(\mathbf \Phi)" /> | `X.lift()` |
@@ -102,11 +103,10 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 | Manifold right plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" /> | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
 | Manifold left plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" /> | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
 | Manifold right minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee"  /> | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
-| Manifold left minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee"  /> | `X.lminus(Y)` |
+| Manifold left minus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee"  /> | <br/>`X.lminus(Y)` |
 | Between | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}"/> | `X.between(Y)` |
-
-<!-- JS: I would use Y(-)X instead of X(-)Y since it's the opposite of Y=X(+)v. -->
-<!-- JS: I am not sure of between(). We'd have between(X,Y) = X\inv * Y to be intuitive enough; But X.between(Y) is not very intuitive. Can you check that this docu line in the table above is correct? -->
+| Inner Product | <img src="https://latex.codecogs.com/png.latex?\langle \varphi,\varphi\rangle"/> | `w.inner(w)` |
+| Norm | <img src="https://latex.codecogs.com/png.latex?\left\lVert\varphi\right\rVert"/> | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
 
 Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf\mathcal{Y}" alt="\mathcal{Y}" /> represent group elements, <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi^\wedge" alt="small phi" />  represents an element in the Lie algebra of the Lie group, <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi" alt="small phi" />  or `w` represents the same element of the tangent space but expressed in Cartesian coordinates in  <img src="https://latex.codecogs.com/png.latex?\mathbb{R}^n" />, and <img src="https://latex.codecogs.com/png.latex?\mathbf{v}" alt="v" /> or `v` represents any element of <img src="https://latex.codecogs.com/png.latex?\mathbb{R}^n" />.
 
