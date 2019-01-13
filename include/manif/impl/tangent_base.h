@@ -81,6 +81,14 @@ public:
   Basis generator(const int i) const;
 
   /**
+   * @brief Get the weight matrix of the Weighted Euclidean inner product,
+   * relative to the space basis.
+   * @return the weight matrix.
+   * @see generator
+   */
+  Jacobian w() const;
+
+  /**
    * @brief Hat operator of the Tangent element.
    * @return The isomorphic element in the Lie algebra.
    * @note See Eq. (10).
@@ -280,6 +288,8 @@ public:
   static Tangent Random();
   //! Static helper to get a Basis of the Lie group.
   static Basis Generator(const int i);
+  //! Static helper to get a Basis of the Lie group.
+  static Jacobian W();
 
 private:
 
@@ -349,6 +359,13 @@ typename TangentBase<_Derived>::Basis
 TangentBase<_Derived>::generator(const int i) const
 {
   return Generator(i);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Jacobian
+TangentBase<_Derived>::w() const
+{
+  return W();
 }
 
 template <class _Derived>
@@ -567,6 +584,14 @@ TangentBase<_Derived>::Generator(const int i)
 {
   return internal::GeneratorEvaluator<
       typename internal::traits<_Derived>::Base>::run(i);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::Jacobian
+TangentBase<_Derived>::W()
+{
+  return internal::WEvaluator<
+      typename internal::traits<_Derived>::Base>::run();
 }
 
 // Math
