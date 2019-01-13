@@ -75,8 +75,8 @@ public:
   // Those functions must be implemented in the Derived class !
 
   /**
-   * @brief generator
-   * @return
+   * @brief Get the ith basis element of the Lie Algebra.
+   * @return the ith basis element of the Lie Algebra.
    */
   Basis generator(const int i) const;
 
