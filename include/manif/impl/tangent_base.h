@@ -89,6 +89,32 @@ public:
   Jacobian w() const;
 
   /**
+   * @brief Get inner product of this and another Tangent
+   * weightedby W.
+   * @return The inner product of this and t.
+   * @note ip = v0' . W . v1
+   * @see w()
+   */
+  template <typename _DerivedOther>
+  Scalar inner(const TangentBase<_DerivedOther>& t) const;
+
+  /**
+   * @brief Get the Euclidean weighted norm.
+   * @return The Euclidean weighted norm.
+   * @see w()
+   * @see squaredWeightedNorm()
+   */
+  Scalar weightedNorm() const;
+
+  /**
+   * @brief Get the squared Euclidean weighted norm.
+   * @return The squared Euclidean weighted norm.
+   * @see w()
+   * @see WeightedNorm()
+   */
+  Scalar squaredWeightedNorm() const;
+
+  /**
    * @brief Hat operator of the Tangent element.
    * @return The isomorphic element in the Lie algebra.
    * @note See Eq. (10).
@@ -366,6 +392,29 @@ typename TangentBase<_Derived>::Jacobian
 TangentBase<_Derived>::w() const
 {
   return W();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::inner(const TangentBase<_DerivedOther>& t) const
+{
+  return coeffs().transpose() * W() * t.coeffs();
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::weightedNorm() const
+{
+  using std::sqrt;
+  return sqrt( squaredWeightedNorm() );
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::squaredWeightedNorm() const
+{
+  return coeffs().transpose() * W() * coeffs();
 }
 
 template <class _Derived>
