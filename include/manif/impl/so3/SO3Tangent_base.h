@@ -252,7 +252,7 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
     {
       case 0:
       {
-        static Basis E0(
+        static const Basis E0(
               (Basis() << Scalar(0), Scalar(0), Scalar( 0),
                           Scalar(0), Scalar(0), Scalar(-1),
                           Scalar(0), Scalar(1), Scalar( 0) ).finished());
@@ -260,7 +260,7 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
       }
       case 1:
       {
-        static Basis E1(
+        static const Basis E1(
               (Basis() << Scalar( 0), Scalar(0), Scalar(1),
                           Scalar( 0), Scalar(0), Scalar(0),
                           Scalar(-1), Scalar(0), Scalar(0) ).finished());
@@ -268,7 +268,7 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
       }
       case 2:
       {
-        static Basis E2(
+        static const Basis E2(
               (Basis() << Scalar(0), Scalar(-1), Scalar(0),
                           Scalar(1), Scalar( 0), Scalar(0),
                           Scalar(0), Scalar( 0), Scalar(0) ).finished());

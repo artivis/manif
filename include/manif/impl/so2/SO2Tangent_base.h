@@ -188,7 +188,10 @@ struct GeneratorEvaluator<SO2TangentBase<Derived>>
     MANIF_CHECK(i==0 && i<SO2TangentBase<Derived>::DoF,
                 "Index i must be 0!");
 
-    return skew(typename SO2TangentBase<Derived>::Scalar(1));
+    const static typename SO2TangentBase<Derived>::Basis E0 =
+        skew(typename SO2TangentBase<Derived>::Scalar(1));
+
+    return E0;
   }
 };
 

@@ -289,7 +289,7 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
     {
       case 0:
       {
-        static Basis E0(
+        const static Basis E0(
                 (Basis() << Scalar(0), Scalar(0), Scalar(1),
                             Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(0) ).finished());
@@ -297,7 +297,7 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
       }
       case 1:
       {
-        static Basis E1(
+        const static Basis E1(
                 (Basis() << Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(1),
                             Scalar(0), Scalar(0), Scalar(0) ).finished());
@@ -305,7 +305,7 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
       }
       case 2:
       {
-        static Basis E2(
+        const static Basis E2(
                 (Basis() << Scalar(0), Scalar(-1), Scalar(0),
                             Scalar(1), Scalar( 0), Scalar(0),
                             Scalar(0), Scalar( 0), Scalar(0) ).finished());

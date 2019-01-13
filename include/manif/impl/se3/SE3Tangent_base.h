@@ -328,7 +328,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
     {
       case 0:
       {
-        static Basis E0(
+        static const Basis E0(
                 (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(1),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
@@ -337,7 +337,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
       }
       case 1:
       {
-        static Basis E1(
+        static const Basis E1(
                 (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
@@ -346,7 +346,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
       }
       case 2:
       {
-        static Basis E2(
+        static const Basis E2(
                 (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
@@ -355,7 +355,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
       }
       case 3:
       {
-        static Basis E3(
+        static const Basis E3(
                 (Basis() << Scalar(0), Scalar(0), Scalar( 0), Scalar(0),
                             Scalar(0), Scalar(0), Scalar(-1), Scalar(0),
                             Scalar(0), Scalar(1), Scalar( 0), Scalar(0),
@@ -364,7 +364,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
       }
       case 4:
       {
-        static Basis E4(
+        static const Basis E4(
                 (Basis() << Scalar( 0), Scalar(0), Scalar(1), Scalar(0),
                             Scalar( 0), Scalar(0), Scalar(0), Scalar(0),
                             Scalar(-1), Scalar(0), Scalar(0), Scalar(0),
@@ -373,7 +373,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
       }
       case 5:
       {
-        static Basis E5(
+        static const Basis E5(
                 (Basis() << Scalar(0), Scalar(-1), Scalar(0), Scalar(0),
                             Scalar(1), Scalar( 0), Scalar(0), Scalar(0),
                             Scalar(0), Scalar( 0), Scalar(0), Scalar(0),
