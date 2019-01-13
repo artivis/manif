@@ -320,6 +320,24 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
   }
 };
 
+template <typename Derived>
+struct WEvaluator<SE2TangentBase<Derived>>
+{
+  static typename Derived::Jacobian
+  run()
+  {
+    using Jacobian = typename SE2TangentBase<Derived>::Jacobian;
+    using Scalar   = typename SE2TangentBase<Derived>::Scalar;
+
+    const static Jacobian W(
+            (Jacobian() << Scalar(1), Scalar(0), Scalar(0),
+                           Scalar(0), Scalar(1), Scalar(0),
+                           Scalar(0), Scalar(0), Scalar(2) ).finished());
+
+    return W;
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 
