@@ -3,6 +3,7 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
+#include "manif/impl/generator.h"
 #include "manif/impl/eigen.h"
 
 #include "manif/constants.h"
@@ -29,6 +30,8 @@ struct TangentBase
   using DataType = typename internal::traits<_Derived>::DataType;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
+
+  using InnerWeight = Jacobian;
 
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
@@ -71,6 +74,46 @@ public:
 
   // Minimum API
   // Those functions must be implemented in the Derived class !
+
+  /**
+   * @brief Get the ith basis element of the Lie Algebra.
+   * @return the ith basis element of the Lie Algebra.
+   */
+  LieAlg generator(const int i) const;
+
+  /**
+   * @brief Get the weight matrix of the Weighted Euclidean inner product,
+   * relative to the space basis.
+   * @return the weight matrix.
+   * @see generator
+   */
+  InnerWeight w() const;
+
+  /**
+   * @brief Get inner product of this and another Tangent
+   * weightedby W.
+   * @return The inner product of this and t.
+   * @note ip = v0' . W . v1
+   * @see w()
+   */
+  template <typename _DerivedOther>
+  Scalar inner(const TangentBase<_DerivedOther>& t) const;
+
+  /**
+   * @brief Get the Euclidean weighted norm.
+   * @return The Euclidean weighted norm.
+   * @see w()
+   * @see squaredWeightedNorm()
+   */
+  Scalar weightedNorm() const;
+
+  /**
+   * @brief Get the squared Euclidean weighted norm.
+   * @return The squared Euclidean weighted norm.
+   * @see w()
+   * @see WeightedNorm()
+   */
+  Scalar squaredWeightedNorm() const;
 
   /**
    * @brief Hat operator of the Tangent element.
@@ -270,6 +313,10 @@ public:
   static Tangent Zero();
   //! Static helper the create a random Tangent object.
   static Tangent Random();
+  //! Static helper to get a Basis of the Lie group.
+  static LieAlg Generator(const int i);
+  //! Static helper to get a Basis of the Lie group.
+  static InnerWeight W();
 
 private:
 
@@ -332,6 +379,43 @@ typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
   return derived().retract(J_m_t);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::LieAlg
+TangentBase<_Derived>::generator(const int i) const
+{
+  return Generator(i);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::InnerWeight
+TangentBase<_Derived>::w() const
+{
+  return W();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::inner(const TangentBase<_DerivedOther>& t) const
+{
+  return coeffs().transpose() * W() * t.coeffs();
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::weightedNorm() const
+{
+  using std::sqrt;
+  return sqrt( squaredWeightedNorm() );
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::Scalar
+TangentBase<_Derived>::squaredWeightedNorm() const
+{
+  return coeffs().transpose() * W() * coeffs();
 }
 
 template <class _Derived>
@@ -542,6 +626,22 @@ typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::Random()
 {
   return Tangent().setRandom();
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::LieAlg
+TangentBase<_Derived>::Generator(const int i)
+{
+  return internal::GeneratorEvaluator<
+      typename internal::traits<_Derived>::Base>::run(i);
+}
+
+template <typename _Derived>
+typename TangentBase<_Derived>::InnerWeight
+TangentBase<_Derived>::W()
+{
+  return internal::WEvaluator<
+      typename internal::traits<_Derived>::Base>::run();
 }
 
 // Math

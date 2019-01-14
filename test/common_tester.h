@@ -56,8 +56,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNARY_MINUS)         \
   { evalUnaryMinus(); }                                                   \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_TANGENT_OPERATORS)   \
-  { evalSomeTangentOperators(); }
-
+  { evalSomeTangentOperators(); }                                         \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_GENERATORS_HAT)      \
+  { evalGeneratorsHat(); }
 
 /*
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
@@ -381,6 +382,19 @@ public:
           delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.,
           delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
           );
+  }
+
+  void evalGeneratorsHat()
+  {
+    typename Tangent::LieAlg sum_delta_hat;
+    sum_delta_hat.setZero();
+
+    for (int i=0; i<Tangent::DoF; ++i)
+    {
+      sum_delta_hat += delta.coeffs()(i) * Tangent::Generator(i);
+    }
+
+    EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);
   }
 
 protected:

@@ -290,9 +290,9 @@ public:
 
   // Some static helpers
 
-  //! Static helper the create a Lie group object set at Identity.
+  //! Static helper to create a Lie group object set at Identity.
   static LieGroup Identity();
-  //! Static helper the create a random object of the Lie group.
+  //! Static helper to create a random object of the Lie group.
   static LieGroup Random();
 
 private:

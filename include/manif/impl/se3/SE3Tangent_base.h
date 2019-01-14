@@ -155,8 +155,8 @@ SE3TangentBase<_Derived>::rjac() const
       Jr.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieAlg V = skew(v());
-  const LieAlg W = asSO3().hat();
+  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 
@@ -208,8 +208,8 @@ SE3TangentBase<_Derived>::ljac() const
       Jl.template topLeftCorner<3,3>();
 
   const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const LieAlg V = skew(v());
-  const LieAlg W = asSO3().hat();
+  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
   Scalar A(0.5), B, C, D;
 
@@ -310,6 +310,86 @@ SE3TangentBase<_Derived>::w() const
 //  return data()->z();
 //}
 
+namespace internal {
+
+template <typename Derived>
+struct GeneratorEvaluator<SE3TangentBase<Derived>>
+{
+  static typename SE3TangentBase<Derived>::LieAlg
+  run(const int i)
+  {
+    MANIF_CHECK(i>=0 && i<SE3TangentBase<Derived>::DoF,
+                "Index i must be in [0,5]!");
+
+    using LieAlg = typename SE3TangentBase<Derived>::LieAlg;
+    using Scalar = typename SE3TangentBase<Derived>::Scalar;
+
+    switch (i)
+    {
+      case 0:
+      {
+        static const LieAlg E0(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E0;
+      }
+      case 1:
+      {
+        static const LieAlg E1(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E1;
+      }
+      case 2:
+      {
+        static const LieAlg E2(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E2;
+      }
+      case 3:
+      {
+        static const LieAlg E3(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar( 0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(-1), Scalar(0),
+                             Scalar(0), Scalar(1), Scalar( 0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        return E3;
+      }
+      case 4:
+      {
+        static const LieAlg E4(
+                (LieAlg() << Scalar( 0), Scalar(0), Scalar(1), Scalar(0),
+                             Scalar( 0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(-1), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar( 0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        return E4;
+      }
+      case 5:
+      {
+        static const LieAlg E5(
+                (LieAlg() << Scalar(0), Scalar(-1), Scalar(0), Scalar(0),
+                             Scalar(1), Scalar( 0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar( 0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar( 0), Scalar(0), Scalar(0) ).finished());
+        return E5;
+      }
+      default:
+        MANIF_THROW("Index i must be in [0,5]!");
+        break;
+    }
+
+    return LieAlg{};
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE3_BASE_H_ */

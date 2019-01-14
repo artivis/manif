@@ -30,6 +30,7 @@ struct traits<SO2<_Scalar>>
   /// @todo move those to some traits ?
 
   using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
+
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, 3, 3>;
   using Rotation       = Eigen::Matrix<Scalar, 2, 2>;

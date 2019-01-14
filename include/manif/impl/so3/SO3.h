@@ -28,6 +28,7 @@ struct traits<SO3<_Scalar>>
   static constexpr int RepSize = 4;
 
   using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
+
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, 4, 4>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
