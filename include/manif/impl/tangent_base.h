@@ -31,6 +31,8 @@ struct TangentBase
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
+  using InnerWeight = Jacobian;
+
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
   template <typename _Scalar>
@@ -85,7 +87,7 @@ public:
    * @return the weight matrix.
    * @see generator
    */
-  Jacobian w() const;
+  InnerWeight w() const;
 
   /**
    * @brief Get inner product of this and another Tangent
@@ -314,7 +316,7 @@ public:
   //! Static helper to get a Basis of the Lie group.
   static LieAlg Generator(const int i);
   //! Static helper to get a Basis of the Lie group.
-  static Jacobian W();
+  static InnerWeight W();
 
 private:
 
@@ -387,7 +389,7 @@ TangentBase<_Derived>::generator(const int i) const
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::Jacobian
+typename TangentBase<_Derived>::InnerWeight
 TangentBase<_Derived>::w() const
 {
   return W();
@@ -635,7 +637,7 @@ TangentBase<_Derived>::Generator(const int i)
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::Jacobian
+typename TangentBase<_Derived>::InnerWeight
 TangentBase<_Derived>::W()
 {
   return internal::WEvaluator<

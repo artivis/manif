@@ -19,14 +19,14 @@ struct GeneratorEvaluator
 template <typename Derived>
 struct WEvaluator
 {
-  static typename Derived::Jacobian
+  static typename Derived::InnerWeight
   run()
   {
-    using Jacobian = typename Derived::Jacobian;
+    using InnerWeight = typename Derived::InnerWeight;
 
     auto computeW = []()
     {
-      Jacobian W = Jacobian::Zero();
+      InnerWeight W = InnerWeight::Zero();
 
       for (int r=0; r<Derived::DoF; ++r)
         for (int c=0; c<Derived::DoF; ++c)
@@ -35,7 +35,7 @@ struct WEvaluator
       return W;
     };
 
-    const static Jacobian W = computeW();
+    const static InnerWeight W = computeW();
 
     return W;
   }
