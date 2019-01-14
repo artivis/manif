@@ -28,7 +28,6 @@ struct TangentBase
   using LieGroup = typename internal::traits<_Derived>::LieGroup;
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
-  using Basis    = typename internal::traits<_Derived>::Basis;
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
@@ -78,7 +77,7 @@ public:
    * @brief Get the ith basis element of the Lie Algebra.
    * @return the ith basis element of the Lie Algebra.
    */
-  Basis generator(const int i) const;
+  LieAlg generator(const int i) const;
 
   /**
    * @brief Get the weight matrix of the Weighted Euclidean inner product,
@@ -313,7 +312,7 @@ public:
   //! Static helper the create a random Tangent object.
   static Tangent Random();
   //! Static helper to get a Basis of the Lie group.
-  static Basis Generator(const int i);
+  static LieAlg Generator(const int i);
   //! Static helper to get a Basis of the Lie group.
   static Jacobian W();
 
@@ -381,7 +380,7 @@ TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::Basis
+typename TangentBase<_Derived>::LieAlg
 TangentBase<_Derived>::generator(const int i) const
 {
   return Generator(i);
@@ -628,7 +627,7 @@ TangentBase<_Derived>::Random()
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::Basis
+typename TangentBase<_Derived>::LieAlg
 TangentBase<_Derived>::Generator(const int i)
 {
   return internal::GeneratorEvaluator<

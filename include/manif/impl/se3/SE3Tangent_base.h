@@ -315,69 +315,69 @@ namespace internal {
 template <typename Derived>
 struct GeneratorEvaluator<SE3TangentBase<Derived>>
 {
-  static typename SE3TangentBase<Derived>::Basis
+  static typename SE3TangentBase<Derived>::LieAlg
   run(const int i)
   {
     MANIF_CHECK(i>=0 && i<SE3TangentBase<Derived>::DoF,
                 "Index i must be in [0,5]!");
 
-    using Basis  = typename SE3TangentBase<Derived>::Basis;
+    using LieAlg = typename SE3TangentBase<Derived>::LieAlg;
     using Scalar = typename SE3TangentBase<Derived>::Scalar;
 
     switch (i)
     {
       case 0:
       {
-        static const Basis E0(
-                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(1),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        static const LieAlg E0(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E0;
       }
       case 1:
       {
-        static const Basis E1(
-                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(1),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        static const LieAlg E1(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E1;
       }
       case 2:
       {
-        static const Basis E2(
-                (Basis() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(1),
-                            Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        static const LieAlg E2(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E2;
       }
       case 3:
       {
-        static const Basis E3(
-                (Basis() << Scalar(0), Scalar(0), Scalar( 0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(-1), Scalar(0),
-                            Scalar(0), Scalar(1), Scalar( 0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        static const LieAlg E3(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar( 0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(-1), Scalar(0),
+                             Scalar(0), Scalar(1), Scalar( 0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar( 0), Scalar(0) ).finished());
         return E3;
       }
       case 4:
       {
-        static const Basis E4(
-                (Basis() << Scalar( 0), Scalar(0), Scalar(1), Scalar(0),
-                            Scalar( 0), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(-1), Scalar(0), Scalar(0), Scalar(0),
-                            Scalar( 0), Scalar(0), Scalar(0), Scalar(0) ).finished());
+        static const LieAlg E4(
+                (LieAlg() << Scalar( 0), Scalar(0), Scalar(1), Scalar(0),
+                             Scalar( 0), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(-1), Scalar(0), Scalar(0), Scalar(0),
+                             Scalar( 0), Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E4;
       }
       case 5:
       {
-        static const Basis E5(
-                (Basis() << Scalar(0), Scalar(-1), Scalar(0), Scalar(0),
-                            Scalar(1), Scalar( 0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar( 0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar( 0), Scalar(0), Scalar(0) ).finished());
+        static const LieAlg E5(
+                (LieAlg() << Scalar(0), Scalar(-1), Scalar(0), Scalar(0),
+                             Scalar(1), Scalar( 0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar( 0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar( 0), Scalar(0), Scalar(0) ).finished());
         return E5;
       }
       default:
@@ -385,7 +385,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
         break;
     }
 
-    return Basis{};
+    return LieAlg{};
   }
 };
 

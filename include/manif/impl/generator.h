@@ -7,7 +7,7 @@ namespace internal {
 template <typename Derived>
 struct GeneratorEvaluator
 {
-  static typename Derived::Basis
+  static typename Derived::LieAlg
   run(const int)
   {
     /// @todo print actual Derived type

@@ -276,39 +276,39 @@ namespace internal {
 template <typename Derived>
 struct GeneratorEvaluator<SE2TangentBase<Derived>>
 {
-  static typename SE2TangentBase<Derived>::Basis
+  static typename SE2TangentBase<Derived>::LieAlg
   run(const int i)
   {
     MANIF_CHECK(i>=0 && i<SE2TangentBase<Derived>::DoF,
                 "Index i must be in [0,2]!");
 
-    using Basis  = typename SE2TangentBase<Derived>::Basis;
+    using LieAlg = typename SE2TangentBase<Derived>::LieAlg;
     using Scalar = typename SE2TangentBase<Derived>::Scalar;
 
     switch (i)
     {
       case 0:
       {
-        const static Basis E0(
-                (Basis() << Scalar(0), Scalar(0), Scalar(1),
-                            Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(0) ).finished());
+        const static LieAlg E0(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E0;
       }
       case 1:
       {
-        const static Basis E1(
-                (Basis() << Scalar(0), Scalar(0), Scalar(0),
-                            Scalar(0), Scalar(0), Scalar(1),
-                            Scalar(0), Scalar(0), Scalar(0) ).finished());
+        const static LieAlg E1(
+                (LieAlg() << Scalar(0), Scalar(0), Scalar(0),
+                             Scalar(0), Scalar(0), Scalar(1),
+                             Scalar(0), Scalar(0), Scalar(0) ).finished());
         return E1;
       }
       case 2:
       {
-        const static Basis E2(
-                (Basis() << Scalar(0), Scalar(-1), Scalar(0),
-                            Scalar(1), Scalar( 0), Scalar(0),
-                            Scalar(0), Scalar( 0), Scalar(0) ).finished());
+        const static LieAlg E2(
+                (LieAlg() << Scalar(0), Scalar(-1), Scalar(0),
+                             Scalar(1), Scalar( 0), Scalar(0),
+                             Scalar(0), Scalar( 0), Scalar(0) ).finished());
         return E2;
       }
       default:
@@ -316,7 +316,7 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
         break;
     }
 
-    return Basis{};
+    return LieAlg{};
   }
 };
 

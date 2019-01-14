@@ -182,13 +182,13 @@ namespace internal {
 template <typename Derived>
 struct GeneratorEvaluator<SO2TangentBase<Derived>>
 {
-  static typename SO2TangentBase<Derived>::Basis
+  static typename SO2TangentBase<Derived>::LieAlg
   run(const int i)
   {
     MANIF_CHECK(i==0 && i<SO2TangentBase<Derived>::DoF,
                 "Index i must be 0!");
 
-    const static typename SO2TangentBase<Derived>::Basis E0 =
+    const static typename SO2TangentBase<Derived>::LieAlg E0 =
         skew(typename SO2TangentBase<Derived>::Scalar(1));
 
     return E0;

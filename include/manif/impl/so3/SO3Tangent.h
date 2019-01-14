@@ -25,7 +25,6 @@ struct traits<SO3Tangent<_Scalar>>
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using Basis    = Eigen::Matrix<Scalar, 3, 3>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
   using LieAlg   = Eigen::Matrix<Scalar, 3, 3>;
 };
