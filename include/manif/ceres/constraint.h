@@ -26,6 +26,7 @@ public:
   template <typename... Args>
   CeresConstraintFunctor(Args&&... args)
     : measurement_(std::forward<Args>(args)...)
+    , measurement_covariance_(Covariance::Identity())
   {
     computeInformationMatrix();
   }
@@ -54,16 +55,13 @@ public:
     /// r = m - ( future (-) past )
     residuals = measurement_.template cast<T>() - (state_future - state_past);
 
-    /// @todo
-//    residuals = measurement_sqrt_info_upper_.template cast<T>() * residuals;
-
     /// r = exp( log(m)^-1 . ( past^-1 . future ) )
 
 //    residuals =
 //      measurement_.retract().template cast<T>()
 //        .between(state_past.between(state_future)).lift();
 
-//    residuals = measurement_sqrt_info_upper_.template cast<T>() * residuals;
+    residuals.coeffs() = measurement_sqrt_info_upper_.template cast<T>() * residuals.coeffs();
 
     return true;
   }
