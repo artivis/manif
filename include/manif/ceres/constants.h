@@ -14,10 +14,6 @@ struct Constants<ceres::Jet<_Scalar, N>>
 {
   static const ceres::Jet<_Scalar, N> eps;
   static const ceres::Jet<_Scalar, N> eps_s;
-//  static const Scalar eps_sqrt;
-
-//  static const Scalar to_rad; // pi / 180
-//  static const Scalar to_deg; // 180 / pi
 };
 
 template <typename _Scalar, int N>
@@ -27,14 +23,6 @@ Constants<ceres::Jet<_Scalar, N>>::eps = ceres::Jet<_Scalar, N>(1e-10);
 template <typename _Scalar, int N>
 const ceres::Jet<_Scalar, N>
 Constants<ceres::Jet<_Scalar, N>>::eps_s = ceres::Jet<_Scalar, N>(1e-15);
-
-//template <typename _Scalar, int N>
-//const ceres::Jet<_Scalar, N>
-//Constants<ceres::Jet<_Scalar, N>>::eps_sqrt = Constants<_Scalar>::eps_sqrt;
-
-//template <typename _Scalar, int N>
-//const ceres::Jet<_Scalar, N>
-//Constants<ceres::Jet<_Scalar, N>>::to_deg = Constants<_Scalar>::to_deg;
 
 } /* namespace manif */
 

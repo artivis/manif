@@ -10,19 +10,6 @@
 
 namespace manif {
 
-//std::string getReason(const ceres::TerminationType flag)
-//{
-//  switch(flag)
-//  {
-//    case ceres::CONVERGENCE:    return "CONVERGENCE";
-//    case ceres::NO_CONVERGENCE: return "NO_CONVERGENCE";
-//    case ceres::FAILURE:        return "FAILURE";
-//    case ceres::USER_SUCCESS:   return "USER_SUCCESS";
-//    case ceres::USER_FAILURE:   return "USER_FAILURE";
-//    default:                    return "UNKNOWN";
-//  }
-//}
-
 template <typename _LieGroup>
 std::shared_ptr<
   ceres::AutoDiffLocalParameterization<CeresLocalParameterizationFunctor<_LieGroup>,
