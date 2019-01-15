@@ -48,42 +48,6 @@ TEST(TEST_SO2_CERES, TEST_SO2_OBJECTIVE_AUTODIFF)
   EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
 }
 
-//TEST(TEST_SO2_CERES, TEST_SO2_OBJECTIVE)
-//{
-//  // Create 4 objectives spread arround pi
-//  CeresObjectiveSO2 obj_pi_over_4(     M_PI/4.);
-//  CeresObjectiveSO2 obj_3_pi_over_8(3.*M_PI/8.);
-//  CeresObjectiveSO2 obj_5_pi_over_8(5.*M_PI/8.);
-//  CeresObjectiveSO2 obj_3_pi_over_4(3.*M_PI/4.);
-
-//  /// @todo eval Jac
-//////  double** jacobians = new double*[10];
-////  for (int i = 0; i < 2; ++i) {
-//////    jacobians[i] = new double[1];
-////  }
-
-//  SO2d average_state(0);
-
-//  double residuals = 0.0;
-
-//  double*  parameter;
-//  double** parameters;
-//  parameter  = average_state.data();
-//  parameters = &parameter;
-
-//  obj_pi_over_4.Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals);
-
-//  obj_3_pi_over_8.Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals);
-
-//  obj_5_pi_over_8.Evaluate(parameters, &residuals, nullptr);
-//  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals);
-
-//  obj_3_pi_over_4.Evaluate(parameters, &residuals, nullptr );
-//  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals);
-//}
-
 TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
 {
   std::shared_ptr<ceres::LocalParameterization>
@@ -200,67 +164,6 @@ TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
   // 1.3088223838053636e-09
   EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
 }
-
-/*
-TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM)
-{
-  // Tell ceres not to take ownership of the raw pointers
-  ceres::Problem::Options problem_options;
-  problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
-  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
-
-  ceres::Problem problem(problem_options);
-
-  SO2d average_state(M_PI/4.);
-
-  // Create 4 objectives spread arround pi
-  ObjectiveSO2 obj_pi_over_4(  SO2d(   M_PI/4.)),
-               obj_3_pi_over_8(SO2d(3.*M_PI/8.)),
-               obj_5_pi_over_8(SO2d(5.*M_PI/8.)),
-               obj_3_pi_over_4(SO2d(3.*M_PI/4.));
-
-  // Add residual blocks to ceres problem
-  problem.AddResidualBlock( &obj_pi_over_4,
-                            nullptr,
-                            average_state.data() );
-
-  problem.AddResidualBlock( &obj_3_pi_over_8,
-                            nullptr,
-                            average_state.data() );
-
-  problem.AddResidualBlock( &obj_5_pi_over_8,
-                            nullptr,
-                             average_state.data() );
-
-  problem.AddResidualBlock( &obj_3_pi_over_4,
-                            nullptr,
-                            average_state.data() );
-
-  LocalParameterizationSO2 local_parametrization;
-
-  problem.SetParameterization( average_state.data(),
-                               &local_parametrization );
-
-  std::cout << "-----------------------------\n";
-  std::cout << "|       Calling Solve !     |\n";
-  std::cout << "-----------------------------\n\n";
-
-  // Run the solver!
-  ceres::Solver::Options options;
-  options.function_tolerance = 1e-10;
-  options.minimizer_progress_to_stdout = true;
-
-  ceres::Solver::Summary summary;
-  ceres::Solve(options, &problem, &summary);
-
-  std::cout << "summary:\n" << summary.BriefReport() << "\n";
-//  std::cout << "summary:\n" << summary.FullReport() << "\n";
-
-  ASSERT_TRUE(summary.IsSolutionUsable());
-
-  EXPECT_ANGLE_NEAR(M_PI_2, average_state.angle(), 1e-8);
-}
-*/
 
 TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT_AUTODIFF)
 {
