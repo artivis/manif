@@ -272,6 +272,9 @@ public:
   template <typename _EigenDerived>
   _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 
+  template <typename... Args>
+  _Derived& operator <<(Args&&... args);
+
   // Math
 
   //! @brief Equivalent to v * -1.
@@ -608,6 +611,14 @@ _Derived& TangentBase<_Derived>::operator =(
     const Eigen::MatrixBase<_EigenDerived>& v)
 {
   coeffs() = v;
+  return derived();
+}
+
+template <typename _Derived>
+template <typename... Args>
+_Derived& TangentBase<_Derived>::operator <<(Args&&... args)
+{
+  coeffs().operator <<(std::forward<Args>(args)...);
   return derived();
 }
 
