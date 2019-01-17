@@ -242,9 +242,6 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
   static typename SO3TangentBase<Derived>::LieAlg
   run(const int i)
   {
-    MANIF_CHECK(i>=0 && i<SO3TangentBase<Derived>::DoF,
-                "Index i must be in [0,2]!");
-
     using LieAlg = typename SO3TangentBase<Derived>::LieAlg;
     using Scalar = typename SO3TangentBase<Derived>::Scalar;
 

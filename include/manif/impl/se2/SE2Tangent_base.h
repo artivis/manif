@@ -279,9 +279,6 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
   static typename SE2TangentBase<Derived>::LieAlg
   run(const int i)
   {
-    MANIF_CHECK(i>=0 && i<SE2TangentBase<Derived>::DoF,
-                "Index i must be in [0,2]!");
-
     using LieAlg = typename SE2TangentBase<Derived>::LieAlg;
     using Scalar = typename SE2TangentBase<Derived>::Scalar;
 
