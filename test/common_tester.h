@@ -60,7 +60,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_GENERATORS_HAT)      \
   { evalGeneratorsHat(); }                                                \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_STREAM_OP)           \
-  { evalStreamOp(); }
+  { evalStreamOp(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INNER)               \
+  { evalInner(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -472,6 +474,18 @@ public:
 
       EXPECT_FALSE(ss.str().empty());
     }
+  }
+
+  void evalInner()
+  {
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().weightedNorm());
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().squaredWeightedNorm());
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().inner(Tangent::Zero()));
+
+    Tangent delta_other = Tangent::Random();
+
+    EXPECT_DOUBLE_EQ(delta.squaredWeightedNorm(), delta.inner(delta));
+    EXPECT_DOUBLE_EQ(delta.inner(delta_other), delta_other.inner(delta));
   }
 
 protected:
