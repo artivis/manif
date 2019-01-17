@@ -418,7 +418,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Scalar
 TangentBase<_Derived>::squaredWeightedNorm() const
 {
-  return coeffs().transpose() * W() * coeffs();
+  return (coeffs().transpose() * W() * coeffs())(0);
 }
 
 template <class _Derived>
