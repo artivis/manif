@@ -14,9 +14,6 @@ class CeresObjectiveFunctor
   template <typename _Scalar>
   using LieGroupTemplate = typename LieGroup::template LieGroupTemplate<_Scalar>;
 
-  template <typename _Scalar>
-  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
-
 public:
 
   template <typename... Args>
