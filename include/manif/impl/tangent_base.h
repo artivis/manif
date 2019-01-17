@@ -403,7 +403,7 @@ template <typename _DerivedOther>
 typename TangentBase<_Derived>::Scalar
 TangentBase<_Derived>::inner(const TangentBase<_DerivedOther>& t) const
 {
-  return coeffs().transpose() * W() * t.coeffs();
+  return (coeffs().transpose() * W() * t.coeffs())(0);
 }
 
 template <class _Derived>
