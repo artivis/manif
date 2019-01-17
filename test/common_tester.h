@@ -554,6 +554,16 @@ public:
     LieGroup state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
+
+    ///////
+
+    delta.setZero();
+    state_out = delta.retract(J_sout_s);
+
+    state_pert = (delta+w).retract();
+    state_lin  = state_out + (J_sout_s*w);
+
+    EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalComposeJac()
@@ -737,7 +747,7 @@ public:
 
     Adj = state.adj();
 
-    const Tangent tan = state.lift();
+    Tangent tan = state.lift();
 
     Jr = tan.rjac();
     Jl = tan.ljac();
@@ -747,8 +757,24 @@ public:
 
     // Jr(-tau) = Jl(tau)
 
-    typename LieGroup::Jacobian Jr_mtau = (-tan).rjac();
-    EXPECT_EIGEN_NEAR(Jl, Jr_mtau);
+    EXPECT_EIGEN_NEAR(Jl, (-tan).rjac());
+
+    /////
+
+    state.setIdentity();
+
+    Adj = state.adj();
+    tan = state.lift();
+
+    Jr = tan.rjac();
+    Jl = tan.ljac();
+
+    EXPECT_EIGEN_NEAR(Jl, Adj*Jr);
+    EXPECT_EIGEN_NEAR(Adj, Jl*Jr.inverse());
+
+    // Jr(-tau) = Jl(tau)
+
+    EXPECT_EIGEN_NEAR(Jl, (-tan).rjac());
   }
 
   void evalJrJrinvJlJlinv()
