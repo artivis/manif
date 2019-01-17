@@ -47,8 +47,8 @@
   { evalRandom(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
   { evalZero(); }                                                         \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SLERP10)             \
-  { evalSlerp01(); }                                                      \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP)              \
+  { evalInterp(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
   { evalAvgBiInvariant(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
@@ -58,12 +58,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_TANGENT_OPERATORS)   \
   { evalSomeTangentOperators(); }                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_GENERATORS_HAT)      \
-  { evalGeneratorsHat(); }
-
-/*
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
-  { evalCubic01(); }                                                      \
-*/
+  { evalGeneratorsHat(); }                                                \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_STREAM_OP)           \
+  { evalStreamOp(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -139,6 +136,10 @@ public:
   void evalDataPtrValid()
   {
     ASSERT_NE(nullptr, state.data());
+
+    const typename LieGroup::Scalar* data = state.data();
+
+    ASSERT_NE(nullptr, data);
   }
 
   void evalPlusIsRplus()
@@ -265,30 +266,31 @@ public:
                       Tangent::DataType::Zero());
   }
 
-  void evalSlerp01()
+  void evalInterp()
   {
-    LieGroup interp = interpolate(state, state_other, 0);
+    EXPECT_THROW(interpolate(state, state_other, 0.-1e-3), std::runtime_error);
+    EXPECT_THROW(interpolate(state, state_other, 1.+1e-3), std::runtime_error);
 
-    EXPECT_MANIF_NEAR(state, interp, tol_);
+    EXPECT_THROW(interpolate_smooth(state, state_other, 1.+1e-3, 0),
+                 std::runtime_error);
 
-    interp = interpolate(state, state_other, 1);
+    for (int i=0; i<3; ++i)
+    {
+      LieGroup interp = interpolate(state, state_other, 0);
 
-    EXPECT_MANIF_NEAR(state_other, interp, tol_);
-  }
+      EXPECT_MANIF_NEAR(state, interp, tol_);
 
-  void evalCubic01()
-  {
-    LieGroup interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
+      interp = interpolate(state, state_other, 1);
 
-    EXPECT_MANIF_NEAR(state, interp, tol_);
-
-    interp = interpolate(state, state_other, 1, INTERP_METHOD::CUBIC);
-
-    EXPECT_MANIF_NEAR(state_other, interp, tol_);
+      EXPECT_MANIF_NEAR(state_other, interp, tol_);
+    }
   }
 
   void evalAvgBiInvariant()
   {
+    EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
+                 std::runtime_error);
+
     const auto dummy = LieGroup::Random();
     EXPECT_MANIF_NEAR(dummy,
      average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
@@ -315,11 +317,33 @@ public:
 
   void evalIsApprox()
   {
+    // Group
+
+    EXPECT_TRUE(LieGroup::Identity().isApprox(LieGroup::Identity(), tol_));
+    EXPECT_FALSE(state.isApprox(LieGroup::Identity(), tol_));
+
+    EXPECT_TRUE(LieGroup::Identity() == LieGroup::Identity());
+    EXPECT_FALSE(state == LieGroup::Identity());
+
     EXPECT_TRUE(state.isApprox(state, tol_));
     EXPECT_FALSE(state.isApprox(state_other, tol_));
 
     EXPECT_TRUE(state == state);
     EXPECT_FALSE(state == state_other);
+
+    // Tangent
+
+    EXPECT_TRUE(Tangent::Zero().isApprox(Tangent::Zero(), tol_));
+    EXPECT_FALSE(delta.isApprox(Tangent::Zero(), tol_));
+
+    EXPECT_TRUE(Tangent::Zero() == Tangent::Zero());
+    EXPECT_FALSE(delta == Tangent::Zero());
+
+    EXPECT_TRUE(delta.isApprox(delta, tol_));
+    EXPECT_FALSE(delta.isApprox(delta+delta, tol_));
+
+    EXPECT_TRUE(delta == delta);
+    EXPECT_FALSE(delta == (delta+delta));
   }
 
   void evalUnaryMinus()
@@ -382,10 +406,18 @@ public:
           delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.,
           delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
           );
+
+    Tangent w;
+    w << delta_data;
+
+    EXPECT_EIGEN_NEAR(delta_data, w.coeffs());
   }
 
   void evalGeneratorsHat()
   {
+    EXPECT_THROW(Tangent::Generator(-1), std::runtime_error);
+    EXPECT_THROW(Tangent::Generator(42), std::runtime_error);
+
     typename Tangent::LieAlg sum_delta_hat;
     sum_delta_hat.setZero();
 
@@ -395,6 +427,31 @@ public:
     }
 
     EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);
+
+    sum_delta_hat.setZero();
+    for (int i=0; i<Tangent::DoF; ++i)
+    {
+      sum_delta_hat += delta.coeffs()(i) * delta.generator(i);
+    }
+
+    EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);
+  }
+
+  void evalStreamOp()
+  {
+    {
+      std::stringstream ss;
+      ss << state;
+
+      EXPECT_FALSE(ss.str().empty());
+    }
+
+    {
+      std::stringstream ss;
+      ss << delta;
+
+      EXPECT_FALSE(ss.str().empty());
+    }
   }
 
 protected:
