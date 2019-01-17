@@ -93,7 +93,11 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_JLJLinv_JRJRinv)   \
   { evalJrJrinvJlJlinv(); }                                                       \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ACT_JACOBIANS)     \
-  { evalActJac(); }
+  { evalActJac(); }                                                               \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_PLUS_T_JACOBIANS)  \
+  { evalTanPlusTanJac(); }                                                        \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_MINUS_T_JACOBIANS) \
+  { evalTanMinusTanJac(); }
 
 namespace manif {
 
@@ -819,6 +823,52 @@ public:
     point_lin  = pointout + J_pout_p*w_point;
 
     EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
+  }
+
+  void evalTanPlusTanJac()
+  {
+    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+
+    const Tangent delta_other = Tangent::Random();
+
+    const Tangent delta_out = delta.plus(delta_other, J_tout_t0, J_tout_t1);
+
+    // Jac wrt first element
+
+    Tangent delta_pert = (delta+w).plus(delta_other);
+    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+
+    // Jac wrt second element
+
+    delta_pert = delta.plus(delta_other+w);
+    delta_lin  = delta_out.plus(J_tout_t1*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+  }
+
+  void evalTanMinusTanJac()
+  {
+    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+
+    const Tangent delta_other = Tangent::Random();
+
+    const Tangent delta_out = delta.minus(delta_other, J_tout_t0, J_tout_t1);
+
+    // Jac wrt first element
+
+    Tangent delta_pert = (delta+w).minus(delta_other);
+    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+
+    // Jac wrt second element
+
+    delta_pert = delta.minus(delta_other+w);
+    delta_lin  = delta_out.plus(J_tout_t1*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }
