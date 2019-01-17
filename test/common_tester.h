@@ -91,7 +91,9 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ADJ_JL_JR)         \
   { evalAdjJlJr(); }                                                              \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_JLJLinv_JRJRinv)   \
-  { evalJrJrinvJlJlinv(); }
+  { evalJrJrinvJlJlinv(); }                                                       \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ACT_JACOBIANS)     \
+  { evalActJac(); }
 
 namespace manif {
 
@@ -750,6 +752,33 @@ public:
 
     EXPECT_EIGEN_NEAR(Jac::Identity(), Jr*Jrinv);
     EXPECT_EIGEN_NEAR(Jac::Identity(), Jl*Jlinv);
+  }
+
+  void evalActJac()
+  {
+    using Point = Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, 1>;
+    Point point = Point::Random();
+
+    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::DoF> J_pout_s;
+    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::Dim> J_pout_p;
+
+    const Point pointout = state.act(point, J_pout_s, J_pout_p);
+
+    const Point w_point = Point::Random()*w_order_;
+
+    // Jac wrt first element
+
+    Point point_pert = (state+w).act(point);
+    Point point_lin  = pointout + (J_pout_s*w.coeffs());
+
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, 1e-7);
+
+    // Jac wrt second element
+
+    point_pert = state.act(point+w_point);
+    point_lin  = pointout + J_pout_p*w_point;
+
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }
