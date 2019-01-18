@@ -14,8 +14,6 @@
 
 // https://stackoverflow.com/questions/3046889/optional-parameters-with-c-macros
 
-#define __GET_4TH_ARG(arg1,arg2,arg3,arg4, ...) arg4
-
 #define EXPECT_MANIF_NEAR_DEFAULT_TOL(A,B) \
   EXPECT_TRUE(manif::isManifNear(A, B, #A, #B))
 

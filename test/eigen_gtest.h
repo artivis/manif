@@ -4,10 +4,9 @@
 #include <gtest/gtest.h>
 #include <Eigen/Dense>
 
-namespace manif
-{
-namespace detail
-{
+namespace manif {
+namespace detail {
+
 template <int... I> struct int_sequence
 {
   using type = int_sequence;
@@ -213,7 +212,7 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 
   if (std::min(matrix_a.norm(), matrix_b.norm()) < tolerance)
   {
-    result = ((matrix_a - matrix_b).isZero(tolerance));
+    result = (matrix_a - matrix_b).isZero(tolerance);
   }
   else
   {
@@ -230,11 +229,33 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 
 } /* namespace manif */
 
-#define EXPECT_EIGEN_NEAR(a, b)                       \
-  EXPECT_TRUE(manif::isEigenMatrixNear(a, b, #a, #b))
+#define __GET_4TH_ARG(arg1,arg2,arg3,arg4, ...) arg4
 
-#define ASSERT_EIGEN_NEAR(a, b)                       \
-  ASSERT_TRUE(manif::isEigenMatrixNear(a, b, #a, #b))
+#define EXPECT_EIGEN_NEAR_DEFAULT_TOL(A,B) \
+  EXPECT_TRUE(manif::isEigenMatrixNear(A, B, #A, #B))
+
+#define EXPECT_EIGEN_NEAR_TOL(A,B,tol) \
+  EXPECT_TRUE(manif::isEigenMatrixNear(A, B, #A, #B, tol))
+
+#define __EXPECT_EIGEN_NEAR_CHOOSER(...) \
+  __GET_4TH_ARG(__VA_ARGS__, EXPECT_EIGEN_NEAR_TOL, \
+                EXPECT_EIGEN_NEAR_DEFAULT_TOL, )
+
+#define EXPECT_EIGEN_NEAR(...) \
+  __EXPECT_EIGEN_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
+
+#define ASSERT_EIGEN_NEAR_DEFAULT_TOL(A,B) \
+  ASSERT_TRUE(manif::isEigenMatrixNear(A, B, #A, #B))
+
+#define ASSERT_EIGEN_NEAR_TOL(A,B,tol) \
+  ASSERT_TRUE(manif::isEigenMatrixNear(A, B, #A, #B, tol))
+
+#define __ASSERT_EIGEN_NEAR_CHOOSER(...) \
+  __GET_4TH_ARG(__VA_ARGS__, ASSERT_EIGEN_NEAR_TOL, \
+                ASSERT_EIGEN_NEAR_DEFAULT_TOL, )
+
+#define ASSERT_EIGEN_NEAR(...) \
+  __ASSERT_EIGEN_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
 /*
  * E.g

@@ -59,9 +59,8 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
 
-  if (points.empty())
-    return LieGroup();
-  else if (points.size() == 1)
+  MANIF_CHECK(!points.empty(), "Points container is empty !");
+  if (points.size() == 1)
     return *points.begin();
 
   LieGroup avg = *points.begin();
@@ -103,7 +102,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 //      break;
   }
 
-  std::cout << "Biinvariant stopped after " << i << " iterations.\n";
+  //std::cout << "Biinvariant stopped after " << i << " iterations.\n";
 
   return avg;
 }
@@ -119,9 +118,8 @@ average(const Container<LieGroup, Args...>& points,
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
 
-  if (points.empty())
-    return LieGroup();
-  else if (points.size() == 1)
+  MANIF_CHECK(!points.empty(), "Points container is empty !");
+  if (points.size() == 1)
     return *points.begin();
 
   LieGroup avg = *points.begin();
@@ -176,9 +174,8 @@ average_frechet_left(const Container<LieGroup, Args...>& points,
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
 
-  if (points.empty())
-    return LieGroup();
-  else if (points.size() == 1)
+  MANIF_CHECK(!points.empty(), "Points container is empty !");
+  if (points.size() == 1)
     return *points.begin();
 
   LieGroup avg = *points.begin();
@@ -214,7 +211,7 @@ average_frechet_left(const Container<LieGroup, Args...>& points,
       break;
   }
 
-  std::cout << "Frechet Left stopped after " << i << " iterations.\n";
+  //std::cout << "Frechet Left stopped after " << i << " iterations.\n";
 
   return avg;
 }
@@ -230,9 +227,8 @@ average_frechet_right(const Container<LieGroup, Args...>& points,
   using Scalar  = typename LieGroup::Scalar;
   using Tangent = typename LieGroup::Tangent;
 
-  if (points.empty())
-    return LieGroup();
-  else if (points.size() == 1)
+  MANIF_CHECK(!points.empty(), "Points container is empty !");
+  if (points.size() == 1)
     return *points.begin();
 
   LieGroup avg = *points.begin();
@@ -268,7 +264,7 @@ average_frechet_right(const Container<LieGroup, Args...>& points,
       break;
   }
 
-  std::cout << "Frechet Right stopped after " << i << " iterations.\n";
+  //std::cout << "Frechet Right stopped after " << i << " iterations.\n";
 
   return avg;
 }

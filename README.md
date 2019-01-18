@@ -1,9 +1,9 @@
 # manif
-## A small header-only library for Lie theory. <!-- JS: why small? -->
+## A small header-only library for Lie theory.
 
 [![Build Status](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
+[![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
-<!-- ![](https://tokei.rs/b1/github/artivis/manif) -->
 
 ## Package Summary
 **manif** is a header-only c++11 Lie theory library for state-estimation
@@ -23,12 +23,10 @@ ___
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#features">Features</a> •
-  <!--a href="#examples">Examples</a> • -->
   <a href="#documentation">Documentation</a> •
   <a href="#tutorials-and-application-demos">Tutorials</a> •
   <a href="#publications">Publications</a> •
-  <a href="#contributing">Contributing</a> <!--•
-  <a href="#authors">Authors</a> -->
+  <a href="#contributing">Contributing</a>
 </p>
 
 ___
@@ -221,5 +219,3 @@ For a PullRequest to get merged into develop, it must pass
     +   Do the new changes follow the current style of naming?
 -   Compile / Test / Run on all target environments.
 
-<!--## Credits
-I wanna thank my European project-->

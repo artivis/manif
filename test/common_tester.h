@@ -47,8 +47,8 @@
   { evalRandom(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ZERO)                \
   { evalZero(); }                                                         \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SLERP10)             \
-  { evalSlerp01(); }                                                      \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP)              \
+  { evalInterp(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
   { evalAvgBiInvariant(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
@@ -58,12 +58,11 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_TANGENT_OPERATORS)   \
   { evalSomeTangentOperators(); }                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_GENERATORS_HAT)      \
-  { evalGeneratorsHat(); }
-
-/*
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_CUBIC10)             \
-  { evalCubic01(); }                                                      \
-*/
+  { evalGeneratorsHat(); }                                                \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_STREAM_OP)           \
+  { evalStreamOp(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INNER)               \
+  { evalInner(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -94,7 +93,13 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ADJ_JL_JR)         \
   { evalAdjJlJr(); }                                                              \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_JLJLinv_JRJRinv)   \
-  { evalJrJrinvJlJlinv(); }
+  { evalJrJrinvJlJlinv(); }                                                       \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ACT_JACOBIANS)     \
+  { evalActJac(); }                                                               \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_PLUS_T_JACOBIANS)  \
+  { evalTanPlusTanJac(); }                                                        \
+  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_MINUS_T_JACOBIANS) \
+  { evalTanMinusTanJac(); }
 
 namespace manif {
 
@@ -139,6 +144,10 @@ public:
   void evalDataPtrValid()
   {
     ASSERT_NE(nullptr, state.data());
+
+    const typename LieGroup::Scalar* data = state.data();
+
+    ASSERT_NE(nullptr, data);
   }
 
   void evalPlusIsRplus()
@@ -265,30 +274,45 @@ public:
                       Tangent::DataType::Zero());
   }
 
-  void evalSlerp01()
+  void evalInterp()
   {
-    LieGroup interp = interpolate(state, state_other, 0);
+    EXPECT_THROW(smoothing_phi(0, 0), std::logic_error);
+    EXPECT_THROW(smoothing_phi(0, 5), std::logic_error);
 
-    EXPECT_MANIF_NEAR(state, interp, tol_);
+    for (int i=1;i<5; ++i)
+    {
+      EXPECT_NEAR(0, smoothing_phi(0., i), 1e-10);
+      EXPECT_NEAR(1, smoothing_phi(1., i), 1e-10);
+    }
 
-    interp = interpolate(state, state_other, 1);
+    EXPECT_THROW(interpolate(state, state_other, 0.-1e-3), std::runtime_error);
+    EXPECT_THROW(interpolate(state, state_other, 1.+1e-3), std::runtime_error);
 
-    EXPECT_MANIF_NEAR(state_other, interp, tol_);
-  }
+    EXPECT_THROW(interpolate_smooth(state, state_other, 1.+1e-3, 0),
+                 std::runtime_error);
 
-  void evalCubic01()
-  {
-    LieGroup interp = interpolate(state, state_other, 0, INTERP_METHOD::CUBIC);
+    for (int i=0; i<3; ++i)
+    {
+      /// @todo cubic is faulty, need fix
+      if (i==1) continue;
 
-    EXPECT_MANIF_NEAR(state, interp, tol_);
+      const manif::INTERP_METHOD method = static_cast<INTERP_METHOD>(i);
 
-    interp = interpolate(state, state_other, 1, INTERP_METHOD::CUBIC);
+      LieGroup interp = interpolate(state, state_other, 0, method);
 
-    EXPECT_MANIF_NEAR(state_other, interp, tol_);
+      EXPECT_MANIF_NEAR(state, interp, tol_) << i;
+
+      interp = interpolate(state, state_other, 1, method);
+
+      EXPECT_MANIF_NEAR(state_other, interp, tol_) << i;
+    }
   }
 
   void evalAvgBiInvariant()
   {
+    EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
+                 std::runtime_error);
+
     const auto dummy = LieGroup::Random();
     EXPECT_MANIF_NEAR(dummy,
      average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
@@ -315,11 +339,33 @@ public:
 
   void evalIsApprox()
   {
+    // Group
+
+    EXPECT_TRUE(LieGroup::Identity().isApprox(LieGroup::Identity(), tol_));
+    EXPECT_FALSE(state.isApprox(LieGroup::Identity(), tol_));
+
+    EXPECT_TRUE(LieGroup::Identity() == LieGroup::Identity());
+    EXPECT_FALSE(state == LieGroup::Identity());
+
     EXPECT_TRUE(state.isApprox(state, tol_));
     EXPECT_FALSE(state.isApprox(state_other, tol_));
 
     EXPECT_TRUE(state == state);
     EXPECT_FALSE(state == state_other);
+
+    // Tangent
+
+    EXPECT_TRUE(Tangent::Zero().isApprox(Tangent::Zero(), tol_));
+    EXPECT_FALSE(delta.isApprox(Tangent::Zero(), tol_));
+
+    EXPECT_TRUE(Tangent::Zero() == Tangent::Zero());
+    EXPECT_FALSE(delta == Tangent::Zero());
+
+    EXPECT_TRUE(delta.isApprox(delta, tol_));
+    EXPECT_FALSE(delta.isApprox(delta+delta, tol_));
+
+    EXPECT_TRUE(delta == delta);
+    EXPECT_FALSE(delta == (delta+delta));
   }
 
   void evalUnaryMinus()
@@ -382,10 +428,18 @@ public:
           delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.,
           delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
           );
+
+    Tangent w;
+    w << delta_data;
+
+    EXPECT_EIGEN_NEAR(delta_data, w.coeffs());
   }
 
   void evalGeneratorsHat()
   {
+    EXPECT_THROW(Tangent::Generator(-1), std::runtime_error);
+    EXPECT_THROW(Tangent::Generator(42), std::runtime_error);
+
     typename Tangent::LieAlg sum_delta_hat;
     sum_delta_hat.setZero();
 
@@ -395,6 +449,43 @@ public:
     }
 
     EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);
+
+    sum_delta_hat.setZero();
+    for (int i=0; i<Tangent::DoF; ++i)
+    {
+      sum_delta_hat += delta.coeffs()(i) * delta.generator(i);
+    }
+
+    EXPECT_EIGEN_NEAR(delta.hat(), sum_delta_hat);
+  }
+
+  void evalStreamOp()
+  {
+    {
+      std::stringstream ss;
+      ss << state;
+
+      EXPECT_FALSE(ss.str().empty());
+    }
+
+    {
+      std::stringstream ss;
+      ss << delta;
+
+      EXPECT_FALSE(ss.str().empty());
+    }
+  }
+
+  void evalInner()
+  {
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().weightedNorm());
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().squaredWeightedNorm());
+    EXPECT_DOUBLE_EQ(0., Tangent::Zero().inner(Tangent::Zero()));
+
+    Tangent delta_other = Tangent::Random();
+
+    EXPECT_DOUBLE_EQ(delta.squaredWeightedNorm(), delta.inner(delta));
+    EXPECT_DOUBLE_EQ(delta.inner(delta_other), delta_other.inner(delta));
   }
 
 protected:
@@ -479,6 +570,16 @@ public:
 
     LieGroup state_pert = (delta+w).retract();
     LieGroup state_lin  = state_out + (J_sout_s*w);
+
+    EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
+
+    ///////
+
+    delta.setZero();
+    state_out = delta.retract(J_sout_s);
+
+    state_pert = (delta+w).retract();
+    state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
@@ -664,7 +765,7 @@ public:
 
     Adj = state.adj();
 
-    const Tangent tan = state.lift();
+    Tangent tan = state.lift();
 
     Jr = tan.rjac();
     Jl = tan.ljac();
@@ -674,8 +775,24 @@ public:
 
     // Jr(-tau) = Jl(tau)
 
-    typename LieGroup::Jacobian Jr_mtau = (-tan).rjac();
-    EXPECT_EIGEN_NEAR(Jl, Jr_mtau);
+    EXPECT_EIGEN_NEAR(Jl, (-tan).rjac());
+
+    /////
+
+    state.setIdentity();
+
+    Adj = state.adj();
+    tan = state.lift();
+
+    Jr = tan.rjac();
+    Jl = tan.ljac();
+
+    EXPECT_EIGEN_NEAR(Jl, Adj*Jr);
+    EXPECT_EIGEN_NEAR(Adj, Jl*Jr.inverse());
+
+    // Jr(-tau) = Jl(tau)
+
+    EXPECT_EIGEN_NEAR(Jl, (-tan).rjac());
   }
 
   void evalJrJrinvJlJlinv()
@@ -693,6 +810,79 @@ public:
 
     EXPECT_EIGEN_NEAR(Jac::Identity(), Jr*Jrinv);
     EXPECT_EIGEN_NEAR(Jac::Identity(), Jl*Jlinv);
+  }
+
+  void evalActJac()
+  {
+    using Point = Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, 1>;
+    Point point = Point::Random();
+
+    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::DoF> J_pout_s;
+    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::Dim> J_pout_p;
+
+    const Point pointout = state.act(point, J_pout_s, J_pout_p);
+
+    const Point w_point = Point::Random()*w_order_;
+
+    // Jac wrt first element
+
+    Point point_pert = (state+w).act(point);
+    Point point_lin  = pointout + (J_pout_s*w.coeffs());
+
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, 1e-7);
+
+    // Jac wrt second element
+
+    point_pert = state.act(point+w_point);
+    point_lin  = pointout + J_pout_p*w_point;
+
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
+  }
+
+  void evalTanPlusTanJac()
+  {
+    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+
+    const Tangent delta_other = Tangent::Random();
+
+    const Tangent delta_out = delta.plus(delta_other, J_tout_t0, J_tout_t1);
+
+    // Jac wrt first element
+
+    Tangent delta_pert = (delta+w).plus(delta_other);
+    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+
+    // Jac wrt second element
+
+    delta_pert = delta.plus(delta_other+w);
+    delta_lin  = delta_out.plus(J_tout_t1*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+  }
+
+  void evalTanMinusTanJac()
+  {
+    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+
+    const Tangent delta_other = Tangent::Random();
+
+    const Tangent delta_out = delta.minus(delta_other, J_tout_t0, J_tout_t1);
+
+    // Jac wrt first element
+
+    Tangent delta_pert = (delta+w).minus(delta_other);
+    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+
+    // Jac wrt second element
+
+    delta_pert = delta.minus(delta_other+w);
+    delta_lin  = delta_out.plus(J_tout_t1*w);
+
+    EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }

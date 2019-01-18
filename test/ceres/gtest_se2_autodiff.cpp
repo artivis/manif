@@ -373,7 +373,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
   std::cout << "p6 : [" << state_6.x() << "," << state_6.y() << "," << state_6.angle() << "]\n";
   std::cout << "p7 : [" << state_7.x() << "," << state_7.y() << "," << state_7.angle() << "]\n";
 
-  constexpr double ceres_eps = 1e-3;
+  constexpr double ceres_eps = 2e-3;
 
   EXPECT_NEAR( 0,                 state_0.x(),      ceres_eps);
   EXPECT_NEAR( 0,                 state_0.y(),      ceres_eps);
