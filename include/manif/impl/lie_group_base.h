@@ -396,23 +396,21 @@ LieGroupBase<_Derived>::lplus(
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  LieGroup mout;
-
   if (J_mout_t)
   {
-    Jacobian J_ret_t;
-    Jacobian J_mout_ret;
+    J_mout_t->noalias() = inverse().adj() * t.rjac();
 
-    mout = t.retract(J_ret_t).compose(derived(), J_mout_ret, J_mout_m);
-
-    J_mout_t->noalias() = J_mout_ret * J_ret_t;
+    // SO2 'adj' is a 1x1 matrix and
+    // Eigen 3.2.9 does not compile it.
+    //J_mout_t->noalias() = adj().inverse() * t.rjac();
   }
-  else
+
+  if (J_mout_m)
   {
-    mout = t.retract().compose(derived(), _, J_mout_m);
+    J_mout_m->setIdentity();
   }
 
-  return mout;
+  return t.retract().compose(derived());
 }
 
 template <typename _Derived>
