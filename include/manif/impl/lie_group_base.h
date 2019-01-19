@@ -454,46 +454,20 @@ LieGroupBase<_Derived>::lminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  Tangent t;
+  const Tangent t = compose(m.inverse()).lift();
 
-  /// @todo optimize this
-  if (J_t_ma && J_t_mb)
+  if (J_t_ma || J_t_mb)
   {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
+    const Jacobian J = t.rjacinv() * m.adj();
 
-    t = compose(m.inverse(J_inv_mb),
-                J_comp_ma, J_comp_inv).lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else if (J_t_ma && !J_t_mb)
-  {
-    Jacobian J_comp_a;
-    Jacobian J_t_comp;
-
-    t = compose(m.inverse(),
-                J_comp_a, _ ).lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_a;
-  }
-  else if (!J_t_ma && J_t_mb)
-  {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_t_comp;
-
-    t = compose(m.inverse(J_inv_mb),
-                _, J_comp_inv).lift(J_t_comp);
-
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else
-  {
-    t = compose(m.inverse()).lift();
+    if (J_t_ma)
+    {
+      (*J_t_ma) =  J;
+    }
+    if (J_t_mb)
+    {
+      (*J_t_mb) = -J;
+    }
   }
 
   return t;
