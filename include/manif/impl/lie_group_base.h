@@ -510,19 +510,20 @@ LieGroupBase<_Derived>::between(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  LieGroup mc;
+  const LieGroup mc = inverse().compose(m);
 
   if (J_mc_ma)
   {
-    Jacobian J_inv_ma;
-    Jacobian J_mc_inv;
-    mc = inverse(J_inv_ma).compose(m, J_mc_inv, J_mc_mb);
+    J_mc_ma->noalias() = m.inverse().adj() * -adj();
 
-    J_mc_ma->noalias() = J_mc_inv * J_inv_ma;
+    // SO2 'adj' is a 1x1 matrix and
+    // Eigen 3.2.9 does not compile it.
+    //J_mc_ma->noalias() = m.adj().inverse() * -adj();
   }
-  else
+
+  if (J_mc_mb)
   {
-    mc = inverse().compose(m, _, J_mc_mb);
+    J_mc_mb->setIdentity();
   }
 
   return mc;
