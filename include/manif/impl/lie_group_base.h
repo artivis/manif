@@ -399,10 +399,6 @@ LieGroupBase<_Derived>::lplus(
   if (J_mout_t)
   {
     J_mout_t->noalias() = inverse().adj() * t.rjac();
-
-    // SO2 'adj' is a 1x1 matrix and
-    // Eigen 3.2.9 does not compile it.
-    //J_mout_t->noalias() = adj().inverse() * t.rjac();
   }
 
   if (J_mout_m)
@@ -515,10 +511,6 @@ LieGroupBase<_Derived>::between(
   if (J_mc_ma)
   {
     *J_mc_ma = -(mc.inverse().adj());
-
-    // SO2 'adj' is a 1x1 matrix and
-    // Eigen 3.2.9 does not compile it.
-    //*J_mc_ma = -(mc.adj().inverse());
   }
 
   if (J_mc_mb)
