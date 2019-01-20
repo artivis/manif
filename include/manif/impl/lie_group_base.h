@@ -396,23 +396,17 @@ LieGroupBase<_Derived>::lplus(
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  LieGroup mout;
-
   if (J_mout_t)
   {
-    Jacobian J_ret_t;
-    Jacobian J_mout_ret;
-
-    mout = t.retract(J_ret_t).compose(derived(), J_mout_ret, J_mout_m);
-
-    J_mout_t->noalias() = J_mout_ret * J_ret_t;
+    J_mout_t->noalias() = inverse().adj() * t.rjac();
   }
-  else
+
+  if (J_mout_m)
   {
-    mout = t.retract().compose(derived(), _, J_mout_m);
+    J_mout_m->setIdentity();
   }
 
-  return mout;
+  return t.retract().compose(derived());
 }
 
 template <typename _Derived>
@@ -456,46 +450,20 @@ LieGroupBase<_Derived>::lminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  Tangent t;
+  const Tangent t = compose(m.inverse()).lift();
 
-  /// @todo optimize this
-  if (J_t_ma && J_t_mb)
+  if (J_t_ma || J_t_mb)
   {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_comp_ma;
-    Jacobian J_t_comp;
+    const Jacobian J = t.rjacinv() * m.adj();
 
-    t = compose(m.inverse(J_inv_mb),
-                J_comp_ma, J_comp_inv).lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_ma;
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else if (J_t_ma && !J_t_mb)
-  {
-    Jacobian J_comp_a;
-    Jacobian J_t_comp;
-
-    t = compose(m.inverse(),
-                J_comp_a, _ ).lift(J_t_comp);
-
-    J_t_ma->noalias() = J_t_comp * J_comp_a;
-  }
-  else if (!J_t_ma && J_t_mb)
-  {
-    Jacobian J_inv_mb;
-    Jacobian J_comp_inv;
-    Jacobian J_t_comp;
-
-    t = compose(m.inverse(J_inv_mb),
-                _, J_comp_inv).lift(J_t_comp);
-
-    J_t_mb->noalias() = J_t_comp * J_comp_inv * J_inv_mb;
-  }
-  else
-  {
-    t = compose(m.inverse()).lift();
+    if (J_t_ma)
+    {
+      (*J_t_ma) =  J;
+    }
+    if (J_t_mb)
+    {
+      (*J_t_mb) = -J;
+    }
   }
 
   return t;
@@ -538,19 +506,16 @@ LieGroupBase<_Derived>::between(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  LieGroup mc;
+  const LieGroup mc = inverse().compose(m);
 
   if (J_mc_ma)
   {
-    Jacobian J_inv_ma;
-    Jacobian J_mc_inv;
-    mc = inverse(J_inv_ma).compose(m, J_mc_inv, J_mc_mb);
-
-    J_mc_ma->noalias() = J_mc_inv * J_inv_ma;
+    *J_mc_ma = -(mc.inverse().adj());
   }
-  else
+
+  if (J_mc_mb)
   {
-    mc = inverse().compose(m, _, J_mc_mb);
+    J_mc_mb->setIdentity();
   }
 
   return mc;
