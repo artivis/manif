@@ -514,11 +514,11 @@ LieGroupBase<_Derived>::between(
 
   if (J_mc_ma)
   {
-    J_mc_ma->noalias() = m.inverse().adj() * -adj();
+    *J_mc_ma = -(mc.inverse().adj());
 
     // SO2 'adj' is a 1x1 matrix and
     // Eigen 3.2.9 does not compile it.
-    //J_mc_ma->noalias() = m.adj().inverse() * -adj();
+    //*J_mc_ma = -(mc.adj().inverse());
   }
 
   if (J_mc_mb)
