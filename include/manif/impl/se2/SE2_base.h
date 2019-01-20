@@ -243,7 +243,7 @@ SE2Base<_Derived>::compose(
 
   if (J_mc_ma)
   {
-    (*J_mc_ma) = m.adj().inverse();
+    (*J_mc_ma) = m.inverse().adj();
   }
 
   if (J_mc_mb)
