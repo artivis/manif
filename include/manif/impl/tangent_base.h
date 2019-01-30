@@ -129,6 +129,15 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (23).
    */
+  LieGroup exp(OptJacobianRef J_m_t =
+                OptJacobianRef{}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref exp instead.
+   */
+  MANIF_DEPRECATED
   LieGroup retract(OptJacobianRef J_m_t =
                     OptJacobianRef{}) const;
 
@@ -176,17 +185,17 @@ public:
 
   /**
    * @brief Get the right Jacobian.
-   * @note this is the right Jacobian of retract(), what is commonly known as "the right Jacobian".
+   * @note this is the right Jacobian of @ref exp, what is commonly known as "the right Jacobian".
    * @note See Eq. (41) for the right Jacobian of general functions.
-   * @note See Eqs. (126,143,163,179,191) for implementations of the right Jacobian of retract().
+   * @note See Eqs. (126,143,163,179,191) for implementations of the right Jacobian of @ref exp.
    */
   Jacobian rjac() const;
 
   /**
    * @brief Get the left Jacobian.
-   * @note this is the left Jacobian of retract(), what is commonly known as "the left Jacobian".
+   * @note this is the left Jacobian of @ref exp, what is commonly known as "the left Jacobian".
    * @note See Eq. (44) for the left Jacobian of general functions.
-   * @note See Eqs. (126,145,164,179,191) for implementations of the left Jacobian of retract().
+   * @note See Eqs. (126,145,164,179,191) for implementations of the left Jacobian of @ref exp.
    */
   Jacobian ljac() const;
 
@@ -379,9 +388,16 @@ _Derived& TangentBase<_Derived>::setRandom()
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
+TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+{
+  return derived().exp(J_m_t);
+}
+
+template <class _Derived>
+typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
 {
-  return derived().retract(J_m_t);
+  return derived().exp(J_m_t);
 }
 
 template <typename _Derived>

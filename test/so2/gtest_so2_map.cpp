@@ -294,11 +294,11 @@ TEST(TEST_SO2, TEST_SO2_MAP_LIFT)
   Eigen::Map<SO2d> so2(data);
   so2 = SO2d(M_PI);
 
-  auto so2_lift = so2.lift();
+  auto so2_log = so2.log();
 
-  static_assert(std::is_same<SO2d::Tangent, decltype(so2_lift)>::value, "");
+  static_assert(std::is_same<SO2d::Tangent, decltype(so2_log)>::value, "");
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2_log.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_COMPOSE)
@@ -449,17 +449,17 @@ TEST(TEST_SO2, TEST_SO2_MAP_LIFT_JAC)
 {
   SO2d so2(M_PI);
 
-  SO2d::Tangent so2_lift;
-  SO2d::Tangent::Jacobian J_lift;
+  SO2d::Tangent so2_log;
+  SO2d::Tangent::Jacobian J_log;
 
-  so2.lift(so2_lift, J_lift);
+  so2.log(so2_log, J_log);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2_log.angle());
 
   /// @todo check this J
-  EXPECT_EQ(1, J_lift.rows());
-  EXPECT_EQ(1, J_lift.cols());
-  EXPECT_DOUBLE_EQ(1, J_lift(0));
+  EXPECT_EQ(1, J_log.rows());
+  EXPECT_EQ(1, J_log.cols());
+  EXPECT_DOUBLE_EQ(1, J_log(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_MAP_COMPOSE_JAC)

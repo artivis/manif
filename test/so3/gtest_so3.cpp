@@ -361,22 +361,22 @@ TEST(TEST_SO3, TEST_SO3_OP_MINUS)
 
 TEST(TEST_SO3, TEST_SO3_RETRACT)
 {
-    // retract of zero is identity
+    // exp of zero is identity
     SO3Tangentd so3t = SO3Tangentd::Zero();
 
-    auto so3 = so3t.retract();
+    auto so3 = so3t.exp();
 
     EXPECT_DOUBLE_EQ(0, so3.x());
     EXPECT_DOUBLE_EQ(0, so3.y());
     EXPECT_DOUBLE_EQ(0, so3.z());
     EXPECT_DOUBLE_EQ(1, so3.w());
 
-    // retract of negative is inverse of retract, that is, its conjugate
+    // exp of negative is inverse of exp, that is, its conjugate
     so3t = SO3Tangentd::Random(); // something
-    so3 = so3t.retract(); // retract of something
+    so3 = so3t.exp(); // exp of something
 
     SO3Tangentd so3n(-so3t.coeffs()); // minus something
-    auto so3_inv = so3n.retract(); // retract of minus something
+    auto so3_inv = so3n.exp(); // exp of minus something
 
     EXPECT_DOUBLE_EQ(so3_inv.x(), -so3.x()); // check conjugate
     EXPECT_DOUBLE_EQ(so3_inv.y(), -so3.y());
@@ -390,21 +390,21 @@ TEST(TEST_SO3, TEST_SO3_LIFT)
     // Lift of Identity is Zero
   SO3d so3 = SO3d::Identity();
 
-  auto so3_lift = so3.lift();
+  auto so3_log = so3.log();
 
-  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3_lift.coeffs()(2));
+  EXPECT_DOUBLE_EQ(0, so3_log.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, so3_log.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, so3_log.coeffs()(2));
 
-  // Lift of inverse is minus lift
+  // Lift of inverse is minus log
   so3 = SO3d::Random();
-  so3_lift = so3.lift();
+  so3_log = so3.log();
 
-  auto so3_inv_lift = so3.inverse().lift();
+  auto so3_inv_log = so3.inverse().log();
 
-  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(0), -so3_lift.coeffs()(0));
-  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(1), -so3_lift.coeffs()(1));
-  EXPECT_DOUBLE_EQ(so3_inv_lift.coeffs()(2), -so3_lift.coeffs()(2));
+  EXPECT_DOUBLE_EQ(so3_inv_log.coeffs()(0), -so3_log.coeffs()(0));
+  EXPECT_DOUBLE_EQ(so3_inv_log.coeffs()(1), -so3_log.coeffs()(1));
+  EXPECT_DOUBLE_EQ(so3_inv_log.coeffs()(2), -so3_log.coeffs()(2));
 }
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE)
@@ -519,20 +519,20 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
   SO3d so3(0,0,0); // Identity
 
-  SO3d::Tangent::Jacobian J_lift;
+  SO3d::Tangent::Jacobian J_log;
 
   /// @todo Jac not implemented yet
-  SO3d::Tangent so3_lift = so3.lift(/*J_lift*/);
+  SO3d::Tangent so3_log = so3.log(/*J_log*/);
 
-  EXPECT_DOUBLE_EQ(0, so3_lift.x());
-  EXPECT_DOUBLE_EQ(0, so3_lift.y());
-  EXPECT_DOUBLE_EQ(0, so3_lift.z());
+  EXPECT_DOUBLE_EQ(0, so3_log.x());
+  EXPECT_DOUBLE_EQ(0, so3_log.y());
+  EXPECT_DOUBLE_EQ(0, so3_log.z());
 
   /// @todo check this J
-  EXPECT_EQ(3, J_lift.rows());
-  EXPECT_EQ(3, J_lift.cols());
+  EXPECT_EQ(3, J_log.rows());
+  EXPECT_EQ(3, J_log.cols());
 
-//  EXPECT_DOUBLE_EQ(1, J_lift(0));
+//  EXPECT_DOUBLE_EQ(1, J_log(0));
 }
 
 TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
@@ -612,10 +612,10 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
 TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC_ADJ)
 {
   SO3Tangentd tan = SO3Tangentd::Zero();
-  EXPECT_EIGEN_NEAR(tan.ljac(), tan.retract().rotation()*tan.rjac());
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.exp().rotation()*tan.rjac());
 
   tan = SO3Tangentd::Random();
-  EXPECT_EIGEN_NEAR(tan.ljac(), tan.retract().rotation()*tan.rjac());
+  EXPECT_EIGEN_NEAR(tan.ljac(), tan.exp().rotation()*tan.rjac());
 }
 
 TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC)

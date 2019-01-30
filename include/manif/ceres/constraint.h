@@ -59,8 +59,8 @@ public:
     /// r = exp( log(m)^-1 . ( past^-1 . future ) )
 
 //    residuals =
-//      measurement_.retract().template cast<T>()
-//        .between(state_past.between(state_future)).lift();
+//      measurement_.exp().template cast<T>()
+//        .between(state_past.between(state_future)).log();
 
     residuals.coeffs() = measurement_sqrt_info_upper_.template cast<T>() * residuals.coeffs();
 

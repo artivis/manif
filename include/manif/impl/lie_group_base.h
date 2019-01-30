@@ -98,6 +98,14 @@ public:
    * @note This is the log() map in vector form.
    * @see Eq. (24).
    */
+  Tangent log(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref log instead.
+   */
+  MANIF_DEPRECATED
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   /**
@@ -353,7 +361,7 @@ _Derived&
 LieGroupBase<_Derived>::setIdentity()
 {
   const static Tangent zero = Tangent::Zero();
-  derived() = zero.retract();
+  derived() = zero.exp();
   return derived();
 }
 
@@ -361,7 +369,7 @@ template <typename _Derived>
 _Derived&
 LieGroupBase<_Derived>::setRandom()
 {
-  coeffs_nonconst() = Tangent::Random().retract().coeffs();
+  coeffs_nonconst() = Tangent::Random().exp().coeffs();
   return derived();
 }
 
@@ -385,7 +393,7 @@ LieGroupBase<_Derived>::rplus(
     (*J_mout_t) = t.rjac();
   }
 
-  return compose(t.retract(), J_mout_m, _);
+  return compose(t.exp(), J_mout_m, _);
 }
 
 template <typename _Derived>
@@ -406,7 +414,7 @@ LieGroupBase<_Derived>::lplus(
     J_mout_m->setIdentity();
   }
 
-  return t.retract().compose(derived());
+  return t.exp().compose(derived());
 }
 
 template <typename _Derived>
@@ -428,7 +436,7 @@ LieGroupBase<_Derived>::rminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  const Tangent t = m.inverse().compose(derived()).lift();
+  const Tangent t = m.inverse().compose(derived()).log();
 
   if (J_t_ma)
   {
@@ -450,7 +458,7 @@ LieGroupBase<_Derived>::lminus(
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  const Tangent t = compose(m.inverse()).lift();
+  const Tangent t = compose(m.inverse()).log();
 
   if (J_t_ma || J_t_mb)
   {
@@ -482,9 +490,16 @@ LieGroupBase<_Derived>::minus(
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::Tangent
+LieGroupBase<_Derived>::log(OptJacobianRef J_t_m) const
+{
+  return derived().log(J_t_m);
+}
+
+template <typename _Derived>
+typename LieGroupBase<_Derived>::Tangent
 LieGroupBase<_Derived>::lift(OptJacobianRef J_t_m) const
 {
-  return derived().lift(J_t_m);
+  return derived().log(J_t_m);
 }
 
 template <typename _Derived>

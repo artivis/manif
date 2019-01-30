@@ -63,11 +63,11 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT)
 
   EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
 
-  auto so2_retract = so2_tan.retract();
+  auto so2_exp = so2_tan.exp();
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_SKEW)
@@ -92,14 +92,14 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_SKEW)
 
 //  EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
 
-//  SO2d so2_retract;
+//  SO2d so2_exp;
 //  SO2d::Jacobian J_ret;
 
-//  so2_tan.retract(so2_retract, J_ret);
+//  so2_tan.exp(so2_exp, J_ret);
 
-//  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-//  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-//  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+//  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
+//  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
+//  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
 
 //  /// @todo check this J
 //  EXPECT_EQ(1, J_ret.rows());
@@ -113,14 +113,14 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_RETRACT_OPTJAC)
 
   EXPECT_DOUBLE_EQ(M_PI, so2_tan.angle());
 
-  SO2d so2_retract;
+  SO2d so2_exp;
   SO2d::Jacobian J_ret;
 
-  so2_retract = so2_tan.retract(J_ret);
+  so2_exp = so2_tan.exp(J_ret);
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
 
   /// @todo check this J
   EXPECT_EQ(1, J_ret.rows());

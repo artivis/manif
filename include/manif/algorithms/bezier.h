@@ -96,7 +96,7 @@ computeBezierCurve(const std::vector<LieGroup>& control_points,
                     << polynomialBernstein((double)degree, (double)i, (double)t_01)
                     << "\n";
 
-        Qc = Qc.lplus(segments_control_points[s][i]->lift() *
+        Qc = Qc.lplus(segments_control_points[s][i]->log() *
                       polynomialBernstein((double)degree, (double)i, (double)t_01));
       }
 
@@ -112,7 +112,7 @@ computeBezierCurve(const std::vector<LieGroup>& control_points,
  ////                  << polynomialBernstein((double)degree, (double)i, (double)t_01)
  ////                  << "\n";
 
- ////        interp += segment_control_points[i]->lift() *
+ ////        interp += segment_control_points[i]->log() *
  ////                  polynomialBernstein((double)degree, (double)i, (double)t_01);
 
  //////        interp += segment_control_points[i+1]->rminus(*segment_control_points[i]) *

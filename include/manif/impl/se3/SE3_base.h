@@ -56,6 +56,14 @@ public:
    * @note See Eq. (173) & Eq. (79,179,180) and following notes.
    * @see SE3Tangent.
    */
+  Tangent log(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref log instead.
+   */
+  MANIF_DEPRECATED
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   /**
@@ -200,12 +208,12 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
   using std::abs;
   using std::sqrt;
 
-  const SO3Tangent<Scalar> so3tan = asSO3().lift();
+  const SO3Tangent<Scalar> so3tan = asSO3().log();
 
   Tangent tan((typename Tangent::DataType() <<
                so3tan.ljac().inverse()*translation(),
@@ -218,6 +226,13 @@ SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   }
 
   return tan;
+}
+
+template <typename _Derived>
+typename SE3Base<_Derived>::Tangent
+SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+{
+  return log(J_t_m);
 }
 
 template <typename _Derived>
