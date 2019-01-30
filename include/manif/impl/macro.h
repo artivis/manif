@@ -27,6 +27,13 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 #define MANIF_CHECK(cond, msg) \
   if (!(cond)) MANIF_THROW(msg);
 
+#ifdef __GNUC__
+  #define MANIF_DEPRECATED __attribute__((deprecated))
+#else
+  #pragma message("WARNING: Deprecation is disabled -- the compiler is not supported.")
+  #define MANIF_DEPRECATED
+#endif
+
 /// LieGroup - related macros
 
 #define MANIF_GROUP_PROPERTIES                                        \
