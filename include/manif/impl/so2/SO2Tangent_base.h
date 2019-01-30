@@ -195,6 +195,17 @@ struct GeneratorEvaluator<SO2TangentBase<Derived>>
   }
 };
 
+template <typename Derived>
+struct RandomEvaluatorImpl<SO2TangentBase<Derived>>
+{
+  template <typename EigenDerived>
+  static void run(Eigen::MatrixBase<EigenDerived>& m)
+  {
+    // in [-1,1]  /  in [-PI,PI]
+    m.setRandom() *= M_PI;
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 
