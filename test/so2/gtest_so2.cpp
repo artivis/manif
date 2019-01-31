@@ -251,9 +251,9 @@ TEST(TEST_SO2, TEST_SO2_LIFT)
 {
   SO2d so2(M_PI);
 
-  auto so2_lift = so2.lift();
+  auto so2_log = so2.log();
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2_log.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_COMPOSE)
@@ -327,15 +327,15 @@ TEST(TEST_SO2, TEST_SO2_LIFT_JAC)
 {
   SO2d so2(M_PI);
 
-  SO2d::Tangent::Jacobian J_lift;
-  SO2d::Tangent so2_lift = so2.lift(J_lift);
+  SO2d::Tangent::Jacobian J_log;
+  SO2d::Tangent so2_log = so2.log(J_log);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2_lift.angle());
+  EXPECT_DOUBLE_EQ(M_PI, so2_log.angle());
 
   /// @todo check this J
-  EXPECT_EQ(1, J_lift.rows());
-  EXPECT_EQ(1, J_lift.cols());
-  EXPECT_DOUBLE_EQ(1, J_lift(0));
+  EXPECT_EQ(1, J_log.rows());
+  EXPECT_EQ(1, J_log.cols());
+  EXPECT_DOUBLE_EQ(1, J_log(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_COMPOSE_JAC)

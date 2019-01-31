@@ -370,12 +370,12 @@ TEST(TEST_SE2, TEST_SE2_MAP_LIFT)
 {
   Eigen::Map<SE2d>se2(1,1,M_PI);
 
-  auto se2_lift = se2.lift();
+  auto se2_log = se2.log();
 
   /// @todo
-//  EXPECT_DOUBLE_EQ(1, se2_lift.x());
-//  EXPECT_DOUBLE_EQ(1, se2_lift.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2_lift.angle());
+//  EXPECT_DOUBLE_EQ(1, se2_log.x());
+//  EXPECT_DOUBLE_EQ(1, se2_log.y());
+  EXPECT_DOUBLE_EQ(M_PI, se2_log.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_COMPOSE)
@@ -472,17 +472,17 @@ TEST(TEST_SE2, TEST_SE2_MAP_LIFT_JAC)
 {
   Eigen::Map<SE2d>se2(M_PI);
 
-  SE2d::Tangent se2_lift;
-  SE2d::Tangent::Jacobian J_lift;
+  SE2d::Tangent se2_log;
+  SE2d::Tangent::Jacobian J_log;
 
-  se2.lift(se2_lift, J_lift);
+  se2.log(se2_log, J_log);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2_lift.angle());
+  EXPECT_DOUBLE_EQ(M_PI, se2_log.angle());
 
   /// @todo check this J
-  EXPECT_EQ(1, J_lift.rows());
-  EXPECT_EQ(1, J_lift.cols());
-  EXPECT_DOUBLE_EQ(1, J_lift(0));
+  EXPECT_EQ(1, J_log.rows());
+  EXPECT_EQ(1, J_log.cols());
+  EXPECT_DOUBLE_EQ(1, J_log(0));
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_COMPOSE_JAC)

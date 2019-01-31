@@ -27,6 +27,15 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 #define MANIF_CHECK(cond, msg) \
   if (!(cond)) MANIF_THROW(msg);
 
+#if defined(__cplusplus) && (__cplusplus >= 201402L)
+  #define MANIF_DEPRECATED [[deprecated]]
+#elif defined(__GNUC__)  || defined(__clang__)
+  #define MANIF_DEPRECATED __attribute__((deprecated))
+#else
+  #pragma message("WARNING: Deprecation is disabled -- the compiler is not supported.")
+  #define MANIF_DEPRECATED
+#endif
+
 /// LieGroup - related macros
 
 #define MANIF_GROUP_PROPERTIES                                        \
@@ -48,6 +57,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::setIdentity;          \
   using Base::inverse;              \
   using Base::lift;                 \
+  using Base::log;                  \
   using Base::adj;
 
 #define MANIF_INHERIT_GROUP_OPERATOR    \
@@ -85,6 +95,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::setZero;            \
   using Base::setRandom;          \
   using Base::retract;            \
+  using Base::exp;                \
   using Base::hat;                \
   using Base::rjac;               \
   using Base::ljac;               \

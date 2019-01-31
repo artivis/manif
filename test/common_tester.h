@@ -198,12 +198,12 @@ public:
 
   void evalLiftRetr()
   {
-    EXPECT_MANIF_NEAR(state, state.lift().retract(), tol_);
+    EXPECT_MANIF_NEAR(state, state.log().exp(), tol_);
   }
 
   void evalRetrLift()
   {
-    EXPECT_MANIF_NEAR(delta, delta.retract().lift(), tol_);
+    EXPECT_MANIF_NEAR(delta, delta.exp().log(), tol_);
   }
 
   void evalComposeWithInv()
@@ -245,17 +245,17 @@ public:
   void evalRetrZero()
   {
     EXPECT_MANIF_NEAR(LieGroup::Identity(),
-                      Tangent::Zero().retract(), tol_);
+                      Tangent::Zero().exp(), tol_);
   }
 
   void evalLiftIdentity()
   {
     EXPECT_MANIF_NEAR(Tangent::Zero(),
-                      LieGroup::Identity().lift(), tol_);
+                      LieGroup::Identity().log(), tol_);
 
     Tangent t; t.setZero();
     LieGroup l; l.setIdentity();
-    EXPECT_MANIF_NEAR(t, l.lift(), tol_);
+    EXPECT_MANIF_NEAR(t, l.log(), tol_);
   }
 
   void evalRandom()
@@ -511,8 +511,8 @@ protected:
  * The Jacobians of the following operations are currently tested :
  *
  * - inverse
- * - lift
- * - retract
+ * - log
+ * - exp
  * - compose
  * - between
  * - rplus  / lplus  / plus
@@ -555,9 +555,9 @@ public:
   void evalLiftJac()
   {
     typename LieGroup::Jacobian J_sout_s;
-    Tangent state_out = state.lift(J_sout_s);
+    Tangent state_out = state.log(J_sout_s);
 
-    Tangent state_pert = (state+w).lift();
+    Tangent state_pert = (state+w).log();
     Tangent state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
@@ -566,9 +566,9 @@ public:
   void evalRetractJac()
   {
     typename LieGroup::Jacobian J_sout_s;
-    LieGroup state_out = delta.retract(J_sout_s);
+    LieGroup state_out = delta.exp(J_sout_s);
 
-    LieGroup state_pert = (delta+w).retract();
+    LieGroup state_pert = (delta+w).exp();
     LieGroup state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
@@ -576,9 +576,9 @@ public:
     ///////
 
     delta.setZero();
-    state_out = delta.retract(J_sout_s);
+    state_out = delta.exp(J_sout_s);
 
-    state_pert = (delta+w).retract();
+    state_pert = (delta+w).exp();
     state_lin  = state_out + (J_sout_s*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
@@ -765,7 +765,7 @@ public:
 
     Adj = state.adj();
 
-    Tangent tan = state.lift();
+    Tangent tan = state.log();
 
     Jr = tan.rjac();
     Jl = tan.ljac();
@@ -782,7 +782,7 @@ public:
     state.setIdentity();
 
     Adj = state.adj();
-    tan = state.lift();
+    tan = state.log();
 
     Jr = tan.rjac();
     Jl = tan.ljac();
@@ -800,7 +800,7 @@ public:
     using Jac = typename LieGroup::Jacobian;
     Jac Jr, Jrinv, Jl, Jlinv;
 
-    const Tangent tan = state.lift();
+    const Tangent tan = state.log();
 
     Jr = tan.rjac();
     Jl = tan.ljac();

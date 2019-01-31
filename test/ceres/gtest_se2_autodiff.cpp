@@ -268,14 +268,14 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   double inv_sqrt_2 = 1./sqrt(2.);
 
-  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
-  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
-  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
-  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
-  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
-  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
-  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).lift() );
-  auto constraint_7_0 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).lift() );
+  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
+  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
+  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
+  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
+  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
+  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
+  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
+  auto constraint_7_0 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( constraint_0_1.get(),

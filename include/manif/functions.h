@@ -162,19 +162,37 @@ minus(const LieGroupBase<_Derived0>& lie_group_lhs,
 }
 
 template <typename _Derived>
+MANIF_DEPRECATED
 typename _Derived::Tangent
 lift(const LieGroupBase<_Derived>& lie_group,
      typename _Derived::OptJacobianRef J_l_m = {})
 {
-  return lie_group.lift(J_l_m);
+  return lie_group.log(J_l_m);
 }
 
 template <typename _Derived>
+typename _Derived::Tangent
+log(const LieGroupBase<_Derived>& lie_group,
+     typename _Derived::OptJacobianRef J_l_m = {})
+{
+  return lie_group.log(J_l_m);
+}
+
+template <typename _Derived>
+MANIF_DEPRECATED
 typename _Derived::LieGroup
 retract(const TangentBase<_Derived>& tangent,
         typename _Derived::OptJacobianRef J_r_t = {})
 {
-  return tangent.retract(J_r_t);
+  return tangent.exp(J_r_t);
+}
+
+template <typename _Derived>
+typename _Derived::LieGroup
+exp(const TangentBase<_Derived>& tangent,
+    typename _Derived::OptJacobianRef J_e_t = {})
+{
+  return tangent.exp(J_e_t);
 }
 
 template <typename _Derived0, typename _Derived1>

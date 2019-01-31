@@ -391,7 +391,7 @@ int main()
     // DEBUG INFO
     cout << "prior" << std::showpos << endl;
     for (auto X : poses)
-        cout << "pose: " << X.lift().coeffs().transpose() << endl;
+        cout << "pose: " << X.log().coeffs().transpose() << endl;
     for (auto b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -428,12 +428,12 @@ int main()
          *  to specify position and orientation wrt a global reference,
          *
          *     r = W * (e .- y)
-         *       = W * (e * y.inv).lift()
+         *       = W * (e * y.inv).log()
          *
          *  When `y` is provided as a local reference, then right-minus -. is required,
          *
          *     r = W * (e -. y)
-         *       = W * (y.inv * e).lift()
+         *       = W * (y.inv * e).log()
          *
          *  Notice that if y = Identity() then local and global residuals are the same.
          *
@@ -450,7 +450,7 @@ int main()
          *     W = I                    // trivial
          *
          *  residual
-         *     r = W * (poses[0] (-) measurement) = poses[0].lift()
+         *     r = W * (poses[0] (-) measurement) = poses[0].log()
          *
          *  Jacobian matrix :
          *     J_r_x = I                // trivial because of all previous trivials
@@ -569,7 +569,7 @@ int main()
     // solved problem
     cout << "posterior" << std::showpos << endl;
     for (auto X : poses)
-        cout << "pose: " << X.lift().coeffs().transpose() << endl;
+        cout << "pose: " << X.log().coeffs().transpose() << endl;
     for (auto b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -577,7 +577,7 @@ int main()
     // ground truth
     cout << "ground truth" << std::showpos << endl;
     for (auto X : poses_simu)
-        cout << "pose: " << X.lift().coeffs().transpose() << endl;
+        cout << "pose: " << X.log().coeffs().transpose() << endl;
     for (auto b : landmarks_simu)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;

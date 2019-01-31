@@ -54,6 +54,14 @@ public:
    * @note See Eq. (133) & Eq. (144).
    * @see SO3Tangent.
    */
+  Tangent log(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref log instead.
+   */
+  MANIF_DEPRECATED
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   /**
@@ -154,13 +162,13 @@ SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Tangent
-SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
   using std::sqrt;
   using std::atan2;
 
   Tangent tan;
-  Scalar lift_coeff;
+  Scalar log_coeff;
 
   const Scalar sin_angle_squared = coeffs().template head<3>().squaredNorm();
   if (sin_angle_squared > Constants<Scalar>::eps)
@@ -182,15 +190,15 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
                                  atan2(-sin_angle, -cos_angle) :
                                  atan2( sin_angle,  cos_angle));
 
-    lift_coeff = two_angle / sin_angle;
+    log_coeff = two_angle / sin_angle;
   }
   else
   {
     // small-angle approximation
-    lift_coeff = Scalar(2.0);
+    log_coeff = Scalar(2.0);
   }
 
-  tan = Tangent(coeffs().template head<3>() * lift_coeff);
+  tan = Tangent(coeffs().template head<3>() * log_coeff);
 
 //  using std::atan2;
 //  Scalar n = coeffs().template head<3>().norm();
@@ -222,6 +230,13 @@ SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
   }
 
   return tan;
+}
+
+template <typename _Derived>
+typename SO3Base<_Derived>::Tangent
+SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+{
+  return log(J_t_m);
 }
 
 template <typename _Derived>

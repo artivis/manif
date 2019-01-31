@@ -74,15 +74,15 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_RETRACT)
   EXPECT_DOUBLE_EQ(2, so2tan.y());
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
-  auto so2_retract = so2tan.retract();
+  auto so2_exp = so2tan.exp();
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
 
   /// @todo what to expect ? :S
-//  EXPECT_DOUBLE_EQ(0, so2_retract.x());
-//  EXPECT_DOUBLE_EQ(0, so2_retract.y());
+//  EXPECT_DOUBLE_EQ(0, so2_exp.x());
+//  EXPECT_DOUBLE_EQ(0, so2_exp.y());
 }
 
 /// with Jacs
@@ -97,15 +97,15 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_RETRACT_JAC)
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
   SE2d::Jacobian J_ret;
-  SE2d so2_retract = so2tan.retract(J_ret);
+  SE2d so2_exp = so2tan.exp(J_ret);
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_retract.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_retract.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_retract.angle());
+  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
 
   /// @todo what to expect ? :S
-//  EXPECT_DOUBLE_EQ(0, so2_retract.x());
-//  EXPECT_DOUBLE_EQ(0, so2_retract.y());
+//  EXPECT_DOUBLE_EQ(0, so2_exp.x());
+//  EXPECT_DOUBLE_EQ(0, so2_exp.y());
 
   /// @todo check this J
   EXPECT_EQ(3, J_ret.rows());

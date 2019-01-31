@@ -58,6 +58,14 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (172) & Eqs. (179,180).
    */
+  LieGroup exp(OptJacobianRef J_m_t = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref exp instead.
+   */
+  MANIF_DEPRECATED
   LieGroup retract(OptJacobianRef J_m_t = {}) const;
 
   /**
@@ -111,7 +119,7 @@ public:
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::LieGroup
-SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+SE3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 {
   using std::sqrt;
   using std::cos;
@@ -123,7 +131,14 @@ SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
   }
 
   /// @note Eq. 10.93
-  return LieGroup(asSO3().ljac()*v(), asSO3().retract().quat());
+  return LieGroup(asSO3().ljac()*v(), asSO3().exp().quat());
+}
+
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::LieGroup
+SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+{
+  return exp(J_m_t);
 }
 
 template <typename _Derived>

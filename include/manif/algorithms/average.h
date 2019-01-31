@@ -98,7 +98,7 @@ average_biinvariant(const Container<LieGroup, Args...>& points,
 //    const LieGroup avg_0 = avg;
 //    avg += ts;
 
-//    if (avg.between(avg_0).lift().coeffs().squaredNorm() < eps)
+//    if (avg.between(avg_0).log().coeffs().squaredNorm() < eps)
 //      break;
   }
 
@@ -136,7 +136,7 @@ average(const Container<LieGroup, Args...>& points,
     ts.setZero();
     for (; it != end; ++it)
     {
-      tmp = avg.between(*it).lift();
+      tmp = avg.between(*it).log();
 
       // Neither (a) nor (b) use G for weighting
       Jr = tmp.rjac();
@@ -197,15 +197,15 @@ average_frechet_left(const Container<LieGroup, Args...>& points,
     {
       tmp = (*it) - avg_0; // Log( Avg^-1 . Xi )
 
-      Jl = avg_0.lift().ljac(); // Jl(Avg)
+      Jl = avg_0.log().ljac(); // Jl(Avg)
 
       ts += Jl * tmp * w;
     }
 
     // Avg = Avg . Exp( Jl^-1(Avg) . ts )
-    avg = avg_0 + ( avg_0.lift().ljacinv() * ts );
+    avg = avg_0 + ( avg_0.log().ljacinv() * ts );
 
-    tmp = avg_0.lift().ljac() * (avg - avg_0);
+    tmp = avg_0.log().ljac() * (avg - avg_0);
 
     if (tmp.coeffs().squaredNorm() < eps)
       break;
@@ -250,15 +250,15 @@ average_frechet_right(const Container<LieGroup, Args...>& points,
     {
       tmp = it->lminus(avg_0); // Log( Xi . Avg^-1 )
 
-      Jr = avg_0.lift().rjac(); // Jr(Avg)
+      Jr = avg_0.log().rjac(); // Jr(Avg)
 
       ts += Jr * tmp * w;
     }
 
     // Avg = Exp(Jr^-1(Avg) . ts) * Avg
-    avg = avg_0.lplus( avg_0.lift().rjacinv() * ts );
+    avg = avg_0.lplus( avg_0.log().rjacinv() * ts );
 
-    tmp = avg_0.lift().rjac() * (avg.lminus(avg_0));
+    tmp = avg_0.log().rjac() * (avg.lminus(avg_0));
 
     if (tmp.coeffs().squaredNorm() < eps)
       break;

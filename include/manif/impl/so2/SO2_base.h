@@ -53,6 +53,14 @@ public:
    * @note See Eq. (115) & Eqs. (79,126).
    * @see SO2Tangent.
    */
+  Tangent log(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref log instead.
+   */
+  MANIF_DEPRECATED
   Tangent lift(OptJacobianRef J_t_m = {}) const;
 
   /**
@@ -162,12 +170,19 @@ SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
-SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SO2Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
   if (J_t_m)
     J_t_m->setConstant(Scalar(1));
 
   return Tangent(angle());
+}
+
+template <typename _Derived>
+typename SO2Base<_Derived>::Tangent
+SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
+{
+  return log(J_t_m);
 }
 
 template <typename _Derived>

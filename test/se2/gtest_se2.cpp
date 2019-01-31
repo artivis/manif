@@ -367,12 +367,12 @@ TEST(TEST_SE2, TEST_SE2_LIFT)
 {
   SE2d se2(1,1,M_PI);
 
-  auto se2_lift = se2.lift();
+  auto se2_log = se2.log();
 
   /// @todo
-//  EXPECT_DOUBLE_EQ(1, se2_lift.x());
-//  EXPECT_DOUBLE_EQ(1, se2_lift.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2_lift.angle());
+//  EXPECT_DOUBLE_EQ(1, se2_log.x());
+//  EXPECT_DOUBLE_EQ(1, se2_log.y());
+  EXPECT_DOUBLE_EQ(M_PI, se2_log.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_COMPOSE)
