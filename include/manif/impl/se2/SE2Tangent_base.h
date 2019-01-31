@@ -341,8 +341,8 @@ struct RandomEvaluatorImpl<SE2TangentBase<Derived>>
   template <typename EigenDerived>
   static void run(Eigen::MatrixBase<EigenDerived>& m)
   {
-    // in [-1,1] /   in [-PI,PI]
-    m.setRandom().coeffRef(2) *= M_PI;
+    m.setRandom();         // in [-1,1]
+    m.coeffRef(2) *= M_PI; // in [-PI,PI]
   }
 };
 
