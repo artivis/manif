@@ -27,7 +27,9 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 #define MANIF_CHECK(cond, msg) \
   if (!(cond)) MANIF_THROW(msg);
 
-#ifdef __GNUC__
+#if defined(__cplusplus) && (__cplusplus >= 201402L)
+  #define MANIF_DEPRECATED [[deprecated]]
+#elif defined(__GNUC__)  || defined(__clang__)
   #define MANIF_DEPRECATED __attribute__((deprecated))
 #else
   #pragma message("WARNING: Deprecation is disabled -- the compiler is not supported.")
