@@ -401,6 +401,17 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
   }
 };
 
+template <typename Derived>
+struct RandomEvaluatorImpl<SE3TangentBase<Derived>>
+{
+  template <typename EigenDerived>
+  static void run(Eigen::MatrixBase<EigenDerived>& m)
+  {
+    m.setRandom();                // in [-1,1]
+    m.template tail<3>() *= M_PI; // in [-PI,PI]
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 

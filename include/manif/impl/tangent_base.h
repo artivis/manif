@@ -4,6 +4,7 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/impl/generator.h"
+#include "manif/impl/random.h"
 #include "manif/impl/eigen.h"
 
 #include "manif/constants.h"
@@ -382,7 +383,10 @@ _Derived& TangentBase<_Derived>::setZero()
 template <class _Derived>
 _Derived& TangentBase<_Derived>::setRandom()
 {
-  coeffs().setRandom();
+  internal::RandomEvaluator<
+      typename internal::traits<_Derived>::Base>(
+        derived()).run();
+
   return derived();
 }
 

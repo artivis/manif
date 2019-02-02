@@ -310,6 +310,8 @@ public:
 
   void evalAvgBiInvariant()
   {
+    // Note : average works over points that are 'close'.
+
     EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
                  std::runtime_error);
 
@@ -317,11 +319,18 @@ public:
     EXPECT_MANIF_NEAR(dummy,
      average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
 
+    const LieGroup centroid = LieGroup::Random();
+
     std::vector<LieGroup> mans;
 
+    // Generate N points arround the centroid
     const int N = 15;
     for (int i=0; i<N; ++i)
-      mans.emplace_back(LieGroup::Random());
+    {
+      mans.push_back(
+            centroid + (Tangent::Random()*0.25)
+            );
+    }
 
     const auto avg = average_biinvariant(mans);
 
