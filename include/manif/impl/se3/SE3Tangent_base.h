@@ -260,7 +260,7 @@ SE3TangentBase<_Derived>::ljac() const
   const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
   Jl.template topRightCorner<3,3>().noalias() =
       + A * V
-      + B * (WV + VW + WV * W)
+      + B * (WV + VW + WVW)
       - C * (W * WV + VW * W - Scalar(3) * WVW)
       - D * WVW * W; // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
   //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
