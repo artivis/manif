@@ -198,12 +198,16 @@ SE3TangentBase<_Derived>::rjac() const
   }
 
   /// @note Barfoot14tro Eq. 102
+  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
+  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();
+  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
   /// invert sign of odd blocks to obtain Jr
   Jr.template topRightCorner<3,3>().noalias() =
       - A * V
-      + B * (W*V + V*W - (W*V)*W)
-      + C * ((W*W)*V + (V*W)*W - Scalar(3)*(W*V)*W)
-      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
+      + B * (WV + VW - WVW)
+      + C * (W * WV + VW * W - Scalar(3) * WVW)
+      - D * WVW * W; // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
+  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jr;
 }
@@ -251,11 +255,15 @@ SE3TangentBase<_Derived>::ljac() const
   }
 
   /// @note Barfoot14tro Eq. 102
+  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
+  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();
+  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
   Jl.template topRightCorner<3,3>().noalias() =
       + A * V
-      + B * (W*V + V*W + (W*V)*W)
-      - C * ((W*W)*V + (V*W)*W - ((Scalar(3)*W)*V)*W)
-      - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
+      + B * (WV + VW + WV * W)
+      - C * (W * WV + VW * W - Scalar(3) * WVW)
+      - D * WVW * W; // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
+  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jl;
 }
