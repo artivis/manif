@@ -202,12 +202,11 @@ SE3TangentBase<_Derived>::rjac() const
   const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
   const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
   const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
-  const Eigen::Matrix<Scalar, 3, 3> WWV = - VWW.transpose();    // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
   /// invert sign of odd blocks to obtain Jr
   Jr.template topRightCorner<3,3>().noalias() =
       - A * V
       + B * (WV + VW - WVW)
-      + C * (WWV + VWW - Scalar(3) * WVW)
+      + C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
       - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
   //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
@@ -261,11 +260,10 @@ SE3TangentBase<_Derived>::ljac() const
   const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
   const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
   const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
-  const Eigen::Matrix<Scalar, 3, 3> WWV = - VWW.transpose();    // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
   Jl.template topRightCorner<3,3>().noalias() =
       + A * V
       + B * (WV + VW + WVW)
-      - C * (WWV + VWW - Scalar(3) * WVW)
+      - C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
       - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
   //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
