@@ -211,13 +211,13 @@ static constexpr int DoF = SE3d::DoF;
 static constexpr int Dim = SE3d::Dim;
 
 // Define many data types (Tangent refers to the tangent of SE3)
-typedef Array<double, DoF, 1>       ArrayT;     // tangent-size array
+typedef Array<double,  DoF, 1>      ArrayT;     // tangent-size array
 typedef Matrix<double, DoF, 1>      VectorT;    // tangent-size vector
 typedef Matrix<double, DoF, DoF>    MatrixT;    // tangent-size square matrix
-typedef Vector3d                    VectorB;    // landmark-size vector
-typedef Array<double, Dim, 1>       ArrayY;     // measurement-size array
-typedef Vector3d                    VectorY;    // measurement-size vector
-typedef Matrix3d                    MatrixY;    // measurement-size square matrix
+typedef Matrix<double, Dim, 1>      VectorB;    // landmark-size vector
+typedef Array<double,  Dim, 1>      ArrayY;     // measurement-size array
+typedef Matrix<double, Dim, 1>      VectorY;    // measurement-size vector
+typedef Matrix<double, Dim, Dim>    MatrixY;    // measurement-size square matrix
 typedef Matrix<double, Dim, DoF>    MatrixYT;   // measurement x tangent size matrix
 typedef Matrix<double, Dim, Dim>    MatrixYB;   // measurement x landmark size matrix
 
