@@ -81,6 +81,18 @@ public:
   Jacobian ljac() const;
 
   /**
+   * @brief Get the inverse right Jacobian of SE3.
+   * @note See note after Eqs. (179,180).
+   */
+  Jacobian rjacinv() const;
+
+  /**
+   * @brief Get the inverse left Jacobian of SE3.
+   * @note See Eqs. (179,180).
+   */
+  Jacobian ljacinv() const;
+
+  /**
    * @brief
    * @return
    */
@@ -116,7 +128,7 @@ public:
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
   }
 
-protected:
+//protected:
   template<typename _EigenDerived>
   void fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const;
 
@@ -164,56 +176,56 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::rjac() const
 {
-  using std::cos;
-  using std::sin;
-  using std::sqrt;
-
   /// @note Eq. 10.95
+  Eigen::Matrix<Scalar, 3, 3> Q;
+  this->operator -().fillQ(Q);
   Jacobian Jr = Jacobian::Zero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
   Jr.template bottomRightCorner<3,3>() =
       Jr.template topLeftCorner<3,3>();
+  Jr.template topRightCorner<3,3>().noalias() = Q;
 
-  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
-  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
-  Scalar A(0.5), B, C, D;
-
-  // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps_s)
-  {
-    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./60.);
-  }
-  else
-  {
-   const Scalar theta     = sqrt(theta_sq);
-   const Scalar sin_theta = sin(theta);
-   const Scalar cos_theta = cos(theta);
-
-    B = (theta - sin_theta) / (theta_sq*theta);
-    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
-
-    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
-//    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
-//    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
-  }
-
-  /// @note Barfoot14tro Eq. 102
-  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
-  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
-  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
-  const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
-  /// invert sign of odd blocks to obtain Jr
-  Jr.template topRightCorner<3,3>().noalias() =
-      - A * V
-      + B * (WV + VW - WVW)
-      + C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
-      - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
-  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
+//  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
+//  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+//  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
+//
+//  Scalar A(0.5), B, C, D;
+//
+//  // Small angle approximation
+//  if (theta_sq <= Constants<Scalar>::eps_s)
+//  {
+//    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+//    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+//    D = -Scalar(1./60.);
+//  }
+//  else
+//  {
+//   const Scalar theta     = sqrt(theta_sq);
+//   const Scalar sin_theta = sin(theta);
+//   const Scalar cos_theta = cos(theta);
+//
+//    B = (theta - sin_theta) / (theta_sq*theta);
+//    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
+//    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+//
+//    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
+////    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
+////    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
+//  }
+//
+//  /// @note Barfoot14tro Eq. 102
+//  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
+//  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
+//  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
+//  const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
+//  /// invert sign of odd blocks to obtain Jr
+//  Jr.template topRightCorner<3,3>().noalias() =
+//      - A * V
+//      + B * (WV + VW - WVW)
+//      + C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
+//      - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
+//  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
 
   return Jr;
 }
@@ -222,57 +234,93 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::ljac() const
 {
+  /// @note Eq. 10.95
+  Eigen::Matrix<Scalar, 3, 3> Q;
+  fillQ(Q);
+  Jacobian Jl = Jacobian::Zero();
+  Jl.template topLeftCorner<3,3>() = asSO3().ljac();
+  Jl.template bottomRightCorner<3,3>() =
+      Jl.template topLeftCorner<3,3>();
+  Jl.template topRightCorner<3,3>().noalias() = Q;
+
+//  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
+//  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+//  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
+//
+//  Scalar A(0.5), B, C, D;
+//
+//  // Small angle approximation
+//  if (theta_sq <= Constants<Scalar>::eps_s)
+//  {
+//    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
+//    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
+//    D = -Scalar(1./60.);
+//  }
+//  else
+//  {
+//    const Scalar theta     = sqrt(theta_sq);
+//    const Scalar sin_theta = sin(theta);
+//    const Scalar cos_theta = cos(theta);
+//
+//    B = (theta - sin_theta) / (theta_sq*theta);
+//    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
+//    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+//
+//    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
+////    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
+////    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
+//  }
+//
+//  /// @note Barfoot14tro Eq. 102
+//  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
+//  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
+//  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
+//  const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
+//  Jl.template topRightCorner<3,3>().noalias() =
+//      + A * V
+//      + B * (WV + VW + WVW)
+//      - C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
+//      - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
+//  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
+
+  return Jl;
+}
+
+/// @note Eq. 10.95
+/// @note barfoot14tro Eq. 102
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::Jacobian
+SE3TangentBase<_Derived>::rjacinv() const
+{
   using std::cos;
   using std::sin;
   using std::sqrt;
 
   /// @note Eq. 10.95
-  Jacobian Jl = Jacobian::Zero();
-  Jl.template topLeftCorner<3,3>() = asSO3().ljac();
-  Jl.template bottomRightCorner<3,3>() =
-      Jl.template topLeftCorner<3,3>();
+  Eigen::Matrix<Scalar, 3, 3> Q;
+  this->operator -().fillQ(Q);
+  Jacobian Jr_inv = Jacobian::Zero();
+  Jr_inv.template topLeftCorner<3,3>() = asSO3().rjacinv();
+  Jr_inv.template bottomRightCorner<3,3>() =
+      Jr_inv.template topLeftCorner<3,3>();
+  Jr_inv.template topRightCorner<3,3>().noalias() = - Jr_inv.template topLeftCorner<3,3>() * Q * Jr_inv.template topLeftCorner<3,3>();
 
-  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
-  const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
+  return Jr_inv;
+}
 
-  Scalar A(0.5), B, C, D;
+template <typename _Derived>
+typename SE3TangentBase<_Derived>::Jacobian
+SE3TangentBase<_Derived>::ljacinv() const
+{
+  Eigen::Matrix<Scalar, 3, 3> Q;
+  fillQ(Q);
+  Jacobian Jl_inv = Jacobian::Zero();
+  Jl_inv.template topLeftCorner<3,3>() = asSO3().ljacinv();
+  Jl_inv.template bottomRightCorner<3,3>() =
+      Jl_inv.template topLeftCorner<3,3>();
+  Jl_inv.template topRightCorner<3,3>().noalias() = - Jl_inv.template topLeftCorner<3,3>() * Q * Jl_inv.template topLeftCorner<3,3>();
 
-  // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps_s)
-  {
-    B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
-    C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
-    D = -Scalar(1./60.);
-  }
-  else
-  {
-    const Scalar theta     = sqrt(theta_sq);
-    const Scalar sin_theta = sin(theta);
-    const Scalar cos_theta = cos(theta);
-
-    B = (theta - sin_theta) / (theta_sq*theta);
-    C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-    D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
-
-    // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
-//    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);
-//    D = (Scalar(2)*theta - Scalar(3)*sin_theta + theta*cos_theta) / (Scalar(2)*theta_sq*theta_sq*theta);
-  }
-
-  /// @note Barfoot14tro Eq. 102
-  const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
-  const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
-  const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
-  const Eigen::Matrix<Scalar, 3, 3> VWW = VW * W;
-  Jl.template topRightCorner<3,3>().noalias() =
-      + A * V
-      + B * (WV + VW + WVW)
-      - C * (VWW - VWW.transpose() - Scalar(3) * WVW)           // Note on this change wrt. Barfoot: it happens that V*W*W = -(W*W*V).transpose() !!!
-      - D * WVW * W;                                            // Note on this change wrt. Barfoot: it happens that W*V*W*W = W*W*V*W !!!
-  //  - D * Scalar(0.5) * (((W*V)*W)*W + ((W*W)*V)*W);
-
-  return Jl;
+  return Jl_inv;
 }
 
 template<typename _Derived>
@@ -280,6 +328,10 @@ template<typename _EigenDerived>
 void
 SE3TangentBase<_Derived>::fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const
 {
+    using std::cos;
+    using std::sin;
+    using std::sqrt;
+
     const Scalar theta_sq = asSO3().coeffs().squaredNorm();
     const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
     const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
