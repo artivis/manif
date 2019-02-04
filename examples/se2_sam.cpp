@@ -55,7 +55,7 @@
  *
  *      Q = diagonal(sigma_v^2, sigma_s^2, sigma_yaw^2).
  *
- *  This noise accounts for possible lateral and rotational slippage
+ *  This noise accounts for possible lateral slippage
  *  through non-zero values of sigma_s.
  *
  *  At the arrival of a control u, a new robot pose is created at
