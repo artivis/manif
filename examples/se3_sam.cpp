@@ -187,6 +187,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <cstdlib>
 
 // Debug
 #include <iostream>
@@ -227,7 +228,7 @@ static const int NUM_LMKS       = 5;
 static const int NUM_FACTORS    = 9;
 static const int NUM_STATES     = NUM_POSES * DoF + NUM_LMKS    * Dim;
 static const int NUM_MEAS       = NUM_POSES * DoF + NUM_FACTORS * Dim;
-static const int MAX_ITER       = 10;           // for the solver
+static const int MAX_ITER       = 20;           // for the solver
 
 int main()
 {
@@ -240,6 +241,11 @@ int main()
     // START CONFIGURATION
     //
     //
+
+    // seed the random generator for comparison
+    std::srand(0);
+
+    std::cout << Eigen::Matrix<double, 1, 1>::Random() << std::endl;
 
     // Define the robot pose elements
     SE3d         X_simu,    // pose of the simulated robot
@@ -290,7 +296,7 @@ int main()
     MatrixY             S; // sqrt Info
     vector<map<int,VectorY>>    measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
-    y_sigmas << 0.001, 0.001, 0.001;
+    y_sigmas << 0.001, 0.001, 0.001; y_sigmas /= 1.0;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
     S        =  y_sigmas.inverse()  .matrix().asDiagonal(); // this is R^(-T/2)
 
