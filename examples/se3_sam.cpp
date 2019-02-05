@@ -242,11 +242,6 @@ int main()
     //
     //
 
-    // seed the random generator for comparison
-    std::srand(0);
-
-    std::cout << Eigen::Matrix<double, 1, 1>::Random() << std::endl;
-
     // Define the robot pose elements
     SE3d         X_simu,    // pose of the simulated robot
                  Xi,        // robot pose at time i
@@ -267,7 +262,7 @@ int main()
     vector<SE3Tangentd> controls;   // robot controls
 
     u_nom.coeffs() << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
-    u_sigmas    << 0.1, 0.1, 0.1, 0.1, 0.1, 0.1; u_sigmas /= 10;
+    u_sigmas    << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
     Q           = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W           =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
 
