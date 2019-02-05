@@ -128,10 +128,10 @@ public:
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
   }
 
-//protected:
-  template<typename _EigenDerived>
-  void fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const;
+protected:
 
+  template <typename _EigenDerived>
+  void fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const;
 };
 
 template <typename _Derived>
