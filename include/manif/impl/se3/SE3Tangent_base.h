@@ -128,9 +128,11 @@ public:
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
   }
 
-//protected:
+private:
 
-  void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q) const;
+  template <typename _EigenDerived>
+  static void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q,
+                    const Eigen::MatrixBase<_EigenDerived>& c);
 };
 
 template <typename _Derived>
@@ -180,7 +182,7 @@ SE3TangentBase<_Derived>::rjac() const
   Jr.template bottomLeftCorner<3,3>().setZero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
   Jr.template bottomRightCorner<3,3>() = Jr.template topLeftCorner<3,3>();
-  this->operator -().fillQ( Jr.template topRightCorner<3,3>() );
+  fillQ( Jr.template topRightCorner<3,3>(), -coeffs() );
 
   return Jr;
 }
@@ -194,7 +196,7 @@ SE3TangentBase<_Derived>::ljac() const
   Jl.template bottomLeftCorner<3,3>().setZero();
   Jl.template topLeftCorner<3,3>() = asSO3().ljac();
   Jl.template bottomRightCorner<3,3>() = Jl.template topLeftCorner<3,3>();
-  fillQ( Jl.template topRightCorner<3,3>() );
+  fillQ( Jl.template topRightCorner<3,3>(), coeffs() );
 
   return Jl;
 }
@@ -206,7 +208,7 @@ SE3TangentBase<_Derived>::rjacinv() const
 {
   /// @note Eq. 10.95
   Jacobian Jr_inv;
-  this->operator -().fillQ( Jr_inv.template bottomLeftCorner<3,3>() ); // serves as temporary Q
+  fillQ( Jr_inv.template bottomLeftCorner<3,3>(), -coeffs() ); // serves as temporary Q
   Jr_inv.template topLeftCorner<3,3>() = asSO3().rjacinv();
   Jr_inv.template bottomRightCorner<3,3>() = Jr_inv.template topLeftCorner<3,3>();
   Jr_inv.template topRightCorner<3,3>().noalias() =
@@ -223,7 +225,7 @@ typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::ljacinv() const
 {
   Jacobian Jl_inv;
-  fillQ( Jl_inv.template bottomLeftCorner<3,3>() ); // serves as temporary Q
+  fillQ( Jl_inv.template bottomLeftCorner<3,3>(), coeffs() ); // serves as temporary Q
   Jl_inv.template topLeftCorner<3,3>() = asSO3().ljacinv();
   Jl_inv.template bottomRightCorner<3,3>() = Jl_inv.template topLeftCorner<3,3>();
   Jl_inv.template topRightCorner<3,3>().noalias() =
@@ -235,15 +237,17 @@ SE3TangentBase<_Derived>::ljacinv() const
   return Jl_inv;
 }
 
-template<typename _Derived>
+template <typename _Derived>
+template <typename _EigenDerived>
 void SE3TangentBase<_Derived>::fillQ(
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q) const
+  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q,
+  const Eigen::MatrixBase<_EigenDerived>& c)
 {
     using std::cos;
     using std::sin;
     using std::sqrt;
 
-    const Scalar theta_sq = w().squaredNorm();
+    const Scalar theta_sq = c.template tail<3>().squaredNorm();
 
     Scalar A(0.5), B, C, D;
 
@@ -270,8 +274,8 @@ void SE3TangentBase<_Derived>::fillQ(
     }
 
     /// @note Barfoot14tro Eq. 102
-    const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
-    const Eigen::Matrix<Scalar, 3, 3> W = skew(w());
+    const Eigen::Matrix<Scalar, 3, 3> V   = skew(c.template head<3>());
+    const Eigen::Matrix<Scalar, 3, 3> W   = skew(c.template tail<3>());
     const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
     const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
     const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
