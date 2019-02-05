@@ -288,11 +288,10 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian smallAdj = Jacobian::Zero();
-  smallAdj.template topLeftCorner<3,3>() = asSO3().hat();
-  smallAdj.template bottomRightCorner<3,3>() =
-      smallAdj.template topLeftCorner<3,3>();
-
+  Jacobian smallAdj;
+  smallAdj.template topRightCorner<3,3>().setZero();
+  smallAdj.template topLeftCorner<3,3>() = skew(w());
+  smallAdj.template bottomRightCorner<3,3>() = smallAdj.template topLeftCorner<3,3>();
   smallAdj.template bottomLeftCorner<3,3>() = skew(v());
 
   return smallAdj;
