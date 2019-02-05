@@ -179,7 +179,8 @@ SE3TangentBase<_Derived>::rjac() const
   /// @note Eq. 10.95
   Eigen::Matrix<Scalar, 3, 3> Q;
   this->operator -().fillQ(Q);
-  Jacobian Jr = Jacobian::Zero();
+  Jacobian Jr;
+  Jr.template bottomLeftCorner<3,3>().setZero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
   Jr.template bottomRightCorner<3,3>() =
       Jr.template topLeftCorner<3,3>();
@@ -237,7 +238,8 @@ SE3TangentBase<_Derived>::ljac() const
   /// @note Eq. 10.95
   Eigen::Matrix<Scalar, 3, 3> Q;
   fillQ(Q);
-  Jacobian Jl = Jacobian::Zero();
+  Jacobian Jl;
+  Jl.template bottomLeftCorner<3,3>().setZero();
   Jl.template topLeftCorner<3,3>() = asSO3().ljac();
   Jl.template bottomRightCorner<3,3>() =
       Jl.template topLeftCorner<3,3>();
@@ -299,11 +301,13 @@ SE3TangentBase<_Derived>::rjacinv() const
   /// @note Eq. 10.95
   Eigen::Matrix<Scalar, 3, 3> Q;
   this->operator -().fillQ(Q);
-  Jacobian Jr_inv = Jacobian::Zero();
+  Jacobian Jr_inv;
+  Jr_inv.template bottomLeftCorner<3,3>().setZero();
   Jr_inv.template topLeftCorner<3,3>() = asSO3().rjacinv();
   Jr_inv.template bottomRightCorner<3,3>() =
       Jr_inv.template topLeftCorner<3,3>();
-  Jr_inv.template topRightCorner<3,3>().noalias() = - Jr_inv.template topLeftCorner<3,3>() * Q * Jr_inv.template topLeftCorner<3,3>();
+  Jr_inv.template topRightCorner<3,3>().noalias() =
+      -Jr_inv.template topLeftCorner<3,3>() * Q * Jr_inv.template topLeftCorner<3,3>();
 
   return Jr_inv;
 }
@@ -314,11 +318,13 @@ SE3TangentBase<_Derived>::ljacinv() const
 {
   Eigen::Matrix<Scalar, 3, 3> Q;
   fillQ(Q);
-  Jacobian Jl_inv = Jacobian::Zero();
+  Jacobian Jl_inv;
+  Jl_inv.template bottomLeftCorner<3,3>().setZero();
   Jl_inv.template topLeftCorner<3,3>() = asSO3().ljacinv();
   Jl_inv.template bottomRightCorner<3,3>() =
       Jl_inv.template topLeftCorner<3,3>();
-  Jl_inv.template topRightCorner<3,3>().noalias() = - Jl_inv.template topLeftCorner<3,3>() * Q * Jl_inv.template topLeftCorner<3,3>();
+  Jl_inv.template topRightCorner<3,3>().noalias() =
+      -Jl_inv.template topLeftCorner<3,3>() * Q * Jl_inv.template topLeftCorner<3,3>();
 
   return Jl_inv;
 }
