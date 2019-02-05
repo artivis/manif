@@ -128,7 +128,7 @@ public:
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
   }
 
-protected:
+//protected:
 
   void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q) const;
 };
