@@ -244,8 +244,6 @@ void SE3TangentBase<_Derived>::fillQ(
     using std::sqrt;
 
     const Scalar theta_sq = asSO3().coeffs().squaredNorm();
-    const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
-    const Eigen::Matrix<Scalar, 3, 3> W = asSO3().hat();
 
     Scalar A(0.5), B, C, D;
 
@@ -272,6 +270,8 @@ void SE3TangentBase<_Derived>::fillQ(
     }
 
     /// @note Barfoot14tro Eq. 102
+    const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
+    const Eigen::Matrix<Scalar, 3, 3> W = skew(w());
     const Eigen::Matrix<Scalar, 3, 3> VW  = V * W;
     const Eigen::Matrix<Scalar, 3, 3> WV  = VW.transpose();       // Note on this change wrt. Barfoot: it happens that V*W = (W*V).transpose() !!!
     const Eigen::Matrix<Scalar, 3, 3> WVW = WV * W;
