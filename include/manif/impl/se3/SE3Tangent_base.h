@@ -130,8 +130,7 @@ public:
 
 protected:
 
-  template <typename _EigenDerived>
-  void fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const;
+  void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q) const;
 };
 
 template <typename _Derived>
@@ -177,15 +176,11 @@ typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::rjac() const
 {
   /// @note Eq. 10.95
-  Eigen::Matrix<Scalar, 3, 3> Q;
-  this->operator -().fillQ(Q);
   Jacobian Jr;
   Jr.template bottomLeftCorner<3,3>().setZero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
-  Jr.template bottomRightCorner<3,3>() =
-      Jr.template topLeftCorner<3,3>();
-  Jr.template topRightCorner<3,3>().noalias() = Q;
-
+  Jr.template bottomRightCorner<3,3>() = Jr.template topLeftCorner<3,3>();
+  this->operator -().fillQ( Jr.template topRightCorner<3,3>() );
 
 //  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
 //  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
@@ -236,14 +231,11 @@ typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::ljac() const
 {
   /// @note Eq. 10.95
-  Eigen::Matrix<Scalar, 3, 3> Q;
-  fillQ(Q);
   Jacobian Jl;
   Jl.template bottomLeftCorner<3,3>().setZero();
   Jl.template topLeftCorner<3,3>() = asSO3().ljac();
-  Jl.template bottomRightCorner<3,3>() =
-      Jl.template topLeftCorner<3,3>();
-  Jl.template topRightCorner<3,3>().noalias() = Q;
+  Jl.template bottomRightCorner<3,3>() = Jl.template topLeftCorner<3,3>();
+  fillQ( Jl.template topRightCorner<3,3>() );
 
 //  const Scalar theta_sq = asSO3().coeffs().squaredNorm();
 //  const Eigen::Matrix<Scalar, 3, 3> V = skew(v());
@@ -294,20 +286,16 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::rjacinv() const
 {
-  using std::cos;
-  using std::sin;
-  using std::sqrt;
-
   /// @note Eq. 10.95
-  Eigen::Matrix<Scalar, 3, 3> Q;
-  this->operator -().fillQ(Q);
   Jacobian Jr_inv;
-  Jr_inv.template bottomLeftCorner<3,3>().setZero();
+  this->operator -().fillQ( Jr_inv.template bottomLeftCorner<3,3>() ); // serves as temporary Q
   Jr_inv.template topLeftCorner<3,3>() = asSO3().rjacinv();
-  Jr_inv.template bottomRightCorner<3,3>() =
-      Jr_inv.template topLeftCorner<3,3>();
+  Jr_inv.template bottomRightCorner<3,3>() = Jr_inv.template topLeftCorner<3,3>();
   Jr_inv.template topRightCorner<3,3>().noalias() =
-      -Jr_inv.template topLeftCorner<3,3>() * Q * Jr_inv.template topLeftCorner<3,3>();
+      -Jr_inv.template topLeftCorner<3,3>()    *
+       Jr_inv.template bottomLeftCorner<3,3>() *
+       Jr_inv.template topLeftCorner<3,3>();
+  Jr_inv.template bottomLeftCorner<3,3>().setZero();
 
   return Jr_inv;
 }
@@ -316,23 +304,22 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::ljacinv() const
 {
-  Eigen::Matrix<Scalar, 3, 3> Q;
-  fillQ(Q);
   Jacobian Jl_inv;
-  Jl_inv.template bottomLeftCorner<3,3>().setZero();
+  fillQ( Jl_inv.template bottomLeftCorner<3,3>() ); // serves as temporary Q
   Jl_inv.template topLeftCorner<3,3>() = asSO3().ljacinv();
-  Jl_inv.template bottomRightCorner<3,3>() =
-      Jl_inv.template topLeftCorner<3,3>();
+  Jl_inv.template bottomRightCorner<3,3>() = Jl_inv.template topLeftCorner<3,3>();
   Jl_inv.template topRightCorner<3,3>().noalias() =
-      -Jl_inv.template topLeftCorner<3,3>() * Q * Jl_inv.template topLeftCorner<3,3>();
+      -Jl_inv.template topLeftCorner<3,3>()    *
+       Jl_inv.template bottomLeftCorner<3,3>() *
+       Jl_inv.template topLeftCorner<3,3>();
+  Jl_inv.template bottomLeftCorner<3,3>().setZero();
 
   return Jl_inv;
 }
 
 template<typename _Derived>
-template<typename _EigenDerived>
-void
-SE3TangentBase<_Derived>::fillQ(Eigen::MatrixBase<_EigenDerived>& Q) const
+void SE3TangentBase<_Derived>::fillQ(
+  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q) const
 {
     using std::cos;
     using std::sin;
