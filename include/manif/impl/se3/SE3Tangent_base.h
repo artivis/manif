@@ -243,7 +243,7 @@ void SE3TangentBase<_Derived>::fillQ(
     using std::sin;
     using std::sqrt;
 
-    const Scalar theta_sq = asSO3().coeffs().squaredNorm();
+    const Scalar theta_sq = w().squaredNorm();
 
     Scalar A(0.5), B, C, D;
 
