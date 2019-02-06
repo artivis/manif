@@ -282,8 +282,9 @@ public:
   template <typename _EigenDerived>
   _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 
-  template <typename... Args>
-  _Derived& operator <<(Args&&... args);
+  template <typename T>
+  auto operator <<(T&& v)
+  ->decltype( std::declval<DataType>().operator<<(std::forward<T>(v)) );
 
   // Math
 
@@ -635,11 +636,11 @@ _Derived& TangentBase<_Derived>::operator =(
 }
 
 template <typename _Derived>
-template <typename... Args>
-_Derived& TangentBase<_Derived>::operator <<(Args&&... args)
+template <typename T>
+auto TangentBase<_Derived>::operator <<(T&& v)
+->decltype( std::declval<DataType>().operator<<(std::forward<T>(v)) )
 {
-  coeffs().operator <<(std::forward<Args>(args)...);
-  return derived();
+  return coeffs().operator<<(std::forward<T>(v));
 }
 
 // Static helper
