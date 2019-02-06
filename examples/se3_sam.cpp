@@ -261,10 +261,10 @@ int main()
     MatrixT             W;          // sqrt Info
     vector<SE3Tangentd> controls;   // robot controls
 
-    u_nom.coeffs() << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
-    u_sigmas    << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
-    Q           = (u_sigmas * u_sigmas).matrix().asDiagonal();
-    W           =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
+    u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
+    u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
+    Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
+    W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
 
     // Landmarks in R^3 and map
     VectorB b; // Landmark, generic
