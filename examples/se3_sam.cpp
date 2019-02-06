@@ -459,10 +459,10 @@ int main()
          */
 
         // residual : expectation - measurement, in global tangent space, in a one-liner :
-        r.segment(row,DoF)          = poses[0].lminus(SE3d::Identity()).coeffs();
+        r.segment<DoF>(row)         = poses[0].lminus(SE3d::Identity()).coeffs();
 
         // Jacobian of residual wrt pose is the identity because of trivial relations
-        J.block(row, col, DoF, DoF) = MatrixT::Identity();
+        J.block<DoF, DoF>(row, col) = MatrixT::Identity();
 
         // advance rows
         row += DoF;
@@ -484,15 +484,15 @@ int main()
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
                 // residual (use right-minus since motion measurements are local)
-                r.segment(row, DoF)         = W * (d - u).coeffs(); // residual
+                r.segment<DoF>(row)         = W * (d - u).coeffs(); // residual
 
                 // Jacobian of residual wrt first pose
                 col = i * DoF;
-                J.block(row, col, DoF, DoF) = W * J_d_xi;
+                J.block<DoF, DoF>(row, col) = W * J_d_xi;
 
                 // Jacobian of residual wrt second pose
                 col = j * DoF;
-                J.block(row, col, DoF, DoF) = W * J_d_xj;
+                J.block<DoF, DoF>(row, col) = W * J_d_xj;
 
                 // advance rows
                 row += DoF;
@@ -511,15 +511,15 @@ int main()
                 J_e_x   = J_e_ix * J_ix_x;                          // chain rule
 
                 // residual (use right-minus since sensor measurements are local)
-                r.segment(row, Dim)         = S * (e - y);
+                r.segment<Dim>(row)         = S * (e - y);
 
                 // Jacobian of residual wrt pose
                 col = i * DoF;
-                J.block(row, col, Dim, DoF) = S * J_e_x;
+                J.block<Dim, DoF>(row, col) = S * J_e_x;
 
                 // Jacobian of residual wrt lmk
                 col = NUM_POSES * DoF + k * Dim;
-                J.block(row, col, Dim, Dim) = S * J_e_b;
+                J.block<Dim, Dim>(row, col) = S * J_e_b;
 
                 // advance rows
                 row += Dim;
@@ -538,20 +538,20 @@ int main()
         for (int i = 0; i < 3; i++)
         {
             // we go very verbose here
-            int row         = i * DoF;
-            int size        = DoF;
-            dx              = dX.segment(row, size);
-            poses[i]        = poses[i] + dx;
+            int row             = i * DoF;
+            constexpr int size  = DoF;
+            dx                  = dX.segment<size>(row);
+            poses[i]            = poses[i] + dx;
         }
 
         // update all landmarks
         for (int k = 0; k < NUM_LMKS; k++)
         {
             // we go very verbose here
-            int row         = NUM_POSES * DoF + k * Dim;
-            int size        = Dim;
-            db              = dX.segment(row,size);
-            landmarks[k]    = landmarks[k] + db;
+            int row             = NUM_POSES * DoF + k * Dim;
+            constexpr int size  = Dim;
+            db                  = dX.segment<size>(row);
+            landmarks[k]        = landmarks[k] + db;
         }
 
 
