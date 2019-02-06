@@ -103,6 +103,30 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_RETRACT_JAC)
 //  EXPECT_DOUBLE_EQ(1, J_ret(0));
 }
 
+TEST(TEST_SE2, TEST_SE2_TANGENT_INSTREAM)
+{
+  SE2Tangentd se2;
+
+  se2 << 4, 2, M_PI;
+
+  EXPECT_DOUBLE_EQ(4,    se2.x());
+  EXPECT_DOUBLE_EQ(2,    se2.y());
+  EXPECT_DOUBLE_EQ(M_PI, se2.angle());
+
+  se2 << 3.5, 3.5, M_PI_4;
+
+  EXPECT_DOUBLE_EQ(3.5,    se2.x());
+  EXPECT_DOUBLE_EQ(3.5,    se2.y());
+  EXPECT_DOUBLE_EQ(M_PI_4, se2.angle());
+
+  typename SE2Tangentd::DataType data(1,2,3);
+  se2 << data;
+
+  EXPECT_DOUBLE_EQ(1, se2.x());
+  EXPECT_DOUBLE_EQ(2, se2.y());
+  EXPECT_DOUBLE_EQ(3, se2.angle());
+}
+
 int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);

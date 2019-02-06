@@ -106,7 +106,8 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Base::operator -=;             \
   using Base::operator *=;             \
   using Base::operator /=;             \
-  using Base::operator =;
+  using Base::operator =;              \
+  using Base::operator <<;
 
 #define MANIF_TANGENT_TYPEDEF               \
   using Scalar   = typename Base::Scalar;   \
