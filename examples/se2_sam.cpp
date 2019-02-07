@@ -392,9 +392,9 @@ int main()
 
     // DEBUG INFO
     cout << "prior" << std::showpos << endl;
-    for (auto X : poses)
-        cout << "pose: " << X.log().coeffs().transpose() << endl;
-    for (auto b : landmarks)
+    for (const auto& X : poses)
+        cout << "pose: " << X.log() << endl;
+    for (const auto& b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
@@ -570,17 +570,17 @@ int main()
 
     // solved problem
     cout << "posterior" << std::showpos << endl;
-    for (auto X : poses)
-        cout << "pose: " << X.log().coeffs().transpose() << endl;
-    for (auto b : landmarks)
+    for (const auto& X : poses)
+        cout << "pose: " << X.log() << endl;
+    for (const auto& b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     // ground truth
-    cout << "ground truth" << std::showpos << endl;
-    for (auto X : poses_simu)
-        cout << "pose: " << X.log().coeffs().transpose() << endl;
-    for (auto b : landmarks_simu)
+    cout << "ground truth1" << std::showpos << endl;
+    for (const auto& X : poses_simu)
+        cout << "pose: " << X.log() << endl;
+    for (const auto& b : landmarks_simu)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
