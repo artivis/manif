@@ -1,7 +1,7 @@
 /**
- * \file se3_sam.cpp
+ * \file se2_sam.cpp
  *
- *  Created on: Dec 13, 2018
+ *  Created on: Feb 4, 2019
  *      \author: jsola
  *
  *  ------------------------------------------------------------
@@ -17,13 +17,13 @@
  *  ------------------------------------------------------------
  *  Demonstration example:
  *
- *  3D smoothing and mapping (SAM).
+ *  2D smoothing and mapping (SAM).
  *
- *  See se2_sam.cpp          for a 2D version of this example.
- *  See se3_localization.cpp for a simpler localization example using EKF.
+ *  See se3_sam.cpp          for a 3D version of this example.
+ *  See se2_localization.cpp for a simpler localization example using EKF.
  *  ------------------------------------------------------------
  *
- *  This demo corresponds to the 3D version of the application
+ *  This demo corresponds to the application
  *  in chapter V, section B, in the paper Sola-18,
  *  [https://arxiv.org/abs/1812.01537].
  *
@@ -31,32 +31,32 @@
  *  Please consult the paper for better reference.
  *
  *
- *  We consider a robot in 3D space surrounded by a small
+ *  We consider a robot in 2D space surrounded by a small
  *  number of punctual landmarks or _beacons_.
  *  The robot receives control actions in the form of axial
  *  and angular velocities, and is able to measure the location
  *  of the beacons w.r.t its own reference frame.
  *
- *  The robot pose X_i is in SE(3) and the beacon positions b_k in R^3,
+ *  The robot pose X_i is in SE(2) and the beacon positions b_k in R^2,
  *
  *      X_i = |  R_i   t_i |        // position and orientation
  *            |   0     1  |
  *
- *      b_k = (bx_k, by_k, bz_k)    // lmk coordinates in world frame
+ *      b_k = (bx_k, by_k)          // lmk coordinates in world frame
  *
- *  The control signal u is a twist in se(3) comprising longitudinal
+ *  The control signal u is a twist in se(2) comprising longitudinal
  *  velocity vx and angular velocity wz, with no other velocity
  *  components, integrated over the sampling time dt.
  *
- *      u = (vx*dt, 0, 0, 0, 0, w*dt)
+ *      u = (vx*dt, 0, w*dt)
  *
  *  The control is corrupted by additive Gaussian noise u_noise,
  *  with covariance
  *
- *      Q = diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2).
+ *      Q = diagonal(sigma_v^2, sigma_s^2, sigma_yaw^2).
  *
- *  This noise accounts for possible lateral and rotational slippage
- *  through non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
+ *  This noise accounts for possible lateral slippage
+ *  through non-zero values of sigma_s.
  *
  *  At the arrival of a control u, a new robot pose is created at
  *
@@ -67,7 +67,7 @@
  *  Landmark measurements are of the range and bearing type,
  *  though they are put in Cartesian form for simplicity,
  *
- *      y = (yx, yy, yz)        // lmk coordinates in robot frame
+ *      y = (yx, yy)           // lmk coordinates in robot frame
  *
  *  Their noise n is zero mean Gaussian, and is specified
  *  with a covariances matrix R.
@@ -93,8 +93,8 @@
  *          *
  *
  *  where:
- *    - X_i are SE3 robot poses
- *    - b_k are R^3 landmarks or beacons
+ *    - X_i are SE2 robot poses
+ *    - b_k are R^2 landmarks or beacons
  *    - * is a pose prior to anchor the map and make the problem observable
  *    - segments indicate measurement factors:
  *      - motion measurements from X_i to X_j
@@ -117,31 +117,31 @@
  *
  *  The main variables are summarized again as follows
  *
- *      Xi  : robot pose at time i, SE(3)
- *      u   : robot control, (v*dt; 0; 0; 0; 0; w*dt) in se(3)
+ *      Xi  : robot pose at time i, SE(2)
+ *      u   : robot control, (v*dt; 0; w*dt) in se(2)
  *      Q   : control perturbation covariance
- *      b   : landmark position, R^3
- *      y   : Cartesian landmark measurement in robot frame, R^3
+ *      b   : landmark position, R^2
+ *      y   : Cartesian landmark measurement in robot frame, R^2
  *      R   : covariance of the measurement noise
  *
  *
  *  We define the state to estimate as a manifold composite:
  *
- *      X in  < SE3, SE3, SE3, R^3, R^3, R^3, R^3, R^3 >
+ *      X in  < SE2, SE2, SE2, R^2, R^2, R^2, R^2, R^2 >
  *
  *      X  =  <  X0,  X1,  X2,  b0,  b1,  b2,  b3,  b4 >
  *
  *  The estimation error dX is expressed
  *  in the tangent space at X,
  *
- *      dX in  < se3, se3, se3, R^3, R^3, R^3, R^3, R^3 >
- *          ~  < R^6, R^6, R^6, R^3, R^3, R^3, R^3, R^3 > = R^33
+ *      dX in  < se2, se2, se2, R^2, R^2, R^2, R^2, R^2 >
+ *          ~  < R^3, R^3, R^3, R^2, R^2, R^2, R^2, R^2 > = R^19
  *
- *      dX  =  [ dx0, dx1, dx2, db0, db1, db2, db3, db4 ] in R^33
+ *      dX  =  [ dx0, dx1, dx2, db0, db1, db2, db3, db4 ] in R^19
  *
  *  with
- *      dx_i: pose error in se(3) ~ R^6
- *      db_k: landmark error in R^3
+ *      dx_i: pose error in se(2) ~ R^3
+ *      db_k: landmark error in R^2
  *
  *
  *  The prior, motion and measurement models are
@@ -178,7 +178,7 @@
 
 
 // manif
-#include "manif/SE3.h"
+#include "manif/SE2.h"
 
 // Eigen
 #include <Eigen/Dense>
@@ -205,13 +205,13 @@ using std::pair;
 using namespace Eigen;
 
 // manif namespace and shortcuts
-using manif::SE3d;
-using manif::SE3Tangentd;
+using manif::SE2d;
+using manif::SE2Tangentd;
 
-static constexpr int DoF = SE3d::DoF;
-static constexpr int Dim = SE3d::Dim;
+static constexpr int DoF = SE2d::DoF;
+static constexpr int Dim = SE2d::Dim;
 
-// Define many data types (Tangent refers to the tangent of SE3)
+// Define many data types (Tangent refers to the tangent of SE2)
 typedef Array<double,  DoF, 1>      ArrayT;     // tangent-size array
 typedef Matrix<double, DoF, 1>      VectorT;    // tangent-size vector
 typedef Matrix<double, DoF, DoF>    MatrixT;    // tangent-size square matrix
@@ -234,7 +234,7 @@ int main()
 {
     // DEBUG INFO
     cout << endl;
-    cout << "3D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;
+    cout << "2D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;
     cout << "-----------------------------------------------" << endl;
     cout << std::fixed   << std::setprecision(3) << std::showpos;
 
@@ -243,40 +243,40 @@ int main()
     //
 
     // Define the robot pose elements
-    SE3d         X_simu,    // pose of the simulated robot
+    SE2d         X_simu,    // pose of the simulated robot
                  Xi,        // robot pose at time i
                  Xj;        // robot pose at time j
-    vector<SE3d> poses,     // estimator poses
+    vector<SE2d> poses,     // estimator poses
                  poses_simu;// simulator poses
     Xi.setIdentity();
     X_simu.setIdentity();
 
 
-    // Define a control vector and its noise and covariance in the tangent of SE3
-    SE3Tangentd         u;          // control signal, generic
-    SE3Tangentd         u_nom;      // nominal control signal
+    // Define a control vector and its noise and covariance in the tangent of SE2
+    SE2Tangentd         u;          // control signal, generic
+    SE2Tangentd         u_nom;      // nominal control signal
     ArrayT              u_sigmas;   // control noise std specification
     VectorT             u_noise;    // control noise
     MatrixT             Q;          // Covariance
     MatrixT             W;          // sqrt Info
-    vector<SE3Tangentd> controls;   // robot controls
+    vector<SE2Tangentd> controls;   // robot controls
 
-    u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
-    u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
-    Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
-    W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
+    u_nom     << 0.1, 0.0, 0.05;
+    u_sigmas  << 0.01, 0.01, 0.01;
+    Q         = (u_sigmas * u_sigmas).matrix().asDiagonal();
+    W         =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
 
-    // Landmarks in R^3 and map
+    // Landmarks in R^2 and map
     VectorB b; // Landmark, generic
     vector<VectorB> landmarks(NUM_LMKS), landmarks_simu;
     {
-        // Define five landmarks (beacons) in R^3
+        // Define five landmarks (beacons) in R^2
         VectorB b0, b1, b2, b3, b4;
-        b0 << 3.0,  0.0,  0.0;
-        b1 << 2.0, -1.0, -1.0;
-        b2 << 2.0, -1.0,  1.0;
-        b3 << 2.0,  1.0,  1.0;
-        b4 << 2.0,  1.0, -1.0;
+        b0 << 3.0,  0.0;
+        b1 << 2.0, -1.0;
+        b2 << 2.0,  1.0;
+        b3 << 3.0, -1.0;
+        b4 << 3.0,  1.0;
         landmarks_simu.push_back(b0);
         landmarks_simu.push_back(b1);
         landmarks_simu.push_back(b2);
@@ -284,26 +284,26 @@ int main()
         landmarks_simu.push_back(b4);
     } // destroy b0...b4
 
-    // Define the beacon's measurements in R^3
+    // Define the beacon's measurements in R^2
     VectorY             y, y_noise;
     ArrayY              y_sigmas;
     MatrixY             R; // Covariance
     MatrixY             S; // sqrt Info
-    vector<map<int,VectorY>>    measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
+    vector<map<int,VectorY>> measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
-    y_sigmas << 0.001, 0.001, 0.001; y_sigmas /= 1.0;
+    y_sigmas << 0.001, 0.001;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
     S        =  y_sigmas.inverse()  .matrix().asDiagonal(); // this is R^(-T/2)
 
     // Declare some temporaries
-    SE3Tangentd     d;              // motion expectation d = Xj (-) Xi = Xj.minus ( Xi )
+    SE2Tangentd     d;              // motion expectation d = Xj (-) Xi = Xj.minus ( Xi )
     VectorY         e;              // measurement expectation e = h(X, b)
     MatrixT         J_d_xi, J_d_xj; // Jacobian of motion wrt poses i and j
     MatrixT         J_ix_x;         // Jacobian of inverse pose wrt pose
     MatrixYT        J_e_ix;         // Jacobian of measurement expectation wrt inverse pose
     MatrixYT        J_e_x;          // Jacobian of measurement expectation wrt pose
     MatrixYB        J_e_b;          // Jacobian of measurement expectation wrt lmk
-    SE3Tangentd     dx;             // optimal pose correction step
+    SE2Tangentd     dx;             // optimal pose correction step
     VectorB         db;             // optimal landmark correction step
 
     // Problem-size variables
@@ -352,7 +352,7 @@ int main()
 
     //// Simulator ###################################################################
     poses_simu. push_back(X_simu);
-    poses.      push_back(Xi + SE3Tangentd::Random());  // use very noisy priors
+    poses.      push_back(Xi + SE2Tangentd::Random());  // use very noisy priors
 
     // temporal loop
     for (int i = 0; i < NUM_POSES; ++i)
@@ -383,7 +383,7 @@ int main()
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi + SE3Tangentd::Random()); // use very noisy priors
+            poses.      push_back(Xi + SE2Tangentd::Random()); // use very noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
@@ -446,7 +446,7 @@ int main()
          *     e = poses[0];            // first pose
          *
          *  measurement
-         *     y = SE3d::Identity()     // robot at the origin
+         *     y = SE2d::Identity()     // robot at the origin
          *
          *  info matrix:
          *     W = I                    // trivial
@@ -459,7 +459,7 @@ int main()
          */
 
         // residual : expectation - measurement, in global tangent space, in a one-liner :
-        r.segment<DoF>(row)         = poses[0].lminus(SE3d::Identity()).coeffs();
+        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity()).coeffs();
 
         // Jacobian of residual wrt pose is the identity because of trivial relations
         J.block<DoF, DoF>(row, col) = MatrixT::Identity();
@@ -538,20 +538,20 @@ int main()
         for (int i = 0; i < 3; ++i)
         {
             // we go very verbose here
-            int row             = i * DoF;
-            constexpr int size  = DoF;
-            dx                  = dX.segment<size>(row);
-            poses[i]            = poses[i] + dx;
+            int row            = i * DoF;
+            constexpr int size = DoF;
+            dx                 = dX.segment<size>(row);
+            poses[i]           = poses[i] + dx;
         }
 
         // update all landmarks
         for (int k = 0; k < NUM_LMKS; ++k)
         {
             // we go very verbose here
-            int row             = NUM_POSES * DoF + k * Dim;
-            constexpr int size  = Dim;
-            db                  = dX.segment<size>(row);
-            landmarks[k]        = landmarks[k] + db;
+            int row            = NUM_POSES * DoF + k * Dim;
+            constexpr int size = Dim;
+            db                 = dX.segment<size>(row);
+            landmarks[k]       = landmarks[k] + db;
         }
 
 
@@ -577,7 +577,7 @@ int main()
     cout << "-----------------------------------------------" << endl;
 
     // ground truth
-    cout << "ground truth" << std::showpos << endl;
+    cout << "ground truth1" << std::showpos << endl;
     for (const auto& X : poses_simu)
         cout << "pose: " << X.log() << endl;
     for (const auto& b : landmarks_simu)
