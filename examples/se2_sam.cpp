@@ -355,7 +355,7 @@ int main()
     poses.      push_back(Xi + SE2Tangentd::Random());  // use very noisy priors
 
     // temporal loop
-    for (int i = 0; i < NUM_POSES; i++)
+    for (int i = 0; i < NUM_POSES; ++i)
     {
         // make measurements
         for (auto k : pairs[i])
@@ -372,7 +372,7 @@ int main()
         }
 
         // make motions
-        if ( i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
+        if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
         {
             // move simulator, without noise
             X_simu = X_simu + u_nom;
@@ -402,7 +402,7 @@ int main()
     // iterate
     // DEBUG INFO
     cout << "iterations" << std::noshowpos << endl;
-    for (int iteration = 0; iteration < MAX_ITER; iteration ++)
+    for (int iteration = 0; iteration < MAX_ITER; ++iteration)
     {
         // Clear residual vector and Jacobian matrix
         r .setZero();
@@ -468,7 +468,7 @@ int main()
         row += DoF;
 
         // loop poses
-        for (int i = 0; i < NUM_POSES; i++)
+        for (int i = 0; i < NUM_POSES; ++i)
         {
             // 2. evaluate motion factors -----------------------
             if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
@@ -535,7 +535,7 @@ int main()
         dX = - (J.transpose() * J).inverse() * J.transpose() * r;
 
         // update all poses
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; ++i)
         {
             // we go very verbose here
             int row            = i * DoF;
@@ -545,7 +545,7 @@ int main()
         }
 
         // update all landmarks
-        for (int k = 0; k < NUM_LMKS; k++)
+        for (int k = 0; k < NUM_LMKS; ++k)
         {
             // we go very verbose here
             int row            = NUM_POSES * DoF + k * Dim;
