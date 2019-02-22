@@ -118,16 +118,16 @@ Throughout `manif`, **Jacobians are differentiated with respect to a local pertu
 The Jacobians of any of the aforementionned operations can then be evaluated, e.g.,
 
 ```cpp
-  SO2 X = SO2::Random(),
-      Y = SO2::Random();
+  SO2d X = SO2d::Random(),
+       Y = SO2d::Random();
 
-  SO2::Jacobian J_c_x, J_c_y;
+  SO2d::Jacobian J_c_x, J_c_y;
   auto compose = X.compose(Y, J_c_x, J_c_y);
 
-  SO2::Jacobian J_m_x, J_m_y;
+  SO2d::Jacobian J_m_x, J_m_y;
   auto minus   = X.minus(Y, J_m_x, J_m_y);
 
-  SO2::Jacobian J_i_x;
+  SO2d::Jacobian J_i_x;
   auto inverse = X.inverse(J_i_x);
 
   // etc...
