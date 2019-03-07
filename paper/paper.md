@@ -22,12 +22,12 @@ bibliography: paper.bib
 
 # Summary
 
-`manif` [@manif] is a micro Lie theory library targeted at 
+`manif` [@manif] is a micro Lie theory library targeted at
 state estimation in robotics applications.
-With a single dependency on [@eigenweb] and 
-a requierement on c++11 only it is
-developped as a header-only library making 
-it easily integrable to existing projects.
+With a single dependency on [@eigenweb] and
+a requirement on c++11 only it is
+developed as a header-only library making
+it easily to integrate to existing projects.
 
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
@@ -41,32 +41,41 @@ known as ‘manifolds’, which in this context are no less
 than the smooth topologic surfaces of the Lie groups where
 the state representations evolve.
 
-The `manif` library has been developped to make easily accessible
+The `manif` library has been developed to make easily accessible
 the most common operations on Lie groups in state estimation.
-Its design is similar to that of [@eigenweb] so that 
-all Lie group classes defined in `manif` have in common that 
+Its design is similar to that of [@eigenweb] so that
+all Lie group classes defined in `manif` have in common that
 they inherit from a templated base class using static polymorphism.
 This allows for the possibility the write generic code without
 paying the price of pointer indirection.
 
-The library is mathematically grounded in [@Sola18] 
+The library is mathematically grounded in [@Sola18]
 and often refers to it in it documentation
 especially for mathematical developments.
 
 # Related work
 
 [@Sophus] C++ implementation of Lie Groups using Eigen.
-Our work differs from [@Sophus] in that all our classes inherit from a common templated base class
-which allows a common minimal API. This permits writing generic algorithms on Lie groups.
-Moreover, the Jacobian matrices are available to the user for most of the operation on groups,
+Our work differs from [@Sophus] in that all our classes inherit from
+a common templated base class which enforces a common minimal API.
+This allows for writing generic algorithms on Lie groups.
+Moreover, the analytical Jacobian matrices are available to the user
+for most of the operation on groups,
 allowing complex chain of operations to be differentiated through the chain rule.
+Jacobian matrices in `manif` are defined with respect to a local
+perturbation on the Lie group's tangent space,
+whereas [@Sophus] defines them with respect
+to the representation vector that underlie the implementation.
 
-[@wave_geometry] Manifold geometry with fast automatic derivatives and coordinate frame semantics checking.
-Our work differs from [@wave_geometry] in that it offers analitically computed Jacobian matrix whereas
-the later relies on automatic-differentiation.
-
-Finally, Jacobian matrices in `manif` are defined with respect to a local perturbation on the Lie group's tangent space,
-unlike both [@Sophus] and [@wave_geometry] which define them with respect 
-to the representation vector that underlie the implemetation.
+[@wave_geometry] Manifold geometry with fast automatic derivatives
+and coordinate frame semantics checking.
+Our work differs from [@wave_geometry] in that it relies on
+c++11 which is still the standard in many laboratories and companies while
+[@wave_geometry], as of the time this paper is written,
+requires a c++17-compatible compiler.
+While both library rely on the external dependency is [@eigenweb],
+[@wave_geometry] also relies on [@boostweb].
+Finally, as of the time this paper is written, [@wave_geometry] only implements
+the groups $SO3$ and $SE3$ while [@manif] also provides $SO2$ and $SE2$
 
 # References
