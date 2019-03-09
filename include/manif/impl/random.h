@@ -7,8 +7,8 @@ namespace internal {
 template <typename Derived>
 struct RandomEvaluatorImpl
 {
-  template <typename EigenDerived>
-  static void run(Eigen::MatrixBase<EigenDerived>&)
+  template <typename T>
+  static void run(T&)
   {
     /// @todo print actual Derived type
     static_assert(constexpr_false<Derived>(),
@@ -25,7 +25,7 @@ struct RandomEvaluator : RandomEvaluatorImpl<Derived>
 
   void run()
   {
-    Base::run(xptr_.coeffs());
+    Base::run(xptr_);
   }
 
 protected:

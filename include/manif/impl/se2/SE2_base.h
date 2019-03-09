@@ -346,6 +346,20 @@ SE2Base<_Derived>::y() const
   return coeffs().y();
 }
 
+namespace internal {
+
+template <typename Derived>
+struct RandomEvaluatorImpl<SE2Base<Derived>>
+{
+  template <typename T>
+  static void run(T& m)
+  {
+    using Tangent = typename LieGroupBase<Derived>::Tangent;
+    m = Tangent::Random().exp();
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE2_BASE_H_ */

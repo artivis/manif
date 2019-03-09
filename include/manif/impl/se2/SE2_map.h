@@ -12,8 +12,9 @@ struct traits< Eigen::Map<SE2<_Scalar>,0> >
     : public traits<SE2<_Scalar>>
 {
   using typename traits<SE2<_Scalar>>::Scalar;
-  using traits<SE2<_Scalar>>::RepSize;
-  using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using traits<SE2<Scalar>>::RepSize;
+  using Base = SE2Base<Eigen::Map<SE2<Scalar>, 0>>;
+  using DataType = Eigen::Map<Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 //! @brief traits specialization for Eigen Map const
@@ -22,8 +23,9 @@ struct traits< Eigen::Map<const SE2<_Scalar>,0> >
     : public traits<const SE2<_Scalar>>
 {
   using typename traits<const SE2<_Scalar>>::Scalar;
-  using traits<const SE2<_Scalar>>::RepSize;
-  using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+  using traits<const SE2<Scalar>>::RepSize;
+  using Base = SE2Base<Eigen::Map<const SE2<Scalar>, 0>>;
+  using DataType = Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
 
 } /* namespace internal */

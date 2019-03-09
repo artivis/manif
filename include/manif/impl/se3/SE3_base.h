@@ -339,6 +339,21 @@ SE3Base<_Derived>::z() const
   return coeffs().z();
 }
 
+namespace internal {
+
+template <typename Derived>
+struct RandomEvaluatorImpl<SE3Base<Derived>>
+{
+  template <typename T>
+  static void run(T& m)
+  {
+    using Translation = typename SE3Base<Derived>::Translation;
+    using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
+    m = Derived(Translation::Random(), Quaternion::UnitRandom());
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE3_BASE_H_ */
