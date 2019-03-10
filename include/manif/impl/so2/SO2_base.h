@@ -285,6 +285,20 @@ SO2Base<_Derived>::angle() const
 //  return coeffs.y();
 //}
 
+namespace internal {
+
+template <typename Derived>
+struct RandomEvaluatorImpl<SO2Base<Derived>>
+{
+  template <typename T>
+  static void run(T& m)
+  {
+    using Tangent = typename LieGroupBase<Derived>::Tangent;
+    m = Tangent::Random().exp();
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SO2_BASE_H_ */

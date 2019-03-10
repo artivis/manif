@@ -369,7 +369,10 @@ template <typename _Derived>
 _Derived&
 LieGroupBase<_Derived>::setRandom()
 {
-  coeffs_nonconst() = Tangent::Random().exp().coeffs();
+  internal::RandomEvaluator<
+      typename internal::traits<_Derived>::Base>(
+        derived()).run();
+
   return derived();
 }
 

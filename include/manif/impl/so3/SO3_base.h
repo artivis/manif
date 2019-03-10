@@ -337,6 +337,20 @@ void SO3Base<_Derived>::normalize()
   coeffs().normalize();
 }
 
+namespace internal {
+
+template <typename Derived>
+struct RandomEvaluatorImpl<SO3Base<Derived>>
+{
+  template <typename T>
+  static void run(T& m)
+  {
+    using Quaternion = typename SO3Base<Derived>::QuaternionDataType;
+    m = Derived(Quaternion::UnitRandom());
+  }
+};
+
+} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SO3_BASE_H_ */
