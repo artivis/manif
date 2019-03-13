@@ -27,8 +27,6 @@ struct traits<SO2<_Scalar>>
   static constexpr int DoF     = LieGroupProperties<Base>::DoF;
   static constexpr int RepSize = 2;
 
-  /// @todo move those to some traits ?
-
   using DataType       = Eigen::Matrix<Scalar, RepSize, 1>;
 
   using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
@@ -42,11 +40,9 @@ struct traits<SO2<_Scalar>>
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief Represents an element of SO2.

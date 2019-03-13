@@ -7,7 +7,7 @@
 
 namespace manif {
 
-/// @brief Specialize Constant traits
+/// @brief Specialize Constants traits
 /// for the ceres::Jet type
 template <typename _Scalar, int N>
 struct Constants<ceres::Jet<_Scalar, N>>

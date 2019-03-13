@@ -40,11 +40,9 @@ struct traits<SO3<_Scalar>>
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief Represents an element of SO3.

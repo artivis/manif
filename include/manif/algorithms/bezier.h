@@ -5,7 +5,6 @@
 #include "manif/algorithms/interpolation.h"
 
 #include <vector>
-//#include <iostream>
 
 namespace manif {
 
@@ -39,26 +38,12 @@ computeBezierCurve(const std::vector<LieGroup>& control_points,
   MANIF_CHECK(degree <= control_points.size(), "Oups1");
   MANIF_CHECK(k_interp > 0, "Oups2");
 
-  bool verbose = false;
-
-  if (verbose)
-  std::cout << "Entering Bezier with : \n"
-            << "\tcontrol_points : " << control_points.size() << "\n"
-            << "\tdegree : " << degree << "\n"
-            << "\tk_interp : " << k_interp << "\n";
   const unsigned int n_segments =
        std::floor(double(control_points.size()-degree)/(degree-1)+1);
-
-  if (verbose)
-  std::cout << "Will compute " << n_segments << " segments.\n";
 
   std::vector<std::vector<const LieGroup*>> segments_control_points;
   for (unsigned int t=0; t<n_segments; ++t)
   {
-    if (verbose)
-    std::cout << "Computing segment " << t << " "
-              << "from control points : ";
-
     segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Retrieve control points of the current segment
@@ -90,12 +75,6 @@ computeBezierCurve(const std::vector<LieGroup>& control_points,
       // compute tmp control points.
       for (int i=0; i<degree-1; ++i)
       {
-        if (verbose)
-          std::cout << "Control point " << i
-                    << " has polynomial "
-                    << polynomialBernstein((double)degree, (double)i, (double)t_01)
-                    << "\n";
-
         Qc = Qc.lplus(segments_control_points[s][i]->log() *
                       polynomialBernstein((double)degree, (double)i, (double)t_01));
       }
@@ -103,21 +82,6 @@ computeBezierCurve(const std::vector<LieGroup>& control_points,
       curve.push_back(Qc);
     }
   }
-
- ////      for (int i=0; i<degree/*-1*/; ++i)
- ////      {
- ////        if (verbose)
- ////        std::cout << "Control point " << i
- ////                  << " has polynomial "
- ////                  << polynomialBernstein((double)degree, (double)i, (double)t_01)
- ////                  << "\n";
-
- ////        interp += segment_control_points[i]->log() *
- ////                  polynomialBernstein((double)degree, (double)i, (double)t_01);
-
- //////        interp += segment_control_points[i+1]->rminus(*segment_control_points[i]) *
- //////                  polynomialBernstein((double)degree, (double)i, (double)t_01);
- ////      }
 
   return curve;
 }

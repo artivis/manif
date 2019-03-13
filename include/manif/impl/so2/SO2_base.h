@@ -6,11 +6,9 @@
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief The base class of the SO2 group.
@@ -247,7 +245,7 @@ SO2Base<_Derived>::adj() const
   return adj;
 }
 
-/// SO2 specific function
+// SO2 specific function
 
 template <typename _Derived>
 /*const*/ typename SO2Base<_Derived>::Scalar/*&*/
@@ -287,6 +285,7 @@ SO2Base<_Derived>::angle() const
 
 namespace internal {
 
+//! @brief Random specialization for SO2Base objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SO2Base<Derived>>
 {

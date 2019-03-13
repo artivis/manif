@@ -34,11 +34,9 @@ struct traits<SO2Tangent<_Scalar>>
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief Represents an element of tangent space of SO2.
@@ -83,16 +81,6 @@ public:
   // SO2Tangent specific API
 
   using Base::angle;
-
-  /// @todo consider using a
-  /// Eigen::Matrix<std::complex<Scalar>, 1, 1>
-  /// as DataType
-//  Scalar angle2()
-//  {
-//    using std::atan2;
-//    Eigen::Matrix<std::complex<Scalar>, 1, 1> test;
-//    return atan2(test.imag()(0), test.real()(0));
-//  }
 
 protected:
 

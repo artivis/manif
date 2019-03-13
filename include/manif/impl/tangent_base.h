@@ -15,7 +15,7 @@ namespace manif {
 
 /**
  * @brief Base class for Lie groups' tangents.
- * @class Defines the minimum common API.
+ * Defines the minimum common API.
  * @see LieGroupBase.
  */
 template <class _Derived>
@@ -843,7 +843,7 @@ bool operator ==(
   return t.isApprox(v, Constants<typename TangentBase<_Derived>::Scalar>::eps);
 }
 
-/// Utils
+// Utils
 
 template <typename _Stream, typename _Derived>
 _Stream& operator << (

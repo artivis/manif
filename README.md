@@ -2,6 +2,7 @@
 ## A small header-only library for Lie theory.
 
 [![Build Status](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
+[![Documentation](https://codedocs.xyz/artivis/manif.svg)](https://codedocs.xyz/artivis/manif/)
 [![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
@@ -219,4 +220,3 @@ For a PullRequest to get merged into develop, it must pass
     +   Will these changes break the API?
     +   Do the new changes follow the current style of naming?
 -   Compile / Test / Run on all target environments.
-

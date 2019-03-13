@@ -7,11 +7,9 @@
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief The base class of the SE2 group.
@@ -308,7 +306,7 @@ SE2Base<_Derived>::adj() const
   return Adj;
 }
 
-/// SE2 specific function
+// SE2 specific function
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Scalar
@@ -348,6 +346,7 @@ SE2Base<_Derived>::y() const
 
 namespace internal {
 
+//! @brief Random specialization for SE2Base objects
 template <typename Derived>
 struct RandomEvaluatorImpl<SE2Base<Derived>>
 {

@@ -41,11 +41,9 @@ struct traits<SE2<_Scalar>>
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief Represents an element of SE2.
@@ -82,11 +80,11 @@ public:
   SE2(const Scalar x, const Scalar y, const Scalar theta);
   SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag);
 
-  /// LieGroup common API
+  // LieGroup common API
 
   const DataType& coeffs() const;
 
-  /// SE2 specific API
+  // SE2 specific API
 
   using Base::angle;
   using Base::real;

@@ -10,6 +10,10 @@
 
 namespace manif {
 
+/**
+ * @brief Helper function to create a Ceres autodiff local parameterization wrapper.
+ * @see CeresLocalParameterizationFunctor
+ */
 template <typename _LieGroup>
 std::shared_ptr<
   ceres::AutoDiffLocalParameterization<CeresLocalParameterizationFunctor<_LieGroup>,
@@ -21,6 +25,10 @@ make_local_parameterization_autodiff()
         CeresLocalParameterizationFunctor<_LieGroup>, _LieGroup::RepSize, _LieGroup::DoF>>();
 }
 
+/**
+ * @brief Helper function to create a Ceres autodiff objective wrapper.
+ * @see CeresObjectiveFunctor
+ */
 template <typename _LieGroup, typename... Args>
 std::shared_ptr<
   ceres::AutoDiffCostFunction<
@@ -33,6 +41,10 @@ make_objective_autodiff(Args&&... args)
       );
 }
 
+/**
+ * @brief Helper function to create a Ceres autodiff constraint wrapper.
+ * @see CeresConstraintFunctor
+ */
 template <typename _LieGroup, typename... Args>
 std::shared_ptr<
   ceres::AutoDiffCostFunction<

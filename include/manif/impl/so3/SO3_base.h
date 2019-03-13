@@ -7,11 +7,9 @@
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief The base class of the SO3 group.
@@ -294,7 +292,7 @@ SO3Base<_Derived>::adj() const
   return rotation();
 }
 
-/// SO3 specific
+// SO3 specific
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Scalar
@@ -339,6 +337,7 @@ void SO3Base<_Derived>::normalize()
 
 namespace internal {
 
+//! @brief Random specialization for SO3Base objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SO3Base<Derived>>
 {

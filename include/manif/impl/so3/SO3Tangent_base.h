@@ -6,11 +6,9 @@
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief The base class of the SO3 tangent.
@@ -31,7 +29,7 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  /// Tangent common API
+  // Tangent common API
 
   using Base::coeffs;
 
@@ -226,7 +224,7 @@ SO3TangentBase<_Derived>::hat() const
   return skew(coeffs());
 }
 
-/// SO3Tangent specifics
+// SO3Tangent specifics
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::Scalar
@@ -251,6 +249,7 @@ SO3TangentBase<_Derived>::z() const
 
 namespace internal {
 
+//! @brief Generator specialization for SO3TangentBase objects.
 template <typename Derived>
 struct GeneratorEvaluator<SO3TangentBase<Derived>>
 {
@@ -295,6 +294,7 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
   }
 };
 
+//! @brief Random specialization for SO3TangentBase objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SO3TangentBase<Derived>>
 {

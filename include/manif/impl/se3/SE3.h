@@ -44,11 +44,9 @@ struct traits<SE3<_Scalar>>
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief Represent an element of SE3.
