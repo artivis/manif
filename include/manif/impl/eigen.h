@@ -7,11 +7,11 @@
  * @note static_cast<int> to avoid -Wno-enum-compare
  */
 
-//////////////////////
-/// Static Asserts ///
-//////////////////////
+//
+// Static Asserts
+//
 
-/// Define some custom static_assert macros
+// Define some custom static_assert macros
 
 #define static_assert_rows_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim, \
@@ -47,11 +47,11 @@
   static_assert_is_colmajor_vector(x); \
   static_assert_cols_dim(x, dim);
 
-///////////////
-/// Asserts ///
-///////////////
+//
+// Asserts
+//
 
-/// Define some custom assert macros
+// Define some custom assert macros
 
 #define assert_rows_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim or \

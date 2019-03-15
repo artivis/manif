@@ -2,6 +2,7 @@
 ## A small header-only library for Lie theory.
 
 [![Build Status](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
+[![Documentation](https://codedocs.xyz/artivis/manif.svg)](https://codedocs.xyz/artivis/manif/)
 [![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
@@ -158,17 +159,19 @@ auto-differentiation and the
 
 ## Documentation
 
-Some general documentation on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
+The API documentation can be found online at [codedocs.xyz/artivis/manif](https://codedocs.xyz/artivis/manif/).
+
+Some more general documentation and tips on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
 <!--Although I like packages using [readthedocs](https://readthedocs.org/) and [codedocs](https://codedocs.xyz/).-->
 
-Type in the terminal
+To generate the documentation on your machine, type in the terminal
 
 ```terminal
 cd [manif]
 doxygen .doxygen.txt
 ```
 
-to obtain the code documentation. Find it at `[manif]/doc/html/index.html`.
+and find it at `[manif]/doc/html/index.html`.
 
 Throughout the code documentation we refer to 'the paper' which you can
 find in the section <a href="#publications">Publications</a>.
@@ -219,4 +222,3 @@ For a PullRequest to get merged into develop, it must pass
     +   Will these changes break the API?
     +   Do the new changes follow the current style of naming?
 -   Compile / Test / Run on all target environments.
-

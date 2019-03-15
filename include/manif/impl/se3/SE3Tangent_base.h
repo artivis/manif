@@ -7,11 +7,9 @@
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief The base class of the SE3 tangent.
@@ -116,7 +114,7 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
-//protected:
+public: /// @todo make protected
 
   const Eigen::Map<const SO3Tangent<Scalar>> asSO3() const
   {
@@ -301,8 +299,7 @@ SE3TangentBase<_Derived>::smallAdj() const
   return smallAdj;
 }
 
-/// SE3Tangent specific API
-
+// SE3Tangent specific API
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::BlockV
@@ -354,6 +351,7 @@ SE3TangentBase<_Derived>::w() const
 
 namespace internal {
 
+//! @brief Generator specialization for SE3TangentBase objects.
 template <typename Derived>
 struct GeneratorEvaluator<SE3TangentBase<Derived>>
 {
@@ -428,6 +426,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
   }
 };
 
+//! @brief Random specialization for SE3TangentBase objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SE3TangentBase<Derived>>
 {

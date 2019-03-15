@@ -6,11 +6,9 @@
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief The base class of the SE2 tangent.
@@ -263,7 +261,7 @@ SE2TangentBase<_Derived>::smallAdj() const
   return smallAdj;
 }
 
-/// SE2Tangent specific API
+// SE2Tangent specific API
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Scalar
@@ -288,6 +286,7 @@ SE2TangentBase<_Derived>::angle() const
 
 namespace internal {
 
+//! @brief Generator specialization for SE2TangentBase objects.
 template <typename Derived>
 struct GeneratorEvaluator<SE2TangentBase<Derived>>
 {
@@ -332,6 +331,7 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
   }
 };
 
+//! @brief Inner weight matrix specialization for SE2TangentBase objects.
 template <typename Derived>
 struct WEvaluator<SE2TangentBase<Derived>>
 {
@@ -350,6 +350,7 @@ struct WEvaluator<SE2TangentBase<Derived>>
   }
 };
 
+//! @brief Random specialization for SE2TangentBase objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SE2TangentBase<Derived>>
 {

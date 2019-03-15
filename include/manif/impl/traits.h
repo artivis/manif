@@ -17,14 +17,14 @@ struct constexpr_false : std::false_type {};
 template <typename T> struct traits;
 
 /// @note the following is from the Eigen library
-// here we say once and for all that traits<const T> == traits<T>
-// When constness must affect traits, it has to be constness on
-// template parameters on which T itself depends.
-// For example, traits<Map<const T> > != traits<Map<T> >, but
-//              traits<const Map<T> > == traits<Map<T> >
+/// here we say once and for all that traits<const T> == traits<T>
+///
+/// When constness must affect traits, it has to be constness on
+/// template parameters on which T itself depends.
+/// For example, traits<Map<const T> > != traits<Map<T> >, but
+///              traits<const Map<T> > == traits<Map<T> >
 template<typename T> struct traits<const T> : traits<T> {};
 
-/// @brief LieGroupProperties
 /**
  * @brief LieGroupProperties, a traits for defining some
  * group properties. E.g. Space dimension, Degrees of Freedom ...
@@ -32,7 +32,8 @@ template<typename T> struct traits<const T> : traits<T> {};
 template <typename _LieGroupBase> struct LieGroupProperties;
 
 //! @brief A traits helper to cast
-//! e.g. template <typename NewScalar> using LieGroupTemplate = typename traitscast<LieGroup, NewScalar>::cast;
+//!
+//! @note e.g. template <typename NewScalar> using LieGroupTemplate = typename traitscast<LieGroup, NewScalar>::cast;
 template <typename _Class, typename _NewScalar>
 struct traitscast;
 
@@ -46,8 +47,6 @@ struct traitscast<_Class<_Scalar>, _NewScalar>
 {
   using cast = _Class<_NewScalar>;
 };
-
-////////////////////////////
 
 //! @brief Has function 'rjacinv' traits
 template<class, typename T> struct has_rjacinv_impl : std::false_type {};

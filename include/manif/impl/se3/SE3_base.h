@@ -7,11 +7,9 @@
 
 namespace manif {
 
-////////////////
-///          ///
-/// LieGroup ///
-///          ///
-////////////////
+//
+// LieGroup
+//
 
 /**
  * @brief The base class of the SE3 group.
@@ -92,7 +90,6 @@ public:
   act(const Eigen::MatrixBase<_EigenDerived> &v,
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
-
 
   /**
    * @brief Get the adjoint matrix of SE3 at this.
@@ -316,7 +313,7 @@ SE3Base<_Derived>::adj() const
   return Adj;
 }
 
-/// SE3 specific function
+// SE3 specific function
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Scalar
@@ -341,6 +338,7 @@ SE3Base<_Derived>::z() const
 
 namespace internal {
 
+//! @brief Random specialization for SE3Base objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SE3Base<Derived>>
 {

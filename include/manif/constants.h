@@ -36,7 +36,7 @@ double constexpr csqrt(double x)
 } /* namespace internal */
 
 /**
- * Traits to define some constant scalar.
+ * @brief Traits to define some constant scalar.
  */
 template <typename _Scalar>
 struct Constants

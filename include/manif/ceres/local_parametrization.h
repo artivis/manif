@@ -5,6 +5,9 @@
 
 namespace manif {
 
+/**
+ * @brief A wrapper for Ceres autodiff local parameterization.
+ */
 template <typename _LieGroup>
 class CeresLocalParameterizationFunctor
 {

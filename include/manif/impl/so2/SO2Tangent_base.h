@@ -6,11 +6,9 @@
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief The base class of the SO2 tangent.
@@ -191,6 +189,7 @@ SO2TangentBase<_Derived>::angle() const
 namespace internal {
 
 /**
+ * @brief Generator specialization for SO2TangentBase objects.
  * E = | 0 -1 |
  *     | 1  0 |
  */
@@ -210,6 +209,7 @@ struct GeneratorEvaluator<SO2TangentBase<Derived>>
   }
 };
 
+//! @brief Random specialization for SO2TangentBase objects.
 template <typename Derived>
 struct RandomEvaluatorImpl<SO2TangentBase<Derived>>
 {

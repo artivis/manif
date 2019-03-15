@@ -36,7 +36,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   #define MANIF_DEPRECATED
 #endif
 
-/// LieGroup - related macros
+// LieGroup - related macros
 
 #define MANIF_GROUP_PROPERTIES                                        \
   static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
@@ -85,7 +85,7 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using group##f = group<float>;         \
   using group##d = group<double>;
 
-/// Tangent - related macros
+// Tangent - related macros
 
 #define MANIF_TANGENT_PROPERTIES                                      \
   static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \

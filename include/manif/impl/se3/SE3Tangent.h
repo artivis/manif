@@ -34,11 +34,9 @@ struct traits<SE3Tangent<_Scalar>>
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief Represents an element of tangent space of SE3.

@@ -14,7 +14,7 @@ namespace manif {
 
 /**
  * @brief Base class for Lie groups.
- * @class Defines the minimum common API.
+ * Defines the minimum common API.
  * @see TangentBase.
  */
 template <class _Derived>
@@ -59,7 +59,7 @@ public:
   template <class _NewScalar>
   LieGroupTemplate<_NewScalar> cast() const;
 
-  // @todo 'cast' across groups
+  /// @todo 'cast' across groups
   /// SO3 so3 = so2.as<SO3>()
 //  template <class _DerivedOther>
 //  LieGroupTemplate<_DerivedOther> as() const;
@@ -563,7 +563,7 @@ LieGroupBase<_Derived>::act(const Vector& v,
   return derived().act(v, J_vout_m, J_vout_v);
 }
 
-/// Operators
+// Operators
 
 template <typename _Derived>
 _Derived&
@@ -639,7 +639,7 @@ LieGroupBase<_Derived>::operator *=(
   return derived();
 }
 
-/// Static helpers
+// Static helpers
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::LieGroup
@@ -656,7 +656,7 @@ LieGroupBase<_Derived>::Random()
   return LieGroup().setRandom();
 }
 
-/// Utils
+// Utils
 
 template <typename _Stream, typename _Derived>
 _Stream& operator << (

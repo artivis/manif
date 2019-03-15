@@ -34,11 +34,9 @@ struct traits<SE2Tangent<_Scalar>>
 
 namespace manif {
 
-///////////////
-///         ///
-/// Tangent ///
-///         ///
-///////////////
+//
+// Tangent
+//
 
 /**
  * @brief Represent an element of the tangent space of SE2.
