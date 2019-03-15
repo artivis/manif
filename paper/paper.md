@@ -43,7 +43,7 @@ the state representations evolve.
 
 The `manif` library has been developed to make easily accessible
 the most common operations on Lie groups in state estimation.
-Its design is similar to that of `Eigen` so that
+Its design is similar to that of `Eigen`, so that
 all Lie group classes defined in `manif` have in common that
 they inherit from a templated base class using static polymorphism.
 This allows for the possibility the write generic code without
