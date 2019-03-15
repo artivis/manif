@@ -25,7 +25,7 @@ bibliography: paper.bib
 `manif` [@manif] is a micro Lie theory library targeted at
 state estimation in robotics applications.
 With a single dependency on `Eigen` [@eigenweb] and
-a requirement on c++11 only it is
+a requirement on c++11 only, it is
 developed as a header-only library making
 it easy to integrate to existing projects.
 
@@ -48,10 +48,12 @@ all Lie group classes defined in `manif` have in common that
 they inherit from a templated base class using static polymorphism.
 This allows for the possibility the write generic code without
 paying the price of pointer indirection.
+Thanks to this polymorphism, the library is open to extensions to
+Lie groups beyond the currently implemented SO(2), SE(2), SO(3) and SE(3).
 
 The library is mathematically grounded in [@Sola18]
-and often refers to it in it documentation
-especially for mathematical developments.
+and often refers to it in the documentation,
+especially for providing reference for the mathematical formulae.
 
 # Related work
 
