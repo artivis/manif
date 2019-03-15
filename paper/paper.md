@@ -7,14 +7,14 @@ tags:
   - Robotics
   - c++
 authors:
- - name: Jeremie Deray
+ - name: Jérémie Deray
    orcid: 0000-0001-5279-8251
    affiliation: 1
- - name: Joan Sola
+ - name: Joan Solà
    orcid: 0000-0002-2933-3381
    affiliation: 1
 affiliations:
- - name: Institut de Rob\`otica i Inform\`atica Industrial, CSIC-UPC, Llorens Artigas 4-6, 08028, Barcelona, Spain.
+ - name: Institut de Robòtica i Informàtica Industrial, CSIC-UPC, Llorens Artigas 4-6, 08028, Barcelona, Spain.
    index: 1
 date: 2 December 2018
 bibliography: paper.bib
