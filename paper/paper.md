@@ -1,5 +1,5 @@
 ---
-title: 'Manif: A micro Lie theory library for state-estimation in robotics applications'
+title: 'Manif: A micro Lie theory library for state estimation in robotics applications'
 tags:
   - Lie group
   - Lie algebra
