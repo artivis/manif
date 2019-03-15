@@ -22,13 +22,6 @@ bibliography: paper.bib
 
 # Summary
 
-`manif` [@manif] is a micro Lie theory library targeted at
-state estimation in robotics applications.
-With a single dependency on `Eigen` [@eigenweb] and
-a requirement on c++11 only, it is
-developed as a header-only library making
-it easy to integrate to existing projects.
-
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
 properly. This is motivated by an increasing demand for
@@ -40,6 +33,13 @@ This has led to problem formulations involving what has been
 known as ‘manifolds’, which in this context are no less
 than the smooth topologic surfaces of the Lie groups where
 the state representations evolve.
+
+`manif` [@manif] is a micro Lie theory library targeted at
+state estimation in robotics applications.
+With a single dependency on `Eigen` [@eigenweb] and
+a requirement on c++11 only, it is
+developed as a header-only library making
+it easy to integrate to existing projects.
 
 The `manif` library has been developed to make easily accessible
 the most common operations on Lie groups in state estimation.
