@@ -27,7 +27,7 @@ state estimation in robotics applications.
 With a single dependency on `Eigen` [@eigenweb] and
 a requirement on c++11 only it is
 developed as a header-only library making
-it easily to integrate to existing projects.
+it easy to integrate to existing projects.
 
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
@@ -62,18 +62,18 @@ This allows for writing generic algorithms on Lie groups.
 Moreover, the analytical Jacobian matrices are available to the user
 for most of the operation on groups,
 allowing complex chain of operations to be differentiated through the chain rule.
-Jacobian matrices in `manif` are defined with respect to a local
-perturbation on the Lie group's tangent space,
+Jacobian matrices in `manif` are defined with respect to local
+perturbations on the Lie group's tangent spaces,
 whereas `Sophus` defines them with respect
-to the representation vector that underlie the implementation.
+to the representation vector that underlies the implementation.
 
 `wave_geometry` [@wave_geometry] Manifold geometry with fast automatic derivatives
 and coordinate frame semantics checking.
 Our work differs from `wave_geometry` in that it relies on
-c++11 which is still the standard in many laboratories and companies while
+c++11 which is still the standard in many laboratories and companies, while
 `wave_geometry`, as of the time this paper is written,
 requires a c++17-compatible compiler.
-While both library rely on the external dependency is `Eigen`,
+While both libraries rely on the external dependency `Eigen`,
 `wave_geometry` also relies on Boost [@boostweb].
 Finally, as of the time this paper is written, `wave_geometry` only implements
 the groups $SO3$ and $SE3$ while `manif` also provides $SO2$ and $SE2$
