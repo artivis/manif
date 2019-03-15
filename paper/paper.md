@@ -36,7 +36,7 @@ precision, consistency and stability of the solutions.
 Indeed, a proper modeling of the states and measurements,
 the functions relating them, and their uncertainties,
 is crucial to achieve these goals.
-It has led to problems formulation involving what has been
+This has led to problem formulations involving what has been
 known as ‘manifolds’, which in this context are no less
 than the smooth topologic surfaces of the Lie groups where
 the state representations evolve.
