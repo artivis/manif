@@ -78,6 +78,6 @@ requires a c++17-compatible compiler.
 While both libraries rely on the external dependency `Eigen`,
 `wave_geometry` also relies on Boost [@boostweb].
 Finally, as of the time this paper is written, `wave_geometry` only implements
-the groups $SO3$ and $SE3$ while `manif` also provides $SO2$ and $SE2$
+the groups SO(3) and SE(3) while `manif` also provides SO(2) and SE(2).
 
 # References
