@@ -58,7 +58,7 @@ macro(_eigen3_check_version)
 
   if(NOT EIGEN3_VERSION_OK)
     if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
-      message(FATAL_ERROR "Eigen3 version 3.3.6 found in /home/rvbust/Rvbust/Install/Eigen/include/eigen3/,"
+      message(FATAL_ERROR "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR},"
                      "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
     else(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
       message(FATAL_ERROR "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR}, "
