@@ -50,16 +50,20 @@ macro(_eigen3_check_version)
   set(EIGEN3_MINOR_VERSION "${CMAKE_MATCH_1}")
 
   set(EIGEN3_VERSION ${EIGEN3_WORLD_VERSION}.${EIGEN3_MAJOR_VERSION}.${EIGEN3_MINOR_VERSION})
-  if(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+  if(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION} OR ${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
     set(EIGEN3_VERSION_OK FALSE)
-  else(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+  else(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION} OR ${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
     set(EIGEN3_VERSION_OK TRUE)
-  endif(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+  endif(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION} OR ${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
 
   if(NOT EIGEN3_VERSION_OK)
-
-    message(STATUS "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR}, "
-                   "but at least version ${Eigen3_FIND_VERSION} is required")
+    if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+      message(FATAL_ERROR "Eigen3 version 3.3.6 found in /home/rvbust/Rvbust/Install/Eigen/include/eigen3/,"
+                     "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
+    else(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+      message(FATAL_ERROR "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR}, "
+                     "but at least version ${Eigen3_FIND_VERSION} is required")
+    endif(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
   endif(NOT EIGEN3_VERSION_OK)
 endmacro(_eigen3_check_version)
 
