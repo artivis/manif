@@ -62,6 +62,7 @@ public:
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
 
+  using Base::normalize;
   using Base::quat;
 
   SO3()  = default;
@@ -145,6 +146,7 @@ SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
   : data_(data)
 {
   //
+  normalize();
 }
 
 template <typename _Scalar>
@@ -160,6 +162,7 @@ SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
   : data_(x, y, z, w)
 {
   //
+  normalize();
 }
 
 template <typename _Scalar>

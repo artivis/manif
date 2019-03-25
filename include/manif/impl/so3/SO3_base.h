@@ -332,7 +332,7 @@ SO3Base<_Derived>::quat() const
 template <typename _Derived>
 void SO3Base<_Derived>::normalize()
 {
-  coeffs().normalize();
+  coeffs_nonconst().normalize();
 }
 
 namespace internal {
