@@ -4,6 +4,7 @@
 #include "manif/impl/so3/SO3_properties.h"
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/utils.h"
+#include <Eigen/Geometry>
 
 namespace manif {
 
