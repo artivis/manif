@@ -48,7 +48,7 @@ before_script:
   - cd build
 
   # Update / Install Eigen
-  - wget http://bitbucket.org/eigen/eigen/get/3.3.4.tar.gz && tar xzf 3.3.4.tar.gz && sudo cp -Rp eigen-eigen-5a0156e40feb /usr/local/include/eigen3;
+  - wget http://bitbucket.org/eigen/eigen/get/3.3-beta1.tar.gz && tar xzf 3.3-beta1.tar.gz && sudo cp -Rp eigen-eigen-ce5a455b34c0 /usr/local/include/eigen3;
 
   # #
   # # Update / Install CMake
