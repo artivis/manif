@@ -22,6 +22,11 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 find_package(Eigen3 REQUIRED)
 
+if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR},"
+                  "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
+endif(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 option(BUILD_TESTING "Build all tests." OFF)
