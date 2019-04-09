@@ -155,7 +155,8 @@ representation vector of the group element
 (e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
 For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
-[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.
+[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
+For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/On-the-use-with-Ceres.md).
 
 ## Documentation
 
