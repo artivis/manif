@@ -10,6 +10,25 @@
 **manif** is a header-only c++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
+There has been a remarkable effort in the last years in
+the robotics community to formulate estimation problems
+properly. This is motivated by an increasing demand for
+precision, consistency and stability of the solutions.
+Indeed, a proper modeling of the states and measurements,
+the functions relating them, and their uncertainties,
+is crucial to achieve these goals.
+This has led to problem formulations involving what has been
+known as ‘manifolds’, which in this context are no less
+than the smooth topologic surfaces of the Lie groups where
+the state representations evolve.
+
+**manif** was designed for easy integration to larger project.
+A single dependency on [Eigen](http://eigen.tuxfamily.org),
+header-only for easy integration, templated on
+the underlying scalar type so that one can use its own,
+and c++11 since not everyone gets to enjoy the latest c++ features,
+especially in industry.
+
 - Maintainer status: maintained
 - Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
 - Authors:
