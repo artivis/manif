@@ -181,9 +181,7 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Isometry
 SE3Base<_Derived>::isometry() const
 {
-  Isometry T;
-  T.matrix() = transform();
-  return T;
+  return Isometry(transform());
 }
 
 template <typename _Derived>
