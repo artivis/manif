@@ -115,6 +115,15 @@ public:
   SE3(const Translation& t,
       const SO3<Scalar>& SO3);
 
+  /**
+   * @brief Constructor from a 3D Eigen::Isometry<Scalar>
+   * @param[in] h an isometry object from Eigen
+   *
+   * Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix.
+   * This is used to speed up certain methods of Transform, especially inverse().
+   */
+  SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h);
+
   // LieGroup common API
 
   const DataType& coeffs() const;
@@ -190,6 +199,14 @@ SE3<_Scalar>::SE3(const Translation& t,
 {
   //
 }
+
+template <typename _Scalar>
+SE3<_Scalar>::SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h)
+  : SE3(h.translation(), Eigen::Quaternion<_Scalar>(h.rotation()))
+{
+  //
+}
+
 
 template <typename _Scalar>
 typename SE3<_Scalar>::DataType&
