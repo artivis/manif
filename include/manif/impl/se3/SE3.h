@@ -117,8 +117,11 @@ public:
       const SO3<Scalar>& SO3);
 
   /**
-   * @brief Constructor from Eigen::Isometry3d
+   * @brief Constructor from a 3D Eigen::Isometry<Scalar>
    * @param[in] h an isometry object from Eigen
+   *
+   * Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix.
+   * This is used to speed up certain methods of Transform, especially inverse().
    */
   SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h);
 
