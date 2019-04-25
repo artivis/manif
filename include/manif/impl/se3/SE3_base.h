@@ -5,6 +5,8 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/so3/SO3_map.h"
 
+#include <Eigen/Geometry>
+
 namespace manif {
 
 //
@@ -34,6 +36,7 @@ public:
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Translation    = typename internal::traits<_Derived>::Translation;
   using Transformation = typename internal::traits<_Derived>::Transformation;
+  using Isometry       = Eigen::Transform<Scalar, 3, Eigen::Isometry>;
 
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
@@ -107,6 +110,13 @@ public:
   Transformation transform() const;
 
   /**
+   * Get the isometry object (Eigen 3D isometry).
+   * @note T = | R t |
+   *           | 0 1 |
+   */
+  Isometry isometry() const;
+
+  /**
    * @brief Get the rotational part of this as a rotation matrix.
    */
   Rotation rotation() const;
@@ -164,6 +174,16 @@ SE3Base<_Derived>::transform() const
   Transformation T = Transformation::Identity();
   T.template topLeftCorner<3,3>()  = rotation();
   T.template topRightCorner<3,1>() = translation();
+  return T;
+}
+
+template <typename _Derived>
+typename SE3Base<_Derived>::Isometry
+SE3Base<_Derived>::isometry() const
+{
+  Isometry T = Isometry::Identity();
+  T.matrix().template topLeftCorner<3,3>()  = rotation();
+  T.matrix().template topRightCorner<3,1>() = translation();
   return T;
 }
 

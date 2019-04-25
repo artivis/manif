@@ -4,7 +4,6 @@
 #include "manif/impl/se3/SE3_base.h"
 
 #include <Eigen/Core>
-#include <Eigen/Geometry>
 
 namespace manif {
 
