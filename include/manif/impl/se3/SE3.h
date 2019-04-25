@@ -120,7 +120,7 @@ public:
    * @brief Constructor from Eigen::Isometry3d
    * @param[in] h an isometry object from Eigen
    */
-  SE3(const Eigen::Isometry3d& h);
+  SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h);
 
   // LieGroup common API
 
@@ -199,7 +199,7 @@ SE3<_Scalar>::SE3(const Translation& t,
 }
 
 template <typename _Scalar>
-SE3<_Scalar>::SE3(const Eigen::Isometry3d& h)
+SE3<_Scalar>::SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h)
   : SE3(h.translation(), Eigen::Quaternion<_Scalar>(h.rotation()))
 {
   //
