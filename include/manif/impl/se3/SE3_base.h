@@ -181,9 +181,8 @@ template <typename _Derived>
 typename SE3Base<_Derived>::Isometry
 SE3Base<_Derived>::isometry() const
 {
-  Isometry T = Isometry::Identity();
-  T.matrix().template topLeftCorner<3,3>()  = rotation();
-  T.matrix().template topRightCorner<3,1>() = translation();
+  Isometry T;
+  T.matrix() = transform();
   return T;
 }
 
