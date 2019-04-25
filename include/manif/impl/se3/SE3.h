@@ -4,6 +4,7 @@
 #include "manif/impl/se3/SE3_base.h"
 
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 
 namespace manif {
 
@@ -115,6 +116,12 @@ public:
   SE3(const Translation& t,
       const SO3<Scalar>& SO3);
 
+  /**
+   * @brief Constructor from Eigen::Isometry3d
+   * @param[in] h an isometry object from Eigen
+   */
+  SE3(const Eigen::Isometry3d& h);
+
   // LieGroup common API
 
   const DataType& coeffs() const;
@@ -190,6 +197,14 @@ SE3<_Scalar>::SE3(const Translation& t,
 {
   //
 }
+
+template <typename _Scalar>
+SE3<_Scalar>::SE3(const Eigen::Isometry3d& h)
+  : SE3(h.translation(), Eigen::Quaternion<_Scalar>(h.rotation()))
+{
+  //
+}
+
 
 template <typename _Scalar>
 typename SE3<_Scalar>::DataType&
