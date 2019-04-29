@@ -3,6 +3,7 @@
 
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
+#include "manif/impl/jacobian.h"
 #include "manif/impl/generator.h"
 #include "manif/impl/random.h"
 #include "manif/impl/eigen.h"
@@ -29,12 +30,9 @@ struct TangentBase
   using LieGroup = typename internal::traits<_Derived>::LieGroup;
   using Tangent  = typename internal::traits<_Derived>::Tangent;
   using DataType = typename internal::traits<_Derived>::DataType;
-  using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
-  using InnerWeight = Jacobian;
-
-  using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
+  using InnerWeight = Jacobian<_Derived, _Derived>;
 
   template <typename _Scalar>
   using TangentTemplate = typename internal::traitscast<Tangent, _Scalar>::cast;
@@ -130,8 +128,7 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (23).
    */
-  LieGroup exp(OptJacobianRef J_m_t =
-                OptJacobianRef{}) const;
+  LieGroup exp(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -139,8 +136,7 @@ public:
    * @ref exp instead.
    */
   MANIF_DEPRECATED
-  LieGroup retract(OptJacobianRef J_m_t =
-                    OptJacobianRef{}) const;
+  LieGroup retract(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief Right oplus operation of the Lie group.
@@ -151,8 +147,8 @@ public:
    * @note See Eq. (25).
    */
   LieGroup rplus(const LieGroup& m,
-                 OptJacobianRef J_mout_t = {},
-                 OptJacobianRef J_mout_m = {}) const;
+                 OptJacobianRef<LieGroup,Tangent> J_mout_t = {},
+                 OptJacobianRef<LieGroup,Tangent> J_mout_m = {}) const;
 
   /**
    * @brief Left oplus operation of the Lie group.
@@ -163,26 +159,26 @@ public:
    * @note See Eq. (27).
    */
   LieGroup lplus(const LieGroup& m,
-                 OptJacobianRef J_mout_t = {},
-                 OptJacobianRef J_mout_m = {}) const;
+                 OptJacobianRef<LieGroup,Tangent> J_mout_t = {},
+                 OptJacobianRef<LieGroup,Tangent> J_mout_m = {}) const;
 
   /**
    * @brief An alias for the right oplus operation.
    * @see rplus
    */
   LieGroup plus(const LieGroup& m,
-                OptJacobianRef J_mout_t = {},
-                OptJacobianRef J_mout_m = {}) const;
+                OptJacobianRef<LieGroup,Tangent> J_mout_t = {},
+                OptJacobianRef<LieGroup,Tangent> J_mout_m = {}) const;
 
   template <typename _DerivedOther>
   Tangent plus(const TangentBase<_DerivedOther>& t,
-               OptJacobianRef J_mout_ta = {},
-               OptJacobianRef J_mout_tb = {}) const;
+               OptJacobianRef<Tangent,Tangent> J_mout_ta = {},
+               OptJacobianRef<Tangent,Tangent> J_mout_tb = {}) const;
 
   template <typename _DerivedOther>
   Tangent minus(const TangentBase<_DerivedOther>& t,
-                OptJacobianRef J_mout_ta = {},
-                OptJacobianRef J_mout_tb = {}) const;
+                OptJacobianRef<Tangent,Tangent> J_mout_ta = {},
+                OptJacobianRef<Tangent,Tangent> J_mout_tb = {}) const;
 
   /**
    * @brief Get the right Jacobian.
@@ -190,7 +186,7 @@ public:
    * @note See Eq. (41) for the right Jacobian of general functions.
    * @note See Eqs. (126,143,163,179,191) for implementations of the right Jacobian of @ref exp.
    */
-  Jacobian rjac() const;
+  Jacobian<LieGroup,Tangent> rjac() const;
 
   /**
    * @brief Get the left Jacobian.
@@ -198,37 +194,37 @@ public:
    * @note See Eq. (44) for the left Jacobian of general functions.
    * @note See Eqs. (126,145,164,179,191) for implementations of the left Jacobian of @ref exp.
    */
-  Jacobian ljac() const;
+  Jacobian<LieGroup,Tangent> ljac() const;
 
   /// @note Calls Derived's 'overload'
   template <typename U = _Derived>
   typename std::enable_if<
     internal::has_rjacinv<U>::value,
-    typename TangentBase<U>::Jacobian>::type rjacinv() const;
+    Jacobian<Tangent,LieGroup>>::type rjacinv() const;
 
   /// @note Calls Base default impl
   template <typename U = _Derived>
   typename std::enable_if<
     not internal::has_rjacinv<U>::value,
-    typename TangentBase<U>::Jacobian>::type rjacinv() const;
+    Jacobian<Tangent,LieGroup>>::type rjacinv() const;
 
   /// @note Calls Derived's 'overload'
   template <typename U = _Derived>
   typename std::enable_if<
     internal::has_ljacinv<U>::value,
-    typename TangentBase<U>::Jacobian>::type ljacinv() const;
+    Jacobian<Tangent,LieGroup>>::type ljacinv() const;
 
   /// @note Calls Base default impl
   template <typename U = _Derived>
   typename std::enable_if<
     not internal::has_ljacinv<U>::value,
-    typename TangentBase<U>::Jacobian>::type ljacinv() const;
+    Jacobian<Tangent,LieGroup>>::type ljacinv() const;
 
   /**
    * @brief
    * @return [description]
    */
-  Jacobian smallAdj() const;
+  Jacobian<Tangent,Tangent> smallAdj() const;
 
   /**
    * @brief Evaluate whether this and v are 'close'.
@@ -393,14 +389,14 @@ _Derived& TangentBase<_Derived>::setRandom()
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
-TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+TangentBase<_Derived>::exp(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return derived().exp(J_m_t);
 }
 
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
-TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+TangentBase<_Derived>::retract(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return derived().exp(J_m_t);
 }
@@ -452,8 +448,8 @@ TangentBase<_Derived>::hat() const
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::rplus(const LieGroup& m,
-                             OptJacobianRef J_mout_t,
-                             OptJacobianRef J_mout_m) const
+                             OptJacobianRef<LieGroup,Tangent> J_mout_t,
+                             OptJacobianRef<LieGroup,Tangent> J_mout_m) const
 {
   return m.rplus(derived(), J_mout_m, J_mout_t);
 }
@@ -461,8 +457,8 @@ TangentBase<_Derived>::rplus(const LieGroup& m,
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::lplus(const LieGroup& m,
-                             OptJacobianRef J_mout_t,
-                             OptJacobianRef J_mout_m) const
+                             OptJacobianRef<LieGroup,Tangent> J_mout_t,
+                             OptJacobianRef<LieGroup,Tangent> J_mout_m) const
 {
   return m.lplus(derived(), J_mout_m, J_mout_t);
 }
@@ -470,8 +466,8 @@ TangentBase<_Derived>::lplus(const LieGroup& m,
 template <class _Derived>
 typename TangentBase<_Derived>::LieGroup
 TangentBase<_Derived>::plus(const LieGroup& m,
-                            OptJacobianRef J_mout_t,
-                            OptJacobianRef J_mout_m) const
+                            OptJacobianRef<LieGroup,Tangent> J_mout_t,
+                            OptJacobianRef<LieGroup,Tangent> J_mout_m) const
 {
   return m.lplus(derived(), J_mout_m, J_mout_t);
 }
@@ -480,8 +476,8 @@ template <class _Derived>
 template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::plus(const TangentBase<_DerivedOther>& t,
-                            OptJacobianRef J_mout_ta,
-                            OptJacobianRef J_mout_tb) const
+                            OptJacobianRef<Tangent,Tangent> J_mout_ta,
+                            OptJacobianRef<Tangent,Tangent> J_mout_tb) const
 {
   if (J_mout_ta)
     J_mout_ta->setIdentity();
@@ -496,8 +492,8 @@ template <class _Derived>
 template <typename _DerivedOther>
 typename TangentBase<_Derived>::Tangent
 TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t,
-                             OptJacobianRef J_mout_ta,
-                             OptJacobianRef J_mout_tb) const
+                             OptJacobianRef<Tangent,Tangent> J_mout_ta,
+                             OptJacobianRef<Tangent,Tangent> J_mout_tb) const
 {
   if (J_mout_ta)
     J_mout_ta->setIdentity();
@@ -512,14 +508,16 @@ TangentBase<_Derived>::minus(const TangentBase<_DerivedOther>& t,
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Jacobian
+Jacobian<typename TangentBase<_Derived>::LieGroup,
+         typename TangentBase<_Derived>::Tangent>
 TangentBase<_Derived>::rjac() const
 {
   return derived().rjac();
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Jacobian
+Jacobian<typename TangentBase<_Derived>::LieGroup,
+         typename TangentBase<_Derived>::Tangent>
 TangentBase<_Derived>::ljac() const
 {
   return derived().ljac();
@@ -530,7 +528,8 @@ template <class _Derived>
 template <typename U>
 typename std::enable_if<
   internal::has_rjacinv<U>::value,
-  typename TangentBase<U>::Jacobian>::type
+  Jacobian<typename TangentBase<_Derived>::Tangent,
+           typename TangentBase<_Derived>::LieGroup>>::type
 TangentBase<_Derived>::rjacinv() const
 {
   return derived().rjacinv();
@@ -540,7 +539,8 @@ template <class _Derived>
 template <typename U>
 typename std::enable_if<
   not internal::has_rjacinv<U>::value,
-  typename TangentBase<U>::Jacobian>::type
+  Jacobian<typename TangentBase<_Derived>::Tangent,
+           typename TangentBase<_Derived>::LieGroup>>::type
 TangentBase<_Derived>::rjacinv() const
 {
   return derived().rjac().inverse();
@@ -550,7 +550,8 @@ template <class _Derived>
 template <typename U>
 typename std::enable_if<
   internal::has_ljacinv<U>::value,
-  typename TangentBase<U>::Jacobian>::type
+  Jacobian<typename TangentBase<_Derived>::Tangent,
+           typename TangentBase<_Derived>::LieGroup>>::type
 TangentBase<_Derived>::ljacinv() const
 {
   return derived().ljacinv();
@@ -560,14 +561,16 @@ template <class _Derived>
 template <typename U>
 typename std::enable_if<
   not internal::has_ljacinv<U>::value,
-  typename TangentBase<U>::Jacobian>::type
+  Jacobian<typename TangentBase<_Derived>::Tangent,
+           typename TangentBase<_Derived>::LieGroup>>::type
 TangentBase<_Derived>::ljacinv() const
 {
   return derived().ljac().inverse();
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Jacobian
+Jacobian<typename TangentBase<_Derived>::Tangent,
+         typename TangentBase<_Derived>::Tangent>
 TangentBase<_Derived>::smallAdj() const
 {
   return derived().smallAdj();
@@ -818,13 +821,13 @@ operator /(const TangentBase<_Derived>& t,
   return ret /= scalar;
 }
 
-template <class _DerivedOther>
-typename TangentBase<_DerivedOther>::Tangent
-operator *(const typename TangentBase<_DerivedOther>::Jacobian& J,
-           const TangentBase<_DerivedOther>& t)
+template <class _EigenDerived, class _ManifDerived>
+typename TangentBase<_ManifDerived>::Tangent
+operator *(const Eigen::MatrixBase<_EigenDerived>& J,
+           const TangentBase<_ManifDerived>& t)
 {
-  return typename TangentBase<_DerivedOther>::Tangent(
-        typename TangentBase<_DerivedOther>::DataType(J*t.coeffs()));
+  return typename TangentBase<_ManifDerived>::Tangent(
+        typename TangentBase<_ManifDerived>::DataType(J*t.coeffs()));
 }
 
 template <typename _Derived, typename _DerivedOther>

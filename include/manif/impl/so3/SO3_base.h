@@ -42,7 +42,7 @@ public:
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note q^-1 = q*. See Eq. (140).
    */
-  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m = {}) const;
 
   /**
    * @brief Get the SO3 corresponding Lie algebra element in vector form.
@@ -52,7 +52,7 @@ public:
    * @note See Eq. (133) & Eq. (144).
    * @see SO3Tangent.
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  Tangent log(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -60,7 +60,7 @@ public:
    * @ref log instead.
    */
   MANIF_DEPRECATED
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
+  Tangent lift(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief Composition of this and another SO3 element.
@@ -73,8 +73,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief Rotation action on a 3-vector.
@@ -87,14 +87,14 @@ public:
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 3, 1>
   act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_m = {},
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m = {},
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v = {}) const;
 
   /**
    * @brief Get the adjoint of SO3 at this.
    * @note See Eq. (139).
    */
-  Jacobian adj() const;
+  Adjoint adj() const;
 
   // SO3 specific functions
 
@@ -145,7 +145,7 @@ SO3Base<_Derived>::rotation() const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::LieGroup
-SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
+SO3Base<_Derived>::inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m) const
 {
   if (J_minv_m)
   {
@@ -160,7 +160,7 @@ SO3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Tangent
-SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
+SO3Base<_Derived>::log(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   using std::sqrt;
   using std::atan2;
@@ -217,13 +217,13 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
     Scalar theta2 = tan.coeffs().squaredNorm();
     typename Tangent::LieAlg W = tan.hat();
     if (theta2 <= Constants<Scalar>::eps)
-      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
+      J_t_m->noalias() = Jacobian<Tangent,LieGroup>::Identity() + Scalar(0.5) * W; // Small angle approximation
     else
     {
       Scalar theta = sqrt(theta2);  // rotation angle
-      Jacobian M;
+      Jacobian<Tangent,LieGroup> M;
       M.noalias() = (Scalar(1) / theta2 - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) * (W * W);
-      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
+      J_t_m->noalias() = Jacobian<Tangent,LieGroup>::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
     }
   }
 
@@ -232,7 +232,7 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 typename SO3Base<_Derived>::Tangent
-SO3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SO3Base<_Derived>::lift(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return log(J_t_m);
 }
@@ -242,8 +242,8 @@ template <typename _DerivedOther>
 typename SO3Base<_Derived>::LieGroup
 SO3Base<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SO3Base<_DerivedOther>, _DerivedOther>::value,
@@ -266,8 +266,8 @@ template <typename _Derived>
 template <typename _EigenDerived>
 Eigen::Matrix<typename SO3Base<_Derived>::Scalar, 3, 1>
 SO3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m,
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v) const
 {
   assert_vector_dim(v, 3);
   const Rotation R(rotation());
@@ -286,7 +286,7 @@ SO3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 }
 
 template <typename _Derived>
-typename SO3Base<_Derived>::Jacobian
+typename SO3Base<_Derived>::Adjoint
 SO3Base<_Derived>::adj() const
 {
   return rotation();

@@ -51,7 +51,7 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eqs. (114, 116) and Eq. (126).
    */
-  LieGroup exp(OptJacobianRef J_m_t = {}) const;
+  LieGroup exp(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -59,39 +59,39 @@ public:
    * @ref exp instead.
    */
   MANIF_DEPRECATED
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SO2.
    * @note See Eq. (126).
    */
-  Jacobian rjac() const;
+  Jacobian<LieGroup,Tangent> rjac() const;
 
   /**
    * @brief Get the left Jacobian of SO2.
    * @note See Eq. (126).
    */
-  Jacobian ljac() const;
+  Jacobian<LieGroup,Tangent> ljac() const;
 
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
    * @note See Eq. (126).
    * @see rjac.
    */
-  Jacobian rjacinv() const;
+  Jacobian<Tangent,LieGroup> rjacinv() const;
 
   /**
    * @brief Get the inverse of the right Jacobian of SO2.
    * @note See Eq. (126).
    * @see ljac.
    */
-  Jacobian ljacinv() const;
+  Jacobian<Tangent,LieGroup> ljacinv() const;
 
   /**
    * @brief
    * @return
    */
-  Jacobian smallAdj() const;
+  Jacobian<Tangent,Tangent> smallAdj() const;
 
   // SO2Tangent specific API
 
@@ -103,7 +103,7 @@ public:
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieGroup
-SO2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+SO2TangentBase<_Derived>::exp(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   using std::cos;
   using std::sin;
@@ -118,7 +118,7 @@ SO2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
 template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieGroup
-SO2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+SO2TangentBase<_Derived>::retract(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return exp(J_m_t);
 }
@@ -133,40 +133,48 @@ SO2TangentBase<_Derived>::hat() const
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Jacobian
+Jacobian<typename SO2TangentBase<_Derived>::LieGroup,
+         typename SO2TangentBase<_Derived>::Tangent>
 SO2TangentBase<_Derived>::rjac() const
 {
-  static const Jacobian Jr = Jacobian::Constant(Scalar(1));
+  static const Jacobian<LieGroup,Tangent> Jr =
+      Jacobian<LieGroup,Tangent>::Constant(Scalar(1));
   return Jr;
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Jacobian
+Jacobian<typename SO2TangentBase<_Derived>::LieGroup,
+         typename SO2TangentBase<_Derived>::Tangent>
 SO2TangentBase<_Derived>::ljac() const
 {
-  static const Jacobian Jl = Jacobian::Constant(Scalar(1));
+  static const Jacobian<LieGroup,Tangent> Jl =
+      Jacobian<LieGroup,Tangent>::Constant(Scalar(1));
   return Jl;
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Jacobian
+Jacobian<typename SO2TangentBase<_Derived>::Tangent,
+         typename SO2TangentBase<_Derived>::LieGroup>
 SO2TangentBase<_Derived>::rjacinv() const
 {
   return rjac();
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Jacobian
+Jacobian<typename SO2TangentBase<_Derived>::Tangent,
+         typename SO2TangentBase<_Derived>::LieGroup>
 SO2TangentBase<_Derived>::ljacinv() const
 {
   return ljac();
 }
 
 template <typename _Derived>
-typename SO2TangentBase<_Derived>::Jacobian
+Jacobian<typename SO2TangentBase<_Derived>::Tangent,
+         typename SO2TangentBase<_Derived>::Tangent>
 SO2TangentBase<_Derived>::smallAdj() const
 {
-  static const Jacobian smallAdj = Jacobian::Constant(Scalar(1));
+  static const Jacobian<Tangent,Tangent> smallAdj =
+      Jacobian<Tangent,Tangent>::Constant(Scalar(1));
   return smallAdj;
 }
 

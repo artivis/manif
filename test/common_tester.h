@@ -552,7 +552,7 @@ public:
 
   void evalInverseJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
+    Jacobian<LieGroup,LieGroup> J_sout_s;
     LieGroup state_out = state.inverse(J_sout_s);
 
     LieGroup state_pert = (state+w).inverse();
@@ -563,7 +563,7 @@ public:
 
   void evalLiftJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
+    Jacobian<Tangent,LieGroup> J_sout_s;
     Tangent state_out = state.log(J_sout_s);
 
     Tangent state_pert = (state+w).log();
@@ -574,7 +574,7 @@ public:
 
   void evalRetractJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
+    Jacobian<LieGroup,Tangent> J_sout_s;
     LieGroup state_out = delta.exp(J_sout_s);
 
     LieGroup state_pert = (delta+w).exp();
@@ -595,7 +595,7 @@ public:
 
   void evalComposeJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_so;
+    Jacobian<LieGroup,LieGroup> J_sout_s, J_sout_so;
     LieGroup state_out = state.compose(state_other, J_sout_s, J_sout_so);
 
     // Jac wrt first element
@@ -615,7 +615,7 @@ public:
 
   void evalBetweenJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_so;
+    Jacobian<LieGroup,LieGroup> J_sout_s, J_sout_so;
     LieGroup state_out = state.between(state_other, J_sout_s, J_sout_so);
 
     // Jac wrt first element
@@ -635,7 +635,8 @@ public:
 
   void evalRplusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_t;
+    Jacobian<LieGroup,LieGroup> J_sout_s;
+    Jacobian<LieGroup,Tangent> J_sout_t;
     LieGroup state_out = state.rplus(delta, J_sout_s, J_sout_t);
 
     // Jac wrt first element
@@ -655,7 +656,8 @@ public:
 
   void evalLplusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_t;
+    Jacobian<LieGroup,LieGroup> J_sout_s;
+    Jacobian<LieGroup,Tangent> J_sout_t;
     LieGroup state_out = state.lplus(delta, J_sout_s, J_sout_t);
 
     // Jac wrt first element
@@ -675,7 +677,8 @@ public:
 
   void evalPlusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_t;
+    Jacobian<LieGroup,LieGroup> J_sout_s;
+    Jacobian<LieGroup,Tangent> J_mout_t;
     LieGroup state_out = state.plus(delta, J_sout_s, J_mout_t);
 
     // Jac wrt first element
@@ -695,7 +698,8 @@ public:
 
   void evalRminusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
+    Jacobian<Tangent,LieGroup> J_sout_s;
+    Jacobian<Tangent,Tangent> J_mout_so;
     Tangent state_out = state.rminus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -715,7 +719,8 @@ public:
 
   void evalLminusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
+    Jacobian<Tangent,LieGroup> J_sout_s;
+    Jacobian<Tangent,Tangent> J_mout_so;
     Tangent state_out = state.lminus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -735,7 +740,8 @@ public:
 
   void evalMinusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
+    Jacobian<Tangent,LieGroup> J_sout_s;
+    Jacobian<Tangent,Tangent> J_mout_so;
     Tangent state_out = state.minus(state_other, J_sout_s, J_mout_so);
 
     // Jac wrt first element
@@ -755,7 +761,7 @@ public:
 
   void evalAdj()
   {
-    typename LieGroup::Jacobian Adja, Adjb, Adjc;
+    typename LieGroup::Adjoint Adja, Adjb, Adjc;
 
     Adja = state.adj();
     Adjb = state_other.adj();
@@ -770,7 +776,8 @@ public:
 
   void evalAdjJlJr()
   {
-    typename LieGroup::Jacobian Adj, Jr, Jl;
+    typename LieGroup::Adjoint Adj;
+    Jacobian<LieGroup,Tangent> Jr, Jl;
 
     Adj = state.adj();
 
@@ -806,8 +813,8 @@ public:
 
   void evalJrJrinvJlJlinv()
   {
-    using Jac = typename LieGroup::Jacobian;
-    Jac Jr, Jrinv, Jl, Jlinv;
+    Jacobian<LieGroup,Tangent> Jr, Jl;
+    Jacobian<Tangent,LieGroup> Jrinv, Jlinv;
 
     const Tangent tan = state.log();
 
@@ -817,40 +824,46 @@ public:
     Jrinv = tan.rjacinv();
     Jlinv = tan.ljacinv();
 
-    EXPECT_EIGEN_NEAR(Jac::Identity(), Jr*Jrinv);
-    EXPECT_EIGEN_NEAR(Jac::Identity(), Jl*Jlinv);
+    const Jacobian<LieGroup,Tangent> id0 = Jacobian<LieGroup,Tangent>::Identity();
+    const Jacobian<Tangent,LieGroup> id1 = Jacobian<Tangent,LieGroup>::Identity();
+
+    EXPECT_EIGEN_NEAR(id0, Jr*Jrinv);
+    EXPECT_EIGEN_NEAR(id1, Jl*Jlinv);
   }
 
   void evalActJac()
   {
-    using Point = Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, 1>;
-    Point point = Point::Random();
+    using Vector = typename LieGroup::Vector;
+    Vector vector = Vector::Random();
 
-    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::DoF> J_pout_s;
-    Eigen::Matrix<typename LieGroup::Scalar, LieGroup::Dim, LieGroup::Dim> J_pout_p;
+    Jacobian<Vector,LieGroup> J_pout_s;
+    Jacobian<Vector,Vector>   J_pout_p;
 
-    const Point pointout = state.act(point, J_pout_s, J_pout_p);
+    static_assert_dim(J_pout_s, LieGroup::Dim, LieGroup::DoF);
+    static_assert_dim(J_pout_p, LieGroup::Dim, LieGroup::Dim);
 
-    const Point w_point = Point::Random()*w_order_;
+    const Vector vectorout = state.act(vector, J_pout_s, J_pout_p);
+
+    const Vector w_vector = Vector::Random()*w_order_;
 
     // Jac wrt first element
 
-    Point point_pert = (state+w).act(point);
-    Point point_lin  = pointout + (J_pout_s*w.coeffs());
+    Vector vector_pert = (state+w).act(vector);
+    Vector vector_lin  = vectorout + (J_pout_s*w.coeffs());
 
-    EXPECT_EIGEN_NEAR(point_pert, point_lin, 1e-7);
+    EXPECT_EIGEN_NEAR(vector_pert, vector_lin, 1e-7);
 
     // Jac wrt second element
 
-    point_pert = state.act(point+w_point);
-    point_lin  = pointout + J_pout_p*w_point;
+    vector_pert = state.act(vector+w_vector);
+    vector_lin  = vectorout + J_pout_p*w_vector;
 
-    EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
+    EXPECT_EIGEN_NEAR(vector_pert, vector_lin, tol_);
   }
 
   void evalTanPlusTanJac()
   {
-    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+    Jacobian<Tangent,Tangent> J_tout_t0, J_tout_t1;
 
     const Tangent delta_other = Tangent::Random();
 
@@ -873,7 +886,7 @@ public:
 
   void evalTanMinusTanJac()
   {
-    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
+    Jacobian<Tangent,Tangent> J_tout_t0, J_tout_t1;
 
     const Tangent delta_other = Tangent::Random();
 

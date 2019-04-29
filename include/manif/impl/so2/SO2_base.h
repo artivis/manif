@@ -41,7 +41,7 @@ public:
    * @note z^-1 = z*
    * @note See Eqs. (118,124).
    */
-  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m = {}) const;
 
   /**
    * @brief Get the SO2 corresponding Lie algebra element in vector form.
@@ -51,7 +51,7 @@ public:
    * @note See Eq. (115) & Eqs. (79,126).
    * @see SO2Tangent.
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  Tangent log(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -59,7 +59,7 @@ public:
    * @ref log instead.
    */
   MANIF_DEPRECATED
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
+  Tangent lift(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief Composition of this and another SO2 element.
@@ -72,8 +72,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief Rotation action on a 2-vector.
@@ -86,14 +86,14 @@ public:
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 2, 1>
   act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 1>>> J_vout_m = {},
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v = {}) const;
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m = {},
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v = {}) const;
 
   /**
    * @brief Get the ajoint matrix of SO2 at this.
    * @note See Eqs. (123).
    */
-  Jacobian adj() const;
+  Adjoint adj() const;
 
   // SO2 specific functions
 
@@ -158,7 +158,7 @@ SO2Base<_Derived>::rotation() const
 
 template <typename _Derived>
 typename SO2Base<_Derived>::LieGroup
-SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
+SO2Base<_Derived>::inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m) const
 {
   if (J_minv_m)
     J_minv_m->setConstant(Scalar(-1));
@@ -168,7 +168,7 @@ SO2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
-SO2Base<_Derived>::log(OptJacobianRef J_t_m) const
+SO2Base<_Derived>::log(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   if (J_t_m)
     J_t_m->setConstant(Scalar(1));
@@ -178,7 +178,7 @@ SO2Base<_Derived>::log(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 typename SO2Base<_Derived>::Tangent
-SO2Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SO2Base<_Derived>::lift(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return log(J_t_m);
 }
@@ -188,8 +188,8 @@ template <typename _DerivedOther>
 typename SO2Base<_Derived>::LieGroup
 SO2Base<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
@@ -218,8 +218,8 @@ template <typename _Derived>
 template <typename _EigenDerived>
 Eigen::Matrix<typename SO2Base<_Derived>::Scalar, 2, 1>
 SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 1>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v) const
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m,
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v) const
 {
   assert_vector_dim(v, 2);
   const Rotation R(rotation());
@@ -238,10 +238,10 @@ SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 }
 
 template <typename _Derived>
-typename SO2Base<_Derived>::Jacobian
+typename SO2Base<_Derived>::Adjoint
 SO2Base<_Derived>::adj() const
 {
-  static const Jacobian adj = Jacobian::Constant(Scalar(1));
+  static const Adjoint adj = Adjoint::Constant(Scalar(1));
   return adj;
 }
 

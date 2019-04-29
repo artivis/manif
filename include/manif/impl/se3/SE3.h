@@ -32,11 +32,10 @@ struct traits<SE3<_Scalar>>
   /// @todo would be nice to concat vec3 + quaternion
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
 
-  using Jacobian       = Eigen::Matrix<Scalar, DoF, DoF>;
   using Transformation = Eigen::Matrix<Scalar, 4, 4>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
   using Translation    = Eigen::Matrix<Scalar, Dim, 1>;
-  using Vector         = Eigen::Matrix<Scalar, DoF, 1>;
+  using Vector         = Eigen::Matrix<Scalar, Dim, 1>;
 };
 
 } /* namespace internal */

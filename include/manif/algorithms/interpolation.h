@@ -105,8 +105,6 @@ interpolate_slerp(const LieGroupBase<_Derived>& ma,
 
   LieGroup mc;
 
-  const auto _ = LieGroupBase<_Derived>::_;
-
   /// @todo optimize this
 //  if (J_mc_ma && J_mc_mb)
 //  {

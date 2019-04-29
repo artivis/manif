@@ -42,7 +42,7 @@ public:
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note See Eqs. (154, 160).
    */
-  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m = {}) const;
 
   /**
    * @brief Get the SE2 corresponding Lie algebra element in vector form.
@@ -52,7 +52,7 @@ public:
    * @note See Eqs. (157, 158).
    * @see SE2Tangent.
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  Tangent log(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -60,7 +60,7 @@ public:
    * @ref log instead.
    */
   MANIF_DEPRECATED
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
+  Tangent lift(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief Composition of this and another SE2 element.
@@ -72,8 +72,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief Rigid motion action on a 2D point.
@@ -84,16 +84,16 @@ public:
    * @note See Eq. (165) & Eqs. (166,167).
    */
   template <typename _EigenDerived>
-  Eigen::Matrix<Scalar, 2, 1>
+  Vector
   act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 3>>> J_vout_m = {},
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v = {}) const;
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m = {},
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v = {}) const;
 
   /**
    * @brief Get the adjoint matrix of SE2 at this.
    * @note See Eq. (159).
    */
-  Jacobian adj() const;
+  Adjoint adj() const;
 
   // SE2 specific functions
 
@@ -166,7 +166,7 @@ SE2Base<_Derived>::translation() const
 
 template <typename _Derived>
 typename SE2Base<_Derived>::LieGroup
-SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
+SE2Base<_Derived>::inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m) const
 {
   using std::cos;
   using std::sin;
@@ -183,7 +183,7 @@ SE2Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
-SE2Base<_Derived>::log(OptJacobianRef J_t_m) const
+SE2Base<_Derived>::log(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   using std::abs;
   using std::cos;
@@ -230,7 +230,7 @@ SE2Base<_Derived>::log(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
-SE2Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SE2Base<_Derived>::lift(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return log(J_t_m);
 }
@@ -240,8 +240,8 @@ template <typename _DerivedOther>
 typename SE2Base<_Derived>::LieGroup
 SE2Base<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE2Base<_DerivedOther>, _DerivedOther>::value,
@@ -273,10 +273,10 @@ SE2Base<_Derived>::compose(
 
 template <typename _Derived>
 template <typename _EigenDerived>
-Eigen::Matrix<typename SE2Base<_Derived>::Scalar, 2, 1>
-SE2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 3>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 2, 2>>> J_vout_v) const
+typename SE2Base<_Derived>::Vector
+SE2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived>& v,
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m,
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v) const
 {
   assert_vector_dim(v, 2);
   const Rotation R(rotation());
@@ -296,10 +296,10 @@ SE2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 }
 
 template <typename _Derived>
-typename SE2Base<_Derived>::Jacobian
+typename SE2Base<_Derived>::Adjoint
 SE2Base<_Derived>::adj() const
 {
-  Jacobian Adj = Jacobian::Identity();
+  Adjoint Adj = Adjoint::Identity();
   Adj.template topLeftCorner<2,2>() = rotation();
   Adj(0,2) =  y();
   Adj(1,2) = -x();

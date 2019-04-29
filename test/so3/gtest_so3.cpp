@@ -470,7 +470,7 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
     // Inverse of identity is identity; Jac is minus identity
   SO3d so3 = SO3d::Identity();
 
-  SO3d::Jacobian J_inv;
+  Jacobian<SO3d,SO3d> J_inv;
   SO3d so3_inv = so3.inverse(J_inv);
 
   EXPECT_DOUBLE_EQ(0, so3_inv.x());
@@ -519,7 +519,7 @@ TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
 {
   SO3d so3(0,0,0); // Identity
 
-  SO3d::Tangent::Jacobian J_log;
+  Jacobian<SO3d,SO3d::Tangent> J_log;
 
   /// @todo Jac not implemented yet
   SO3d::Tangent so3_log = so3.log(/*J_log*/);
@@ -543,7 +543,7 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
   SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
   SO3d so3b(toRad(15),  toRad(45),  toRad(90));
 
-  SO3d::Jacobian J_c_a, J_c_b;
+  Jacobian<SO3d,SO3d> J_c_a, J_c_b;
 
   SO3d so3c = so3a.compose(so3b, J_c_a, J_c_b);
 
@@ -769,7 +769,7 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
   SO3d so3b(toRad(15),toRad(45),toRad(90));
   SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
 
-  SO3d::Jacobian J_between_a, J_between_b;
+  Jacobian<SO3d,SO3d> J_between_a, J_between_b;
 
   SO3d so3c = so3a.between(so3b, J_between_a, J_between_b);
 

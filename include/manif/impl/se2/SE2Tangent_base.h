@@ -50,7 +50,7 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eqs. (156,158) & Eq. (163).
    */
-  LieGroup exp(OptJacobianRef J_m_t = {}) const;
+  LieGroup exp(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -58,25 +58,25 @@ public:
    * @ref exp instead.
    */
   MANIF_DEPRECATED
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SE2.
    * @note See Eq. (163).
    */
-  Jacobian rjac() const;
+  Jacobian<LieGroup,Tangent> rjac() const;
 
   /**
    * @brief Get the left Jacobian of SE2.
    * @note See Eq. (164).
    */
-  Jacobian ljac() const;
+  Jacobian<LieGroup,Tangent> ljac() const;
 
   /**
    * @brief
    * @return
    */
-  Jacobian smallAdj() const;
+  Jacobian<Tangent,Tangent> smallAdj() const;
 
   // SE2Tangent specific API
 
@@ -100,7 +100,7 @@ SE2TangentBase<_Derived>::hat() const
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::LieGroup
-SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+SE2TangentBase<_Derived>::exp(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   using std::abs;
   using std::cos;
@@ -155,13 +155,14 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::LieGroup
-SE2TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+SE2TangentBase<_Derived>::retract(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return exp(J_m_t);
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Jacobian
+Jacobian<typename SE2TangentBase<_Derived>::LieGroup,
+         typename SE2TangentBase<_Derived>::Tangent>
 SE2TangentBase<_Derived>::rjac() const
 {
 //  const Scalar theta = angle();
@@ -196,14 +197,15 @@ SE2TangentBase<_Derived>::rjac() const
 
 //  return Jr;
 
-  Jacobian Jr;
+  Jacobian<LieGroup,Tangent> Jr;
   exp(Jr);
 
   return Jr;
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Jacobian
+Jacobian<typename SE2TangentBase<_Derived>::LieGroup,
+         typename SE2TangentBase<_Derived>::Tangent>
 SE2TangentBase<_Derived>::ljac() const
 {
   const Scalar theta = angle();
@@ -227,7 +229,7 @@ SE2TangentBase<_Derived>::ljac() const
     B = (Scalar(1) - cos_theta) / theta;
   }
 
-  Jacobian Jl = Jacobian::Identity();
+  Jacobian<LieGroup,Tangent> Jl = Jacobian<LieGroup,Tangent>::Identity();
   Jl(0,0) =  A;
   Jl(0,1) = -B;
   Jl(1,0) =  B;
@@ -248,10 +250,11 @@ SE2TangentBase<_Derived>::ljac() const
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Jacobian
+Jacobian<typename SE2TangentBase<_Derived>::Tangent,
+         typename SE2TangentBase<_Derived>::Tangent>
 SE2TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian smallAdj = Jacobian::Zero();
+  Jacobian<Tangent,Tangent> smallAdj = Jacobian<Tangent,Tangent>::Zero();
 
   smallAdj(0,1) = -angle();
   smallAdj(1,0) =  angle();
@@ -335,16 +338,16 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
 template <typename Derived>
 struct WEvaluator<SE2TangentBase<Derived>>
 {
-  static typename Derived::Jacobian
+  static typename Derived::InnerWeight
   run()
   {
-    using Jacobian = typename SE2TangentBase<Derived>::Jacobian;
-    using Scalar   = typename SE2TangentBase<Derived>::Scalar;
+    using InnerWeight = typename SE2TangentBase<Derived>::InnerWeight;
+    using Scalar      = typename SE2TangentBase<Derived>::Scalar;
 
-    const static Jacobian W(
-            (Jacobian() << Scalar(1), Scalar(0), Scalar(0),
-                           Scalar(0), Scalar(1), Scalar(0),
-                           Scalar(0), Scalar(0), Scalar(2) ).finished());
+    const static InnerWeight W(
+            (InnerWeight() << Scalar(1), Scalar(0), Scalar(0),
+                              Scalar(0), Scalar(1), Scalar(0),
+                              Scalar(0), Scalar(0), Scalar(2) ).finished());
 
     return W;
   }

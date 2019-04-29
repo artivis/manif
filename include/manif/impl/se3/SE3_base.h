@@ -47,7 +47,7 @@ public:
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
    * @note See Eqs. (170,176).
    */
-  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+  LieGroup inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m = {}) const;
 
   /**
    * @brief Get the SE3 corresponding Lie algebra element in vector form.
@@ -57,7 +57,7 @@ public:
    * @note See Eq. (173) & Eq. (79,179,180) and following notes.
    * @see SE3Tangent.
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  Tangent log(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -65,7 +65,7 @@ public:
    * @ref log instead.
    */
   MANIF_DEPRECATED
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
+  Tangent lift(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief Composition of this and another SE3 element.
@@ -77,8 +77,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief Rigid motion action on a 3D point.
@@ -91,14 +91,14 @@ public:
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 3, 1>
   act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m = {},
+      OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v = {}) const;
 
   /**
    * @brief Get the adjoint matrix of SE3 at this.
    * @note See Eq. (175).
    */
-  Jacobian adj() const;
+  Adjoint adj() const;
 
   // SE3 specific functions
 
@@ -207,7 +207,7 @@ SE3Base<_Derived>::translation() const
 
 template <typename _Derived>
 typename SE3Base<_Derived>::LieGroup
-SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
+SE3Base<_Derived>::inverse(OptJacobianRef<LieGroup,LieGroup> J_minv_m) const
 {
   if (J_minv_m)
   {
@@ -222,7 +222,7 @@ SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
+SE3Base<_Derived>::log(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   using std::abs;
   using std::sqrt;
@@ -244,7 +244,7 @@ SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+SE3Base<_Derived>::lift(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return log(J_t_m);
 }
@@ -254,8 +254,8 @@ template <typename _DerivedOther>
 typename SE3Base<_Derived>::LieGroup
 SE3Base<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   static_assert(
     std::is_base_of<SE3Base<_DerivedOther>, _DerivedOther>::value,
@@ -281,8 +281,8 @@ template <typename _Derived>
 template <typename _EigenDerived>
 Eigen::Matrix<typename SE3Base<_Derived>::Scalar, 3, 1>
 SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,LieGroup> J_vout_m,
+                       OptJacobianRef<Eigen::MatrixBase<_EigenDerived>,Eigen::MatrixBase<_EigenDerived>> J_vout_v) const
 {
   assert_vector_dim(v, 3);
   const Rotation R(rotation());
@@ -301,9 +301,8 @@ SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
   return translation() + R * v;
 }
 
-
 template <typename _Derived>
-typename SE3Base<_Derived>::Jacobian
+typename SE3Base<_Derived>::Adjoint
 SE3Base<_Derived>::adj() const
 {
   /// @note Chirikjian (close to Eq.10.94)
@@ -320,7 +319,7 @@ SE3Base<_Derived>::adj() const
   ///
   /// considering vee(log(g)) = (v;w)
 
-  Jacobian Adj = Jacobian::Zero();
+  Adjoint Adj = Adjoint::Zero();
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();

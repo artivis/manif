@@ -56,7 +56,7 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (172) & Eqs. (179,180).
    */
-  LieGroup exp(OptJacobianRef J_m_t = {}) const;
+  LieGroup exp(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -64,37 +64,37 @@ public:
    * @ref exp instead.
    */
   MANIF_DEPRECATED
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief Get the right Jacobian of SE3.
    * @note See note after Eqs. (179,180).
    */
-  Jacobian rjac() const;
+  Jacobian<LieGroup,Tangent> rjac() const;
 
   /**
    * @brief Get the left Jacobian of SE3.
    * @note See Eqs. (179,180).
    */
-  Jacobian ljac() const;
+  Jacobian<LieGroup,Tangent> ljac() const;
 
   /**
    * @brief Get the inverse right Jacobian of SE3.
    * @note See note after Eqs. (179,180).
    */
-  Jacobian rjacinv() const;
+  Jacobian<Tangent,LieGroup> rjacinv() const;
 
   /**
    * @brief Get the inverse left Jacobian of SE3.
    * @note See Eqs. (179,180).
    */
-  Jacobian ljacinv() const;
+  Jacobian<Tangent,LieGroup> ljacinv() const;
 
   /**
    * @brief
    * @return
    */
-  Jacobian smallAdj() const;
+  Jacobian<Tangent,Tangent> smallAdj() const;
 
   // SE3Tangent specific API
 
@@ -135,7 +135,7 @@ private:
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::LieGroup
-SE3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+SE3TangentBase<_Derived>::exp(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   using std::sqrt;
   using std::cos;
@@ -152,7 +152,7 @@ SE3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
 template <typename _Derived>
 typename SE3TangentBase<_Derived>::LieGroup
-SE3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+SE3TangentBase<_Derived>::retract(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return exp(J_m_t);
 }
@@ -172,11 +172,12 @@ SE3TangentBase<_Derived>::hat() const
 /// @note Eq. 10.95
 /// @note barfoot14tro Eq. 102
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Jacobian
+Jacobian<typename SE3TangentBase<_Derived>::LieGroup,
+         typename SE3TangentBase<_Derived>::Tangent>
 SE3TangentBase<_Derived>::rjac() const
 {
   /// @note Eq. 10.95
-  Jacobian Jr;
+  Jacobian<LieGroup,Tangent> Jr;
   Jr.template bottomLeftCorner<3,3>().setZero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
   Jr.template bottomRightCorner<3,3>() = Jr.template topLeftCorner<3,3>();
@@ -186,11 +187,12 @@ SE3TangentBase<_Derived>::rjac() const
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Jacobian
+Jacobian<typename SE3TangentBase<_Derived>::LieGroup,
+         typename SE3TangentBase<_Derived>::Tangent>
 SE3TangentBase<_Derived>::ljac() const
 {
   /// @note Eq. 10.95
-  Jacobian Jl;
+  Jacobian<LieGroup,Tangent> Jl;
   Jl.template bottomLeftCorner<3,3>().setZero();
   Jl.template topLeftCorner<3,3>() = asSO3().ljac();
   Jl.template bottomRightCorner<3,3>() = Jl.template topLeftCorner<3,3>();
@@ -201,11 +203,12 @@ SE3TangentBase<_Derived>::ljac() const
 
 /// @note barfoot14tro Eq. 102
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Jacobian
+Jacobian<typename SE3TangentBase<_Derived>::Tangent,
+         typename SE3TangentBase<_Derived>::LieGroup>
 SE3TangentBase<_Derived>::rjacinv() const
 {
   /// @note Eq. 10.95
-  Jacobian Jr_inv;
+  Jacobian<Tangent,LieGroup> Jr_inv;
   fillQ( Jr_inv.template bottomLeftCorner<3,3>(), -coeffs() ); // serves as temporary Q
   Jr_inv.template topLeftCorner<3,3>() = asSO3().rjacinv();
   Jr_inv.template bottomRightCorner<3,3>() = Jr_inv.template topLeftCorner<3,3>();
@@ -219,10 +222,11 @@ SE3TangentBase<_Derived>::rjacinv() const
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Jacobian
+Jacobian<typename SE3TangentBase<_Derived>::Tangent,
+         typename SE3TangentBase<_Derived>::LieGroup>
 SE3TangentBase<_Derived>::ljacinv() const
 {
-  Jacobian Jl_inv;
+  Jacobian<Tangent,LieGroup> Jl_inv;
   fillQ( Jl_inv.template bottomLeftCorner<3,3>(), coeffs() ); // serves as temporary Q
   Jl_inv.template topLeftCorner<3,3>() = asSO3().ljacinv();
   Jl_inv.template bottomRightCorner<3,3>() = Jl_inv.template topLeftCorner<3,3>();
@@ -287,10 +291,11 @@ void SE3TangentBase<_Derived>::fillQ(
 
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::Jacobian
+Jacobian<typename SE3TangentBase<_Derived>::Tangent,
+         typename SE3TangentBase<_Derived>::Tangent>
 SE3TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian smallAdj;
+  Jacobian<Tangent,Tangent> smallAdj;
   smallAdj.template topRightCorner<3,3>().setZero();
   smallAdj.template topLeftCorner<3,3>() = skew(w());
   smallAdj.template bottomRightCorner<3,3>() = smallAdj.template topLeftCorner<3,3>();

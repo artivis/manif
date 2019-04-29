@@ -4,6 +4,7 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/traits.h"
 #include "manif/impl/eigen.h"
+#include "manif/impl/jacobian.h"
 #include "manif/impl/tangent_base.h"
 
 #include "manif/constants.h"
@@ -28,10 +29,9 @@ struct LieGroupBase
   using LieGroup       = typename internal::traits<_Derived>::LieGroup;
   using DataType       = typename internal::traits<_Derived>::DataType;
   using Tangent        = typename internal::traits<_Derived>::Tangent;
-  using Jacobian       = typename internal::traits<_Derived>::Jacobian;
   using Vector         = typename internal::traits<_Derived>::Vector;
 
-  using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
+  using Adjoint        = Jacobian<_Derived,_Derived>;
 
   template <typename _Scalar>
   using LieGroupTemplate = typename internal::traitscast<LieGroup, _Scalar>::cast;
@@ -42,9 +42,6 @@ protected:
   DataType& coeffs_nonconst();
 
 public:
-
-  //! @brief Helper for skipping an optional parameter.
-  static const OptJacobianRef _;
 
   //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
@@ -89,7 +86,7 @@ public:
    * @note See Eq. (3).
    * @see TangentBase.
    */
-  LieGroup inverse(OptJacobianRef J_m_t = {}) const;
+  LieGroup inverse(OptJacobianRef<LieGroup,LieGroup> J_m_t = {}) const;
 
   /**
    * @brief Get the corresponding Lie algebra element in vector form.
@@ -98,7 +95,7 @@ public:
    * @note This is the log() map in vector form.
    * @see Eq. (24).
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  Tangent log(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -106,7 +103,7 @@ public:
    * @ref log instead.
    */
   MANIF_DEPRECATED
-  Tangent lift(OptJacobianRef J_t_m = {}) const;
+  Tangent lift(OptJacobianRef<Tangent,LieGroup> J_t_m = {}) const;
 
   /**
    * @brief Composition of this and another element of the same Lie group.
@@ -118,8 +115,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief TODO tofix
@@ -129,14 +126,14 @@ public:
    * @return
    */
   Vector act(const Vector& v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+             OptJacobianRef<Vector,LieGroup> J_vout_m = {},
+             OptJacobianRef<Vector,Vector>   J_vout_v = {}) const;
 
   /**
    * @brief Get the Adjoint of the Lie group element this.
    * @note See Eq. (29).
    */
-  Jacobian adj() const;
+  Adjoint adj() const;
 
   // Deduced API
 
@@ -150,8 +147,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup rplus(const TangentBase<_DerivedOther>& t,
-                 OptJacobianRef J_mout_m = {},
-                 OptJacobianRef J_mout_t = {}) const;
+                 OptJacobianRef<LieGroup,LieGroup> J_mout_m = {},
+                 OptJacobianRef<LieGroup,Tangent>  J_mout_t = {}) const;
 
   /**
    * @brief Left oplus operation of the Lie group.
@@ -163,8 +160,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup lplus(const TangentBase<_DerivedOther>& t,
-                 OptJacobianRef J_mout_m = {},
-                 OptJacobianRef J_mout_t = {}) const;
+                 OptJacobianRef<LieGroup,LieGroup> J_mout_m = {},
+                 OptJacobianRef<LieGroup,Tangent>  J_mout_t = {}) const;
 
   /**
    * @brief An alias for the right oplus operation.
@@ -172,8 +169,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup plus(const TangentBase<_DerivedOther>& t,
-                OptJacobianRef J_mout_m = {},
-                OptJacobianRef J_mout_t = {}) const;
+                OptJacobianRef<LieGroup,LieGroup> J_mout_m = {},
+                OptJacobianRef<LieGroup,Tangent>  J_mout_t = {}) const;
 
   /**
    * @brief Right ominus operation of the Lie group.
@@ -185,8 +182,8 @@ public:
    */
   template <typename _DerivedOther>
   Tangent rminus(const LieGroupBase<_DerivedOther>& m,
-                 OptJacobianRef J_t_ma = {},
-                 OptJacobianRef J_t_mb = {}) const;
+                 OptJacobianRef<Tangent,LieGroup> J_t_ma = {},
+                 OptJacobianRef<Tangent,LieGroup> J_t_mb = {}) const;
 
   /**
    * @brief Left ominus operation of the Lie group.
@@ -198,8 +195,8 @@ public:
    */
   template <typename _DerivedOther>
   Tangent lminus(const LieGroupBase<_DerivedOther>& m,
-                 OptJacobianRef J_t_ma = {},
-                 OptJacobianRef J_t_mb = {}) const;
+                 OptJacobianRef<Tangent,LieGroup> J_t_ma = {},
+                 OptJacobianRef<Tangent,LieGroup> J_t_mb = {}) const;
 
   /**
    * @brief An alias for the right ominus operation.
@@ -207,8 +204,8 @@ public:
    */
   template <typename _DerivedOther>
   Tangent minus(const LieGroupBase<_DerivedOther>& m,
-                OptJacobianRef J_t_ma = {},
-                OptJacobianRef J_t_mb = {}) const;
+                OptJacobianRef<Tangent,LieGroup> J_t_ma = {},
+                OptJacobianRef<Tangent,LieGroup> J_t_mb = {}) const;
 
   /**
    * @brief
@@ -219,8 +216,8 @@ public:
    */
   template <typename _DerivedOther>
   LieGroup between(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_ma = {},
+                   OptJacobianRef<LieGroup,LieGroup> J_mc_mb = {}) const;
 
   /**
    * @brief Evaluate whether this and m are 'close'.
@@ -317,10 +314,6 @@ template <typename _Derived>
 constexpr int LieGroupBase<_Derived>::RepSize;
 
 template <typename _Derived>
-const typename LieGroupBase<_Derived>::OptJacobianRef
-LieGroupBase<_Derived>::_ = {};
-
-template <typename _Derived>
 typename LieGroupBase<_Derived>::DataType&
 LieGroupBase<_Derived>::coeffs_nonconst()
 {
@@ -378,7 +371,7 @@ LieGroupBase<_Derived>::setRandom()
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::LieGroup
-LieGroupBase<_Derived>::inverse(OptJacobianRef J_m_t) const
+LieGroupBase<_Derived>::inverse(OptJacobianRef<LieGroup,LieGroup> J_m_t) const
 {
   return derived().inverse(J_m_t);
 }
@@ -388,15 +381,15 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::rplus(
     const TangentBase<_DerivedOther>& t,
-    OptJacobianRef J_mout_m,
-    OptJacobianRef J_mout_t) const
+    OptJacobianRef<LieGroup,LieGroup> J_mout_m,
+    OptJacobianRef<LieGroup,Tangent>  J_mout_t) const
 {
   if (J_mout_t)
   {
     (*J_mout_t) = t.rjac();
   }
 
-  return compose(t.exp(), J_mout_m, _);
+  return compose(t.exp(), J_mout_m, {});
 }
 
 template <typename _Derived>
@@ -404,8 +397,8 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::lplus(
     const TangentBase<_DerivedOther>& t,
-    OptJacobianRef J_mout_m,
-    OptJacobianRef J_mout_t) const
+    OptJacobianRef<LieGroup,LieGroup> J_mout_m,
+    OptJacobianRef<LieGroup,Tangent>  J_mout_t) const
 {
   if (J_mout_t)
   {
@@ -425,8 +418,8 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::plus(
     const TangentBase<_DerivedOther>& t,
-    OptJacobianRef J_mout_m,
-    OptJacobianRef J_mout_t) const
+    OptJacobianRef<LieGroup,LieGroup> J_mout_m,
+    OptJacobianRef<LieGroup,Tangent>  J_mout_t) const
 {
   return derived().rplus(t, J_mout_m, J_mout_t);
 }
@@ -436,8 +429,8 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::Tangent
 LieGroupBase<_Derived>::rminus(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_t_ma,
-    OptJacobianRef J_t_mb) const
+    OptJacobianRef<Tangent,LieGroup> J_t_ma,
+    OptJacobianRef<Tangent,LieGroup> J_t_mb) const
 {
   const Tangent t = m.inverse().compose(derived()).log();
 
@@ -458,14 +451,14 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::Tangent
 LieGroupBase<_Derived>::lminus(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_t_ma,
-    OptJacobianRef J_t_mb) const
+    OptJacobianRef<Tangent,LieGroup> J_t_ma,
+    OptJacobianRef<Tangent,LieGroup> J_t_mb) const
 {
   const Tangent t = compose(m.inverse()).log();
 
   if (J_t_ma || J_t_mb)
   {
-    const Jacobian J = t.rjacinv() * m.adj();
+    const Jacobian<Tangent,LieGroup> J = t.rjacinv() * m.adj();
 
     if (J_t_ma)
     {
@@ -485,22 +478,22 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::Tangent
 LieGroupBase<_Derived>::minus(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_t_ma,
-    OptJacobianRef J_t_mb) const
+    OptJacobianRef<Tangent,LieGroup> J_t_ma,
+    OptJacobianRef<Tangent,LieGroup> J_t_mb) const
 {
   return derived().rminus(m, J_t_ma, J_t_mb);
 }
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::Tangent
-LieGroupBase<_Derived>::log(OptJacobianRef J_t_m) const
+LieGroupBase<_Derived>::log(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return derived().log(J_t_m);
 }
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::Tangent
-LieGroupBase<_Derived>::lift(OptJacobianRef J_t_m) const
+LieGroupBase<_Derived>::lift(OptJacobianRef<Tangent,LieGroup> J_t_m) const
 {
   return derived().log(J_t_m);
 }
@@ -510,8 +503,8 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   return derived().compose(m, J_mc_ma, J_mc_mb);
 }
@@ -521,8 +514,8 @@ template <typename _DerivedOther>
 typename LieGroupBase<_Derived>::LieGroup
 LieGroupBase<_Derived>::between(
     const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
+    OptJacobianRef<LieGroup,LieGroup> J_mc_ma,
+    OptJacobianRef<LieGroup,LieGroup> J_mc_mb) const
 {
   const LieGroup mc = inverse().compose(m);
 
@@ -548,7 +541,7 @@ bool LieGroupBase<_Derived>::isApprox(const LieGroupBase<_DerivedOther>& m,
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Jacobian
+typename LieGroupBase<_Derived>::Adjoint
 LieGroupBase<_Derived>::adj() const
 {
   return derived().adj();
@@ -557,8 +550,8 @@ LieGroupBase<_Derived>::adj() const
 template <typename _Derived>
 typename LieGroupBase<_Derived>::Vector
 LieGroupBase<_Derived>::act(const Vector& v,
-                            OptJacobianRef J_vout_m,
-                            OptJacobianRef J_vout_v) const
+                            OptJacobianRef<Vector,LieGroup> J_vout_m,
+                            OptJacobianRef<Vector,Vector>   J_vout_v) const
 {
   return derived().act(v, J_vout_m, J_vout_v);
 }

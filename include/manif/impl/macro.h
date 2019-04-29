@@ -72,10 +72,9 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Scalar         = typename Base::Scalar;         \
   using LieGroup       = typename Base::LieGroup;       \
   using Tangent        = typename Base::Tangent;        \
-  using Jacobian       = typename Base::Jacobian;       \
   using DataType       = typename Base::DataType;       \
   using Vector         = typename Base::Vector;         \
-  using OptJacobianRef = typename Base::OptJacobianRef;
+  using Adjoint        = typename Base::Adjoint;
 
 #define MANIF_COMPLETE_GROUP_TYPEDEF \
   MANIF_GROUP_TYPEDEF                \
@@ -113,10 +112,8 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
   using Scalar   = typename Base::Scalar;   \
   using LieGroup = typename Base::LieGroup; \
   using Tangent  = typename Base::Tangent;  \
-  using Jacobian = typename Base::Jacobian; \
   using DataType = typename Base::DataType; \
-  using LieAlg   = typename Base::LieAlg;   \
-  using OptJacobianRef = typename Base::OptJacobianRef;
+  using LieAlg   = typename Base::LieAlg;
 
 #define MANIF_EXTRA_TANGENT_TYPEDEF(tangent) \
   using tangent##f = tangent<float>;         \

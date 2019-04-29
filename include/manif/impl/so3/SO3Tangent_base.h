@@ -50,7 +50,7 @@ public:
    * @note This is the exp() map with the argument in vector form.
    * @note See Eq. (132) and Eq. (143).
    */
-  LieGroup exp(OptJacobianRef J_m_t = {}) const;
+  LieGroup exp(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -58,39 +58,39 @@ public:
    * @ref exp instead.
    */
   MANIF_DEPRECATED
-  LieGroup retract(OptJacobianRef J_m_t = {}) const;
+  LieGroup retract(OptJacobianRef<LieGroup,Tangent> J_m_t = {}) const;
 
   /**
    * Get the right Jacobian of SO3.
    * @note See Eq. (143).
    */
-  Jacobian rjac() const;
+  Jacobian<LieGroup,Tangent> rjac() const;
 
   /**
    * Get the left Jacobian of SO3.
    * @note See Eq. (145).
    */
-  Jacobian ljac() const;
+  Jacobian<LieGroup,Tangent> ljac() const;
 
   /**
    * Get the inverse of the right Jacobian of SO3.
    * @note See Eq. (144).
    * @see rjac.
    */
-  Jacobian rjacinv() const;
+  Jacobian<Tangent,LieGroup> rjacinv() const;
 
   /**
    * Get the inverse of the left Jacobian of SO3.
    * @note See Eq. (146).
    * @see ljac.
    */
-  Jacobian ljacinv() const;
+  Jacobian<Tangent,LieGroup> ljacinv() const;
 
   /**
    * @brief
    * @return
    */
-  Jacobian smallAdj() const;
+  Jacobian<Tangent,Tangent> smallAdj() const;
 
   // SO3Tangent specific API
 
@@ -104,7 +104,7 @@ public:
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::LieGroup
-SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
+SO3TangentBase<_Derived>::exp(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   using std::sqrt;
   using std::cos;
@@ -118,14 +118,14 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   {
     if (J_m_t)
     {
-      Jacobian M1, M2;
+      Jacobian<LieGroup,Tangent> M1, M2;
 
       const LieAlg W = hat();
 
       M1.noalias() = (Scalar(1.0) - cos(theta)) / theta_sq * W;
       M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);;
 
-      *J_m_t = Jacobian::Identity() - M1 + M2;
+      *J_m_t = Jacobian<LieGroup,Tangent>::Identity() - M1 + M2;
     }
 
     return LieGroup( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
@@ -134,7 +134,7 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   {
     if (J_m_t)
     {
-      *J_m_t = Jacobian::Identity() - Scalar(0.5) * hat();
+      *J_m_t = Jacobian<LieGroup,Tangent>::Identity() - Scalar(0.5) * hat();
     }
 
     return LieGroup(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
@@ -143,20 +143,22 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
 template <typename _Derived>
 typename SO3TangentBase<_Derived>::LieGroup
-SO3TangentBase<_Derived>::retract(OptJacobianRef J_m_t) const
+SO3TangentBase<_Derived>::retract(OptJacobianRef<LieGroup,Tangent> J_m_t) const
 {
   return exp(J_m_t);
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Jacobian
+Jacobian<typename SO3TangentBase<_Derived>::LieGroup,
+         typename SO3TangentBase<_Derived>::Tangent>
 SO3TangentBase<_Derived>::rjac() const
 {
   return ljac().transpose();
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Jacobian
+Jacobian<typename SO3TangentBase<_Derived>::LieGroup,
+         typename SO3TangentBase<_Derived>::Tangent>
 SO3TangentBase<_Derived>::ljac() const
 {
   using std::sqrt;
@@ -169,25 +171,27 @@ SO3TangentBase<_Derived>::ljac() const
 
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps_s)
-    return Jacobian::Identity() - Scalar(0.5) * W;
+    return Jacobian<LieGroup,Tangent>::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M1, M2;
+  Jacobian<LieGroup,Tangent> M1, M2;
   M1.noalias() = (Scalar(1) - cos(theta)) / theta_sq * W;
   M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);
 
-  return Jacobian::Identity() + M1 + M2;
+  return Jacobian<LieGroup,Tangent>::Identity() + M1 + M2;
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Jacobian
+Jacobian<typename SO3TangentBase<_Derived>::Tangent,
+         typename SO3TangentBase<_Derived>::LieGroup>
 SO3TangentBase<_Derived>::rjacinv() const
 {
   return ljacinv().transpose();
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Jacobian
+Jacobian<typename SO3TangentBase<_Derived>::Tangent,
+         typename SO3TangentBase<_Derived>::LieGroup>
 SO3TangentBase<_Derived>::ljacinv() const
 {
   using std::sqrt;
@@ -199,19 +203,20 @@ SO3TangentBase<_Derived>::ljacinv() const
   const LieAlg W = hat();
 
   if (theta_sq <= Constants<Scalar>::eps_s)
-    return Jacobian::Identity() + Scalar(0.5) * W;
+    return Jacobian<Tangent,LieGroup>::Identity() + Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M;
+  Jacobian<Tangent,LieGroup> M;
   M.noalias() = (Scalar(1) / theta_sq -
                  (Scalar(1) + cos(theta)) /
                  (Scalar(2) * theta * sin(theta))) * (W * W);
 
-  return Jacobian::Identity() - Scalar(0.5) * W + M;
+  return Jacobian<Tangent,LieGroup>::Identity() - Scalar(0.5) * W + M;
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::Jacobian
+Jacobian<typename SO3TangentBase<_Derived>::Tangent,
+         typename SO3TangentBase<_Derived>::Tangent>
 SO3TangentBase<_Derived>::smallAdj() const
 {
   return hat();

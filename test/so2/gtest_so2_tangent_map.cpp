@@ -84,7 +84,7 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_RETRACT_JAC)
 
   EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
 
-  SO2d::Jacobian J_ret;
+  Jacobian<SO2d,SO2Tangentd> J_ret;
 
   SO2d so2_exp = so2tan.exp(J_ret);
 
