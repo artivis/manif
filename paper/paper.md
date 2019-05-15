@@ -22,7 +22,7 @@ bibliography: paper.bib
 
 # Summary
 
-There has been a remarkable effort in the last years in
+There has been a remarkable effort in recent years in
 the robotics community to formulate estimation problems
 properly. This is motivated by an increasing demand for
 precision, consistency and stability of the solutions.
@@ -39,14 +39,14 @@ state estimation in robotics applications.
 With a single dependency on `Eigen` [@eigenweb] and
 a requirement on c++11 only, it is
 developed as a header-only library making
-it easy to integrate to existing projects.
+it easy to integrate in to existing projects.
 
-The `manif` library has been developed to make easily accessible
+The `manif` library has been developed so as to make easily accessible
 the most common operations on Lie groups in state estimation.
 Its design is similar to that of `Eigen`, so that
 all Lie group classes defined in `manif` have in common that
 they inherit from a templated base class using static polymorphism.
-This allows for the possibility the write generic code without
+This allows for the possibility of writing generic code without
 paying the price of pointer indirection.
 Thanks to this polymorphism, the library is open to extensions to
 Lie groups beyond the currently implemented SO(2), SE(2), SO(3) and SE(3).
