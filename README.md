@@ -11,14 +11,17 @@
 targeted at robotics applications.
 
 It provides a base structure which is implemented using CRTP for 
-the groups SO2, SO3, SE2 and SE3.
+the groups SO(2), SO(3), SE(2) and SE(3):
+  - SO(2): rotations in the plane.
+  - SE(2): righd motion (rotation and translation) in the plane.
+  - SO(3): rotations in 3D space.
+  - SE(3): righd motion (rotation and translation) in 3D space.
 
-Other Lie groups can and will be added.
+Other Lie groups can and will be added, and contributions are welcome.
 
-**manif** provides analytic computation of Jacobians for all the operations.
-It also supports template scalar types. In particular, it can work with the
-`ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
-
+**manif** is based on the mathematical presentation of the Lie theory available in [this paper](http://arxiv.org/abs/1812.01537).
+We recommend every user of **manif** to read the paper (17 pages) before starting to use the library. 
+The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the benefits of Lie theory easy for roboticians that are not skilled in the Lie theory.
 
 **manif** was designed for easy integration to larger project.
 A single dependency on [Eigen](http://eigen.tuxfamily.org),
@@ -26,6 +29,10 @@ header-only for easy integration, templated on
 the underlying scalar type so that one can use its own,
 and c++11 since not everyone gets to enjoy the latest c++ features,
 especially in industry.
+
+**manif** provides analytic computation of Jacobians for all the operations.
+It also supports template scalar types. In particular, it can work with the
+`ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
 
 - Maintainer status: maintained
 - Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
