@@ -23,12 +23,11 @@ Other Lie groups can and will be added, and contributions are welcome.
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library. 
 The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for average robotician who is interested in designing rigorous and elegant state estimation algorithms.
 
-**manif** was designed for easy integration to larger projects:
+**manif** has been designed for an easy integration to larger projects:
   - A single dependency on [Eigen](http://eigen.tuxfamily.org),
   - header-only for easy integration, 
   - templated on the underlying scalar type so that one can use its own,
-  - and c++11 since not everyone gets to enjoy the latest c++ features,
-especially in industry.
+  - and c++11, since not everyone gets to enjoy the latest c++ features, especially in industry.
 
 **manif** provides analytic computation of Jacobians for all the operations.
 It also supports template scalar types. In particular, it can work with the
@@ -140,7 +139,9 @@ Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf
 All operations come with their respective analytical Jacobian matrices.  
 Throughout `manif`, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
 
-<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}=\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}=\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" title="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus f(\mathbf\mathcal{X})}{\varphi}" /></a></center>&nbsp;
+Currently, **manif** implements the **right Jacobian** (see [here](http://arxiv.org/abs/1812.01537) for reference), whose definition reads:
+
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}=\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}" title="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\to\lim_{\varphi\to0}\frac{ f(\mathbf\mathcal{X}\oplus\varphi)\ominus f(\mathbf\mathcal{X})}{\varphi}" /></a></center>&nbsp;
 
 The Jacobians of any of the aforementionned operations can then be evaluated, e.g.,
 
