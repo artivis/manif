@@ -10,17 +10,15 @@
 **manif** is a header-only c++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
-There has been a remarkable effort in the last years in
-the robotics community to formulate estimation problems
-properly. This is motivated by an increasing demand for
-precision, consistency and stability of the solutions.
-Indeed, a proper modeling of the states and measurements,
-the functions relating them, and their uncertainties,
-is crucial to achieve these goals.
-This has led to problem formulations involving what has been
-known as ‘manifolds’, which in this context are no less
-than the smooth topologic surfaces of the Lie groups where
-the state representations evolve.
+It provides a base structure which is implemented using CRTP for 
+the groups SO2, SO3, SE2 and SE3.
+
+Other Lie groups can and will be added.
+
+**manif** provides analytic computation of Jacobians for all the operations.
+It also supports template scalar types. In particular, it can work with the
+`ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
+
 
 **manif** was designed for easy integration to larger project.
 A single dependency on [Eigen](http://eigen.tuxfamily.org),
@@ -167,9 +165,11 @@ or conversely,
 
 #### A note on Jacobians
 
-While the `manif` package differentiates Jacobians with respect to a
-local perturbation on the tangent space, many non-linear solvers
-(e.g. [Ceres](http://ceres-solver.org/)) expect them to be differentiated wrt the underlying
+The `manif` package differentiates Jacobians with respect to a
+local perturbation on the tangent space. 
+These Jacobians map tangent spaces, as described in [this paper](http://arxiv.org/abs/1812.01537). 
+However, many non-linear solvers
+(e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated wrt the underlying
 representation vector of the group element
 (e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
 For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
