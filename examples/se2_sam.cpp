@@ -451,18 +451,28 @@ int main()
          *  info matrix:
          *     W = I                    // trivial
          *
-         *  residual
-         *     r = W * (poses[0] (-) measurement) = poses[0].log()
+         *  residual uses left-minus since reference measurement is global
+         *     r = W * (poses[0] .- measurement) = log(poses[0] * Id.inv) = poses[0].log()
          *
          *  Jacobian matrix :
-         *     J_r_x = I                // trivial because of all previous trivials
+         *     J_r_p0 = Jr(log(poses[0]))         // see proof below
+         *
+         *     Proof: we have the partials
+         *       J_r_e = W^(T/2) = I
+         *       J_e_p0 = Jr(log(poses[0]))
+         *
+         *     so that by the chain rule,
+         *       J_r_p0 = J_r_e * J_e_p0 = Jr(log(poses[0]))
          */
 
-        // residual : expectation - measurement, in global tangent space, in a one-liner :
-        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity()).coeffs();
+        // Jacobian of prior residual wrt. initial pose
+        SE2d::Jacobian J_r_p0;
 
-        // Jacobian of residual wrt pose is the identity because of trivial relations
-        J.block<DoF, DoF>(row, col) = MatrixT::Identity();
+        // residual : expectation - measurement, in global tangent space, in a one-liner :
+        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity(), J_r_p0).coeffs();
+
+        // Jacobian of residual wrt pose
+        J.block<DoF, DoF>(row, col) = J_r_p0;
 
         // advance rows
         row += DoF;
