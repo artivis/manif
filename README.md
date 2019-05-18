@@ -178,13 +178,20 @@ or conversely,
 The `manif` package differentiates Jacobians with respect to a
 local perturbation on the tangent space. 
 These Jacobians map tangent spaces, as described in [this paper](http://arxiv.org/abs/1812.01537). 
+
 However, many non-linear solvers
 (e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated wrt the underlying
 representation vector of the group element
 (e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
+
 For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
+
+For reference of the size of the Jacobians returned, **manif** implements rotations in the following way:
+  - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values. 
+  - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type. 
+
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/On-the-use-with-Ceres.md).
 
 ## Documentation
@@ -238,15 +245,15 @@ This will give the appropriate equation numbers.
 
 ## Contributing
 
-`manif` is developed according to Vincent Driessen's [Gitflow Workflow](http://nvie.com/posts/a-successful-git-branching-model/).
+**manif** is developed according to Vincent Driessen's [Gitflow Workflow](http://nvie.com/posts/a-successful-git-branching-model/).
 This means,
--   the master branch is for releases only.
+-   the `master` branch is for releases only.
 -   development is done on feature branches.
--   finished features are integrated via PullRequests into develop.
+-   finished features are integrated via PullRequests into the branch `devel`.
 
-For a PullRequest to get merged into develop, it must pass
+For a PullRequest to get merged into `devel`, it must pass
 -   Review by one of the maintainers.
-    +   Are the changes introduces in scope of the `manif`?
+    +   Are the changes introduced in scope of `manif`?
     +   Is the documentation updated?
     +   Are enough reasonable tests added?
     +   Will these changes break the API?
