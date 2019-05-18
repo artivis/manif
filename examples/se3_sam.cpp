@@ -457,12 +457,11 @@ int main()
          *  Jacobian matrix :
          *     J_r_p0 = Jr(log(poses[0]))         // see proof below
          *
-         *     Proof: we have the partials
-         *       J_r_e = W^(T/2) = I
-         *       J_e_p0 = Jr(log(poses[0]))
+         *     Proof: Let p0 = poses[0] and y = measurement. We have the partials
+         *       J_r_p0 = W^(T/2) * d(log(p0 * y.inv)/d(poses[0])
          *
-         *     so that by the chain rule,
-         *       J_r_p0 = J_r_e * J_e_p0 = Jr(log(poses[0]))
+         *     with W = i and y = I. Since d(log(r))/d(r) = Jr(r) for any r in the Lie algebra, we have
+         *       J_r_p0 = Jr(log(p0))
          */
 
         // Jacobian of prior residual wrt. initial pose
