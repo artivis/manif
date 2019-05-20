@@ -425,16 +425,16 @@ int main()
          *  the nature of it: is it a global or a local specification?
          *
          *  When prior information `y` is provided in the global reference,
-         *  we need a left-minus operation .- to compute the residual.
+         *  we need a left-minus operation (.-) to compute the residual.
          *  This is usually the case for pose priors, since it is natural
          *  to specify position and orientation wrt a global reference,
          *
-         *     r = W * (e .- y)
+         *     r = W * (e (.-) y)
          *       = W * (e * y.inv).log()
          *
-         *  When `y` is provided as a local reference, then right-minus -. is required,
+         *  When `y` is provided as a local reference, then right-minus (-.) is required,
          *
-         *     r = W * (e -. y)
+         *     r = W * (e (-.) y)
          *       = W * (y.inv * e).log()
          *
          *  Notice that if y = Identity() then local and global residuals are the same.
@@ -451,18 +451,25 @@ int main()
          *  info matrix:
          *     W = I                    // trivial
          *
-         *  residual
-         *     r = W * (poses[0] (-) measurement) = poses[0].log()
+         *  residual uses left-minus since reference measurement is global
+         *     r = W * (poses[0] (.-) measurement) = log(poses[0] * Id.inv) = poses[0].log()
          *
          *  Jacobian matrix :
-         *     J_r_x = I                // trivial because of all previous trivials
+         *     J_r_p0 = Jr_inv(log(poses[0]))         // see proof below
+         *
+         *     Proof: Let p0 = poses[0] and y = measurement. We have the partials
+         *       J_r_p0 = W^(T/2) * d(log(p0 * y.inv)/d(poses[0])
+         *
+         *     with W = i and y = I. Since d(log(r))/d(r) = Jr_inv(r) for any r in the Lie algebra, we have
+         *       J_r_p0 = Jr_inv(log(p0))
          */
 
-        // residual : expectation - measurement, in global tangent space, in a one-liner :
-        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity()).coeffs();
-
-        // Jacobian of residual wrt pose is the identity because of trivial relations
-        J.block<DoF, DoF>(row, col) = MatrixT::Identity();
+        // residual and Jacobian.
+        // Notes:
+        //   We have residual = expectation - measurement, in global tangent space
+        //   We have the Jacobian in J_r_p0 = J.block<DoF, DoF>(row, col);
+        // We compute the whole in a one-liner:
+        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity(), J.block<DoF, DoF>(row, col)).coeffs();
 
         // advance rows
         row += DoF;
