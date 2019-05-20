@@ -425,16 +425,16 @@ int main()
          *  the nature of it: is it a global or a local specification?
          *
          *  When prior information `y` is provided in the global reference,
-         *  we need a left-minus operation .- to compute the residual.
+         *  we need a left-minus operation (.-) to compute the residual.
          *  This is usually the case for pose priors, since it is natural
          *  to specify position and orientation wrt a global reference,
          *
-         *     r = W * (e .- y)
+         *     r = W * (e (.-) y)
          *       = W * (e * y.inv).log()
          *
-         *  When `y` is provided as a local reference, then right-minus -. is required,
+         *  When `y` is provided as a local reference, then right-minus (-.) is required,
          *
-         *     r = W * (e -. y)
+         *     r = W * (e (-.) y)
          *       = W * (y.inv * e).log()
          *
          *  Notice that if y = Identity() then local and global residuals are the same.
@@ -452,7 +452,7 @@ int main()
          *     W = I                    // trivial
          *
          *  residual uses left-minus since reference measurement is global
-         *     r = W * (poses[0] .- measurement) = log(poses[0] * Id.inv) = poses[0].log()
+         *     r = W * (poses[0] (.-) measurement) = log(poses[0] * Id.inv) = poses[0].log()
          *
          *  Jacobian matrix :
          *     J_r_p0 = Jr_inv(log(poses[0]))         // see proof below
