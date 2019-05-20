@@ -464,14 +464,12 @@ int main()
          *       J_r_p0 = Jr_inv(log(p0))
          */
 
-        // Jacobian of prior residual wrt. initial pose
-        SE2d::Jacobian J_r_p0;
-
-        // residual : expectation - measurement, in global tangent space, and Jacobian, in a one-liner :
-        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity(), J_r_p0).coeffs();
-
-        // Jacobian of residual wrt pose
-        J.block<DoF, DoF>(row, col) = J_r_p0;
+        // residual and Jacobian.
+        // Notes:
+        //   We have residual = expectation - measurement, in global tangent space
+        //   We have the Jacobian in J_r_p0 = J.block<DoF, DoF>(row, col);
+        // We compute the whole in a one-liner:
+        r.segment<DoF>(row)         = poses[0].lminus(SE2d::Identity(), J.block<DoF, DoF>(row, col)).coeffs();
 
         // advance rows
         row += DoF;
