@@ -232,7 +232,7 @@ public:
    */
   template <typename _DerivedOther>
   bool isApprox(const LieGroupBase<_DerivedOther>& m,
-                const Scalar eps) const;
+                const Scalar eps = Constants<Scalar>::eps) const;
 
   // Some operators
 
