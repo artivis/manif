@@ -39,7 +39,7 @@ if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
 endif()
 
 if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR},"
+  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
                   "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
 endif(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
 
@@ -87,7 +87,7 @@ if(TARGET Eigen3::Eigen)
   target_link_libraries(${PROJECT_NAME} INTERFACE Eigen3::Eigen)
   set(Eigen3_DEPENDENCY "find_dependency(Eigen3 ${Eigen3_VERSION})")
 else(TARGET Eigen3::Eigen)
-  target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${EIGEN3_INCLUDE_DIR})
+  target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${EIGEN3_INCLUDE_DIRS})
 endif(TARGET Eigen3::Eigen)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
