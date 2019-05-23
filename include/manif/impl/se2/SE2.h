@@ -59,6 +59,7 @@ private:
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
+  using Translation = typename Base::Translation;
   MANIF_INHERIT_GROUP_API
 
   SE2()  = default;
@@ -77,8 +78,26 @@ public:
   template <typename _EigenDerived>
   SE2(const Eigen::MatrixBase<_EigenDerived>& data);
 
+  /**
+   * @brief Constructor given a translation and a complex number.
+   * @param[in] t A translation vector.
+   * @param[in] c A complex number.
+   */
+  SE2(const Translation& t, const std::complex<Scalar>& c);
+
   SE2(const Scalar x, const Scalar y, const Scalar theta);
   SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag);
+  SE2(const Scalar x, const Scalar y, const std::complex<Scalar>& c);
+
+  /**
+   * @brief Constructor from a 2D Eigen::Isometry<Scalar>
+   * @param[in] h an isometry object from Eigen
+   *
+   * Isometry is a typedef from Eigen::Transform,
+   * in which the linear part is assumed a rotation matrix.
+   * This is used to speed up certain methods of Transform, especially inverse().
+   */
+  SE2(const Eigen::Transform<_Scalar,2,Eigen::Isometry>& h);
 
   // LieGroup common API
 
@@ -136,6 +155,14 @@ SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
 }
 
 template <typename _Scalar>
+SE2<_Scalar>::SE2(const Translation& t,
+                  const std::complex<Scalar>& c)
+  : SE2((DataType() << t, c.real(), c.imag()).finished())
+{
+  //
+}
+
+template <typename _Scalar>
 SE2<_Scalar>::SE2(const Scalar x, const Scalar y, const Scalar theta)
   : SE2(DataType(x, y, cos(theta), sin(theta)))
 {
@@ -147,6 +174,20 @@ template <typename _Scalar>
 SE2<_Scalar>::SE2(const Scalar x, const Scalar y,
                   const Scalar real, const Scalar imag)
   : SE2(DataType(x, y, real, imag))
+{
+  //
+}
+
+template <typename _Scalar>
+SE2<_Scalar>::SE2(const Scalar x, const Scalar y, const std::complex<Scalar>& c)
+  : SE2(x, y, c.real(), c.imag())
+{
+  //
+}
+
+template <typename _Scalar>
+SE2<_Scalar>::SE2(const Eigen::Transform<_Scalar,2,Eigen::Isometry>& h)
+  : SE2(h.translation().x(), h.translation().y(), Eigen::Rotation2D<Scalar>(h.rotation()).angle())
 {
   //
 }
