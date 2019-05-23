@@ -16,11 +16,27 @@ else()
     "has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-# Set search directory for looking for our custom CMake scripts
-# to look Eigen3.
-LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+# Finding Eigen is somewhat complicated.
+# First we look for the Eigen3 cmake module
+# provided by the libeigen3-dev on newer Ubuntu. If that fails, then we
+# fall-back to the version provided in the cmake/modules.
+find_package(Eigen3 QUIET)
 
-find_package(Eigen3 REQUIRED)
+if(NOT EIGEN3_FOUND)
+  LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+  find_package(Eigen3 REQUIRED)
+endif()
+
+# Note that eigen 3.2 (on Ubuntu Wily) only provides EIGEN3_INCLUDE_DIR,
+# not EIGEN3_INCLUDE_DIRS, so we have to set the latter from the former.
+if(NOT EIGEN3_INCLUDE_DIRS)
+  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+endif()
+
+# Necessary for Ubuntu 16.04's god-awful FindEigen3.cmake.
+if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
+  set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
+endif()
 
 if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
   message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR},"
