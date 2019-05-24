@@ -100,7 +100,7 @@ cd [manif]
 doxygen .doxygen.txt
 ```
 
-#### Use `manif` in your project
+#### Use **manif** in your project
 In your project `CMakeLists.txt` :
 
 ```cmake
@@ -141,7 +141,7 @@ Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.  
-Throughout `manif`, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
+Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
 
 Currently, **manif** implements the **right Jacobian** (see [here](http://arxiv.org/abs/1812.01537) for reference), whose definition reads:
 
@@ -244,7 +244,7 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 }
 ```
 Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the `manif` documentation.
+Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the **manif** documentation.
 This will give the appropriate equation numbers.
 
 ## Contributing
@@ -257,7 +257,7 @@ This means,
 
 For a PullRequest to get merged into `devel`, it must pass
 -   Review by one of the maintainers.
-    +   Are the changes introduced in scope of `manif`?
+    +   Are the changes introduced in scope of **manif**?
     +   Is the documentation updated?
     +   Are enough reasonable tests added?
     +   Will these changes break the API?
