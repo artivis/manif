@@ -30,7 +30,8 @@ The paper provides a thorough introduction to Lie theory, in a simplified way so
 
 It provides analytic computation of Jacobians for all the operations.
 It also supports template scalar types. In particular, it can work with the
-`ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
+[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type, allowing for automatic Jacobian computation --
+<a href="#jacobians">see related paragraph on Jacobians below</a>.
 
 All Lie group classes defined in **manif** have in common that they inherit from a templated base class (CRTP).
 It allows one to write generic code abstracting the Lie group details.  
