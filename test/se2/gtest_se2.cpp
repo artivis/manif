@@ -34,6 +34,44 @@ TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_X_Y_THETA)
   EXPECT_DOUBLE_EQ(0, se2.angle());
 }
 
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_X_Y_C)
+{
+  SE2d se2(4., 2., std::complex<double>(1, 0));
+
+  EXPECT_DOUBLE_EQ(4, se2.x());
+  EXPECT_DOUBLE_EQ(2, se2.y());
+  EXPECT_DOUBLE_EQ(1, se2.real());
+  EXPECT_DOUBLE_EQ(0, se2.imag());
+  EXPECT_DOUBLE_EQ(0, se2.angle());
+}
+
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_T_C)
+{
+  SE2d se2(SE2d::Translation(4, 2), std::complex<double>(1, 0));
+
+  EXPECT_DOUBLE_EQ(4, se2.x());
+  EXPECT_DOUBLE_EQ(2, se2.y());
+  EXPECT_DOUBLE_EQ(1, se2.real());
+  EXPECT_DOUBLE_EQ(0, se2.imag());
+  EXPECT_DOUBLE_EQ(0, se2.angle());
+}
+
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_ISO)
+{
+  Eigen::Isometry2d h = Eigen::Translation2d(4,2) * Eigen::Rotation2Dd::Identity();
+
+  SE2d se2(h);
+
+  EXPECT_DOUBLE_EQ(4, se2.x());
+  EXPECT_DOUBLE_EQ(2, se2.y());
+  EXPECT_DOUBLE_EQ(1, se2.real());
+  EXPECT_DOUBLE_EQ(0, se2.imag());
+  EXPECT_DOUBLE_EQ(0, se2.angle());
+
+  EXPECT_EIGEN_NEAR(h.matrix(), se2.transform());
+  EXPECT_EIGEN_NEAR(h.matrix(), se2.isometry().matrix());
+}
+
 TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_COPY)
 {
   SE2d se2(SE2d(4, 2, 1,1));
