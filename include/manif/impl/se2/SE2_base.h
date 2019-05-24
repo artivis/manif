@@ -34,6 +34,7 @@ public:
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Translation    = typename internal::traits<_Derived>::Translation;
   using Transformation = typename internal::traits<_Derived>::Transformation;
+  using Isometry       = Eigen::Transform<Scalar, 2, Eigen::Isometry>;
 
   // LieGroup common API
 
@@ -104,6 +105,13 @@ public:
    */
   Transformation transform() const;
 
+  /**
+   * Get the isometry object (Eigen 2D isometry).
+   * @note T = | R t |
+   *           | 0 1 |
+   */
+  Isometry isometry() const;
+
   //! @brief Get the rotational part of this as a rotation matrix.
   Rotation rotation() const;
 
@@ -147,6 +155,13 @@ SE2Base<_Derived>::transform() const
   T(0,2) = x();
   T(1,2) = y();
   return T;
+}
+
+template <typename _Derived>
+typename SE2Base<_Derived>::Isometry
+SE2Base<_Derived>::isometry() const
+{
+  return Isometry(transform());
 }
 
 template <typename _Derived>
