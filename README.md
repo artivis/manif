@@ -16,19 +16,19 @@ At the moment, it provides the groups:
   - SO(3): rotations in 3D space.
   - SE(3): righd motion (rotation and translation) in 3D space.
 
-Other Lie groups can and will be added, and contributions are welcome.
+Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper](http://arxiv.org/abs/1812.01537).
-We recommend every user of **manif** to read the paper (17 pages) before starting to use the library. 
+We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
 The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for average robotician who is interested in designing rigorous and elegant state estimation algorithms.
 
 **manif** has been designed for an easy integration to larger projects:
   - A single dependency on [Eigen](http://eigen.tuxfamily.org),
-  - header-only for easy integration, 
+  - header-only for easy integration,
   - templated on the underlying scalar type so that one can use its own,
   - and c++11, since not everyone gets to enjoy the latest c++ features, especially in industry.
 
-**manif** provides analytic computation of Jacobians for all the operations.
+It provides analytic computation of Jacobians for all the operations.
 It also supports template scalar types. In particular, it can work with the
 `ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
 
@@ -178,22 +178,22 @@ or conversely,
 
 #### A note on Jacobians
 
-The `manif` package differentiates Jacobians with respect to a
-local perturbation on the tangent space. 
-These Jacobians map tangent spaces, as described in [this paper](http://arxiv.org/abs/1812.01537). 
+The **manif** package differentiates Jacobians with respect to a
+local perturbation on the tangent space.
+These Jacobians map tangent spaces, as described in [this paper](http://arxiv.org/abs/1812.01537).
 
 However, many non-linear solvers
 (e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated wrt the underlying
 representation vector of the group element
 (e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
 
-For this reason `manif` is compliant with [Ceres](http://ceres-solver.org/)
+For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
 
 For reference of the size of the Jacobians returned, **manif** implements rotations in the following way:
-  - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values. 
-  - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type. 
+  - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
+  - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
 
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/On-the-use-with-Ceres.md).
 
