@@ -35,7 +35,7 @@ It also supports template scalar types. In particular, it can work with the
 
 All Lie group classes defined in **manif** have in common that they inherit from a templated base class (CRTP).
 It allows one to write generic code abstracting the Lie group details.  
-Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code.md)
+Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code)
 
 #### Details
 
@@ -196,7 +196,7 @@ For reference of the size of the Jacobians returned, **manif** implements rotati
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
   - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
 
-For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/On-the-use-with-Ceres.md).
+For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
 
 ## Documentation
 
