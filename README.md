@@ -10,8 +10,7 @@
 **manif** is a header-only c++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
-It provides a base structure which is implemented using CRTP for 
-the groups SO(2), SO(3), SE(2) and SE(3):
+At the moment, it provides the groups:
   - SO(2): rotations in the plane.
   - SE(2): righd motion (rotation and translation) in the plane.
   - SO(3): rotations in 3D space.
@@ -32,6 +31,10 @@ The paper provides a thorough introduction to Lie theory, in a simplified way so
 **manif** provides analytic computation of Jacobians for all the operations.
 It also supports template scalar types. In particular, it can work with the
 `ceres::Jet` type, allowing for automatic Jacobian computation -- see related paragraph on Jacobians below.
+
+All Lie group classes defined in **manif** have in common that they inherit from a templated base class (CRTP).
+It allows one to write generic code abstracting the Lie group details.  
+Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code.md)
 
 #### Details
 
