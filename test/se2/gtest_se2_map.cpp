@@ -13,7 +13,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_CONSTRUCTOR)
 
   EXPECT_DOUBLE_EQ(4,    se2.x());
   EXPECT_DOUBLE_EQ(2,    se2.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_COEFFS)
@@ -53,13 +53,13 @@ TEST(TEST_SE2, TEST_SE2_MAP_CAST)
 
   EXPECT_DOUBLE_EQ(4, se2d.x());
   EXPECT_DOUBLE_EQ(2, se2d.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2d.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2d.angle());
 
   SE2f se2f = se2d.cast<float>();
 
   EXPECT_FLOAT_EQ(4, se2f.x());
   EXPECT_FLOAT_EQ(2, se2f.y());
-  EXPECT_FLOAT_EQ(M_PI, se2f.angle());
+  EXPECT_FLOAT_EQ(MANIF_PI, se2f.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_IDENTITY)
@@ -156,7 +156,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_ASSIGN_OP)
 
   EXPECT_DOUBLE_EQ(-4, se2a.x());
   EXPECT_DOUBLE_EQ(-2, se2a.y());
-  EXPECT_ANGLE_NEAR(-M_PI, se2a.angle(), 1e-15);
+  EXPECT_ANGLE_NEAR(-MANIF_PI, se2a.angle(), 1e-15);
 
   EXPECT_DOUBLE_EQ(datab[0], dataa[0]);
   EXPECT_DOUBLE_EQ(datab[1], dataa[1]);
@@ -177,16 +177,16 @@ TEST(TEST_SE2, TEST_SE2_MAP_INVERSE)
   EXPECT_DOUBLE_EQ(1, se2_inv.real());
   EXPECT_DOUBLE_EQ(0, se2_inv.imag());
 
-  se2 = SE2d(1, 1, M_PI);
+  se2 = SE2d(1, 1, MANIF_PI);
   se2_inv = se2.inverse();
 
   EXPECT_DOUBLE_EQ( 1, se2_inv.x());
   EXPECT_DOUBLE_EQ( 1, se2_inv.y());
-  EXPECT_ANGLE_NEAR(-M_PI, se2_inv.angle(), 1e-15);
+  EXPECT_ANGLE_NEAR(-MANIF_PI, se2_inv.angle(), 1e-15);
   EXPECT_DOUBLE_EQ(-1, se2_inv.real());
   EXPECT_NEAR(0, se2_inv.imag(), 1e-15);
 
-  se2 = SE2d(0.7, 2.3, M_PI/3.);
+  se2 = SE2d(0.7, 2.3, MANIF_PI/3.);
   se2_inv = se2.inverse();
 
   EXPECT_DOUBLE_EQ(-2.341858428704209, se2_inv.x());
@@ -205,84 +205,84 @@ TEST(TEST_SE2, TEST_SE2_MAP_RPLUS_ZERO)
 
   EXPECT_DOUBLE_EQ(1, se2c.x());
   EXPECT_DOUBLE_EQ(1, se2c.y());
-  EXPECT_ANGLE_NEAR(-M_PI, se2c.angle(), 1e-15);
+  EXPECT_ANGLE_NEAR(-MANIF_PI, se2c.angle(), 1e-15);
 }
 /*
 TEST(TEST_SE2, TEST_SE2_MAP_RPLUS)
 {
-  Eigen::Map<SE2d> se2a(1, 1, M_PI / 2.);
-  SE2Tangentd se2b(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d> se2a(1, 1, MANIF_PI / 2.);
+  SE2Tangentd se2b(1, 1, MANIF_PI / 2.);
 
   auto se2c = se2a.rplus(se2b);
 
   /// @todo what to expect here ?? :S
 //  EXPECT_DOUBLE_EQ(0, se2c.x());
 //  EXPECT_DOUBLE_EQ(2, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_LPLUS_ZERO)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI / 2.);
   SE2Tangentd se2b(0, 0, 0);
 
   auto se2c = se2a.lplus(se2b);
 
   EXPECT_DOUBLE_EQ(1, se2c.x());
   EXPECT_DOUBLE_EQ(1, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI / 2., se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI / 2., se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_LPLUS)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI / 2.);
-  SE2Tangentd se2b(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI / 2.);
+  SE2Tangentd se2b(1, 1, MANIF_PI / 2.);
 
   auto se2c = se2a.lplus(se2b);
 
   /// @todo what to expect here ?? :S
 //  EXPECT_DOUBLE_EQ(1, se2c.x());
 //  EXPECT_DOUBLE_EQ(1, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_PLUS)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI / 2.);
-  SE2Tangentd se2b(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI / 2.);
+  SE2Tangentd se2b(1, 1, MANIF_PI / 2.);
 
   auto se2c = se2a.plus(se2b);
 
   /// @todo what to expect here ?? :S
 //  EXPECT_DOUBLE_EQ(0, se2c.x());
 //  EXPECT_DOUBLE_EQ(2, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_OP_PLUS)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI / 2.);
-  SE2Tangentd se2b(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI / 2.);
+  SE2Tangentd se2b(1, 1, MANIF_PI / 2.);
 
   auto se2c = se2a + se2b;
 
   /// @todo what to expect here ?? :S
 //  EXPECT_DOUBLE_EQ(0, se2c.x());
 //  EXPECT_DOUBLE_EQ(2, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_OP_PLUS_EQ)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI / 2.);
-  SE2Tangentd se2b(1, 1, M_PI / 2.);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI / 2.);
+  SE2Tangentd se2b(1, 1, MANIF_PI / 2.);
 
   se2a += se2b;
 
   /// @todo what to expect here ?? :S
 //  EXPECT_DOUBLE_EQ(0, se2a.x());
 //  EXPECT_DOUBLE_EQ(2, se2a.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2a.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2a.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_ZERO)
@@ -301,8 +301,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_ZERO)
 
 TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_I)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI);
-  Eigen::Map<SE2d>se2b(1, 1, M_PI);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI);
+  Eigen::Map<SE2d>se2b(1, 1, MANIF_PI);
 
   auto se2c = se2a.rminus(se2b);
 
@@ -316,15 +316,15 @@ TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_I)
 
 TEST(TEST_SE2, TEST_SE2_MAP_RMINUS)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI);
-  Eigen::Map<SE2d>se2b(2, 2, M_PI_2);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI);
+  Eigen::Map<SE2d>se2b(2, 2, MANIF_PI_2);
 
   auto se2c = se2a.rminus(se2b);
 
   /// @todo
 //  EXPECT_DOUBLE_EQ(1, se2c.x());
 //  EXPECT_DOUBLE_EQ(1, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_LMINUS_IDENTITY)
@@ -342,82 +342,82 @@ TEST(TEST_SE2, TEST_SE2_MAP_LMINUS_IDENTITY)
 
 TEST(TEST_SE2, TEST_SE2_MAP_LMINUS)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI);
-  Eigen::Map<SE2d>se2b(2,2,M_PI_2);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI);
+  Eigen::Map<SE2d>se2b(2,2,MANIF_PI_2);
 
   auto se2c = se2a.lminus(se2b);
 
   /// @todo
 //  EXPECT_DOUBLE_EQ(0, se2c.x());
 //  EXPECT_DOUBLE_EQ(0, se2c.y());
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI_2, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_MINUS)
 {
-  Eigen::Map<SE2d>se2a(1, 1, M_PI);
-  Eigen::Map<SE2d>se2b(2, 2, M_PI_2);
+  Eigen::Map<SE2d>se2a(1, 1, MANIF_PI);
+  Eigen::Map<SE2d>se2b(2, 2, MANIF_PI_2);
 
   auto se2c = se2a.minus(se2b);
 
   /// @todo
 //  EXPECT_DOUBLE_EQ(1, se2c.x());
 //  EXPECT_DOUBLE_EQ(1, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_LIFT)
 {
-  Eigen::Map<SE2d>se2(1,1,M_PI);
+  Eigen::Map<SE2d>se2(1,1,MANIF_PI);
 
   auto se2_log = se2.log();
 
   /// @todo
 //  EXPECT_DOUBLE_EQ(1, se2_log.x());
 //  EXPECT_DOUBLE_EQ(1, se2_log.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2_log.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2_log.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_COMPOSE)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI_2);
-  Eigen::Map<SE2d>se2b(2,2,M_PI_2);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI_2);
+  Eigen::Map<SE2d>se2b(2,2,MANIF_PI_2);
 
   auto se2c = se2a.compose(se2b);
 
   EXPECT_DOUBLE_EQ(-1, se2c.x());
   EXPECT_DOUBLE_EQ(+3, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_OP_COMPOSE)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI_2);
-  Eigen::Map<SE2d>se2b(2,2,M_PI_2);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI_2);
+  Eigen::Map<SE2d>se2b(2,2,MANIF_PI_2);
 
   auto se2c = se2a * se2b;
 
   EXPECT_DOUBLE_EQ(-1, se2c.x());
   EXPECT_DOUBLE_EQ(+3, se2c.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_OP_COMPOSE_EQ)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI_2);
-  Eigen::Map<SE2d>se2b(2,2,M_PI_2);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI_2);
+  Eigen::Map<SE2d>se2b(2,2,MANIF_PI_2);
 
   se2a *= se2b;
 
   EXPECT_DOUBLE_EQ(-1, se2a.x());
   EXPECT_DOUBLE_EQ(+3, se2a.y());
-  EXPECT_DOUBLE_EQ(M_PI, se2a.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2a.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_BETWEEN_I)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI);
-  Eigen::Map<SE2d>se2b(1,1,M_PI);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI);
+  Eigen::Map<SE2d>se2b(1,1,MANIF_PI);
 
   auto se2c = se2a.between(se2b);
 
@@ -428,14 +428,14 @@ TEST(TEST_SE2, TEST_SE2_MAP_BETWEEN_I)
 
 TEST(TEST_SE2, TEST_SE2_MAP_BETWEEN)
 {
-  Eigen::Map<SE2d>se2a(1,1,M_PI);
-  Eigen::Map<SE2d>se2b(2,2,M_PI_2);
+  Eigen::Map<SE2d>se2a(1,1,MANIF_PI);
+  Eigen::Map<SE2d>se2b(2,2,MANIF_PI_2);
 
   auto se2c = se2a.between(se2b);
 
   EXPECT_DOUBLE_EQ(-1, se2c.x());
   EXPECT_DOUBLE_EQ(-1, se2c.y());
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI_2, se2c.angle());
 }
 */
 
@@ -458,10 +458,10 @@ TEST(TEST_SE2, TEST_SE2_MAP_INVERSE_JAC)
   EXPECT_EQ(1, J_inv.cols());
   EXPECT_DOUBLE_EQ(-1, J_inv(0));
 
-  se2 = SE2d(M_PI);
+  se2 = SE2d(MANIF_PI);
   se2.inverse(se2_inv, J_inv);
 
-  EXPECT_DOUBLE_EQ(-M_PI, se2_inv.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI, se2_inv.angle());
 
   EXPECT_EQ(1, J_inv.rows());
   EXPECT_EQ(1, J_inv.cols());
@@ -470,14 +470,14 @@ TEST(TEST_SE2, TEST_SE2_MAP_INVERSE_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_LIFT_JAC)
 {
-  Eigen::Map<SE2d>se2(M_PI);
+  Eigen::Map<SE2d>se2(MANIF_PI);
 
   SE2d::Tangent se2_log;
   SE2d::Tangent::Jacobian J_log;
 
   se2.log(se2_log, J_log);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2_log.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2_log.angle());
 
   /// @todo check this J
   EXPECT_EQ(1, J_log.rows());
@@ -487,15 +487,15 @@ TEST(TEST_SE2, TEST_SE2_MAP_LIFT_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_COMPOSE_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI_2);
-  Eigen::Map<SE2d>se2b(M_PI_2);
+  Eigen::Map<SE2d>se2a(MANIF_PI_2);
+  Eigen::Map<SE2d>se2b(MANIF_PI_2);
 
   Eigen::Map<SE2d>se2c;
   SE2d::Jacobian J_c_a, J_c_b;
 
   se2a.compose(se2b, se2c, J_c_a, J_c_b);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 
   EXPECT_EQ(1, J_c_a.rows());
   EXPECT_EQ(1, J_c_a.cols());
@@ -508,8 +508,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_COMPOSE_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_RPLUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
+  Eigen::Map<SE2d>se2a(MANIF_PI / 2.);
+  SE2Tangentd se2b(MANIF_PI / 2.);
 
   Eigen::Map<SE2d>se2c;
   SE2d::Jacobian J_rplus_m;
@@ -517,7 +517,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_RPLUS_JAC)
 
   se2a.rplus(se2b, se2c, J_rplus_m, J_rplus_t);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 
   EXPECT_EQ(1, J_rplus_m.rows());
   EXPECT_EQ(1, J_rplus_m.cols());
@@ -530,8 +530,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_RPLUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_LPLUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
+  Eigen::Map<SE2d>se2a(MANIF_PI / 2.);
+  SE2Tangentd se2b(MANIF_PI / 2.);
 
   Eigen::Map<SE2d>se2c;
   SE2d::Jacobian J_lplus_t;
@@ -539,7 +539,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_LPLUS_JAC)
 
   se2a.lplus(se2b, se2c, J_lplus_t, J_lplus_m);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 
   EXPECT_EQ(1, J_lplus_t.rows());
   EXPECT_EQ(1, J_lplus_t.cols());
@@ -552,8 +552,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_LPLUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_PLUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI / 2.);
-  SE2Tangentd se2b(M_PI / 2.);
+  Eigen::Map<SE2d>se2a(MANIF_PI / 2.);
+  SE2Tangentd se2b(MANIF_PI / 2.);
 
   Eigen::Map<SE2d>se2c;
   SE2d::Jacobian J_plus_m;
@@ -561,7 +561,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_PLUS_JAC)
 
   se2a.plus(se2b, se2c, J_plus_m, J_plus_t);
 
-  EXPECT_DOUBLE_EQ(M_PI, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, se2c.angle());
 
   EXPECT_EQ(1, J_plus_m.rows());
   EXPECT_EQ(1, J_plus_m.cols());
@@ -574,8 +574,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_PLUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI);
-  Eigen::Map<SE2d>se2b(M_PI_2);
+  Eigen::Map<SE2d>se2a(MANIF_PI);
+  Eigen::Map<SE2d>se2b(MANIF_PI_2);
 
   SE2Tangentd se2c;
 
@@ -583,7 +583,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_JAC)
 
   se2a.rminus(se2b, se2c, J_rminus_a, J_rminus_b);
 
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, se2c.angle());
 
   EXPECT_EQ(1, J_rminus_a.rows());
   EXPECT_EQ(1, J_rminus_a.cols());
@@ -596,8 +596,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_RMINUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_LMINUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI);
-  Eigen::Map<SE2d>se2b(M_PI_2);
+  Eigen::Map<SE2d>se2a(MANIF_PI);
+  Eigen::Map<SE2d>se2b(MANIF_PI_2);
 
   SE2Tangentd se2c;
 
@@ -605,7 +605,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_LMINUS_JAC)
 
   se2a.lminus(se2b, se2c, J_lminus_a, J_lminus_b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI_2, se2c.angle());
 
   EXPECT_EQ(1, J_lminus_a.rows());
   EXPECT_EQ(1, J_lminus_a.cols());
@@ -618,8 +618,8 @@ TEST(TEST_SE2, TEST_SE2_MAP_LMINUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_MINUS_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI);
-  Eigen::Map<SE2d>se2b(M_PI_2);
+  Eigen::Map<SE2d>se2a(MANIF_PI);
+  Eigen::Map<SE2d>se2b(MANIF_PI_2);
 
   SE2Tangentd se2c;
 
@@ -627,7 +627,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_MINUS_JAC)
 
   se2a.minus(se2b, se2c, J_minus_a, J_minus_b);
 
-  EXPECT_DOUBLE_EQ(M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, se2c.angle());
 
   EXPECT_EQ(1, J_minus_a.rows());
   EXPECT_EQ(1, J_minus_a.cols());
@@ -640,15 +640,15 @@ TEST(TEST_SE2, TEST_SE2_MAP_MINUS_JAC)
 
 TEST(TEST_SE2, TEST_SE2_MAP_BETWEEN_JAC)
 {
-  Eigen::Map<SE2d>se2a(M_PI);
-  Eigen::Map<SE2d>se2b(M_PI_2);
+  Eigen::Map<SE2d>se2a(MANIF_PI);
+  Eigen::Map<SE2d>se2b(MANIF_PI_2);
 
   SE2d::Jacobian J_between_a, J_between_b;
   Eigen::Map<SE2d>se2c;
 
   se2a.between(se2b, se2c, J_between_a, J_between_b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, se2c.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI_2, se2c.angle());
 
   EXPECT_EQ(1, J_between_a.rows());
   EXPECT_EQ(1, J_between_a.cols());

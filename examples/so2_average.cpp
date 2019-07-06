@@ -19,10 +19,10 @@ int main(int argc, char** argv)
 
   std::vector<manif::SO2d> points;
 
-  points.emplace_back(   M_PI/4.);
-  points.emplace_back(3.*M_PI/8.);
-  points.emplace_back(5.*M_PI/8.);
-  points.emplace_back(3.*M_PI/4.);
+  points.emplace_back(   MANIF_PI/4.);
+  points.emplace_back(3.*MANIF_PI/8.);
+  points.emplace_back(5.*MANIF_PI/8.);
+  points.emplace_back(3.*MANIF_PI/4.);
 
   std::cout << "Initial points:\n";
   for (const auto& p : points)

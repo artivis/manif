@@ -6,10 +6,10 @@ using namespace manif;
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_0)
 {
-  double data(M_PI);
+  double data(MANIF_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 }
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_DATA)
@@ -17,13 +17,13 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_DATA)
   /// @todo without specifying const
   /// it calls non-const data()
 
-  double data(M_PI);
+  double data(MANIF_PI);
   const Eigen::Map<SO2Tangentd> so2tan(&data);
 
 //  EXPECT_NE(nullptr, so2tan.data());
 //  EXPECT_EQ(&data, so2tan.data()->data());
 
-//  EXPECT_DOUBLE_EQ(M_PI, (*so2tan.data())(0));
+//  EXPECT_DOUBLE_EQ(MANIF_PI, (*so2tan.data())(0));
 }
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO)
@@ -63,34 +63,34 @@ TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_ZERO2)
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_RETRACT)
 {
-  double data(M_PI);
+  double data(MANIF_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 
   auto so2_exp = so2tan.exp();
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
+  EXPECT_DOUBLE_EQ(std::cos(MANIF_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(MANIF_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2_exp.angle());
 }
 
 /// with Jacs
 
 TEST(TEST_SO2, TEST_SO2_TANGENT_MAP_RETRACT_JAC)
 {
-  double data(M_PI);
+  double data(MANIF_PI);
   Eigen::Map<SO2Tangentd> so2tan(&data);
 
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 
   SO2d::Jacobian J_ret;
 
   SO2d so2_exp = so2tan.exp(J_ret);
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
+  EXPECT_DOUBLE_EQ(std::cos(MANIF_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(MANIF_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2_exp.angle());
 
   /// @todo check this J
   EXPECT_EQ(1, J_ret.rows());

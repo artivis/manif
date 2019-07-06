@@ -17,12 +17,12 @@ generateSE2PointsOnHeightShape(const unsigned int k)
 
   const double x = std::cos(0);
   const double y = std::sin(0)/2;
-  states.emplace_back(x,y,M_PI/2);
+  states.emplace_back(x,y,MANIF_PI/2);
 
   double t = 0;
   for (unsigned int i=1; i<k; ++i)
   {
-    t += M_PI*2. / double(k);
+    t += MANIF_PI*2. / double(k);
 
     const double x = std::cos(t);
     const double y = std::sin(2.*t) / 2.;

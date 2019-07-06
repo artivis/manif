@@ -23,16 +23,16 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE_AUTODIFF)
 {
   // Create 4 objectives spread arround pi
   std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
-      make_objective_autodiff<SE2d>(3,3,M_PI/4.);
+      make_objective_autodiff<SE2d>(3,3,MANIF_PI/4.);
 
   std::shared_ptr<ceres::CostFunction> obj_3_pi_over_8 =
-      make_objective_autodiff<SE2d>(3,1,3.*M_PI/8.);
+      make_objective_autodiff<SE2d>(3,1,3.*MANIF_PI/8.);
 
   std::shared_ptr<ceres::CostFunction> obj_5_pi_over_8 =
-      make_objective_autodiff<SE2d>(1,1,5.*M_PI/8.);
+      make_objective_autodiff<SE2d>(1,1,5.*MANIF_PI/8.);
 
   std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
-      make_objective_autodiff<SE2d>(1,3,3.*M_PI/4.);
+      make_objective_autodiff<SE2d>(1,3,3.*MANIF_PI/4.);
 
   /// @todo eval Jac
 ////  double** jacobians = new double*[10];
@@ -54,22 +54,22 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_OBJECTIVE_AUTODIFF)
   /// @todo
 //  EXPECT_DOUBLE_EQ(d0, residuals[0]);
 //  EXPECT_DOUBLE_EQ(d0, residuals[1]);
-//  EXPECT_DOUBLE_EQ(1.*M_PI/4., residuals[2]);
+//  EXPECT_DOUBLE_EQ(1.*MANIF_PI/4., residuals[2]);
 
   obj_3_pi_over_8->Evaluate(parameters, residuals, nullptr);
 //  EXPECT_DOUBLE_EQ(3, residuals[0]);
 //  EXPECT_DOUBLE_EQ(1, residuals[1]);
-//  EXPECT_DOUBLE_EQ(3.*M_PI/8., residuals[2]);
+//  EXPECT_DOUBLE_EQ(3.*MANIF_PI/8., residuals[2]);
 
   obj_5_pi_over_8->Evaluate(parameters, residuals, nullptr);
 //  EXPECT_DOUBLE_EQ(1, residuals[0]);
 //  EXPECT_DOUBLE_EQ(3, residuals[1]);
-//  EXPECT_DOUBLE_EQ(5.*M_PI/8., residuals[2]);
+//  EXPECT_DOUBLE_EQ(5.*MANIF_PI/8., residuals[2]);
 
   obj_3_pi_over_4->Evaluate(parameters, residuals, nullptr );
 //  EXPECT_DOUBLE_EQ(1, residuals[0]);
 //  EXPECT_DOUBLE_EQ(1, residuals[1]);
-//  EXPECT_DOUBLE_EQ(3.*M_PI/4., residuals[2]);
+//  EXPECT_DOUBLE_EQ(3.*MANIF_PI/4., residuals[2]);
 }
 
 TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_LOCAL_PARAMETRIZATION_AUTODIFF)
@@ -81,7 +81,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_LOCAL_PARAMETRIZATION_AUTODIFF)
   // 0 + pi
 
   double x[SE2d::RepSize] = {0.0, 0.0, 1.0, 0.0};
-  double delta[SE2Tangentd::RepSize] = {1.0, 1.0, M_PI};
+  double delta[SE2Tangentd::RepSize] = {1.0, 1.0, MANIF_PI};
   double x_plus_delta[SE2d::RepSize] = {0.0, 0.0, 0.0, 0.0};
 
   auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
@@ -93,16 +93,16 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_LOCAL_PARAMETRIZATION_AUTODIFF)
   EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[2]);
   EXPECT_NEAR(0.0, x_plus_delta[3], 1e-15);
 
-  EXPECT_EQ(M_PI, Eigen::Map<const SE2d>(x_plus_delta).angle());
+  EXPECT_EQ(MANIF_PI, Eigen::Map<const SE2d>(x_plus_delta).angle());
 
   // pi/4 + pi
 
   Eigen::Map<SE2d> map_se2(x);
-  map_se2 = SE2d(1, 1, M_PI/4.);
+  map_se2 = SE2d(1, 1, MANIF_PI/4.);
 
   delta[0] = 1;
   delta[1] = 2;
-  delta[2] = M_PI;
+  delta[2] = MANIF_PI;
   x_plus_delta[0] = 0;
   x_plus_delta[1] = 0;
   x_plus_delta[2] = 1;
@@ -114,10 +114,10 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_LOCAL_PARAMETRIZATION_AUTODIFF)
 //  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
 //  EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[1]);
 
-  EXPECT_DOUBLE_EQ(cos(-3.*M_PI/4.), x_plus_delta[2]);
-  EXPECT_DOUBLE_EQ(sin(-3.*M_PI/4.), x_plus_delta[3]);
+  EXPECT_DOUBLE_EQ(cos(-3.*MANIF_PI/4.), x_plus_delta[2]);
+  EXPECT_DOUBLE_EQ(sin(-3.*MANIF_PI/4.), x_plus_delta[3]);
 
-  EXPECT_NEAR(-3.*M_PI/4., Eigen::Map<const SE2d>(x_plus_delta).angle(), 1e-15);
+  EXPECT_NEAR(-3.*MANIF_PI/4., Eigen::Map<const SE2d>(x_plus_delta).angle(), 1e-15);
 
   double J_rplus[SE2d::RepSize*SE2Tangentd::RepSize];
   auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
@@ -148,16 +148,16 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
 
   // Create 4 objectives spread arround pi
   std::shared_ptr<ceres::CostFunction> obj_pi_over_4 =
-      make_objective_autodiff<SE2d>(3,3,M_PI/4.);
+      make_objective_autodiff<SE2d>(3,3,MANIF_PI/4.);
 
   std::shared_ptr<ceres::CostFunction> obj_3_pi_over_8 =
-      make_objective_autodiff<SE2d>(3,1,3.*M_PI/8.);
+      make_objective_autodiff<SE2d>(3,1,3.*MANIF_PI/8.);
 
   std::shared_ptr<ceres::CostFunction> obj_5_pi_over_8 =
-      make_objective_autodiff<SE2d>(1,1,5.*M_PI/8.);
+      make_objective_autodiff<SE2d>(1,1,5.*MANIF_PI/8.);
 
   std::shared_ptr<ceres::CostFunction> obj_3_pi_over_4 =
-      make_objective_autodiff<SE2d>(1,3,3.*M_PI/4.);
+      make_objective_autodiff<SE2d>(1,3,3.*MANIF_PI/4.);
 
   SE2d average_state(0,0,0);
 
@@ -192,7 +192,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
   std::cout << "-----------------------------\n\n";
 
   // Initializing state closer to solution
-//  average_state = SE2d(3.*M_PI/8.);
+//  average_state = SE2d(3.*MANIF_PI/8.);
 
   // Run the solver!
   ceres::Solver::Options options;
@@ -214,7 +214,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_SMALL_PROBLEM_AUTODIFF)
 
   EXPECT_NEAR(2,      average_state.x(),     1e-1);
   EXPECT_NEAR(2,      average_state.y(),     1e-1);
-  EXPECT_NEAR(M_PI_2, average_state.angle(), 1e-1);
+  EXPECT_NEAR(MANIF_PI_2, average_state.angle(), 1e-1);
 }
 
 
@@ -235,25 +235,25 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   ceres::Problem problem(problem_options);
 
-//  p0 expected at  0, 0, -M_PI/4.
+//  p0 expected at  0, 0, -MANIF_PI/4.
 //  p1 expected at  1, 0, 0
-//  p2 expected at  2, 1, M_PI/4.
-//  p3 expected at  2, 2, M_PI/2.
-//  p4 expected at  1, 3, 3.*M_PI/4.
-//  p5 expected at  0, 3, M_PI
-//  p6 expected at -1, 2, -3.*M_PI/4.
-//  p7 expected at -1, 1, -M_PI/2.
+//  p2 expected at  2, 1, MANIF_PI/4.
+//  p3 expected at  2, 2, MANIF_PI/2.
+//  p4 expected at  1, 3, 3.*MANIF_PI/4.
+//  p5 expected at  0, 3, MANIF_PI
+//  p6 expected at -1, 2, -3.*MANIF_PI/4.
+//  p7 expected at -1, 1, -MANIF_PI/2.
 
   GaussianNoiseGenerator<> noise(0, 0.1);
 
-  SE2d state_0( 0 + noise(), 0 + noise(), -M_PI/4.    + noise());
+  SE2d state_0( 0 + noise(), 0 + noise(), -MANIF_PI/4.    + noise());
   SE2d state_1( 1 + noise(), 0 + noise(), 0           + noise());
-  SE2d state_2( 2 + noise(), 1 + noise(), M_PI/4.     + noise());
-  SE2d state_3( 2 + noise(), 2 + noise(), M_PI/2.     + noise());
-  SE2d state_4( 1 + noise(), 3 + noise(), 3.*M_PI/4.  + noise());
-  SE2d state_5( 0 + noise(), 3 + noise(), M_PI        + noise());
-  SE2d state_6(-1 + noise(), 2 + noise(), -3.*M_PI/4. + noise());
-  SE2d state_7(-1 + noise(), 1 + noise(), -M_PI/2.    + noise());
+  SE2d state_2( 2 + noise(), 1 + noise(), MANIF_PI/4.     + noise());
+  SE2d state_3( 2 + noise(), 2 + noise(), MANIF_PI/2.     + noise());
+  SE2d state_4( 1 + noise(), 3 + noise(), 3.*MANIF_PI/4.  + noise());
+  SE2d state_5( 0 + noise(), 3 + noise(), MANIF_PI        + noise());
+  SE2d state_6(-1 + noise(), 2 + noise(), -3.*MANIF_PI/4. + noise());
+  SE2d state_7(-1 + noise(), 1 + noise(), -MANIF_PI/2.    + noise());
 
   std::cout << "Initial states :\n";
   std::cout << "p0 : [" << state_0.x() << "," << state_0.y() << "," << state_0.angle() << "]\n";
@@ -268,14 +268,14 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   double inv_sqrt_2 = 1./sqrt(2.);
 
-  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
-  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
-  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
-  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
-  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
-  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
-  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, M_PI/4. ).log() );
-  auto constraint_7_0 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          M_PI/4. ).log() );
+  auto constraint_0_1 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, MANIF_PI/4. ).log() );
+  auto constraint_1_2 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          MANIF_PI/4. ).log() );
+  auto constraint_2_3 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, MANIF_PI/4. ).log() );
+  auto constraint_3_4 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          MANIF_PI/4. ).log() );
+  auto constraint_4_5 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, MANIF_PI/4. ).log() );
+  auto constraint_5_6 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          MANIF_PI/4. ).log() );
+  auto constraint_6_7 = make_constraint_autodiff<SE2d>( SE2d( inv_sqrt_2, inv_sqrt_2, MANIF_PI/4. ).log() );
+  auto constraint_7_0 = make_constraint_autodiff<SE2d>( SE2d( 1,          1,          MANIF_PI/4. ).log() );
 
   // Add residual blocks to ceres problem
   problem.AddResidualBlock( constraint_0_1.get(),
@@ -312,7 +312,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   // Anchor on state
   std::shared_ptr<ceres::CostFunction> obj_origin =
-      make_objective_autodiff<SE2d>(0,0,-M_PI/4.);
+      make_objective_autodiff<SE2d>(0,0,-MANIF_PI/4.);
 
   problem.AddResidualBlock( obj_origin.get(),
                             nullptr,
@@ -377,7 +377,7 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   EXPECT_NEAR( 0,                 state_0.x(),      ceres_eps);
   EXPECT_NEAR( 0,                 state_0.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR(-M_PI/4.,     state_0.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR(-MANIF_PI/4.,     state_0.angle(),  ceres_eps);
 
   EXPECT_NEAR( 1,                 state_1.x(),      ceres_eps);
   EXPECT_NEAR( 0,                 state_1.y(),      ceres_eps);
@@ -385,27 +385,27 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
 
   EXPECT_NEAR( 2,                 state_2.x(),      ceres_eps);
   EXPECT_NEAR( 1,                 state_2.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR( M_PI/4.,     state_2.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR( MANIF_PI/4.,     state_2.angle(),  ceres_eps);
 
   EXPECT_NEAR( 2,                 state_3.x(),      ceres_eps);
   EXPECT_NEAR( 2,                 state_3.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR( M_PI_2,      state_3.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR( MANIF_PI_2,      state_3.angle(),  ceres_eps);
 
   EXPECT_NEAR( 1,                 state_4.x(),      ceres_eps);
   EXPECT_NEAR( 3,                 state_4.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR( 3.*M_PI/4.,  state_4.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR( 3.*MANIF_PI/4.,  state_4.angle(),  ceres_eps);
 
   EXPECT_NEAR( 0,                 state_5.x(),      ceres_eps);
   EXPECT_NEAR( 3,                 state_5.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR(-M_PI,        state_5.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR(-MANIF_PI,        state_5.angle(),  ceres_eps);
 
   EXPECT_NEAR(-1,                 state_6.x(),      ceres_eps);
   EXPECT_NEAR( 2,                 state_6.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR(-3.*M_PI/4,   state_6.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR(-3.*MANIF_PI/4,   state_6.angle(),  ceres_eps);
 
   EXPECT_NEAR(-1,                 state_7.x(),      ceres_eps);
   EXPECT_NEAR( 1,                 state_7.y(),      ceres_eps);
-  EXPECT_ANGLE_NEAR(-M_PI_2,      state_7.angle(),  ceres_eps);
+  EXPECT_ANGLE_NEAR(-MANIF_PI_2,      state_7.angle(),  ceres_eps);
 }
 
 int main(int argc, char** argv)

@@ -216,7 +216,7 @@ struct RandomEvaluatorImpl<SO2TangentBase<Derived>>
   static void run(SO2TangentBase<Derived>& m)
   {
     // in [-1,1]  /  in [-PI,PI]
-    m.coeffs().setRandom() *= M_PI;
+    m.coeffs().setRandom() *= MANIF_PI;
   }
 };
 

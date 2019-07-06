@@ -433,7 +433,7 @@ struct RandomEvaluatorImpl<SE3TangentBase<Derived>>
   static void run(SE3TangentBase<Derived>& m)
   {
     m.coeffs().setRandom();                // in [-1,1]
-    m.coeffs().template tail<3>() *= M_PI; // in [-PI,PI]
+    m.coeffs().template tail<3>() *= MANIF_PI; // in [-PI,PI]
   }
 };
 
