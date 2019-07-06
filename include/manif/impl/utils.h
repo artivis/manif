@@ -13,8 +13,8 @@ namespace manif {
 template <typename T>
 T pi2pi(T angle)
 {
-  while (angle > T(M_PI))   angle -= T(2. * M_PI);
-  while (angle <= T(-M_PI)) angle += T(2. * M_PI);
+  while (angle > T(MANIF_PI))   angle -= T(2. * MANIF_PI);
+  while (angle <= T(-MANIF_PI)) angle += T(2. * MANIF_PI);
 
   return angle;
 }

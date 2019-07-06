@@ -641,7 +641,7 @@ TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
 
   so3a.rplus(so3b, so3c, J_rplus_m, J_rplus_t);
 
-  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so3c.angle());
 
   EXPECT_EQ(1, J_rplus_m.rows());
   EXPECT_EQ(1, J_rplus_m.cols());
@@ -663,7 +663,7 @@ TEST(TEST_SO3, TEST_SO3_LPLUS_JAC)
 
   so3a.lplus(so3b, so3c, J_lplus_t, J_lplus_m);
 
-  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so3c.angle());
 
   EXPECT_EQ(1, J_lplus_t.rows());
   EXPECT_EQ(1, J_lplus_t.cols());
@@ -685,7 +685,7 @@ TEST(TEST_SO3, TEST_SO3_PLUS_JAC)
 
   so3a.plus(so3b, so3c, J_plus_m, J_plus_t);
 
-  EXPECT_DOUBLE_EQ(M_PI, so3c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so3c.angle());
 
   EXPECT_EQ(1, J_plus_m.rows());
   EXPECT_EQ(1, J_plus_m.cols());
@@ -698,8 +698,8 @@ TEST(TEST_SO3, TEST_SO3_PLUS_JAC)
 
 TEST(TEST_SO3, TEST_SO3_RMINUS_JAC)
 {
-  SO3d so3a(M_PI);
-  SO3d so3b(M_PI_2);
+  SO3d so3a(MANIF_PI);
+  SO3d so3b(MANIF_PI_2);
 
   SO3Tangentd so3c;
 
@@ -707,7 +707,7 @@ TEST(TEST_SO3, TEST_SO3_RMINUS_JAC)
 
   so3a.rminus(so3b, so3c, J_rminus_a, J_rminus_b);
 
-  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, so3c.angle());
 
   EXPECT_EQ(1, J_rminus_a.rows());
   EXPECT_EQ(1, J_rminus_a.cols());
@@ -720,8 +720,8 @@ TEST(TEST_SO3, TEST_SO3_RMINUS_JAC)
 
 TEST(TEST_SO3, TEST_SO3_LMINUS_JAC)
 {
-  SO3d so3a(M_PI);
-  SO3d so3b(M_PI_2);
+  SO3d so3a(MANIF_PI);
+  SO3d so3b(MANIF_PI_2);
 
   SO3Tangentd so3c;
 
@@ -729,7 +729,7 @@ TEST(TEST_SO3, TEST_SO3_LMINUS_JAC)
 
   so3a.lminus(so3b, so3c, J_lminus_a, J_lminus_b);
 
-  EXPECT_DOUBLE_EQ(-M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(-MANIF_PI_2, so3c.angle());
 
   EXPECT_EQ(1, J_lminus_a.rows());
   EXPECT_EQ(1, J_lminus_a.cols());
@@ -742,8 +742,8 @@ TEST(TEST_SO3, TEST_SO3_LMINUS_JAC)
 
 TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
 {
-  SO3d so3a(M_PI);
-  SO3d so3b(M_PI_2);
+  SO3d so3a(MANIF_PI);
+  SO3d so3b(MANIF_PI_2);
 
   SO3Tangentd so3c;
 
@@ -751,7 +751,7 @@ TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
 
   so3a.minus(so3b, so3c, J_minus_a, J_minus_b);
 
-  EXPECT_DOUBLE_EQ(M_PI_2, so3c.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI_2, so3c.angle());
 
   EXPECT_EQ(1, J_minus_a.rows());
   EXPECT_EQ(1, J_minus_a.cols());
@@ -846,7 +846,7 @@ TEST(TEST_SO3, TEST_SO3_ACT)
   EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
   EXPECT_NEAR(+1, transformed_point.z(), 1e-15);
 
-  so3 = SO3d(M_PI, M_PI_2, M_PI/4.);
+  so3 = SO3d(MANIF_PI, MANIF_PI_2, MANIF_PI/4.);
 
   transformed_point = so3.act(Eigen::Vector3d(1,1,1));
 
@@ -854,7 +854,7 @@ TEST(TEST_SO3, TEST_SO3_ACT)
   EXPECT_NEAR(-1.414213562373, transformed_point.y(), 1e-12);
   EXPECT_NEAR(-1, transformed_point.z(), 1e-15);
 
-  so3 = SO3d(M_PI/4, -M_PI_2, -M_PI);
+  so3 = SO3d(MANIF_PI/4, -MANIF_PI_2, -MANIF_PI);
 
   transformed_point = so3.act(Eigen::Vector3d(1,1,1));
 

@@ -14,14 +14,14 @@ int main(int /*argc*/, char** /*argv*/)
 
   std::vector<manif::SE2d> points;
 
-//  points.emplace_back(1, 1, 3.*M_PI/4.);
-//  points.emplace_back(1, 3, 5.*M_PI/8.);
-//  points.emplace_back(3, 1,    M_PI/4.);
-//  points.emplace_back(3, 3, 3.*M_PI/8.);
+//  points.emplace_back(1, 1, 3.*MANIF_PI/4.);
+//  points.emplace_back(1, 3, 5.*MANIF_PI/8.);
+//  points.emplace_back(3, 1,    MANIF_PI/4.);
+//  points.emplace_back(3, 3, 3.*MANIF_PI/8.);
 
-  points.emplace_back(-std::sqrt(2.)/2.,  std::sqrt(2.)/2.,  M_PI/4.);
+  points.emplace_back(-std::sqrt(2.)/2.,  std::sqrt(2.)/2.,  MANIF_PI/4.);
   points.emplace_back( std::sqrt(2.),     0.,                0.);
-  points.emplace_back(-std::sqrt(2.)/2., -std::sqrt(2.)/2., -M_PI/4.);
+  points.emplace_back(-std::sqrt(2.)/2., -std::sqrt(2.)/2., -MANIF_PI/4.);
 
   std::cout << "Initial points:\n";
   for (const auto& p : points)

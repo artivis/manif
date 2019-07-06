@@ -357,7 +357,7 @@ struct RandomEvaluatorImpl<SE2TangentBase<Derived>>
   static void run(SE2TangentBase<Derived>& m)
   {
     m.coeffs().setRandom();         // in [-1,1]
-    m.coeffs().coeffRef(2) *= M_PI; // in [-PI,PI]
+    m.coeffs().coeffRef(2) *= MANIF_PI; // in [-PI,PI]
   }
 };
 

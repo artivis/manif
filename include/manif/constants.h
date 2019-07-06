@@ -4,6 +4,10 @@
 #include <cmath>
 #include <limits>
 
+#define MANIF_PI   3.141592653589793238462643383279502884
+#define MANIF_PI_2 1.570796326794896619231321691639751442
+#define MANIF_PI_4 0.785398163397448309615660845819875721
+
 namespace manif {
 namespace internal {
 
@@ -45,8 +49,8 @@ struct Constants
   static constexpr _Scalar eps_s    = _Scalar(1e-15); // ~
   static constexpr _Scalar eps_sqrt = internal::csqrt(eps);
 
-  static constexpr _Scalar to_rad = _Scalar(M_PI / 180);
-  static constexpr _Scalar to_deg = _Scalar(180.0 / M_PI);
+  static constexpr _Scalar to_rad = _Scalar(MANIF_PI / 180.0);
+  static constexpr _Scalar to_deg = _Scalar(180.0 / MANIF_PI);
 };
 
 template <typename _Scalar>

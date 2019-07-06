@@ -254,7 +254,7 @@ TEST(TEST_SE3, TEST_SE3_ACT)
   EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
   EXPECT_NEAR(+1, transformed_point.z(), 1e-15);
 
-  se3 = SE3d(1,1,1,M_PI,M_PI_2,M_PI/4.);
+  se3 = SE3d(1,1,1,MANIF_PI,MANIF_PI_2,MANIF_PI/4.);
 
   transformed_point = se3.act(Eigen::Vector3d(1,1,1));
 
@@ -262,7 +262,7 @@ TEST(TEST_SE3, TEST_SE3_ACT)
   EXPECT_NEAR(-0.414213562373, transformed_point.y(), 1e-12);
   EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
 
-  se3 = SE3d(-1,-1,-1,M_PI/4,-M_PI_2,-M_PI);
+  se3 = SE3d(-1,-1,-1,MANIF_PI/4,-MANIF_PI_2,-MANIF_PI);
 
   transformed_point = se3.act(Eigen::Vector3d(1,1,1));
 

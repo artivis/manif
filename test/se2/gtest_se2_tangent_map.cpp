@@ -6,12 +6,12 @@ using namespace manif;
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_0)
 {
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
 
   EXPECT_DOUBLE_EQ(4, so2tan.x());
   EXPECT_DOUBLE_EQ(2, so2tan.y());
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 }
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_DATA)
@@ -19,7 +19,7 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_DATA)
   /// @todo without specifying const
   /// it calls non-const data()
 
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
 
   EXPECT_NE(nullptr, so2tan.data());
@@ -28,7 +28,7 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_DATA)
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_ZERO)
 {
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
 
   so2tan.setZero();
@@ -40,7 +40,7 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_ZERO)
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_ZERO2)
 {
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
   so2tan = SE2Tangentd::Zero();
 
@@ -67,18 +67,18 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_ZERO2)
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_RETRACT)
 {
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
 
   EXPECT_DOUBLE_EQ(4, so2tan.x());
   EXPECT_DOUBLE_EQ(2, so2tan.y());
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 
   auto so2_exp = so2tan.exp();
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
+  EXPECT_DOUBLE_EQ(std::cos(MANIF_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(MANIF_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2_exp.angle());
 
   /// @todo what to expect ? :S
 //  EXPECT_DOUBLE_EQ(0, so2_exp.x());
@@ -89,19 +89,19 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_RETRACT)
 
 TEST(TEST_SE2, TEST_SE2_TANGENT_MAP_RETRACT_JAC)
 {
-  double data[3] = {4,2,M_PI};
+  double data[3] = {4,2,MANIF_PI};
   Eigen::Map<SE2Tangentd> so2tan(data);
 
   EXPECT_DOUBLE_EQ(4, so2tan.x());
   EXPECT_DOUBLE_EQ(2, so2tan.y());
-  EXPECT_DOUBLE_EQ(M_PI, so2tan.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2tan.angle());
 
   SE2d::Jacobian J_ret;
   SE2d so2_exp = so2tan.exp(J_ret);
 
-  EXPECT_DOUBLE_EQ(std::cos(M_PI), so2_exp.real());
-  EXPECT_DOUBLE_EQ(std::sin(M_PI), so2_exp.imag());
-  EXPECT_DOUBLE_EQ(M_PI, so2_exp.angle());
+  EXPECT_DOUBLE_EQ(std::cos(MANIF_PI), so2_exp.real());
+  EXPECT_DOUBLE_EQ(std::sin(MANIF_PI), so2_exp.imag());
+  EXPECT_DOUBLE_EQ(MANIF_PI, so2_exp.angle());
 
   /// @todo what to expect ? :S
 //  EXPECT_DOUBLE_EQ(0, so2_exp.x());
