@@ -57,7 +57,7 @@ especially for providing reference for the mathematical formulae.
 
 # Related work
 
-`Sophus` [@Sophus] C++ implementation of Lie Groups using `Eigen`.
+`Sophus` [@Sophus] c++ implementation of Lie Groups using `Eigen`.
 Our work differs from `Sophus` in that all our classes inherit from
 a common templated base class which enforces a common minimal API.
 This allows for writing generic algorithms on Lie groups.
