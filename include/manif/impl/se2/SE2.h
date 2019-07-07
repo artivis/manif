@@ -122,8 +122,20 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SE2)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.template tail<2>().norm()-Scalar(1)) <
+              Constants<Scalar>::eps_s,
+              "SE2 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SE2<_Scalar>::SE2(const Base& o)
-  : data_(o.coeffs())
+  : SE2(o.coeffs())
 {
   //
 }
@@ -132,7 +144,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE2<_Scalar>::SE2(
     const SE2Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SE2(o.coeffs())
 {
   //
 }
@@ -141,15 +153,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE2<_Scalar>::SE2(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
+  : SE2(o.coeffs())
 {
   //
 }

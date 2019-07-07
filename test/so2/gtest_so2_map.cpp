@@ -50,6 +50,9 @@ TEST(TEST_SO2, TEST_SO2_MAP_DATA)
 
 TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
 {
+  using std::cos;
+  using std::sin;
+
   double dataa[2] = {1,0};
   Eigen::Map<SO2d> so2a(dataa);
 
@@ -61,10 +64,10 @@ TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
   EXPECT_DOUBLE_EQ(0, so2a.real());
   EXPECT_DOUBLE_EQ(1, so2a.imag());
 
-  so2a = SO2d(1, 1);
+  so2a = SO2d(cos(M_PI/4.), sin(M_PI/4.));
 
-  EXPECT_DOUBLE_EQ(1, so2a.real());
-  EXPECT_DOUBLE_EQ(1, so2a.imag());
+  EXPECT_DOUBLE_EQ(cos(M_PI/4.), so2a.real());
+  EXPECT_DOUBLE_EQ(sin(M_PI/4.), so2a.imag());
 
 //  SO2d so2e = so2a;
 

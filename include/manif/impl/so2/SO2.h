@@ -105,8 +105,19 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+              "SO2 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SO2<_Scalar>::SO2(const Base& o)
-  : data_(o.coeffs())
+  : SO2(o.coeffs())
 {
   //
 }
@@ -115,7 +126,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO2<_Scalar>::SO2(
     const SO2Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SO2(o.coeffs())
 {
   //
 }
@@ -124,15 +135,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO2<_Scalar>::SO2(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
+  : SO2(o.coeffs())
 {
   //
 }
