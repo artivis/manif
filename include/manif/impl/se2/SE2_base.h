@@ -144,6 +144,15 @@ public:
    * @brief Get the y component of the translational part.
    */
   Scalar y() const;
+
+  /**
+   * @brief Normalize the underlying complex number.
+   */
+  void normalize();
+
+protected:
+
+  using Base::coeffs_nonconst;
 };
 
 template <typename _Derived>
@@ -357,6 +366,12 @@ typename SE2Base<_Derived>::Scalar
 SE2Base<_Derived>::y() const
 {
   return coeffs().y();
+}
+
+template <typename _Derived>
+void SE2Base<_Derived>::normalize()
+{
+  coeffs_nonconst().template tails<2>().normalize();
 }
 
 namespace internal {

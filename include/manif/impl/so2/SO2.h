@@ -59,6 +59,7 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::normalize;
 
   SO2()  = default;
   ~SO2() = default;

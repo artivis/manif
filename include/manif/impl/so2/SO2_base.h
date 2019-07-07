@@ -124,6 +124,11 @@ public:
    */
   Scalar angle() const;
 
+  /**
+   * @brief Normalize the underlying complex number.
+   */
+  void normalize();
+
 protected:
 
   using Base::coeffs_nonconst;
@@ -282,6 +287,12 @@ SO2Base<_Derived>::angle() const
 //{
 //  return coeffs.y();
 //}
+
+template <typename _Derived>
+void SO2Base<_Derived>::normalize()
+{
+  coeffs_nonconst().normalize();
+}
 
 namespace internal {
 

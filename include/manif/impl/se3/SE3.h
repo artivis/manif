@@ -70,6 +70,8 @@ public:
 
   MANIF_INHERIT_GROUP_API
 
+  using Base::normalize;
+
   SE3()  = default;
   ~SE3() = default;
 
