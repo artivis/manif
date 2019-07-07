@@ -89,9 +89,10 @@ public:
   SE3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
-   * @brief Constructor given a translation and a quaternion.
+   * @brief Constructor given a translation and a unit quaternion.
    * @param[in] t A translation vector.
-   * @param[in] q A quaternion.
+   * @param[in] q A unit quaternion.
+   * @throws manif::invalid_argument on un-normalized complex number.
    */
   SE3(const Translation& t,
       const Eigen::Quaternion<Scalar>& q);
@@ -99,7 +100,7 @@ public:
   /**
    * @brief Constructor given a translation and an angle axis.
    * @param[in] t A translation vector.
-   * @param[in] q A quaternion.
+   * @param[in] angle_axis An angle-axis.
    */
   SE3(const Translation& t,
       const Eigen::AngleAxis<Scalar>& angle_axis);

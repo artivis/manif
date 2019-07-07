@@ -80,6 +80,9 @@ public:
   /**
    * @brief Constructor given the real and imaginary part
    * of a unit complex number representing the angle.
+   * @param[in] real The real of a unitary complex number.
+   * @param[in] imag The imaginary of a unitary complex number.
+   * @throws manif::invalid_argument on un-normalized complex number.
    */
   SO2(const Scalar real, const Scalar imag);
 

@@ -82,12 +82,19 @@ public:
   SO3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
-   * @brief Constructor given a quaternion.
+   * @brief Constructor given a unit quaternion.
+   * @param[in] q A unit quaternion.
+   * @throws manif::invalid_argument on un-normalized quaternion.
    */
   SO3(const QuaternionDataType& q);
 
   /**
    * @brief Constructor given the quaternion's coefficients.
+   * @param[in] x The x-components of a unit quaternion.
+   * @param[in] y The x-components of a unit quaternion.
+   * @param[in] z The x-components of a unit quaternion.
+   * @param[in] w The x-components of a unit quaternion.
+   * @throws manif::invalid_argument on un-normalized quaternion.
    */
   SO3(const Scalar x, const Scalar y,
       const Scalar z, const Scalar w);

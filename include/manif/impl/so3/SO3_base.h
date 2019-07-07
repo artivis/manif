@@ -120,6 +120,9 @@ public:
   //! @brief Get quaternion.
   QuaternionDataType quat() const;
 
+  /**
+   * @brief Normalize the underlying quaternion.
+   */
   void normalize();
 
 protected:

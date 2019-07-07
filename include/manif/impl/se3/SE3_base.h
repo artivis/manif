@@ -150,6 +150,9 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
+  /**
+   * @brief Normalize the underlying quaternion.
+   */
   void normalize();
 
 protected:
