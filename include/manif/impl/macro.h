@@ -4,6 +4,19 @@
 #include <stdexcept> // for std::runtime_error
 
 namespace manif {
+
+struct runtime_error : std::runtime_error
+{
+  using std::runtime_error::runtime_error;
+  using std::runtime_error::what;
+};
+
+struct invalid_argument : std::invalid_argument
+{
+  using std::invalid_argument::invalid_argument;
+  using std::invalid_argument::what;
+};
+
 namespace detail {
 template <typename E, typename... Args>
 #ifdef _MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_
@@ -18,21 +31,43 @@ __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 } /* namespace detail */
 } /* namespace manif */
 
-#define MANIF_THROW(msg) \
-  manif::detail::raise<std::runtime_error>(msg);
+#define __MANIF_THROW_EXCEPT(msg, except) manif::detail::raise<except>(msg);
+#define __MANIF_THROW(msg) __MANIF_THROW_EXCEPT(msg, runtime_error)
+
+#define __MANIF_GET_MACRO_2(_1,_2,NAME,...) NAME
+
+#define MANIF_THROW(...)                          \
+  __MANIF_GET_MACRO_2(__VA_ARGS__,                \
+                      __MANIF_THROW_EXCEPT,       \
+                      __MANIF_THROW)(__VA_ARGS__)
+
+
+#define __MANIF_CHECK_MSG_EXCEPT(cond, msg, except) \
+  if (!(cond)) MANIF_THROW(msg, except);
+#define __MANIF_CHECK_MSG(cond, msg) \
+  __MANIF_CHECK_MSG_EXCEPT(cond, msg, runtime_error)
+#define __MANIF_CHECK(cond) \
+  __MANIF_CHECK_MSG_EXCEPT(cond, "Condition: '"#cond"' failed!", runtime_error)
+
+#define __MANIF_GET_MACRO_3(_1,_2,_3,NAME,...) NAME
+
+#define MANIF_CHECK(...)                          \
+  __MANIF_GET_MACRO_3(__VA_ARGS__,                \
+                      __MANIF_CHECK_MSG_EXCEPT,   \
+                      __MANIF_CHECK_MSG,          \
+                      __MANIF_CHECK)(__VA_ARGS__)
+
 
 #define MANIF_NOT_IMPLEMENTED_YET \
   MANIF_THROW("Not implemented yet !");
-
-#define MANIF_CHECK(cond, msg) \
-  if (!(cond)) MANIF_THROW(msg);
 
 #if defined(__cplusplus) && (__cplusplus >= 201402L)
   #define MANIF_DEPRECATED [[deprecated]]
 #elif defined(__GNUC__)  || defined(__clang__)
   #define MANIF_DEPRECATED __attribute__((deprecated))
 #else
-  #pragma message("WARNING: Deprecation is disabled -- the compiler is not supported.")
+  #pragma message("WARNING: Deprecation is disabled "\
+                  "-- the compiler is not supported.")
   #define MANIF_DEPRECATED
 #endif
 
