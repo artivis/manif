@@ -84,6 +84,25 @@ TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(MANIF_PI/4., se2.angle());
 }
 
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SE2d se2(SE2d(4, 2, 1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SE2d se2(SE2d::DataType(4, 2, 1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SE2d se2(SE2d::DataType(4, 2, 1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
 TEST(TEST_SE2, TEST_SE2_COEFFS)
 {
   SE2d se2(4, 2, 0);

@@ -56,6 +56,25 @@ TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_ROLL_PITCH_YAW)
   EXPECT_DOUBLE_EQ(1, so3.w());
 }
 
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SO3d so3(SO3d(1, 1, 1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SO3d so3(SO3d::DataType(1, 1, 1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SO3d so3(SO3d::DataType(1, 1, 1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
 TEST(TEST_SO3, TEST_SO3_IDENTITY)
 {
   SO3d so3;

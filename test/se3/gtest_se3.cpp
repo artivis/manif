@@ -82,6 +82,27 @@ TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
 }
 
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  // EXPECT_THROW(
+  //   SE3d se3(SE3d(1, 1)),
+  //   manif::invalid_argument
+  // );
+
+  SE3d::DataType values; values << 0,0,0, 1,1,1,1;
+
+  EXPECT_THROW(
+    SE3d se3(values),
+    manif::invalid_argument
+  );
+
+  try {
+    SE3d se3(values);
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
 TEST(TEST_SE3, TEST_SE3_DATA)
 {
   SE3d::DataType values; values << 0,0,0, 0,0,0,1;
