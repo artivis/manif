@@ -51,7 +51,7 @@ paying the price of pointer indirection.
 Thanks to this polymorphism, the library is open to extensions to
 Lie groups beyond the currently implemented SO(2), SE(2), SO(3) and SE(3).
 
-The library is mathematically grounded in [@Sola18]
+Mathematical foundations of the library are given in [@Sola18]
 and often refers to it in the documentation,
 especially for providing reference for the mathematical formulae.
 
