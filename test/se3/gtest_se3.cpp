@@ -35,6 +35,20 @@ TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_T_Q)
   EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
 }
 
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_T_AA)
+{
+  SE3d se3(SE3d::Translation(1,2,3),
+           Eigen::AngleAxis<double>(Eigen::Quaterniond::Identity()));
+
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(2, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(3, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
+}
+
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_ISOMETRY)
 {
   Eigen::Isometry3d h = Eigen::Translation3d(1,2,3) * Eigen::Quaterniond::Identity();
@@ -48,6 +62,9 @@ TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_ISOMETRY)
   EXPECT_DOUBLE_EQ(0, se3.coeffs()(4));
   EXPECT_DOUBLE_EQ(0, se3.coeffs()(5));
   EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
+
+  EXPECT_EIGEN_NEAR(h.matrix(), se3.transform());
+  EXPECT_EIGEN_NEAR(h.matrix(), se3.isometry().matrix());
 }
 
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_COPY)

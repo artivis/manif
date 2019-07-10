@@ -95,6 +95,22 @@ public:
       const Eigen::Quaternion<Scalar>& q);
 
   /**
+   * @brief Constructor given a translation and an angle axis.
+   * @param[in] t A translation vector.
+   * @param[in] q A quaternion.
+   */
+  SE3(const Translation& t,
+      const Eigen::AngleAxis<Scalar>& angle_axis);
+
+  /**
+   * @brief Constructor given a translation and SO3 element.
+   * @param[in] t A translation vector.
+   * @param[in] SO3 An element of SO3.
+   */
+  SE3(const Translation& t,
+      const SO3<Scalar>& SO3);
+
+  /**
    * @brief Constructor given translation components and
    * roll-pitch-yaw angles.
    * @param[in] x The x component of the translation.
@@ -106,14 +122,6 @@ public:
    */
   SE3(const Scalar x, const Scalar y, const Scalar z,
       const Scalar roll, const Scalar pitch, const Scalar yaw);
-
-  /**
-   * @brief Constructor given a translation and SO3 element.
-   * @param[in] t A translation vector.
-   * @param[in] SO3 An element of SO3.
-   */
-  SE3(const Translation& t,
-      const SO3<Scalar>& SO3);
 
   /**
    * @brief Constructor from a 3D Eigen::Isometry<Scalar>
@@ -177,6 +185,14 @@ template <typename _Scalar>
 SE3<_Scalar>::SE3(const Translation& t,
                   const Eigen::Quaternion<Scalar>& q)
   : SE3((DataType() << t, q.coeffs() ).finished())
+{
+  //
+}
+
+template <typename _Scalar>
+SE3<_Scalar>::SE3(const Translation& t,
+                  const Eigen::AngleAxis<Scalar>& a)
+  : SE3(t, Quaternion(a))
 {
   //
 }
