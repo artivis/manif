@@ -61,6 +61,7 @@ public:
   MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
   MANIF_INHERIT_GROUP_API
+  using Base::normalize;
 
   SE2()  = default;
   ~SE2() = default;
@@ -79,14 +80,41 @@ public:
   SE2(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
-   * @brief Constructor given a translation and a complex number.
+   * @brief Constructor given a translation and a unit complex number.
    * @param[in] t A translation vector.
    * @param[in] c A complex number.
+   * @throws manif::invalid_argument on un-normalized complex number.
    */
   SE2(const Translation& t, const std::complex<Scalar>& c);
 
+  /**
+   * @brief Constructor given the x and y components of the translational part
+   * and an angle.
+   * @param[in] x The x-components of the translational part.
+   * @param[in] y The y-components of the translational part.
+   * @param[in] c An angle.
+   */
   SE2(const Scalar x, const Scalar y, const Scalar theta);
+
+  /**
+   * @brief Constructor given the x and y components of the translational part
+   * and the real and imaginary part of a unit complex number.
+   * @param[in] x The x-components of the translational part.
+   * @param[in] y The y-components of the translational part.
+   * @param[in] real The real of a unitary complex number.
+   * @param[in] imag The imaginary of a unitary complex number.
+   * @throws manif::invalid_argument on un-normalized complex number.
+   */
   SE2(const Scalar x, const Scalar y, const Scalar real, const Scalar imag);
+
+  /**
+   * @brief Constructor given the x and y components of the translational part
+   * and the real and imaginary part of a unit complex number.
+   * @param[in] x The x-components of the translational part.
+   * @param[in] y The y-components of the translational part.
+   * @param[in] c The unitary complex number.
+   * @throws manif::invalid_argument on un-normalized complex number.
+   */
   SE2(const Scalar x, const Scalar y, const std::complex<Scalar>& c);
 
   /**
@@ -122,8 +150,20 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SE2)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.template tail<2>().norm()-Scalar(1)) <
+              Constants<Scalar>::eps_s,
+              "SE2 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SE2<_Scalar>::SE2(const Base& o)
-  : data_(o.coeffs())
+  : SE2(o.coeffs())
 {
   //
 }
@@ -132,7 +172,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE2<_Scalar>::SE2(
     const SE2Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SE2(o.coeffs())
 {
   //
 }
@@ -141,15 +181,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE2<_Scalar>::SE2(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
+  : SE2(o.coeffs())
 {
   //
 }

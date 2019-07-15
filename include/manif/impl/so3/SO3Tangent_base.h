@@ -286,7 +286,7 @@ struct GeneratorEvaluator<SO3TangentBase<Derived>>
         return E2;
       }
       default:
-        MANIF_THROW("Index i must be in [0,2]!");
+        MANIF_THROW("Index i must be in [0,2]!", invalid_argument);
         break;
     }
 

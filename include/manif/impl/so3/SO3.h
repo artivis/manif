@@ -63,6 +63,7 @@ public:
   MANIF_INHERIT_GROUP_API
 
   using Base::quat;
+  using Base::normalize;
 
   SO3()  = default;
   ~SO3() = default;
@@ -81,12 +82,19 @@ public:
   SO3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
-   * @brief Constructor given a quaternion.
+   * @brief Constructor given a unit quaternion.
+   * @param[in] q A unit quaternion.
+   * @throws manif::invalid_argument on un-normalized quaternion.
    */
   SO3(const QuaternionDataType& q);
 
   /**
    * @brief Constructor given the quaternion's coefficients.
+   * @param[in] x The x-components of a unit quaternion.
+   * @param[in] y The x-components of a unit quaternion.
+   * @param[in] z The x-components of a unit quaternion.
+   * @param[in] w The x-components of a unit quaternion.
+   * @throws manif::invalid_argument on un-normalized quaternion.
    */
   SO3(const Scalar x, const Scalar y,
       const Scalar z, const Scalar w);
@@ -115,8 +123,19 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+              "SO3 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SO3<_Scalar>::SO3(const Base& o)
-  : data_(o.coeffs())
+  : SO3(o.coeffs())
 {
   //
 }
@@ -125,7 +144,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO3<_Scalar>::SO3(
     const SO3Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SO3(o.coeffs())
 {
   //
 }
@@ -134,22 +153,16 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO3<_Scalar>::SO3(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SO3(o.coeffs())
 {
   //
 }
 
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  //
-}
+
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const QuaternionDataType& q)
-  : data_(q.coeffs())
+  : SO3(q.coeffs())
 {
   //
 }
@@ -157,7 +170,7 @@ SO3<_Scalar>::SO3(const QuaternionDataType& q)
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const Scalar x, const Scalar y,
                   const Scalar z, const Scalar w)
-  : data_(x, y, z, w)
+  : SO3((DataType() << x, y, z, w).finished())
 {
   //
 }

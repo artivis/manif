@@ -59,6 +59,7 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::normalize;
 
   SO2()  = default;
   ~SO2() = default;
@@ -79,6 +80,9 @@ public:
   /**
    * @brief Constructor given the real and imaginary part
    * of a unit complex number representing the angle.
+   * @param[in] real The real of a unitary complex number.
+   * @param[in] imag The imaginary of a unitary complex number.
+   * @throws manif::invalid_argument on un-normalized complex number.
    */
   SO2(const Scalar real, const Scalar imag);
 
@@ -105,8 +109,19 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+              "SO2 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SO2<_Scalar>::SO2(const Base& o)
-  : data_(o.coeffs())
+  : SO2(o.coeffs())
 {
   //
 }
@@ -115,7 +130,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO2<_Scalar>::SO2(
     const SO2Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SO2(o.coeffs())
 {
   //
 }
@@ -124,15 +139,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SO2<_Scalar>::SO2(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
+  : SO2(o.coeffs())
 {
   //
 }

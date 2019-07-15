@@ -150,6 +150,11 @@ public:
   //Scalar pitch() const;
   //Scalar yaw() const;
 
+  /**
+   * @brief Normalize the underlying quaternion.
+   */
+  void normalize();
+
 protected:
 
   using Base::coeffs_nonconst;
@@ -351,6 +356,12 @@ typename SE3Base<_Derived>::Scalar
 SE3Base<_Derived>::z() const
 {
   return coeffs().z();
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::normalize()
+{
+  coeffs_nonconst().template tails<4>().normalize();
 }
 
 namespace internal {

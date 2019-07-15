@@ -200,7 +200,8 @@ struct GeneratorEvaluator<SO2TangentBase<Derived>>
   run(const int i)
   {
     MANIF_CHECK(i==0 && i<SO2TangentBase<Derived>::DoF,
-                "Index i must be 0!");
+                "Index i must be 0!",
+                invalid_argument);
 
     const static typename SO2TangentBase<Derived>::LieAlg E0 =
         skew(typename SO2TangentBase<Derived>::Scalar(1));

@@ -418,7 +418,7 @@ struct GeneratorEvaluator<SE3TangentBase<Derived>>
         return E5;
       }
       default:
-        MANIF_THROW("Index i must be in [0,5]!");
+        MANIF_THROW("Index i must be in [0,5]!", invalid_argument);
         break;
     }
 

@@ -70,6 +70,8 @@ public:
 
   MANIF_INHERIT_GROUP_API
 
+  using Base::normalize;
+
   SE3()  = default;
   ~SE3() = default;
 
@@ -87,9 +89,10 @@ public:
   SE3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
-   * @brief Constructor given a translation and a quaternion.
+   * @brief Constructor given a translation and a unit quaternion.
    * @param[in] t A translation vector.
-   * @param[in] q A quaternion.
+   * @param[in] q A unit quaternion.
+   * @throws manif::invalid_argument on un-normalized complex number.
    */
   SE3(const Translation& t,
       const Eigen::Quaternion<Scalar>& q);
@@ -97,7 +100,7 @@ public:
   /**
    * @brief Constructor given a translation and an angle axis.
    * @param[in] t A translation vector.
-   * @param[in] q A quaternion.
+   * @param[in] angle_axis An angle-axis.
    */
   SE3(const Translation& t,
       const Eigen::AngleAxis<Scalar>& angle_axis);
@@ -149,8 +152,20 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SE3)
 
 template <typename _Scalar>
+template <typename _EigenDerived>
+SE3<_Scalar>::SE3(const Eigen::MatrixBase<_EigenDerived>& data)
+  : data_(data)
+{
+  using std::abs;
+  MANIF_CHECK(abs(data_.template tail<4>().norm()-Scalar(1)) <
+              Constants<Scalar>::eps_s,
+              "SE3 constructor argument not normalized !",
+              invalid_argument);
+}
+
+template <typename _Scalar>
 SE3<_Scalar>::SE3(const Base& o)
-  : data_(o.coeffs())
+  : SE3(o.coeffs())
 {
   //
 }
@@ -159,7 +174,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE3<_Scalar>::SE3(
     const SE3Base<_DerivedOther>& o)
-  : data_(o.coeffs())
+  : SE3(o.coeffs())
 {
   //
 }
@@ -168,15 +183,7 @@ template <typename _Scalar>
 template <typename _DerivedOther>
 SE3<_Scalar>::SE3(
     const LieGroupBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE3<_Scalar>::SE3(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
+  : SE3(o.coeffs())
 {
   //
 }

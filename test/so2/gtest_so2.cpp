@@ -34,9 +34,31 @@ TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_THETA)
 
 TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_COPY)
 {
-  SO2d so2(SO2d(1,1));
+  using std::cos;
+  using std::sin;
+
+  SO2d so2(SO2d(cos(M_PI/4.), sin(M_PI/4.)));
 
   EXPECT_DOUBLE_EQ(MANIF_PI/4., so2.angle());
+}
+
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SO2d so2(SO2d(1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SO2d so2(SO2d::DataType(1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SO2d so2(SO2d::DataType(1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
 }
 
 TEST(TEST_SO2, TEST_SO2_COEFFS)

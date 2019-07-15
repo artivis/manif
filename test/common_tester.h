@@ -446,8 +446,8 @@ public:
 
   void evalGeneratorsHat()
   {
-    EXPECT_THROW(Tangent::Generator(-1), std::runtime_error);
-    EXPECT_THROW(Tangent::Generator(42), std::runtime_error);
+    EXPECT_THROW(Tangent::Generator(-1), manif::invalid_argument);
+    EXPECT_THROW(Tangent::Generator(42), manif::invalid_argument);
 
     typename Tangent::LieAlg sum_delta_hat;
     sum_delta_hat.setZero();
