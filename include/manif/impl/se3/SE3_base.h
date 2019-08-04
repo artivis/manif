@@ -361,7 +361,7 @@ SE3Base<_Derived>::z() const
 template <typename _Derived>
 void SE3Base<_Derived>::normalize()
 {
-  coeffs_nonconst().template tails<4>().normalize();
+  coeffs_nonconst().template tail<4>().normalize();
 }
 
 namespace internal {

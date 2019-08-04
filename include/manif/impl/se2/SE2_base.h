@@ -383,7 +383,7 @@ SE2Base<_Derived>::y() const
 template <typename _Derived>
 void SE2Base<_Derived>::normalize()
 {
-  coeffs_nonconst().template tails<2>().normalize();
+  coeffs_nonconst().template tail<2>().normalize();
 }
 
 namespace internal {
