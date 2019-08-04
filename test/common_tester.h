@@ -62,7 +62,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_STREAM_OP)           \
   { evalStreamOp(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INNER)               \
-  { evalInner(); }
+  { evalInner(); }                                                        \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NUMERICAL_STABILITY) \
+  { evalNumericalStability(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -495,6 +497,16 @@ public:
 
     EXPECT_DOUBLE_EQ(delta.squaredWeightedNorm(), delta.inner(delta));
     EXPECT_DOUBLE_EQ(delta.inner(delta_other), delta_other.inner(delta));
+  }
+
+  void evalNumericalStability()
+  {
+    unsigned int i = 0;
+    EXPECT_NO_THROW(
+      for (; i < 10000; ++i) {
+        state += Tangent::Random();
+      }
+    ) << "+= failed at iteration " << i ;
   }
 
 protected:
