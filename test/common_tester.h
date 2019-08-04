@@ -9,6 +9,8 @@
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COPY_CONSTRUCTOR)    \
   { evalCopyConstructor(); }                                              \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNNORMALIZE_DATA)    \
+  { evalConstructorUnnormalizedData(); }                                  \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ASSIGNMENT)          \
   { evalAssignment(); }                                                   \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_DATA_PTR_VALID)      \
@@ -64,7 +66,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INNER)               \
   { evalInner(); }                                                        \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NUMERICAL_STABILITY) \
-  { evalNumericalStability(); }
+  { evalNumericalStability(); }                                           \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NORMALIZE)           \
+  { evalNormalize(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -134,6 +138,14 @@ public:
   {
     LieGroup state_copy(state);
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
+  }
+
+  void evalConstructorUnnormalizedData()
+  {
+    using DataType = typename LieGroup::DataType;
+    EXPECT_THROW(
+      LieGroup(DataType::Random()*10.), manif::invalid_argument
+    );
   }
 
   void evalAssignment()
@@ -507,6 +519,22 @@ public:
         state += Tangent::Random();
       }
     ) << "+= failed at iteration " << i ;
+  }
+
+  void evalNormalize()
+  {
+    typename LieGroup::DataType data = LieGroup::DataType::Random() * 100.;
+
+    EXPECT_THROW(
+      LieGroup a(data), manif::invalid_argument
+    );
+
+    Eigen::Map<LieGroup> map(data.data());
+    map.normalize();
+
+    EXPECT_NO_THROW(
+      LieGroup b = map
+    );
   }
 
 protected:
