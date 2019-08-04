@@ -648,6 +648,21 @@ TEST(TEST_SO3, TEST_SO3_RIGHT_LEFT_JAC)
   EXPECT_EIGEN_NEAR(tan.rjac(), tan.ljac().transpose());
 }
 
+TEST(TEST_SO3, TEST_SO3_NORM_STABILITY)
+{
+    // Identity
+   manif::SO3d R = manif::SO3d(0, 0, 0, 1.0);
+
+   // Some angular velocity
+   manif::SO3Tangentd Om = Eigen::Vector3d(0.001, 0.0, 0.0);
+
+   // New orientation
+   for (int i = 0 ; i < 1000; i++) {
+      R = R.plus(Om);
+      std::cout << "iteration " << i << ": deviation from unit squaredNorm: " << R.coeffs().squaredNorm() - 1.0 << std::endl;
+   }
+}
+
 /*
 TEST(TEST_SO3, TEST_SO3_RPLUS_JAC)
 {
