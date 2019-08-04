@@ -41,6 +41,17 @@ constexpr T toDeg(const T rad)
   return rad * Constants<T>::to_deg;
 }
 
+/**
+ * @brief Degree 2 polynomial approximation of 1/sqrt(x) (reciprocal sqrt).
+ * @param[in] x
+ * @return ~1/sqrt(x)
+ */
+template <typename T>
+constexpr T approxSqrtInv(const T x)
+{
+  return (T(15) / T(8)) - (T(5) / T(4)) * x + (T(3) / T(8)) * x * x;
+}
+
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_UTILS_H_ */
