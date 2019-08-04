@@ -248,6 +248,8 @@ SO3Base<_Derived>::compose(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
+  using std::abs;
+
   static_assert(
     std::is_base_of<SO3Base<_DerivedOther>, _DerivedOther>::value,
     "Argument does not inherit from S03Base !");
@@ -262,7 +264,17 @@ SO3Base<_Derived>::compose(
   if (J_mc_mb)
     J_mc_mb->setIdentity();
 
-  return LieGroup(quat() * m_SO3.quat());
+  QuaternionDataType ret_q = quat() * m_SO3.quat();
+
+  const Scalar ret_sqnorm = ret_q.squaredNorm();
+
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  {
+    const Scalar scale = approxSqrtInv(ret_sqnorm);
+    ret_q.coeffs() *= scale;
+  }
+
+  return LieGroup(ret_q);
 }
 
 template <typename _Derived>

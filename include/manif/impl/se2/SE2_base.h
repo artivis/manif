@@ -267,16 +267,11 @@ SE2Base<_Derived>::compose(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
+  using std::abs;
+
   static_assert(
     std::is_base_of<SE2Base<_DerivedOther>, _DerivedOther>::value,
     "Argument does not inherit from SE2Base !");
-
-  const auto& m_se2 = static_cast<const SE2Base<_DerivedOther>&>(m);
-
-  const Scalar lhs_real = real(); // cos(t)
-  const Scalar lhs_imag = imag(); // sin(t)
-  const Scalar rhs_real = m_se2.real();
-  const Scalar rhs_imag = m_se2.imag();
 
   if (J_mc_ma)
   {
@@ -288,11 +283,28 @@ SE2Base<_Derived>::compose(
     J_mc_mb->setIdentity();
   }
 
-  return LieGroup(
-        lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
-        lhs_imag * m_se2.x() + lhs_real * m_se2.y() + y(),
-        lhs_real * rhs_real  - lhs_imag * rhs_imag,
-        lhs_real * rhs_imag  + lhs_imag * rhs_real         );
+  const auto& m_se2 = static_cast<const SE2Base<_DerivedOther>&>(m);
+
+  const Scalar lhs_real = real(); // cos(t)
+  const Scalar lhs_imag = imag(); // sin(t)
+  const Scalar rhs_real = m_se2.real();
+  const Scalar rhs_imag = m_se2.imag();
+
+  Scalar ret_real = lhs_real * rhs_real - lhs_imag * rhs_imag;
+  Scalar ret_imag = lhs_real * rhs_imag + lhs_imag * rhs_real;
+
+  const Scalar ret_sqnorm = ret_real*ret_real+ret_imag*ret_imag;
+
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  {
+    const Scalar scale = approxSqrtInv(ret_sqnorm);
+    ret_real *= scale;
+    ret_imag *= scale;
+  }
+
+  return LieGroup(lhs_real * m_se2.x() - lhs_imag * m_se2.y() + x(),
+                  lhs_imag * m_se2.x() + lhs_real * m_se2.y() + y(),
+                  ret_real, ret_imag                                );
 }
 
 template <typename _Derived>
