@@ -80,14 +80,11 @@ $ apt-get install manif
 ```terminal
 $ git clone https://github.com/artivis/manif.git
 $ cd manif && mkdir build && cd build
-$ cmake ..
-$ make
-```
-###### To build also examples/tests
-```terminal
 $ cmake -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON ..
 $ make
+$ make install
 ```
+
 ###### Using catkin_tools
 ```terminal
 $ git clone https://github.com/artivis/manif.git
