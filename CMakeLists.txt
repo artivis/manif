@@ -49,19 +49,6 @@ option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
 
-# Do a backup
-set(CMAKE_REQUIRED_FLAGS_BK ${CMAKE_REQUIRED_FLAGS})
-include(CheckCXXSourceCompiles)
-set(CMAKE_REQUIRED_FLAGS "-std=c++11")
-# Check if compiler support constexpr functions
-CHECK_CXX_SOURCE_COMPILES(
-"
-  constexpr void f() {};
-  int main(void) { return 0; }
-"
-_MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_)
-set(CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS_BK})
-
 ###########
 ## Build ##
 ###########
@@ -81,6 +68,14 @@ target_include_directories(${PROJECT_NAME} INTERFACE
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}/external/lt>"
   "$<INSTALL_INTERFACE:include>"
 )
+cmake_policy(SET CMP0057 NEW)
+if(cxx_relaxed_constexpr IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+  target_compile_definitions(${PROJECT_NAME} INTERFACE
+    # @todo get the following to work
+    # "$<$<COMPILE_FEATURES:cxx_relaxed_constexpr>:_MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_>"
+    _MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_
+  )
+endif()
 
 # Add Eigen interface dependency, depending on available cmake info
 if(TARGET Eigen3::Eigen)
