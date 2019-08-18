@@ -54,13 +54,13 @@
 // Define some custom assert macros
 
 #define assert_rows_dim(x, dim) \
-  static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim or \
+  static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::RowsAtCompileTime == Eigen::Dynamic, \
                 "x.rows != "#dim" ."); \
   assert(x.rows() == dim && "x.cols != "#dim" .");
 
 #define assert_cols_dim(x, dim) \
-  static_assert(static_cast<int>(std::decay<decltype(x)>::type::ColsAtCompileTime) == dim or \
+  static_assert(static_cast<int>(std::decay<decltype(x)>::type::ColsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::ColsAtCompileTime == Eigen::Dynamic, \
                 "x.cols != "#dim" ."); \
   assert(x.cols() == dim && "x.rows != "#dim" .");
@@ -71,20 +71,20 @@
 
 #define assert_dim_eq(l,r) \
   static_assert(static_cast<int>(std::decay<decltype(l)>::type::ColsAtCompileTime) == \
-                static_cast<int>(std::decay<decltype(r)>::type::ColsAtCompileTime) or \
-                std::decay<decltype(l)>::type::ColsAtCompileTime == Eigen::Dynamic or \
+                static_cast<int>(std::decay<decltype(r)>::type::ColsAtCompileTime) || \
+                std::decay<decltype(l)>::type::ColsAtCompileTime == Eigen::Dynamic || \
                 std::decay<decltype(r)>::type::ColsAtCompileTime == Eigen::Dynamic, \
                 "lhs.cols != rhs.cols !"); \
   static_assert(static_cast<int>(std::decay<decltype(l)>::type::RowsAtCompileTime) == \
-                static_cast<int>(std::decay<decltype(r)>::type::RowsAtCompileTime) or \
-                std::decay<decltype(l)>::type::RowsAtCompileTime == Eigen::Dynamic or \
+                static_cast<int>(std::decay<decltype(r)>::type::RowsAtCompileTime) || \
+                std::decay<decltype(l)>::type::RowsAtCompileTime == Eigen::Dynamic || \
                 std::decay<decltype(r)>::type::RowsAtCompileTime == Eigen::Dynamic, \
                 "lhs.rows != rhs.rows !"); \
   assert(l.rows() == r.rows() && "lhs.rows != rhs.rows !"); \
   assert(l.cols() == r.cols() && "lhs.cols != rhs.cols !"); \
 
 #define assert_is_vector(x) \
-  static_assert(std::decay<decltype(x)>::type::ColsAtCompileTime ==  1 or \
+  static_assert(std::decay<decltype(x)>::type::ColsAtCompileTime ==  1 || \
                 std::decay<decltype(x)>::type::ColsAtCompileTime == Eigen::Dynamic, \
                 "Expected a vector !"); \
   assert(x.cols() == 1 && "Expected a vector !"); \
@@ -94,7 +94,7 @@
   assert_rows_dim(x, dim);
 
 #define assert_is_colmajor_vector(x) \
-  static_assert(std::decay<decltype(x)>::type::RowsAtCompileTime ==  1 or \
+  static_assert(std::decay<decltype(x)>::type::RowsAtCompileTime ==  1 || \
                 std::decay<decltype(x)>::type::RowsAtCompileTime == Eigen::Dynamic, \
                 "Expected a column-major vector !"); \
   assert(x.rows() == 1 && "Expected a column-major vector !"); \
@@ -105,6 +105,12 @@
 
 namespace manif {
 namespace internal {
+
+template< class Base, class Derived >
+constexpr bool is_base_of_v()
+{
+  return std::is_base_of<Base, Derived>::value;
+}
 
 /**
  * @brief traitscast specialization that come handy when writing thing like
@@ -140,9 +146,8 @@ skew(const _Scalar v)
  *             | -v(1) +v(0)  0    |
  */
 template <typename _Derived>
-typename std::enable_if<std::is_base_of<Eigen::MatrixBase<_Derived>,
-                                        _Derived>::value and
-                        _Derived::RowsAtCompileTime == 3,
+typename std::enable_if<(internal::is_base_of_v<Eigen::MatrixBase<_Derived>, _Derived>()
+                         && _Derived::RowsAtCompileTime == 3),
                         Eigen::Matrix<typename _Derived::Scalar, 3, 3>>::type
 skew(const Eigen::MatrixBase<_Derived>& v)
 {

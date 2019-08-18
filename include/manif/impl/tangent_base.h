@@ -209,7 +209,7 @@ public:
   /// @note Calls Base default impl
   template <typename U = _Derived>
   typename std::enable_if<
-    not internal::has_rjacinv<U>::value,
+    ! internal::has_rjacinv<U>::value,
     typename TangentBase<U>::Jacobian>::type rjacinv() const;
 
   /// @note Calls Derived's 'overload'
@@ -221,7 +221,7 @@ public:
   /// @note Calls Base default impl
   template <typename U = _Derived>
   typename std::enable_if<
-    not internal::has_ljacinv<U>::value,
+    ! internal::has_ljacinv<U>::value,
     typename TangentBase<U>::Jacobian>::type ljacinv() const;
 
   /**
@@ -539,7 +539,7 @@ TangentBase<_Derived>::rjacinv() const
 template <class _Derived>
 template <typename U>
 typename std::enable_if<
-  not internal::has_rjacinv<U>::value,
+  ! internal::has_rjacinv<U>::value,
   typename TangentBase<U>::Jacobian>::type
 TangentBase<_Derived>::rjacinv() const
 {
@@ -559,7 +559,7 @@ TangentBase<_Derived>::ljacinv() const
 template <class _Derived>
 template <typename U>
 typename std::enable_if<
-  not internal::has_ljacinv<U>::value,
+  ! internal::has_ljacinv<U>::value,
   typename TangentBase<U>::Jacobian>::type
 TangentBase<_Derived>::ljacinv() const
 {
