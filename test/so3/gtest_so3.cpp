@@ -429,8 +429,8 @@ TEST(TEST_SO3, TEST_SO3_LIFT)
 TEST(TEST_SO3, TEST_SO3_COMPOSE)
 {
     // compose two particular elements giving identity as result
-  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3a(toRad(-165.),toRad(-135.),toRad(-90.));
+  SO3d so3b(toRad(15.),toRad(45.),toRad(90.));
 
   auto so3c = so3a.compose(so3b);
 
@@ -443,8 +443,8 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE)
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
 {
     // compose two particular elements giving identity as result
-  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3a(toRad(-165.),toRad(-135.),toRad(-90.));
+  SO3d so3b(toRad(15.),toRad(45.),toRad(90.));
 
   auto so3c = so3a * so3b;
 
@@ -457,8 +457,8 @@ TEST(TEST_SO3, TEST_SO3_OP_COMPOSE)
 TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
 {
     // compose two particular elements giving identity as result
-  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
+  SO3d so3a(toRad(-165.),toRad(-135.),toRad(-90.));
+  SO3d so3b(toRad(15.),toRad(45.),toRad(90.));
 
   so3a *= so3b;
 
@@ -471,8 +471,8 @@ TEST(TEST_SO3, TEST_SO3_OP_COMPOSE_EQ)
 TEST(TEST_SO3, TEST_SO3_BETWEEN)
 {
     // between two equals is identity
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
-  SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
+  SO3d so3b(toRad(15.),toRad(45.),toRad(90.));
+  SO3d so3a(toRad(-15.),toRad(-45.),toRad(-90.));
 
   auto so3c = so3a.between(so3b);
 
@@ -559,8 +559,8 @@ TEST(TEST_SO3, TEST_SO3_COMPOSE_JAC)
     // Composing these two elements a*b gives the identity;
     // Jac_a is rotation 'b' transpose;
     // Jac_b is identity
-  SO3d so3a(toRad(-165),toRad(-135),toRad(-90));
-  SO3d so3b(toRad(15),  toRad(45),  toRad(90));
+  SO3d so3a(toRad(-165.),toRad(-135.),toRad(-90.));
+  SO3d so3b(toRad(15.),  toRad(45.),  toRad(90.));
 
   SO3d::Jacobian J_c_a, J_c_b;
 
@@ -785,8 +785,8 @@ TEST(TEST_SO3, TEST_SO3_MINUS_JAC)
 
 TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
 {
-  SO3d so3b(toRad(15),toRad(45),toRad(90));
-  SO3d so3a(toRad(-15),toRad(-45),toRad(-90));
+  SO3d so3b(toRad(15.),toRad(45.),toRad(90.));
+  SO3d so3a(toRad(-15.),toRad(-45.),toRad(-90.));
 
   SO3d::Jacobian J_between_a, J_between_b;
 
