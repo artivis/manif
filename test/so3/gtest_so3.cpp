@@ -476,10 +476,10 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN)
 
   auto so3c = so3a.between(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.x());
-  EXPECT_DOUBLE_EQ(0, so3c.y());
-  EXPECT_DOUBLE_EQ(0, so3c.z());
-  EXPECT_DOUBLE_EQ(1, so3c.w());
+  EXPECT_NEAR(0, so3c.x(), 1e-15);
+  EXPECT_NEAR(0, so3c.y(), 1e-15);
+  EXPECT_NEAR(0, so3c.z(), 1e-15);
+  EXPECT_NEAR(1, so3c.w(), 1e-15);
 }
 
 /// with Jacs
@@ -792,10 +792,10 @@ TEST(TEST_SO3, TEST_SO3_BETWEEN_JAC)
 
   SO3d so3c = so3a.between(so3b, J_between_a, J_between_b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.x());
-  EXPECT_DOUBLE_EQ(0, so3c.y());
-  EXPECT_DOUBLE_EQ(0, so3c.z());
-  EXPECT_DOUBLE_EQ(1, so3c.w());
+  EXPECT_NEAR(0, so3c.x(), 1e-15);
+  EXPECT_NEAR(0, so3c.y(), 1e-15);
+  EXPECT_NEAR(0, so3c.z(), 1e-15);
+  EXPECT_NEAR(1, so3c.w(), 1e-15);
 
   EXPECT_EQ(3, J_between_a.rows());
   EXPECT_EQ(3, J_between_a.cols());
