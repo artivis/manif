@@ -1,0 +1,94 @@
+branches:
+  only:
+    - master
+    - devel
+
+skip_commits:
+  files:
+    - '**/.doxygen.txt'
+    - '**/.gitignore'
+    - '**/.travis.yml'
+    - '**/*.md'
+    - '**/LICENSE.txt'
+
+os: Visual Studio 2015
+
+environment:
+  matrix:
+    # @TODO Does not compile on VS14
+  # - generator: "Visual Studio 14 Win64"
+  #   configuration: Release
+  #   build_tests: ON
+  #   build_ceres_tests: OFF
+  #   build_examples: ON
+
+  - generator: "Visual Studio 15 Win64"
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    configuration: Release
+    build_tests: ON
+    build_ceres_tests: OFF
+    build_examples: ON
+
+    # @TODO Disabled until Ceres install is fixed
+  # - generator: "Visual Studio 15 Win64"
+  #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  #   configuration: Release
+  #   build_tests: ON
+  #   build_ceres_tests: ON
+  #   build_examples: ON
+
+clone_folder: c:\projects\manif
+
+build:
+  project: c:\projects\manif\build\manif.sln
+
+install:
+  - ps: |
+      Write-Output "Generator: $env:generator"
+      Write-Output "Env:Configuation: $env:configuration"
+      if (Test-Path env:APPVEYOR_PULL_REQUEST_NUMBER) {
+        Write-Output "This is a pull request build"
+      }
+
+  # Get Eigen 3.3-beta1
+  - ps: wget -O eigen3.zip http://bitbucket.org/eigen/eigen/get/3.3-beta1.zip
+  - cmd: 7z x eigen3.zip -o"C:\projects" -y > nul
+  # - cmd: $env:CMAKE_INCLUDE_PATH = "C:\projects\eigen-eigen-ce5a455b34c0;$env:CMAKE_INCLUDE_PATH"
+
+build_script:
+  # Install Ceres.
+  # @TODO does not work atm, Ceres does not find Eigen
+  - ps: |
+      if ($env:build_ceres_tests -eq "ON")
+      {
+        Write-Output "Building Ceres."
+        cd c:\projects
+        git clone --branch=1.14.0 --single-branch git://github.com/ceres-solver/ceres-solver.git ceres-solver
+        cd ceres-solver
+        md _build
+        cd _build
+        $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-ce5a455b34c0"
+        cmake -G "$env:generator" $eigen_include -DMINIGLOG=ON -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF ..
+        cmake --build . --config $env:configuration --target install
+      }
+
+  # Build manif
+  - ps: |
+      cd c:\projects\manif
+      md _build
+      cd _build
+      $btests = "-DBUILD_TESTING=$env:build_tests"
+      $bexamples = "-DBUILD_EXAMPLES=$env:build_examples"
+      $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-ce5a455b34c0"
+      cmake -G "$env:generator" $eigen_include $btests $bexamples ..
+      cmake --build . --config $env:configuration
+
+test_script:
+  - ps: ctest -VV -C $env:configuration --output-on-failure
+
+notifications:
+  - provider: Email
+    to: deray.jeremie@gmail.com
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
