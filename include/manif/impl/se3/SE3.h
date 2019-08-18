@@ -143,7 +143,7 @@ public:
 
 protected:
 
-  friend class LieGroupBase<SE3<Scalar>>;
+  friend struct LieGroupBase<SE3<Scalar>>;
   DataType& coeffs_nonconst();
 
   DataType data_;
