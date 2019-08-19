@@ -50,12 +50,14 @@ Please find more information in the related [wiki page](https://github.com/artiv
 
 ___
 
-* [Installation](#installation)
-* [Features](#features)
-* [Documentation](#documentation)
-* [Tutorials](#tutorials-and-application-demos)
-* [Publications](#publications)
-* [Contributing](#contributing)
+<p align="center">
+  <a href="#installation">Installation</a> •
+  <a href="#features">Features</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#tutorials-and-application-demos">Tutorials</a> •
+  <a href="#publications">Publications</a> •
+  <a href="#contributing">Contributing</a>
+</p>
 
 ___
 
