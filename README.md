@@ -65,7 +65,9 @@ ___
 
 ### Dependencies
 
--   Eigen 3 : ```apt-get install libeigen3-dev```
+-   Eigen 3 :
+  - Ubuntu and similar ```apt-get install libeigen3-dev```
+  - OS X ```brew install eigen```
 -   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
 ### Installation
