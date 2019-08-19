@@ -265,15 +265,15 @@ int main()
     MatrixT             Q;          // Covariance
     MatrixT             W;          // sqrt Info
     vector<SE3Tangentd> controls;   // robot controls
-    VectorC             c, c_simu;  // offset to calibrate, and simulated value
+    VectorC             c, c_gt;    // offset to calibrate, and ground truth value
     Matrix<double, 6, 2> J_u_c;     // linear model of offset: u = u_nom + J_u_c * c
 
     u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
     u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
     Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
-    c_simu   << 0.1, 0.1; // ground truth
-    c        << 0.0, 0.0; // nominal value
+    c_gt     << 0.01, 0.01; // ground truth offset
+    c        << 0.0, 0.0;   // nominal value of offset
     J_u_c.setZero();
     J_u_c(0,0) = 1.0;
     J_u_c(5,1) = 1.0;
@@ -388,16 +388,16 @@ int main()
         if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
         {
             // move simulator, without noise, but with offset
-            u_offset = u_nom + J_u_c * c_simu;
-            X_simu = X_simu + u_offset;
+            u_offset = u_nom + J_u_c * c_gt;
+            X_simu   = X_simu + u_offset;
 
-            // move prior, with noise
+            // move prior, with noise, but without offset
             u_noise = u_sigmas * ArrayT::Random();
             Xi = Xi + (u_nom + u_noise);
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi + SE3Tangentd::Random()); // use very noisy priors
+            poses.      push_back(Xi /*+ SE3Tangentd::Random()*/); // use very noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
@@ -406,10 +406,11 @@ int main()
 
     // DEBUG INFO
     cout << "prior" << std::showpos << endl;
+    cout << "offset: " << c.transpose() << endl;
     for (const auto& X : poses)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.log() << endl;
     for (const auto& b : landmarks)
-        cout << "lmk : " << b.transpose() << endl;
+        cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
 
@@ -483,7 +484,7 @@ int main()
         //   We have residual = expectation - measurement, in global tangent space
         //   We have the Jacobian in J_r_p0 = J.block<DoF, DoF>(row, col);
         // We compute the whole in a one-liner:
-        r.segment<DoF>(row)         = poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, col)).coeffs();
+        r.segment<DoF>(row)         = poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, DimC + col)).coeffs();
 
         // advance rows
         row += DoF;
@@ -501,15 +502,16 @@ int main()
                 Xj = poses[j];
                 u  = controls[i];
 
-                // expectation
+                // expectation (use right-minus since motion measurements are local)
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
-                // residual (use right-minus since motion measurements are local)
-                r.segment<DoF>(row)         = W * (d - u - J_u_c * c).coeffs(); // residual
+                // residual
+                SE3Tangentd u_corr          = u - J_u_c * c;
+                r.segment<DoF>(row)         = W * (d - u_corr).coeffs(); // residual
 
                 // Jacobian of residual wrt calibration params
                 col = 0;
-                J.block<DoF, DimC>(row, col) = - W * J_u_c;
+                J.block<DoF, DimC>(row, col) = W * J_u_c;
 
                 // Jacobian of residual wrt first pose
                 col = DimC + i * DoF;
@@ -552,6 +554,7 @@ int main()
 
         }
 
+
         // 4. Solve -----------------------------------------------------------------
 
         // compute optimal step
@@ -560,14 +563,14 @@ int main()
         dX = - (J.transpose() * J).inverse() * J.transpose() * r;
 
         // update calibrated offset
-        dc = dX.head<2>();
+        dc = dX.head<DimC>();
         c  = c + dc;
 
         // update all poses
         for (int i = 0; i < 3; ++i)
         {
             // we go very verbose here
-            int row             = i * DoF;
+            int row             = DimC + i * DoF;
             constexpr int size  = DoF;
             dx                  = dX.segment<size>(row);
             poses[i]            = poses[i] + dx;
@@ -577,7 +580,7 @@ int main()
         for (int k = 0; k < NUM_LMKS; ++k)
         {
             // we go very verbose here
-            int row             = NUM_POSES * DoF + k * Dim;
+            int row             = DimC + NUM_POSES * DoF + k * Dim;
             constexpr int size  = Dim;
             db                  = dX.segment<size>(row);
             landmarks[k]        = landmarks[k] + db;
@@ -601,18 +604,18 @@ int main()
     cout << "posterior" << std::showpos << endl;
     cout << "offset: " << c.transpose() << endl;
     for (const auto& X : poses)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.log() << endl;
     for (const auto& b : landmarks)
-        cout << "lmk : " << b.transpose() << endl;
+        cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     // ground truth
     cout << "ground truth" << std::showpos << endl;
-    cout << "offset: " << c_simu.transpose() << endl;
+    cout << "offset: " << c_gt.transpose() << endl;
     for (const auto& X : poses_simu)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.log() << endl;
     for (const auto& b : landmarks_simu)
-        cout << "lmk : " << b.transpose() << endl;
+        cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     return 0;
