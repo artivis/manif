@@ -487,10 +487,10 @@ int main()
                 Xj = poses[j];
                 u  = controls[i];
 
-                // expectation
+                // expectation (use right-minus since motion measurements are local)
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
-                // residual (use right-minus since motion measurements are local)
+                // residual
                 r.segment<DoF>(row)         = W * (d - u).coeffs(); // residual
 
                 // Jacobian of residual wrt first pose
@@ -517,7 +517,7 @@ int main()
                 e       = Xi.inverse(J_ix_x).act(b, J_e_ix, J_e_b); // expected measurement = Xi.inv * bj
                 J_e_x   = J_e_ix * J_ix_x;                          // chain rule
 
-                // residual (use right-minus since sensor measurements are local)
+                // residual
                 r.segment<Dim>(row)         = S * (e - y);
 
                 // Jacobian of residual wrt pose

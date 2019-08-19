@@ -506,7 +506,7 @@ int main()
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
                 // residual
-                SE3Tangentd u_corr          = u - J_u_c * c;
+                SE3Tangentd u_corr          = u - J_u_c * c;             // remove known offset from controls
                 r.segment<DoF>(row)         = W * (d - u_corr).coeffs(); // residual
 
                 // Jacobian of residual wrt calibration params
@@ -537,7 +537,7 @@ int main()
                 e       = Xi.inverse(J_ix_x).act(b, J_e_ix, J_e_b); // expected measurement = Xi.inv * bj
                 J_e_x   = J_e_ix * J_ix_x;                          // chain rule
 
-                // residual (use right-minus since sensor measurements are local)
+                // residual
                 r.segment<Dim>(row)         = S * (e - y);
 
                 // Jacobian of residual wrt pose
