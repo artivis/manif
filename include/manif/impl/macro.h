@@ -40,6 +40,12 @@ raise(Args&&... args)
 // This macro is a workaround to support both
 #define __MANIF_EXPAND(x) x
 
+#if defined(__cplusplus) && defined(__has_cpp_attribute)
+  #define __MANIF_HAVE_CPP_ATTRIBUTE(x) __has_cpp_attribute(x)
+#else
+  #define __MANIF_HAVE_CPP_ATTRIBUTE(x) 0
+#endif
+
 #define __MANIF_THROW_EXCEPT(msg, except) manif::detail::raise<except>(msg);
 #define __MANIF_THROW(msg) __MANIF_THROW_EXCEPT(msg, manif::runtime_error)
 
@@ -70,7 +76,7 @@ raise(Args&&... args)
 #define MANIF_NOT_IMPLEMENTED_YET \
   MANIF_THROW("Not implemented yet !");
 
-#if defined(__cplusplus) && __has_cpp_attribute(deprecated) && (__cplusplus >= 201402L)
+#if (__cplusplus >= 201402L) && __MANIF_HAVE_CPP_ATTRIBUTE(deprecated)
   #define MANIF_DEPRECATED [[deprecated]]
 #elif defined(__GNUC__)  || defined(__clang__)
   #define MANIF_DEPRECATED __attribute__((deprecated))
