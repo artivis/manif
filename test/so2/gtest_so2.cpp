@@ -37,7 +37,7 @@ TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_COPY)
   using std::cos;
   using std::sin;
 
-  SO2d so2(SO2d(cos(M_PI/4.), sin(M_PI/4.)));
+  SO2d so2(SO2d(cos(MANIF_PI/4.), sin(MANIF_PI/4.)));
 
   EXPECT_DOUBLE_EQ(MANIF_PI/4., so2.angle());
 }

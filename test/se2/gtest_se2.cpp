@@ -77,7 +77,7 @@ TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_COPY)
   using std::cos;
   using std::sin;
 
-  SE2d se2(SE2d(4, 2, cos(M_PI/4.), sin(M_PI/4.)));
+  SE2d se2(SE2d(4, 2, cos(MANIF_PI/4.), sin(MANIF_PI/4.)));
 
   EXPECT_DOUBLE_EQ(4, se2.x());
   EXPECT_DOUBLE_EQ(2, se2.y());

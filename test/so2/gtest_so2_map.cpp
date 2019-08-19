@@ -64,10 +64,10 @@ TEST(TEST_SO2, TEST_SO2_MAP_ASSIGN_OP)
   EXPECT_DOUBLE_EQ(0, so2a.real());
   EXPECT_DOUBLE_EQ(1, so2a.imag());
 
-  so2a = SO2d(cos(M_PI/4.), sin(M_PI/4.));
+  so2a = SO2d(cos(MANIF_PI/4.), sin(MANIF_PI/4.));
 
-  EXPECT_DOUBLE_EQ(cos(M_PI/4.), so2a.real());
-  EXPECT_DOUBLE_EQ(sin(M_PI/4.), so2a.imag());
+  EXPECT_DOUBLE_EQ(cos(MANIF_PI/4.), so2a.real());
+  EXPECT_DOUBLE_EQ(sin(MANIF_PI/4.), so2a.imag());
 
 //  SO2d so2e = so2a;
 
