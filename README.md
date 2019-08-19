@@ -7,33 +7,33 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 ## Package Summary
-**manif** is a header-only c++11 Lie theory library for state-estimation
+**manif** is a header-only C++11 Lie theory library for state-estimation
 targeted at robotics applications.
 
 At the moment, it provides the groups:
   - SO(2): rotations in the plane.
-  - SE(2): righd motion (rotation and translation) in the plane.
+  - SE(2): rigid motion (rotation and translation) in the plane.
   - SO(3): rotations in 3D space.
-  - SE(3): righd motion (rotation and translation) in 3D space.
+  - SE(3): rigid motion (rotation and translation) in 3D space.
 
 Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper](http://arxiv.org/abs/1812.01537).
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
-The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for average robotician who is interested in designing rigorous and elegant state estimation algorithms.
+The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average robotician who is interested in designing rigorous and elegant state estimation algorithms.
 
 **manif** has been designed for an easy integration to larger projects:
   - A single dependency on [Eigen](http://eigen.tuxfamily.org),
   - header-only for easy integration,
   - templated on the underlying scalar type so that one can use its own,
-  - and c++11, since not everyone gets to enjoy the latest c++ features, especially in industry.
+  - and C++11, since not everyone gets to enjoy the latest C++ features, especially in industry.
 
 It provides analytic computation of Jacobians for all the operations.
 It also supports template scalar types. In particular, it can work with the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type, allowing for automatic Jacobian computation --
-<a href="#jacobians">see related paragraph on Jacobians below</a>.
+[see related paragraph on Jacobians below](#jacobians).
 
-All Lie group classes defined in **manif** have in common that they inherit from a templated base class (CRTP).
+All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)).
 It allows one to write generic code abstracting the Lie group details.  
 Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code)
 
@@ -65,7 +65,9 @@ ___
 
 ### Dependencies
 
--   Eigen 3 : ```apt-get install libeigen3-dev```
+-   Eigen 3 :
+  - Ubuntu and similar ```apt-get install libeigen3-dev```
+  - OS X ```brew install eigen```
 -   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
 ### Installation
@@ -80,14 +82,11 @@ $ apt-get install manif
 ```terminal
 $ git clone https://github.com/artivis/manif.git
 $ cd manif && mkdir build && cd build
-$ cmake ..
-$ make
-```
-###### To build also examples/tests
-```terminal
 $ cmake -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON ..
 $ make
+$ make install
 ```
+
 ###### Using catkin_tools
 ```terminal
 $ git clone https://github.com/artivis/manif.git
@@ -96,7 +95,7 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
-cd [manif]
+cd manif
 doxygen .doxygen.txt
 ```
 
@@ -125,8 +124,8 @@ target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
 | Act on vector | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&space;v"/> | `X.act(v)` |
 | Retract to group element | <img src="https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi^\wedge)" title="\exp(\mathbf \varphi^{^})" /> | `w.exp()` |
 | Lift to tangent space | <img src="https://latex.codecogs.com/png.latex?\log(\mathbf&space;\mathcal{X})^\vee" title="\log(\mathbf \Phi)" /> | `X.log()` |
-| Manifold Adjoint | <img src="https://latex.codecogs.com/png.latex?Adj(\mathbf&space;\mathcal{X})" /> | `X.adj()` |
-| Tangent adjoint | <img src="https://latex.codecogs.com/png.latex?adj(\mathbf&space;\varphi^\wedge)" /> | `w.smallAdj()` |
+| Manifold Adjoint | <img src="https://latex.codecogs.com/png.latex?\operatorname{Adj}(\mathbf&space;\mathcal{X})" /> | `X.adj()` |
+| Tangent adjoint | <img src="https://latex.codecogs.com/png.latex?\operatorname{adj}(\mathbf&space;\varphi^\wedge)" /> | `w.smallAdj()` |
 |       |   Composed Operation   |  |
 | Manifold right plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" /> | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
 | Manifold left plus | <img src="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" /> | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
@@ -184,9 +183,9 @@ local perturbation on the tangent space.
 These Jacobians map tangent spaces, as described in [this paper](http://arxiv.org/abs/1812.01537).
 
 However, many non-linear solvers
-(e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated wrt the underlying
+(e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated with respect to the underlying
 representation vector of the group element
-(e.g. wrt to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
+(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
 
 For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
@@ -208,11 +207,11 @@ Some more general documentation and tips on the use of the library is available 
 To generate the documentation on your machine, type in the terminal
 
 ```terminal
-cd [manif]
+cd manif
 doxygen .doxygen.txt
 ```
 
-and find it at `[manif]/doc/html/index.html`.
+and find it at `manif/doc/html/index.html`.
 
 Throughout the code documentation we refer to 'the paper' which you can
 find in the section <a href="#publications">Publications</a>.

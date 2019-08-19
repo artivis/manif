@@ -49,19 +49,6 @@ option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
 
-# Do a backup
-set(CMAKE_REQUIRED_FLAGS_BK ${CMAKE_REQUIRED_FLAGS})
-include(CheckCXXSourceCompiles)
-set(CMAKE_REQUIRED_FLAGS "-std=c++11")
-# Check if compiler support constexpr functions
-CHECK_CXX_SOURCE_COMPILES(
-"
-  constexpr void f() {};
-  int main(void) { return 0; }
-"
-_MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_)
-set(CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS_BK})
-
 ###########
 ## Build ##
 ###########
