@@ -19,11 +19,7 @@ struct invalid_argument : std::invalid_argument
 
 namespace detail {
 template <typename E, typename... Args>
-#ifdef _MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_
-constexpr void
-#else
 void
-#endif
 __attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
 {
   throw E(std::forward<Args>(args)...);

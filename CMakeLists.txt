@@ -68,14 +68,6 @@ target_include_directories(${PROJECT_NAME} INTERFACE
   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}/external/lt>"
   "$<INSTALL_INTERFACE:include>"
 )
-cmake_policy(SET CMP0057 NEW)
-if(cxx_relaxed_constexpr IN_LIST CMAKE_CXX_COMPILE_FEATURES)
-  target_compile_definitions(${PROJECT_NAME} INTERFACE
-    # @todo get the following to work
-    # "$<$<COMPILE_FEATURES:cxx_relaxed_constexpr>:_MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_>"
-    _MANIF_COMPILER_SUPPORTS_CONSTEXPR_VOID_
-  )
-endif()
 
 # Add Eigen interface dependency, depending on available cmake info
 if(TARGET Eigen3::Eigen)
