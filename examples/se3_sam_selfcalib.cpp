@@ -265,14 +265,14 @@ int main()
     MatrixT             Q;          // Covariance
     MatrixT             W;          // sqrt Info
     vector<SE3Tangentd> controls;   // robot controls
-    VectorC             c, c_gt;    // offset to calibrate, and ground truth value
+    VectorC             c, c_simu;  // offset to calibrate, and ground truth value
     Matrix<double, 6, 2> J_u_c;     // linear model of offset: u = u_nom + J_u_c * c
 
     u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
     u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
     Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
-    c_gt     << 0.01, 0.01; // ground truth offset
+    c_simu   << 0.01, 0.01; // ground truth offset
     c        << 0.0, 0.0;   // nominal value of offset
     J_u_c.setZero();
     J_u_c(0,0) = 1.0;
@@ -388,7 +388,7 @@ int main()
         if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
         {
             // move simulator, without noise, but with offset
-            u_offset = u_nom + J_u_c * c_gt;
+            u_offset = u_nom + J_u_c * c_simu;
             X_simu   = X_simu + u_offset;
 
             // move prior, with noise, but without offset
@@ -611,7 +611,7 @@ int main()
 
     // ground truth
     cout << "ground truth" << std::showpos << endl;
-    cout << "offset: " << c_gt.transpose() << endl;
+    cout << "offset: " << c_simu.transpose() << endl;
     for (const auto& X : poses_simu)
         cout << "pose  : " << X.log() << endl;
     for (const auto& b : landmarks_simu)
