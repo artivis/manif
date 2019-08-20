@@ -409,7 +409,7 @@ int main()
     cout << "prior" << std::showpos << endl;
     cout << "offset: " << c.transpose() << endl;
     for (const auto& X : poses)
-        cout << "pose  : " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks)
         cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -605,7 +605,7 @@ int main()
     cout << "posterior" << std::showpos << endl;
     cout << "offset: " << c.transpose() << endl;
     for (const auto& X : poses)
-        cout << "pose  : " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks)
         cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -614,7 +614,7 @@ int main()
     cout << "ground truth" << std::showpos << endl;
     cout << "offset: " << c_simu.transpose() << endl;
     for (const auto& X : poses_simu)
-        cout << "pose  : " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks_simu)
         cout << "lmk   : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
