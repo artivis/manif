@@ -18,49 +18,70 @@ struct invalid_argument : std::invalid_argument
 };
 
 namespace detail {
+
 template <typename E, typename... Args>
 void
-__attribute__(( noinline, cold, noreturn )) raise(Args&&... args)
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__(( noinline, cold, noreturn ))
+#elif defined(_MSC_VER)
+__declspec( noinline, noreturn )
+#else
+// nothing
+#endif
+raise(Args&&... args)
 {
   throw E(std::forward<Args>(args)...);
 }
 } /* namespace detail */
 } /* namespace manif */
 
+// gcc expands __VA_ARGS___ before passing it into the macro.
+// Visual Studio expands __VA_ARGS__ after passing it.
+// This macro is a workaround to support both
+#define __MANIF_EXPAND(x) x
+
+#if defined(__cplusplus) && defined(__has_cpp_attribute)
+  #define __MANIF_HAVE_CPP_ATTRIBUTE(x) __has_cpp_attribute(x)
+#else
+  #define __MANIF_HAVE_CPP_ATTRIBUTE(x) 0
+#endif
+
 #define __MANIF_THROW_EXCEPT(msg, except) manif::detail::raise<except>(msg);
-#define __MANIF_THROW(msg) __MANIF_THROW_EXCEPT(msg, runtime_error)
+#define __MANIF_THROW(msg) __MANIF_THROW_EXCEPT(msg, manif::runtime_error)
 
 #define __MANIF_GET_MACRO_2(_1,_2,NAME,...) NAME
 
 #define MANIF_THROW(...)                          \
+  __MANIF_EXPAND(                                 \
   __MANIF_GET_MACRO_2(__VA_ARGS__,                \
                       __MANIF_THROW_EXCEPT,       \
-                      __MANIF_THROW)(__VA_ARGS__)
-
+                      __MANIF_THROW)(__VA_ARGS__) )
 
 #define __MANIF_CHECK_MSG_EXCEPT(cond, msg, except) \
-  if (!(cond)) MANIF_THROW(msg, except);
+  if (!(cond)) {MANIF_THROW(msg, except);}
 #define __MANIF_CHECK_MSG(cond, msg) \
-  __MANIF_CHECK_MSG_EXCEPT(cond, msg, runtime_error)
+  __MANIF_CHECK_MSG_EXCEPT(cond, msg, manif::runtime_error)
 #define __MANIF_CHECK(cond) \
-  __MANIF_CHECK_MSG_EXCEPT(cond, "Condition: '"#cond"' failed!", runtime_error)
+  __MANIF_CHECK_MSG_EXCEPT(cond, "Condition: '"#cond"' failed!", manif::runtime_error)
 
 #define __MANIF_GET_MACRO_3(_1,_2,_3,NAME,...) NAME
 
 #define MANIF_CHECK(...)                          \
+  __MANIF_EXPAND(                                 \
   __MANIF_GET_MACRO_3(__VA_ARGS__,                \
                       __MANIF_CHECK_MSG_EXCEPT,   \
                       __MANIF_CHECK_MSG,          \
-                      __MANIF_CHECK)(__VA_ARGS__)
-
+                      __MANIF_CHECK)(__VA_ARGS__) )
 
 #define MANIF_NOT_IMPLEMENTED_YET \
   MANIF_THROW("Not implemented yet !");
 
-#if defined(__cplusplus) && (__cplusplus >= 201402L)
+#if defined(__cplusplus)  && (__cplusplus >= 201402L) && __MANIF_HAVE_CPP_ATTRIBUTE(deprecated)
   #define MANIF_DEPRECATED [[deprecated]]
 #elif defined(__GNUC__)  || defined(__clang__)
   #define MANIF_DEPRECATED __attribute__((deprecated))
+#elif defined(_MSC_VER)
+  #define MANIF_DEPRECATED __declspec(deprecated)
 #else
   #pragma message("WARNING: Deprecation is disabled "\
                   "-- the compiler is not supported.")

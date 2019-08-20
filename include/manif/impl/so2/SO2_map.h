@@ -53,7 +53,7 @@ public:
 
 protected:
 
-  friend class manif::LieGroupBase<Map<manif::SO2<_Scalar>, 0>>;
+  friend struct manif::LieGroupBase<Map<manif::SO2<_Scalar>, 0>>;
   DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;

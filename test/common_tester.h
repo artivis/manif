@@ -314,11 +314,11 @@ public:
 
       LieGroup interp = interpolate(state, state_other, 0, method);
 
-      EXPECT_MANIF_NEAR(state, interp, tol_) << i;
+      EXPECT_MANIF_NEAR(state, interp, tol_); // @todo(artivis) Fix msvc << double(i);
 
       interp = interpolate(state, state_other, 1, method);
 
-      EXPECT_MANIF_NEAR(state_other, interp, tol_) << i;
+      EXPECT_MANIF_NEAR(state_other, interp, tol_); // @todo(artivis) Fix msvc << double(i);
     }
   }
 

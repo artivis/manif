@@ -41,8 +41,9 @@ decasteljau(const std::vector<LieGroup>& trajectory,
     "k_interp must be greater than zero!");
 
   // Number of connected, non-overlapping segments
-  const unsigned int n_segments =
-      std::floor(double(trajectory.size()-degree)/(degree-1)+1);
+  const unsigned int n_segments = static_cast<unsigned int>(
+      std::floor(double(trajectory.size()-degree)/double((degree-1)+1))
+  );
 
   std::vector<std::vector<const LieGroup*>> segments_control_points;
   for (unsigned int t=0; t<n_segments; ++t)
@@ -50,7 +51,7 @@ decasteljau(const std::vector<LieGroup>& trajectory,
     segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Retrieve control points of the current segment
-    for (int n=0; n<degree; ++n)
+    for (unsigned int n=0; n<degree; ++n)
     {
       segments_control_points.back().push_back( &trajectory[t*(degree-1)+n] );
     }
@@ -59,30 +60,30 @@ decasteljau(const std::vector<LieGroup>& trajectory,
   // Close the curve if there are left-over points
   if (closed_curve && (n_segments*(degree-1)) <= trajectory.size()-1)
   {
-    const int last_pts_idx = n_segments*(degree-1);
-    const int left_over = trajectory.size()-1-last_pts_idx;
+    const unsigned int last_pts_idx = n_segments*(degree-1);
+    const unsigned int left_over = trajectory.size()-1-last_pts_idx;
     segments_control_points.emplace_back(std::vector<const LieGroup*>());
 
     // Get the left-over points
-    for (int p=last_pts_idx; p<trajectory.size(); ++p)
+    for (unsigned int p=last_pts_idx; p<trajectory.size(); ++p)
     {
       segments_control_points.back().push_back( &trajectory[p] );
     }
     // Add a extra points from the beginning of the trajectory
-    for (int p=0; p<degree-left_over-1; ++p)
+    for (unsigned int p=0; p<degree-left_over-1; ++p)
     {
       segments_control_points.back().push_back( &trajectory[p] );
     }
   }
 
-  const int segment_k_interp = (degree == 2) ?
+  const unsigned int segment_k_interp = (degree == 2) ?
         k_interp : k_interp * degree;
 
   // Actual curve fitting
   std::vector<LieGroup> curve;
   for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
-    for (int t=1; t<=segment_k_interp; ++t)
+    for (unsigned int t=1; t<=segment_k_interp; ++t)
     {
       // t in [0,1]
       const double t_01 = static_cast<double>(t)/(segment_k_interp);
@@ -94,9 +95,9 @@ decasteljau(const std::vector<LieGroup>& trajectory,
 
       // recursive chunk of the algo,
       // compute tmp control points.
-      for (int i=0; i<degree-1; ++i)
+      for (unsigned int i=0; i<degree-1; ++i)
       {
-        for (int q=0; q<Qs.size()-1; ++q)
+        for (unsigned int q=0; q<Qs.size()-1; ++q)
         {
           Qs_tmp.push_back( Qs[q].rplus(Qs[q+1].rminus(Qs[q]) * t_01) );
         }

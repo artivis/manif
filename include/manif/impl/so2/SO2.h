@@ -100,7 +100,7 @@ public:
 
 protected:
 
-  friend class LieGroupBase<SO2<Scalar>>;
+  friend struct LieGroupBase<SO2<Scalar>>;
   DataType& coeffs_nonconst();
 
   DataType data_;
