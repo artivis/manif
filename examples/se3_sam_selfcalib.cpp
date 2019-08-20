@@ -569,7 +569,7 @@ int main()
         c  = c + dc;
 
         // update all poses
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < NUM_POSES; ++i)
         {
             // we go very verbose here
             int row             = DimC + i * DoF;
