@@ -389,8 +389,8 @@ int main()
         if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
         {
             // move simulator, without noise, but with offset
-            u_offset    = u_nom + J_u_c * c_simu;
-            X_simu      = X_simu + u_offset;
+            u_offset    = J_u_c * c_simu;
+            X_simu      = X_simu + (u_nom + u_offset);
 
             // move prior, with noise, but without offset
             u_noise     = u_sigmas * ArrayT::Random();
@@ -486,7 +486,7 @@ int main()
         //   We have the Jacobian in J_r_p0 = J.block<DoF, DoF>(row, col);
         // We compute the whole in a one-liner:
         Eigen::Map<SE3Tangentd>(r.segment<DoF>(row).data()) =
-          poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, DimC + col));
+                poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, DimC + col));
 
         // advance rows
         row += DoF;
