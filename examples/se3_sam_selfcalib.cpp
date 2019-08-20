@@ -210,9 +210,9 @@ using namespace Eigen;
 using manif::SE3d;
 using manif::SE3Tangentd;
 
-static constexpr int DoF = SE3d::DoF;
-static constexpr int Dim = SE3d::Dim;
-static constexpr int DimC = 2;                  // dimension of the calibration params
+constexpr int DoF = SE3d::DoF;
+constexpr int Dim = SE3d::Dim;
+constexpr int DimC = 2;                  // dimension of the calibration params
 
 // Define many data types (Tangent refers to the tangent of SE3)
 typedef Array<double,  DoF, 1>      ArrayT;     // tangent-size array
@@ -228,12 +228,12 @@ typedef Matrix<double, DimC, 1>     VectorC;    // offset-size vector
 typedef Matrix<double, DoF, DimC>   MatrixTC;   // Tangent x offset size matrix
 
 // some experiment constants
-static const int NUM_POSES      = 3;
-static const int NUM_LMKS       = 5;
-static const int NUM_FACTORS    = 9;
-static const int NUM_STATES     = DimC + NUM_POSES * DoF + NUM_LMKS    * Dim;
-static const int NUM_MEAS       =        NUM_POSES * DoF + NUM_FACTORS * Dim;
-static const int MAX_ITER       = 20;           // for the solver
+constexpr int NUM_POSES      = 3;
+constexpr int NUM_LMKS       = 5;
+constexpr int NUM_FACTORS    = 9;
+constexpr int NUM_STATES     = DimC + NUM_POSES * DoF + NUM_LMKS    * Dim;
+constexpr int NUM_MEAS       =        NUM_POSES * DoF + NUM_FACTORS * Dim;
+constexpr int MAX_ITER       = 20;           // for the solver
 
 int main()
 {
