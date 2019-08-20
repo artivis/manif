@@ -76,7 +76,7 @@ raise(Args&&... args)
 #define MANIF_NOT_IMPLEMENTED_YET \
   MANIF_THROW("Not implemented yet !");
 
-#if (__cplusplus >= 201402L) && __MANIF_HAVE_CPP_ATTRIBUTE(deprecated)
+#if defined(__cplusplus)  && (__cplusplus >= 201402L) && __MANIF_HAVE_CPP_ATTRIBUTE(deprecated)
   #define MANIF_DEPRECATED [[deprecated]]
 #elif defined(__GNUC__)  || defined(__clang__)
   #define MANIF_DEPRECATED __attribute__((deprecated))
