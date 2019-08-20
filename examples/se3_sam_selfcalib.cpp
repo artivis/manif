@@ -485,8 +485,7 @@ int main()
         //   We have residual = expectation - measurement, in global tangent space
         //   We have the Jacobian in J_r_p0 = J.block<DoF, DoF>(row, col);
         // We compute the whole in a one-liner:
-        Eigen::Map<SE3Tangentd>(r.segment<DoF>(row).data()) =
-          poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, DimC + col));
+        r.segment<DoF>(row)         = poses[0].lminus(SE3d::Identity(), J.block<DoF, DoF>(row, DimC + col)).coeffs();
 
         // advance rows
         row += DoF;
@@ -508,8 +507,8 @@ int main()
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
                 // residual
-                SE3Tangentd u_corr          = u + J_u_c * c;                             // correct control with known offset
-                Eigen::Map<SE3Tangentd>(r.segment<DoF>(row).data()) = W * (d - u_corr);  // residual
+                SE3Tangentd u_corr          = u + J_u_c * c;             // correct control with known offset
+                r.segment<DoF>(row)         = W * (d - u_corr).coeffs(); // residual
 
                 // Jacobian of residual wrt calibration params
                 col = 0;
