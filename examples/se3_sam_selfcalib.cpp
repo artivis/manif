@@ -389,12 +389,12 @@ int main()
         if (i < NUM_POSES - 1) // do not make the last motion since we're done after 3rd pose
         {
             // move simulator, without noise, but with offset
-            u_offset = u_nom + J_u_c * c_simu;
-            X_simu   = X_simu + u_offset;
+            u_offset    = u_nom + J_u_c * c_simu;
+            X_simu      = X_simu + u_offset;
 
             // move prior, with noise, but without offset
-            u_noise = u_sigmas * ArrayT::Random();
-            Xi = Xi + (u_nom + u_noise);
+            u_noise     = u_sigmas * ArrayT::Random();
+            Xi          = Xi + (u_nom + u_noise);
 
             // store
             poses_simu. push_back(X_simu);
@@ -574,7 +574,7 @@ int main()
             int row             = DimC + i * DoF;
             constexpr int size  = DoF;
             dx                  = dX.segment<size>(row);
-            poses[i]            = poses[i] + dx;
+            poses[i]            = poses[i] + dx;            // Overload poses[i].plus(dx)
         }
 
         // update all landmarks
