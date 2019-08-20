@@ -95,8 +95,8 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 #### Use **manif** in your project
@@ -207,8 +207,8 @@ Some more general documentation and tips on the use of the library is available 
 To generate the documentation on your machine, type in the terminal
 
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 and find it at `manif/doc/html/index.html`.
