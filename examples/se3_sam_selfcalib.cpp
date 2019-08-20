@@ -238,8 +238,8 @@ int main()
 {
     // DEBUG INFO
     cout << endl;
-    cout << "3D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;
-    cout << "-----------------------------------------------" << endl;
+    cout << "3D Smoothing and Mapping. Sensor offset, 3 poses, 5 landmarks." << endl;
+    cout << "--------------------------------------------------------------" << endl;
     cout << std::fixed   << std::setprecision(3) << std::showpos;
 
     // START CONFIGURATION
