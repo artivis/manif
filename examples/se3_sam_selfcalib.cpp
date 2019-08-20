@@ -275,8 +275,8 @@ int main()
     c_simu   << 0.01, 0.01; // ground truth offset
     c        << 0.0, 0.0;   // nominal value of offset
     J_u_c.setZero();
-    J_u_c(0,0) = 1.0;
-    J_u_c(5,1) = 1.0;
+    J_u_c(0,0) = 1.0; // add offset to linear X-velocity
+    J_u_c(5,1) = 1.0; // add offset to angular yaw-rate
 
     // Landmarks in R^3 and map
     VectorB b; // Landmark, generic
