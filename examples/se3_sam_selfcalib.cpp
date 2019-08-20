@@ -142,7 +142,7 @@
  *      dX  =  [ dc, dx0, dx1, dx2, db0, db1, db2, db3, db4 ] in R^35
  *
  *  with
- *      cd  : calibration error in R^2
+ *      dc  : calibration error in R^2
  *      dx_i: pose error in se(3) ~ R^6
  *      db_k: landmark error in R^3
  *
