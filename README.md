@@ -95,8 +95,8 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 #### Use **manif** in your project
@@ -207,8 +207,8 @@ Some more general documentation and tips on the use of the library is available 
 To generate the documentation on your machine, type in the terminal
 
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 and find it at `manif/doc/html/index.html`.
@@ -219,7 +219,7 @@ find in the section <a href="#publications">Publications</a>.
 ## Tutorials and application demos
 
 We provide some self-contained and self-explained executables implementing some real problems.
-Their source code is located in `[manif]/examples/`.
+Their source code is located in `manif/examples/`.
 These demos are:
 
 -   [`se2_localization.cpp`](examples/se2_localization.cpp): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
