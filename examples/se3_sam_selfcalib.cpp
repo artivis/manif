@@ -225,6 +225,7 @@ typedef Matrix<double, Dim, Dim>    MatrixY;    // measurement-size square matri
 typedef Matrix<double, Dim, DoF>    MatrixYT;   // measurement x tangent size matrix
 typedef Matrix<double, Dim, Dim>    MatrixYB;   // measurement x landmark size matrix
 typedef Matrix<double, DimC, 1>     VectorC;    // offset-size vector
+typedef Matrix<double, DoF, DimC>   MatrixTC;   // Tangent x offset size matrix
 
 // some experiment constants
 static const int NUM_POSES      = 3;
@@ -266,17 +267,17 @@ int main()
     MatrixT             W;          // sqrt Info
     vector<SE3Tangentd> controls;   // robot controls
     VectorC             c, c_simu;  // offset to calibrate, and ground truth value
-    Matrix<double, 6, 2> J_u_c;     // linear model of offset: u = u_nom + J_u_c * c
+    MatrixTC            J_u_c;      // linear model of offset: u = u_nom + J_u_c * c
 
-    u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
+    u_nom    << 0.2, 0.0, 0.0, 0.0, 0.0, 0.1;
     u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
     Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
-    c_simu   << 0.01, 0.01; // ground truth offset
-    c        << 0.0, 0.0;   // nominal value of offset
-    J_u_c.setZero();
-    J_u_c(0,0) = 1.0; // add offset to linear X-velocity
-    J_u_c(5,1) = 1.0; // add offset to angular yaw-rate
+    c_simu   << 0.05, 0.10;         // ground truth offset
+    c        << 0.0, 0.0;           // initial estimate of offset
+    J_u_c.setZero();                // linear model of offset: u = u_nom + J_u_c * c
+    J_u_c(0,0) = 1.0;               // add offset to linear X-velocity
+    J_u_c(5,1) = 1.0;               // add offset to angular yaw-rate
 
     // Landmarks in R^3 and map
     VectorB b; // Landmark, generic
@@ -299,11 +300,11 @@ int main()
     // Define the beacon's measurements in R^3
     VectorY             y, y_noise;
     ArrayY              y_sigmas;
-    MatrixY             R; // Covariance
-    MatrixY             S; // sqrt Info
+    MatrixY             R;          // Covariance
+    MatrixY             S;          // sqrt Info
     vector<map<int,VectorY>>    measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
-    y_sigmas << 0.001, 0.001, 0.001; y_sigmas /= 1.0;
+    y_sigmas << 0.001, 0.001, 0.001;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
     S        =  y_sigmas.inverse()  .matrix().asDiagonal(); // this is R^(-T/2)
 
@@ -374,7 +375,7 @@ int main()
         for (auto k : pairs[i])
         {
             // simulate measurement
-            b       = landmarks_simu[k];              // lmk coordinates in world frame
+            b       = landmarks_simu[k];                // lmk coordinates in world frame
             y_noise = y_sigmas * ArrayY::Random();      // measurement noise
             y       = X_simu.inverse().act(b);          // landmark measurement, before adding noise
 
@@ -397,7 +398,7 @@ int main()
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi /*+ SE3Tangentd::Random()*/); // use very noisy priors
+            poses.      push_back(Xi + SE3Tangentd::Random()); // use very noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
@@ -506,12 +507,12 @@ int main()
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
                 // residual
-                SE3Tangentd u_corr          = u - J_u_c * c;             // remove known offset from controls
+                SE3Tangentd u_corr          = u + J_u_c * c;             // correct control with known offset
                 r.segment<DoF>(row)         = W * (d - u_corr).coeffs(); // residual
 
                 // Jacobian of residual wrt calibration params
                 col = 0;
-                J.block<DoF, DimC>(row, col) = W * J_u_c;
+                J.block<DoF, DimC>(row, col) = - W * J_u_c;
 
                 // Jacobian of residual wrt first pose
                 col = DimC + i * DoF;
