@@ -219,7 +219,7 @@ find in the section <a href="#publications">Publications</a>.
 ## Tutorials and application demos
 
 We provide some self-contained and self-explained executables implementing some real problems.
-Their source code is located in `[manif]/examples/`.
+Their source code is located in `manif/examples/`.
 These demos are:
 
 -   [`se2_localization.cpp`](examples/se2_localization.cpp): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
