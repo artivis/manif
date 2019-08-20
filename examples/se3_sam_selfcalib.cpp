@@ -372,7 +372,7 @@ int main()
     for (int i = 0; i < NUM_POSES; ++i)
     {
         // make measurements
-        for (auto k : pairs[i])
+        for (const auto& k : pairs[i])
         {
             // simulate measurement
             b       = landmarks_simu[k];                // lmk coordinates in world frame
@@ -527,7 +527,7 @@ int main()
             }
 
             // 3. evaluate measurement factors ---------------------------
-            for (auto k : pairs[i])
+            for (const auto& k : pairs[i])
             {
                 // recover related states and data
                 Xi = poses[i];
