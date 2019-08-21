@@ -260,7 +260,7 @@ int main()
     // Define a control vector, its noise and covariance in the tangent of SE3, and its offset model
     SE3Tangentd         u;          // control signal, generic
     SE3Tangentd         u_nom;      // nominal control signal
-    SE3Tangentd         u_offset;   // control signal with offset
+    SE3Tangentd         u_offset;   // control signal offset
     ArrayT              u_sigmas;   // control noise std specification
     VectorT             u_noise;    // control noise
     MatrixT             Q;          // Covariance
