@@ -358,7 +358,7 @@ int main()
     for (int i = 0; i < NUM_POSES; ++i)
     {
         // make measurements
-        for (auto k : pairs[i])
+        for (const auto& k : pairs[i])
         {
             // simulate measurement
             b       = landmarks_simu[k];              // lmk coordinates in world frame
@@ -393,7 +393,7 @@ int main()
     // DEBUG INFO
     cout << "prior" << std::showpos << endl;
     for (const auto& X : poses)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -487,10 +487,10 @@ int main()
                 Xj = poses[j];
                 u  = controls[i];
 
-                // expectation
+                // expectation (use right-minus since motion measurements are local)
                 d  = Xj.rminus(Xi, J_d_xj, J_d_xi); // expected motion = Xj (-) Xi
 
-                // residual (use right-minus since motion measurements are local)
+                // residual
                 r.segment<DoF>(row)         = W * (d - u).coeffs(); // residual
 
                 // Jacobian of residual wrt first pose
@@ -506,7 +506,7 @@ int main()
             }
 
             // 3. evaluate measurement factors ---------------------------
-            for (auto k : pairs[i])
+            for (const auto& k : pairs[i])
             {
                 // recover related states and data
                 Xi = poses[i];
@@ -517,7 +517,7 @@ int main()
                 e       = Xi.inverse(J_ix_x).act(b, J_e_ix, J_e_b); // expected measurement = Xi.inv * bj
                 J_e_x   = J_e_ix * J_ix_x;                          // chain rule
 
-                // residual (use right-minus since sensor measurements are local)
+                // residual
                 r.segment<Dim>(row)         = S * (e - y);
 
                 // Jacobian of residual wrt pose
@@ -542,7 +542,7 @@ int main()
         dX = - (J.transpose() * J).inverse() * J.transpose() * r;
 
         // update all poses
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < NUM_POSES; ++i)
         {
             // we go very verbose here
             int row             = i * DoF;
@@ -578,7 +578,7 @@ int main()
     // solved problem
     cout << "posterior" << std::showpos << endl;
     for (const auto& X : poses)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
@@ -586,7 +586,7 @@ int main()
     // ground truth
     cout << "ground truth" << std::showpos << endl;
     for (const auto& X : poses_simu)
-        cout << "pose: " << X.log() << endl;
+        cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
     for (const auto& b : landmarks_simu)
         cout << "lmk : " << b.transpose() << endl;
     cout << "-----------------------------------------------" << endl;

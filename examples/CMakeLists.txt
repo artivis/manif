@@ -8,6 +8,7 @@ add_executable(se2_sam se2_sam.cpp)
 
 add_executable(se3_localization se3_localization.cpp)
 add_executable(se3_sam se3_sam.cpp)
+add_executable(se3_sam_selfcalib se3_sam_selfcalib.cpp)
 
 set(CXX_11_EXAMPLE_TARGETS
 
@@ -24,6 +25,7 @@ set(CXX_11_EXAMPLE_TARGETS
   # SE3
   se3_localization
   se3_sam
+  se3_sam_selfcalib
 )
 
 # Link to manif

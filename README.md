@@ -96,8 +96,8 @@ $ catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 
 ###### Generate the documentation
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 #### Use **manif** in your project
@@ -208,8 +208,8 @@ Some more general documentation and tips on the use of the library is available 
 To generate the documentation on your machine, type in the terminal
 
 ```terminal
-cd manif
-doxygen .doxygen.txt
+$ cd manif
+$ doxygen .doxygen.txt
 ```
 
 and find it at `manif/doc/html/index.html`.
@@ -220,13 +220,14 @@ find in the section <a href="#publications">Publications</a>.
 ## Tutorials and application demos
 
 We provide some self-contained and self-explained executables implementing some real problems.
-Their source code is located in `[manif]/examples/`.
+Their source code is located in `manif/examples/`.
 These demos are:
 
 -   [`se2_localization.cpp`](examples/se2_localization.cpp): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
 -   [`se3_localization.cpp`](examples/se3_localization.cpp): 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.
 -   [`se2_sam.cpp`](examples/se2_sam.cpp): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
 -   [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
+-   [`se3_sam_selfcalib.cpp`](examples/se3_sam_selfcalib.cpp): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
 
 ## Publications
 
