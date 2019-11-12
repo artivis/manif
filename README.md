@@ -109,7 +109,7 @@ project(foo)
 find_package(manif REQUIRED)
 add_executable(${PROJECT_NAME} src/foo.cpp)
 # Add manif include directories to the target
-target_include_directories(${PROJECT_NAME} SYSTEM ${manif_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${manif_INCLUDE_DIRS})
 ```
 
 ## Features
