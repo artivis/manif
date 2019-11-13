@@ -13,6 +13,7 @@
 targeted at robotics applications.
 
 At the moment, it provides the groups:
+  - R(n): Euclidean space with addition.
   - SO(2): rotations in the plane.
   - SE(2): rigid motion (rotation and translation) in the plane.
   - SO(3): rotations in 3D space.

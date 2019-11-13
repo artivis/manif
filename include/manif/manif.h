@@ -8,6 +8,7 @@
 #include "manif/SE2.h"
 #include "manif/SO3.h"
 #include "manif/SE3.h"
+#include "manif/Rn.h"
 
 #include "manif/algorithms/average.h"
 #include "manif/algorithms/decasteljau.h"
