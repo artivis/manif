@@ -88,8 +88,14 @@ raise(Args&&... args)
   #define MANIF_DEPRECATED
 #endif
 
-// LieGroup - related macros
+// Common macros
 
+#define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND \
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename Base::DataType>::Alignment>0))
+#define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(X) \
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename X::DataType>::Alignment>0))
+
+// LieGroup - related macros
 
 #define MANIF_INHERIT_GROUP_AUTO_API    \
   using Base::setRandom;                \
