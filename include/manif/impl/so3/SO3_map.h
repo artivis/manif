@@ -46,6 +46,8 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
@@ -72,6 +74,8 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 

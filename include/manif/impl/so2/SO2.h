@@ -59,6 +59,8 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
   using Base::normalize;
 
   SO2()  = default;

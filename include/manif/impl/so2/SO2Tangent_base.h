@@ -24,9 +24,6 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim;
-  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
-
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
