@@ -318,9 +318,9 @@ TEST(TEST_SO3, TEST_SO3_RMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
@@ -343,9 +343,9 @@ TEST(TEST_SO3, TEST_SO3_LMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
