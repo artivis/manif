@@ -353,7 +353,30 @@ TEST(TEST_SE3, TEST_SE3_ISOMETRY)
   EXPECT_DOUBLE_EQ(3, se3h.matrix()(2,3));
 }
 
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SE3d::DataType;
+  EXPECT_THROW(
+    SE3d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
 
+TEST(TEST_SE3, TEST_SE3_NORMALIZE)
+{
+  using DataType = SE3d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SE3d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SE3d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SE3d b = map
+  );
+}
 
 MANIF_TEST(SE3d);
 

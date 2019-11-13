@@ -523,6 +523,31 @@ TEST(TEST_SE2, TEST_SE2_ACT)
   EXPECT_NEAR(1, transformed_point.y(), 1e-15);
 }
 
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SE2d::DataType;
+  EXPECT_THROW(
+    SE2d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SE2, TEST_SE2_NORMALIZE)
+{
+  using DataType = SE2d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SE2d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SE2d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SE2d b = map
+  );
+}
+
 MANIF_TEST(SE2d);
 
 MANIF_TEST_JACOBIANS(SE2d);

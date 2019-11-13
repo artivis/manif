@@ -8,9 +8,7 @@
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COPY_CONSTRUCTOR)    \
-  { evalCopyConstructor(); }                                              \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNNORMALIZE_DATA)    \
-  { evalConstructorUnnormalizedData(); }                                  \
+  { evalCopyConstructor(); }                                \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ASSIGNMENT)          \
   { evalAssignment(); }                                                   \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_DATA_PTR_VALID)      \
@@ -67,8 +65,6 @@
   { evalInner(); }                                                        \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NUMERICAL_STABILITY) \
   { evalNumericalStability(); }                                           \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NORMALIZE)           \
-  { evalNormalize(); }                                                    \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
   { evalSmallAdj(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
@@ -142,14 +138,6 @@ public:
   {
     LieGroup state_copy(state);
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
-  }
-
-  void evalConstructorUnnormalizedData()
-  {
-    using DataType = typename LieGroup::DataType;
-    EXPECT_THROW(
-      LieGroup(DataType::Random()*10.), manif::invalid_argument
-    );
   }
 
   void evalAssignment()
@@ -333,9 +321,12 @@ public:
     EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
                  std::runtime_error);
 
-    const auto dummy = LieGroup::Random();
-    EXPECT_MANIF_NEAR(dummy,
-     average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
+    {
+      const auto dummy = LieGroup::Random();
+      std::vector<LieGroup> tmp;
+      tmp.push_back(dummy);
+      EXPECT_MANIF_NEAR(dummy, average_biinvariant(tmp), tol_);
+    }
 
     const LieGroup centroid = LieGroup::Random();
 
@@ -525,22 +516,6 @@ public:
     ) << "+= failed at iteration " << i ;
   }
 
-  void evalNormalize()
-  {
-    typename LieGroup::DataType data = LieGroup::DataType::Random() * 100.;
-
-    EXPECT_THROW(
-      LieGroup a(data), manif::invalid_argument
-    );
-
-    Eigen::Map<LieGroup> map(data.data());
-    map.normalize();
-
-    EXPECT_NO_THROW(
-      LieGroup b = map
-    );
-  }
-
   void evalSmallAdj()
   {
     const Tangent delta_other = Tangent::Random();
@@ -595,7 +570,8 @@ template <typename _LieGroup>
 class JacobianTester : public ::testing::Test
 {
   using LieGroup = _LieGroup;
-  using Tangent  = typename _LieGroup::Tangent;
+  using Scalar   = typename LieGroup::Scalar;
+  using Tangent  = typename LieGroup::Tangent;
 
 public:
 

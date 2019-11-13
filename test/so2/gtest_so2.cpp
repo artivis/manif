@@ -551,6 +551,31 @@ TEST(TEST_SO2, TEST_SO2_ACT)
   EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
 }
 
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SO2d::DataType;
+  EXPECT_THROW(
+    SO2d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SO2, TEST_SO2_NORMALIZE)
+{
+  using DataType = SO2d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SO2d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SO2d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SO2d b = map
+  );
+}
+
 MANIF_TEST(SO2d);
 
 MANIF_TEST_JACOBIANS(SO2d);

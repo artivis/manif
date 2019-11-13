@@ -566,6 +566,31 @@ TEST(TEST_SO3, TEST_SO3_ACT)
   EXPECT_NEAR( 1, transformed_point.z(), 1e-15);
 }
 
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SO3d::DataType;
+  EXPECT_THROW(
+    SO3d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SO3, TEST_SO3_NORMALIZE)
+{
+  using DataType = SO3d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SO3d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SO3d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SO3d b = map
+  );
+}
+
 MANIF_TEST(SO3d);
 
 MANIF_TEST_JACOBIANS(SO3d);
