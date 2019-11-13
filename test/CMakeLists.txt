@@ -49,6 +49,9 @@ endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
+# R^n tests
+add_subdirectory(rn)
+
 # SO2 tests
 add_subdirectory(so2)
 

@@ -121,6 +121,8 @@ class CommonTester : public ::testing::Test
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
+
   CommonTester()  = default;
   ~CommonTester() = default;
 
@@ -576,6 +578,8 @@ class JacobianTester : public ::testing::Test
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
+
   JacobianTester()  = default;
   ~JacobianTester() = default;
 
@@ -878,7 +882,7 @@ public:
     Point point_pert = (state+w).act(point);
     Point point_lin  = pointout + (J_pout_s*w.coeffs());
 
-    EXPECT_EIGEN_NEAR(point_pert, point_lin, 1e-7);
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
 
     // Jac wrt second element
 
