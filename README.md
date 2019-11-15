@@ -105,6 +105,9 @@ In your project `CMakeLists.txt` :
 
 ```cmake
 project(foo)
+# Find the Eigen library
+find_package(Eigen3 REQUIRED)
+target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${EIGEN3_INCLUDE_DIRS})
 # Find the manif library
 find_package(manif REQUIRED)
 add_executable(${PROJECT_NAME} src/foo.cpp)
