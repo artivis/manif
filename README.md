@@ -57,6 +57,7 @@ ___
   <a href="#documentation">Documentation</a> •
   <a href="#tutorials-and-application-demos">Tutorials</a> •
   <a href="#publications">Publications</a> •
+  <a href="#they-use-manif">They use manif</a> •
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -250,6 +251,11 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 Notice that this reference is the one referred to throughout the code documentation.
 Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the **manif** documentation.
 This will give the appropriate equation numbers.
+
+## They use **manif**
+
+You may find [here](projects.md) a list of work and projects using **manif**.  
+Your project is not listed? Let us know about it!
 
 ## Contributing
 
