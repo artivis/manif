@@ -166,7 +166,7 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::Jacobian
 SO2TangentBase<_Derived>::smallAdj() const
 {
-  static const Jacobian smallAdj = Jacobian::Constant(Scalar(1));
+  static const Jacobian smallAdj = Jacobian::Zero();
   return smallAdj;
 }
 
