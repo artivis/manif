@@ -290,11 +290,24 @@ template <typename _Derived>
 typename SE3TangentBase<_Derived>::Jacobian
 SE3TangentBase<_Derived>::smallAdj() const
 {
+  /// @note Chirikjian (close to Eq.10.94)
+  /// says
+  ///       ad(g) = |  Omega  0   |
+  ///               |   V   Omega |
+  ///
+  /// considering vee(log(g)) = (w;v)
+  ///
+  /// but this is
+  ///       ad(g) = |  Omega  V   |
+  ///               |   0   Omega |
+  ///
+  /// considering vee(log(g)) = (v;w)
+
   Jacobian smallAdj;
-  smallAdj.template topRightCorner<3,3>().setZero();
+  smallAdj.template topRightCorner<3,3>() = skew(v());
   smallAdj.template topLeftCorner<3,3>() = skew(w());
   smallAdj.template bottomRightCorner<3,3>() = smallAdj.template topLeftCorner<3,3>();
-  smallAdj.template bottomLeftCorner<3,3>() = skew(v());
+  smallAdj.template bottomLeftCorner<3,3>().setZero();
 
   return smallAdj;
 }
