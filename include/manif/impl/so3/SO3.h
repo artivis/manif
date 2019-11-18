@@ -59,6 +59,8 @@ private:
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
+
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
   using Base::transform;
