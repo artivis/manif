@@ -7,7 +7,7 @@
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \
   using TEST_##manifold##_JACOBIANS_CERES_TESTER = JacobianCeresTester<manifold>;               \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_OBJECTIVE_JACOBIANS) \
-  { /*evalObjectiveJacs();*/ }                                                                      \
+  { /*evalObjectiveJacs();*/ }                                                                  \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_JACOBIANS)           \
   { evalJacs(); }
 
@@ -37,6 +37,8 @@ class JacobianCeresTester : public ::testing::Test
                     Eigen::ColMajor>;
 
 public:
+
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
 
   JacobianCeresTester()  = default;
   ~JacobianCeresTester() = default;
