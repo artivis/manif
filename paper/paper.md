@@ -24,7 +24,7 @@ bibliography: paper.bib
 
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
-properly [@EADE-Lie][@BARFOOT-17-Estimation].
+properly [@EADE-Lie,@BARFOOT-17-Estimation].
 This is motivated by an increasing demand for
 precision, consistency and stability of the solutions.
 Indeed, a proper modeling of the states and measurements,
@@ -79,7 +79,7 @@ C++11, which is still the standard in many laboratories and companies, while
 `wave_geometry`, as of the time this paper is written,
 requires a C++17-compatible compiler.
 While both libraries rely on the external dependency `Eigen`,
-`wave_geometry` also relies on Boost [@boostweb].
+`wave_geometry` also relies on Boost [@Koranne2011].
 Finally, as of the time this paper is written, `wave_geometry` only implements
 the groups SO(3) and SE(3) while `manif` also provides SO(2) and SE(2).
 
