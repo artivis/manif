@@ -24,7 +24,7 @@ bibliography: paper.bib
 
 There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
-properly [@EADE-Lie,@BARFOOT-17-Estimation].
+properly [@EADE-Lie][@BARFOOT-17-Estimation].
 This is motivated by an increasing demand for
 precision, consistency and stability of the solutions.
 Indeed, a proper modeling of the states and measurements,
