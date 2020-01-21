@@ -68,7 +68,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NUMERICAL_STABILITY) \
   { evalNumericalStability(); }                                           \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NORMALIZE)           \
-  { evalNormalize(); }
+  { evalNormalize(); }                                                    \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
+  { evalSmallAdj(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -535,6 +537,14 @@ public:
     EXPECT_NO_THROW(
       LieGroup b = map
     );
+  }
+
+  void evalSmallAdj()
+  {
+    const Tangent delta_other = Tangent::Random();
+
+    EXPECT_EIGEN_NEAR((delta.smallAdj() * delta_other).hat(),
+                      delta.hat() * delta_other.hat() - delta_other.hat() * delta.hat());
   }
 
 protected:
