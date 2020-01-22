@@ -33,7 +33,7 @@ struct traits<SE2<_Scalar>>
   using Transformation = Eigen::Matrix<Scalar, 3, 3>;
   using Rotation       = Eigen::Matrix<Scalar, Dim, Dim>;
   using Translation    = Eigen::Matrix<Scalar, Dim, 1>;
-  using Vector         = Eigen::Matrix<Scalar, DoF, 1>;
+  using Vector         = Eigen::Matrix<Scalar, Dim, 1>;
 };
 
 } /* namespace internal */
