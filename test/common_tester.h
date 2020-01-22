@@ -70,7 +70,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NORMALIZE)           \
   { evalNormalize(); }                                                    \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
-  { evalSmallAdj(); }
+  { evalSmallAdj(); }                                                     \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
+  { evalIdentityActPoint(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                            \
   using TEST_##manifold##_JACOBIANS_TESTER = JacobianTester<manifold>;            \
@@ -545,6 +547,17 @@ public:
 
     EXPECT_EIGEN_NEAR((delta.smallAdj() * delta_other).hat(),
                       delta.hat() * delta_other.hat() - delta_other.hat() * delta.hat());
+  }
+
+  void evalIdentityActPoint()
+  {
+    using Point = typename LieGroup::Vector;
+
+    Point pin = Point::Random();
+
+    Point pout = LieGroup::Identity().act(pin);
+
+    EXPECT_EIGEN_NEAR(pin, pout);
   }
 
 protected:
