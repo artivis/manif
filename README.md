@@ -6,6 +6,7 @@
 [![Documentation](https://codedocs.xyz/artivis/manif.svg)](https://codedocs.xyz/artivis/manif/)
 [![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![JOSS](http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg)](http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160)
 
 ## Package Summary
 **manif** is a header-only C++11 Lie theory library for state-estimation
