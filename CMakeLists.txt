@@ -156,10 +156,6 @@ install(
   DESTINATION include
 )
 
-install(FILES package.xml
-  DESTINATION share/${PROJECT_NAME}
-#  DESTINATION "${config_install_dir}"
-)
 
 ##############
 ## Examples ##
