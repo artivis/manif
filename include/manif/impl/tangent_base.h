@@ -240,7 +240,7 @@ public:
    */
   template <typename _EigenDerived>
   bool isApprox(const Eigen::MatrixBase<_EigenDerived>& v,
-                const Scalar eps) const;
+                const Scalar eps = Constants<Scalar>::eps) const;
 
   /**
    * @brief Evaluate whether this and t are 'close'.
@@ -252,7 +252,7 @@ public:
    */
   template <typename _DerivedOther>
   bool isApprox(const TangentBase<_DerivedOther>& t,
-                const Scalar eps) const;
+                const Scalar eps = Constants<Scalar>::eps) const;
 
   // Some operators
 
@@ -832,7 +832,7 @@ bool operator ==(
     const TangentBase<_Derived>& ta,
     const TangentBase<_DerivedOther>& tb)
 {
-  return ta.isApprox(tb, Constants<typename TangentBase<_Derived>::Scalar>::eps);
+  return ta.isApprox(tb);
 }
 
 template <typename _Derived, typename _EigenDerived>
@@ -840,7 +840,7 @@ bool operator ==(
     const TangentBase<_Derived>& t,
     const Eigen::MatrixBase<_EigenDerived>& v)
 {
-  return t.isApprox(v, Constants<typename TangentBase<_Derived>::Scalar>::eps);
+  return t.isApprox(v);
 }
 
 // Utils
