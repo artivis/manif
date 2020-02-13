@@ -589,7 +589,7 @@ template <typename _DerivedOther>
 bool LieGroupBase<_Derived>::operator ==(
     const LieGroupBase<_DerivedOther>& m)
 {
-  return isApprox(m, Constants<Scalar>::eps);
+  return isApprox(m);
 }
 
 template <typename _Derived>
