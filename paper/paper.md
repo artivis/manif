@@ -26,8 +26,8 @@ There has been a remarkable effort in the last years in
 the robotics community to formulate estimation problems
 properly [@EADE-Lie][@BARFOOT-17-Estimation].
 This is motivated by an increasing demand for
-precision, consistency and stability of the solutions.
-Indeed, a proper modeling of the states and measurements,
+precision, consistency, and stability of the solutions.
+Indeed, proper modeling of the states and measurements,
 the functions relating them, and their uncertainties,
 is crucial to achieve these goals.
 This has led to problem formulations involving what has been
@@ -39,7 +39,7 @@ the state representations evolve [@CHIRIKJIAN-11].
 state estimation in robotics applications.
 With a single dependency on `Eigen` [@eigenweb] and
 a requirement on C++11 only, it is
-developed as a header-only library making
+developed as a header-only library, making
 it easy to integrate to existing projects.
 
 The `manif` library provides simple interfaces to
@@ -53,15 +53,15 @@ Lie groups beyond the currently implemented:
 the Special Orthogonal groups SO(2) and SO(3) and the
 Special Euclidean groups SE(2) and SE(3).
 
-Mathematical foundations of the library are given in [@Sola18]
-and often refers to it in the documentation,
-especially for providing reference for the mathematical formulae.
+The mathematical foundations of the library are given in [@Sola18],
+which is often referred to in the documentation,
+especially for providing references for the mathematical formulae.
 
 # Related work
 
 `Sophus` [@Sophus] is a C++ implementation of Lie Groups using `Eigen`.
 Our work differs from `Sophus` in that all our classes inherit from
-a common templated base class which enforces a common minimal API.
+a common templated base class, which enforces a common minimal API.
 This allows for writing generic algorithms on Lie groups.
 Moreover, the analytical Jacobian matrices are available to the user
 for most of the operation on groups,
