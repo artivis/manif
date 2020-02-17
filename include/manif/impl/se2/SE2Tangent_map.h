@@ -14,6 +14,7 @@ struct traits< Eigen::Map<SE2Tangent<_Scalar>,0> >
   using typename traits<SE2Tangent<_Scalar>>::Scalar;
   using traits<SE2Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SE2TangentBase<Eigen::Map<SE2Tangent<Scalar>, 0>>;
 };
 
 //! @brief traits specialization for Eigen Map const
@@ -24,6 +25,7 @@ struct traits< Eigen::Map<const SE2Tangent<_Scalar>,0> >
   using typename traits<const SE2Tangent<_Scalar>>::Scalar;
   using traits<SE2Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SE2TangentBase<Eigen::Map<const SE2Tangent<Scalar>, 0>>;
 };
 
 } /* namespace internal */
