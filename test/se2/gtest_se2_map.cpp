@@ -1,10 +1,13 @@
 #include <gtest/gtest.h>
 
+#include "manif/SE2.h"
 #include "../common_tester.h"
 
-#include "manif/SE2.h"
-
 using namespace manif;
+
+static_assert(std::is_same<SE2d, Eigen::Map<SE2d>::LieGroup>::value, "nop");
+
+/*
 
 TEST(TEST_SE2, TEST_SE2_MAP_CONSTRUCTOR)
 {
@@ -169,7 +172,7 @@ TEST(TEST_SE2, TEST_SE2_MAP_INVERSE)
   double data[4] = {0,0,1,0};
   Eigen::Map<SE2d> se2(data);
 
-  auto se2_inv = se2.inverse();
+  auto se2_inv = se2.inverse().eval();
 
   EXPECT_DOUBLE_EQ(0, se2_inv.x());
   EXPECT_DOUBLE_EQ(0, se2_inv.y());
@@ -207,6 +210,11 @@ TEST(TEST_SE2, TEST_SE2_MAP_RPLUS_ZERO)
   EXPECT_DOUBLE_EQ(1, se2c.y());
   EXPECT_ANGLE_NEAR(-MANIF_PI, se2c.angle(), 1e-15);
 }
+
+*/
+
+
+
 /*
 TEST(TEST_SE2, TEST_SE2_MAP_RPLUS)
 {

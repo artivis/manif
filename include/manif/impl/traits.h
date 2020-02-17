@@ -11,7 +11,8 @@ namespace internal {
 //    return false;
 //}
 
-template <typename T>
+/// @note Triggers static_asserts only if a template is instantiated
+template <typename... T>
 struct constexpr_false : std::false_type {};
 
 template <typename T> struct traits;
@@ -48,17 +49,19 @@ struct traitscast<_Class<_Scalar>, _NewScalar>
   using cast = _Class<_NewScalar>;
 };
 
-//! @brief Has function 'rjacinv' traits
-template<class, typename T> struct has_rjacinv_impl : std::false_type {};
-template<typename T> struct
-has_rjacinv_impl<decltype( void(std::declval<T>().rjacinv()) ), T> : std::true_type {};
-template<typename T> struct has_rjacinv : has_rjacinv_impl<void, T> {};
+template <class T>
+using remove_cr = std::remove_const<typename std::remove_reference<T>::type>;
 
-//! @brief Has function 'ljacinv' traits
-template<class, typename T> struct has_ljacinv_impl : std::false_type {};
-template<typename T> struct
-has_ljacinv_impl<decltype( void(std::declval<T>().ljacinv()) ), T> : std::true_type {};
-template<typename T> struct has_ljacinv : has_ljacinv_impl<void, T> {};
+template <class T>
+using remove_cr_t = typename remove_cr<T>::type;
+
+// template <typename...> struct get_base;
+//
+// template <template <typename _Scalar> class DerivedBase>
+// struct get_base
+// {
+//   using type = void;
+// }
 
 } /* namespace internal */
 } /* namespace manif */

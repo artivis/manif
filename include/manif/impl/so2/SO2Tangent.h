@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SO2TANGENT_H_
 #define _MANIF_MANIF_SO2TANGENT_H_
 
-#include "manif/impl/so2/SO2Tangent_base.h"
-
 namespace manif {
 namespace internal {
 
@@ -53,28 +51,30 @@ protected:
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
+
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO2Tangent()  = default;
   ~SO2Tangent() = default;
 
-  MANIF_COPY_CONSTRUCTOR(SO2Tangent)
-
   // Copy constructor given base
+  MANIF_COPY_CONSTRUCTOR(SO2Tangent)
   template <typename _DerivedOther>
   SO2Tangent(const TangentBase<_DerivedOther>& o);
-
-  MANIF_TANGENT_ASSIGN_OP(SO2Tangent)
 
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
 
   // Tangent common API
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_TANGENT_API
+  using Base::data;
+
+  MANIF_COEFFS_FUNCTIONS
+
+  MANIF_TANGENT_ASSIGN_OP(SO2Tangent)
+  MANIF_TANGENT_OPERATOR
 
   // SO2Tangent specific API
 
@@ -100,20 +100,6 @@ SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)
   : data_(theta)
 {
   //
-}
-
-template <typename _Scalar>
-typename SO2Tangent<_Scalar>::DataType&
-SO2Tangent<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO2Tangent<_Scalar>::DataType&
-SO2Tangent<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

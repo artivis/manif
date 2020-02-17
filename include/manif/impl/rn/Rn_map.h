@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_RN_MAP_H_
 #define _MANIF_MANIF_RN_MAP_H_
 
-#include "manif/impl/rn/Rn.h"
-
 namespace manif {
 namespace internal {
 
@@ -44,15 +42,18 @@ class Map<manif::Rn<_Scalar, _N>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
+  MANIF_GROUP_TYPEDEF
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_API
+
   MANIF_GROUP_MAP_ASSIGN_OP(Rn)
+  MANIF_GROUP_OPERATOR
 
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
+  using Base::data;
 
 protected:
 
@@ -70,12 +71,14 @@ class Map<const manif::Rn<_Scalar, _N>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
+  MANIF_GROUP_TYPEDEF
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_API
+
   const DataType& coeffs() const { return data_; }
+  using Base::data;
 
 protected:
 

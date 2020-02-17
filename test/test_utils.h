@@ -1,9 +1,6 @@
 #ifndef _MANIF_MANIF_TEST_UTILS_H_
 #define _MANIF_MANIF_TEST_UTILS_H_
 
-#include "manif/impl/lie_group_base.h"
-#include "manif/impl/utils.h"
-
 #include "eigen_gtest.h"
 
 #include <random>

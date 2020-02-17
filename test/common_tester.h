@@ -416,48 +416,64 @@ public:
     typename Tangent::DataType delta_data(delta.coeffs());
 
     // t+t
+    static_assert(std::is_same<Tangent, decltype(delta.plus(delta))>::value, "nop");
     EXPECT_EIGEN_NEAR(delta.plus(delta).coeffs(), delta_data+delta_data);
 
     // t-t
+    static_assert(std::is_same<Tangent, decltype(delta.minus(delta))>::value, "nop");
     EXPECT_EIGEN_NEAR(delta.minus(delta).coeffs(), delta_data-delta_data);
 
     // t+t
+    static_assert(std::is_same<Tangent, decltype(delta+delta)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta+delta).coeffs(), delta_data+delta_data);
 
     // t-t
+    static_assert(std::is_same<Tangent, decltype(delta-delta)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta-delta).coeffs(), delta_data-delta_data);
 
     // t+=t
+    static_assert(std::is_same<Tangent&, decltype(delta+=delta)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta+=delta).coeffs(), delta_data+=delta_data);
 
     // t-=t
+    static_assert(std::is_same<Tangent&, decltype(delta-=delta)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta-=delta).coeffs(), delta_data-=delta_data);
 
     // t+v
+    static_assert(std::is_same<Tangent, decltype(delta+delta_data)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta+delta_data).coeffs(), delta_data+delta_data);
 
     // t-v
+    static_assert(std::is_same<Tangent, decltype(delta-delta_data)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta-delta_data).coeffs(), delta_data-delta_data);
 
     // t+=v
+    static_assert(std::is_same<Tangent&, decltype(delta+=delta_data)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta+=delta_data).coeffs(), delta_data+=delta_data);
 
     // t-=v
+    static_assert(std::is_same<Tangent&, decltype(delta-=delta_data)>::value, "nop");
     EXPECT_EIGEN_NEAR((delta-=delta_data).coeffs(), delta_data-=delta_data);
 
     // v+t
+    static_assert(std::is_same<decltype(delta_data+delta_data), decltype(delta_data+delta)>::value, "nop");
     EXPECT_EIGEN_NEAR(delta_data+delta, delta_data+delta_data);
 
     // v-t
+    static_assert(std::is_same<decltype(delta_data-delta_data), decltype(delta_data-delta)>::value, "nop");
     EXPECT_EIGEN_NEAR(delta_data-delta, delta_data-delta_data);
 
     // ret type is Tangent
+    static_assert(std::is_same<Tangent,
+      decltype(delta+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.)>::value, "nop");
     EXPECT_EIGEN_NEAR(
           (delta+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.).coeffs(),
           delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.
           );
 
     // ret type is Tangent::DataType
+    // static_assert(std::is_same<typename Tangent::DataType,
+      // decltype(delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.)>::value, "nop");
     EXPECT_EIGEN_NEAR(
           delta_data+delta+delta-delta+delta_data-delta_data+delta/2.+delta*3.,
           delta_data+delta_data+delta_data-delta_data+delta_data-delta_data+delta_data/2.+delta_data*3.

@@ -1,10 +1,6 @@
 #ifndef _MANIF_MANIF_SE3_BASE_H_
 #define _MANIF_MANIF_SE3_BASE_H_
 
-#include "manif/impl/se3/SE3_properties.h"
-#include "manif/impl/lie_group_base.h"
-#include "manif/impl/so3/SO3_map.h"
-
 namespace manif {
 
 //
@@ -23,23 +19,6 @@ private:
   using Base = LieGroupBase<_Derived>;
   using Type = SE3Base<_Derived>;
 
-public:
-
-  MANIF_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_AUTO_API
-  MANIF_INHERIT_GROUP_OPERATOR
-
-  using Base::coeffs;
-
-  using Rotation       = typename internal::traits<_Derived>::Rotation;
-  using Translation    = typename internal::traits<_Derived>::Translation;
-  using Transformation = typename internal::traits<_Derived>::Transformation;
-  using Isometry       = Eigen::Transform<Scalar, 3, Eigen::Isometry>;
-
-  using QuaternionDataType = Eigen::Quaternion<Scalar>;
-
-  // LieGroup common API
-
 protected:
 
   using Base::derived;
@@ -48,24 +27,19 @@ protected:
 
 public:
 
+  MANIF_GROUP_TYPEDEF
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Translation    = typename internal::traits<_Derived>::Translation;
+  using Transformation = typename internal::traits<_Derived>::Transformation;
+  using Isometry       = Eigen::Transform<Scalar, 3, Eigen::Isometry>;
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
+
+  MANIF_GROUP_API
+  using Base::coeffs;
+  using Base::data;
+
   MANIF_GROUP_ML_ASSIGN_OP(SE3Base)
-
-  /**
-   * @brief Get the inverse.
-   * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
-   * @note See Eqs. (170,176).
-   */
-  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
-
-  /**
-   * @brief Get the SE3 corresponding Lie algebra element in vector form.
-   * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
-   * @return The SE3 tangent of this.
-   * @note This is the log() map in vector form.
-   * @note See Eq. (173) & Eq. (79,179,180) and following notes.
-   * @see SE3Tangent.
-   */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  MANIF_GROUP_OPERATOR
 
   /**
    * @brief This function is deprecated.
@@ -74,41 +48,6 @@ public:
    */
   MANIF_DEPRECATED
   Tangent lift(OptJacobianRef J_t_m = {}) const;
-
-  /**
-   * @brief Composition of this and another SE3 element.
-   * @param[in] m Another SE3 element.
-   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
-   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
-   * @return The composition of 'this . m'.
-   * @note See Eq. (171) and Eqs. (177,178).
-   */
-  template <typename _DerivedOther>
-  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
-
-  /**
-   * @brief Rigid motion action on a 3D point.
-   * @param  v A 3D point.
-   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
-   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
-   * @return The transformed 3D point.
-   * @note See Eq. (181) & Eqs. (182,183).
-   */
-  template <typename _EigenDerived>
-  Eigen::Matrix<Scalar, 3, 1>
-  act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
-
-  /**
-   * @brief Get the adjoint matrix of SE3 at this.
-   * @note See Eq. (175).
-   */
-  Jacobian adj() const;
-
-  // SE3 specific functions
 
   /**
    * Get the transformation matrix (3D isometry).
@@ -124,43 +63,25 @@ public:
    */
   Isometry isometry() const;
 
-  /**
-   * @brief Get the rotational part of this as a rotation matrix.
-   */
+  //! @brief Get the rotational part of this as a rotation matrix.
   Rotation rotation() const;
 
-  /**
-   * @brief Get the rotational part of this as a quaternion.
-   */
+  //! @brief Get the rotational part of this as a quaternion.
   QuaternionDataType quat() const;
 
-  /**
-   * @brief Get the translational part in vector form.
-   */
+  //! @brief Get the translational part in vector form.
   Translation translation() const;
 
-  /**
-   * @brief Get the x component of the translational part.
-   */
+  //! @brief Get the x component of the translational part.
   Scalar x() const;
 
-  /**
-   * @brief Get the y component of translational part.
-   */
+  //! @brief Get the y component of translational part.
   Scalar y() const;
 
-  /**
-   * @brief Get the z component of translational part.
-   */
+  //! @brief Get the z component of translational part.
   Scalar z() const;
 
-  //Scalar roll() const;
-  //Scalar pitch() const;
-  //Scalar yaw() const;
-
-  /**
-   * @brief Normalize the underlying quaternion.
-   */
+  //! @brief Normalize the underlying quaternion.
   void normalize();
 
 public: /// @todo make protected
@@ -215,131 +136,11 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-typename SE3Base<_Derived>::LieGroup
-SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
-{
-  if (J_minv_m)
-  {
-    (*J_minv_m) = -adj();
-  }
-
-  const SO3<Scalar> so3inv = asSO3().inverse();
-
-  return LieGroup(-so3inv.act(translation()),
-                   so3inv);
-}
-
-template <typename _Derived>
-typename SE3Base<_Derived>::Tangent
-SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
-{
-  using std::abs;
-  using std::sqrt;
-
-  const SO3Tangent<Scalar> so3tan = asSO3().log();
-
-  Tangent tan((typename Tangent::DataType() <<
-               so3tan.ljac().inverse()*translation(),
-               so3tan.coeffs()).finished());
-
-  if (J_t_m)
-  {
-    // Jr^-1
-    (*J_t_m) = tan.rjac().inverse();
-  }
-
-  return tan;
-}
-
-template <typename _Derived>
 typename SE3Base<_Derived>::Tangent
 SE3Base<_Derived>::lift(OptJacobianRef J_t_m) const
 {
   return log(J_t_m);
 }
-
-template <typename _Derived>
-template <typename _DerivedOther>
-typename SE3Base<_Derived>::LieGroup
-SE3Base<_Derived>::compose(
-    const LieGroupBase<_DerivedOther>& m,
-    OptJacobianRef J_mc_ma,
-    OptJacobianRef J_mc_mb) const
-{
-  static_assert(
-    std::is_base_of<SE3Base<_DerivedOther>, _DerivedOther>::value,
-    "Argument does not inherit from SE3Base !");
-
-  const auto& m_se3 = static_cast<const SE3Base<_DerivedOther>&>(m);
-
-  if (J_mc_ma)
-  {
-    (*J_mc_ma) = m.inverse().adj();
-  }
-
-  if (J_mc_mb)
-  {
-    J_mc_mb->setIdentity();
-  }
-
-  return LieGroup(rotation()*m_se3.translation() + translation(),
-                  asSO3().compose(m_se3.asSO3()).quat());
-}
-
-template <typename _Derived>
-template <typename _EigenDerived>
-Eigen::Matrix<typename SE3Base<_Derived>::Scalar, 3, 1>
-SE3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
-{
-  assert_vector_dim(v, 3);
-  const Rotation R(rotation());
-
-  if (J_vout_m)
-  {
-    J_vout_m->template topLeftCorner<3,3>()  =  R;
-    J_vout_m->template topRightCorner<3,3>() = -R * skew(v);
-  }
-
-  if (J_vout_v)
-  {
-    (*J_vout_v) = R;
-  }
-
-  return translation() + R * v;
-}
-
-
-template <typename _Derived>
-typename SE3Base<_Derived>::Jacobian
-SE3Base<_Derived>::adj() const
-{
-  /// @note Chirikjian (close to Eq.10.94)
-  /// says
-  ///       Ad(g) = |  R  0 |
-  ///               | T.R R |
-  ///
-  /// considering vee(log(g)) = (w;v)
-  /// with T = [t]_x
-  ///
-  /// but this is
-  ///       Ad(g) = | R T.R |
-  ///               | 0  R  |
-  ///
-  /// considering vee(log(g)) = (v;w)
-
-  Jacobian Adj = Jacobian::Zero();
-  Adj.template topLeftCorner<3,3>() = rotation();
-  Adj.template bottomRightCorner<3,3>() =
-      Adj.template topLeftCorner<3,3>();
-  Adj.template topRightCorner<3,3>() =
-    skew(translation()) * Adj.template topLeftCorner<3,3>();
-
-  return Adj;
-}
-
-// SE3 specific function
 
 template <typename _Derived>
 typename SE3Base<_Derived>::Scalar
@@ -368,59 +169,6 @@ void SE3Base<_Derived>::normalize()
   coeffs().template tail<4>().normalize();
 }
 
-namespace internal {
-
-//! @brief Random specialization for SE3Base objects.
-template <typename Derived>
-struct RandomEvaluatorImpl<SE3Base<Derived>>
-{
-  template <typename T>
-  static void run(T& m)
-  {
-    // @note:
-    // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
-    // which is the default version in Ubuntu 16.04
-    // So we copy its implementation here.
-
-    using std::sqrt;
-    using std::sin;
-    using std::cos;
-
-    using Scalar      = typename SE3Base<Derived>::Scalar;
-    using Translation = typename SE3Base<Derived>::Translation;
-    using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
-    using LieGroup    = typename SE3Base<Derived>::LieGroup;
-
-    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
-                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
-                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
-    const Scalar a = sqrt(1. - u1),
-                 b = sqrt(u1);
-
-    m = LieGroup(Translation::Random(),
-                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
-
-    //m = Derived(Translation::Random(), Quaternion::UnitRandom());
-  }
-};
-
-//! @brief Assignment assert specialization for SE2Base objects
-template <typename Derived>
-struct AssignmentEvaluatorImpl<SE3Base<Derived>>
-{
-  template <typename T>
-  static void run_impl(const T& data)
-  {
-    using std::abs;
-    using Scalar = typename SE3Base<Derived>::Scalar;
-    MANIF_CHECK(abs(data.template tail<4>().norm()-Scalar(1)) <
-                Constants<Scalar>::eps_s,
-                "SE3 assigned data not normalized !",
-                invalid_argument);
-  }
-};
-
-} /* namespace internal */
 } /* namespace manif */
 
 #endif /* _MANIF_MANIF_SE3_BASE_H_ */

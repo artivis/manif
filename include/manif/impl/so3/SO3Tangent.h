@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SO3TANGENT_H_
 #define _MANIF_MANIF_SO3TANGENT_H_
 
-#include "manif/impl/so3/SO3Tangent_base.h"
-
 namespace manif {
 namespace internal {
 
@@ -56,26 +54,22 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO3Tangent()  = default;
   ~SO3Tangent() = default;
 
+  // Copy constructor
   MANIF_COPY_CONSTRUCTOR(SO3Tangent)
-
-  // Copy constructor given base
   template <typename _DerivedOther>
   SO3Tangent(const TangentBase<_DerivedOther>& o);
 
+  MANIF_TANGENT_API
+  using Base::data;
+
+  MANIF_COEFFS_FUNCTIONS
+
   MANIF_TANGENT_ASSIGN_OP(SO3Tangent)
-
-  // Tangent common API
-
-  DataType& coeffs();
-  const DataType& coeffs() const;
-
-  // SO3Tangent specific API
+  MANIF_TANGENT_OPERATOR
 
 protected:
 
@@ -90,20 +84,6 @@ SO3Tangent<_Scalar>::SO3Tangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
-}
-
-template <typename _Scalar>
-typename SO3Tangent<_Scalar>::DataType&
-SO3Tangent<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO3Tangent<_Scalar>::DataType&
-SO3Tangent<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

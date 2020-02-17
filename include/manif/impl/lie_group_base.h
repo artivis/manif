@@ -1,16 +1,6 @@
 #ifndef _MANIF_MANIF_LIE_GROUP_BASE_H_
 #define _MANIF_MANIF_LIE_GROUP_BASE_H_
 
-#include "manif/impl/macro.h"
-#include "manif/impl/traits.h"
-#include "manif/impl/eigen.h"
-#include "manif/impl/tangent_base.h"
-#include "manif/impl/assignment_assert.h"
-
-#include "manif/constants.h"
-
-#include "lt/optional.hpp"
-
 namespace manif {
 
 /**
@@ -19,8 +9,10 @@ namespace manif {
  * @see TangentBase.
  */
 template <class _Derived>
-struct LieGroupBase
+struct LieGroupBase : internal::crtp<_Derived>
 {
+public:
+
   static constexpr int Dim     = internal::traits<_Derived>::Dim;
   static constexpr int DoF     = internal::traits<_Derived>::DoF;
   static constexpr int RepSize = internal::traits<_Derived>::RepSize;
@@ -36,6 +28,11 @@ struct LieGroupBase
 
   template <typename _Scalar>
   using LieGroupTemplate = typename internal::traitscast<LieGroup, _Scalar>::cast;
+
+protected:
+
+  using CrtpBase = internal::crtp<_Derived>;
+  using CrtpBase::derived;
 
 public:
 
@@ -119,7 +116,8 @@ public:
    * @note See Eq. (3).
    * @see TangentBase.
    */
-  LieGroup inverse(OptJacobianRef J_m_t = {}) const;
+  ReturnType<InverseExpr<typename internal::traits<_Derived>::Base>>
+  inverse(OptJacobianRef J_m_t = {}) const;
 
   /**
    * @brief Get the corresponding Lie algebra element in vector form.
@@ -128,7 +126,8 @@ public:
    * @note This is the log() map in vector form.
    * @see Eq. (24).
    */
-  Tangent log(OptJacobianRef J_t_m = {}) const;
+  ReturnType<LogExpr<typename internal::traits<_Derived>::Base>>
+  log(OptJacobianRef J_t_m = {}) const;
 
   /**
    * @brief This function is deprecated.
@@ -147,9 +146,12 @@ public:
    * @note See Eqs. (1,2,3,4).
    */
   template <typename _DerivedOther>
-  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+  ReturnType<ComposeExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>>
+  compose(const LieGroupBase<_DerivedOther>& m,
+          OptJacobianRef J_mc_ma = {},
+          OptJacobianRef J_mc_mb = {}) const;
 
   /**
    * @brief TODO tofix
@@ -158,15 +160,19 @@ public:
    * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
    * @return
    */
-  Vector act(const Vector& v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+  template <typename _Obj>
+  ReturnType<ActExpr<typename internal::traits<_Derived>::Base, _Obj>>
+  act(_Obj&& v,
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, internal::traits<LieGroup>::Dim, internal::traits<LieGroup>::DoF>>> J_vout_m = {},
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, internal::traits<LieGroup>::Dim, internal::traits<LieGroup>::Dim>>> = {}) const;
 
   /**
    * @brief Get the Adjoint of the Lie group element this.
    * @note See Eq. (29).
    */
-  Jacobian adj() const;
+  ReturnType<AdjExpr<typename internal::traits<_Derived>::Base>>
+  adj() const;
+
 
   // Deduced API
 
@@ -179,9 +185,11 @@ public:
    * @note See Eq. (25).
    */
   template <typename _DerivedOther>
-  LieGroup rplus(const TangentBase<_DerivedOther>& t,
-                 OptJacobianRef J_mout_m = {},
-                 OptJacobianRef J_mout_t = {}) const;
+  ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                       typename internal::traits<_DerivedOther>::Base>>
+  rplus(const TangentBase<_DerivedOther>& t,
+        OptJacobianRef J_mout_m = {},
+        OptJacobianRef J_mout_t = {}) const;
 
   /**
    * @brief Left oplus operation of the Lie group.
@@ -192,18 +200,22 @@ public:
    * @note See Eq. (27).
    */
   template <typename _DerivedOther>
-  LieGroup lplus(const TangentBase<_DerivedOther>& t,
-                 OptJacobianRef J_mout_m = {},
-                 OptJacobianRef J_mout_t = {}) const;
+  ReturnType<LplusExpr<typename internal::traits<_Derived>::Base,
+                       typename internal::traits<_DerivedOther>::Base>>
+  lplus(const TangentBase<_DerivedOther>& t,
+        OptJacobianRef J_mout_m = {},
+        OptJacobianRef J_mout_t = {}) const;
 
   /**
    * @brief An alias for the right oplus operation.
    * @see rplus
    */
   template <typename _DerivedOther>
-  LieGroup plus(const TangentBase<_DerivedOther>& t,
-                OptJacobianRef J_mout_m = {},
-                OptJacobianRef J_mout_t = {}) const;
+  ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                       typename internal::traits<_DerivedOther>::Base>>
+  plus(const TangentBase<_DerivedOther>& t,
+       OptJacobianRef J_mout_m = {},
+       OptJacobianRef J_mout_t = {}) const;
 
   /**
    * @brief Right ominus operation of the Lie group.
@@ -214,9 +226,11 @@ public:
    * @note See Eq. (26).
    */
   template <typename _DerivedOther>
-  Tangent rminus(const LieGroupBase<_DerivedOther>& m,
-                 OptJacobianRef J_t_ma = {},
-                 OptJacobianRef J_t_mb = {}) const;
+  ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                        typename internal::traits<_DerivedOther>::Base>>
+  rminus(const LieGroupBase<_DerivedOther>& m,
+         OptJacobianRef J_t_ma = {},
+         OptJacobianRef J_t_mb = {}) const;
 
   /**
    * @brief Left ominus operation of the Lie group.
@@ -227,18 +241,22 @@ public:
    * @note See Eq. (28).
    */
   template <typename _DerivedOther>
-  Tangent lminus(const LieGroupBase<_DerivedOther>& m,
-                 OptJacobianRef J_t_ma = {},
-                 OptJacobianRef J_t_mb = {}) const;
+  ReturnType<LminusExpr<typename internal::traits<_Derived>::Base,
+                        typename internal::traits<_DerivedOther>::Base>>
+  lminus(const LieGroupBase<_DerivedOther>& m,
+         OptJacobianRef J_t_ma = {},
+         OptJacobianRef J_t_mb = {}) const;
 
   /**
    * @brief An alias for the right ominus operation.
    * @see rminus
    */
   template <typename _DerivedOther>
-  Tangent minus(const LieGroupBase<_DerivedOther>& m,
-                OptJacobianRef J_t_ma = {},
-                OptJacobianRef J_t_mb = {}) const;
+  ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                        typename internal::traits<_DerivedOther>::Base>>
+  minus(const LieGroupBase<_DerivedOther>& m,
+        OptJacobianRef J_t_ma = {},
+        OptJacobianRef J_t_mb = {}) const;
 
   /**
    * @brief
@@ -248,9 +266,12 @@ public:
    * @return [description]
    */
   template <typename _DerivedOther>
-  LieGroup between(const LieGroupBase<_DerivedOther>& m,
-                   OptJacobianRef J_mc_ma = {},
-                   OptJacobianRef J_mc_mb = {}) const;
+  ReturnType<BetweenExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>>
+  between(const LieGroupBase<_DerivedOther>& m,
+          OptJacobianRef J_mc_ma = {},
+          OptJacobianRef J_mc_mb = {}) const;
 
   /**
    * @brief Evaluate whether this and m are 'close'.
@@ -265,6 +286,9 @@ public:
                 const Scalar eps = Constants<Scalar>::eps) const;
 
   // Some operators
+
+  template <typename _DerivedOther>
+  _Derived& operator =(const internal::ExprBase<_DerivedOther>& e);
 
   /**
    * @brief Equality operator.
@@ -281,7 +305,9 @@ public:
    * @see rplus.
    */
   template <typename _DerivedOther>
-  LieGroup operator +(const TangentBase<_DerivedOther>& t) const;
+  ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                       typename internal::traits<_DerivedOther>::Base>>
+  operator +(const TangentBase<_DerivedOther>& t) const;
 
   /**
    * @brief Right in-place oplus operator.
@@ -295,14 +321,19 @@ public:
    * @see rminus.
    */
   template <typename _DerivedOther>
-  Tangent operator -(const LieGroupBase<_DerivedOther>& m) const;
+  ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                        typename internal::traits<_DerivedOther>::Base>>
+  operator -(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief Lie group composition operator.
    * @see compose.
    */
   template <typename _DerivedOther>
-  LieGroup operator *(const LieGroupBase<_DerivedOther>& m) const;
+  ReturnType<ComposeExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>>
+  operator *(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief Lie group in-place composition operator.
@@ -318,7 +349,7 @@ public:
   //! Static helper to create a random object of the Lie group.
   static LieGroup Random();
 
-protected:
+// protected:
 
   inline _Derived& derived() & noexcept { return *static_cast< _Derived* >(this); }
   inline const _Derived& derived() const & noexcept { return *static_cast< const _Derived* >(this); }
@@ -420,115 +451,95 @@ LieGroupBase<_Derived>::setRandom()
         derived()).run();
 
   return derived();
+
+  // return RandomExpr<
+    // typename internal::traits<_Derived>::Base>(derived());
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<InverseExpr<typename internal::traits<_Derived>::Base>>
 LieGroupBase<_Derived>::inverse(OptJacobianRef J_m_t) const
 {
-  return derived().inverse(J_m_t);
+  return InverseExpr<
+    typename internal::traits<_Derived>::Base>(derived(), J_m_t);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                     typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::rplus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  if (J_mout_t)
-  {
-    (*J_mout_t) = t.rjac();
-  }
-
-  return compose(t.exp(), J_mout_m, _);
+  return RplusExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), t.derived(), J_mout_m, J_mout_t);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<LplusExpr<typename internal::traits<_Derived>::Base,
+                     typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::lplus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  if (J_mout_t)
-  {
-    J_mout_t->noalias() = inverse().adj() * t.rjac();
-  }
-
-  if (J_mout_m)
-  {
-    J_mout_m->setIdentity();
-  }
-
-  return t.exp().compose(derived());
+  return LplusExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), t.derived(), J_mout_m, J_mout_t);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                     typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::plus(
     const TangentBase<_DerivedOther>& t,
     OptJacobianRef J_mout_m,
     OptJacobianRef J_mout_t) const
 {
-  return derived().rplus(t, J_mout_m, J_mout_t);
+  return rplus(t, J_mout_m, J_mout_t);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::Tangent
+ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                      typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::rminus(
     const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  const Tangent t = m.inverse().compose(derived()).log();
-
-  if (J_t_ma)
-  {
-    (*J_t_ma) = t.rjacinv();
-  }
-  if (J_t_mb)
-  {
-    (*J_t_mb) = -(-t).rjacinv();
-  }
-
-  return t;
+  return RminusExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), m.derived(), J_t_ma, J_t_mb);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::Tangent
+ReturnType<LminusExpr<typename internal::traits<_Derived>::Base,
+                      typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::lminus(
     const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
     OptJacobianRef J_t_mb) const
 {
-  const Tangent t = compose(m.inverse()).log();
-
-  if (J_t_ma || J_t_mb)
-  {
-    const Jacobian J = t.rjacinv() * m.adj();
-
-    if (J_t_ma)
-    {
-      (*J_t_ma) =  J;
-    }
-    if (J_t_mb)
-    {
-      (*J_t_mb) = -J;
-    }
-  }
-
-  return t;
+  return LminusExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), m.derived(), J_t_ma, J_t_mb);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::Tangent
+ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                      typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::minus(
     const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_t_ma,
@@ -538,10 +549,11 @@ LieGroupBase<_Derived>::minus(
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Tangent
+ReturnType<LogExpr<typename internal::traits<_Derived>::Base>>
 LieGroupBase<_Derived>::log(OptJacobianRef J_t_m) const
 {
-  return derived().log(J_t_m);
+  return LogExpr<
+    typename internal::traits<_Derived>::Base>(derived(), J_t_m);
 }
 
 template <typename _Derived>
@@ -553,36 +565,34 @@ LieGroupBase<_Derived>::lift(OptJacobianRef J_t_m) const
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<ComposeExpr<
+  typename internal::traits<_Derived>::Base,
+  typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::compose(
     const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  return derived().compose(m, J_mc_ma, J_mc_mb);
+  return ComposeExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), m.derived(), J_mc_ma, J_mc_mb);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<BetweenExpr<
+  typename internal::traits<_Derived>::Base,
+  typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::between(
     const LieGroupBase<_DerivedOther>& m,
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  const LieGroup mc = inverse().compose(m);
-
-  if (J_mc_ma)
-  {
-    *J_mc_ma = -(mc.inverse().adj());
-  }
-
-  if (J_mc_mb)
-  {
-    J_mc_mb->setIdentity();
-  }
-
-  return mc;
+  return BetweenExpr<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base>(
+      derived(), m.derived(), J_mc_ma, J_mc_mb);
 }
 
 template <typename _Derived>
@@ -594,22 +604,42 @@ bool LieGroupBase<_Derived>::isApprox(const LieGroupBase<_DerivedOther>& m,
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Jacobian
+ReturnType<AdjExpr<typename internal::traits<_Derived>::Base>>
 LieGroupBase<_Derived>::adj() const
 {
-  return derived().adj();
+  // Here we need to eval since
+  // Eigen::Matrix( manif::ExpBase )
+  // is not implemented
+  return AdjExpr<
+    typename internal::traits<_Derived>::Base>(derived()).eval();
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Vector
-LieGroupBase<_Derived>::act(const Vector& v,
-                            OptJacobianRef J_vout_m,
-                            OptJacobianRef J_vout_v) const
+template <typename _Obj>
+ReturnType<ActExpr<typename internal::traits<_Derived>::Base, _Obj>>
+LieGroupBase<_Derived>::act(_Obj&& obj,
+                            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, internal::traits<LieGroup>::Dim, internal::traits<LieGroup>::DoF>>> J_vout_m,
+                            tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, internal::traits<LieGroup>::Dim, internal::traits<LieGroup>::Dim>>> J_vout_v) const
 {
-  return derived().act(v, J_vout_m, J_vout_v);
+  // Here we need to eval since
+  // Eigen::Matrix( manif::ExpBase )
+  // is not implemented
+  return ActExpr<
+    typename internal::traits<_Derived>::Base, _Obj>(
+      derived(), std::forward<_Obj>(obj), J_vout_m, J_vout_v).eval();
 }
 
 // Operators
+
+template <typename _Derived>
+template <typename _ExprDerived>
+_Derived&
+LieGroupBase<_Derived>::operator =(
+    const internal::ExprBase<_ExprDerived>& e)
+{
+  derived() = e.eval();
+  return derived();
+}
 
 template <typename _Derived>
 template <typename _DerivedOther>
@@ -621,11 +651,12 @@ bool LieGroupBase<_Derived>::operator ==(
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<RplusExpr<typename internal::traits<_Derived>::Base,
+                     typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::operator +(
     const TangentBase<_DerivedOther>& t) const
 {
-  return derived().rplus(t);
+  return rplus(t);
 }
 
 template <typename _Derived>
@@ -634,26 +665,29 @@ _Derived&
 LieGroupBase<_Derived>::operator +=(
     const TangentBase<_DerivedOther>& t)
 {
-  derived() = derived().rplus(t);
+  derived() = rplus(t);
   return derived();
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::Tangent
+ReturnType<RminusExpr<typename internal::traits<_Derived>::Base,
+                      typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::operator -(
     const LieGroupBase<_DerivedOther>& m) const
 {
-  return derived().rminus(m);
+  return rminus(m);
 }
 
 template <typename _Derived>
 template <typename _DerivedOther>
-typename LieGroupBase<_Derived>::LieGroup
+ReturnType<ComposeExpr<
+  typename internal::traits<_Derived>::Base,
+  typename internal::traits<_DerivedOther>::Base>>
 LieGroupBase<_Derived>::operator *(
     const LieGroupBase<_DerivedOther>& m) const
 {
-  return derived().compose(m);
+  return compose(m);
 }
 
 template <typename _Derived>
@@ -662,9 +696,43 @@ _Derived&
 LieGroupBase<_Derived>::operator *=(
     const LieGroupBase<_DerivedOther>& m)
 {
-  derived() = derived().compose(m);
+  derived() = compose(m);
   return derived();
 }
+
+// @todo can't we get rid off the following overloads?
+
+// template <typename _Derived, typename _DerivedOther>
+// typename LieGroupBase<_Derived>::LieGroup
+// operator *(const LieGroupBase<_Derived>& m,
+//            const internal::ExprBase<_DerivedOther>& e)
+// {
+//   return m.operator *(e.eval());
+// }
+//
+// template <typename _Derived, typename _DerivedOther>
+// typename LieGroupBase<_Derived>::LieGroup
+// operator *=(LieGroupBase<_Derived>& m,
+//             const internal::ExprBase<_DerivedOther>& e)
+// {
+//   return m.operator *=(e.eval());
+// }
+//
+// template <typename _Derived, typename _DerivedOther>
+// typename LieGroupBase<_Derived>::LieGroup
+// operator *=(internal::ExprBase<_Derived>& m,
+//             const LieGroupBase<_DerivedOther>& e)
+// {
+//   return m.eval().operator *=(e);
+// }
+//
+// template <typename _Derived, typename _DerivedOther>
+// typename LieGroupBase<_Derived>::LieGroup
+// operator *=(internal::ExprBase<_Derived>& m,
+//             const internal::ExprBase<_DerivedOther>& e)
+// {
+//   return m.eval().operator *=(e.eval());
+// }
 
 // Static helpers
 

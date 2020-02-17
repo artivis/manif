@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SE2_H_
 #define _MANIF_MANIF_SE2_H_
 
-#include "manif/impl/se2/SE2_base.h"
-
 namespace manif {
 
 // Forward declare for type traits specialization
@@ -64,23 +62,16 @@ public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
-  using Base::normalize;
 
   SE2()  = default;
   ~SE2() = default;
 
-  MANIF_COPY_CONSTRUCTOR(SE2)
-
   // Copy constructor
+  MANIF_COPY_CONSTRUCTOR(SE2)
   template <typename _DerivedOther>
   SE2(const LieGroupBase<_DerivedOther>& o);
-
-  MANIF_GROUP_ASSIGN_OP(SE2)
 
   /**
    * @brief Constructor given a translation and a unit complex number.
@@ -132,20 +123,22 @@ public:
 
   // LieGroup common API
 
-  /**
-   * @brief Access the underlying data
-   * @param[out] a reference to the underlying Eigen vector
-   */
-  DataType& coeffs();
+  MANIF_GROUP_API
 
-  /**
-   * @brief Access the underlying data
-   * @param[out] a const reference to the underlying Eigen vector
-   */
-  const DataType& coeffs() const;
+  using Base::data;
+
+  MANIF_COEFFS_FUNCTIONS
+
+  MANIF_GROUP_ASSIGN_OP(SE2)
+  MANIF_GROUP_OPERATOR
 
   // SE2 specific API
 
+  using Base::transform;
+  using Base::isometry;
+  using Base::rotation;
+  using Base::translation;
+  using Base::normalize;
   using Base::angle;
   using Base::real;
   using Base::imag;
@@ -154,7 +147,6 @@ public:
 
 protected:
 
-  //! Underlying data (Eigen) vector
   DataType data_;
 };
 
@@ -204,20 +196,6 @@ SE2<_Scalar>::SE2(const Eigen::Transform<_Scalar, 2, Eigen::Isometry>& h)
   : SE2(h.translation().x(), h.translation().y(), Eigen::Rotation2D<Scalar>(h.rotation()).angle())
 {
   //
-}
-
-template <typename _Scalar>
-typename SE2<_Scalar>::DataType&
-SE2<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SE2<_Scalar>::DataType&
-SE2<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

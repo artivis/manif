@@ -55,30 +55,23 @@ private:
   using Base = SO2Base<SO2<_Scalar>>;
   using Type = SO2<_Scalar>;
 
-public:
-
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
-  using Base::normalize;
-
 protected:
 
   using Base::derived;
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
+
+  MANIF_GROUP_TYPEDEF
+
   SO2()  = default;
   ~SO2() = default;
 
+  // Copy constructor
   MANIF_COPY_CONSTRUCTOR(SO2)
-
-  // Copy constructor given base
   template <typename _DerivedOther>
   SO2(const LieGroupBase<_DerivedOther>& o);
-
-  MANIF_GROUP_ASSIGN_OP(SO2)
 
   /**
    * @brief Constructor given the real and imaginary part
@@ -92,15 +85,20 @@ public:
   //! @brief Constructor given an angle (rad.)
   SO2(const Scalar theta);
 
-  // LieGroup common API
+  MANIF_GROUP_API
+  using Base::data;
 
-  //! Get a const reference to the underlying DataType.
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_COEFFS_FUNCTIONS
 
-  // SO2 specific API
+  MANIF_GROUP_ASSIGN_OP(SO2)
+  MANIF_GROUP_OPERATOR
 
+  using Base::transform;
+  using Base::rotation;
+  using Base::real;
+  using Base::imag;
   using Base::angle;
+  using Base::normalize;
 
 protected:
 
@@ -130,20 +128,6 @@ SO2<_Scalar>::SO2(const Scalar theta)
 {
   using std::cos;
   using std::sin;
-}
-
-template <typename _Scalar>
-typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

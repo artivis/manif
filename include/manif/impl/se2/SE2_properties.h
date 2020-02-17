@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SE2_PROPERTIES_H_
 #define _MANIF_MANIF_SE2_PROPERTIES_H_
 
-#include "manif/impl/traits.h"
-
 namespace manif {
 
 // Forward declaration

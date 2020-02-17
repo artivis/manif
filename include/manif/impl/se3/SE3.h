@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SE3_H_
 #define _MANIF_MANIF_SE3_H_
 
-#include "manif/impl/se3/SE3_base.h"
-
 namespace manif {
 
 // Forward declare for type traits specialization
@@ -65,24 +63,19 @@ public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
+  MANIF_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
-  using Quaternion = Eigen::Quaternion<Scalar>;
-
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
-  using Base::normalize;
+  using Rotation = typename Base::Rotation;
+  using Transformation = typename Base::Transformation;
+  using Isometry = typename Base::Isometry;
+  using QuaternionDataType = typename Base::QuaternionDataType;
 
   SE3()  = default;
   ~SE3() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE3)
-
   template <typename _DerivedOther>
   SE3(const LieGroupBase<_DerivedOther>& o);
-
-  MANIF_GROUP_ASSIGN_OP(SE3)
 
   /**
    * @brief Constructor given a translation and a unit quaternion.
@@ -131,12 +124,23 @@ public:
    */
   SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h);
 
-  // LieGroup common API
+  MANIF_GROUP_API
+  using Base::data;
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_COEFFS_FUNCTIONS
 
-  // SE3 specific API
+  MANIF_GROUP_ASSIGN_OP(SE3)
+  MANIF_GROUP_OPERATOR
+
+  using Base::transform;
+  using Base::rotation;
+  using Base::isometry;
+  using Base::quat;
+  using Base::translation;
+  using Base::x;
+  using Base::y;
+  using Base::z;
+  using Base::normalize;
 
 protected:
 
@@ -162,7 +166,7 @@ SE3<_Scalar>::SE3(const Translation& t, const Eigen::Quaternion<Scalar>& q)
 
 template <typename _Scalar>
 SE3<_Scalar>::SE3(const Translation& t, const Eigen::AngleAxis<Scalar>& a)
-  : SE3(t, Quaternion(a))
+  : SE3(t, Eigen::Quaternion<_Scalar>(a))
 {
   //
 }
@@ -190,20 +194,6 @@ SE3<_Scalar>::SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h)
   : SE3(h.translation(), Eigen::Quaternion<_Scalar>(h.rotation()))
 {
   //
-}
-
-template <typename _Scalar>
-typename SE3<_Scalar>::DataType&
-SE3<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SE3<_Scalar>::DataType&
-SE3<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

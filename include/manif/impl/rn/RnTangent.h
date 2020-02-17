@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_RNTANGENT_H_
 #define _MANIF_MANIF_RNTANGENT_H_
 
-#include "manif/impl/rn/RnTangent_base.h"
-
 namespace manif {
 namespace internal {
 
@@ -58,24 +56,26 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   RnTangent()  = default;
   ~RnTangent() = default;
 
-  MANIF_COPY_CONSTRUCTOR(RnTangent)
-
   // Copy constructor given base
+  MANIF_COPY_CONSTRUCTOR(RnTangent)
   template <typename _DerivedOther>
   RnTangent(const TangentBase<_DerivedOther>& o);
 
+  MANIF_TANGENT_API
+
+  MANIF_COEFFS_FUNCTIONS
+
   MANIF_TANGENT_ASSIGN_OP(RnTangent)
+  MANIF_TANGENT_OPERATOR
 
   // Tangent common API
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  // DataType& coeffs();
+  // const DataType& coeffs() const;
 
 protected:
 
@@ -109,20 +109,20 @@ RnTangent<_Scalar, _N>::RnTangent(const TangentBase<_DerivedOther>& o)
 {
   //
 }
-
-template <typename _Scalar, unsigned int _N>
-typename RnTangent<_Scalar, _N>::DataType&
-RnTangent<_Scalar, _N>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar, unsigned int _N>
-const typename RnTangent<_Scalar, _N>::DataType&
-RnTangent<_Scalar, _N>::coeffs() const
-{
-  return data_;
-}
+//
+// template <typename _Scalar, unsigned int _N>
+// typename RnTangent<_Scalar, _N>::DataType&
+// RnTangent<_Scalar, _N>::coeffs()
+// {
+//   return data_;
+// }
+//
+// template <typename _Scalar, unsigned int _N>
+// const typename RnTangent<_Scalar, _N>::DataType&
+// RnTangent<_Scalar, _N>::coeffs() const
+// {
+//   return data_;
+// }
 
 } // namespace manif
 
