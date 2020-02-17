@@ -131,24 +131,24 @@ matrix:
       - cd ..
       - bash <(curl -s https://codecov.io/bash)
 
-  # #
-  # # Valgrind
-  # #
-  # - os: linux
-  #   env:
-  #     - TEST="Valgrind"
-  #   addons:
-  #     apt:
-  #       sources:
-  #         - ubuntu-toolchain-r-test
-  #       packages:
-  #         - gcc-6
-  #         - g++-6
-  #         - valgrind
-  #   script:
-  #     - cmake -DCMAKE_CXX_COMPILER="g++-6" ..
-  #     - make
-  #     - ctest -T memcheck
+  #
+  # Valgrind
+  #
+  - os: linux
+    env:
+      - TEST="Valgrind"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+          - valgrind
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-6" -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON ..
+      - make
+      - ctest -T memcheck
 
   #
   # G++ 5
