@@ -85,11 +85,11 @@ isEigenMatrixDimSize(const detail::EigenIndex dim,
   const auto sizes = DimGetter()(ms...);
 
   bool result = true;
-  auto f = [&result, &dim](const detail::EigenIndex i)
-                          { result &= (dim == i);};
+  auto f = [&result, &dim](const detail::EigenIndex i){ result &= (dim == i);};
 
   detail::call_for_each(f, sizes);
 
+  // cppcheck-suppress knownConditionTrueFalse
   if (!result)
   {
     std::stringstream ss;
@@ -196,8 +196,8 @@ isEigenMatrixSameSize(const Eigen::MatrixBase<Derived>& m0,
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_DerivedA>& matrix_a,
                                                     const Eigen::MatrixBase<_DerivedB>& matrix_b,
-                                                    const std::string matrix_a_name = "matrix_a",
-                                                    const std::string matrix_b_name = "matrix_b",
+                                                    const std::string& matrix_a_name = "matrix_a",
+                                                    const std::string& matrix_b_name = "matrix_b",
                                                     double tolerance = 1e-8)
 {
   const ::testing::AssertionResult size_check =

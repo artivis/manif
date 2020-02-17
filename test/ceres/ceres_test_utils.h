@@ -146,6 +146,7 @@ public:
 
     ObjectiveJacobian autodiffJ_y_r;
     jacobian = autodiffJ_y_r.data();
+    (void)jacobian;
 
     autodiff_obj->Evaluate(parameters, &residuals, jacobians);
 

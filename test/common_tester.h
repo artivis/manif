@@ -370,6 +370,7 @@ public:
     EXPECT_TRUE(state.isApprox(state, tol_));
     EXPECT_FALSE(state.isApprox(state_other, tol_));
 
+    // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(state == state);
     EXPECT_FALSE(state == state_other);
 
@@ -384,6 +385,7 @@ public:
     EXPECT_TRUE(delta.isApprox(delta, tol_));
     EXPECT_FALSE(delta.isApprox(delta+delta, tol_));
 
+    // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(delta == delta);
     EXPECT_FALSE(delta == (delta+delta));
   }
