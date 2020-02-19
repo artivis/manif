@@ -369,7 +369,7 @@ template <typename Derived>
 struct GeneratorEvaluator<SE3TangentBase<Derived>>
 {
   static typename SE3TangentBase<Derived>::LieAlg
-  run(const int i)
+  run(const unsigned int i)
   {
     using LieAlg = typename SE3TangentBase<Derived>::LieAlg;
     using Scalar = typename SE3TangentBase<Derived>::Scalar;
