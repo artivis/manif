@@ -208,9 +208,15 @@ For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
 
-For reference of the size of the Jacobians returned, **manif** implements rotations in the following way:
+For reference of the size of the Jacobians returned when using ```ceres::Jet```, **manif** implements rotations in the following way:
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
   - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+  
+Therefore, the respective Jacobian sizes using ```ceres::Jet``` are as follows:
+  - SO(2) : size 2
+  - SO(3) : size 4
+  - SE(2) : size 4
+  - SE(3) : size 7
 
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
 
