@@ -251,6 +251,18 @@ matrix:
       - make test
 
   #
+  # XCode 8.3
+  #
+  - os: osx
+    env:
+      - TEST="XCode 8.3"
+    osx_image: xcode8.3
+    script:
+      - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
   # Ceres-related tests
   #
   - os: linux
