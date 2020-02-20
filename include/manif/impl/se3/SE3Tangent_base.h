@@ -25,7 +25,6 @@ private:
 
 public:
 
-  MANIF_TANGENT_PROPERTIES
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
@@ -369,7 +368,7 @@ template <typename Derived>
 struct GeneratorEvaluator<SE3TangentBase<Derived>>
 {
   static typename SE3TangentBase<Derived>::LieAlg
-  run(const int i)
+  run(const unsigned int i)
   {
     using LieAlg = typename SE3TangentBase<Derived>::LieAlg;
     using Scalar = typename SE3TangentBase<Derived>::Scalar;

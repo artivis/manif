@@ -61,7 +61,8 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
-
+  using Base::transform;
+  using Base::rotation;
   using Base::quat;
   using Base::normalize;
 

@@ -69,7 +69,8 @@ public:
   using Quaternion = Eigen::Quaternion<Scalar>;
 
   MANIF_INHERIT_GROUP_API
-
+  using Base::transform;
+  using Base::rotation;
   using Base::normalize;
 
   SE3()  = default;

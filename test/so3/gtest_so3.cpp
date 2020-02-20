@@ -318,9 +318,9 @@ TEST(TEST_SO3, TEST_SO3_RMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
@@ -343,9 +343,9 @@ TEST(TEST_SO3, TEST_SO3_LMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
@@ -564,6 +564,31 @@ TEST(TEST_SO3, TEST_SO3_ACT)
   EXPECT_NEAR( 1.414213562373, transformed_point.x(), 1e-12);
   EXPECT_NEAR(-0, transformed_point.y(), 1e-15);
   EXPECT_NEAR( 1, transformed_point.z(), 1e-15);
+}
+
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SO3d::DataType;
+  EXPECT_THROW(
+    SO3d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SO3, TEST_SO3_NORMALIZE)
+{
+  using DataType = SO3d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SO3d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SO3d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SO3d b = map
+  );
 }
 
 MANIF_TEST(SO3d);

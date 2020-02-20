@@ -88,11 +88,14 @@ raise(Args&&... args)
   #define MANIF_DEPRECATED
 #endif
 
-// LieGroup - related macros
+// Common macros
 
-#define MANIF_GROUP_PROPERTIES                                        \
-  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
-  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
+#define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND \
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename Base::DataType>::Alignment>0))
+#define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(X) \
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename X::DataType>::Alignment>0))
+
+// LieGroup - related macros
 
 #define MANIF_INHERIT_GROUP_AUTO_API    \
   using Base::setRandom;                \
@@ -104,8 +107,6 @@ raise(Args&&... args)
 
 #define MANIF_INHERIT_GROUP_API     \
   MANIF_INHERIT_GROUP_AUTO_API      \
-  using Base::transform;            \
-  using Base::rotation;             \
   using Base::setIdentity;          \
   using Base::inverse;              \
   using Base::lift;                 \
@@ -120,7 +121,12 @@ raise(Args&&... args)
   using Base::operator *=;              \
   using Base::operator =;
 
+#define MANIF_GROUP_PROPERTIES \
+  using Base::Dim;             \
+  using Base::DoF;
+
 #define MANIF_GROUP_TYPEDEF                             \
+  MANIF_GROUP_PROPERTIES                                \
   using Scalar         = typename Base::Scalar;         \
   using LieGroup       = typename Base::LieGroup;       \
   using Tangent        = typename Base::Tangent;        \
@@ -138,10 +144,6 @@ raise(Args&&... args)
   using group##d = group<double>;
 
 // Tangent - related macros
-
-#define MANIF_TANGENT_PROPERTIES                                      \
-  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim; \
-  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
 
 #define MANIF_INHERIT_TANGENT_API \
   using Base::setZero;            \
@@ -161,7 +163,12 @@ raise(Args&&... args)
   using Base::operator =;              \
   using Base::operator <<;
 
+#define MANIF_TANGENT_PROPERTIES \
+using Base::Dim;                 \
+using Base::DoF;
+
 #define MANIF_TANGENT_TYPEDEF               \
+  MANIF_TANGENT_PROPERTIES                  \
   using Scalar   = typename Base::Scalar;   \
   using LieGroup = typename Base::LieGroup; \
   using Tangent  = typename Base::Tangent;  \

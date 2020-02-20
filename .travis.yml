@@ -126,7 +126,7 @@ matrix:
           - g++-6
     script:
       - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
-      - make
+      - travis_wait make
       - make test
       - cd ..
       - bash <(curl -s https://codecov.io/bash)

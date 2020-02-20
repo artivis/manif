@@ -89,6 +89,8 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     -Wno-unused-parameter
     -Wno-missing-field-initializers
   )
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  target_compile_options(${PROJECT_NAME} INTERFACE /bigobj)
 endif()
 
 #############
@@ -176,6 +178,7 @@ endif(BUILD_EXAMPLES)
 # ------------------------------------------------------------------------------
 
 if(ENABLE_COVERAGE)
+  add_definitions(-DMANIF_COVERAGE_ENABLED)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
