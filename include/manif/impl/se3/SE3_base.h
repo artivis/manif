@@ -374,28 +374,42 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
   static void run(T& m)
   {
     // @note:
+    // We are using:
+    // http://mathworld.wolfram.com/HyperspherePointPicking.html
+    // which is faster than Quaternion::UnitRandom, and also,
     // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
     // which is the default version in Ubuntu 16.04
-    // So we copy its implementation here.
 
     using std::sqrt;
-    using std::sin;
-    using std::cos;
-
-    using Scalar      = typename SE3Base<Derived>::Scalar;
+    using Scalar = typename SO3Base<Derived>::Scalar;
     using Translation = typename SE3Base<Derived>::Translation;
-    using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
+    using Quaternion = typename SO3Base<Derived>::QuaternionDataType;
 
-    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
-                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
-                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
-    const Scalar a = sqrt(1. - u1),
-                 b = sqrt(u1);
+    while (true)
+    {
+      const Scalar u1 = Eigen::internal::random<Scalar>(-1, 1),
+            u2 = Eigen::internal::random<Scalar>(-1, 1);
+      if (u1 * u1 + u2 * u2 > 1.0)
+      {
+        continue;
+      }
 
-    m = Derived(Translation::Random(),
-                Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
-
-    //m = Derived(Translation::Random(), Quaternion::UnitRandom());
+      while (true)
+      {
+        const Scalar u3 = Eigen::internal::random<Scalar>(-1, 1),
+              u4 = Eigen::internal::random<Scalar>(-1, 1);
+        if (u3 * u3 + u4 * u4 > 1.0)
+        {
+          continue;
+        }
+        const Scalar zw_factor = sqrt((1 - u1 * u1 - u2 * u2) / (u3 * u3 + u4 * u4));
+        const Scalar z = u3 * zw_factor;
+        const Scalar w = u4 * zw_factor;
+        m = Derived(Translation::Random(), Quaternion(u1, u2, z, w));
+        break;
+      }
+      break;
+    }
   }
 };
 
