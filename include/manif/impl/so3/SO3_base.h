@@ -369,15 +369,16 @@ struct RandomEvaluatorImpl<SO3Base<Derived>>
     using std::sin;
     using std::cos;
 
-    using Scalar = typename SO3Base<Derived>::Scalar;
+    using Scalar     = typename SO3Base<Derived>::Scalar;
     using Quaternion = typename SO3Base<Derived>::QuaternionDataType;
+    using LieGroup   = typename SO3Base<Derived>::LieGroup;
 
     const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
                  u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
                  u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
     const Scalar a = sqrt(1. - u1),
                  b = sqrt(u1);
-    m = Derived(Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
+    m = LieGroup(Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
 
 
     // m = Derived(Quaternion::UnitRandom());

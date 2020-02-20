@@ -385,6 +385,7 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
     using Scalar      = typename SE3Base<Derived>::Scalar;
     using Translation = typename SE3Base<Derived>::Translation;
     using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
+    using LieGroup    = typename SE3Base<Derived>::LieGroup;
 
     const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
                  u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
@@ -392,8 +393,8 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
     const Scalar a = sqrt(1. - u1),
                  b = sqrt(u1);
 
-    m = Derived(Translation::Random(),
-                Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
+    m = LieGroup(Translation::Random(),
+                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
 
     //m = Derived(Translation::Random(), Quaternion::UnitRandom());
   }

@@ -380,6 +380,8 @@ TEST(TEST_SE3, TEST_SE3_NORMALIZE)
 
 MANIF_TEST(SE3d);
 
+MANIF_TEST_MAP(SE3d);
+
 MANIF_TEST_JACOBIANS(SE3d);
 
 int main(int argc, char** argv)

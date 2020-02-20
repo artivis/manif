@@ -550,6 +550,8 @@ TEST(TEST_SE2, TEST_SE2_NORMALIZE)
 
 MANIF_TEST(SE2d);
 
+MANIF_TEST_MAP(SE2d);
+
 MANIF_TEST_JACOBIANS(SE2d);
 
 int main(int argc, char** argv)

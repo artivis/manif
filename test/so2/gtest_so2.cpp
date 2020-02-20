@@ -578,6 +578,8 @@ TEST(TEST_SO2, TEST_SO2_NORMALIZE)
 
 MANIF_TEST(SO2d);
 
+MANIF_TEST_MAP(SO2d);
+
 MANIF_TEST_JACOBIANS(SO2d);
 
 int main(int argc, char** argv)

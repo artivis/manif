@@ -14,6 +14,7 @@ struct traits< Eigen::Map<SO3Tangent<_Scalar>,0> >
   using typename traits<SO3Tangent<_Scalar>>::Scalar;
   using traits<SO3Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SO3TangentBase<Eigen::Map<SO3Tangent<Scalar>, 0>>;
 };
 
 //! @brief traits specialization for Eigen Map const
@@ -24,6 +25,7 @@ struct traits< Eigen::Map<const SO3Tangent<_Scalar>,0> >
   using typename traits<const SO3Tangent<_Scalar>>::Scalar;
   using traits<const SO3Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SO3TangentBase<Eigen::Map<const SO3Tangent<Scalar>, 0>>;
 };
 
 } /* namespace internal */

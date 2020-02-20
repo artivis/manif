@@ -593,6 +593,8 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
 
 MANIF_TEST(SO3d);
 
+MANIF_TEST_MAP(SO3d);
+
 MANIF_TEST_JACOBIANS(SO3d);
 
 int main(int argc, char** argv)
