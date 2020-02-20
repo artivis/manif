@@ -237,7 +237,26 @@ These demos are:
 
 ## Publications
 
-If you use this work, please consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
+If you use this software, please consider citing
+[this paper](https://joss.theoj.org/papers/10.21105/joss.01371#) as follows:
+
+```
+@article{Deray-20-JOSS,
+  doi = {10.21105/joss.01371},
+  url = {https://doi.org/10.21105/joss.01371},
+  year = {2020},
+  publisher = {The Open Journal},
+  volume = {5},
+  number = {46},
+  pages = {1371},
+  author = {Jérémie Deray and Joan Solà},
+  title = {Manif: A micro Lie theory library for state estimation in robotics applications},
+  journal = {Journal of Open Source Software}
+}
+
+```
+
+You can also consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
 
 ```
 @techreport{SOLA-18-Lie,
