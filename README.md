@@ -69,10 +69,20 @@ ___
 
 ### Dependencies
 
--   Eigen 3 :
-  - Ubuntu and similar ```apt-get install libeigen3-dev```
-  - OS X ```brew install eigen```
--   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
+- Eigen 3 :
+    + Linux ( Ubuntu and similar ) 
+    
+      ```terminal
+      apt-get install libeigen3-dev
+      ```
+    
+    + OS X 
+    
+      ```terminal
+      brew install eigen
+      ```
+
+- [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
 ### Installation
 <!--
@@ -180,7 +190,7 @@ Shall you be interested only in a specific Jacobian, it can be retrieved without
 or conversely,
 
 ```cpp
-  auto composition = X.compose(Y, SO2::_, J_c_y);
+  auto composition = X.compose(Y, SO2d::_, J_c_y);
 ```
 
 #### A note on Jacobians
@@ -192,15 +202,21 @@ These Jacobians map tangent spaces, as described in [this paper](http://arxiv.or
 However, many non-linear solvers
 (e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated with respect to the underlying
 representation vector of the group element
-(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
+(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO(3)"/>).
 
 For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
 
-For reference of the size of the Jacobians returned, **manif** implements rotations in the following way:
+For reference of the size of the Jacobians returned when using ```ceres::Jet```, **manif** implements rotations in the following way:
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
   - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+  
+Therefore, the respective Jacobian sizes using ```ceres::Jet``` are as follows:
+  - SO(2) : size 2
+  - SO(3) : size 4
+  - SE(2) : size 4
+  - SE(3) : size 7
 
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
 
@@ -237,7 +253,26 @@ These demos are:
 
 ## Publications
 
-If you use this work, please consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
+If you use this software, please consider citing
+[this paper](https://joss.theoj.org/papers/10.21105/joss.01371#) as follows:
+
+```
+@article{Deray-20-JOSS,
+  doi = {10.21105/joss.01371},
+  url = {https://doi.org/10.21105/joss.01371},
+  year = {2020},
+  publisher = {The Open Journal},
+  volume = {5},
+  number = {46},
+  pages = {1371},
+  author = {Jérémie Deray and Joan Solà},
+  title = {Manif: A micro {L}ie theory library for state estimation in robotics applications},
+  journal = {Journal of Open Source Software}
+}
+
+```
+
+You can also consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
 
 ```
 @techreport{SOLA-18-Lie,
