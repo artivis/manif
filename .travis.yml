@@ -92,24 +92,24 @@ matrix:
           exit -1
         fi
 
-  # #
-  # # CppCheck
-  # #
-  # - os: linux
-  #   env:
-  #     - TEST="CppCheck"
-  #   addons:
-  #     apt:
-  #       sources:
-  #         - ubuntu-toolchain-r-test
-  #       packages:
-  #         - gcc-6
-  #         - g++-6
-  #         - cppcheck
-  #   script:
-  #     - cmake -DENABLE_CPPCHECK=ON -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
-  #     - make
-  #     - make check
+  #
+  # CppCheck
+  #
+  - os: linux
+    env:
+      - TEST="CppCheck"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+          - cppcheck # install newer version?
+    script:
+      - cmake -DENABLE_CPPCHECK=ON -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make run-cppcheck
 
   #
   # Codecov
@@ -131,24 +131,24 @@ matrix:
       - cd ..
       - bash <(curl -s https://codecov.io/bash)
 
-  # #
-  # # Valgrind
-  # #
-  # - os: linux
-  #   env:
-  #     - TEST="Valgrind"
-  #   addons:
-  #     apt:
-  #       sources:
-  #         - ubuntu-toolchain-r-test
-  #       packages:
-  #         - gcc-6
-  #         - g++-6
-  #         - valgrind
-  #   script:
-  #     - cmake -DCMAKE_CXX_COMPILER="g++-6" ..
-  #     - make
-  #     - ctest -T memcheck
+  #
+  # Valgrind
+  #
+  - os: linux
+    env:
+      - TEST="Valgrind"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+          - valgrind
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-6" -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON ..
+      - make
+      - ctest -T memcheck
 
   #
   # G++ 5
@@ -183,6 +183,24 @@ matrix:
           - g++-6
     script:
       - cmake -DCMAKE_CXX_COMPILER="g++-6" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
+  # G++ 7
+  #
+  - os: linux
+    env:
+      - TEST="G++ 7"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-7
+          - g++-7
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-7" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
       - make
       - make test
 

@@ -61,8 +61,7 @@ private:
 
 public:
 
-  // Needed this underlying vector is size 7
-  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;

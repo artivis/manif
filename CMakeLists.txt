@@ -190,28 +190,58 @@ endif()
 # CppCheck
 # ------------------------------------------------------------------------------
 
-# if(ENABLE_CPPCHECK)
-#
-#   list(APPEND CPPCHECK_ARGS
-#     --enable=warning,style,performance,portability,unusedFunction
-#     --std=c++11
-#     --verbose
-#     --error-exitcode=1
-#     --language=c++
-#     -DMAIN=main
-#     -I ${CMAKE_SOURCE_DIR}/include
-#       ${CMAKE_SOURCE_DIR}/include/*.h
-#       #${CMAKE_SOURCE_DIR}/examples/*.cpp
-#       ${CMAKE_SOURCE_DIR}/test/*.cpp
-#   )
-#
-#
-#   add_custom_target(check
-#     COMMAND cppcheck ${CPPCHECK_ARGS}
-#     COMMENT "running cppcheck"
-#   )
-#
-# endif()
+if(ENABLE_CPPCHECK)
+
+  # Find CppCheck executable
+  find_program(CPPCHECK "cppcheck")
+  if(CPPCHECK)
+
+      # Set export commands on
+      # set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+      list(APPEND CPPCHECK_ARGS
+        --enable=all
+        --std=c++11
+        # --verbose
+        --quiet
+        # --check-config
+        --xml-version=2
+        --language=c++
+        # Comment the line below to run cppcheck-html
+        --error-exitcode=1
+        --inline-suppr
+        --suppress=*:*googletest-*
+        --suppress=missingIncludeSystem
+        --suppress=missingInclude
+        --suppress=unmatchedSuppression:*
+        --suppress=syntaxError:*tangent_base.h:370
+        # Uncomment the line below to run cppcheck-html
+        # --output-file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/examples
+        ${CMAKE_SOURCE_DIR}/test
+      )
+
+      add_custom_target(run-cppcheck
+          COMMAND ${CPPCHECK} ${CPPCHECK_ARGS}
+          COMMENT "Generate cppcheck report for the project"
+      )
+
+      find_program(CPPCHECK_HTML "cppcheck-htmlreport")
+      if(CPPCHECK_HTML)
+          add_custom_target(cppcheck-html
+              COMMAND ${CPPCHECK_HTML}
+              --title=${CMAKE_PROJECT_NAME}
+              --file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
+              --report-dir=${CMAKE_BINARY_DIR}/cppcheck_results
+              --source-dir=${CMAKE_SOURCE_DIR}
+              COMMENT "Convert cppcheck report to HTML output"
+          )
+          ADD_DEPENDENCIES(cppcheck-html run-cppcheck)
+      endif()
+  endif()
+
+endif()
 
 # ------------------------------------------------------------------------------
 # Valgrind
@@ -223,6 +253,7 @@ if(ENABLE_VALGRIND)
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --leak-check=full")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --track-fds=yes")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --trace-children=yes")
+  set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --show-reachable=yes")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --error-exitcode=1")
 endif()
 
