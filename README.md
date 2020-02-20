@@ -69,10 +69,20 @@ ___
 
 ### Dependencies
 
--   Eigen 3 :
-    +   Ubuntu and similar ```apt-get install libeigen3-dev```
-    +   OS X ```brew install eigen```
--   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
+- Eigen 3 :
+    + Linux ( Ubuntu and similar ) 
+    
+      ```terminal
+      apt-get install libeigen3-dev
+      ```
+    
+    + OS X 
+    
+      ```terminal
+      brew install eigen
+      ```
+
+- [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
 ### Installation
 <!--
@@ -250,7 +260,7 @@ If you use this software, please consider citing
   number = {46},
   pages = {1371},
   author = {Jérémie Deray and Joan Solà},
-  title = {Manif: A micro Lie theory library for state estimation in robotics applications},
+  title = {Manif: A micro {L}ie theory library for state estimation in robotics applications},
   journal = {Journal of Open Source Software}
 }
 
