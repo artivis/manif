@@ -180,7 +180,7 @@ Shall you be interested only in a specific Jacobian, it can be retrieved without
 or conversely,
 
 ```cpp
-  auto composition = X.compose(Y, SO2::_, J_c_y);
+  auto composition = X.compose(Y, SO2d::_, J_c_y);
 ```
 
 #### A note on Jacobians
@@ -192,7 +192,7 @@ These Jacobians map tangent spaces, as described in [this paper](http://arxiv.or
 However, many non-linear solvers
 (e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated with respect to the underlying
 representation vector of the group element
-(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
+(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO(3)"/>).
 
 For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
