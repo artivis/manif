@@ -24,6 +24,7 @@ Other Lie groups can and will be added, contributions are welcome.
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper](http://arxiv.org/abs/1812.01537).
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
 The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average robotician who is interested in designing rigorous and elegant state estimation algorithms.
+In a rush? Check out our [Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
 
 **manif** has been designed for an easy integration to larger projects:
   - A single dependency on [Eigen](http://eigen.tuxfamily.org),
@@ -288,6 +289,11 @@ You can also consider citing [this paper](http://arxiv.org/abs/1812.01537) as fo
 Notice that this reference is the one referred to throughout the code documentation.
 Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the **manif** documentation.
 This will give the appropriate equation numbers.
+
+### Lie group cheat sheets
+
+In a rush? Here is your Lie group theory take away:
+[Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
 
 ## They use **manif**
 
