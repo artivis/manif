@@ -281,6 +281,19 @@ matrix:
       - make test
 
   #
+  # ARM64
+  #
+  - os: linux
+    env:
+      - TEST="ARM64"
+    arch: arm64
+    compiler: gcc
+    script:
+      - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
   # Ceres-related tests
   #
   - os: linux
