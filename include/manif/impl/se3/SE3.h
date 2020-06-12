@@ -137,14 +137,12 @@ public:
 
   // LieGroup common API
 
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   // SE3 specific API
 
 protected:
-
-  friend struct LieGroupBase<SE3<Scalar>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -233,7 +231,7 @@ SE3<_Scalar>::SE3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h)
 
 template <typename _Scalar>
 typename SE3<_Scalar>::DataType&
-SE3<_Scalar>::coeffs_nonconst()
+SE3<_Scalar>::coeffs()
 {
   return data_;
 }

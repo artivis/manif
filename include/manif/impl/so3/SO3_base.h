@@ -124,10 +124,6 @@ public:
    * @brief Normalize the underlying quaternion.
    */
   void normalize();
-
-protected:
-
-  using Base::coeffs_nonconst;
 };
 
 template <typename _Derived>
@@ -347,7 +343,7 @@ SO3Base<_Derived>::quat() const
 template <typename _Derived>
 void SO3Base<_Derived>::normalize()
 {
-  coeffs_nonconst().normalize();
+  coeffs().normalize();
 }
 
 namespace internal {

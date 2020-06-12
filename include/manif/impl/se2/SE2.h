@@ -133,6 +133,7 @@ public:
 
   // LieGroup common API
 
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   // SE2 specific API
@@ -144,9 +145,6 @@ public:
   using Base::y;
 
 protected:
-
-  friend struct LieGroupBase<SE2<Scalar>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -230,7 +228,7 @@ SE2<_Scalar>::SE2(const Eigen::Transform<_Scalar,2,Eigen::Isometry>& h)
 
 template <typename _Scalar>
 typename SE2<_Scalar>::DataType&
-SE2<_Scalar>::coeffs_nonconst()
+SE2<_Scalar>::coeffs()
 {
   return data_;
 }

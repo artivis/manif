@@ -155,10 +155,6 @@ public:
    */
   void normalize();
 
-protected:
-
-  using Base::coeffs_nonconst;
-
 public: /// @todo make protected
 
   Eigen::Map<const SO3<Scalar>> asSO3() const
@@ -168,7 +164,7 @@ public: /// @todo make protected
 
   Eigen::Map<SO3<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3<Scalar>>(coeffs_nonconst().data()+3);
+    return Eigen::Map<SO3<Scalar>>(coeffs().data()+3);
   }
 };
 
@@ -361,7 +357,7 @@ SE3Base<_Derived>::z() const
 template <typename _Derived>
 void SE3Base<_Derived>::normalize()
 {
-  coeffs_nonconst().template tail<4>().normalize();
+  coeffs().template tail<4>().normalize();
 }
 
 namespace internal {

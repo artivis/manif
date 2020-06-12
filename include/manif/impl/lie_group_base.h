@@ -36,15 +36,13 @@ struct LieGroupBase
   template <typename _Scalar>
   using LieGroupTemplate = typename internal::traitscast<LieGroup, _Scalar>::cast;
 
-protected:
-
-  //! @brief Access the underlying data by reference
-  DataType& coeffs_nonconst();
-
 public:
 
   //! @brief Helper for skipping an optional parameter.
   static const OptJacobianRef _;
+
+  //! @brief Access the underlying data by const reference
+  DataType& coeffs();
 
   //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
@@ -322,9 +320,9 @@ LieGroupBase<_Derived>::_ = {};
 
 template <typename _Derived>
 typename LieGroupBase<_Derived>::DataType&
-LieGroupBase<_Derived>::coeffs_nonconst()
+LieGroupBase<_Derived>::coeffs()
 {
-  return derived().coeffs_nonconst();
+  return derived().coeffs();
 }
 
 template <typename _Derived>
@@ -338,7 +336,7 @@ template <typename _Derived>
 typename LieGroupBase<_Derived>::Scalar*
 LieGroupBase<_Derived>::data()
 {
-  return derived().coeffs_nonconst().data();
+  return derived().coeffs().data();
 }
 
 template <typename _Derived>
@@ -570,7 +568,7 @@ _Derived&
 LieGroupBase<_Derived>::operator =(
     const LieGroupBase<_Derived>& m)
 {
-  derived().coeffs_nonconst() = m.coeffs();
+  derived().coeffs() = m.coeffs();
   return derived();
 }
 
@@ -580,7 +578,7 @@ _Derived&
 LieGroupBase<_Derived>::operator =(
     const LieGroupBase<_DerivedOther>& m)
 {
-  derived().coeffs_nonconst() = m.coeffs();
+  derived().coeffs() = m.coeffs();
   return derived();
 }
 
