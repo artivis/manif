@@ -3,6 +3,12 @@
 
 #include <stdexcept> // for std::runtime_error
 
+#ifdef NDEBUG
+# ifndef MANIF_NO_DEBUG
+#  define MANIF_NO_DEBUG
+# endif
+#endif
+
 namespace manif {
 
 struct runtime_error : std::runtime_error
@@ -72,6 +78,21 @@ raise(Args&&... args)
                       __MANIF_CHECK_MSG_EXCEPT,   \
                       __MANIF_CHECK_MSG,          \
                       __MANIF_CHECK)(__VA_ARGS__) )
+
+// Assertions cost run time and can be turned off.
+// You can suppress MANIF_ASSERT by defining
+// MANIF_NO_DEBUG before including manif headers.
+// MANIF_NO_DEBUG is undefined by default unless NDEBUG is defined.
+#ifndef MANIF_NO_DEBUG
+  #define MANIF_ASSERT(...)                         \
+    __MANIF_EXPAND(                                 \
+    __MANIF_GET_MACRO_3(__VA_ARGS__,                \
+                        __MANIF_CHECK_MSG_EXCEPT,   \
+                        __MANIF_CHECK_MSG,          \
+                        __MANIF_CHECK)(__VA_ARGS__) )
+#else
+  #define MANIF_ASSERT(...) ((void)0)
+#endif
 
 #define MANIF_NOT_IMPLEMENTED_YET \
   MANIF_THROW("Not implemented yet !");
