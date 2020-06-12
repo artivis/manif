@@ -42,25 +42,6 @@ TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(MANIF_PI/4., so2.angle());
 }
 
-TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
-{
-  EXPECT_THROW(
-    SO2d so2(SO2d(1, 1)),
-    manif::invalid_argument
-  );
-
-  EXPECT_THROW(
-    SO2d so2(SO2d::DataType(1, 1)),
-    manif::invalid_argument
-  );
-
-  try {
-    SO2d so2(SO2d::DataType(1, 1));
-  } catch (manif::invalid_argument& e) {
-    EXPECT_FALSE(std::string(e.what()).empty());
-  }
-}
-
 TEST(TEST_SO2, TEST_SO2_COEFFS)
 {
   SO2d so2(0);
@@ -551,6 +532,27 @@ TEST(TEST_SO2, TEST_SO2_ACT)
   EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
 }
 
+#ifndef MANIF_NO_DEBUG
+
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SO2d so2(SO2d(1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SO2d so2(SO2d::DataType(1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SO2d so2(SO2d::DataType(1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
 TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_UNNORMALIZED)
 {
   using DataType = typename SO2d::DataType;
@@ -575,6 +577,8 @@ TEST(TEST_SO2, TEST_SO2_NORMALIZE)
     SO2d b = map
   );
 }
+
+#endif
 
 MANIF_TEST(SO2d);
 
