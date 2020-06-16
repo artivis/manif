@@ -51,6 +51,7 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
   using Base::angle;
@@ -60,9 +61,6 @@ public:
   using Base::y;
 
 protected:
-
-  friend struct manif::LieGroupBase<Map<manif::SE2<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

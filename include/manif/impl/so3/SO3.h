@@ -113,12 +113,10 @@ public:
   SO3(const Scalar roll, const Scalar pitch,
       const Scalar yaw);
 
+  DataType& coeffs();
   const DataType& coeffs() const;
 
 protected:
-
-  friend struct LieGroupBase<SO3<Scalar>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -198,7 +196,7 @@ SO3<_Scalar>::SO3(const Scalar roll,
 
 template <typename _Scalar>
 typename SO3<_Scalar>::DataType&
-SO3<_Scalar>::coeffs_nonconst()
+SO3<_Scalar>::coeffs()
 {
   return data_;
 }

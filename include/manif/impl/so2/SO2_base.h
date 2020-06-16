@@ -129,9 +129,7 @@ public:
    */
   void normalize();
 
-protected:
-
-  using Base::coeffs_nonconst;
+// protected:
 
   /// @todo given a Eigen::Map<const SO2>
   /// coeffs()->x() return a reference to
@@ -297,7 +295,7 @@ SO2Base<_Derived>::angle() const
 template <typename _Derived>
 void SO2Base<_Derived>::normalize()
 {
-  coeffs_nonconst().normalize();
+  coeffs().normalize();
 }
 
 namespace internal {

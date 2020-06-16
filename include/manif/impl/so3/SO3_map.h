@@ -51,12 +51,10 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend struct manif::LieGroupBase<Map<manif::SO3<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

@@ -49,12 +49,11 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  DataType& coeffs() { return data_; }
+
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend struct manif::LieGroupBase<Map<manif::Rn<_Scalar, _N>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };

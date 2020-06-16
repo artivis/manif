@@ -111,10 +111,6 @@ public:
    */
   template<typename _EigenDerived>
   _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
-
-protected:
-
-  using Base::coeffs_nonconst;
 };
 
 template <typename _Derived>
@@ -131,7 +127,7 @@ template <typename _EigenDerived>
 _Derived& RnBase<_Derived>::operator =(
   const Eigen::MatrixBase<_EigenDerived>& v)
 {
-  coeffs_nonconst() = v;
+  coeffs() = v;
   return *static_cast< _Derived* >(this);
 }
 

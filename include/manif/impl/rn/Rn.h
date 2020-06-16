@@ -82,14 +82,14 @@ public:
   // LieGroup common API
 
   //! Get a const reference to the underlying DataType.
+  DataType& coeffs();
+
+  //! Get a const reference to the underlying DataType.
   const DataType& coeffs() const;
 
   // Rn specific API
 
 protected:
-
-  friend struct LieGroupBase<Rn<Scalar, _N>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -147,7 +147,7 @@ Rn<_Scalar, _N>::Rn(const LieGroupBase<_DerivedOther>& o)
 
 template <typename _Scalar, unsigned int _N>
 typename Rn<_Scalar, _N>::DataType&
-Rn<_Scalar, _N>::coeffs_nonconst()
+Rn<_Scalar, _N>::coeffs()
 {
   return data_;
 }

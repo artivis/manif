@@ -94,6 +94,7 @@ public:
   // LieGroup common API
 
   //! Get a const reference to the underlying DataType.
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   // SO2 specific API
@@ -101,9 +102,6 @@ public:
   using Base::angle;
 
 protected:
-
-  friend struct LieGroupBase<SO2<Scalar>>;
-  DataType& coeffs_nonconst();
 
   DataType data_;
 };
@@ -163,7 +161,7 @@ SO2<_Scalar>::SO2(const Scalar theta)
 
 template <typename _Scalar>
 typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs_nonconst()
+SO2<_Scalar>::coeffs()
 {
   return data_;
 }
