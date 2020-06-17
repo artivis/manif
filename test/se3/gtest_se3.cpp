@@ -82,27 +82,6 @@ TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
 }
 
-TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
-{
-  // EXPECT_THROW(
-  //   SE3d se3(SE3d(1, 1)),
-  //   manif::invalid_argument
-  // );
-
-  SE3d::DataType values; values << 0,0,0, 1,1,1,1;
-
-  EXPECT_THROW(
-    SE3d se3(values),
-    manif::invalid_argument
-  );
-
-  try {
-    SE3d se3(values);
-  } catch (manif::invalid_argument& e) {
-    EXPECT_FALSE(std::string(e.what()).empty());
-  }
-}
-
 TEST(TEST_SE3, TEST_SE3_DATA)
 {
   SE3d::DataType values; values << 0,0,0, 0,0,0,1;
@@ -353,6 +332,29 @@ TEST(TEST_SE3, TEST_SE3_ISOMETRY)
   EXPECT_DOUBLE_EQ(3, se3h.matrix()(2,3));
 }
 
+#ifndef MANIF_NO_DEBUG
+
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  // EXPECT_THROW(
+  //   SE3d se3(SE3d(1, 1)),
+  //   manif::invalid_argument
+  // );
+
+  SE3d::DataType values; values << 0,0,0, 1,1,1,1;
+
+  EXPECT_THROW(
+    SE3d se3(values),
+    manif::invalid_argument
+  );
+
+  try {
+    SE3d se3(values);
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_UNNORMALIZED)
 {
   using DataType = typename SE3d::DataType;
@@ -377,6 +379,8 @@ TEST(TEST_SE3, TEST_SE3_NORMALIZE)
     SE3d b = map
   );
 }
+
+#endif
 
 MANIF_TEST(SE3d);
 

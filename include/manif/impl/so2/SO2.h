@@ -114,9 +114,9 @@ SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
   : data_(data)
 {
   using std::abs;
-  MANIF_CHECK(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-              "SO2 constructor argument not normalized !",
-              invalid_argument);
+  MANIF_ASSERT(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+               "SO2 constructor argument not normalized !",
+               invalid_argument);
 }
 
 template <typename _Scalar>
