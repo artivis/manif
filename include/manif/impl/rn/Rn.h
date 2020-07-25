@@ -56,6 +56,10 @@ private:
   using Base = RnBase<Rn<_Scalar, _N>>;
   using Type = Rn<_Scalar, _N>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -66,22 +70,17 @@ public:
   Rn()  = default;
   ~Rn() = default;
 
+  MANIF_COPY_CONSTRUCTOR(Rn)
+
   // Copy constructor given base
-  Rn(const Base& o);
-
-  template <typename _DerivedOther>
-  Rn(const RnBase<_DerivedOther>& o);
-
   template <typename _DerivedOther>
   Rn(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  Rn(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(Rn)
 
   // LieGroup common API
 
-  //! Get a const reference to the underlying DataType.
+  //! Get a reference to the underlying DataType.
   DataType& coeffs();
 
   //! Get a const reference to the underlying DataType.
@@ -113,29 +112,6 @@ MANIF_EXTRA_GROUP_TYPEDEF(R6)
 MANIF_EXTRA_GROUP_TYPEDEF(R7)
 MANIF_EXTRA_GROUP_TYPEDEF(R8)
 MANIF_EXTRA_GROUP_TYPEDEF(R9)
-
-template <typename _Scalar, unsigned int _N>
-template <typename _EigenDerived>
-Rn<_Scalar, _N>::Rn(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-Rn<_Scalar, _N>::Rn(const Base& o)
-  : Rn(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-template <typename _DerivedOther>
-Rn<_Scalar, _N>::Rn(const RnBase<_DerivedOther>& o)
-  : Rn(o.coeffs())
-{
-  //
-}
 
 template <typename _Scalar, unsigned int _N>
 template <typename _DerivedOther>

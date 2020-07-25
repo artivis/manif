@@ -48,6 +48,8 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_TANGENT_MAP_ASSIGN_OP(SO2Tangent)
+
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 

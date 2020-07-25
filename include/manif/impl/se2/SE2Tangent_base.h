@@ -24,14 +24,22 @@ private:
 
 public:
 
-  SE2TangentBase()  = default;
-  ~SE2TangentBase() = default;
-
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
   using Base::data;
   using Base::coeffs;
+
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE2TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SE2TangentBase)
 
   // Tangent common API
 

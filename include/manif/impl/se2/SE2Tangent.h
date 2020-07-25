@@ -49,6 +49,10 @@ private:
   using Base = SE2TangentBase<SE2Tangent<_Scalar>>;
   using Type = SE2Tangent<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -60,17 +64,13 @@ public:
   SE2Tangent()  = default;
   ~SE2Tangent() = default;
 
-  // Copy constructor given base
-  SE2Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SE2Tangent(const SE2TangentBase<_DerivedOther>& o);
+  MANIF_COPY_CONSTRUCTOR(SE2Tangent)
 
+  // Copy constructor given base
   template <typename _DerivedOther>
   SE2Tangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SE2Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
+  MANIF_TANGENT_ASSIGN_OP(SE2Tangent)
 
   SE2Tangent(const Scalar x, const Scalar y, const Scalar theta);
 
@@ -91,35 +91,9 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent);
 
 template <typename _Scalar>
-SE2Tangent<_Scalar>::SE2Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SE2Tangent<_Scalar>::SE2Tangent(
-    const SE2TangentBase<_DerivedOther>& o)
+SE2Tangent<_Scalar>::SE2Tangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SE2Tangent<_Scalar>::SE2Tangent(
-    const TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE2Tangent<_Scalar>::SE2Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& v)
-  : data_(v)
 {
   //
 }

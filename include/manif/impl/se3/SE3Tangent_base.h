@@ -36,8 +36,15 @@ public:
   using Base::data;
   using Base::coeffs;
 
-  SE3TangentBase()  = default;
-  ~SE3TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE3TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SE3TangentBase)
 
   // Tangent common API
 

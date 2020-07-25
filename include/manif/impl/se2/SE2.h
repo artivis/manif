@@ -56,6 +56,10 @@ private:
   using Base = SE2Base<SE2<_Scalar>>;
   using Type = SE2<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -70,18 +74,13 @@ public:
   SE2()  = default;
   ~SE2() = default;
 
-  // Copy constructor given base
-  SE2(const Base& o);
+  MANIF_COPY_CONSTRUCTOR(SE2)
 
-  template <typename _DerivedOther>
-  SE2(const SE2Base<_DerivedOther>& o);
-
+  // Copy constructor
   template <typename _DerivedOther>
   SE2(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SE2(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(SE2)
 
   /**
    * @brief Constructor given a translation and a unit complex number.
@@ -133,7 +132,16 @@ public:
 
   // LieGroup common API
 
+  /**
+   * @brief Access the underlying data
+   * @param[out] a reference to the underlying Eigen vector
+   */
   DataType& coeffs();
+
+  /**
+   * @brief Access the underlying data
+   * @param[out] a const reference to the underlying Eigen vector
+   */
   const DataType& coeffs() const;
 
   // SE2 specific API
@@ -146,43 +154,15 @@ public:
 
 protected:
 
+  //! Underlying data (Eigen) vector
   DataType data_;
 };
 
 MANIF_EXTRA_GROUP_TYPEDEF(SE2)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SE2<_Scalar>::SE2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.template tail<2>().norm()-Scalar(1)) <
-               Constants<Scalar>::eps_s,
-               "SE2 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SE2<_Scalar>::SE2(const Base& o)
-  : SE2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SE2<_Scalar>::SE2(
-    const SE2Base<_DerivedOther>& o)
-  : SE2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SE2<_Scalar>::SE2(
-    const LieGroupBase<_DerivedOther>& o)
+SE2<_Scalar>::SE2(const LieGroupBase<_DerivedOther>& o)
   : SE2(o.coeffs())
 {
   //
@@ -220,7 +200,7 @@ SE2<_Scalar>::SE2(const Scalar x, const Scalar y, const std::complex<Scalar>& c)
 }
 
 template <typename _Scalar>
-SE2<_Scalar>::SE2(const Eigen::Transform<_Scalar,2,Eigen::Isometry>& h)
+SE2<_Scalar>::SE2(const Eigen::Transform<_Scalar, 2, Eigen::Isometry>& h)
   : SE2(h.translation().x(), h.translation().y(), Eigen::Rotation2D<Scalar>(h.rotation()).angle())
 {
   //

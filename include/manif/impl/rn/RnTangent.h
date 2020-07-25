@@ -51,6 +51,10 @@ private:
   using Base = RnTangentBase<RnTangent<_Scalar, _N>>;
   using Type = RnTangent<_Scalar, _N>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -62,17 +66,13 @@ public:
   RnTangent()  = default;
   ~RnTangent() = default;
 
-  // Copy constructor given base
-  RnTangent(const Base& o);
-  template <typename _DerivedOther>
-  RnTangent(const RnTangentBase<_DerivedOther>& o);
+  MANIF_COPY_CONSTRUCTOR(RnTangent)
 
+  // Copy constructor given base
   template <typename _DerivedOther>
   RnTangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  RnTangent(const Eigen::MatrixBase<_EigenDerived>& theta);
+  MANIF_TANGENT_ASSIGN_OP(RnTangent)
 
   // Tangent common API
 
@@ -105,35 +105,9 @@ MANIF_EXTRA_GROUP_TYPEDEF(R8Tangent)
 MANIF_EXTRA_GROUP_TYPEDEF(R9Tangent)
 
 template <typename _Scalar, unsigned int _N>
-RnTangent<_Scalar, _N>::RnTangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
 template <typename _DerivedOther>
-RnTangent<_Scalar, _N>::RnTangent(
-    const RnTangentBase<_DerivedOther>& o)
+RnTangent<_Scalar, _N>::RnTangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-template <typename _DerivedOther>
-RnTangent<_Scalar, _N>::RnTangent(
-    const TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-template <typename _EigenDerived>
-RnTangent<_Scalar, _N>::RnTangent(
-    const Eigen::MatrixBase<_EigenDerived>& theta)
-  : data_(theta)
 {
   //
 }

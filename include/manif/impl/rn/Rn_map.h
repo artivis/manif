@@ -49,8 +49,9 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
-  DataType& coeffs() { return data_; }
+  MANIF_GROUP_MAP_ASSIGN_OP(Rn)
 
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
 protected:
