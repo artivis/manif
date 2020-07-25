@@ -189,6 +189,24 @@ matrix:
       - make test
 
   #
+  # G++ 8
+  #
+  - os: linux
+    env:
+      - TEST="G++ 8"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-8
+          - g++-8
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-8" -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
   # G++ 9
   #
   - os: linux
