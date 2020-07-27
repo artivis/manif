@@ -1,0 +1,436 @@
+#ifndef _MANIF_MANIF_SE_2_3_BASE_H_
+#define _MANIF_MANIF_SE_2_3_BASE_H_
+
+#include "manif/impl/se_2_3/SE_2_3_properties.h"
+#include "manif/impl/lie_group_base.h"
+#include "manif/impl/so3/SO3_map.h"
+#include "manif/impl/se3/SE3_map.h"
+
+#include <Eigen/Geometry>
+
+namespace manif {
+
+//
+// LieGroup
+//
+
+/**
+ * @brief The base class of the SE_2_3 group.
+ * @note See Appendix A2 in the paper "The Invariant Extended Kalman filter as a stable
+observer".
+ */
+template <typename _Derived>
+struct SE_2_3Base : LieGroupBase<_Derived>
+{
+private:
+
+  using Base = LieGroupBase<_Derived>;
+  using Type = SE_2_3Base<_Derived>;
+
+public:
+
+  MANIF_GROUP_TYPEDEF
+  MANIF_INHERIT_GROUP_AUTO_API
+  MANIF_INHERIT_GROUP_OPERATOR
+
+  using Base::coeffs;
+
+  using Rotation       = typename internal::traits<_Derived>::Rotation;
+  using Translation    = typename internal::traits<_Derived>::Translation;
+  using LinearVelocity = typename internal::traits<_Derived>::LinearVelocity;
+  using Isometry       = Eigen::Matrix<Scalar, 5, 5>; /**< Double direct isometry*/
+
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
+
+  // LieGroup common API
+
+  /**
+   * @brief Get the inverse.
+   * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
+   */
+  LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
+
+  /**
+   * @brief Get the SE_2_3 corresponding Lie algebra element in vector form.
+   * @param[out] -optional- J_t_m Jacobian of the tangent wrt to this.
+   * @return The SE_2_3 tangent of this.
+   * @note This is the log() map in vector form.
+   * @see SE_2_3Tangent.
+   */
+  Tangent log(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief This function is deprecated.
+   * Please considere using
+   * @ref log instead.
+   */
+  MANIF_DEPRECATED
+  Tangent lift(OptJacobianRef J_t_m = {}) const;
+
+  /**
+   * @brief Composition of this and another SE_2_3 element.
+   * @param[in] m Another SE_2_3 element.
+   * @param[out] -optional- J_mc_ma Jacobian of the composition wrt this.
+   * @param[out] -optional- J_mc_mb Jacobian of the composition wrt m.
+   * @return The composition of 'this . m'.
+   */
+  template <typename _DerivedOther>
+  LieGroup compose(const LieGroupBase<_DerivedOther>& m,
+                   OptJacobianRef J_mc_ma = {},
+                   OptJacobianRef J_mc_mb = {}) const;
+
+  /**
+   * @note this method is not defined yet for this class
+   */
+  template <typename _EigenDerived>
+  Eigen::Matrix<Scalar, 3, 1>
+  act(const Eigen::MatrixBase<_EigenDerived> &v,
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
+
+  /**
+   * @brief Get the adjoint matrix of SE_2_3 at this.
+   */
+  Jacobian adj() const;
+
+  // SE_2_3 specific functions
+
+  /**
+   * Get the isometry object (double direct isometry).
+   * @note T = | R t v|
+   *           | 0 1 0|
+   *           | 0 0 1|
+   */
+  Isometry isometry() const;
+
+  /**
+   * @brief Get the rotational part of this as a rotation matrix.
+   */
+  Rotation rotation() const;
+
+  /**
+   * @brief Get the rotational part of this as a quaternion.
+   */
+  QuaternionDataType quat() const;
+
+  /**
+   * @brief Get the translational part in vector form.
+   */
+  Translation translation() const;
+
+  /**
+   * @brief Get the x component of the translational part.
+   */
+  Scalar x() const;
+
+  /**
+   * @brief Get the y component of translational part.
+   */
+  Scalar y() const;
+
+  /**
+   * @brief Get the z component of translational part.
+   */
+  Scalar z() const;
+
+  /**
+   * @brief Get the linear velocity part in vector form.
+   */
+  LinearVelocity linearVelocity() const;
+
+  /**
+   * @brief Get the x component of the linear velocity part.
+   */
+  Scalar vx() const;
+
+  /**
+   * @brief Get the y component of linear velocity part.
+   */
+  Scalar vy() const;
+
+  /**
+   * @brief Get the z component of linear velocity part.
+   */
+  Scalar vz() const;
+
+  //Scalar roll() const;
+  //Scalar pitch() const;
+  //Scalar yaw() const;
+
+  /**
+   * @brief Normalize the underlying quaternion.
+   */
+  void normalize();
+
+public: /// @todo make protected
+
+  Eigen::Map<const SO3<Scalar>> asSO3() const
+  {
+    return Eigen::Map<const SO3<Scalar>>(coeffs().data()+3);
+  }
+
+  Eigen::Map<SO3<Scalar>> asSO3()
+  {
+    return Eigen::Map<SO3<Scalar>>(coeffs().data()+3);
+  }
+};
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Isometry
+SE_2_3Base<_Derived>::isometry() const
+{
+  Eigen::Matrix<Scalar, 5, 5> T = Eigen::Matrix<Scalar, 5, 5>::Identity();
+  T.template topLeftCorner<3,3>() = rotation();
+  T.template block<3, 1>(0, 3) = translation();
+  T.template topRightCorner<3,1>() = linearVelocity();
+  return T;
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Rotation
+SE_2_3Base<_Derived>::rotation() const
+{
+  return asSO3().rotation();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::QuaternionDataType
+SE_2_3Base<_Derived>::quat() const
+{
+  return asSO3().quat();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Translation
+SE_2_3Base<_Derived>::translation() const
+{
+  return coeffs().template head<3>();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::LinearVelocity
+SE_2_3Base<_Derived>::linearVelocity() const
+{
+  return coeffs().template tail<3>();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::LieGroup
+SE_2_3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
+{
+  if (J_minv_m)
+  {
+    (*J_minv_m) = -adj();
+  }
+
+  const SO3<Scalar> so3inv = asSO3().inverse();
+
+  return LieGroup(-so3inv.act(translation()),
+                   so3inv,
+                  -so3inv.act(linearVelocity()));
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Tangent
+SE_2_3Base<_Derived>::log(OptJacobianRef J_t_m) const
+{
+  using std::abs;
+  using std::sqrt;
+
+  const SO3Tangent<Scalar> so3tan = asSO3().log();
+
+  Tangent tan((typename Tangent::DataType() <<
+               so3tan.ljac().inverse()*translation(),
+               so3tan.coeffs(),
+               so3tan.ljac().inverse()*linearVelocity()).finished());
+
+  if (J_t_m)
+  {
+    // Jr^-1
+    (*J_t_m) = tan.rjac().inverse();
+  }
+
+  return tan;
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Tangent
+SE_2_3Base<_Derived>::lift(OptJacobianRef J_t_m) const
+{
+  return log(J_t_m);
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename SE_2_3Base<_Derived>::LieGroup
+SE_2_3Base<_Derived>::compose(
+    const LieGroupBase<_DerivedOther>& m,
+    OptJacobianRef J_mc_ma,
+    OptJacobianRef J_mc_mb) const
+{
+  static_assert(
+    std::is_base_of<SE_2_3Base<_DerivedOther>, _DerivedOther>::value,
+    "Argument does not inherit from SE_2_3Base !");
+
+  const auto& m_se_2_3 = static_cast<const SE_2_3Base<_DerivedOther>&>(m);
+
+  if (J_mc_ma)
+  {
+    (*J_mc_ma) = m.inverse().adj();
+  }
+
+  if (J_mc_mb)
+  {
+    J_mc_mb->setIdentity();
+  }
+
+  return LieGroup(rotation()*m_se_2_3.translation() + translation(),
+                  asSO3().compose(m_se_2_3.asSO3()).quat(),
+                  rotation()*m_se_2_3.linearVelocity() + linearVelocity());
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+Eigen::Matrix<typename SE_2_3Base<_Derived>::Scalar, 3, 1>
+SE_2_3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m,
+                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
+{
+  assert_vector_dim(v, 3);
+//   const Rotation R(rotation());
+//
+//   if (J_vout_m)
+//   {
+//     J_vout_m->template topLeftCorner<3,3>()  =  R;
+//     J_vout_m->template topRightCorner<3,3>() = -R * skew(v);
+//   }
+//
+//   if (J_vout_v)
+//   {
+//     (*J_vout_v) = R;
+//   }
+//
+//   return translation() + R * v;
+  return v;
+}
+
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Jacobian
+SE_2_3Base<_Derived>::adj() const
+{
+  ///
+  /// this is
+  ///       Ad(g) = | R T.R 0|
+  ///               | 0  R  0|
+  ///               | 0 V.R R|
+  ///
+  /// considering vee(log(g)) = (v;w;a)
+  /// with T = [t]_x
+  /// with V = [v]_x
+
+  Jacobian Adj = Jacobian::Zero();
+  Adj.template topLeftCorner<3,3>() = rotation();
+  Adj.template bottomRightCorner<3,3>() =
+      Adj.template topLeftCorner<3,3>();
+  Adj.template block<3,3>(3,3) =
+      Adj.template topLeftCorner<3,3>();
+
+  Adj.template block<3,3>(0, 3) =
+    skew(translation()) * Adj.template topLeftCorner<3,3>();
+  Adj.template block<3,3>(6, 3) =
+    skew(linearVelocity()) * Adj.template topLeftCorner<3,3>();
+
+  return Adj;
+}
+
+// SE_2_3 specific function
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::x() const
+{
+  return coeffs().x();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::y() const
+{
+  return coeffs().y();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::z() const
+{
+  return coeffs().z();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::vx() const
+{
+  return coeffs().vx();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::vy() const
+{
+  return coeffs().vy();
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Scalar
+SE_2_3Base<_Derived>::vz() const
+{
+  return coeffs().vz();
+}
+
+template <typename _Derived>
+void SE_2_3Base<_Derived>::normalize()
+{
+  coeffs().template segment<4>(3).normalize();
+}
+
+namespace internal {
+
+//! @brief Random specialization for SE_2_3Base objects.
+template <typename Derived>
+struct RandomEvaluatorImpl<SE_2_3Base<Derived>>
+{
+  template <typename T>
+  static void run(T& m)
+  {
+    // @note:
+    // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
+    // which is the default version in Ubuntu 16.04
+    // So we copy its implementation here.
+
+    using std::sqrt;
+    using std::sin;
+    using std::cos;
+
+    using Scalar      = typename SE_2_3Base<Derived>::Scalar;
+    using Translation = typename SE_2_3Base<Derived>::Translation;
+    using Quaternion  = typename SE_2_3Base<Derived>::QuaternionDataType;
+    using LinearVelocity = typename SE_2_3Base<Derived>::LinearVelocity;
+    using LieGroup    = typename SE_2_3Base<Derived>::LieGroup;
+
+    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
+                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
+                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
+    const Scalar a = sqrt(1. - u1),
+                 b = sqrt(u1);
+
+    m = LieGroup(Translation::Random(),
+                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)),
+                 LinearVelocity::Random());
+  }
+};
+
+} /* namespace internal */
+} /* namespace manif */
+
+#endif /* _MANIF_MANIF_SE_2_3_BASE_H_ */

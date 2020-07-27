@@ -125,7 +125,7 @@ public: /// @todo make protected
     return Eigen::Map<SO3Tangent<Scalar>>(coeffs().data()+3);
   }
 
-private:
+// private:
 
   template <typename _EigenDerived>
   static void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q,
