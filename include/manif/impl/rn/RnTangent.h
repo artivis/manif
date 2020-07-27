@@ -3,8 +3,6 @@
 
 #include "manif/impl/rn/RnTangent_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 

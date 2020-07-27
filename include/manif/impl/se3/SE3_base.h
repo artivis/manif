@@ -5,8 +5,6 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/so3/SO3_map.h"
 
-#include <Eigen/Geometry>
-
 namespace manif {
 
 //

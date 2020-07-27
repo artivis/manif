@@ -3,8 +3,6 @@
 
 #include "manif/impl/se3/SE3Tangent_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 

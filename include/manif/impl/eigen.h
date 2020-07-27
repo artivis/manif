@@ -2,6 +2,8 @@
 #define _MANIF_MANIF_EIGEN_H_
 
 #include <Eigen/Core>
+#include <Eigen/LU> // for mat.inverse()
+#include <Eigen/Geometry>
 
 /**
  * @note static_cast<int> to avoid -Wno-enum-compare

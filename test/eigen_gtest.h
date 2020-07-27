@@ -2,7 +2,6 @@
 #define _MANIF_TEST_EIGEN_GTEST_H_
 
 #include <gtest/gtest.h>
-#include <Eigen/Dense>
 
 namespace manif {
 namespace detail {

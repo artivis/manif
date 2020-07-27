@@ -3,8 +3,6 @@
 
 #include "manif/impl/so2/SO2Tangent_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 

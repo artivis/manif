@@ -3,8 +3,6 @@
 
 #include "manif/impl/se2/SE2Tangent_base.h"
 
-#include <Eigen/Dense>
-
 namespace manif {
 namespace internal {
 

@@ -3,8 +3,6 @@
 
 #include "manif/impl/se3/SE3_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 
 // Forward declare for type traits specialization
