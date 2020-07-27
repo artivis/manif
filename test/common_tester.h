@@ -100,12 +100,12 @@
   { evalAdjJlJr(); }                                                              \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_JLJLinv_JRJRinv)   \
   { evalJrJrinvJlJlinv(); }                                                       \
-  TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ACT_JACOBIANS)     \
-  { evalActJac(); }                                                               \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_PLUS_T_JACOBIANS)  \
   { evalTanPlusTanJac(); }                                                        \
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_MINUS_T_JACOBIANS) \
-  { evalTanMinusTanJac(); }
+  { evalTanMinusTanJac(); }                                                       \
+  /*TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_ACT_JACOBIANS)     \
+  { evalActJac(); }                                                               \*/
 
 #define MANIF_TEST_MAP(manifold)                                       \
   using TEST_##manifold##_MAP_TESTER = CommonMapTester<manifold>;      \
