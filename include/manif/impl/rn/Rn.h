@@ -63,6 +63,7 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_GROUP_TYPEDEF
+  using typename Base::Transformation;
 
   Rn()  = default;
   ~Rn() = default;

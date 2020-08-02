@@ -64,6 +64,8 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_GROUP_TYPEDEF
+  using typename Base::Rotation;
+  using typename Base::Transformation;
 
   SO2()  = default;
   ~SO2() = default;

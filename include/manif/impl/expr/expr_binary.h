@@ -50,17 +50,17 @@ protected:
 }  // namespace internal
 }  // namespace manif
 
-#define MANIF_DECLARE_BINARY_EXPR(EXPR)                   \
-template <typename LhsLieGroupDerived,                    \
-          typename RhsLieGroupDerived>                    \
-struct EXPR##Expr                                         \
-  : manif::internal::ExprBinary<EXPR##Expr,               \
-                         LhsLieGroupDerived,              \
-                         RhsLieGroupDerived> {            \
-  using Base = manif::internal::ExprBinary<EXPR##Expr,    \
-                                    LhsLieGroupDerived,   \
-                                    RhsLieGroupDerived>;  \
-  using Base::Base; using Base::eval;                     \
+#define MANIF_DECLARE_BINARY_EXPR(EXPR)                         \
+template <typename LhsLieGroupDerived,                          \
+          typename RhsLieGroupDerived>                          \
+struct EXPR##Expr                                               \
+  : manif::internal::ExprBinary<::manif::EXPR##Expr,            \
+                         LhsLieGroupDerived,                    \
+                         RhsLieGroupDerived> {                  \
+  using Base = manif::internal::ExprBinary<::manif::EXPR##Expr, \
+                                    LhsLieGroupDerived,         \
+                                    RhsLieGroupDerived>;        \
+  using Base::Base; using Base::eval;                           \
 };
 
 #endif  // _MANIF_MANIF_IMPL_EXPR_BINARY_H_

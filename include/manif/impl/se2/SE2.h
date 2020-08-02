@@ -63,7 +63,10 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_GROUP_TYPEDEF
-  using Translation = typename Base::Translation;
+  using typename Base::Rotation;
+  using typename Base::Translation;
+  using typename Base::Transformation;
+  using typename Base::Isometry;
 
   SE2()  = default;
   ~SE2() = default;

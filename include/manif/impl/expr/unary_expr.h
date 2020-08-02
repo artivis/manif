@@ -36,13 +36,13 @@ protected:
 }  // namespace internal
 }  // namespace manif
 
-#define MANIF_DECLARE_UNARY_EXPR(EXPR)                                    \
-template <typename _LieGroupDerived>                                      \
-struct EXPR##Expr                                                         \
-  : manif::internal::UnaryExpr<EXPR##Expr, _LieGroupDerived> {            \
-  using Base = manif::internal::UnaryExpr<EXPR##Expr, _LieGroupDerived>;  \
-  using LieGroup = typename _LieGroupDerived::LieGroup;                   \
-  using Base::Base; using Base::eval;                                     \
+#define MANIF_DECLARE_UNARY_EXPR(EXPR)                                            \
+template <typename _LieGroupDerived>                                              \
+struct EXPR##Expr                                                                 \
+  : manif::internal::UnaryExpr<::manif::EXPR##Expr, _LieGroupDerived> {           \
+  using Base = manif::internal::UnaryExpr<::manif::EXPR##Expr, _LieGroupDerived>; \
+  using LieGroup = typename _LieGroupDerived::LieGroup;                           \
+  using Base::Base; using Base::eval;                                             \
 };
 
 #endif // _MANIF_MANIF_IMPL_UNARY_EXPR_H_

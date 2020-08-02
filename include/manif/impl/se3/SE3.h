@@ -64,11 +64,11 @@ public:
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_GROUP_TYPEDEF
-  using Translation = typename Base::Translation;
-  using Rotation = typename Base::Rotation;
-  using Transformation = typename Base::Transformation;
-  using Isometry = typename Base::Isometry;
-  using QuaternionDataType = typename Base::QuaternionDataType;
+  using typename Base::Translation;
+  using typename Base::Rotation;
+  using typename Base::Transformation;
+  using typename Base::Isometry;
+  using typename Base::QuaternionDataType;
 
   SE3()  = default;
   ~SE3() = default;
