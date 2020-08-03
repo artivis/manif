@@ -471,6 +471,9 @@ public:
     EXPECT_EIGEN_NEAR((delta*3.14).coeffs(), delta_data*3.14);
     EXPECT_EIGEN_NEAR((3.14*delta).coeffs(), 3.14*delta_data);
     EXPECT_EIGEN_NEAR((delta*=3.14).coeffs(), delta_data*=3.14);
+
+    EXPECT_EIGEN_NEAR((delta/5.12).coeffs(), delta_data/5.12);
+    EXPECT_EIGEN_NEAR((delta/=5.12).coeffs(), delta_data/=5.12);
   }
 
   void evalGeneratorsHat()
