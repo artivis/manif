@@ -810,9 +810,7 @@ typename TangentBase<_Derived>::Tangent
 operator *(const typename _Derived::Scalar scalar,
            const TangentBase<_Derived>& t)
 {
-  typename TangentBase<_Derived>::Tangent ret(t);
-  return ret *= scalar;
-  // return t * scalar;
+  return t * scalar;
 }
 
 template <typename _Derived>
