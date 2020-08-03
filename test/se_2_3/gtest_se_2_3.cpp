@@ -195,25 +195,25 @@ TEST(TEST_SE_2_3, TEST_SE_2_3_IDENTITY2)
   EXPECT_DOUBLE_EQ(0, se_2_3.coeffs()(9));
 }
 
-//TEST(TEST_SE_2_3, TEST_SE_2_3_RANDOM)
-//{
-//  SE_2_3d se_2_3;
+TEST(TEST_SE_2_3, TEST_SE_2_3_RANDOM)
+{
+ SE_2_3d se_2_3;
 
-//  se_2_3.setRandom();
+ se_2_3.setRandom();
 
-//  const auto q_norm = se_2_3.coeffs().block<4,1>(0,0).norm();
+ const auto q_norm = se_2_3.coeffs().segment<4>(3).norm();
 
-//  EXPECT_DOUBLE_EQ(1, q_norm);
-//}
-//
-//TEST(TEST_SE_2_3, TEST_SE_2_3_RANDOM2)
-//{
-//  const SE_2_3d se_2_3 = SE_2_3d::Random();
+ EXPECT_DOUBLE_EQ(1, q_norm);
+}
 
-//  const auto q_norm = se_2_3.coeffs().block<4,1>(0,0).norm();
+TEST(TEST_SE_2_3, TEST_SE_2_3_RANDOM2)
+{
+ const SE_2_3d se_2_3 = SE_2_3d::Random();
 
-//  EXPECT_DOUBLE_EQ(1, q_norm);
-//}
+ const auto q_norm = se_2_3.coeffs().segment<4>(3).norm();
+
+ EXPECT_DOUBLE_EQ(1, q_norm);
+}
 
 TEST(TEST_SE_2_3, TEST_SE_2_3_MATRIX)
 {

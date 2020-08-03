@@ -350,42 +350,42 @@ template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::x() const
 {
-  return coeffs().x();
+  return coeffs()(0);
 }
 
 template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::y() const
 {
-  return coeffs().y();
+  return coeffs()(1);
 }
 
 template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::z() const
 {
-  return coeffs().z();
+  return coeffs()(2);
 }
 
 template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::vx() const
 {
-  return coeffs().vx();
+  return coeffs()(7);
 }
 
 template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::vy() const
 {
-  return coeffs().vy();
+  return coeffs()(8);
 }
 
 template <typename _Derived>
 typename SE_2_3Base<_Derived>::Scalar
 SE_2_3Base<_Derived>::vz() const
 {
-  return coeffs().vz();
+  return coeffs()(9);
 }
 
 template <typename _Derived>
