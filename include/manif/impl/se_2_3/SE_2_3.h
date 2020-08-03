@@ -138,10 +138,10 @@ public:
          const Scalar vx, const Scalar vy, const Scalar vz);
 
   /**
-   * @brief Constructor from a 3D Eigen::Isometry<Scalar>
-   * @param[in] h a isometry object from Eigen
+   * @brief Constructor from a 3D Eigen::Isometry<Scalar> relevant to SE(3) and a linear velocity
+   * @param[in] h a isometry object from Eigen defined for SE(3)
    * @param[in] v a linear velocity vector.
-   * @note overall, this should be a double direct isometry,
+   * @note overall, this should be a double direct spatial isometry,
    */
   SE_2_3(const Eigen::Transform<_Scalar,3,Eigen::Isometry>& h, const LinearVelocity& v);
 

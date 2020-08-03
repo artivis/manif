@@ -77,7 +77,8 @@ public:
   Jacobian ljac() const;
 
   /**
-   * @brief
+   * @brief Get the small adjoint matrix ad() of SE_2_3
+   * that maps isomorphic tangent vectors of SE_2_3
    * @return
    */
   Jacobian smallAdj() const;
@@ -142,8 +143,7 @@ SE_2_3TangentBase<_Derived>::hat() const
     Scalar( coeffs()(5)), Scalar(0)           , Scalar(-coeffs()(3)), Scalar(coeffs()(1)), Scalar(coeffs()(7)),
     Scalar(-coeffs()(4)), Scalar( coeffs()(3)), Scalar(0)           , Scalar(coeffs()(2)), Scalar(coeffs()(8)),
     Scalar(0)           , Scalar(0)           , Scalar(0)           , Scalar(0)          , Scalar(0),
-    Scalar(0)           , Scalar(0)           , Scalar(0)           , Scalar(0)          , Scalar(0)
-          ).finished();
+    Scalar(0)           , Scalar(0)           , Scalar(0)           , Scalar(0)          , Scalar(0)            ).finished();
 }
 
 template <typename _Derived>

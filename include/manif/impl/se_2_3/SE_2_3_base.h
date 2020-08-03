@@ -18,6 +18,17 @@ namespace manif {
  * @brief The base class of the SE_2_3 group.
  * @note See Appendix A2 in the paper "The Invariant Extended Kalman filter as a stable
 observer".
+ * However, note that the serialization used in that paper is different from that defined below
+ * The paper uses a SE_2_3 definition as,
+ *  X = |R v p|
+ *      |  1  |
+ *      |    1|
+ * with a vector space serialization as (w, a, v)
+ * Instead, here we define the SE_2_3 to be,
+ *  X = |R p v|
+ *      |  1  |
+ *      |    1|
+ * with a vector space serialization as (v, w, a)
  */
 template <typename _Derived>
 struct SE_2_3Base : LieGroupBase<_Derived>
@@ -38,8 +49,7 @@ public:
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Translation    = typename internal::traits<_Derived>::Translation;
   using LinearVelocity = typename internal::traits<_Derived>::LinearVelocity;
-  using Isometry       = Eigen::Matrix<Scalar, 5, 5>; /**< Double direct isometry*/
-
+  using Isometry       = Eigen::Matrix<Scalar, 5, 5>; /**< Double direct spatial isometry*/
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
@@ -80,12 +90,17 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @note this method is not defined yet for this class
+   * @brief Get the action of the underlying SE(3) element on a 3d point
+   * @note this method by default returns a rigid motion action on 3d points and
+   * does not take into account the embedded linear velocity of total SE_2(3) element
+   * @param[in]  v A 3D point.
+   * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
+   * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    */
   template <typename _EigenDerived>
   Eigen::Matrix<Scalar, 3, 1>
   act(const Eigen::MatrixBase<_EigenDerived> &v,
-      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m = {},
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 9>>> J_vout_m = {},
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}) const;
 
   /**
@@ -98,8 +113,8 @@ public:
   /**
    * Get the isometry object (double direct isometry).
    * @note T = | R t v|
-   *           | 0 1 0|
-   *           | 0 0 1|
+   *           |   1  |
+   *           |     1|
    */
   Isometry isometry() const;
 
@@ -152,10 +167,6 @@ public:
    * @brief Get the z component of linear velocity part.
    */
   Scalar vz() const;
-
-  //Scalar roll() const;
-  //Scalar pitch() const;
-  //Scalar yaw() const;
 
   /**
    * @brief Normalize the underlying quaternion.
@@ -293,25 +304,26 @@ template <typename _Derived>
 template <typename _EigenDerived>
 Eigen::Matrix<typename SE_2_3Base<_Derived>::Scalar, 3, 1>
 SE_2_3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 6>>> J_vout_m,
-                       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
+                          tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 9>>> J_vout_m,
+                          tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v) const
 {
   assert_vector_dim(v, 3);
-//   const Rotation R(rotation());
-//
-//   if (J_vout_m)
-//   {
-//     J_vout_m->template topLeftCorner<3,3>()  =  R;
-//     J_vout_m->template topRightCorner<3,3>() = -R * skew(v);
-//   }
-//
-//   if (J_vout_v)
-//   {
-//     (*J_vout_v) = R;
-//   }
-//
-//   return translation() + R * v;
-  return v;
+
+  const Rotation R(rotation());
+
+  if (J_vout_m)
+  {
+    J_vout_m->template topLeftCorner<3,3>()  =  R;
+    J_vout_m->template block<3,3>(0, 3) = -R * skew(v);
+    J_vout_m->template topRightCorner<3,3>().setZero();
+  }
+
+  if (J_vout_v)
+  {
+    (*J_vout_v) = R;
+  }
+
+  return translation() + R * v;
 }
 
 

@@ -239,22 +239,6 @@ TEST(TEST_SE_2_3, TEST_SE_2_3_ROTATION)
   /// @todo Eigen matrix comparison
 }
 
-//TEST(TEST_SE_2_3, TEST_SE_2_3_ASSIGN_OP)
-//{
-//  SE_2_3d se_2_3a;
-//  SE_2_3d se_2_3b = SE_2_3d::Random();
-
-//  se_2_3a = se_2_3b;
-
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(0), se_2_3a.coeffs()(0));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(1), se_2_3a.coeffs()(1));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(2), se_2_3a.coeffs()(2));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(3), se_2_3a.coeffs()(3));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(4), se_2_3a.coeffs()(4));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(5), se_2_3a.coeffs()(5));
-//  EXPECT_DOUBLE_EQ(se_2_3b.coeffs()(6), se_2_3a.coeffs()(6));
-//}
-
 TEST(TEST_SE_2_3, TEST_SE_2_3_INVERSE)
 {
   SE_2_3d se_2_3 = SE_2_3d::Identity();
@@ -297,16 +281,39 @@ TEST(TEST_SE_2_3, TEST_SE_2_3_COMPOSE)
   EXPECT_DOUBLE_EQ(0, se_2_3c.coeffs()(9));
 }
 
+TEST(TEST_SE_2_3, TEST_SE_2_3_ACT)
+{
+  SE_2_3d se_2_3 = SE_2_3d::Identity();
+
+  auto transformed_point = se_2_3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR(+1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.y(), 1e-15);
+  EXPECT_NEAR(+1, transformed_point.z(), 1e-15);
+
+  se_2_3 = SE_2_3d(1,1,1,MANIF_PI,MANIF_PI_2,MANIF_PI/4.,0,0,0);
+
+  transformed_point = se_2_3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 1, transformed_point.x(), 1e-15);
+  EXPECT_NEAR(-0.414213562373, transformed_point.y(), 1e-12);
+  EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
+
+  // to demonstrate that the velocity terms do not affect the rigid motion action
+  se_2_3 = SE_2_3d(-1,-1,-1,MANIF_PI/4,-MANIF_PI_2,-MANIF_PI,0,0,1);
+
+  transformed_point = se_2_3.act(Eigen::Vector3d(1,1,1));
+
+  EXPECT_NEAR( 0.414213562373, transformed_point.x(), 1e-12);
+  EXPECT_NEAR(-1, transformed_point.y(), 1e-15);
+  EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
+}
+
 
 #ifndef MANIF_NO_DEBUG
 
 TEST(TEST_SE_2_3, TEST_SE_2_3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
 {
-  // EXPECT_THROW(
-  //   SE_2_3d se_2_3(SE_2_3d(1, 1)),
-  //   manif::invalid_argument
-  // );
-
   SE_2_3d::DataType values; values << 0,0,0, 1,1,1,1, 0,0,0;
 
   EXPECT_THROW(
