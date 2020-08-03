@@ -314,12 +314,10 @@ public:
   _Derived& operator -=(const Eigen::MatrixBase<_EigenDerived>& v);
 
   //! @brief Multiply the underlying vector with a scalar.
-  template <typename T>
-  Tangent operator *=(const T scalar);
+  Tangent operator *=(const Scalar scalar);
 
   //! @brief Divide the underlying vector with a scalar.
-  template <typename T>
-  Tangent operator /=(const T scalar);
+  Tangent operator /=(const Scalar scalar);
 
   // static helpers
 
@@ -783,36 +781,42 @@ operator -(const Eigen::MatrixBase<_EigenDerived>& v,
 }
 
 template <typename _Derived>
-template <typename T>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator *=(const T scalar)
+TangentBase<_Derived>::operator *=(const Scalar scalar)
 {
   coeffs() *= scalar;
   return derived();
 }
 
 template <typename _Derived>
-template <typename T>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator /=(const T scalar)
+TangentBase<_Derived>::operator /=(const Scalar scalar)
 {
   coeffs() /= scalar;
   return derived();
 }
 
-template <typename _Derived, typename T>
+template <typename _Derived>
 typename TangentBase<_Derived>::Tangent
 operator *(const TangentBase<_Derived>& t,
-           const T scalar)
+           const typename _Derived::Scalar scalar)
 {
   typename TangentBase<_Derived>::Tangent ret(t);
   return ret *= scalar;
 }
 
-template <typename _Derived, typename T>
+template <typename _Derived>
+typename TangentBase<_Derived>::Tangent
+operator *(const typename _Derived::Scalar scalar,
+           const TangentBase<_Derived>& t)
+{
+  return t * scalar;
+}
+
+template <typename _Derived>
 typename TangentBase<_Derived>::Tangent
 operator /(const TangentBase<_Derived>& t,
-           const T scalar)
+           const typename _Derived::Scalar scalar)
 {
   typename TangentBase<_Derived>::Tangent ret(t);
   return ret /= scalar;
