@@ -153,7 +153,7 @@ int main()
     // acceleration due to gravity in world frame
     Vector3d g;
     g << 0, 0, -9.80665;
-    double dt{0.1};
+    const double dt = 0.1;
 
     // IMU measurements in IMU frame
     Vector3d alpha, omega, alpha_prev, omega_prev;
