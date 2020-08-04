@@ -6,7 +6,7 @@
  *
  *  ---------------------------------------------------------
  *  This file is:
- *  (c) 2018 Joan Sola @ IRI-CSIC, Barcelona, Catalonia
+ *  (c) 2020 Prashanth Ramadoss @ DIC-IIT, Genova, Italy
  *
  *  This file is part of `manif`, a C++ template-only library
  *  for Lie theory targeted at estimation for robotics.
@@ -17,15 +17,17 @@
  *  ---------------------------------------------------------
  *  Demonstration example:
  *
- *  3D Robot localization and linear velocity estimation based on fixed beacons.
+ *  3D Robot localization and linear velocity estimation based on strap-down IMU model and fixed beacons.
  *
  *  ---------------------------------------------------------
  *
  *  We consider a robot in 3D space surrounded by a small
  *  number of punctual landmarks or _beacons_.
- *  The robot receives control actions in the form of axial
- *  and angular velocities, and is able to measure the location
+ *  The robot is assumed to be mounted with an IMU whose
+ *  measurements are fed as exogeneous inputs to the system,
+ *  and is able to measure the location
  *  of the beacons w.r.t its own reference frame.
+ *  We assume in this example that the IMU frame coincides with the robot frame.
  *
  *  The robot extended pose X is in SE_2(3) and the beacon positions b_k in R^3,
  *
@@ -35,24 +37,37 @@
  *
  *      b_k = (bx_k, by_k, bz_k)    // lmk coordinates in world frame
  *
- * Note that the linear velocity is expressed in a frame whose origin coincides with
+ *      alpha_k = (alphax_k, alphay_k, alphaz_k) // linear accelerometer measurements in IMU frame
+ *
+ *      omega_k = (omegax_k, omegay_k, omegaz_k) // gyroscope measurements in IMU frame
+ *
+ *      g = (0, 0, -9.80665)  // acceleration due to gravity in world frame
+ *
+ * Note that the linear velocity v is expressed in a frame whose origin coincides with
  * the robot frame but has a orientation which is same as the world frame
  *
- *  The control signal u is a vector in se_2(3) comprising longitudinal
- *  velocity vx and angular velocity wz, with no other velocity
- *  components or acceleration components, integrated over the sampling time dt.
+ *  The discrete-time system propagation can be written as,
+ *   p_{k+1} = p_{k} + R_{k} (R_{k}.T v_{k} dt + 0.5*dt*dt*acc_{k})
+ *   R_{k+1} = R_{k} Exp_SO3(omega_{k} dt + w_omega)
+ *   v_{k+1} = v_{k} + R_{k} (acc_{k} dt + w_acc)
  *
- *      u = (vx*dt, 0, 0, 0, 0, w*dt, 0, 0, 0)
+ * Note that these equations are modified to obey the group composition rules.
  *
- *  The control is corrupted by additive Gaussian noise u_noise,
- *  with covariance
+ * where,
+ *        - R_{k}.T is the transpose of R_{k}
+ *        - acc_{k} = alpha_{k} + R_{k}.T g
+ *        - w_omega is the additive white noise affecting the gyroscope measurements
+ *        - w_acc is the additive white noise affecting the linear accelerometer measurements
  *
- *    Q = diagonal(sigma_x^2, sigma_y^2, sigma_z^2, sigma_roll^2, sigma_pitch^2, sigma_yaw^2, sigma_vx^2, sigma_vy^2, sigma_vz^2).
+ *    Q = diagonal(0_{3x1}, 0_{3x1}, 0_{3x1}, sigma_omegax^2, sigma_omegay^2, sigma_omegaz^2, sigma_accx^2, sigma_accy^2, sigma_accz^2).
  *
- *  This noise accounts for possible lateral and rotational slippage
- *  through a non-zero values of sigma_y, sigma_z, sigma_roll and sigma_pitch.
+ *  The exogenous input u becomes,
+ *   u = (R_{k}.T v dt + 0.5*dt*dt*acc_{k}, omega_{k} dt, acc_{k} dt)
  *
- *  At the arrival of a control u, the robot pose is updated
+ * Note that all the elements of the input vector u belong in the IMU frame/robot frame.
+ *
+ *
+ *  At the arrival of a exogeneous input u, the robot pose is updated
  *  with X <-- X * Exp(u) = X + u.
  *
  *  Landmark measurements are of the range and bearing type,
@@ -71,7 +86,7 @@
  *  All these variables are summarized again as follows
  *
  *    X   : robot's extended pose, SE_2(3)
- *    u   : robot control, (v*dt; 0; 0; 0; 0; w*dt; 0; 0; 0) in se_2(3)
+ *    u   : robot control input, (R_{k}.T v dt + 0.5*dt*dt*acc_{k}, omega_{k} dt, acc_{k} dt)
  *    Q   : control perturbation covariance
  *    b_k : k-th landmark position, R^3
  *    y   : Cartesian landmark measurement in robot frame, R^3
@@ -133,6 +148,19 @@ int main()
     X.setIdentity();
     X_unfiltered.setIdentity();
     P.setZero();
+    P.block<3, 3>(0,0) = 0.01*Eigen::Matrix3d::Identity();
+
+    // acceleration due to gravity in world frame
+    Vector3d g;
+    g << 0, 0, -9.80665;
+    double dt{0.1};
+
+    // IMU measurements in IMU frame
+    Vector3d alpha, omega, alpha_prev, omega_prev;
+    alpha << 10.0, 0.0, 9.80665;
+    omega << 1, 0.1, 0;
+    alpha_prev << 0.0, 0.0, 9.80665;
+    omega_prev << 0, 0, 0;
 
     // Define a control vector and its noise and covariance
     manif::SE_2_3Tangentd  u_simu, u_est, u_unfilt;
@@ -140,8 +168,7 @@ int main()
     Array9d             u_sigmas;
     Matrix9d            U;
 
-    u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05, 0.01, 0.0, 0.0;
-    u_sigmas << 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.01, 0.01, 0.01;
+    u_sigmas << 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1;
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
@@ -206,6 +233,14 @@ int main()
     for (int t = 0; t < 10; t++)
     {
         //// I. Simulation ###############################################################################
+
+        /// get current state
+        auto R_k = X_simulation.rotation();
+        auto v_k = X_simulation.linearVelocity();
+        auto acc_k = alpha_prev + R_k.transpose()*g;
+
+        /// state dependent velocity vector
+        u_nom << (dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
 
         /// simulate noise
         u_noise = u_sigmas * Array9d::Random();             // control noise
@@ -280,7 +315,8 @@ int main()
         // move also an unfiltered version for comparison purposes
         X_unfiltered = X_unfiltered + u_unfilt;
 
-
+        alpha_prev = alpha;
+        omega_prev = omega;
 
 
         //// IV. Results ##############################################################################
