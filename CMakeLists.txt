@@ -266,6 +266,10 @@ endif()
 
 if(BUILD_TESTING)
 
+  if(LIMIT_TESTS)
+    add_definitions(-DMANIF_LIMIT_TESTS)
+  endif()
+
   enable_testing()
   add_subdirectory(test)
 

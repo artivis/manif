@@ -289,7 +289,7 @@ matrix:
     arch: arm64
     compiler: gcc
     script:
-      - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DLIMIT_TESTS=ON ..
       - make
       - make test
 

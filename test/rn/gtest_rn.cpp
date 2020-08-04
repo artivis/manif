@@ -14,9 +14,10 @@ using namespace manif;
 // especially, SO3 wasn't an issue despite being Eigen::Vector4d too...
 EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(R4d)
 
-#ifdef MANIF_COVERAGE_ENABLED
+#if defined(MANIF_COVERAGE_ENABLED) || defined(MANIF_LIMIT_TESTS)
 
 MANIF_TEST(R4d);
+MANIF_TEST_MAP(R4d);
 MANIF_TEST_JACOBIANS(R4d);
 
 #else
