@@ -245,9 +245,6 @@ template <typename _Derived>
 typename SE_2_3Base<_Derived>::Tangent
 SE_2_3Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
-  using std::abs;
-  using std::sqrt;
-
   const SO3Tangent<Scalar> so3tan = asSO3().log();
 
   Tangent tan((typename Tangent::DataType() <<

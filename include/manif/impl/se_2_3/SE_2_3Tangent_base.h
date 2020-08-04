@@ -115,10 +115,6 @@ template <typename _Derived>
 typename SE_2_3TangentBase<_Derived>::LieGroup
 SE_2_3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 {
-  using std::sqrt;
-  using std::cos;
-  using std::sin;
-
   if (J_m_t)
   {
     *J_m_t = rjac();
@@ -151,7 +147,8 @@ typename SE_2_3TangentBase<_Derived>::Jacobian
 SE_2_3TangentBase<_Derived>::rjac() const
 {
   Jacobian Jr;
-  Jr.setZero();
+  Jr.template block<6, 3>(3, 0).setZero();
+  Jr.template block<6, 3>(0, 6).setZero();
   Jr.template topLeftCorner<3,3>() = asSO3().rjac();
   Jr.template block<3,3>(3,3) = Jr.template topLeftCorner<3,3>();
   Jr.template bottomRightCorner<3, 3>() = Jr.template topLeftCorner<3,3>();
@@ -178,7 +175,8 @@ typename SE_2_3TangentBase<_Derived>::Jacobian
 SE_2_3TangentBase<_Derived>::ljac() const
 {
   Jacobian Jl;
-  Jl.setZero();
+  Jl.template block<6, 3>(3, 0).setZero();
+  Jl.template block<6, 3>(0, 6).setZero();
   Jl.template topLeftCorner<3,3>() = asSO3().ljac();
   Jl.template block<3,3>(3,3) = Jl.template topLeftCorner<3,3>();
   Jl.template bottomRightCorner<3, 3>() = Jl.template topLeftCorner<3,3>();
@@ -212,7 +210,8 @@ SE_2_3TangentBase<_Derived>::smallAdj() const
   /// considering vee(log(g)) = (v;w; a)
 
   Jacobian smallAdj;
-  smallAdj.setZero();
+  smallAdj.template block<6, 3>(3, 0).setZero();
+  smallAdj.template block<6, 3>(0, 6).setZero();
   smallAdj.template block<3,3>(0, 3) = skew(v());
   smallAdj.template topLeftCorner<3,3>() = skew(w());
   smallAdj.template block<3,3>(3,3) = smallAdj.template topLeftCorner<3,3>();
