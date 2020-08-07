@@ -82,16 +82,6 @@ endif(TARGET Eigen3::Eigen)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   target_compile_options(${PROJECT_NAME} INTERFACE -ftemplate-depth=512)
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  # GCC is not strict enough by default, so enable most of the warnings.
-  target_compile_options(${PROJECT_NAME} INTERFACE
-    -Werror=all
-    -Werror=extra
-    -Wno-unknown-pragmas
-    -Wno-sign-compare
-    -Wno-unused-parameter
-    -Wno-missing-field-initializers
-  )
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   target_compile_options(${PROJECT_NAME} INTERFACE /bigobj)
 endif()
