@@ -8,6 +8,9 @@
  *  This file is:
  *  (c) 2020 Prashanth Ramadoss @ DIC-IIT, Genova, Italy
  *
+ *  adapted from the file se3_localization.cpp:
+ *  (c) 2018 Joan Sola @ IRI-CSIC, Barcelona, Catalonia
+ *
  *  This file is part of `manif`, a C++ template-only library
  *  for Lie theory targeted at estimation for robotics.
  *  Manif is:
@@ -24,16 +27,16 @@
  *  We consider a robot in 3D space surrounded by a small
  *  number of punctual landmarks or _beacons_.
  *  The robot is assumed to be mounted with an IMU whose
- *  measurements are fed as exogeneous inputs to the system,
- *  and is able to measure the location
+ *  measurements are fed as exogeneous inputs to the system.
+ *  The robot is able to measure the location
  *  of the beacons w.r.t its own reference frame.
  *  We assume in this example that the IMU frame coincides with the robot frame.
  *
  *  The robot extended pose X is in SE_2(3) and the beacon positions b_k in R^3,
  *
- *      X = |  R   t  v|              // position, orientation and linear velocity
- *          |  0   1  0|
- *          |  0   0  1|
+ *      X = |    R   p  v|              // position, orientation and linear velocity
+ *          |0 0 0   1  0|
+ *          |0 0 0   0  1|
  *
  *      b_k = (bx_k, by_k, bz_k)    // lmk coordinates in world frame
  *
@@ -46,26 +49,73 @@
  * Note that the linear velocity v is expressed in a frame whose origin coincides with
  * the robot frame but has a orientation which is same as the world frame
  *
- *  The discrete-time system propagation can be written as,
- *   p_{k+1} = p_{k} + R_{k} (R_{k}.T v_{k} dt + 0.5*dt*dt*acc_{k})
- *   R_{k+1} = R_{k} Exp_SO3(omega_{k} dt + w_omega)
- *   v_{k+1} = v_{k} + R_{k} (acc_{k} dt + w_acc)
+ * Consider robot coordinate frame B and world coordinate frame A.
+ * - p is the position of the origin of the robot frame B with respect to the world frame A
+ * - R is the orientation of the robot frame B with respect to the world frame A
+ * - v is the velocity of the robot frame with respect to the world frame,
+ *            expressed in a frame whose origin coincides with the robot frame, oriented similar to the world frame
+ *            (it is equivalent to p_dot in continuous time. This is usually called mixed-frame representation
+ *            and is denoted as (B[A] v_AB), where B[A] is the mixed frame as described above.
+ *            For reference, please see "Multibody Dynamics Notation" by Silvio Traversaro and Alessandro Saccon.
+ *            Link: https://research.tue.nl/en/publications/multibody-dynamics-notation-version-2)
+ * - a is the frame acceleration in mixed-representation (equivalent to p_doubledot in continuous time).
+ * - omega_b as the angular velocity of the robot expressed in the robot frame
  *
- * Note that these equations are modified to obey the group composition rules.
+ * The kinematic equations (1) can be written as,
+ * p <-- p + v dt + 0.5 a dt^2
+ * R <-- R Exp_SO3(omega_b)
+ * v <-- v + a dt
  *
- * where,
- *        - R_{k}.T is the transpose of R_{k}
- *        - acc_{k} = alpha_{k} + R_{k}.T g
- *        - w_omega is the additive white noise affecting the gyroscope measurements
- *        - w_acc is the additive white noise affecting the linear accelerometer measurements
+ * We would like to express these equations in the form,
+ * X <-- X* Exp(u)
+ * where, X \in SE_2(3), u \in R^9 and u_hat \in se_2(3)
+ * Note that here input vector u is expressed in the local frame (robot frame).
  *
- *    Q = diagonal(0_{3x1}, 0_{3x1}, 0_{3x1}, sigma_omegax^2, sigma_omegay^2, sigma_omegaz^2, sigma_accx^2, sigma_accy^2, sigma_accz^2).
+ * The exponential mapping of SE_2(3) is defined as,
+ * for u = [u_p, u_w, u_v]
+ * Exp(u) = | Exp_SO3(u_w)   JlSO3(u_w) u_p   JlSO3(u_w) u_v |
+ *          | 0    0    0                 1                0 |
+ *          | 0    0    0                 0                1 |
+ * where, JlSO3 is the left Jacobian of the SO(3) group.
  *
- *  The exogenous input u becomes,
- *   u = (R_{k}.T v dt + 0.5*dt*dt*acc_{k}, omega_{k} dt, acc_{k} dt)
+ * Please see the Appendix C of the paper "A micro Lie theory for state estimation in robotics",
+ * for the definition of the left Jacobian of SO(3).
+ * Please see the Appendix D of the paper, for the definition of Exp map for SE(3).
+ * The Exp map of SE_2(3) is a simple extension from the Exp map of SE(3).
+ * Also, please refer to Example 7 of the paper to understand when and how the left Jacobian of SO(3)
+ * appears in the definitions of Exp maps. The Example 7 illustrates the scenario for SE(3).
+ * We use a direct extension here for SE_2(3).
+ * One can arrive to such a definition by following the convergent Taylor's series expansion
+ * for the matrix exponential of the Lie algebra element (Equation 16 of the paper).
  *
- * Note that all the elements of the input vector u belong in the IMU frame/robot frame.
+ * As a result of X <-- X * Exp(u), we get (2)
+ * p <-- p + R JlSO3(u_w) u_p
+ * R <-- R Exp_SO3(u_w)
+ * v <-- v + R JlSO3(u_w) u_v
  *
+ * We would like to draw a relationship between the sets of equations (1) and (2).
+ * Additionally, we would also like to make use of the IMU measurements as exogeneous inputs.
+ * Considering R.T as the transpose of R, the IMU measurements are modeled as,
+ *    - linear accelerometer measurements alpha = R.T (a - g) + w_acc
+ *    - gyroscope measurements omega = omega_b + w_omega
+ * Note that the IMU measurements are expressed in the IMU frame (coincides with the robot frame - assumption).
+ * The IMU measurements are corrupted by noise,
+ *    - w_omega is the additive white noise affecting the gyroscope measurements
+ *    - w_acc is the additive white noise affecting the linear accelerometer measurements
+ *
+ * Taking into account all of the above considerations, the exogenous input vector u (3) becomes,
+ *   u = (u_p, u_w, u_v) where,
+ *   u_w = omega dt
+ *   Jinv = inv(JlSO3(u_w)) is the left Jacobian inverse of SO(3) Lie group
+ *   u_p = Jinv * (R.T v dt + 0.5 dt^2 (alpha + R.T g))
+ *   u_v = Jinv * ((alpha + R.T g) dt)
+ *
+ * To cross verify the equations, substituting (3) in (2) will give us (1).
+ * This choice of input vector allows us to directly use measurements from the IMU
+ * for an unified motion integration involving position, orientation and linear velocity of the robot.
+ *
+ * The system propagation noise covariance amtrix becomes,
+ *    U = diagonal(0, 0, 0, sigma_omegax^2, sigma_omegay^2, sigma_omegaz^2, sigma_accx^2, sigma_accy^2, sigma_accz^2).
  *
  *  At the arrival of a exogeneous input u, the robot pose is updated
  *  with X <-- X * Exp(u) = X + u.
@@ -86,15 +136,15 @@
  *  All these variables are summarized again as follows
  *
  *    X   : robot's extended pose, SE_2(3)
- *    u   : robot control input, (R_{k}.T v dt + 0.5*dt*dt*acc_{k}, omega_{k} dt, acc_{k} dt)
- *    Q   : control perturbation covariance
+ *    u   : robot control input, (Jinv * (R.T v dt + 0.5 dt^2 (alpha + R.T g)), omega dt, Jinv * ((alpha + R.T g) dt))
+ *    U   : control perturbation covariance
  *    b_k : k-th landmark position, R^3
  *    y   : Cartesian landmark measurement in robot frame, R^3
  *    R   : covariance of the measurement noise
  *
  *  The motion and measurement models are
  *
- *    X_(t+1) = f(X_t, u) = X_t * Exp ( w )     // motion equation
+ *    X_(t+1) = f(X_t, u) = X_t * Exp ( u )     // motion equation
  *    [y_k; 1; 0]     = h(X, b_k) = X^-1 * [b_k; 1; 0]          // measurement equation
  *
  *  The algorithm below comprises first a simulator to
@@ -107,6 +157,13 @@
  *  Printing simulated state and estimated state together
  *  with an unfiltered state (i.e. without Kalman corrections)
  *  allows for evaluating the quality of the estimates.
+ *
+ * A side note: Besides the approach described here in this illustration example,
+ * there are other interesting works like the paper,
+ * The Invariant Extended Kalman filter as a stable observer (https://arxiv.org/pdf/1410.1465.pdf)
+ * which assume a specific structure for the system propagation dynamics "f(X_t, u)" (group affine dynamics)
+ * that simplifies the covariance propagation and enables error dynamics with stronger convergence properties.
+ *
  */
 
 #include "manif/SE_2_3.h"
@@ -157,8 +214,9 @@ int main()
 
     // IMU measurements in IMU frame
     Vector3d alpha, omega, alpha_prev, omega_prev;
-    alpha << 10.0, 0.0, 9.80665;
-    omega << 1, 0.1, 0;
+    alpha << 10.0, 0.0, 9.80665; // constant acceleration along x-direction
+    omega << 1, 0.1, 0; // constant angular velocity about x- and y-direction
+    // Previous IMU measurements in IMU frame initialized to values expected when stationary
     alpha_prev << 0.0, 0.0, 9.80665;
     omega_prev << 0, 0, 0;
 
@@ -234,13 +292,15 @@ int main()
     {
         //// I. Simulation ###############################################################################
 
-        /// get current state
+        /// get current state and measurements from previous step
         auto R_k = X_simulation.rotation();
         auto v_k = X_simulation.linearVelocity();
         auto acc_k = alpha_prev + R_k.transpose()*g;
+        manif::SO3Tangentd Rtan = dt*omega_prev;
+        auto Jinv = Rtan.ljacinv();
 
         /// state dependent velocity vector
-        u_nom << (dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
+        u_nom << Jinv*(dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, Jinv*dt*acc_k;
 
         /// simulate noise
         u_noise = u_sigmas * Array9d::Random();             // control noise
@@ -263,7 +323,7 @@ int main()
 
             y = X_simulation.inverse().act(b);              // landmark measurement, before adding noise
             y = y + y_noise;                                // landmark measurement, noisy
-            measurements[i] << y, 1, 0;                            // store for the estimator just below
+            measurements[i] << y, 1, 0;                     // store for the estimator just below
         }
 
 
