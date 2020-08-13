@@ -3,6 +3,8 @@
 
 #include "manif/impl/so3/SO3_base.h"
 
+#include <Eigen/Geometry>
+
 namespace manif {
 
 // Forward declare for type traits specialization
