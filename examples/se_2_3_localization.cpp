@@ -35,8 +35,8 @@
  *  The robot extended pose X is in SE_2(3) and the beacon positions b_k in R^3,
  *
  *      X = |    R   p  v|              // position, orientation and linear velocity
- *          |0 0 0   1  0|
- *          |0 0 0   0  1|
+ *          |        1   |
+ *          |           1|
  *
  *      b_k = (bx_k, by_k, bz_k)    // lmk coordinates in world frame
  *
@@ -67,7 +67,7 @@
  * v <-- v + a dt
  *
  * We would like to express these equations in the form,
- * X <-- X* Exp(u)
+ * X <-- X * Exp(u)
  * where, X \in SE_2(3), u \in R^9 and u_hat \in se_2(3)
  * Note that here input vector u is expressed in the local frame (robot frame).
  *
@@ -102,6 +102,7 @@
  * The IMU measurements are corrupted by noise,
  *    - w_omega is the additive white noise affecting the gyroscope measurements
  *    - w_acc is the additive white noise affecting the linear accelerometer measurements
+ * It must be noted that we do not consider IMU biases in the IMU measurement model in this example.
  *
  * Taking into account all of the above considerations, the exogenous input vector u (3) becomes,
  *   u = (u_p, u_w, u_v) where,
@@ -114,7 +115,7 @@
  * This choice of input vector allows us to directly use measurements from the IMU
  * for an unified motion integration involving position, orientation and linear velocity of the robot.
  *
- * The system propagation noise covariance amtrix becomes,
+ * The system propagation noise covariance matrix becomes,
  *    U = diagonal(0, 0, 0, sigma_omegax^2, sigma_omegay^2, sigma_omegaz^2, sigma_accx^2, sigma_accy^2, sigma_accz^2).
  *
  *  At the arrival of a exogeneous input u, the robot pose is updated
@@ -124,19 +125,25 @@
  *  though they are put in Cartesian form for simplicity.
  *  Their noise n is zero mean Gaussian, and is specified
  *  with a covariances matrix R.
- *  We notice the rigid motion action [y 0 0]' = h(X,b) = X^-1 * [b 1 0]'
+ *  We notice that the SE_2(3) action is the same as a
+ *  rigid motion action of SE(3).
+ *  This is the action of X \in SE_2(3) on a 3-d point b \in R^3 defined as,
+ *  X b = R b + p
+ *
+ *  Thus, the landmark measurements can be expressed as,
+ *  y = h(X,b) = X^-1 * b'
  *
  *      y_k = (brx_k, bry_k, brz_k)    // lmk coordinates in robot frame
  *
  *  We consider the beacons b_k situated at known positions.
  *  We define the extended pose to estimate as X in SE_2(3).
- *  The estimation error dx and its covariance P are expressed
+ *  The estimation error (innovation) dx and its covariance P are expressed
  *  in the tangent space at X.
  *
  *  All these variables are summarized again as follows
  *
  *    X   : robot's extended pose, SE_2(3)
- *    u   : robot control input, (Jinv * (R.T v dt + 0.5 dt^2 (alpha + R.T g)), omega dt, Jinv * ((alpha + R.T g) dt))
+ *    u   : robot control input, u = u(X, y_imu) \in se_2(3) with X as state and y_imu = [alpha, omega] as IMU readings, see Eq. (3)
  *    U   : control perturbation covariance
  *    b_k : k-th landmark position, R^3
  *    y   : Cartesian landmark measurement in robot frame, R^3
@@ -145,7 +152,7 @@
  *  The motion and measurement models are
  *
  *    X_(t+1) = f(X_t, u) = X_t * Exp ( u )     // motion equation
- *    [y_k; 1; 0]     = h(X, b_k) = X^-1 * [b_k; 1; 0]          // measurement equation
+ *    y_k     = h(X, b_k) = X^-1 * b_k          // measurement equation
  *
  *  The algorithm below comprises first a simulator to
  *  produce measurements, then uses these measurements
