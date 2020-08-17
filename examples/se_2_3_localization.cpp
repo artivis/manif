@@ -137,7 +137,7 @@
  *
  *  We consider the beacons b_k situated at known positions.
  *  We define the extended pose to estimate as X in SE_2(3).
- *  The estimation error (innovation) dx and its covariance P are expressed
+ *  The estimation error dx and its covariance P are expressed
  *  in the tangent space at X.
  *
  *  All these variables are summarized again as follows
