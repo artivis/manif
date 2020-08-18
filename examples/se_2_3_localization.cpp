@@ -46,9 +46,6 @@
  *
  *      g = (0, 0, -9.80665)  // acceleration due to gravity in world frame
  *
- * Note that the linear velocity v is expressed in a frame whose origin coincides with
- * the robot frame but has a orientation which is same as the world frame
- *
  * Consider robot coordinate frame B and world coordinate frame A.
  * - p is the position of the origin of the robot frame B with respect to the world frame A
  * - R is the orientation of the robot frame B with respect to the world frame A
@@ -66,10 +63,11 @@
  * R <-- R Exp_SO3(omega_b)
  * v <-- v + a dt
  *
- * We would like to express these equations in the form,
+ * However, we would like to express the kinematics equations in the form,
  * X <-- X * Exp(u)
  * where, X \in SE_2(3), u \in R^9 and u_hat \in se_2(3)
  * Note that here input vector u is expressed in the local frame (robot frame).
+ * This can be seen as a motion integration on a manifold defined by the group SE_2(3).
  *
  * The exponential mapping of SE_2(3) is defined as,
  * for u = [u_p, u_w, u_v]
@@ -93,8 +91,17 @@
  * R <-- R Exp_SO3(u_w)
  * v <-- v + R JlSO3(u_w) u_v
  *
- * We would like to draw a relationship between the sets of equations (1) and (2).
- * Additionally, we would also like to make use of the IMU measurements as exogeneous inputs.
+ * It is important to notice the subtle difference between (1) and (2) here,
+ * which is specifically the influence of the left Jacobian of SO(3) in (2).
+ * The approach in (1) considers the motion integration is done by defining
+ * the exponential map in R3xSO(3)xR3 instead of SE_2(3),
+ * in the sense explored in Example 7 of the Micro Lie theory paper. It must be noted that
+ * as dt tends to 0, both sets of equations (1) and (2) tend to be the same, since JlSO3 tends to identity.
+ *
+ * Since, (2) exploits the algebra of the SE_2(3) group properly,
+ * we would like to draw a relationship between the sets of equations (2)
+ * and the IMU measurements which will constitute the exogeneous input vector u \in se_2(3).
+ *
  * Considering R.T as the transpose of R, the IMU measurements are modeled as,
  *    - linear accelerometer measurements alpha = R.T (a - g) + w_acc
  *    - gyroscope measurements omega = omega_b + w_omega
@@ -107,13 +114,16 @@
  * Taking into account all of the above considerations, the exogenous input vector u (3) becomes,
  *   u = (u_p, u_w, u_v) where,
  *   u_w = omega dt
- *   Jinv = inv(JlSO3(u_w)) is the left Jacobian inverse of SO(3) Lie group
- *   u_p = Jinv * (R.T v dt + 0.5 dt^2 (alpha + R.T g))
- *   u_v = Jinv * ((alpha + R.T g) dt)
+ *   u_p = (R.T v dt + 0.5 dt^2 (alpha + R.T g)
+ *   u_v = (alpha + R.T g) dt
  *
- * To cross verify the equations, substituting (3) in (2) will give us (1).
  * This choice of input vector allows us to directly use measurements from the IMU
- * for an unified motion integration involving position, orientation and linear velocity of the robot.
+ * for an unified motion integration involving position, orientation and linear velocity of the robot using SE_2(3).
+ * Equations (2) and (3) lead us to the following evolution equations,
+ *
+ * p <-- p + JlSO3 R.T v dt + 0.5 JlSO3 (alpha + R.T g) dt^2
+ * R <-- R Exp_SO3(omega dt)
+ * v <-- v + JlSO3 (alpha + R.T g) dt
  *
  * The system propagation noise covariance matrix becomes,
  *    U = diagonal(0, 0, 0, sigma_omegax^2, sigma_omegay^2, sigma_omegaz^2, sigma_accx^2, sigma_accy^2, sigma_accz^2).
@@ -130,8 +140,8 @@
  *  This is the action of X \in SE_2(3) on a 3-d point b \in R^3 defined as,
  *  X b = R b + p
  *
- *  Thus, the landmark measurements can be expressed as,
- *  y = h(X,b) = X^-1 * b'
+ *  Thus, the landmark measurements can be expressed as a group action on 3d points,
+ *  y = h(X,b) = X^-1 * b
  *
  *      y_k = (brx_k, bry_k, brz_k)    // lmk coordinates in robot frame
  *
@@ -188,7 +198,6 @@ using std::endl;
 using namespace Eigen;
 
 typedef Array<double, 3, 1> Array3d;
-typedef Matrix<double, 5, 1> Vector5d;
 typedef Array<double, 6, 1> Array6d;
 typedef Matrix<double, 6, 1> Vector6d;
 typedef Matrix<double, 6, 6> Matrix6d;
@@ -221,8 +230,8 @@ int main()
 
     // IMU measurements in IMU frame
     Vector3d alpha, omega, alpha_prev, omega_prev;
-    alpha << 10.0, 0.0, 9.80665; // constant acceleration along x-direction
-    omega << 1, 0.1, 0; // constant angular velocity about x- and y-direction
+    alpha << 10.0, 0.0, 9.80665; // constant acceleration along x-direction in IMU frame
+    omega << 1, 0.1, 0; // constant angular velocity about x- and y-direction in IMU frame
     // Previous IMU measurements in IMU frame initialized to values expected when stationary
     alpha_prev << 0.0, 0.0, 9.80665;
     omega_prev << 0, 0, 0;
@@ -257,7 +266,7 @@ int main()
     Vector3d                y, y_noise;
     Array3d                 y_sigmas;
     Matrix3d                R;
-    std::vector<Vector5d>   measurements(landmarks.size());
+    std::vector<Vector3d>   measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
@@ -303,11 +312,9 @@ int main()
         auto R_k = X_simulation.rotation();
         auto v_k = X_simulation.linearVelocity();
         auto acc_k = alpha_prev + R_k.transpose()*g;
-        manif::SO3Tangentd Rtan = dt*omega_prev;
-        auto Jinv = Rtan.ljacinv();
 
-        /// state dependent velocity vector
-        u_nom << Jinv*(dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, Jinv*dt*acc_k;
+        /// input vector
+        u_nom << (dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
 
         /// simulate noise
         u_noise = u_sigmas * Array9d::Random();             // control noise
@@ -330,7 +337,7 @@ int main()
 
             y = X_simulation.inverse().act(b);              // landmark measurement, before adding noise
             y = y + y_noise;                                // landmark measurement, noisy
-            measurements[i] << y, 1, 0;                     // store for the estimator just below
+            measurements[i] << y;                     // store for the estimator just below
         }
 
 
@@ -352,7 +359,7 @@ int main()
             b = landmarks[i];                               // lmk coordinates in world frame
 
            // measurement
-            y = measurements[i].segment<3>(0);                            // lmk measurement, noisy
+            y = measurements[i];                            // lmk measurement, noisy
 
             // expectation
             e = X.inverse(J_xi_x).act(b, J_e_xi);           // note: e = R.tr * ( b - t ), for X = (R,t).
