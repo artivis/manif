@@ -304,7 +304,7 @@ int main()
     //
 
     // Make 10 steps. Measure up to three landmarks each time.
-    for (int t = 0; t < 10; t++)
+    for (double t = 0; t < 10; t+=dt)
     {
         //// I. Simulation ###############################################################################
 
