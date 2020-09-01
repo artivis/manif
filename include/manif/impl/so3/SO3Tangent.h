@@ -1,10 +1,6 @@
 #ifndef _MANIF_MANIF_SO3TANGENT_H_
 #define _MANIF_MANIF_SO3TANGENT_H_
 
-#include "manif/impl/so3/SO3Tangent_base.h"
-
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -49,35 +45,31 @@ private:
   using Base = SO3TangentBase<SO3Tangent<_Scalar>>;
   using Type = SO3Tangent<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO3Tangent()  = default;
   ~SO3Tangent() = default;
 
-  // Copy constructor given base
-  SO3Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SO3Tangent(const SO3TangentBase<_DerivedOther>& o);
-
+  // Copy constructor
+  MANIF_COPY_CONSTRUCTOR(SO3Tangent)
   template <typename _DerivedOther>
   SO3Tangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO3Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
+  MANIF_TANGENT_API
+  using Base::data;
 
-  // Tangent common API
+  MANIF_COEFFS_FUNCTIONS
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
-
-  // SO3Tangent specific API
+  MANIF_TANGENT_ASSIGN_OP(SO3Tangent)
+  MANIF_TANGENT_OPERATOR
 
 protected:
 
@@ -87,51 +79,11 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent);
 
 template <typename _Scalar>
-SO3Tangent<_Scalar>::SO3Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO3Tangent<_Scalar>::SO3Tangent(
-    const SO3TangentBase<_DerivedOther>& o)
+SO3Tangent<_Scalar>::SO3Tangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO3Tangent<_Scalar>::SO3Tangent(
-    const TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO3Tangent<_Scalar>::SO3Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& v)
-  : data_(v)
-{
-  //
-}
-
-template <typename _Scalar>
-typename SO3Tangent<_Scalar>::DataType&
-SO3Tangent<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO3Tangent<_Scalar>::DataType&
-SO3Tangent<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

@@ -1,10 +1,6 @@
 #ifndef _MANIF_MANIF_SO2TANGENT_H_
 #define _MANIF_MANIF_SO2TANGENT_H_
 
-#include "manif/impl/so2/SO2Tangent_base.h"
-
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -49,34 +45,36 @@ private:
   using Base = SO2TangentBase<SO2Tangent<_Scalar>>;
   using Type = SO2Tangent<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
+
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   SO2Tangent()  = default;
   ~SO2Tangent() = default;
 
   // Copy constructor given base
-  SO2Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SO2Tangent(const SO2TangentBase<_DerivedOther>& o);
-
+  MANIF_COPY_CONSTRUCTOR(SO2Tangent)
   template <typename _DerivedOther>
   SO2Tangent(const TangentBase<_DerivedOther>& o);
-
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO2Tangent(const Eigen::MatrixBase<_EigenDerived>& theta);
 
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
 
   // Tangent common API
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_TANGENT_API
+  using Base::data;
+
+  MANIF_COEFFS_FUNCTIONS
+
+  MANIF_TANGENT_ASSIGN_OP(SO2Tangent)
+  MANIF_TANGENT_OPERATOR
 
   // SO2Tangent specific API
 
@@ -90,25 +88,8 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent);
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const SO2TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const TangentBase<_DerivedOther>& o)
+SO2Tangent<_Scalar>::SO2Tangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
@@ -119,29 +100,6 @@ SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)
   : data_(theta)
 {
   //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& theta)
-  : data_(theta)
-{
-  //
-}
-
-template <typename _Scalar>
-typename SO2Tangent<_Scalar>::DataType&
-SO2Tangent<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO2Tangent<_Scalar>::DataType&
-SO2Tangent<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

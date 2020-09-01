@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SO2TANGENT_MAP_H_
 #define _MANIF_MANIF_SO2TANGENT_MAP_H_
 
-#include "manif/impl/so2/SO2Tangent.h"
-
 namespace manif {
 namespace internal {
 
@@ -43,13 +41,18 @@ class Map<manif::SO2Tangent<_Scalar>, 0>
 public:
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_TANGENT_API
+  using Base::data;
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
+
+  MANIF_TANGENT_MAP_ASSIGN_OP(SO2Tangent)
+  MANIF_TANGENT_OPERATOR
+
+  using Base::angle;
 
 protected:
 
@@ -66,12 +69,14 @@ class Map<const manif::SO2Tangent<_Scalar>, 0>
 public:
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_TANGENT_CONST_API
   const DataType& coeffs() const { return data_; }
+  const Scalar* data() const { return data_; }
+
+  MANIF_TANGENT_CONST_OPERATOR
 
 protected:
 

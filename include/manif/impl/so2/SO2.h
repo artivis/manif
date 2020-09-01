@@ -55,29 +55,25 @@ private:
   using Base = SO2Base<SO2<_Scalar>>;
   using Type = SO2<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
-  using Base::normalize;
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
+
+  MANIF_GROUP_TYPEDEF
+  using typename Base::Rotation;
+  using typename Base::Transformation;
 
   SO2()  = default;
   ~SO2() = default;
 
-  // Copy constructor given base
-  SO2(const Base& o);
-
-  template <typename _DerivedOther>
-  SO2(const SO2Base<_DerivedOther>& o);
-
+  // Copy constructor
+  MANIF_COPY_CONSTRUCTOR(SO2)
   template <typename _DerivedOther>
   SO2(const LieGroupBase<_DerivedOther>& o);
-
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO2(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
    * @brief Constructor given the real and imaginary part
@@ -91,15 +87,20 @@ public:
   //! @brief Constructor given an angle (rad.)
   SO2(const Scalar theta);
 
-  // LieGroup common API
+  MANIF_GROUP_API
+  using Base::data;
 
-  //! Get a const reference to the underlying DataType.
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_COEFFS_FUNCTIONS
 
-  // SO2 specific API
+  MANIF_GROUP_ASSIGN_OP(SO2)
+  MANIF_GROUP_OPERATOR
 
+  using Base::transform;
+  using Base::rotation;
+  using Base::real;
+  using Base::imag;
   using Base::angle;
+  using Base::normalize;
 
 protected:
 
@@ -109,36 +110,8 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-               "SO2 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SO2<_Scalar>::SO2(const Base& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const SO2Base<_DerivedOther>& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const LieGroupBase<_DerivedOther>& o)
+SO2<_Scalar>::SO2(const LieGroupBase<_DerivedOther>& o)
   : SO2(o.coeffs())
 {
   //
@@ -157,20 +130,6 @@ SO2<_Scalar>::SO2(const Scalar theta)
 {
   using std::cos;
   using std::sin;
-}
-
-template <typename _Scalar>
-typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

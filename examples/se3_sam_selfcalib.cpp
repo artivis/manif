@@ -182,9 +182,6 @@
 // manif
 #include "manif/SE3.h"
 
-// Eigen
-#include <Eigen/Dense>
-
 // Std
 #include <vector>
 #include <map>

@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SO3_H_
 #define _MANIF_MANIF_SO3_H_
 
-#include "manif/impl/so3/SO3_base.h"
-
 namespace manif {
 
 // Forward declare for type traits specialization
@@ -55,34 +53,27 @@ private:
   using Base = SO3Base<SO3<_Scalar>>;
   using Type = SO3<_Scalar>;
 
-  using QuaternionDataType = Eigen::Quaternion<_Scalar>;
+protected:
+
+  using Base::derived;
 
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
-  using Base::quat;
-  using Base::normalize;
+  MANIF_GROUP_TYPEDEF
+  using typename Base::Rotation;
+  using typename Base::Transformation;
+  // using Base::QuaternionDataType;
+  using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   SO3()  = default;
   ~SO3() = default;
 
-  // Copy constructor given base
-  SO3(const Base& o);
-
-  template <typename _DerivedOther>
-  SO3(const SO3Base<_DerivedOther>& o);
-
+  // Copy constructor
+  MANIF_COPY_CONSTRUCTOR(SO3)
   template <typename _DerivedOther>
   SO3(const LieGroupBase<_DerivedOther>& o);
-
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO3(const Eigen::MatrixBase<_EigenDerived>& data);
 
   /**
    * @brief Constructor given a unit quaternion.
@@ -102,19 +93,28 @@ public:
   SO3(const Scalar x, const Scalar y,
       const Scalar z, const Scalar w);
 
-  /**
-   * @brief Constructor given an angle axis.
-   */
+  //! @brief Constructor given an angle axis.
   SO3(const Eigen::AngleAxis<Scalar>& angle_axis);
 
-  /**
-   * @brief Constructor given Euler angles.
-   */
-  SO3(const Scalar roll, const Scalar pitch,
-      const Scalar yaw);
+  //! @brief Constructor given Euler angles.
+  SO3(const Scalar roll, const Scalar pitch, const Scalar yaw);
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  MANIF_GROUP_API
+  using Base::data;
+
+  MANIF_COEFFS_FUNCTIONS
+
+  MANIF_GROUP_ASSIGN_OP(SO3)
+  MANIF_GROUP_OPERATOR
+
+  using Base::transform;
+  using Base::rotation;
+  using Base::quat;
+  using Base::normalize;
+  using Base::x;
+  using Base::y;
+  using Base::z;
+  using Base::w;
 
 protected:
 
@@ -124,42 +124,12 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-               "SO3 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SO3<_Scalar>::SO3(const Base& o)
-  : SO3(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO3<_Scalar>::SO3(
-    const SO3Base<_DerivedOther>& o)
+SO3<_Scalar>::SO3(const LieGroupBase<_DerivedOther>& o)
   : SO3(o.coeffs())
 {
   //
 }
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO3<_Scalar>::SO3(
-    const LieGroupBase<_DerivedOther>& o)
-  : SO3(o.coeffs())
-{
-  //
-}
-
-
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const QuaternionDataType& q)
@@ -192,20 +162,6 @@ SO3<_Scalar>::SO3(const Scalar roll,
         Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX())  )
 {
   //
-}
-
-template <typename _Scalar>
-typename SO3<_Scalar>::DataType&
-SO3<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SO3<_Scalar>::DataType&
-SO3<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

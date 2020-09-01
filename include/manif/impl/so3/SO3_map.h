@@ -44,15 +44,27 @@ class Map<manif::SO3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
+  MANIF_GROUP_TYPEDEF
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_API
+
+  MANIF_GROUP_MAP_ASSIGN_OP(SO3)
+  MANIF_GROUP_OPERATOR
+
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
+  using Base::data;
+
+  using Base::transform;
+  using Base::rotation;
+  using Base::quat;
+  using Base::normalize;
+  using Base::x;
+  using Base::y;
+  using Base::z;
+  using Base::w;
 
 protected:
 
@@ -70,14 +82,23 @@ class Map<const manif::SO3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
+  MANIF_GROUP_TYPEDEF
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_CONST_API
   const DataType& coeffs() const { return data_; }
+  using Base::data;
+
+  MANIF_GROUP_CONST_OPERATOR
+
+  using Base::transform;
+  using Base::rotation;
+  using Base::quat;
+  using Base::x;
+  using Base::y;
+  using Base::z;
+  using Base::w;
 
 protected:
 

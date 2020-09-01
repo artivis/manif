@@ -1,10 +1,6 @@
 #ifndef _MANIF_MANIF_SE3TANGENT_H_
 #define _MANIF_MANIF_SE3TANGENT_H_
 
-#include "manif/impl/se3/SE3Tangent_base.h"
-
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -49,35 +45,30 @@ private:
   using Base = SE3TangentBase<SE3Tangent<_Scalar>>;
   using Type = SE3Tangent<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   SE3Tangent()  = default;
   ~SE3Tangent() = default;
 
-  // Copy constructor given base
-  SE3Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SE3Tangent(const SE3TangentBase<_DerivedOther>& o);
-
+  // Copy constructor
+  MANIF_COPY_CONSTRUCTOR(SE3Tangent)
   template <typename _DerivedOther>
   SE3Tangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SE3Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
+  MANIF_TANGENT_API
 
-  // Tangent common API
+  MANIF_COEFFS_FUNCTIONS
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
-
-  // SE3Tangent specific API
+  MANIF_TANGENT_ASSIGN_OP(SE3Tangent)
+  MANIF_TANGENT_OPERATOR
 
 protected:
 
@@ -87,51 +78,12 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SE3Tangent);
 
 template <typename _Scalar>
-SE3Tangent<_Scalar>::SE3Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SE3Tangent<_Scalar>::SE3Tangent(
-    const SE3TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
 SE3Tangent<_Scalar>::SE3Tangent(
     const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE3Tangent<_Scalar>::SE3Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& v)
-  : data_(v)
-{
-  //
-}
-
-template <typename _Scalar>
-typename SE3Tangent<_Scalar>::DataType&
-SE3Tangent<_Scalar>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar>
-const typename SE3Tangent<_Scalar>::DataType&
-SE3Tangent<_Scalar>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

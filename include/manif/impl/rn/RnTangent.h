@@ -1,10 +1,6 @@
 #ifndef _MANIF_MANIF_RNTANGENT_H_
 #define _MANIF_MANIF_RNTANGENT_H_
 
-#include "manif/impl/rn/RnTangent_base.h"
-
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -51,33 +47,35 @@ private:
   using Base = RnTangentBase<RnTangent<_Scalar, _N>>;
   using Type = RnTangent<_Scalar, _N>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   RnTangent()  = default;
   ~RnTangent() = default;
 
   // Copy constructor given base
-  RnTangent(const Base& o);
-  template <typename _DerivedOther>
-  RnTangent(const RnTangentBase<_DerivedOther>& o);
-
+  MANIF_COPY_CONSTRUCTOR(RnTangent)
   template <typename _DerivedOther>
   RnTangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  RnTangent(const Eigen::MatrixBase<_EigenDerived>& theta);
+  MANIF_TANGENT_API
+
+  MANIF_COEFFS_FUNCTIONS
+
+  MANIF_TANGENT_ASSIGN_OP(RnTangent)
+  MANIF_TANGENT_OPERATOR
 
   // Tangent common API
 
-  DataType& coeffs();
-  const DataType& coeffs() const;
+  // DataType& coeffs();
+  // const DataType& coeffs() const;
 
 protected:
 
@@ -105,52 +103,26 @@ MANIF_EXTRA_GROUP_TYPEDEF(R8Tangent)
 MANIF_EXTRA_GROUP_TYPEDEF(R9Tangent)
 
 template <typename _Scalar, unsigned int _N>
-RnTangent<_Scalar, _N>::RnTangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
 template <typename _DerivedOther>
-RnTangent<_Scalar, _N>::RnTangent(
-    const RnTangentBase<_DerivedOther>& o)
+RnTangent<_Scalar, _N>::RnTangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
 }
-
-template <typename _Scalar, unsigned int _N>
-template <typename _DerivedOther>
-RnTangent<_Scalar, _N>::RnTangent(
-    const TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-template <typename _EigenDerived>
-RnTangent<_Scalar, _N>::RnTangent(
-    const Eigen::MatrixBase<_EigenDerived>& theta)
-  : data_(theta)
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-typename RnTangent<_Scalar, _N>::DataType&
-RnTangent<_Scalar, _N>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar, unsigned int _N>
-const typename RnTangent<_Scalar, _N>::DataType&
-RnTangent<_Scalar, _N>::coeffs() const
-{
-  return data_;
-}
+//
+// template <typename _Scalar, unsigned int _N>
+// typename RnTangent<_Scalar, _N>::DataType&
+// RnTangent<_Scalar, _N>::coeffs()
+// {
+//   return data_;
+// }
+//
+// template <typename _Scalar, unsigned int _N>
+// const typename RnTangent<_Scalar, _N>::DataType&
+// RnTangent<_Scalar, _N>::coeffs() const
+// {
+//   return data_;
+// }
 
 } // namespace manif
 

@@ -5,6 +5,11 @@
 
 using namespace manif;
 
+TEST(TEST_SE2, TEST_SE2_Foo)
+{
+  SE2d se2 = SE2d::Random().inverse();
+}
+
 TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_DATATYPE)
 {
   SE2d se2(SE2d::DataType(0,0,1,0));
@@ -480,7 +485,7 @@ TEST(TEST_SE2, TEST_SE2_ACT)
 {
   SE2d se2(1,1,MANIF_PI/2.);
 
-  auto transformed_point = se2.act(Eigen::Vector2d(1,1));
+  Eigen::Vector2d transformed_point = se2.act(Eigen::Vector2d(1,1));
 
   /// @todo precision issue ?
   //EXPECT_DOUBLE_EQ(0.0, transformed_point.x());

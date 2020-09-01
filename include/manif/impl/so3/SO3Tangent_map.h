@@ -45,13 +45,16 @@ class Map<manif::SO3Tangent<_Scalar>, 0>
 public:
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_TANGENT_API
+  using Base::data;
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
+
+  MANIF_TANGENT_MAP_ASSIGN_OP(SO3Tangent)
+  MANIF_TANGENT_OPERATOR
 
 protected:
 
@@ -70,12 +73,15 @@ class Map<const manif::SO3Tangent<_Scalar>, 0>
 public:
 
   MANIF_TANGENT_TYPEDEF
-  MANIF_INHERIT_TANGENT_API
-  MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_TANGENT_CONST_API
   const DataType& coeffs() const { return data_; }
+  // const Scalar* data() const { return data_; }
+  using Base::data;
+
+  MANIF_TANGENT_CONST_OPERATOR
 
 protected:
 

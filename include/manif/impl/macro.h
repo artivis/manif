@@ -116,31 +116,121 @@ raise(Args&&... args)
 #define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(X) \
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename X::DataType>::Alignment>0))
 
+#define MANIF_DEFAULT_CONSTRUCTOR(X)  \
+  X() = default;                      \
+  ~X() = default;                     \
+  X(const X&) = default;              \
+  X(X&&) = delete;
+
+#define MANIF_GROUP_ML_ASSIGN_OP(X) \
+  _Derived& operator =(const X& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  _Derived& operator =(const LieGroupBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  _Derived& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return derived(); }
+
+#define MANIF_GROUP_ASSIGN_OP(X) \
+  X& operator=(const X& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const LieGroupBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  X& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return derived(); }
+
+#define MANIF_GROUP_MAP_ASSIGN_OP(X) \
+  Map& operator=(const Map& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::LieGroupBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  Map& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return *this; }
+
+#define MANIF_TANGENT_ML_ASSIGN_OP(X) \
+  _Derived& operator=(const X& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  _Derived& operator =(const TangentBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  _Derived& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return derived(); }
+
+#define MANIF_TANGENT_ASSIGN_OP(X) \
+  X& operator=(const X& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const TangentBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return derived(); }\
+  template <typename _DerivedOther>\
+  X& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  X& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return derived(); }
+
+#define MANIF_TANGENT_MAP_ASSIGN_OP(X) \
+  Map& operator=(const Map& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::TangentBase<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\
+  template <typename _DerivedOther>\
+  Map& operator =(const manif::internal::ExprBase<_DerivedOther>& o) { return operator=(o.eval()); }\
+  template <typename _EigenDerived>\
+  Map& operator =(const Eigen::MatrixBase<_EigenDerived>& o) { coeffs() = o; return *this; }
+
+/**
+ * @brief Automatically define:
+ * - copy constructor
+ * - copy constructor given Base object
+ * - copy constructor given Eigen object
+ */
+#define MANIF_COPY_CONSTRUCTOR(X)                                                   \
+  X(const X& o) : Base(), data_(o.coeffs()) { }                                     \
+  X(const Base& o) : Base(), data_(o.coeffs()) { }                                  \
+  template <typename D> X(const manif::internal::ExprBase<D>& o) : X(o.eval()) { }  \
+  template <typename D> X(const Eigen::MatrixBase<D>& o) : Base(), data_(o)         \
+    { manif::internal::AssignmentEvaluator<Base>().run(o); }
+
+#define MANIF_COEFFS_FUNCTIONS                        \
+  DataType& coeffs() & { return data_; }              \
+  const DataType& coeffs() const & { return data_; }
+
 // LieGroup - related macros
 
-#define MANIF_INHERIT_GROUP_AUTO_API    \
-  using Base::setRandom;                \
-  using Base::rplus;                    \
-  using Base::lplus;                    \
-  using Base::rminus;                   \
-  using Base::lminus;                   \
-  using Base::between;
-
-#define MANIF_INHERIT_GROUP_API     \
-  MANIF_INHERIT_GROUP_AUTO_API      \
-  using Base::setIdentity;          \
+#define MANIF_GROUP_CONST_API       \
+  using Base::rplus;                \
+  using Base::lplus;                \
+  using Base::rminus;               \
+  using Base::lminus;               \
+  using Base::between;              \
+  using Base::compose;              \
   using Base::inverse;              \
   using Base::lift;                 \
   using Base::log;                  \
+  using Base::act;                  \
   using Base::adj;
 
-#define MANIF_INHERIT_GROUP_OPERATOR    \
+#define MANIF_GROUP_API             \
+  using Base::setRandom;            \
+  using Base::setIdentity;          \
+  MANIF_GROUP_CONST_API
+
+#define MANIF_GROUP_CONST_OPERATOR      \
   using Base::operator +;               \
-  using Base::operator +=;              \
   using Base::operator -;               \
   using Base::operator *;               \
-  using Base::operator *=;              \
   using Base::operator =;
+
+#define MANIF_GROUP_OPERATOR    \
+  using Base::operator +=;      \
+  using Base::operator *=;      \
+  MANIF_GROUP_CONST_OPERATOR
 
 #define MANIF_GROUP_PROPERTIES \
   using Base::Dim;             \
@@ -156,19 +246,13 @@ raise(Args&&... args)
   using Vector         = typename Base::Vector;         \
   using OptJacobianRef = typename Base::OptJacobianRef;
 
-#define MANIF_COMPLETE_GROUP_TYPEDEF \
-  MANIF_GROUP_TYPEDEF                \
-  MANIF_INHERIT_GROUP_OPERATOR
-
 #define MANIF_EXTRA_GROUP_TYPEDEF(group) \
   using group##f = group<float>;         \
   using group##d = group<double>;
 
 // Tangent - related macros
 
-#define MANIF_INHERIT_TANGENT_API \
-  using Base::setZero;            \
-  using Base::setRandom;          \
+#define MANIF_TANGENT_CONST_API   \
   using Base::retract;            \
   using Base::exp;                \
   using Base::hat;                \
@@ -176,13 +260,22 @@ raise(Args&&... args)
   using Base::ljac;               \
   using Base::smallAdj;
 
-#define MANIF_INHERIT_TANGENT_OPERATOR \
-  using Base::operator +=;             \
-  using Base::operator -=;             \
-  using Base::operator *=;             \
-  using Base::operator /=;             \
-  using Base::operator =;              \
+#define MANIF_TANGENT_API   \
+  using Base::setZero;      \
+  using Base::setRandom;    \
+  MANIF_TANGENT_CONST_API
+
+#define MANIF_TANGENT_CONST_OPERATOR  \
+  using Base::operator -;             \
+  using Base::operator +;             \
   using Base::operator <<;
+
+#define MANIF_TANGENT_OPERATOR  \
+  using Base::operator +=;      \
+  using Base::operator -=;      \
+  using Base::operator *=;      \
+  using Base::operator /=;      \
+  MANIF_TANGENT_CONST_OPERATOR
 
 #define MANIF_TANGENT_PROPERTIES \
 using Base::Dim;                 \

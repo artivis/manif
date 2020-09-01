@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_RN_H_
 #define _MANIF_MANIF_RN_H_
 
-#include "manif/impl/rn/Rn_base.h"
-
 namespace manif {
 
 // Forward declare for type traits specialization
@@ -56,38 +54,32 @@ private:
   using Base = RnBase<Rn<_Scalar, _N>>;
   using Type = Rn<_Scalar, _N>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
+  MANIF_GROUP_TYPEDEF
+  using typename Base::Transformation;
 
   Rn()  = default;
   ~Rn() = default;
 
   // Copy constructor given base
-  Rn(const Base& o);
-
-  template <typename _DerivedOther>
-  Rn(const RnBase<_DerivedOther>& o);
-
+  MANIF_COPY_CONSTRUCTOR(Rn)
   template <typename _DerivedOther>
   Rn(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  Rn(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_API
+  using Base::data;
 
-  // LieGroup common API
+  MANIF_COEFFS_FUNCTIONS
 
-  //! Get a const reference to the underlying DataType.
-  DataType& coeffs();
-
-  //! Get a const reference to the underlying DataType.
-  const DataType& coeffs() const;
-
-  // Rn specific API
+  MANIF_GROUP_ASSIGN_OP(Rn)
+  MANIF_GROUP_OPERATOR
 
 protected:
 
@@ -115,48 +107,11 @@ MANIF_EXTRA_GROUP_TYPEDEF(R8)
 MANIF_EXTRA_GROUP_TYPEDEF(R9)
 
 template <typename _Scalar, unsigned int _N>
-template <typename _EigenDerived>
-Rn<_Scalar, _N>::Rn(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-Rn<_Scalar, _N>::Rn(const Base& o)
-  : Rn(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
-template <typename _DerivedOther>
-Rn<_Scalar, _N>::Rn(const RnBase<_DerivedOther>& o)
-  : Rn(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar, unsigned int _N>
 template <typename _DerivedOther>
 Rn<_Scalar, _N>::Rn(const LieGroupBase<_DerivedOther>& o)
   : Rn(o.coeffs())
 {
   //
-}
-
-template <typename _Scalar, unsigned int _N>
-typename Rn<_Scalar, _N>::DataType&
-Rn<_Scalar, _N>::coeffs()
-{
-  return data_;
-}
-
-template <typename _Scalar, unsigned int _N>
-const typename Rn<_Scalar, _N>::DataType&
-Rn<_Scalar, _N>::coeffs() const
-{
-  return data_;
 }
 
 } /* namespace manif */

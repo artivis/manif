@@ -2,17 +2,26 @@
 #define _MANIF_MANIF_IMPL_RANDOM_H_
 
 namespace manif {
+
+template <class Derived> struct LieGroupBase;
+template <class Derived> struct TangentBase;
+
 namespace internal {
 
 template <typename Derived>
 struct RandomEvaluatorImpl
 {
   template <typename T>
-  static void run(T&)
+  static void run(TangentBase<T>& t)
   {
-    /// @todo print actual Derived type
-    static_assert(constexpr_false<Derived>(),
-                  "RandomEvaluator not overloaded for Derived type!");
+    t.coeffs().setRandom();
+  }
+
+  template <typename T>
+  static void run(LieGroupBase<T>& t)
+  {
+    using Tangent = typename LieGroupBase<T>::Tangent;
+    t = Tangent::Random().exp();
   }
 };
 

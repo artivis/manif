@@ -1,8 +1,6 @@
 #ifndef _MANIF_MANIF_SE3_MAP_H_
 #define _MANIF_MANIF_SE3_MAP_H_
 
-#include "manif/impl/se3/SE3.h"
-
 namespace manif {
 namespace internal {
 
@@ -44,15 +42,28 @@ class Map<manif::SE3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
+  MANIF_GROUP_TYPEDEF
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_API
+
+  MANIF_GROUP_MAP_ASSIGN_OP(SE3)
+  MANIF_GROUP_OPERATOR
+
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
+  using Base::data;
+
+  using Base::transform;
+  using Base::rotation;
+  using Base::isometry;
+  using Base::quat;
+  using Base::translation;
+  using Base::x;
+  using Base::y;
+  using Base::z;
+  using Base::normalize;
 
 protected:
 
@@ -70,14 +81,24 @@ class Map<const manif::SE3<_Scalar>, 0>
 
 public:
 
-  MANIF_COMPLETE_GROUP_TYPEDEF
-  MANIF_INHERIT_GROUP_API
-  using Base::transform;
-  using Base::rotation;
+  MANIF_GROUP_TYPEDEF
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_CONST_API
   const DataType& coeffs() const { return data_; }
+
+  using Base::data;
+
+  MANIF_GROUP_CONST_OPERATOR
+  using Base::transform;
+  using Base::rotation;
+  using Base::isometry;
+  using Base::quat;
+  using Base::translation;
+  using Base::x;
+  using Base::y;
+  using Base::z;
 
 protected:
 
