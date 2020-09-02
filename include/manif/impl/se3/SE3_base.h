@@ -254,7 +254,7 @@ void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
 template <typename _Derived>
 void SE3Base<_Derived>::quat(const SO3<Scalar>& so3)
 {
-  quat(so3.quat());
+  quat(so3.coeffs());
 }
 
 template <typename _Derived>
