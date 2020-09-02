@@ -155,6 +155,31 @@ public:
    */
   void normalize();
 
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion a unitary quaternion
+   */
+  void quat(const QuaternionDataType& quaternion);
+
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion an Eigen::Vector representing a unitary quaternion
+   */
+  template <typename _EigenDerived>
+  void quat(const Eigen::MatrixBase<_EigenDerived>& quaternion);
+
+  /**
+   * @brief Set the rotational as a so3 object.
+   * @param so3 a manif::SO3 object
+   */
+  void quat(const SO3<Scalar>& so3);
+
+  /**
+   * @brief Set the translation of the SE3 object
+   * @param translation, 3d-vector representing the translation
+   */
+  void translation(const Translation& translation);
+
 public: /// @todo make protected
 
   Eigen::Map<const SO3<Scalar>> asSO3() const
@@ -204,6 +229,38 @@ typename SE3Base<_Derived>::Translation
 SE3Base<_Derived>::translation() const
 {
   return coeffs().template head<3>();
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::quat(const QuaternionDataType& quaternion)
+{
+  quat(quaternion.coeffs());
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
+{
+  using std::abs;
+  assert_vector_dim(quaternion, 4);
+  MANIF_ASSERT(abs(quaternion.template norm()-Scalar(1)) <
+               Constants<Scalar>::eps_s,
+               "The quaternion is not normalized !",
+               invalid_argument);
+
+  asSO3().coeffs() = quaternion;
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::quat(const SO3<Scalar>& so3)
+{
+  quat(so3.coeffs());
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::translation(const Translation& translation)
+{
+  coeffs().template head<3>() = translation;
 }
 
 template <typename _Derived>

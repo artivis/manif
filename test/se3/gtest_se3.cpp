@@ -106,6 +106,77 @@ TEST(TEST_SE3, TEST_SE3_DATA)
   EXPECT_DOUBLE_EQ(1, *data_ptr);
 }
 
+TEST(TEST_SE3, TEST_SE3_SET_AXIS_ANGLE)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  Eigen::AngleAxis<double> axisAngle(0.23, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond quat(axisAngle);
+
+  se3.quat(axisAngle);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_QUATERNION)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  Eigen::AngleAxis<double> axisAngle(0.23, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond quat(axisAngle);
+
+  se3.quat(quat);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_SO3)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+  SO3d so3(Eigen::AngleAxis<double>(0.23, Eigen::Vector3d::UnitZ()));
+
+  se3.quat(so3);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_TRANSLATION)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  se3.translation(Eigen::Vector3d(1,1,1));
+
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
+}
+
 TEST(TEST_SE3, TEST_SE3_CAST)
 {
   SE3d se3d(SE3d::Translation(1,2,3),
