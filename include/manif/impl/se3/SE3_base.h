@@ -163,10 +163,10 @@ public:
 
   /**
    * @brief Set the rotational as a quaternion.
-   * @param quaternion an Eigen::Vector representing a quaternion
+   * @param quaternion an Eigen::Vector representing a unitary quaternion
    */
   template <typename _EigenDerived>
-  void quat(const Eigen::MatrixBase<_EigenDerived> &quaternion);
+  void quat(const Eigen::MatrixBase<_EigenDerived>& quaternion);
 
   /**
    * @brief Set the rotational as a so3 object.
@@ -232,7 +232,7 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
-void SE3Base<_Derived>::quat(const SE3Base<_Derived>::QuaternionDataType& quaternion)
+void SE3Base<_Derived>::quat(const QuaternionDataType& quaternion)
 {
   using std::abs;
   MANIF_ASSERT(abs(quaternion.template norm()-Scalar(1)) <
@@ -245,8 +245,9 @@ void SE3Base<_Derived>::quat(const SE3Base<_Derived>::QuaternionDataType& quater
 
 template <typename _Derived>
 template <typename _EigenDerived>
-void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived> &quaternion)
+void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
 {
+  using std::abs;
   assert_vector_dim(quaternion, 4);
   MANIF_ASSERT(abs(quaternion.template norm()-Scalar(1)) <
                Constants<Scalar>::eps_s,
