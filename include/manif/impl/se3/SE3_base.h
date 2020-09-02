@@ -234,13 +234,7 @@ SE3Base<_Derived>::translation() const
 template <typename _Derived>
 void SE3Base<_Derived>::quat(const QuaternionDataType& quaternion)
 {
-  using std::abs;
-  MANIF_ASSERT(abs(quaternion.template norm()-Scalar(1)) <
-               Constants<Scalar>::eps_s,
-               "The quaternion is not normalized !",
-               invalid_argument);
-
-  asSO3().coeffs() = quaternion.coeffs();
+  quat(quaternion.coeffs());
 }
 
 template <typename _Derived>
