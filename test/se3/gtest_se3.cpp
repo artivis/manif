@@ -7,9 +7,6 @@
 
 using namespace manif;
 
-static_assert(std::is_nothrow_move_constructible<SE3d>::value, "must be no throw");
-static_assert(std::is_nothrow_move_constructible<SE3Tangentd>::value, "must be no throw");
-
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_DATATYPE)
 {
   SE3d::DataType values; values << 0,0,0, 0,0,0,1;

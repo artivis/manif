@@ -4,9 +4,6 @@
 
 using namespace manif;
 
-static_assert(std::is_nothrow_move_constructible<SO2d>::value, "must be no throw");
-static_assert(std::is_nothrow_move_constructible<SO2Tangentd>::value, "must be no throw");
-
 TEST(TEST_SO2, TEST_SO2_PROPS)
 {
   EXPECT_EQ(2, SO2d::Dim);

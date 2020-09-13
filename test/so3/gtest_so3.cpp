@@ -6,9 +6,6 @@
 
 using namespace manif;
 
-static_assert(std::is_nothrow_move_constructible<SO3d>::value, "must be no throw");
-static_assert(std::is_nothrow_move_constructible<SO3Tangentd>::value, "must be no throw");
-
 TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_DATATYPE)
 {
   SO3d so3(SO3d::DataType(0,0,0,1));
