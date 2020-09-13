@@ -58,7 +58,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   SO3Tangent()  = default;
-  ~SO3Tangent() = default;
 
   // Copy constructor given base
   SO3Tangent(const Base& o);

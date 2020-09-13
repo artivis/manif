@@ -60,7 +60,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   RnTangent()  = default;
-  ~RnTangent() = default;
 
   // Copy constructor given base
   RnTangent(const Base& o);

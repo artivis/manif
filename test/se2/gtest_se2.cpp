@@ -5,6 +5,9 @@
 
 using namespace manif;
 
+static_assert(std::is_nothrow_move_constructible<SE2d>::value, "must be no throw");
+static_assert(std::is_nothrow_move_constructible<SE2Tangentd>::value, "must be no throw");
+
 TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_DATATYPE)
 {
   SE2d se2(SE2d::DataType(0,0,1,0));

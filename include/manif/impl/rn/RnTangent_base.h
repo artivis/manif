@@ -29,7 +29,6 @@ public:
   using Base::coeffs;
 
   RnTangentBase()  = default;
-  ~RnTangentBase() = default;
 
   // Tangent common API
 

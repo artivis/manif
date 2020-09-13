@@ -64,7 +64,6 @@ public:
   MANIF_INHERIT_GROUP_API
 
   Rn()  = default;
-  ~Rn() = default;
 
   // Copy constructor given base
   Rn(const Base& o);

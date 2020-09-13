@@ -32,7 +32,6 @@ public:
   using Base::coeffs;
 
   SO3TangentBase()  = default;
-  ~SO3TangentBase() = default;
 
   /**
    * @brief Hat operator of SO3.

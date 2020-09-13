@@ -56,7 +56,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   SO2Tangent()  = default;
-  ~SO2Tangent() = default;
 
   // Copy constructor given base
   SO2Tangent(const Base& o);

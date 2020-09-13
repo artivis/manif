@@ -25,7 +25,6 @@ private:
 public:
 
   SE2TangentBase()  = default;
-  ~SE2TangentBase() = default;
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR

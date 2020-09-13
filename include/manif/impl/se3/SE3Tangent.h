@@ -58,7 +58,6 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   SE3Tangent()  = default;
-  ~SE3Tangent() = default;
 
   // Copy constructor given base
   SE3Tangent(const Base& o);

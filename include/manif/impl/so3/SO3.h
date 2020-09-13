@@ -69,7 +69,6 @@ public:
   using Base::normalize;
 
   SO3()  = default;
-  ~SO3() = default;
 
   // Copy constructor given base
   SO3(const Base& o);
