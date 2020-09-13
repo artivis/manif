@@ -573,9 +573,10 @@ TEST(TEST_SO2, TEST_SO2_NORMALIZE)
   Eigen::Map<SO2d> map(data.data());
   map.normalize();
 
-  EXPECT_NO_THROW(
-    SO2d b = map
-  );
+  EXPECT_NO_THROW({
+    SO2d b = map;
+    (void)b;
+  });
 }
 
 #endif
