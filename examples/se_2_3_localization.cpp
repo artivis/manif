@@ -232,11 +232,11 @@ int main()
 
     // IMU measurements in IMU frame
     Vector3d alpha, alpha_const, omega, alpha_prev, omega_prev;
-    alpha_const << 0.001, 0.02, 0.05; // constant acceleration in IMU frame without gravity compensation
-    omega << 0.02, 0.01, 0; // constant angular velocity about x- and y-direction in IMU frame
+    alpha_const << 0.1, 0.01, 0.1; // constant acceleration in IMU frame without gravity compensation
+    omega << 0.01, 0.1, 0; // constant angular velocity about x- and y-direction in IMU frame
 
     // Previous IMU measurements in IMU frame initialized to values expected when stationary
-    alpha_prev = alpha =  - (X_simulation.rotation()).transpose()*g;
+    alpha_prev = alpha = alpha_const - (X_simulation.rotation()).transpose()*g;
     omega_prev << 0, 0, 0;
 
     // Define a control vector and its noise and covariance
@@ -309,6 +309,7 @@ int main()
 
 
 
+
     // START TEMPORAL LOOP
     //
     //
@@ -323,9 +324,6 @@ int main()
         auto v_k = X_simulation.linearVelocity();
         auto acc_k = alpha_prev + R_k.transpose()*g;
 
-        /// update expected IMU measurements
-        alpha = alpha_const - R_k.transpose()*g;
-
         /// input vector
         u_nom << (dt*(R_k.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
 
@@ -338,6 +336,8 @@ int main()
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         X_simulation = X_simulation + u_simu;               // overloaded X.rplus(u) = X * exp(u)
+        /// update expected IMU measurements
+        alpha = alpha_const - X_simulation.rotation().transpose()*g; // update expected IMU measurement after moving
 
         /// then we measure all landmarks - - - - - - - - - - - - - - - - - - - -
         for (int i = 0; i < landmarks.size(); i++)
@@ -434,7 +434,9 @@ int main()
         cout << "---------------------------------------------------------------------------" << endl;
         // END DEBUG
 
+
     }
+
 
     //
     //
