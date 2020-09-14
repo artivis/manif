@@ -221,7 +221,9 @@ int main()
     X.setIdentity();
     X_unfiltered.setIdentity();
     P.setZero();
-    P.block<3, 3>(0,0) = 0.01*Eigen::Matrix3d::Identity();
+    P.block<3, 3>(0, 0) = 0.001*Eigen::Matrix3d::Identity();
+    P.block<3, 3>(3, 3) = 0.01*Eigen::Matrix3d::Identity();
+    P.block<3, 3>(6, 6) = 0.001*Eigen::Matrix3d::Identity();
 
     // acceleration due to gravity in world frame
     Vector3d g;
@@ -229,11 +231,12 @@ int main()
     const double dt = 0.1;
 
     // IMU measurements in IMU frame
-    Vector3d alpha, omega, alpha_prev, omega_prev;
-    alpha << 10.0, 0.0, 9.80665; // constant acceleration along x-direction in IMU frame
-    omega << 1, 0.1, 0; // constant angular velocity about x- and y-direction in IMU frame
+    Vector3d alpha, alpha_const, omega, alpha_prev, omega_prev;
+    alpha_const << 0.001, 0.02, 0.05; // constant acceleration in IMU frame without gravity compensation
+    omega << 0.02, 0.01, 0; // constant angular velocity about x- and y-direction in IMU frame
+
     // Previous IMU measurements in IMU frame initialized to values expected when stationary
-    alpha_prev << 0.0, 0.0, 9.80665;
+    alpha_prev = alpha =  - (X_simulation.rotation()).transpose()*g;
     omega_prev << 0, 0, 0;
 
     // Define a control vector and its noise and covariance
@@ -242,7 +245,7 @@ int main()
     Array9d             u_sigmas;
     Matrix9d            U;
 
-    u_sigmas << 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1;
+    u_sigmas << 0.0, 0.0, 0.0, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
@@ -265,7 +268,7 @@ int main()
     // Define the beacon's measurements
     Vector3d                y, y_noise;
     Array3d                 y_sigmas;
-    Matrix3d                R;
+    Matrix3d                R;   /**< Beacon measurement noise covariance matrix **/
     std::vector<Vector3d>   measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01, 0.01;
@@ -292,10 +295,17 @@ int main()
     cout << std::fixed   << std::setprecision(3) << std::showpos << endl;
     cout << "X STATE     :    X      Y      Z    TH_x   TH_y   TH_z     V_x   V_y    V_z" << endl;
     cout << "---------------------------------------------------------------------------" << endl;
-    cout << "X initial   : " << X_simulation.log().coeffs().transpose() << endl;
+    cout << "X simulated : Pos: " << X_simulation.translation().transpose() <<
+                             " RPY: " << X_simulation.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X_simulation.linearVelocity().transpose() << endl;
+    cout << "X estimated : Pos: " << X.translation().transpose() <<
+                             " RPY: " << X.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X.linearVelocity().transpose() << endl;
+    cout << "X unfilterd : Pos: " << X_unfiltered.translation().transpose() <<
+                             " RPY: " << X_unfiltered.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X_unfiltered.linearVelocity().transpose() << endl;
     cout << "---------------------------------------------------------------------------" << endl;
     // END DEBUG
-
 
 
 
@@ -308,20 +318,22 @@ int main()
     {
         //// I. Simulation ###############################################################################
 
-        /// get current state and measurements from previous step
+        /// get current simulated state and measurements from previous step
         auto R_k = X_simulation.rotation();
         auto v_k = X_simulation.linearVelocity();
         auto acc_k = alpha_prev + R_k.transpose()*g;
 
+        /// update expected IMU measurements
+        alpha = alpha_const - R_k.transpose()*g;
+
         /// input vector
-        u_nom << (dt*(R.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
+        u_nom << (dt*(R_k.transpose())*v_k + 0.5*dt*dt*acc_k),  dt*omega_prev, dt*acc_k;
 
         /// simulate noise
         u_noise = u_sigmas * Array9d::Random();             // control noise
         u_noisy = u_nom + u_noise;                          // noisy control
 
         u_simu   = u_nom;
-        u_est    = u_noisy;
         u_unfilt = u_noisy;
 
         /// first we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -344,6 +356,14 @@ int main()
 
 
         //// II. Estimation ###############################################################################
+
+        /// get current state estimate to build the state-dependent control vector
+        auto R_k_est = X.rotation();
+        auto v_k_est = X.linearVelocity();
+        auto acc_k_est = alpha_prev + R_k_est.transpose()*g;
+
+        u_est << (dt*(R_k_est.transpose())*v_k_est + 0.5*dt*dt*acc_k_est),  dt*omega_prev, dt*acc_k_est;
+        u_est += u_noise;
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -396,9 +416,21 @@ int main()
         //// IV. Results ##############################################################################
 
         // DEBUG
-        cout << "X simulated : " << X_simulation.log().coeffs().transpose() << endl;
-        cout << "X estimated : " << X.log().coeffs().transpose() << endl;
-        cout << "X unfilterd : " << X_unfiltered.log().coeffs().transpose() << endl;
+        cout << "X simulated : Pos: " << X_simulation.translation().transpose() <<
+                             " RPY: " << X_simulation.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X_simulation.linearVelocity().transpose() << endl;
+        cout << "X estimated : Pos: " << X.translation().transpose() <<
+                             " RPY: " << X.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X.linearVelocity().transpose() << endl;
+        cout << "X unfilterd : Pos: " << X_unfiltered.translation().transpose() <<
+                             " RPY: " << X_unfiltered.rotation().eulerAngles(2, 1, 0).reverse().transpose() <<
+                             " Vel: " << X_unfiltered.linearVelocity().transpose() << endl;
+        cout << "---------------------------------------------------------------------------" << endl;
+
+        cout << "X simulated : log: " << X_simulation.log() << endl;
+        cout << "X estimated : log: " << X.log() << endl;
+        cout << "X unfilterd : log: " << X_unfiltered.log() << endl;
+        cout << "---------------------------------------------------------------------------" << endl;
         cout << "---------------------------------------------------------------------------" << endl;
         // END DEBUG
 
