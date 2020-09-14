@@ -545,9 +545,10 @@ TEST(TEST_SE2, TEST_SE2_NORMALIZE)
   Eigen::Map<SE2d> map(data.data());
   map.normalize();
 
-  EXPECT_NO_THROW(
+  EXPECT_NO_THROW({
     SE2d b = map
-  );
+    (void)b;
+  });
 }
 
 #endif

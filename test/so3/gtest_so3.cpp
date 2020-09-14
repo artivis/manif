@@ -588,9 +588,10 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
   Eigen::Map<SO3d> map(data.data());
   map.normalize();
 
-  EXPECT_NO_THROW(
+  EXPECT_NO_THROW({
     SO3d b = map
-  );
+    (void)b;
+  });
 }
 
 #endif
