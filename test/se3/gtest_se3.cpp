@@ -447,7 +447,7 @@ TEST(TEST_SE3, TEST_SE3_NORMALIZE)
   map.normalize();
 
   EXPECT_NO_THROW({
-    SE3d b = map
+    SE3d b = map;
     (void)b;
   });
 }

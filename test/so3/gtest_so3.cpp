@@ -589,7 +589,7 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
   map.normalize();
 
   EXPECT_NO_THROW({
-    SO3d b = map
+    SO3d b = map;
     (void)b;
   });
 }
