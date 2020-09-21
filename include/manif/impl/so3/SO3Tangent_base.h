@@ -31,8 +31,15 @@ public:
 
   using Base::coeffs;
 
-  SO3TangentBase()  = default;
-  ~SO3TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO3TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SO3TangentBase)
 
   /**
    * @brief Hat operator of SO3.

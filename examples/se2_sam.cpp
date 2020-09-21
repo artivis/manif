@@ -180,9 +180,6 @@
 // manif
 #include "manif/SE2.h"
 
-// Eigen
-#include <Eigen/Dense>
-
 // Std
 #include <vector>
 #include <map>

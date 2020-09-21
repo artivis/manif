@@ -29,8 +29,15 @@ public:
 
   using Base::coeffs;
 
-  SO2TangentBase()  = default;
-  ~SO2TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO2TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SO2TangentBase)
 
   // Tangent common API
 

@@ -1,21 +1,21 @@
-#ifndef _MANIF_MANIF_SE3TANGENT_H_
-#define _MANIF_MANIF_SE3TANGENT_H_
+#ifndef _MANIF_MANIF_DHUTANGENT_H_
+#define _MANIF_MANIF_DHUTANGENT_H_
 
-#include "manif/impl/se3/SE3Tangent_base.h"
+#include "manif/impl/dhu/DHuTangent_base.h"
 
 namespace manif {
 namespace internal {
 
 //! Traits specialization
 template <typename _Scalar>
-struct traits<SE3Tangent<_Scalar>>
+struct traits<DHuTangent<_Scalar>>
 {
   using Scalar = _Scalar;
 
-  using LieGroup = SE3<_Scalar>;
-  using Tangent  = SE3Tangent<_Scalar>;
+  using LieGroup = DHu<_Scalar>;
+  using Tangent  = DHuTangent<_Scalar>;
 
-  using Base = SE3TangentBase<Tangent>;
+  using Base = DHuTangentBase<Tangent>;
 
   static constexpr int Dim     = LieGroupProperties<Base>::Dim;
   static constexpr int DoF     = LieGroupProperties<Base>::DoF;
@@ -27,8 +27,8 @@ struct traits<SE3Tangent<_Scalar>>
   using LieAlg   = Eigen::Matrix<Scalar, 4, 4>;
 };
 
-} /* namespace internal */
-} /* namespace manif */
+} // namespace internal
+} // namespace manif
 
 namespace manif {
 
@@ -37,15 +37,15 @@ namespace manif {
 //
 
 /**
- * @brief Represents an element of tangent space of SE3.
+ * @brief Represents an element of tangent space of DHu.
  */
 template <typename _Scalar>
-struct SE3Tangent : SE3TangentBase<SE3Tangent<_Scalar>>
+struct DHuTangent : DHuTangentBase<DHuTangent<_Scalar>>
 {
 private:
 
-  using Base = SE3TangentBase<SE3Tangent<_Scalar>>;
-  using Type = SE3Tangent<_Scalar>;
+  using Base = DHuTangentBase<DHuTangent<_Scalar>>;
+  using Type = DHuTangent<_Scalar>;
 
 protected:
 
@@ -59,34 +59,34 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  SE3Tangent()  = default;
-  ~SE3Tangent() = default;
+  DHuTangent()  = default;
+  ~DHuTangent() = default;
 
-  MANIF_COPY_CONSTRUCTOR(SE3Tangent)
+  MANIF_COPY_CONSTRUCTOR(DHuTangent)
 
   // Copy constructor given base
   template <typename _DerivedOther>
-  SE3Tangent(const TangentBase<_DerivedOther>& o);
+  DHuTangent(const TangentBase<_DerivedOther>& o);
 
-  MANIF_TANGENT_ASSIGN_OP(SE3Tangent)
+  MANIF_TANGENT_ASSIGN_OP(DHuTangent)
 
   // Tangent common API
 
   DataType& coeffs();
   const DataType& coeffs() const;
 
-  // SE3Tangent specific API
+  // DHuTangent specific API
 
 protected:
 
   DataType data_;
 };
 
-MANIF_EXTRA_TANGENT_TYPEDEF(SE3Tangent);
+MANIF_EXTRA_TANGENT_TYPEDEF(DHuTangent);
 
 template <typename _Scalar>
 template <typename _DerivedOther>
-SE3Tangent<_Scalar>::SE3Tangent(
+DHuTangent<_Scalar>::DHuTangent(
     const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
@@ -94,19 +94,19 @@ SE3Tangent<_Scalar>::SE3Tangent(
 }
 
 template <typename _Scalar>
-typename SE3Tangent<_Scalar>::DataType&
-SE3Tangent<_Scalar>::coeffs()
+typename DHuTangent<_Scalar>::DataType&
+DHuTangent<_Scalar>::coeffs()
 {
   return data_;
 }
 
 template <typename _Scalar>
-const typename SE3Tangent<_Scalar>::DataType&
-SE3Tangent<_Scalar>::coeffs() const
+const typename DHuTangent<_Scalar>::DataType&
+DHuTangent<_Scalar>::coeffs() const
 {
   return data_;
 }
 
-} /* namespace manif */
+} // namespace manif
 
-#endif /* _MANIF_MANIF_SE3TANGENT_H_ */
+#endif //_MANIF_MANIF_DHUTANGENT_H_
