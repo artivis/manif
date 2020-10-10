@@ -188,7 +188,6 @@
 #include <Eigen/Dense>
 
 #include <vector>
-
 #include <iostream>
 #include <iomanip>
 
@@ -205,6 +204,15 @@ typedef Array<double, 9, 1> Array9d;
 typedef Matrix<double, 9, 1> Vector9d;
 typedef Matrix<double, 9, 9> Matrix9d;
 
+
+Eigen::Matrix3d skew(Eigen::Ref<const Eigen::Vector3d> t)
+{
+    Eigen::Matrix3d tcross;
+    tcross << 0, -t(2),  t(1),
+           t(2),     0, -t(0),
+          -t(1),  t(0),    0;
+    return tcross;
+}
 
 int main()
 {
@@ -228,7 +236,7 @@ int main()
     // acceleration due to gravity in world frame
     Vector3d g;
     g << 0, 0, -9.80665;
-    const double dt = 0.1;
+    const double dt = 0.01;
 
     // IMU measurements in IMU frame
     Vector3d alpha, alpha_const, omega, alpha_prev, omega_prev;
@@ -249,7 +257,7 @@ int main()
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
-    manif::SE_2_3d::Jacobian J_x, J_u;
+    manif::SE_2_3d::Jacobian slantFk, Fk, J_x, J_u;
 
     // Define five landmarks in R^3
     Vector3d b0, b1, b2, b3, b4, b;
@@ -308,8 +316,6 @@ int main()
     // END DEBUG
 
 
-
-
     // START TEMPORAL LOOP
     //
     //
@@ -362,14 +368,26 @@ int main()
         auto v_k_est = X.linearVelocity();
         auto acc_k_est = alpha_prev + R_k_est.transpose()*g;
 
-        u_est << (dt*(R_k_est.transpose())*v_k_est + 0.5*dt*dt*acc_k_est),  dt*omega_prev, dt*acc_k_est;
+        Eigen::Vector3d accLin = dt*(R_k_est.transpose())*v_k_est + 0.5*dt*dt*acc_k_est;
+        auto gLin = R_k_est.transpose()*g*dt;
+        Eigen::Matrix3d accLinCross = skew(accLin);
+        Eigen::Matrix3d gCross = skew(gLin);
+
+        u_est << accLin,  dt*omega_prev, dt*acc_k_est;
         u_est += u_noise;
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
 
-        P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
+        // Prepare Jacobian
+        slantFk.setZero();
+        slantFk.block<3, 3>(0, 3) = accLinCross;
+        slantFk.block<3, 3>(0, 6) = Eigen::Matrix3d::Identity()*dt;
+        slantFk.block<3, 3>(6, 3) = gCross;
+        Fk = J_x + J_u*slantFk;
+
+        P = Fk * P * Fk.transpose() + J_u * U * J_u.transpose();
 
 
         /// Then we correct using the measurements of each lmk - - - - - - - - -
@@ -434,9 +452,7 @@ int main()
         cout << "---------------------------------------------------------------------------" << endl;
         // END DEBUG
 
-
     }
-
 
     //
     //
