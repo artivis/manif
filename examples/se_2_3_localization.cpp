@@ -204,16 +204,6 @@ typedef Array<double, 9, 1> Array9d;
 typedef Matrix<double, 9, 1> Vector9d;
 typedef Matrix<double, 9, 9> Matrix9d;
 
-
-Eigen::Matrix3d skew(Eigen::Ref<const Eigen::Vector3d> t)
-{
-    Eigen::Matrix3d tcross;
-    tcross << 0, -t(2),  t(1),
-           t(2),     0, -t(0),
-          -t(1),  t(0),    0;
-    return tcross;
-}
-
 int main()
 {
     // START CONFIGURATION
@@ -369,9 +359,9 @@ int main()
         auto acc_k_est = alpha_prev + R_k_est.transpose()*g;
 
         Eigen::Vector3d accLin = dt*(R_k_est.transpose())*v_k_est + 0.5*dt*dt*acc_k_est;
-        auto gLin = R_k_est.transpose()*g*dt;
-        Eigen::Matrix3d accLinCross = skew(accLin);
-        Eigen::Matrix3d gCross = skew(gLin);
+        Eigen::Vector3d gLin = R_k_est.transpose()*g*dt;
+        Eigen::Matrix3d accLinCross = manif::skew(accLin);
+        Eigen::Matrix3d gCross = manif::skew(gLin);
 
         u_est << accLin,  dt*omega_prev, dt*acc_k_est;
         u_est += u_noise;
