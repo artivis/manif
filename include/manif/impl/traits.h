@@ -39,13 +39,17 @@ struct traitscast;
 
 /**
  * @brief Traits to change the scalar type of a template class
- * @note given using FooDouble = Foo<double>
+ * @note given using FooDouble = Foo<double, Ts...>
  * using FooFloat = typename traitscast<FooDouble, float>::cast;
  */
-template <template <typename> class _Class, typename _NewScalar, typename _Scalar>
-struct traitscast<_Class<_Scalar>, _NewScalar>
+template <
+  template <typename, template<typename> class...> class _Class,
+  typename _Scalar,
+  typename _NewScalar,
+  template<typename> class ... Ts>
+struct traitscast<_Class<_Scalar, Ts...>, _NewScalar>
 {
-  using cast = _Class<_NewScalar>;
+  using cast = _Class<_NewScalar, Ts...>;
 };
 
 /**
