@@ -247,7 +247,10 @@ int main()
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
-    manif::SE_2_3d::Jacobian slantFk, Fk, J_x, J_u;
+    manif::SE_2_3d::Jacobian F;     // F = J_x_x + (J_x_u * J_u_x)
+    manif::SE_2_3d::Jacobian J_x_x; // d(X * exp(u)) / dX
+    manif::SE_2_3d::Jacobian J_x_u; // d(X * exp(u)) / du
+    manif::SE_2_3d::Jacobian J_u_x; // du / dX, since u is a state-dependent vector
 
     // Define five landmarks in R^3
     Vector3d b0, b1, b2, b3, b4, b;
@@ -368,16 +371,16 @@ int main()
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
+        X = X.plus(u_est, J_x_x, J_x_u);                        // X * exp(u), with Jacobians
 
-        // Prepare Jacobian
-        slantFk.setZero();
-        slantFk.block<3, 3>(0, 3) = accLinCross;
-        slantFk.block<3, 3>(0, 6) = Eigen::Matrix3d::Identity()*dt;
-        slantFk.block<3, 3>(6, 3) = gCross;
-        Fk = J_x + J_u*slantFk;
+        // Prepare Jacobian of state-dependent control vector
+        J_u_x.setZero();
+        J_u_x.block<3, 3>(0, 3) = accLinCross;
+        J_u_x.block<3, 3>(0, 6) = Eigen::Matrix3d::Identity()*dt;
+        J_u_x.block<3, 3>(6, 3) = gCross;
+        F = J_x_x + J_x_u*J_u_x;                                // chain rule for system model Jacobian
 
-        P = Fk * P * Fk.transpose() + J_u * U * J_u.transpose();
+        P = F * P * F.transpose() + J_x_u * U * J_x_u.transpose();
 
 
         /// Then we correct using the measurements of each lmk - - - - - - - - -
