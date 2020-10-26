@@ -76,6 +76,9 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
+# SE_2_3 tests
+add_subdirectory(se_2_3)
+
 find_package(Ceres QUIET)
 
 if(CERES_FOUND)
