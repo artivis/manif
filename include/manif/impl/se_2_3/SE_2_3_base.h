@@ -6,8 +6,6 @@
 #include "manif/impl/so3/SO3_map.h"
 #include "manif/impl/se3/SE3_map.h"
 
-#include <Eigen/Geometry>
-
 namespace manif {
 
 //
@@ -53,6 +51,16 @@ public:
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
+
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE_2_3Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SE_2_3Base)
 
   /**
    * @brief Get the inverse.
@@ -436,6 +444,22 @@ struct RandomEvaluatorImpl<SE_2_3Base<Derived>>
     m = LieGroup(Translation::Random(),
                  Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)),
                  LinearVelocity::Random());
+  }
+};
+
+//! @brief Assignment assert specialization for SE2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    using Scalar = typename SE_2_3Base<Derived>::Scalar;
+    MANIF_CHECK(abs(data.template segment<4>(3).norm()-Scalar(1)) <
+                Constants<Scalar>::eps_s,
+                "SE_2_3 assigned data not normalized !",
+                invalid_argument);
   }
 };
 

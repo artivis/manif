@@ -3,8 +3,6 @@
 
 #include "manif/impl/se_2_3/SE_2_3Tangent_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -49,6 +47,10 @@ private:
   using Base = SE_2_3TangentBase<SE_2_3Tangent<_Scalar>>;
   using Type = SE_2_3Tangent<_Scalar>;
 
+protected:
+
+    using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -60,17 +62,12 @@ public:
   SE_2_3Tangent()  = default;
   ~SE_2_3Tangent() = default;
 
-  // Copy constructor given base
-  SE_2_3Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SE_2_3Tangent(const SE_2_3TangentBase<_DerivedOther>& o);
+  MANIF_COPY_CONSTRUCTOR(SE_2_3Tangent)
 
   template <typename _DerivedOther>
   SE_2_3Tangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SE_2_3Tangent(const Eigen::MatrixBase<_EigenDerived>& v);
+  MANIF_TANGENT_ASSIGN_OP(SE_2_3Tangent)
 
   // Tangent common API
 
@@ -87,35 +84,10 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SE_2_3Tangent);
 
 template <typename _Scalar>
-SE_2_3Tangent<_Scalar>::SE_2_3Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SE_2_3Tangent<_Scalar>::SE_2_3Tangent(
-    const SE_2_3TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
 SE_2_3Tangent<_Scalar>::SE_2_3Tangent(
     const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE_2_3Tangent<_Scalar>::SE_2_3Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& v)
-  : data_(v)
 {
   //
 }
