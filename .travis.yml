@@ -326,8 +326,8 @@ matrix:
     compiler: gcc
     script:
       - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
-      - make
-      - make test
+      - travis_wait make
+      - travis_wait make test
 
   #
   # Ceres-related tests

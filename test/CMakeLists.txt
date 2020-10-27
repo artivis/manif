@@ -44,6 +44,18 @@ function(manif_add_gtest target)
   add_dependencies(${target} gtest)
   target_link_libraries(${target} ${PROJECT_NAME} gtest)
 
+  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    # GCC is not strict enough by default, so enable most of the warnings.
+    target_compile_options(${target} PRIVATE
+      -Werror=all
+      -Werror=extra
+      -Wno-unknown-pragmas
+      -Wno-sign-compare
+      -Wno-unused-parameter
+      -Wno-missing-field-initializers
+      )
+  endif()
+
   add_test(NAME ${target} COMMAND ${target})
 endfunction()
 
@@ -63,6 +75,9 @@ add_subdirectory(se2)
 
 # SE3 tests
 add_subdirectory(se3)
+
+# SE_2_3 tests
+add_subdirectory(se_2_3)
 
 find_package(Ceres QUIET)
 

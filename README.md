@@ -18,6 +18,7 @@ At the moment, it provides the groups:
   - SE(2): rigid motion (rotation and translation) in the plane.
   - SO(3): rotations in 3D space.
   - SE(3): rigid motion (rotation and translation) in 3D space.
+  - SE_2(3): extended pose (rotation, translation and velocity) in 3D space, introduced (to the best of knowledge) in this [paper](https://arxiv.org/pdf/1410.1465.pdf).  NOTE: The implementation here differs slightly from the developments in the [paper](https://arxiv.org/pdf/1410.1465.pdf).
 
 Other Lie groups can and will be added, contributions are welcome.
 
@@ -63,7 +64,6 @@ ___
   <a href="#they-use-manif">They use manif</a> •
   <a href="#contributing">Contributing</a>
 </p>
-
 ___
 
 ## Quick Start
@@ -211,13 +211,14 @@ auto-differentiation and the
 
 For reference of the size of the Jacobians returned when using ```ceres::Jet```, **manif** implements rotations in the following way:
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
-  - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
-  
+  - SO(3), SE(3) and SE_2(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+
 Therefore, the respective Jacobian sizes using ```ceres::Jet``` are as follows:
   - SO(2) : size 2
   - SO(3) : size 4
   - SE(2) : size 4
   - SE(3) : size 7
+  - SE_2(3): size 10
 
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
 
@@ -251,6 +252,7 @@ These demos are:
 -   [`se2_sam.cpp`](examples/se2_sam.cpp): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
 -   [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
 -   [`se3_sam_selfcalib.cpp`](examples/se3_sam_selfcalib.cpp): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
+-   [`se_2_3_localization.cpp`](examples/se_2_3_localization.cpp): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity). 
 
 ## Publications
 

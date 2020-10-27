@@ -129,10 +129,10 @@ public: /// @todo make protected
 
   Eigen::Map<SO3Tangent<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
+    return Eigen::Map<SO3Tangent<Scalar>>(coeffs().data()+3);
   }
 
-private:
+// private:
 
   template <typename _EigenDerived>
   static void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q,

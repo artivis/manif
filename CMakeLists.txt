@@ -7,13 +7,16 @@ string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_CAPS)
 
 # Check that the compoiler has c++11 support
 # Crash otherwise.
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
-else()
-  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} "
-    "has no C++11 support. Please use a different C++ compiler.")
+
+if(NOT MSVC)
+  include(CheckCXXCompilerFlag)
+  CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+  if(COMPILER_SUPPORTS_CXX11)
+    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
+  else()
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} "
+      "has no C++11 support. Please use a different C++ compiler.")
+  endif()
 endif()
 
 # Finding Eigen is somewhat complicated.
@@ -79,16 +82,6 @@ endif(TARGET Eigen3::Eigen)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   target_compile_options(${PROJECT_NAME} INTERFACE -ftemplate-depth=512)
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  # GCC is not strict enough by default, so enable most of the warnings.
-  target_compile_options(${PROJECT_NAME} INTERFACE
-    -Werror=all
-    -Werror=extra
-    -Wno-unknown-pragmas
-    -Wno-sign-compare
-    -Wno-unused-parameter
-    -Wno-missing-field-initializers
-  )
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   target_compile_options(${PROJECT_NAME} INTERFACE /bigobj)
 endif()

@@ -10,6 +10,8 @@ add_executable(se3_localization se3_localization.cpp)
 add_executable(se3_sam se3_sam.cpp)
 add_executable(se3_sam_selfcalib se3_sam_selfcalib.cpp)
 
+add_executable(se_2_3_localization se_2_3_localization.cpp)
+
 set(CXX_11_EXAMPLE_TARGETS
 
   # SO2
@@ -26,11 +28,27 @@ set(CXX_11_EXAMPLE_TARGETS
   se3_localization
   se3_sam
   se3_sam_selfcalib
+
+  # SE_2_3
+  se_2_3_localization
 )
 
 # Link to manif
 foreach(target ${CXX_11_EXAMPLE_TARGETS})
   target_link_libraries(${target} ${PROJECT_NAME})
+
+  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    # GCC is not strict enough by default, so enable most of the warnings.
+    target_compile_options(${target} PRIVATE
+      -Werror=all
+      -Werror=extra
+      -Wno-unknown-pragmas
+      -Wno-sign-compare
+      -Wno-unused-parameter
+      -Wno-missing-field-initializers
+      )
+  endif()
+
 endforeach()
 
 # Set required C++11 flag

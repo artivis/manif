@@ -51,7 +51,7 @@ install:
       }
 
   # Get Eigen 3.3-beta1
-  - ps: wget -O eigen3.zip http://bitbucket.org/eigen/eigen/get/3.3-beta1.zip
+  - ps: wget -O eigen3.zip https://gitlab.com/libeigen/eigen/-/archive/3.3-beta1/eigen-3.3-beta1.zip
   - cmd: 7z x eigen3.zip -o"C:\projects" -y > nul
   # - cmd: $env:CMAKE_INCLUDE_PATH = "C:\projects\eigen-eigen-ce5a455b34c0;$env:CMAKE_INCLUDE_PATH"
 
@@ -67,7 +67,7 @@ build_script:
         cd ceres-solver
         md _build
         cd _build
-        $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-ce5a455b34c0"
+        $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-3.3-beta1"
         cmake -G "$env:generator" $eigen_include -DMINIGLOG=ON -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF ..
         cmake --build . --config $env:configuration --target install
       }
@@ -79,7 +79,7 @@ build_script:
       cd _build
       $btests = "-DBUILD_TESTING=$env:build_tests"
       $bexamples = "-DBUILD_EXAMPLES=$env:build_examples"
-      $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-ce5a455b34c0"
+      $eigen_include = "-DEIGEN3_INCLUDE_DIR=C:\projects\eigen-3.3-beta1"
       cmake -G "$env:generator" $eigen_include $btests $bexamples ..
       cmake --build . --config $env:configuration
 
