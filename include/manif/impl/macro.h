@@ -116,6 +116,9 @@ raise(Args&&... args)
 #define MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(X) \
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits<typename X::DataType>::Alignment>0))
 
+#define MANIF_MOVE_NOEXCEPT \
+  EIGEN_NOEXCEPT_IF(std::is_nothrow_move_constructible<Scalar>::value)
+
 #define MANIF_DEFAULT_CONSTRUCTOR(X)  \
   X() = default;                      \
   ~X() = default;                     \
