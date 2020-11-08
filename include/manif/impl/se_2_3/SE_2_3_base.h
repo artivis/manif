@@ -456,10 +456,10 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
   {
     using std::abs;
     using Scalar = typename SE_2_3Base<Derived>::Scalar;
-    MANIF_CHECK(abs(data.template segment<4>(3).norm()-Scalar(1)) <
-                Constants<Scalar>::eps_s,
-                "SE_2_3 assigned data not normalized !",
-                invalid_argument);
+    MANIF_ASSERT(abs(data.template segment<4>(3).norm()-Scalar(1)) <
+                 Constants<Scalar>::eps_s,
+                 "SE_2_3 assigned data not normalized !",
+                 manif::invalid_argument);
   }
 };
 

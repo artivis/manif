@@ -415,10 +415,10 @@ struct AssignmentEvaluatorImpl<SE2Base<Derived>>
   {
     using std::abs;
     using Scalar = typename SE2Base<Derived>::Scalar;
-    MANIF_CHECK(abs(data.template tail<2>().norm()-Scalar(1)) <
-                Constants<Scalar>::eps_s,
-                "SE2 assigned data not normalized !",
-                invalid_argument);
+    MANIF_ASSERT(abs(data.template tail<2>().norm()-Scalar(1)) <
+                 Constants<Scalar>::eps_s,
+                 "SE2 assigned data not normalized !",
+                 invalid_argument);
   }
 };
 

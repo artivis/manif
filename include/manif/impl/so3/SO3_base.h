@@ -400,9 +400,9 @@ struct AssignmentEvaluatorImpl<SO3Base<Derived>>
   {
     using std::abs;
     using Scalar = typename SO3Base<Derived>::Scalar;
-    MANIF_CHECK(abs(data.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-                "SO3 assigned data not normalized !",
-                invalid_argument);
+    MANIF_ASSERT(abs(data.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+                 "SO3 assigned data not normalized !",
+                 manif::invalid_argument);
   }
 };
 
