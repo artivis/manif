@@ -71,6 +71,7 @@ public:
   ~Rn() = default;
 
   MANIF_COPY_CONSTRUCTOR(Rn)
+  MANIF_MOVE_CONSTRUCTOR(Rn)
 
   // Copy constructor given base
   template <typename _DerivedOther>

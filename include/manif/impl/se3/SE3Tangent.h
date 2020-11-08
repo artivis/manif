@@ -63,6 +63,7 @@ public:
   ~SE3Tangent() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE3Tangent)
+  MANIF_MOVE_CONSTRUCTOR(SE3Tangent)
 
   // Copy constructor given base
   template <typename _DerivedOther>

@@ -63,6 +63,7 @@ public:
   ~SO3Tangent() = default;
 
   MANIF_COPY_CONSTRUCTOR(SO3Tangent)
+  MANIF_MOVE_CONSTRUCTOR(SO3Tangent)
 
   // Copy constructor given base
   template <typename _DerivedOther>

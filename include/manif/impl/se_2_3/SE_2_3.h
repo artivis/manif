@@ -78,6 +78,7 @@ public:
   ~SE_2_3() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE_2_3)
+  MANIF_MOVE_CONSTRUCTOR(SE_2_3)
 
   template <typename _DerivedOther>
   SE_2_3(const LieGroupBase<_DerivedOther>& o);

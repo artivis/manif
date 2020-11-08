@@ -76,6 +76,7 @@ public:
   ~SO3() = default;
 
   MANIF_COPY_CONSTRUCTOR(SO3)
+  MANIF_MOVE_CONSTRUCTOR(SO3)
 
   // Copy constructor given base
   template <typename _DerivedOther>

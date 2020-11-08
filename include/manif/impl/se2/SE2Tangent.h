@@ -63,6 +63,7 @@ public:
   ~SE2Tangent() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE2Tangent)
+  MANIF_MOVE_CONSTRUCTOR(SE2Tangent)
 
   // Copy constructor given base
   template <typename _DerivedOther>

@@ -73,6 +73,7 @@ public:
   ~SO2() = default;
 
   MANIF_COPY_CONSTRUCTOR(SO2)
+  MANIF_MOVE_CONSTRUCTOR(SO2)
 
   // Copy constructor given base
   template <typename _DerivedOther>

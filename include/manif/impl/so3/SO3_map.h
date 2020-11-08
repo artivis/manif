@@ -51,6 +51,8 @@ public:
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  Map(Map&&) = default;
+
   MANIF_GROUP_MAP_ASSIGN_OP(SO3)
 
   DataType& coeffs() { return data_; }
@@ -78,6 +80,8 @@ public:
   using Base::rotation;
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
+
+  Map(Map&&) = default;
 
   const DataType& coeffs() const { return data_; }
 

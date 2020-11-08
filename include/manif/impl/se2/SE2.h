@@ -75,6 +75,7 @@ public:
   ~SE2() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE2)
+  MANIF_MOVE_CONSTRUCTOR(SE2)
 
   // Copy constructor
   template <typename _DerivedOther>

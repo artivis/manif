@@ -63,6 +63,7 @@ public:
   ~SE_2_3Tangent() = default;
 
   MANIF_COPY_CONSTRUCTOR(SE_2_3Tangent)
+  MANIF_MOVE_CONSTRUCTOR(SE_2_3Tangent)
 
   template <typename _DerivedOther>
   SE_2_3Tangent(const TangentBase<_DerivedOther>& o);

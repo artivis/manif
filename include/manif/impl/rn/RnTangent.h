@@ -65,6 +65,7 @@ public:
   ~RnTangent() = default;
 
   MANIF_COPY_CONSTRUCTOR(RnTangent)
+  MANIF_MOVE_CONSTRUCTOR(RnTangent)
 
   // Copy constructor given base
   template <typename _DerivedOther>
