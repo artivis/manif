@@ -271,6 +271,19 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 #define ASSERT_EIGEN_NEAR(...) \
   __ASSERT_EIGEN_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
+#define ASSERT_EIGEN_NOT_NEAR_DEFAULT_TOL(A,B) \
+  ASSERT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B))
+
+#define ASSERT_EIGEN_NOT_NEAR_TOL(A,B,tol) \
+  ASSERT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B, tol))
+
+#define __ASSERT_EIGEN_NOT_NEAR_CHOOSER(...) \
+  __GET_4TH_ARG(__VA_ARGS__, ASSERT_EIGEN_NOT_NEAR_TOL, \
+                ASSERT_EIGEN_NOT_NEAR_DEFAULT_TOL, )
+
+#define ASSERT_EIGEN_NOT_NEAR(...) \
+  __ASSERT_EIGEN_NOT_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
+
 /*
  * E.g
 
