@@ -205,8 +205,7 @@ public:
   void evalMoveAssignment()
   {
     LieGroup state_copy(state);
-    LieGroup state_move = LieGroup::Random();
-    state_move = std::move(state);
+    LieGroup state_move = std::move(state);
     EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
 
     state_move = LieGroup::Random();
