@@ -317,6 +317,18 @@ matrix:
       - make test
 
   #
+  # XCode 10.3
+  #
+  - os: osx
+    env:
+      - TEST="XCode 10.3"
+    osx_image: xcode10.3
+    script:
+      - cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON ..
+      - make
+      - make test
+
+  #
   # ARM64
   #
   - os: linux
