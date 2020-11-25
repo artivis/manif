@@ -35,6 +35,16 @@ public:
   using Transformation = typename internal::traits<_Derived>::Transformation;
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO3Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SO3Base)
+
   // LieGroup common API
 
   /**
@@ -378,6 +388,21 @@ struct RandomEvaluatorImpl<SO3Base<Derived>>
 
 
     // m = Derived(Quaternion::UnitRandom());
+  }
+};
+
+//! @brief Assignment assert specialization for SE2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SO3Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    using Scalar = typename SO3Base<Derived>::Scalar;
+    MANIF_ASSERT(abs(data.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+                 "SO3 assigned data not normalized !",
+                 manif::invalid_argument);
   }
 };
 

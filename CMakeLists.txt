@@ -44,7 +44,10 @@ endif()
 if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
   message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
                   "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
-endif(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
+  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
+                  "Beware that the move semantic has a bug and resolves to a simple copy.")
+endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON

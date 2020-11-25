@@ -3,8 +3,6 @@
 
 #include "manif/impl/so2/SO2Tangent_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 namespace internal {
 
@@ -49,6 +47,10 @@ private:
   using Base = SO2TangentBase<SO2Tangent<_Scalar>>;
   using Type = SO2Tangent<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_TANGENT_TYPEDEF
@@ -58,17 +60,14 @@ public:
   SO2Tangent()  = default;
   ~SO2Tangent() = default;
 
-  // Copy constructor given base
-  SO2Tangent(const Base& o);
-  template <typename _DerivedOther>
-  SO2Tangent(const SO2TangentBase<_DerivedOther>& o);
+  MANIF_COPY_CONSTRUCTOR(SO2Tangent)
+  MANIF_MOVE_CONSTRUCTOR(SO2Tangent)
 
+  // Copy constructor given base
   template <typename _DerivedOther>
   SO2Tangent(const TangentBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO2Tangent(const Eigen::MatrixBase<_EigenDerived>& theta);
+  MANIF_TANGENT_ASSIGN_OP(SO2Tangent)
 
   //! @brief Constructor given an angle (rad.).
   SO2Tangent(const Scalar theta);
@@ -90,25 +89,8 @@ protected:
 MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent);
 
 template <typename _Scalar>
-SO2Tangent<_Scalar>::SO2Tangent(const Base& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const SO2TangentBase<_DerivedOther>& o)
-  : data_(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const TangentBase<_DerivedOther>& o)
+SO2Tangent<_Scalar>::SO2Tangent(const TangentBase<_DerivedOther>& o)
   : data_(o.coeffs())
 {
   //
@@ -116,15 +98,6 @@ SO2Tangent<_Scalar>::SO2Tangent(
 
 template <typename _Scalar>
 SO2Tangent<_Scalar>::SO2Tangent(const Scalar theta)
-  : data_(theta)
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SO2Tangent<_Scalar>::SO2Tangent(
-    const Eigen::MatrixBase<_EigenDerived>& theta)
   : data_(theta)
 {
   //

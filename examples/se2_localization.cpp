@@ -103,8 +103,6 @@
 
 #include "manif/SE2.h"
 
-#include <Eigen/Dense>
-
 #include <vector>
 
 #include <iostream>

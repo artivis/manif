@@ -391,7 +391,8 @@ struct optional_copy_base<T, false> : optional_operations_base<T> {
   using optional_operations_base<T>::optional_operations_base;
 
   optional_copy_base() = default;
-  optional_copy_base(const optional_copy_base &rhs) {
+  optional_copy_base(const optional_copy_base &rhs)
+    : optional_operations_base<T>() {
     if (rhs.has_value()) {
       this->construct(rhs.get());
     } else {

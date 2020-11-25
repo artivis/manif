@@ -35,6 +35,16 @@ public:
 
   // LieGroup common API
 
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO2Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SO2Base)
+
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
@@ -309,6 +319,21 @@ struct RandomEvaluatorImpl<SO2Base<Derived>>
   {
     using Tangent = typename LieGroupBase<Derived>::Tangent;
     m = Tangent::Random().exp();
+  }
+};
+
+//! @brief Assignment assert specialization for SO2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SO2Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    using Scalar = typename SO2Base<Derived>::Scalar;
+    MANIF_ASSERT(abs(data.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
+                 "SO2 assigned data not normalized !",
+                 invalid_argument);
   }
 };
 

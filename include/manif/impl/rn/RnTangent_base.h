@@ -28,8 +28,15 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
   using Base::coeffs;
 
-  RnTangentBase()  = default;
-  ~RnTangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(RnTangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(RnTangentBase)
 
   // Tangent common API
 

@@ -57,6 +57,10 @@ private:
 
   using QuaternionDataType = Eigen::Quaternion<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
@@ -71,18 +75,14 @@ public:
   SO3()  = default;
   ~SO3() = default;
 
+  MANIF_COPY_CONSTRUCTOR(SO3)
+  MANIF_MOVE_CONSTRUCTOR(SO3)
+
   // Copy constructor given base
-  SO3(const Base& o);
-
-  template <typename _DerivedOther>
-  SO3(const SO3Base<_DerivedOther>& o);
-
   template <typename _DerivedOther>
   SO3(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO3(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(SO3)
 
   /**
    * @brief Constructor given a unit quaternion.
@@ -124,42 +124,12 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO3)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SO3<_Scalar>::SO3(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-               "SO3 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SO3<_Scalar>::SO3(const Base& o)
-  : SO3(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO3<_Scalar>::SO3(
-    const SO3Base<_DerivedOther>& o)
+SO3<_Scalar>::SO3(const LieGroupBase<_DerivedOther>& o)
   : SO3(o.coeffs())
 {
   //
 }
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO3<_Scalar>::SO3(
-    const LieGroupBase<_DerivedOther>& o)
-  : SO3(o.coeffs())
-{
-  //
-}
-
-
 
 template <typename _Scalar>
 SO3<_Scalar>::SO3(const QuaternionDataType& q)

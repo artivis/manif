@@ -26,6 +26,7 @@ private:
 public:
 
   MANIF_TANGENT_TYPEDEF
+  MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
   using BlockV = typename DataType::template FixedSegmentReturnType<3>::Type;
@@ -38,8 +39,15 @@ public:
   using Base::data;
   using Base::coeffs;
 
-  SE_2_3TangentBase()  = default;
-  ~SE_2_3TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE_2_3TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SE_2_3TangentBase)
 
   // Tangent common API
 

@@ -35,6 +35,15 @@ public:
   using Transformation = typename internal::traits<_Derived>::Transformation;
 
   // LieGroup common API
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(RnBase)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(RnBase)
 
   /**
    * @brief Get the inverse of this.
@@ -103,14 +112,6 @@ public:
    *           | 0 1 |
    */
   Transformation transform() const;
-
-  /**
-   * @brief Assignment operator.
-   * @param[in] v An Eigen MatrixBase (vector expected).
-   * @return A reference to this.
-   */
-  template<typename _EigenDerived>
-  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 };
 
 template <typename _Derived>
@@ -120,15 +121,6 @@ RnBase<_Derived>::transform() const
   Transformation T(Transformation::Identity());
   T.template topRightCorner<Dim,1>() = coeffs();
   return T;
-}
-
-template <typename _Derived>
-template <typename _EigenDerived>
-_Derived& RnBase<_Derived>::operator =(
-  const Eigen::MatrixBase<_EigenDerived>& v)
-{
-  coeffs() = v;
-  return *static_cast< _Derived* >(this);
 }
 
 template <typename _Derived>

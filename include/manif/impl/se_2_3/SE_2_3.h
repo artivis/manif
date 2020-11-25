@@ -3,8 +3,6 @@
 
 #include "manif/impl/se_2_3/SE_2_3_base.h"
 
-#include <Eigen/Core>
-
 namespace manif {
 
 // Forward declare for type traits specialization
@@ -59,35 +57,33 @@ private:
   using Base = SE_2_3Base<SE_2_3<_Scalar>>;
   using Type = SE_2_3<_Scalar>;
 
+protected:
+
+  using Base::derived;
+
 public:
 
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   using Translation = typename Base::Translation;
-  using Quaternion = Eigen::Quaternion<Scalar>;
+  using Quaternion  = Eigen::Quaternion<Scalar>;
   using LinearVelocity = typename Base::LinearVelocity;
 
   MANIF_INHERIT_GROUP_API
-//   using Base::transform;
   using Base::rotation;
   using Base::normalize;
 
   SE_2_3()  = default;
   ~SE_2_3() = default;
 
-  // Copy constructor given base
-  SE_2_3(const Base& o);
-
-  template <typename _DerivedOther>
-  SE_2_3(const SE_2_3Base<_DerivedOther>& o);
+  MANIF_COPY_CONSTRUCTOR(SE_2_3)
+  MANIF_MOVE_CONSTRUCTOR(SE_2_3)
 
   template <typename _DerivedOther>
   SE_2_3(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SE_2_3(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(SE_2_3)
 
   /**
    * @brief Constructor given a translation, a unit quaternion and a linear velocity.
@@ -158,34 +154,6 @@ protected:
 };
 
 MANIF_EXTRA_GROUP_TYPEDEF(SE_2_3)
-
-template <typename _Scalar>
-template <typename _EigenDerived>
-SE_2_3<_Scalar>::SE_2_3(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.template segment<4>(3).norm()-Scalar(1)) <
-               Constants<Scalar>::eps_s,
-               "SE_2_3 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SE_2_3<_Scalar>::SE_2_3(const Base& o)
-  : SE_2_3(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SE_2_3<_Scalar>::SE_2_3(
-    const SE_2_3Base<_DerivedOther>& o)
-  : SE_2_3(o.coeffs())
-{
-  //
-}
 
 template <typename _Scalar>
 template <typename _DerivedOther>

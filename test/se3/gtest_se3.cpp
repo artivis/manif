@@ -3,8 +3,6 @@
 #include "manif/SE3.h"
 #include "../common_tester.h"
 
-#include <Eigen/Geometry>
-
 using namespace manif;
 
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_DATATYPE)
@@ -305,7 +303,7 @@ TEST(TEST_SE3, TEST_SE3_INVERSE)
 
   se3 = SE3d::Random();
 
-  Eigen::Isometry3d iso(se3.asSO3().quat());
+  Eigen::Isometry3d iso(se3.quat());
   iso.translation() = se3.translation();
 
   EXPECT_EIGEN_NEAR(iso.matrix(), se3.transform());

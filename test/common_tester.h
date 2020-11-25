@@ -2,15 +2,22 @@
 #define _MANIF_MANIF_TEST_COMMON_TESTER_H_
 
 #include "test_utils.h"
+#include "test_func.h"
 #include "manif/algorithms/interpolation.h"
 #include "manif/algorithms/average.h"
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MISC)                \
+  { evalMisc(); }                                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COPY_CONSTRUCTOR)    \
-  { evalCopyConstructor(); }                                \
+  { evalCopyConstructor(); }                                              \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MOVE_CONSTRUCTOR)    \
+  { evalMoveConstructor(); }                                              \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ASSIGNMENT)          \
   { evalAssignment(); }                                                   \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MOVE_ASSIGNMENT)     \
+  { evalMoveAssignment(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_DATA_PTR_VALID)      \
   { evalDataPtrValid(); }                                                 \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_PLUS_IS_RPLUS)       \
@@ -107,15 +114,17 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_MINUS_T_JACOBIANS) \
   { evalTanMinusTanJac(); }
 
-#define MANIF_TEST_MAP(manifold)                                       \
-  using TEST_##manifold##_MAP_TESTER = CommonMapTester<manifold>;      \
-  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_DATA_PTR)     \
-  { evalDataPtr(); }                                                   \
-  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_ASSIGN_OP)    \
-  { evalAssignOp(); }                                                  \
-  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_RANDOM)   \
-  { evalSetRandom(); }                                                 \
-  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_IDENTITY) \
+#define MANIF_TEST_MAP(manifold)                                          \
+  using TEST_##manifold##_MAP_TESTER = CommonMapTester<manifold>;         \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_DATA_PTR)        \
+  { evalDataPtr(); }                                                      \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_ASSIGN_OP)       \
+  { evalAssignOp(); }                                                     \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_MOVE_ASSIGN_OP)  \
+  { evalMoveAssignOp(); }                                                 \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_RANDOM)      \
+  { evalSetRandom(); }                                                    \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_IDENTITY)    \
   { evalSetIdentity(); }
 
 
@@ -148,10 +157,28 @@ public:
     delta = Tangent::Random();
   }
 
+  void evalMisc()
+  {
+    if (std::is_nothrow_move_constructible<Scalar>::value)
+    {
+      EXPECT_TRUE(std::is_nothrow_move_constructible<LieGroup>::value)
+        << "LieGroup should be nothrow move constructible";
+      EXPECT_TRUE(std::is_nothrow_move_constructible<Tangent>::value)
+        << "Tangent should be nothrow move constructible";
+    }
+  }
+
   void evalCopyConstructor()
   {
     LieGroup state_copy(state);
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
+  }
+
+  void evalMoveConstructor()
+  {
+    LieGroup state_copy(state);
+    LieGroup state_move(std::move(state));
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
   }
 
   void evalAssignment()
@@ -159,6 +186,45 @@ public:
     LieGroup state_copy;
     state_copy = state;
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
+
+    state_copy = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_copy, tol_);
+
+    // copy derived to base
+    copy_assign(state_copy, state);
+    EXPECT_MANIF_NEAR(state, state_copy, tol_);
+
+    state_copy = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_copy, tol_);
+
+    // copy base to base
+    copy_assign_base(state_copy, state);
+    EXPECT_MANIF_NEAR(state, state_copy, tol_);
+  }
+
+  void evalMoveAssignment()
+  {
+    LieGroup state_copy(state);
+    LieGroup state_move = std::move(state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
+
+    state_move = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state_copy, state_move, tol_);
+    state = state_copy;
+    EXPECT_MANIF_NEAR(state_copy, state, tol_);
+
+    // move derived to base
+    move_assign(state_move, state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
+
+    state_move = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_move, tol_);
+    state = state_copy;
+    EXPECT_MANIF_NEAR(state_copy, state, tol_);
+
+    // move base to base
+    move_assign_base(state_move, state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
   }
 
   void evalDataPtrValid()
@@ -1015,6 +1081,8 @@ public:
     ASSERT_EIGEN_NEAR(state_data, state_map.coeffs());
     ASSERT_EIGEN_NEAR(state_other_data, state_other_map.coeffs());
     ASSERT_EIGEN_NEAR(delta_data, delta_map.coeffs());
+
+    ASSERT_EIGEN_NOT_NEAR(state_data, state_other_data);
   }
 
   void evalDataPtr()
@@ -1039,6 +1107,21 @@ public:
     state_map = state_other_map;
 
     EXPECT_EIGEN_NEAR(state_other_data, state_data);
+  }
+
+  void evalMoveAssignOp()
+  {
+    const Scalar* data_ptr = state_map.data();
+    const Scalar* other_data_ptr = state_other_map.data();
+
+    ASSERT_NE(data_ptr, other_data_ptr);
+
+    state_map = std::move(state_other_map);
+
+    EXPECT_EIGEN_NEAR(state_other_data, state_map.coeffs());
+
+    EXPECT_EQ(data_ptr, state_data.data());
+    EXPECT_NE(other_data_ptr, state_data.data());
   }
 
   void evalSetRandom()

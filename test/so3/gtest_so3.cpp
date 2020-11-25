@@ -149,7 +149,7 @@ TEST(TEST_SO3, TEST_SO3_ROTATION)
 
 TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
 {
-  SO3d so3a = SO3d::Random();
+  SO3d so3a;
   SO3d so3b = SO3d::Random();
 
   so3a = so3b;

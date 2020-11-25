@@ -63,21 +63,23 @@ public:
   using Base::rotation;
   using Base::normalize;
 
+protected:
+
+  using Base::derived;
+
+public:
+
   SO2()  = default;
   ~SO2() = default;
 
+  MANIF_COPY_CONSTRUCTOR(SO2)
+  MANIF_MOVE_CONSTRUCTOR(SO2)
+
   // Copy constructor given base
-  SO2(const Base& o);
-
-  template <typename _DerivedOther>
-  SO2(const SO2Base<_DerivedOther>& o);
-
   template <typename _DerivedOther>
   SO2(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO2(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(SO2)
 
   /**
    * @brief Constructor given the real and imaginary part
@@ -109,36 +111,8 @@ protected:
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_ASSERT(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-               "SO2 constructor argument not normalized !",
-               invalid_argument);
-}
-
-template <typename _Scalar>
-SO2<_Scalar>::SO2(const Base& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const SO2Base<_DerivedOther>& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const LieGroupBase<_DerivedOther>& o)
+SO2<_Scalar>::SO2(const LieGroupBase<_DerivedOther>& o)
   : SO2(o.coeffs())
 {
   //
