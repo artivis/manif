@@ -23,11 +23,15 @@
  *  See se3_sam.cpp for a more advanced example performing smoothing and mapping.
  *  ---------------------------------------------------------
  *
- *  This demo corresponds to the application in chapter V, section A,
- *  in the paper Sola-18, [https://arxiv.org/abs/1812.01537].
+ *  This demo showcases an application of an Unscented Kalman Filter on Manifold,
+ *  based on the paper
+ *  'A Code for Unscented Kalman Filtering on Manifolds (UKF-M)'
+ *  [https://arxiv.org/pdf/2002.00878.pdf].
  *
- *  The following is an abstract of the content of the paper.
- *  Please consult the paper for better reference.
+ *  The following is an abstract of the example hereafter.
+ *  Please consult the aforemention paper for better UKF-M reference
+ *  and the paper Sola-18, [https://arxiv.org/abs/1812.01537] for general
+ *  Lie group reference.
  *
  *
  *  We consider a robot in the plane surrounded by a small
@@ -103,10 +107,13 @@
 
 #include "manif/SE2.h"
 
+#include <Eigen/Cholesky>
+
 #include <vector>
 
 #include <iostream>
 #include <iomanip>
+#include <tuple>
 
 using std::cout;
 using std::endl;
@@ -116,64 +123,126 @@ using namespace Eigen;
 typedef Array<double, 2, 1> Array2d;
 typedef Array<double, 3, 1> Array3d;
 
+template <typename Scalar>
+struct Weights
+{
+  Weights() = default;
+  ~Weights() = default;
+
+  Weights(const Scalar l, const Scalar alpha)
+  {
+    using std::sqrt;
+
+    const Scalar m = (alpha * alpha - 1) * l;
+    const Scalar ml = m + l;
+
+    sqrt_d_lambda = sqrt(ml);
+    wj = Scalar(1) / (Scalar(2) * (ml));
+    wm = m / (ml);
+    w0 = m / (ml) + Scalar(3) - alpha * alpha;
+  }
+
+  Scalar sqrt_d_lambda;
+  Scalar wj;
+  Scalar wm;
+  Scalar w0;
+};
+
+using Weightsd = Weights<double>;
+
+template <typename Scalar>
+std::tuple<Weights<Scalar>, Weights<Scalar>, Weights<Scalar>>
+compute_sigma_weights(const Scalar state_size,
+                      const Scalar propagation_noise_size,
+                      const Scalar alpha_0,
+                      const Scalar alpha_1,
+                      const Scalar alpha_2)
+{
+  assert(state_size>0);
+  assert(propagation_noise_size>0);
+  assert(alpha_0>=1e-3 && alpha_0<=1);
+  assert(alpha_1>=1e-3 && alpha_1<=1);
+  assert(alpha_2>=1e-3 && alpha_2<=1);
+
+  return std::make_tuple(Weights<Scalar>(state_size, alpha_0),
+                         Weights<Scalar>(propagation_noise_size, alpha_1),
+                         Weights<Scalar>(state_size, alpha_2));
+}
+
 int main()
 {
     // START CONFIGURATION
     //
     //
     const int NUMBER_OF_LMKS_TO_MEASURE = 3;
+    constexpr int DoF = manif::SE2d::DoF;
+    // Measurement Dim
+    constexpr int Rp = 2;
 
     // Define the robot pose element and its covariance
-    manif::SE2d X, X_simulation, X_unfiltered;
-    Matrix3d    P;
-
-    X_simulation.setIdentity();
-    X.setIdentity();
-    X_unfiltered.setIdentity();
-    P.setZero();
+    manif::SE2d X            = manif::SE2d::Identity(),
+                X_simulation = manif::SE2d::Identity(),
+                X_unfiltered = manif::SE2d::Identity();
+    Matrix3d    P            = Matrix3d::Identity() * 1e-6;
 
     // Define a control vector and its noise and covariance
     manif::SE2Tangentd  u_simu, u_est, u_unfilt;
     Vector3d            u_nom, u_noisy, u_noise;
     Array3d             u_sigmas;
-    Matrix3d            U;
+    Matrix3d            U, Uchol;
 
     u_nom    << 0.1, 0.0, 0.05;
     u_sigmas << 0.1, 0.1, 0.1;
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
-
-    // Declare the Jacobians of the motion wrt robot and control
-    manif::SE2d::Jacobian J_x, J_u;
+    Uchol    = U.llt().matrixL();
 
     // Define three landmarks in R^2
-    Eigen::Vector2d b0, b1, b2, b;
-    b0 << 2.0,  0.0;
-    b1 << 2.0,  1.0;
-    b2 << 2.0, -1.0;
-    std::vector<Eigen::Vector2d> landmarks;
-    landmarks.push_back(b0);
-    landmarks.push_back(b1);
-    landmarks.push_back(b2);
+    Eigen::Vector2d b;
+    const std::vector<Eigen::Vector2d> landmarks{
+      Eigen::Vector2d(2.0,  0.0),
+      Eigen::Vector2d(2.0,  1.0),
+      Eigen::Vector2d(2.0, -1.0)
+    };
 
     // Define the beacon's measurements
-    Vector2d                y, y_noise;
-    Array2d                 y_sigmas;
-    Matrix2d                R;
-    std::vector<Vector2d>   measurements(landmarks.size());
+    Vector2d                  y, y_bar, y_noise;
+    Matrix<double, Rp, 2*DoF> yj;
+    Array2d                   y_sigmas;
+    Matrix2d                  R;
+    std::vector<Vector2d>     measurements(landmarks.size());
 
     y_sigmas << 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
-    // Declare the Jacobian of the measurements wrt the robot pose
-    Matrix<double, 2, 3>    H;      // H = J_e_x
+
+    // Declare UFK variables
+    Array3d alpha;
+    alpha << 1e-3, 1e-3, 1e-3;
+
+    Weightsd w_d, w_q, w_u;
+    std::tie(w_d, w_q, w_u) = compute_sigma_weights<double>(
+      DoF, Rp, alpha(0), alpha(1), alpha(2)
+    );
 
     // Declare some temporaries
+
+    manif::SE2d X_new;
+    Matrix3d P_new;
+    manif::SE2d s_j_p, s_j_m;
+    Vector3d xi_mean;
+    Vector3d w_p, w_m;
+
+    Matrix2d P_yy;
+    Matrix<double, DoF, 2*DoF> xij;
+    Matrix<double, DoF, 2> P_xiy;
+
     Vector2d                e, z;   // expectation, innovation
-    Matrix2d                E, Z;   // covariances of the above
     Matrix<double, 3, 2>    K;      // Kalman gain
     manif::SE2Tangentd      dx;     // optimal update step, or error-state
-    manif::SE2d::Jacobian   J_xi_x; // Jacobian is typedef Matrix
-    Matrix<double, 2, 3>    J_e_xi; // Jacobian
+
+    Matrix<double, DoF, DoF> xis;
+    Matrix<double, DoF, DoF*2> xis_new;
+    Matrix<double, DoF, 2*2> xis_new2;
 
     //
     //
@@ -191,13 +260,12 @@ int main()
 
 
 
-
     // START TEMPORAL LOOP
     //
     //
 
     // Make 10 steps. Measure up to three landmarks each time.
-    for (int t = 0; t < 10; t++)
+    for (int t = 0; t <10; t++)
     {
         //// I. Simulation ###############################################################################
 
@@ -232,10 +300,48 @@ int main()
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        X = X.plus(u_est, J_x, J_u);                        // X * exp(u), with Jacobians
+        X_new = X + u_est;                        // X * exp(u)
 
-        P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose();
+        // set sigma points
+        Matrix3d PLt = P.llt().matrixL();
+        xis = w_d.sqrt_d_lambda * PLt;
 
+        // sigma points on manifold
+        for (int i = 0; i < DoF; ++i)
+        {
+          s_j_p = X + manif::SE2Tangentd( xis.col(i));
+          s_j_m = X + manif::SE2Tangentd(-xis.col(i));
+
+          xis_new.col(i) = (X_new - (s_j_p + u_est)).coeffs();
+          xis_new.col(i + DoF) = (X_new - (s_j_m + u_est)).coeffs();
+        }
+
+        // compute covariance
+        xi_mean = w_d.wj * xis_new.rowwise().sum();
+        xis_new.colwise() -= xi_mean;
+
+        P_new = w_d.wj * xis_new * xis_new.transpose() +
+                w_d.w0 * xi_mean * xi_mean.transpose();
+
+        // sigma points on manifold
+        for (int i = 0; i < 2; ++i)
+        {
+          w_p =  w_q.sqrt_d_lambda * Uchol.col(i);
+          w_m = -w_q.sqrt_d_lambda * Uchol.col(i);
+
+          xis_new2.col(i) = (X_new - (X + (u_est + w_p))).coeffs();
+          xis_new2.col(i + 2) = (X_new - (X + (u_est + w_m))).coeffs();
+        }
+
+        xi_mean = w_q.wj * xis_new2.rowwise().sum();
+        xis_new2.colwise() -= xi_mean;
+
+        U = w_q.wj * xis_new2 * xis_new2.transpose() +
+            w_q.w0 * xi_mean * xi_mean.transpose();
+
+        P = P_new + U;
+
+        X = X_new;
 
         /// Then we correct using the measurements of each lmk - - - - - - - - -
         for (int i = 0; i < NUMBER_OF_LMKS_TO_MEASURE; i++)
@@ -243,30 +349,52 @@ int main()
             // landmark
             b = landmarks[i];                               // lmk coordinates in world frame
 
-           // measurement
+            // measurement
             y = measurements[i];                            // lmk measurement, noisy
 
             // expectation
-            e = X.inverse(J_xi_x).act(b, J_e_xi);           // note: e = R.tr * ( b - t ), for X = (R,t).
-            H = J_e_xi * J_xi_x;                            // note: H = J_e_x = J_e_xi * J_xi_x
-            E = H * P * H.transpose();
+            e = X.inverse().act(b);
 
-            // innovation
-            z = y - e;
-            Z = E + R;
+            // set sigma points
+            PLt = P.llt().matrixL();
+            xis = w_d.sqrt_d_lambda * PLt;
+
+            // compute measurement sigma points
+            for (int i = 0; i < DoF; ++i)
+            {
+              s_j_p = X + manif::SE2Tangentd( xis.col(i));
+              s_j_m = X + manif::SE2Tangentd(-xis.col(i));
+
+              yj.col(i) = s_j_p.inverse().act(b);
+              yj.col(i + DoF) = s_j_m.inverse().act(b);
+            }
+
+            // measurement mean
+            y_bar = w_d.wm * e + w_d.wj * yj.rowwise().sum();
+
+            yj.colwise() -= y_bar;
+            e -= y_bar;
+
+            // compute covariance and cross covariance matrices
+            P_yy = w_u.w0 * e * e.transpose()   +
+                   w_u.wj * yj * yj.transpose() + R;
+
+            xij << xis, -xis;
+            P_xiy = w_u.wj * xij * yj.transpose();
 
             // Kalman gain
-            K = P * H.transpose() * Z.inverse();            // K = P * H.tr * ( H * P * H.tr + R).inv
+            K = P_yy.colPivHouseholderQr().solve(P_xiy.transpose()).transpose();
+
+            // innovation
+            z = y - y_bar;
 
             // Correction step
             dx = K * z;                                     // dx is in the tangent space at X
 
             // Update
             X = X + dx;                                     // overloaded X.rplus(dx) = X * exp(dx)
-            P = P - K * Z * K.transpose();
+            P = P - K * P_yy * K.transpose();
         }
-
-
 
 
         //// III. Unfiltered ##############################################################################
