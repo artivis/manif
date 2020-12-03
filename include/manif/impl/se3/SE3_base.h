@@ -251,7 +251,7 @@ void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
 {
   using std::abs;
   assert_vector_dim(quaternion, 4);
-  MANIF_ASSERT(abs(quaternion.template norm()-Scalar(1)) <
+  MANIF_ASSERT(abs(quaternion.norm()-Scalar(1)) <
                Constants<Scalar>::eps_s,
                "The quaternion is not normalized !",
                invalid_argument);
