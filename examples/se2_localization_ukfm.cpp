@@ -357,7 +357,7 @@ int main()
 
             // set sigma points
             PLt = P.llt().matrixL();
-            xis = w_d.sqrt_d_lambda * PLt;
+            xis = w_u.sqrt_d_lambda * PLt;
 
             // compute measurement sigma points
             for (int i = 0; i < DoF; ++i)
@@ -370,13 +370,13 @@ int main()
             }
 
             // measurement mean
-            y_bar = w_d.wm * e + w_d.wj * yj.rowwise().sum();
+            y_bar = w_u.wm * e + w_u.wj * yj.rowwise().sum();
 
             yj.colwise() -= y_bar;
             e -= y_bar;
 
             // compute covariance and cross covariance matrices
-            P_yy = w_u.w0 * e * e.transpose()   +
+            P_yy = w_u.w0 * e * e.transpose() +
                    w_u.wj * yj * yj.transpose() + R;
 
             xij << xis, -xis;
