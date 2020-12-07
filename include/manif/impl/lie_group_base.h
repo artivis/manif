@@ -275,7 +275,7 @@ public:
    * @see isApprox.
    */
   template <typename _DerivedOther>
-  bool operator ==(const LieGroupBase<_DerivedOther>& m);
+  bool operator ==(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief Right oplus operator.
@@ -618,7 +618,7 @@ LieGroupBase<_Derived>::act(
 template <typename _Derived>
 template <typename _DerivedOther>
 bool LieGroupBase<_Derived>::operator ==(
-    const LieGroupBase<_DerivedOther>& m)
+    const LieGroupBase<_DerivedOther>& m) const
 {
   return isApprox(m);
 }
