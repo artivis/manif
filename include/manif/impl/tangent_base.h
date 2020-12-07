@@ -337,6 +337,13 @@ protected:
   inline const _Derived& derived() const & noexcept { return *static_cast< const _Derived* >(this); }
 };
 
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::Dim;
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::DoF;
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::RepSize;
+
 // Copy
 
 template <typename _Derived>
