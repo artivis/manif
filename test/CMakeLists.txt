@@ -98,3 +98,7 @@ else()
   set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
   set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_EXTENSIONS OFF)
 endif()
+
+if(BUILD_PYTHON_BINDINGS)
+  add_subdirectory(python)
+endif()

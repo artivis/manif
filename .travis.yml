@@ -363,6 +363,24 @@ matrix:
       - make -j2
       - make test
 
+  #
+  # Python bindings
+  #
+  - os: linux
+    env:
+      - TEST="G++ 9"
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-9
+          - g++-9
+    script:
+      - cmake -DCMAKE_CXX_COMPILER="g++-9" -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON  -DBUILD_PYTHON_BINDINGS=ON..
+      - make
+      - make test
+
   allow_failures:
     - os: linux
       env:
