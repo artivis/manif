@@ -164,7 +164,7 @@ skew(const Eigen::MatrixBase<_Derived>& v)
 }
 
 template <typename Scalar>
-Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(const Scalar radius)
+Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(Scalar radius)
 {
   // See https://stackoverflow.com/a/5408843/9709397
 
@@ -174,14 +174,14 @@ Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(const Scalar radius)
   using std::cbrt;
 
   // random(0, 2pi)
-  const Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * M_PI)));
+  Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * M_PI)));
   // random(-1, 1)
-  const Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX/(Scalar(1) - Scalar(-1))));
+  Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX/(Scalar(1) - Scalar(-1))));
   // random(0, 1)
-  const Scalar u = static_cast<Scalar>(rand()) / static_cast<Scalar>(RAND_MAX);
+  Scalar u = static_cast<Scalar>(rand()) / static_cast<Scalar>(RAND_MAX);
 
-  const Scalar theta = acos(costheta);
-  const Scalar r = radius * cbrt(u);
+  Scalar theta = acos(costheta);
+  Scalar r = radius * cbrt(u);
 
   return Eigen::Matrix<Scalar, 3, 1>(
     r * sin(theta) * cos(phi),
