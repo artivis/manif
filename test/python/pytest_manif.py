@@ -33,7 +33,7 @@ from PyManif import \
      (SO2, SO2Tangent),
      (SO3, SO3Tangent),
      (SE2, SE2Tangent),
-     # (SE3, SE3Tangent),
+     (SE3, SE3Tangent),
      (SE_2_3, SE_2_3Tangent),
     ]
 )

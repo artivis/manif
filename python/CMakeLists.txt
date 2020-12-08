@@ -1,9 +1,11 @@
 set(PYBIND11_CPP_STANDARD -std=c++11)
 pybind11_add_module(PyManif
+  bindings_rn.cpp
   bindings_so2.cpp
   bindings_so3.cpp
   bindings_se2.cpp
   bindings_se3.cpp
+  bindings_se_2_3.cpp
   bindings_manif.cpp
 )
 target_link_libraries(PyManif PRIVATE ${PROJECT_NAME})
