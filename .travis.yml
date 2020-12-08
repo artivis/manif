@@ -373,6 +373,8 @@ matrix:
       apt:
         sources:
           - ubuntu-toolchain-r-test
+          - pybind11-dev
+          - python3-pytest
         packages:
           - gcc-9
           - g++-9
