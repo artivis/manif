@@ -469,11 +469,12 @@ struct AssignmentEvaluatorImpl<SE3Base<Derived>>
   static void run_impl(const T& data)
   {
     using std::abs;
-    using Scalar = typename SE3Base<Derived>::Scalar;
-    MANIF_ASSERT(abs(data.template tail<4>().norm()-Scalar(1)) <
-                 Constants<Scalar>::eps_s,
-                 "SE3 assigned data not normalized !",
-                 manif::invalid_argument);
+    MANIF_ASSERT(
+      abs(data.template tail<4>().norm()-typename SE3Base<Derived>::Scalar(1)) <
+      Constants<typename SE3Base<Derived>::Scalar>::eps_s,
+      "SE3 assigned data not normalized !",
+      manif::invalid_argument
+    );
   }
 };
 
