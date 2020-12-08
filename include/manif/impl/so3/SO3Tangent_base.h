@@ -305,7 +305,7 @@ struct RandomEvaluatorImpl<SO3TangentBase<Derived>>
 {
   static void run(SO3TangentBase<Derived>& m)
   {
-    m.coeffs() = generate_point_in_sphere(MANIF_PI);
+    m.coeffs() = randPointInBall(MANIF_PI);
   }
 };
 

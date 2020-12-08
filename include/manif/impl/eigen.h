@@ -166,7 +166,7 @@ skew(const Eigen::MatrixBase<_Derived>& v)
 }
 
 template <typename Scalar>
-Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(Scalar radius)
+Eigen::Matrix<Scalar, 3, 1> randPointInBall(Scalar radius)
 {
   // See https://stackoverflow.com/a/5408843/9709397
 
@@ -178,17 +178,18 @@ Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(Scalar radius)
   // random(0, 2pi)
   Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * MANIF_PI)));
   // random(-1, 1)
-  Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX/(Scalar(1) - Scalar(-1))));
+  Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / Scalar(2)));
   // random(0, 1)
   Scalar u = static_cast<Scalar>(rand()) / static_cast<Scalar>(RAND_MAX);
 
   Scalar theta = acos(costheta);
   Scalar r = radius * cbrt(u);
+  Scalar rsintheta = r * sin(theta);
 
   return Eigen::Matrix<Scalar, 3, 1>(
-    r * sin(theta) * cos(phi),
-    r * sin(theta) * sin(phi),
-    r * cos(theta)
+    rsintheta * cos(phi),
+    rsintheta * sin(phi),
+    r * costheta
   );
 }
 
