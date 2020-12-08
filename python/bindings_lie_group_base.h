@@ -33,15 +33,13 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   py_class.def(
     "inverse",
     &_LieGroup::inverse,
-    py::arg_v("J_m_t", OptJacobianRef(),
-    "None")
+    py::arg_v("J_m_t", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "log",
     &_LieGroup::log,
-    py::arg_v("J_m_t", OptJacobianRef(),
-    "None")
+    py::arg_v("J_m_t", OptJacobianRef(), "None")
   );
 
   py_class.def("adj", &_LieGroup::adj);
