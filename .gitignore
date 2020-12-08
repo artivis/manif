@@ -6,3 +6,4 @@
 build
 doc
 doxygen_warnings.txt
+*.cache
