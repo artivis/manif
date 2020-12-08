@@ -452,6 +452,7 @@ struct RandomEvaluatorImpl<SE3TangentBase<Derived>>
   static void run(SE3TangentBase<Derived>& m)
   {
     m.coeffs().template head<3>().setRandom();
+    // In ball of radius PI
     m.coeffs().template tail<3>() = randPointInBall(MANIF_PI);
   }
 };
