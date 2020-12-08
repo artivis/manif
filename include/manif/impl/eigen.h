@@ -5,6 +5,8 @@
 #include <Eigen/LU> // for mat.inverse()
 #include <Eigen/Geometry>
 
+#include <manif/constants.h>
+
 /**
  * @note static_cast<int> to avoid -Wno-enum-compare
  */
@@ -174,7 +176,7 @@ Eigen::Matrix<Scalar, 3, 1> generate_point_in_sphere(Scalar radius)
   using std::cbrt;
 
   // random(0, 2pi)
-  Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * M_PI)));
+  Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * MANIF_PI)));
   // random(-1, 1)
   Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX/(Scalar(1) - Scalar(-1))));
   // random(0, 1)
