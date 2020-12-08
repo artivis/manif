@@ -1,16 +1,40 @@
 import numpy as np
 import pytest
 
-from PyManif import SO2, SO2Tangent, SE2, SE2Tangent, SO3, SO3Tangent, SE3, SE3Tangent
+from PyManif import \
+    R1, R1Tangent, \
+    R2, R2Tangent, \
+    R3, R3Tangent, \
+    R4, R4Tangent, \
+    R5, R5Tangent, \
+    R6, R6Tangent, \
+    R7, R7Tangent, \
+    R8, R8Tangent, \
+    R9, R9Tangent, \
+    SO2, SO2Tangent, \
+    SE2, SE2Tangent, \
+    SO3, SO3Tangent, \
+    SE3, SE3Tangent, \
+    SE_2_3, SE_2_3Tangent
 
 
 @pytest.mark.parametrize(
     "LieGroup, Tangent",
     [
+     (R1, R1Tangent),
+     (R2, R2Tangent),
+     (R3, R3Tangent),
+     (R4, R4Tangent),
+     (R5, R5Tangent),
+     (R6, R6Tangent),
+     (R7, R7Tangent),
+     (R8, R8Tangent),
+     (R9, R9Tangent),
      (SO2, SO2Tangent),
      (SO3, SO3Tangent),
      (SE2, SE2Tangent),
      # (SE3, SE3Tangent),
+     (SE_2_3, SE_2_3Tangent),
     ]
 )
 class TestCommon:
