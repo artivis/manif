@@ -142,7 +142,7 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash) -R $GITHUB_WORKSPACE
 
   ceres:
-    needs: [build-18.04]
+    needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
