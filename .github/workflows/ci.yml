@@ -13,7 +13,7 @@ jobs:
   build-ubuntu:
     runs-on: ${{ matrix.os }}
     strategy:
-      # fail-fast: false
+      fail-fast: false
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
         compiler: [{
