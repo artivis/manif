@@ -32,7 +32,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt install -y libeigen3-dev
-          cd ${{ runner.workspace }} && mkdir build
+          mkdir ${{runner.workspace}}/build
       - name: Display config
         run: |
           echo "OS:" && $RUNNER_OS && echo ""
@@ -40,7 +40,7 @@ jobs:
           echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
       - name: Configure
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -63,7 +63,7 @@ jobs:
       - name: Setup
         run: |
           brew install eigen
-          cd ${{ runner.workspace }} && mkdir build
+          mkdir ${{runner.workspace}}/build
       - name: Display config
         run: |
           echo "OS:" && $RUNNER_OS && echo ""
@@ -71,7 +71,7 @@ jobs:
           echo "Eigen:" && brew info eigen
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -87,10 +87,10 @@ jobs:
       - name: Setup
         run: |
           sudo apt-get install -y cppcheck
-          cd ${{ runner.workspace }} & mkdir build
+          mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -107,10 +107,10 @@ jobs:
       - name: Setup
         run: |
           sudo apt-get install -y valgrind
-          cd ${{ runner.workspace }} && mkdir build
+          mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -125,10 +125,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        run: cd ${{ runner.workspace }} && mkdir build
+        run: mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -147,10 +147,10 @@ jobs:
       - name: Setup
         run: |
           sudo apt install -y libceres-dev
-          cd ${{ github.workspace }} && mkdir build
+          mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake .. -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -165,10 +165,10 @@ jobs:
   #     - name: Checkout
   #       uses: actions/checkout@v2
   #     - name: Setup
-  #       run: cd ${{ github.workspace }} && mkdir build
+  #       run: mkdir ${{runner.workspace}}/build
   #     - name: Configure CMake
   #       working-directory: ${{runner.workspace}}/build
-  #       run: cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
+  #       run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
   #     - name: Build
   #       working-directory: ${{runner.workspace}}/build
   #       run: make
