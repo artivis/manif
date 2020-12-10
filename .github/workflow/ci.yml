@@ -1,0 +1,157 @@
+name: build-and-test
+on:
+  push:
+    branches:
+      - devel
+      - master
+  pull_request:
+    branches:
+      - devel
+
+jobs:
+
+  build-ubuntu:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      # fail-fast: false
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        compiler: [{
+          "cc": "gcc",
+          "cxx": "g++"
+         }, {
+          "cc": "clang",
+          "cxx": "clang++"
+        }]
+    env:
+      CC: ${{ matrix.compiler.cc }}
+      CXX: ${{ matrix.compiler.cxx }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt install -y libeigen3-dev $CC $CXX
+          cd ${{ runner.workspace }} && mkdir build && cd build
+      - name: Display config
+        run: |
+          echo "OS:" && $RUNNER_OS && echo ""
+          echo "Compiler:" && $CC && $CXX && echo ""
+          echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
+      - name: Configure
+        run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+      - name: Build
+        run: make -j2
+      - name: Test
+        run: make test
+
+  build-mac:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # Xcode 10.3 & Xcode 12.2
+        os: [macos-10.15, macos-11.0]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Xcode
+        if: matrix.os == 'macOS-10.15'
+        run: sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
+      - name: Setup
+        run: |
+          brew install eigen
+          cd ${{ runner.workspace }} && mkdir build && cd build
+      - name: Display config
+        run: |
+          echo "OS:" && $RUNNER_OS && echo ""
+          echo "Compiler:" && clang -v && echo ""
+          echo "Eigen:" && brew info eigen
+      - name: Configure CMake
+        run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+      - name: Build
+        run: make -j2
+      - name: Test
+        run: make test
+
+  cppcheck:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt-get install -y cppcheck
+          cd ${{ runner.workspace }} & mkdir build && cd build
+      - name: Configure CMake
+        run: cmake .. -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+      - name: Build
+        run: make -j2
+      - name: Test
+        run: make run-cppcheck
+
+  valgrind:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt-get install -y valgrind
+          cd ${{ runner.workspace }} && mkdir build && cd build
+      - name: Configure CMake
+        run: cmake .. -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
+      - name: Build
+        run: make -j2
+      - name: Test
+        run: ctest -T memcheck
+
+  codecov:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: cd ${{ runner.workspace }} && mkdir build && cd build
+      - name: Configure CMake
+        run: cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
+      - name: Build
+        run: make -j2
+      - name: Test
+        run: make test
+      - name: Upload coverage
+        run: |
+          cd ..
+          bash <(curl -s https://codecov.io/bash)
+  ceres:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt install -y libceres-dev
+          cd ${{ github.workspace }} && mkdir build && cd build
+      - name: Build
+        run: |
+          cmake .. -DBUILD_TESTING=ON
+          make -j2
+      - name: Test
+        run: make test
+
+  arm64:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: cd ${{ github.workspace }} && mkdir build && cd build
+      - name: Build
+        run: |
+          cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
+          make
+      - name: Test
+        run: make test
