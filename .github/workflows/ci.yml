@@ -86,7 +86,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup
         run: |
-          sudo apt-get install -y cppcheck
+          sudo apt-get install -y libceres-dev cppcheck
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
@@ -106,7 +106,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup
         run: |
-          sudo apt-get install -y valgrind
+          sudo apt-get install -y libceres-dev valgrind
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
@@ -125,7 +125,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        run: mkdir ${{runner.workspace}}/build
+        run: |
+          sudo apt install -y libceres-dev
+          mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
         run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
