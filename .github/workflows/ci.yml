@@ -138,6 +138,7 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
       - name: Upload coverage
+        working-directory: ${{runner.workspace}}/build
         run: bash <(curl -s https://codecov.io/bash)
 
   ceres:
