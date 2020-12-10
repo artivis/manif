@@ -10,116 +10,116 @@ on:
 
 jobs:
 
-  build-ubuntu:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
-        compiler: [{
-          "cc": "gcc",
-          "cxx": "g++"
-         }, {
-          "cc": "clang",
-          "cxx": "clang++"
-        }]
-    env:
-      CC: ${{ matrix.compiler.cc }}
-      CXX: ${{ matrix.compiler.cxx }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        run: |
-          sudo apt install -y libeigen3-dev
-          mkdir ${{runner.workspace}}/build
-      - name: Display config
-        run: |
-          echo "OS:" && $RUNNER_OS && echo ""
-          echo "Compiler:" && $CC && $CXX && echo ""
-          echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
-      - name: Configure
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
-      - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
-      - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: make test
-
-  build-mac:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        # Xcode 10.3 & Xcode 12.2
-        os: [macos-10.15, macos-11.0]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Xcode
-        if: matrix.os == 'macOS-10.15'
-        run: sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
-      - name: Setup
-        run: |
-          brew install eigen
-          mkdir ${{runner.workspace}}/build
-      - name: Display config
-        run: |
-          echo "OS:" && $RUNNER_OS && echo ""
-          echo "Compiler:" && clang -v && echo ""
-          echo "Eigen:" && brew info eigen
-      - name: Configure CMake
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
-      - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
-      - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: make test
-
-  cppcheck:
-    needs: [build-ubuntu]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup
-        run: |
-          sudo apt-get install -y libceres-dev cppcheck
-          mkdir ${{runner.workspace}}/build
-      - name: Configure CMake
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
-      - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
-      - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: make run-cppcheck
-
-  valgrind:
-    needs: [build-ubuntu]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        run: |
-          sudo apt-get install -y libceres-dev valgrind
-          mkdir ${{runner.workspace}}/build
-      - name: Configure CMake
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
-      - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
-      - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: ctest -T memcheck
+  # build-ubuntu:
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+  #       compiler: [{
+  #         "cc": "gcc",
+  #         "cxx": "g++"
+  #        }, {
+  #         "cc": "clang",
+  #         "cxx": "clang++"
+  #       }]
+  #   env:
+  #     CC: ${{ matrix.compiler.cc }}
+  #     CXX: ${{ matrix.compiler.cxx }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Setup
+  #       run: |
+  #         sudo apt install -y libeigen3-dev
+  #         mkdir ${{runner.workspace}}/build
+  #     - name: Display config
+  #       run: |
+  #         echo "OS:" && $RUNNER_OS && echo ""
+  #         echo "Compiler:" && $CC && $CXX && echo ""
+  #         echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
+  #     - name: Configure
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make -j2
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make test
+  #
+  # build-mac:
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     matrix:
+  #       # Xcode 10.3 & Xcode 12.2
+  #       os: [macos-10.15, macos-11.0]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Xcode
+  #       if: matrix.os == 'macOS-10.15'
+  #       run: sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
+  #     - name: Setup
+  #       run: |
+  #         brew install eigen
+  #         mkdir ${{runner.workspace}}/build
+  #     - name: Display config
+  #       run: |
+  #         echo "OS:" && $RUNNER_OS && echo ""
+  #         echo "Compiler:" && clang -v && echo ""
+  #         echo "Eigen:" && brew info eigen
+  #     - name: Configure CMake
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make -j2
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make test
+  #
+  # cppcheck:
+  #   needs: [build-ubuntu]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup
+  #       run: |
+  #         sudo apt-get install -y libceres-dev cppcheck
+  #         mkdir ${{runner.workspace}}/build
+  #     - name: Configure CMake
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake $GITHUB_WORKSPACE -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make -j2
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make run-cppcheck
+  #
+  # valgrind:
+  #   needs: [build-ubuntu]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Setup
+  #       run: |
+  #         sudo apt-get install -y libceres-dev valgrind
+  #         mkdir ${{runner.workspace}}/build
+  #     - name: Configure CMake
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake $GITHUB_WORKSPACE -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make -j2
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: ctest -T memcheck
 
   codecov:
-    needs: [build-ubuntu]
+    # needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -139,27 +139,27 @@ jobs:
         run: make test
       - name: Upload coverage
         working-directory: ${{runner.workspace}}/build
-        run: bash <(curl -s https://codecov.io/bash)
+        run: bash <(curl -s https://codecov.io/bash) -R $GITHUB_WORKSPACE
 
-  ceres:
-    needs: [build-ubuntu]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        run: |
-          sudo apt install -y libceres-dev
-          mkdir ${{runner.workspace}}/build
-      - name: Configure CMake
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
-      - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
-      - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: make test
+  # ceres:
+  #   needs: [build-18.04]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Setup
+  #       run: |
+  #         sudo apt install -y libceres-dev
+  #         mkdir ${{runner.workspace}}/build
+  #     - name: Configure CMake
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make -j2
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make test
 
   # arm64:
   #   needs: [build-ubuntu]
