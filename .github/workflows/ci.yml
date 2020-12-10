@@ -32,17 +32,20 @@ jobs:
       - name: Setup
         run: |
           sudo apt install -y libeigen3-dev
-          cd ${{ runner.workspace }} && mkdir build && cd build
+          cd ${{ runner.workspace }} && mkdir build
       - name: Display config
         run: |
           echo "OS:" && $RUNNER_OS && echo ""
           echo "Compiler:" && $CC && $CXX && echo ""
           echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
       - name: Configure
+        working-directory: ${{runner.workspace}}/build
         run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
+        working-directory: ${{runner.workspace}}/build
         run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: make test
 
   build-mac:
@@ -60,17 +63,20 @@ jobs:
       - name: Setup
         run: |
           brew install eigen
-          cd ${{ runner.workspace }} && mkdir build && cd build
+          cd ${{ runner.workspace }} && mkdir build
       - name: Display config
         run: |
           echo "OS:" && $RUNNER_OS && echo ""
           echo "Compiler:" && clang -v && echo ""
           echo "Eigen:" && brew info eigen
       - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
         run: cmake .. -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
+        working-directory: ${{runner.workspace}}/build
         run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: make test
 
   cppcheck:
@@ -81,12 +87,15 @@ jobs:
       - name: Setup
         run: |
           sudo apt-get install -y cppcheck
-          cd ${{ runner.workspace }} & mkdir build && cd build
+          cd ${{ runner.workspace }} & mkdir build
       - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
         run: cmake .. -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
+        working-directory: ${{runner.workspace}}/build
         run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: make run-cppcheck
 
   valgrind:
@@ -98,12 +107,15 @@ jobs:
       - name: Setup
         run: |
           sudo apt-get install -y valgrind
-          cd ${{ runner.workspace }} && mkdir build && cd build
+          cd ${{ runner.workspace }} && mkdir build
       - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
         run: cmake .. -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
       - name: Build
+        working-directory: ${{runner.workspace}}/build
         run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: ctest -T memcheck
 
   codecov:
@@ -113,17 +125,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
-        run: cd ${{ runner.workspace }} && mkdir build && cd build
+        run: cd ${{ runner.workspace }} && mkdir build
       - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
         run: cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
       - name: Build
+        working-directory: ${{runner.workspace}}/build
         run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: make test
       - name: Upload coverage
-        run: |
-          cd ..
-          bash <(curl -s https://codecov.io/bash)
+        run: bash <(curl -s https://codecov.io/bash)
+
   ceres:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
@@ -133,25 +147,31 @@ jobs:
       - name: Setup
         run: |
           sudo apt install -y libceres-dev
-          cd ${{ github.workspace }} && mkdir build && cd build
+          cd ${{ github.workspace }} && mkdir build
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        run: cmake .. -DBUILD_TESTING=ON
       - name: Build
-        run: |
-          cmake .. -DBUILD_TESTING=ON
-          make -j2
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
       - name: Test
+        working-directory: ${{runner.workspace}}/build
         run: make test
 
-  arm64:
-    needs: [build-ubuntu]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        run: cd ${{ github.workspace }} && mkdir build && cd build
-      - name: Build
-        run: |
-          cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
-          make
-      - name: Test
-        run: make test
+  # arm64:
+  #   needs: [build-ubuntu]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Setup
+  #       run: cd ${{ github.workspace }} && mkdir build
+  #     - name: Configure CMake
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: cmake .. -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
+  #     - name: Build
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make
+  #     - name: Test
+  #       working-directory: ${{runner.workspace}}/build
+  #       run: make test
