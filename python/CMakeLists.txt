@@ -10,8 +10,6 @@ pybind11_add_module(PyManif
 )
 target_link_libraries(PyManif PRIVATE ${PROJECT_NAME})
 
-message(WARNING ${PROJECT_NAME})
-
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")
   set_target_properties(PyManif PROPERTIES COMPILE_FLAGS "-std=c++11")
