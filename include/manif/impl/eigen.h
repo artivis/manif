@@ -5,6 +5,8 @@
 #include <Eigen/LU> // for mat.inverse()
 #include <Eigen/Geometry>
 
+#include <manif/constants.h>
+
 /**
  * @note static_cast<int> to avoid -Wno-enum-compare
  */
@@ -161,6 +163,34 @@ skew(const Eigen::MatrixBase<_Derived>& v)
              T(0.),  -v(2),   +v(1),
             +v(2),    T(0.),  -v(0),
             -v(1),   +v(0),    T(0.) ).finished();
+}
+
+template <typename Scalar>
+Eigen::Matrix<Scalar, 3, 1> randPointInBall(Scalar radius)
+{
+  // See https://stackoverflow.com/a/5408843/9709397
+
+  using std::acos;
+  using std::sin;
+  using std::cos;
+  using std::cbrt;
+
+  // random(0, 2pi)
+  Scalar phi = static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / (Scalar(2) * MANIF_PI)));
+  // random(-1, 1)
+  Scalar costheta = Scalar(-1) + static_cast<Scalar>(rand()) / (static_cast<Scalar>(RAND_MAX / Scalar(2)));
+  // random(0, 1)
+  Scalar u = static_cast<Scalar>(rand()) / static_cast<Scalar>(RAND_MAX);
+
+  Scalar theta = acos(costheta);
+  Scalar r = radius * cbrt(u);
+  Scalar rsintheta = r * sin(theta);
+
+  return Eigen::Matrix<Scalar, 3, 1>(
+    rsintheta * cos(phi),
+    rsintheta * sin(phi),
+    r * costheta
+  );
 }
 
 } /* namespace manif */

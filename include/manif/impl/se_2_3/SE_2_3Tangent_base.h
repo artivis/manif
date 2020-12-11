@@ -390,8 +390,10 @@ struct RandomEvaluatorImpl<SE_2_3TangentBase<Derived>>
 {
   static void run(SE_2_3TangentBase<Derived>& m)
   {
-    m.coeffs().setRandom();                // in [-1,1]
-    m.coeffs().template segment<3>(3) *= MANIF_PI; // in [-PI,PI]
+    // in [-1,1]
+    m.coeffs().setRandom();
+    // In ball of radius PI
+    m.coeffs().template segment<3>(3) = randPointInBall(MANIF_PI);
   }
 };
 

@@ -37,7 +37,7 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_LIFT_RETRACT)        \
   { evalLiftRetr(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_RETRACT_LIFT)        \
-  { evalLiftRetr(); }                                                     \
+  { evalRetrLift(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COMPOSE_WITH_INV)    \
   { evalComposeWithInv(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_BETWEEN_SELF)        \
