@@ -167,6 +167,26 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
 
+  pybind11:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest
+          mkdir ${{runner.workspace}}/build
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DBUILD_PYTHON_BINDINGS=ON -DBUILD_TESTING_PYTHON=ON
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: make test
+
   # arm64:
   #   needs: [build-ubuntu]
   #   runs-on: ubuntu-latest
