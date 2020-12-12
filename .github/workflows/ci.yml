@@ -9,6 +9,9 @@ on:
       - devel
   workflow_dispatch:
 
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
 jobs:
 
   build-ubuntu:
@@ -175,11 +178,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup
         run: |
-          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest
+          sudo apt install -y libeigen3-dev
+          pip3 install numpy pybind11-global pytest
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_PYTHON_BINDINGS=ON -DBUILD_TESTING_PYTHON=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_PYTHON_BINDINGS=ON -DBUILD_TESTING_PYTHON=ON -Dpybind11_DIR=~/.local/share/cmake/pybind11/
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
