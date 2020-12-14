@@ -391,7 +391,7 @@ template <typename _Derived>
 const typename LieGroupBase<_Derived>::Scalar*
 LieGroupBase<_Derived>::data() const
 {
-  derived().coeffs().data();
+  return derived().coeffs().data();
 }
 
 template <typename _Derived>
