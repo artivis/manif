@@ -1,7 +1,7 @@
 # manif
 ## A small header-only library for Lie theory.
 
-[![travis](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
+[![GHA](https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel)](https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel)
 [![appveyor](https://ci.appveyor.com/api/projects/status/l0q7b0shhonvejrd?svg=true)](https://ci.appveyor.com/project/artivis/manif)
 [![Documentation](https://codedocs.xyz/artivis/manif.svg)](https://codedocs.xyz/artivis/manif/)
 [![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
