@@ -11,3 +11,8 @@ function(manif_add_pytest target)
 endfunction()
 
 manif_add_pytest(pytest_manif)
+manif_add_pytest(pytest_so2)
+manif_add_pytest(pytest_se2)
+manif_add_pytest(pytest_so3)
+manif_add_pytest(pytest_se3)
+manif_add_pytest(pytest_se_2_3)

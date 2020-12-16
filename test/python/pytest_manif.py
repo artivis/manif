@@ -212,7 +212,8 @@ class TestCommon:
         w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
 
         # https://pybind11.readthedocs.io/en/stable/advanced/cast/eigen.html#storage-orders
-        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF), order='F')
+        # J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF), order='F')
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
 
         state_out = state.inverse(J_sout_s)
 
