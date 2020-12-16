@@ -9,6 +9,9 @@ pybind11_add_module(PyManif
   bindings_manif.cpp
 )
 target_link_libraries(PyManif PRIVATE ${PROJECT_NAME})
+# Eigen and numpy have different default storage order.
+# See e.g. https://pybind11.readthedocs.io/en/stable/advanced/cast/eigen.html#storage-orders
+target_compile_definitions(PyManif PRIVATE EIGEN_DEFAULT_TO_ROW_MAJOR)
 
 # Set required C++11 flag
 if(CMAKE_VERSION VERSION_LESS "3.1")
