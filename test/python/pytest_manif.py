@@ -204,27 +204,16 @@ class TestCommon:
     #     delta = Tangent.Random()
     #     delta_other = Tangent.Random()
     #
-    #     assert (delta.smallAdj() * delta_other).hat() == delta.hat() * delta_other.hat() - delta_other.hat() * delta.hat()
+    #     assert ((delta.smallAdj() * delta_other).hat() == delta.hat() * delta_other.hat() - delta_other.hat() * delta.hat()).all()
 
     def test_InverseJac(self, LieGroup, Tangent):
-
         state = LieGroup.Random()
         w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
-
-        # https://pybind11.readthedocs.io/en/stable/advanced/cast/eigen.html#storage-orders
-        # J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF), order='F')
         J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
 
         state_out = state.inverse(J_sout_s)
 
-        print(type(J_sout_s))
-        print(J_sout_s)
-        print(type(w))
-        print(w)
-        # print(type(J_sout_s))
-        # print(J_sout_s*w)
-
         state_pert = (state+w).inverse()
-        # state_lin  = state_out.rplus(J_sout_s*w)
+        state_lin  = state_out.rplus(J_sout_s * w)
 
-        # assert state_pert == state_lin
+        assert state_pert == state_lin

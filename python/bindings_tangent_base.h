@@ -120,14 +120,70 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
   py_class.def(-py::self)
           .def(py::self + LieGroup())
           .def(py::self + py::self)
-          .def(py::self += py::self)
+          // .def(py::self += py::self)
           .def(py::self - py::self)
-          .def(py::self -= py::self)
-          .def(py::self * double())
-          .def(Jacobian() * py::self)
-          .def(py::self / double())
+          // .def(py::self -= py::self)
+          .def(py::self * Scalar())
+          .def(Scalar() * py::self)
+          .def(py::self / Scalar())
           .def(py::self == py::self)
           ;
+
+  // Jacobian() @ py::self
+  py_class.def("__rmatmul__", [](const _Tangent& t, py::array_t<Scalar> lhs) {
+
+    py::buffer_info lhs_buf = lhs.request();
+
+    if (lhs_buf.ndim != 2)
+        throw std::runtime_error("Number of dimensions must be 2");
+
+    if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
+        throw std::runtime_error("Input shapes must match");
+
+    /* No pointer is passed, so NumPy will allocate the buffer */
+    auto result = py::array_t<double>(_Tangent::RepSize);
+
+    Eigen::Map<_Tangent> result_map(static_cast<Scalar*>(result.request().ptr));
+
+    result_map = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
+
+    return _Tangent(result_map);
+
+    // @todo(artivis) fix error: use of deleted function ‘Eigen::Map<Tangent>::Map(const Eigen::Map<Tangent&)’
+    // and avoid above copy
+    // return result;
+
+  }, py::is_operator());
+
+  // Jacobian() * py::self
+  py_class.def("__rmul__", [](const _Tangent& t, py::array_t<Scalar> lhs) {
+
+    py::buffer_info lhs_buf = lhs.request();
+
+    if (lhs_buf.ndim != 2)
+        throw std::runtime_error("Number of dimensions must be 2");
+
+    if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
+        throw std::runtime_error("Input shapes must match");
+
+    /* No pointer is passed, so NumPy will allocate the buffer */
+    auto result = py::array_t<double>(_Tangent::RepSize);
+
+    Eigen::Map<_Tangent> result_map(static_cast<Scalar*>(result.request().ptr));
+
+    result_map = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
+
+    return _Tangent(result_map);
+
+    // @todo(artivis) fix error: use of deleted function ‘Eigen::Map<Tangent>::Map(const Eigen::Map<Tangent&)’
+    // and avoid above copy
+    // return result;
+
+  }, py::is_operator());
+
+  // This is necessary to 'override' numpy's ndarray operators
+  // with the __*mul*__ operator above
+  py_class.attr("__array_priority__") = 10000;
 
   py_class.def(
     "__str__",
