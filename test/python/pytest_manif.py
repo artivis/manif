@@ -200,11 +200,18 @@ class TestCommon:
         # allclose: absolute(a - b) <= (1e-08 + 1e-05 * absolute(b))
         assert np.allclose(point, pout)
 
-    # def test_smallAdj(self, LieGroup, Tangent):
-    #     delta = Tangent.Random()
-    #     delta_other = Tangent.Random()
-    #
-    #     assert ((delta.smallAdj() * delta_other).hat() == delta.hat() * delta_other.hat() - delta_other.hat() * delta.hat()).all()
+    def test_smallAdj(self, LieGroup, Tangent):
+
+        if LieGroup in (SO2, R1):
+            pytest.skip("hat is a scalar (Dim 1), numpy doesn't support matmul")
+
+        delta = Tangent.Random()
+        delta_other = Tangent.Random()
+
+        assert np.allclose(
+            (delta.smallAdj() * delta_other).hat(),
+            delta.hat() @ delta_other.hat() - delta_other.hat() @ delta.hat()
+        )
 
     def test_InverseJac(self, LieGroup, Tangent):
         state = LieGroup.Random()
@@ -495,42 +502,44 @@ class TestCommon:
         assert Adj == Jl @ np.linalg.inv(Jr)
         assert Jl == (-tan).rjac()
 
-    # def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
-    #     state = LieGroup.Random()
-    #
-    #     tan = state.log();
-    #     Jr = tan.rjac();
-    #     Jl = tan.ljac();
-    #
-    #     Jrinv = tan.rjacinv();
-    #     Jlinv = tan.ljacinv();
-    #
-    #     I = np.identity(LieGroup.DoF)
-    #
-    #     assert I == Jr @ Jrinv
-    #     assert I == Jl @ Jlinv
+    @pytest.mark.skip(reason="rjac/ljac not implemented yet")
+    def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
+        state = LieGroup.Random()
 
-    # def test_ActJac(self, LieGroup, Tangent):
-    #     state = LieGroup.Identity()
-    #     point = np.random.rand(Tangent.Dim)
-    #     w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
-    #
-    #     J_pout_s = np.zeros((LieGroup.Dim, LieGroup.DoF))
-    #     J_pout_p = np.zeros((LieGroup.Dim, LieGroup.Dim))
-    #
-    #     pointout = state.act(point, J_pout_s, J_pout_p)
-    #
-    #     w_point = np.random.rand(Tangent.Dim) * 1e-4
-    #
-    #     point_pert = (state + w).act(point)
-    #     point_lin  = pointout + (J_pout_s * w.coeffs())
-    #
-    #     assert point_pert == point_lin
-    #
-    #     point_pert = state.act(point + w_point)
-    #     point_lin  = pointout + J_pout_p * w_point
-    #
-    #     assert point_pert == point_lin
+        tan = state.log();
+        Jr = tan.rjac();
+        Jl = tan.ljac();
+
+        Jrinv = tan.rjacinv();
+        Jlinv = tan.ljacinv();
+
+        I = np.identity(LieGroup.DoF)
+
+        assert I == Jr @ Jrinv
+        assert I == Jl @ Jlinv
+
+    @pytest.mark.skip(reason="act Jacobians not implemented yet")
+    def test_ActJac(self, LieGroup, Tangent):
+        state = LieGroup.Identity()
+        point = np.random.rand(Tangent.Dim)
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+
+        J_pout_s = np.zeros((LieGroup.Dim, LieGroup.DoF))
+        J_pout_p = np.zeros((LieGroup.Dim, LieGroup.Dim))
+
+        pointout = state.act(point, J_pout_s, J_pout_p)
+
+        w_point = np.random.rand(Tangent.Dim) * 1e-4
+
+        point_pert = (state + w).act(point)
+        point_lin  = pointout + (J_pout_s * w.coeffs())
+
+        assert point_pert == point_lin
+
+        point_pert = state.act(point + w_point)
+        point_lin  = pointout + J_pout_p * w_point
+
+        assert point_pert == point_lin
 
     def test_TanPlusTanJac(self, LieGroup, Tangent):
         delta = Tangent.Random()

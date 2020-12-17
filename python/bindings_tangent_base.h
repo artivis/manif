@@ -140,18 +140,9 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
     if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
         throw std::runtime_error("Input shapes must match");
 
-    /* No pointer is passed, so NumPy will allocate the buffer */
-    auto result = py::array_t<double>(_Tangent::RepSize);
+    _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
 
-    Eigen::Map<_Tangent> result_map(static_cast<Scalar*>(result.request().ptr));
-
-    result_map = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
-
-    return _Tangent(result_map);
-
-    // @todo(artivis) fix error: use of deleted function ‘Eigen::Map<Tangent>::Map(const Eigen::Map<Tangent&)’
-    // and avoid above copy
-    // return result;
+    return result;
 
   }, py::is_operator());
 
@@ -166,18 +157,9 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
     if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
         throw std::runtime_error("Input shapes must match");
 
-    /* No pointer is passed, so NumPy will allocate the buffer */
-    auto result = py::array_t<double>(_Tangent::RepSize);
+    _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
 
-    Eigen::Map<_Tangent> result_map(static_cast<Scalar*>(result.request().ptr));
-
-    result_map = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
-
-    return _Tangent(result_map);
-
-    // @todo(artivis) fix error: use of deleted function ‘Eigen::Map<Tangent>::Map(const Eigen::Map<Tangent&)’
-    // and avoid above copy
-    // return result;
+    return result;
 
   }, py::is_operator());
 
