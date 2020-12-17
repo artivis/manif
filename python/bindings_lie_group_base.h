@@ -45,7 +45,8 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   py_class.def("adj", &_LieGroup::adj);
 
   py_class.def(
-    "compose", &_LieGroup::template compose<_LieGroup>,
+    "compose",
+    &_LieGroup::template compose<_LieGroup>,
     py::arg("other"),
     py::arg_v("J_mc_ma", OptJacobianRef(), "None"),
     py::arg_v("J_mc_mb", OptJacobianRef(), "None")
@@ -67,9 +68,10 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   //   py::arg_v("J_vout_v", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
   // );
 
-  py_class.def("act", [](const _LieGroup& self, const Vector& v) {
-    return self.act(v);
-  });
+  py_class.def(
+    "act",
+    [](const _LieGroup& self, const Vector& v) { return self.act(v);}
+  );
 
   py_class.def(
     "isApprox",

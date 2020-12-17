@@ -476,8 +476,11 @@ class TestCommon:
 
         assert np.allclose(np.linalg.inv(state.adj()), state.inverse().adj())
 
-    @pytest.mark.skip(reason="rjac/ljac not implemented yet")
     def test_Adj(self, LieGroup, Tangent):
+
+        if LieGroup in (SO2, R1):
+            pytest.skip("Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support matmul")
+
         state = LieGroup.Random()
 
         Adj = state.adj();
@@ -486,9 +489,9 @@ class TestCommon:
         Jr = tan.rjac();
         Jl = tan.ljac();
 
-        assert Jl == Adj @ Jr
-        assert Adj == Jl @ np.linalg.inv(Jr)
-        assert Jl == (-tan).rjac()
+        assert np.allclose(Jl, Adj @ Jr)
+        assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+        assert np.allclose(Jl, (-tan).rjac())
 
         state.setIdentity();
 
@@ -498,9 +501,9 @@ class TestCommon:
         Jr = tan.rjac();
         Jl = tan.ljac();
 
-        assert Jl == Adj @ Jr
-        assert Adj == Jl @ np.linalg.inv(Jr)
-        assert Jl == (-tan).rjac()
+        assert np.allclose(Jl, Adj @ Jr)
+        assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+        assert np.allclose(Jl, (-tan).rjac())
 
     @pytest.mark.skip(reason="rjac/ljac not implemented yet")
     def test_JrJrinvJlJlinv(self, LieGroup, Tangent):

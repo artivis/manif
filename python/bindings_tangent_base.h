@@ -85,8 +85,8 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
     py::arg_v("J_mout_tb", OptJacobianRef(), "None")
   );
 
-  // py_class.def("rjac", &_Tangent::rjac);
-  // py_class.def("ljac", &_Tangent::ljac);
+  py_class.def("rjac", &_Tangent::rjac);
+  py_class.def("ljac", &_Tangent::ljac);
   // py_class.def("rjacinv", &_Tangent::rjacinv);
   // py_class.def("ljacinv", &_Tangent::ljacinv);
 
