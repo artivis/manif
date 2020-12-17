@@ -10,7 +10,7 @@ void wrap_SE3(pybind11::module &m);
 
 void wrap_SE_2_3(pybind11::module &m);
 
-PYBIND11_MODULE(PyManif, m) {
+PYBIND11_MODULE(manifpy, m) {
   m.doc() = "Python bindings for the manif library.";
 
   wrap_Rn(m);

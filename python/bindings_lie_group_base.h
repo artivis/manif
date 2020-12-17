@@ -52,17 +52,21 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   );
 
   py_class.def(
-    "between", &_LieGroup::template between<_LieGroup>,
+    "between",
+    &_LieGroup::template between<_LieGroup>,
     py::arg("other"),
     py::arg_v("J_mc_ma", OptJacobianRef(), "None"),
     py::arg_v("J_mc_mb", OptJacobianRef(), "None")
   );
 
-  // py_class.def("act", &_LieGroup::template act<Vector>,
+  // py_class.def(
+  //   "act",
+  //   &_LieGroup::act,
   //   py::arg("v"),
   //   py::arg_v("J_vout_m", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>>(), "None"),
   //   py::arg_v("J_vout_v", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
   // );
+
   py_class.def("act", [](const _LieGroup& self, const Vector& v) {
     return self.act(v);
   });

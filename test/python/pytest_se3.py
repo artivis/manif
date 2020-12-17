@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from PyManif import SE3, SE3Tangent
+from manifpy import SE3, SE3Tangent
 
 
 def test_constructor():

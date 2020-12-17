@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from PyManif import \
+from manifpy import \
     R1, R1Tangent, \
     R2, R2Tangent, \
     R3, R3Tangent, \
@@ -216,4 +216,358 @@ class TestCommon:
         state_pert = (state+w).inverse()
         state_lin  = state_out.rplus(J_sout_s * w)
 
-        assert state_pert == state_lin
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_LogJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.log(J_sout_s)
+
+        state_pert = (state+w).log()
+        state_lin  = state_out + (J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_ExpJac(self, LieGroup, Tangent):
+        delta = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = delta.exp(J_sout_s)
+
+        state_pert = (delta+w).exp()
+        state_lin  = state_out + (J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        delta.setZero()
+        state_out = delta.exp(J_sout_s)
+
+        state_pert = (delta+w).exp()
+        state_lin  = state_out + (J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_ComposeJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_so = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.compose(state_other, J_sout_s, J_sout_so)
+
+        state_pert = (state+w).compose(state_other)
+        state_lin  = state_out + J_sout_s*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.compose(state_other+w)
+        state_lin  = state_out + J_sout_so*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        #
+
+        state_out = state.compose(state_other, J_mc_ma = J_sout_s, J_mc_mb = J_sout_so)
+
+        state_pert = (state+w).compose(state_other)
+        state_lin  = state_out + J_sout_s*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.compose(state_other+w)
+        state_lin  = state_out + J_sout_so*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        #
+
+        state_out = state.compose(state_other, J_mc_mb = J_sout_so, J_mc_ma = J_sout_s)
+
+        state_pert = (state+w).compose(state_other)
+        state_lin  = state_out + J_sout_s*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.compose(state_other+w)
+        state_lin  = state_out + J_sout_so*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        #
+
+        state_out = state.compose(state_other, J_mc_ma = J_sout_s)
+
+        state_pert = (state+w).compose(state_other)
+        state_lin  = state_out + J_sout_s*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        #
+
+        state_out = state.compose(state_other, J_mc_mb = J_sout_so)
+
+        state_pert = state.compose(state_other+w)
+        state_lin  = state_out + J_sout_so*w
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+
+    def test_BetweenJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_so = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.between(state_other, J_sout_s, J_sout_so)
+
+        state_pert = (state + w).between(state_other)
+        state_lin  = state_out + (J_sout_s * w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.between(state_other + w)
+        state_lin  = state_out + (J_sout_so * w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_RplusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        delta = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_t = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.rplus(delta, J_sout_s, J_sout_t)
+
+        state_pert = (state+w).rplus(delta)
+        state_lin  = state_out.rplus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.rplus(delta+w)
+        state_lin  = state_out.rplus(J_sout_t*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_LplusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        delta = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_t = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.lplus(delta, J_sout_s, J_sout_t)
+
+        state_pert = (state+w).lplus(delta)
+        state_lin  = state_out.rplus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.lplus(delta+w)
+        state_lin  = state_out.rplus(J_sout_t*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_PlusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        delta = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_t = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.plus(delta, J_sout_s, J_sout_t)
+
+        state_pert = (state+w).plus(delta)
+        state_lin  = state_out.plus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.plus(delta+w)
+        state_lin  = state_out.plus(J_sout_t*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_RminusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_so = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.rminus(state_other, J_sout_s, J_sout_so)
+
+        state_pert = (state+w).rminus(state_other)
+        state_lin  = state_out.plus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.rminus(state_other+w)
+        state_lin  = state_out.plus(J_sout_so*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_LminusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_so = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.lminus(state_other, J_sout_s, J_sout_so)
+
+        state_pert = (state+w).lminus(state_other)
+        state_lin  = state_out.plus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.lminus(state_other+w)
+        state_lin  = state_out.plus(J_sout_so*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_MinusJac(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        J_sout_s = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_sout_so = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        state_out = state.minus(state_other, J_sout_s, J_sout_so)
+
+        state_pert = (state+w).minus(state_other)
+        state_lin  = state_out.plus(J_sout_s*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+        state_pert = state.minus(state_other+w)
+        state_lin  = state_out.plus(J_sout_so*w)
+
+        assert state_pert.isApprox(state_lin, eps=1e-7)
+
+    def test_Adj(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+        state_other = LieGroup.Random()
+        delta = Tangent.Random()
+
+        Adja = state.adj()
+        Adjb = state_other.adj()
+        Adjc = state.compose(state_other).adj()
+
+        # assert ((Adja @ Adjb) == Adjc).all()
+
+        assert np.allclose(Adja @ Adjb, Adjc)
+
+        assert state + delta == state.adj() * delta + state
+
+        if LieGroup in (SO2, R1):
+            pytest.skip("Adj is a scalar (Dim 1), numpy doesn't support inversion")
+
+        assert np.allclose(np.linalg.inv(state.adj()), state.inverse().adj())
+
+    @pytest.mark.skip(reason="rjac/ljac not implemented yet")
+    def test_Adj(self, LieGroup, Tangent):
+        state = LieGroup.Random()
+
+        Adj = state.adj();
+        tan = state.log();
+
+        Jr = tan.rjac();
+        Jl = tan.ljac();
+
+        assert Jl == Adj @ Jr
+        assert Adj == Jl @ np.linalg.inv(Jr)
+        assert Jl == (-tan).rjac()
+
+        state.setIdentity();
+
+        Adj = state.adj();
+        tan = state.log();
+
+        Jr = tan.rjac();
+        Jl = tan.ljac();
+
+        assert Jl == Adj @ Jr
+        assert Adj == Jl @ np.linalg.inv(Jr)
+        assert Jl == (-tan).rjac()
+
+    # def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
+    #     state = LieGroup.Random()
+    #
+    #     tan = state.log();
+    #     Jr = tan.rjac();
+    #     Jl = tan.ljac();
+    #
+    #     Jrinv = tan.rjacinv();
+    #     Jlinv = tan.ljacinv();
+    #
+    #     I = np.identity(LieGroup.DoF)
+    #
+    #     assert I == Jr @ Jrinv
+    #     assert I == Jl @ Jlinv
+
+    # def test_ActJac(self, LieGroup, Tangent):
+    #     state = LieGroup.Identity()
+    #     point = np.random.rand(Tangent.Dim)
+    #     w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+    #
+    #     J_pout_s = np.zeros((LieGroup.Dim, LieGroup.DoF))
+    #     J_pout_p = np.zeros((LieGroup.Dim, LieGroup.Dim))
+    #
+    #     pointout = state.act(point, J_pout_s, J_pout_p)
+    #
+    #     w_point = np.random.rand(Tangent.Dim) * 1e-4
+    #
+    #     point_pert = (state + w).act(point)
+    #     point_lin  = pointout + (J_pout_s * w.coeffs())
+    #
+    #     assert point_pert == point_lin
+    #
+    #     point_pert = state.act(point + w_point)
+    #     point_lin  = pointout + J_pout_p * w_point
+    #
+    #     assert point_pert == point_lin
+
+    def test_TanPlusTanJac(self, LieGroup, Tangent):
+        delta = Tangent.Random()
+        delta_other = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+
+        J_tout_t0 = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_tout_t1 = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        delta_out = delta.plus(delta_other, J_tout_t0, J_tout_t1);
+
+        delta_pert = (delta+w).plus(delta_other);
+        delta_lin  = delta_out.plus(J_tout_t0*w);
+
+        assert delta_pert == delta_lin
+
+        delta_pert = delta.plus(delta_other+w);
+        delta_lin  = delta_out.plus(J_tout_t1*w);
+
+        assert delta_pert == delta_lin
+
+    def test_TanMinusTanJac(self, LieGroup, Tangent):
+        delta = Tangent.Random()
+        delta_other = Tangent.Random()
+        w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+
+        J_tout_t0 = np.zeros((LieGroup.DoF, LieGroup.DoF))
+        J_tout_t1 = np.zeros((LieGroup.DoF, LieGroup.DoF))
+
+        delta_out = delta.minus(delta_other, J_tout_t0, J_tout_t1);
+
+        delta_pert = (delta+w).minus(delta_other);
+        delta_lin  = delta_out.plus(J_tout_t0*w);
+
+        assert delta_pert == delta_lin
+
+        delta_pert = delta.minus(delta_other+w);
+        delta_lin  = delta_out.plus(J_tout_t1*w);
+
+        assert delta_pert == delta_lin
