@@ -322,7 +322,6 @@ class TestCommon:
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
-
     def test_BetweenJac(self, LieGroup, Tangent):
         state = LieGroup.Random()
         state_other = LieGroup.Random()
@@ -505,7 +504,7 @@ class TestCommon:
         assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
         assert np.allclose(Jl, (-tan).rjac())
 
-    @pytest.mark.skip(reason="rjac/ljac not implemented yet")
+    @pytest.mark.skip(reason="invrjac/invljac not implemented yet")
     def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
         state = LieGroup.Random()
 
@@ -521,28 +520,26 @@ class TestCommon:
         assert I == Jr @ Jrinv
         assert I == Jl @ Jlinv
 
-    @pytest.mark.skip(reason="act Jacobians not implemented yet")
     def test_ActJac(self, LieGroup, Tangent):
         state = LieGroup.Identity()
         point = np.random.rand(Tangent.Dim)
         w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
+        w_point = np.random.rand(Tangent.Dim) * 1e-4
 
         J_pout_s = np.zeros((LieGroup.Dim, LieGroup.DoF))
         J_pout_p = np.zeros((LieGroup.Dim, LieGroup.Dim))
 
         pointout = state.act(point, J_pout_s, J_pout_p)
 
-        w_point = np.random.rand(Tangent.Dim) * 1e-4
-
         point_pert = (state + w).act(point)
-        point_lin  = pointout + (J_pout_s * w.coeffs())
+        point_lin  = pointout + J_pout_s @ w.coeffs()
 
-        assert point_pert == point_lin
+        assert np.allclose(point_pert, point_lin)
 
         point_pert = state.act(point + w_point)
-        point_lin  = pointout + J_pout_p * w_point
+        point_lin  = pointout + J_pout_p @ w_point
 
-        assert point_pert == point_lin
+        assert np.allclose(point_pert, point_lin)
 
     def test_TanPlusTanJac(self, LieGroup, Tangent):
         delta = Tangent.Random()

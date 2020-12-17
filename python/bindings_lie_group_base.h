@@ -60,9 +60,10 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
     py::arg_v("J_mc_mb", OptJacobianRef(), "None")
   );
 
+  // That pops some nasty compilation errors.
   // py_class.def(
   //   "act",
-  //   &_LieGroup::act,
+  //   &_LieGroup::template act<Vector>,
   //   py::arg("v"),
   //   py::arg_v("J_vout_m", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>>(), "None"),
   //   py::arg_v("J_vout_v", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
@@ -70,7 +71,16 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
 
   py_class.def(
     "act",
-    [](const _LieGroup& self, const Vector& v) { return self.act(v);}
+    [](
+      const _LieGroup& self,
+      const Vector& v,
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>> Ja,
+      tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>> Jb) {
+        return self.act(v, Ja, Jb);
+    },
+    py::arg("v"),
+    py::arg_v("J_vout_m", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>>(), "None"),
+    py::arg_v("J_vout_v", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
   );
 
   py_class.def(
