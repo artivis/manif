@@ -278,7 +278,7 @@ class TestCommon:
 
         #
 
-        state_out = state.compose(state_other, J_mc_ma = J_sout_s, J_mc_mb = J_sout_so)
+        state_out = state.compose(state_other, J_out_self = J_sout_s, J_out_other = J_sout_so)
 
         state_pert = (state+w).compose(state_other)
         state_lin  = state_out + J_sout_s*w
@@ -292,7 +292,7 @@ class TestCommon:
 
         #
 
-        state_out = state.compose(state_other, J_mc_mb = J_sout_so, J_mc_ma = J_sout_s)
+        state_out = state.compose(state_other, J_out_other = J_sout_so, J_out_self = J_sout_s)
 
         state_pert = (state+w).compose(state_other)
         state_lin  = state_out + J_sout_s*w
@@ -306,7 +306,7 @@ class TestCommon:
 
         #
 
-        state_out = state.compose(state_other, J_mc_ma = J_sout_s)
+        state_out = state.compose(state_other, J_out_self = J_sout_s)
 
         state_pert = (state+w).compose(state_other)
         state_lin  = state_out + J_sout_s*w
@@ -315,7 +315,7 @@ class TestCommon:
 
         #
 
-        state_out = state.compose(state_other, J_mc_mb = J_sout_so)
+        state_out = state.compose(state_other, J_out_other = J_sout_so)
 
         state_pert = state.compose(state_other+w)
         state_lin  = state_out + J_sout_so*w

@@ -32,7 +32,7 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
 
   py_class.def("generator", &_Tangent::generator);
 
-  // py_class.def("w", &_Tangent::w);
+  // py_class.def("innerWeights", &_Tangent::w);
   py_class.def("inner", &_Tangent::template inner<_Tangent>);
 
   py_class.def("weightedNorm", &_Tangent::weightedNorm);
@@ -42,47 +42,47 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
   py_class.def(
     "exp",
     &_Tangent::exp,
-    py::arg_v("J_m_t", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "rplus",
     &_Tangent::rplus,
-    py::arg("m"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None")
+    py::arg("state"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_state", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "lplus",
     &_Tangent::lplus,
-    py::arg("m"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None")
+    py::arg("state"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_state", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "plus",
     static_cast<LieGroup (_Tangent::*)(const LieGroup&, OptJacobianRef, OptJacobianRef) const>(&_Tangent::plus),
-    py::arg("m"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None")
+    py::arg("state"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_state", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "plus",
     &_Tangent::template plus<_Tangent>,
     py::arg("other"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_o", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "minus",
     &_Tangent::template minus<_Tangent>,
     py::arg("other"),
-    py::arg_v("J_mout_ta", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_tb", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def("rjac", &_Tangent::rjac);
@@ -98,7 +98,8 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
       return self.isApprox(t, eps);
     },
     py::arg("other"),
-    py::arg_v("eps", Scalar(manif::Constants<Scalar>::eps), "eps"));
+    py::arg_v("eps", Scalar(manif::Constants<Scalar>::eps), "eps")
+  );
 
   py_class.def(
     "isApprox",
@@ -106,7 +107,8 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
       return self.isApprox(t, eps);
     },
     py::arg("other"),
-    py::arg_v("eps", Scalar(manif::Constants<Scalar>::eps), "eps"));
+    py::arg_v("eps", Scalar(manif::Constants<Scalar>::eps), "eps")
+  );
 
   py_class.def("setZero", &_Tangent::setZero);
   py_class.def("setRandom", &_Tangent::setRandom);
@@ -114,7 +116,7 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
   py_class.def_static("Zero", &_Tangent::Zero);
   py_class.def_static("Random", &_Tangent::Random);
   py_class.def_static("Generator", &_Tangent::Generator);
-  py_class.def_static("W", &_Tangent::W);
+  py_class.def_static("InnerWeights", &_Tangent::W);
 
   // operator overloads
   py_class.def(-py::self)

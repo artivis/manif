@@ -33,13 +33,13 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   py_class.def(
     "inverse",
     &_LieGroup::inverse,
-    py::arg_v("J_m_t", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "log",
     &_LieGroup::log,
-    py::arg_v("J_m_t", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None")
   );
 
   py_class.def("adj", &_LieGroup::adj);
@@ -48,16 +48,16 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
     "compose",
     &_LieGroup::template compose<_LieGroup>,
     py::arg("other"),
-    py::arg_v("J_mc_ma", OptJacobianRef(), "None"),
-    py::arg_v("J_mc_mb", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "between",
     &_LieGroup::template between<_LieGroup>,
     py::arg("other"),
-    py::arg_v("J_mc_ma", OptJacobianRef(), "None"),
-    py::arg_v("J_mc_mb", OptJacobianRef(), "None")
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   // That pops some nasty compilation errors.
@@ -78,9 +78,9 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>> Jb) {
         return self.act(v, Ja, Jb);
     },
-    py::arg("v"),
-    py::arg_v("J_vout_m", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>>(), "None"),
-    py::arg_v("J_vout_v", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
+    py::arg("p"),
+    py::arg_v("J_out_self", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::DoF>>>(), "None"),
+    py::arg_v("J_out_p", tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LieGroup::Dim, _LieGroup::Dim>>>(), "None")
   );
 
   py_class.def(
@@ -93,49 +93,49 @@ void wrap_lie_group_base(py::class_<_LieGroup, _Args...>& py_class) {
   py_class.def(
     "rplus",
     &_LieGroup::template rplus<Tangent>,
-    py::arg("t"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None")
+    py::arg("tau"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_tau", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "lplus",
     &_LieGroup::template lplus<Tangent>,
-    py::arg("t"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None")
+    py::arg("tau"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_mout_tau", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "plus",
     &_LieGroup::template plus<Tangent>,
-    py::arg("t"),
-    py::arg_v("J_mout_m", OptJacobianRef(), "None"),
-    py::arg_v("J_mout_t", OptJacobianRef(), "None")
+    py::arg("tau"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_mout_tau", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "rminus",
     &_LieGroup::template rminus<_LieGroup>,
-    py::arg("t"),
-    py::arg_v("J_t_ma", OptJacobianRef(), "None"),
-    py::arg_v("J_t_mb", OptJacobianRef(), "None")
+    py::arg("other"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "lminus",
     &_LieGroup::template lminus<_LieGroup>,
-    py::arg("t"),
-    py::arg_v("J_t_ma", OptJacobianRef(), "None"),
-    py::arg_v("J_t_mb", OptJacobianRef(), "None")
+    py::arg("other"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def(
     "minus",
     &_LieGroup::template minus<_LieGroup>,
-    py::arg("t"),
-    py::arg_v("J_t_ma", OptJacobianRef(), "None"),
-    py::arg_v("J_t_mb", OptJacobianRef(), "None")
+    py::arg("other"),
+    py::arg_v("J_out_self", OptJacobianRef(), "None"),
+    py::arg_v("J_out_other", OptJacobianRef(), "None")
   );
 
   py_class.def("setIdentity", &_LieGroup::setIdentity);
