@@ -28,10 +28,10 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  using BlockV = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using BlockW = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using ConstBlockV = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
-  using ConstBlockW = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using LinVel = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using AngVel = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using ConstLinVel = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using ConstAngVel = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
 
   using Base::data;
   using Base::coeffs;
@@ -105,12 +105,12 @@ public:
   // SE3Tangent specific API
 
   //! @brief Get the linear part.
-  BlockV v();
-  const ConstBlockV v() const;
+  LinVel linVel();
+  const ConstLinVel linVel() const;
 
   //! @brief Get the angular part.
-  BlockW w();
-  const ConstBlockW w() const;
+  AngVel angVel();
+  const ConstAngVel angVel() const;
 
 //  Scalar x() const;
 //  Scalar y() const;
@@ -153,7 +153,7 @@ SE3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   }
 
   /// @note Eq. 10.93
-  return LieGroup(asSO3().ljac()*v(), asSO3().exp().quat());
+  return LieGroup(asSO3().ljac()*linVel(), asSO3().exp().quat());
 }
 
 template <typename _Derived>
@@ -310,8 +310,8 @@ SE3TangentBase<_Derived>::smallAdj() const
   /// considering vee(log(g)) = (v;w)
 
   Jacobian smallAdj;
-  smallAdj.template topRightCorner<3,3>() = skew(v());
-  smallAdj.template topLeftCorner<3,3>() = skew(w());
+  smallAdj.template topRightCorner<3,3>() = skew(linVel());
+  smallAdj.template topLeftCorner<3,3>() = skew(angVel());
   smallAdj.template bottomRightCorner<3,3>() = smallAdj.template topLeftCorner<3,3>();
   smallAdj.template bottomLeftCorner<3,3>().setZero();
 
@@ -321,28 +321,29 @@ SE3TangentBase<_Derived>::smallAdj() const
 // SE3Tangent specific API
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::BlockV
-SE3TangentBase<_Derived>::v()
+typename SE3TangentBase<_Derived>::LinVel
+SE3TangentBase<_Derived>::linVel()
 {
   return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-const typename SE3TangentBase<_Derived>::ConstBlockV
-SE3TangentBase<_Derived>::v() const
+const typename SE3TangentBase<_Derived>::ConstLinVel
+SE3TangentBase<_Derived>::linVel() const
 {
   return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-typename SE3TangentBase<_Derived>::BlockW SE3TangentBase<_Derived>::w()
+typename SE3TangentBase<_Derived>::AngVel
+SE3TangentBase<_Derived>::angVel()
 {
   return coeffs().template tail<3>();
 }
 
 template <typename _Derived>
-const typename SE3TangentBase<_Derived>::ConstBlockW
-SE3TangentBase<_Derived>::w() const
+const typename SE3TangentBase<_Derived>::ConstAngVel
+SE3TangentBase<_Derived>::angVel() const
 {
   return coeffs().template tail<3>();
 }

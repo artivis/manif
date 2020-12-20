@@ -309,6 +309,21 @@ TEST(TEST_SE_2_3, TEST_SE_2_3_ACT)
   EXPECT_NEAR( 0, transformed_point.z(), 1e-15);
 }
 
+TEST(TEST_SE_2_3, TEST_SE_2_3TAN_LINANGVELACC)
+{
+  SE_2_3Tangentd::DataType data;
+  data << 1,2,3,4,5,6,7,8,9;
+  SE_2_3Tangentd se23tan(data);
+
+  EXPECT_EIGEN_NEAR(Eigen::Vector3d(1,2,3),
+                    se23tan.linVel());
+
+  EXPECT_EIGEN_NEAR(Eigen::Vector3d(4,5,6),
+                    se23tan.angVel());
+
+  EXPECT_EIGEN_NEAR(Eigen::Vector3d(7,8,9),
+                    se23tan.linAcc());
+}
 
 #ifndef MANIF_NO_DEBUG
 

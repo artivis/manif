@@ -78,6 +78,14 @@ TEST(TEST_SO3, TEST_SO3_IDENTITY2)
   EXPECT_DOUBLE_EQ(1, so3.w());
 }
 
+TEST(TEST_SO3, TEST_SO3TAN_ANGVEL)
+{
+  SO3Tangentd so3tan(SO3Tangentd::DataType(1,2,3));
+
+  EXPECT_EIGEN_NEAR(SO3Tangentd::DataType(1,2,3),
+                    so3tan.angVel());
+}
+
 TEST(TEST_SO3, TEST_SO3_RANDOM)
 {
   SO3d so3;
