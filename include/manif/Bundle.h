@@ -6,7 +6,6 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/tangent_base.h"
 
-#include "manif/impl/bundle/Bundle_properties.h"
 #include "manif/impl/bundle/Bundle_base.h"
 #include "manif/impl/bundle/Bundle_map.h"
 #include "manif/impl/bundle/Bundle.h"

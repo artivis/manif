@@ -6,7 +6,6 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/tangent_base.h"
 
-#include "manif/impl/rn/Rn_properties.h"
 #include "manif/impl/rn/Rn_base.h"
 #include "manif/impl/rn/RnTangent_base.h"
 #include "manif/impl/rn/Rn.h"
