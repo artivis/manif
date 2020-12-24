@@ -1,7 +1,6 @@
 #ifndef _MANIF_MANIF_RNTANGENT_BASE_H_
 #define _MANIF_MANIF_RNTANGENT_BASE_H_
 
-#include "manif/impl/rn/Rn_properties.h"
 #include "manif/impl/tangent_base.h"
 
 namespace manif {
