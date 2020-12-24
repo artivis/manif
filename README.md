@@ -26,6 +26,9 @@ At the moment, it provides the groups:
   introduced (to the best of knowledge) in this [paper][barrau15].
   NOTE: The implementation here differs slightly from
   the developments in the [paper][barrau15].
+- Bundle<>: allows manipulating a manifold bundle as a single Lie group.
+  Referred to as a *composite manifold* in Section IV of the
+  [reference paper](http://arxiv.org/abs/1812.01537).
 
 Other Lie groups can and will be added, contributions are welcome.
 

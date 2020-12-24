@@ -3,10 +3,8 @@
 
 #include "manif/impl/bundle/Bundle.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 /**
  * @brief traits specialization for Eigen Map
@@ -38,8 +36,7 @@ struct traits<Eigen::Map<const Bundle<_Scalar, T...>, 0>>
 }  // namespace manif
 
 
-namespace Eigen
-{
+namespace Eigen {
 
 /**
  * @brief Specialization of Map for manif::Bundle
@@ -51,6 +48,7 @@ class Map<manif::Bundle<_Scalar, T...>, 0>
   using Base = manif::BundleBase<Map<manif::Bundle<_Scalar, T...>, 0>>;
 
 public:
+
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
 
@@ -65,6 +63,7 @@ public:
   const DataType & coeffs() const {return data_;}
 
 protected:
+
   DataType data_;
 };
 
@@ -78,6 +77,7 @@ class Map<const manif::Bundle<_Scalar, T...>, 0>
   using Base = manif::BundleBase<Map<const manif::Bundle<_Scalar, T...>, 0>>;
 
 public:
+
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
 
@@ -88,6 +88,7 @@ public:
   const DataType & coeffs() const {return data_;}
 
 protected:
+
   const DataType data_;
 };
 

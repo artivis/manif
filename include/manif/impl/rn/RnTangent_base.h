@@ -84,7 +84,7 @@ public:
   Jacobian rjacinv() const;
 
   /**
-   * @brief Get the inverse of the right Jacobian of Rn.
+   * @brief Get the inverse of the left Jacobian of Rn.
    * @note See Eq. (191).
    * @see ljac.
    */
