@@ -2,36 +2,38 @@
 #define _MANIF_MANIF_BUNDLETANGENT_H_
 
 #include "manif/impl/bundle/BundleTangent_base.h"
+#include "manif/impl/traits.h"
 
-#include <tuple>
-#include <utility>
+namespace manif {
 
-namespace manif
-{
-namespace internal
-{
+// Forward declare for type traits specialization
+
+template<typename _Scalar, template<typename> class ... _T> struct Bundle;
+template<typename _Scalar, template<typename> class ... _T> struct BundleTangent;
+
+namespace internal {
 
 //! Traits specialization
 template<typename _Scalar, template<typename> class ... _T>
 struct traits<BundleTangent<_Scalar, _T...>>
 {
   // BundleTangent-specific traits
-  using IdxList = make_intseq_t<sizeof...(_T)>;
+  using IdxList = typename make_intseq<sizeof...(_T)>::type;
 
   using LenDim = intseq<_T<_Scalar>::Tangent::Dim ...>;
-  using BegDim = bundle::intseq_psum_t<LenDim>;
+  using BegDim = intseq_psum_t<LenDim>;
 
   using LenDoF = intseq<_T<_Scalar>::Tangent::DoF ...>;
-  using BegDoF = bundle::intseq_psum_t<LenDoF>;
+  using BegDoF = intseq_psum_t<LenDoF>;
 
   using LenRep = intseq<_T<_Scalar>::Tangent::RepSize ...>;
-  using BegRep = bundle::intseq_psum_t<LenRep>;
+  using BegRep = intseq_psum_t<LenRep>;
 
   using LenAlg = intseq<_T<_Scalar>::Tangent::LieAlg::RowsAtCompileTime ...>;
-  using BegAlg = bundle::intseq_psum_t<LenAlg>;
+  using BegAlg = intseq_psum_t<LenAlg>;
 
   template<std::size_t _Idx>
-  using PartType = typename bundle::bundle_element<_Idx, _T<_Scalar>...>::type::Tangent;
+  using BlockType = typename bundle_element<_Idx, _T<_Scalar>...>::type::Tangent;
 
   // Regular traits
   using Scalar = _Scalar;
@@ -41,14 +43,14 @@ struct traits<BundleTangent<_Scalar, _T...>>
 
   using Base = BundleTangentBase<Tangent>;
 
-  static constexpr int Dim = bundle::intseq_sum<LenDim>::value;
-  static constexpr int DoF = bundle::intseq_sum<LenDoF>::value;
-  static constexpr int RepSize = bundle::intseq_sum<LenRep>::value;
+  static constexpr int Dim = intseq_sum<LenDim>::value;
+  static constexpr int DoF = intseq_sum<LenDoF>::value;
+  static constexpr int RepSize = intseq_sum<LenRep>::value;
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-  using LieAlg = Eigen::Matrix<Scalar, bundle::intseq_sum<LenAlg>::value,
-      bundle::intseq_sum<LenAlg>::value>;
+  using LieAlg = Eigen::Matrix<Scalar, intseq_sum<LenAlg>::value,
+      intseq_sum<LenAlg>::value>;
 };
 
 }  // namespace internal
@@ -64,6 +66,7 @@ template<typename _Scalar, template<typename> class ... _T>
 struct BundleTangent : BundleTangentBase<BundleTangent<_Scalar, _T...>>
 {
 private:
+
   static_assert(sizeof...(_T) > 0, "Must have at least one element in BundleTangent !");
 
   using Base = BundleTangentBase<BundleTangent<_Scalar, _T...>>;
@@ -77,6 +80,7 @@ protected:
   using Base::derived;
 
 public:
+
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
@@ -113,18 +117,20 @@ public:
   // BundleTangent specific API
 
   /**
-   * @brief Construct from BundleTangent parts
+   * @brief Construct from BundleTangent blocks
    */
-  BundleTangent(const typename _T<_Scalar>::Tangent & ... parts);
+  BundleTangent(const typename _T<_Scalar>::Tangent & ... blocks);
 
 protected:
-  // Helper for the parts constructor
+
+  // Helper for the blocks constructor
   template<int ... _BegRep, int ... _LenRep>
   BundleTangent(
-    intseq<_BegRep...>, intseq<_LenRep...>,
-    const typename _T<_Scalar>::Tangent & ... parts);
+    internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
+    const typename _T<_Scalar>::Tangent & ... blocks);
 
 protected:
+
   DataType data_;
 };
 
@@ -136,18 +142,18 @@ BundleTangent<_Scalar, _T...>::BundleTangent(const TangentBase<_DerivedOther> & 
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
-BundleTangent<_Scalar, _T...>::BundleTangent(const typename _T<_Scalar>::Tangent & ... parts)
-: BundleTangent(BegRep{}, LenRep{}, parts ...)
+BundleTangent<_Scalar, _T...>::BundleTangent(const typename _T<_Scalar>::Tangent & ... blocks)
+: BundleTangent(BegRep{}, LenRep{}, blocks ...)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
 template<int ... _BegRep, int ... _LenRep>
 BundleTangent<_Scalar, _T...>::BundleTangent(
-  intseq<_BegRep...>, intseq<_LenRep...>,
-  const typename _T<_Scalar>::Tangent & ... parts)
+  internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
+  const typename _T<_Scalar>::Tangent & ... blocks)
 {
   // c++11 "fold expression"
-  auto l = {((data_.template segment<_LenRep>(_BegRep) = parts.coeffs()), 0) ...};
+  auto l = {((data_.template segment<_LenRep>(_BegRep) = blocks.coeffs()), 0) ...};
   static_cast<void>(l);  // compiler warning
 }
 

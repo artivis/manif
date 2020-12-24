@@ -1,11 +1,12 @@
 #ifndef _MANIF_MANIF_BUNDLE_BASE_H_
 #define _MANIF_MANIF_BUNDLE_BASE_H_
 
-#include "manif/impl/bundle/Bundle_properties.h"
 #include "manif/impl/lie_group_base.h"
+#include "manif/impl/traits.h"
 
-namespace manif
-{
+using manif::internal::intseq;
+
+namespace manif {
 
 /**
  * @brief The base class of the Bundle group.
@@ -14,6 +15,7 @@ template<typename _Derived>
 struct BundleBase : LieGroupBase<_Derived>
 {
 private:
+
   using Base = LieGroupBase<_Derived>;
   using Type = BundleBase<_Derived>;
 
@@ -32,9 +34,10 @@ private:
   using LenTra = typename internal::traits<_Derived>::LenTra;
 
   template<int Idx>
-  using PartType = typename internal::traits<_Derived>::template PartType<Idx>;
+  using BlockType = typename internal::traits<_Derived>::template BlockType<Idx>;
 
 public:
+
   MANIF_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_AUTO_API
   MANIF_INHERIT_GROUP_OPERATOR
@@ -58,7 +61,6 @@ public:
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
-   * @note r^-1 = -r
    */
   LieGroup inverse(OptJacobianRef J_minv_m = {}) const;
 
@@ -111,7 +113,7 @@ public:
   // Bundle-specific API
 
   /**
-   * @brief Number of parts in bundle
+   * @brief Number of blocks in bundle
    */
   static constexpr std::size_t BundleSize = IdxList::size();
 
@@ -121,20 +123,21 @@ public:
   Transformation transform() const;
 
   /**
-   * @brief Access Bundle part as Map
-   * @tparam _Idx part index
+   * @brief Access Bundle block as Map
+   * @tparam _Idx block index
    */
   template<int _Idx>
-  Eigen::Map<PartType<_Idx>> get();
+  Eigen::Map<BlockType<_Idx>> block();
 
   /**
-   * @brief Access Bundle part as Map to const
-   * @tparam _Idx part index
+   * @brief Access Bundle block as Map to const
+   * @tparam _Idx block index
    */
   template<int _Idx>
-  Eigen::Map<const PartType<_Idx>> get() const;
+  Eigen::Map<const BlockType<_Idx>> block() const;
 
 protected:
+
   template<int ... _Idx, int ... _BegDoF, int ... _LenDoF>
   LieGroup
     inverse_impl(OptJacobianRef, intseq<_Idx...>, intseq<_BegDoF...>, intseq<_LenDoF...>) const;
@@ -185,7 +188,7 @@ BundleBase<_Derived>::transform_impl(
   Transformation ret = Transformation::Zero();
   // cxx11 "fold expression"
   auto l =
-  {((ret.template block<_LenTra, _LenTra>(_BegTra, _BegTra) = get<_Idx>().transform()), 0) ...};
+  {((ret.template block<_LenTra, _LenTra>(_BegTra, _BegTra) = block<_Idx>().transform()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return ret;
 }
@@ -208,10 +211,10 @@ BundleBase<_Derived>::inverse_impl(
 {
   if (J_minv_m) {
     return LieGroup(
-      get<_Idx>().inverse(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...
+      block<_Idx>().inverse(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...
     );
   }
-  return LieGroup(get<_Idx>().inverse() ...);
+  return LieGroup(block<_Idx>().inverse() ...);
 }
 
 template<typename _Derived>
@@ -232,10 +235,10 @@ BundleBase<_Derived>::log_impl(
 {
   if (J_minv_m) {
     return Tangent(
-      get<_Idx>().log(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF))...
+      block<_Idx>().log(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF))...
     );
   }
-  return Tangent(get<_Idx>().log() ...);
+  return Tangent(block<_Idx>().log() ...);
 }
 
 template<typename _Derived>
@@ -268,8 +271,8 @@ BundleBase<_Derived>::compose_impl(
   intseq<_Idx...>, intseq<_BegDoF...>, intseq<_LenDoF...>) const
 {
   return LieGroup(
-    get<_Idx>().compose(
-      static_cast<const _DerivedOther &>(m).template get<_Idx>(),
+    block<_Idx>().compose(
+      static_cast<const _DerivedOther &>(m).template block<_Idx>(),
       J_mc_ma ?
       J_mc_ma->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) :
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LenDoF, _LenDoF>>>{},
@@ -309,7 +312,7 @@ BundleBase<_Derived>::act_impl(
 {
   Vector ret;
   // cxx11 "fold expression"
-  auto l = {((ret.template segment<_LenDim>(_BegDim) = get<_Idx>().act(
+  auto l = {((ret.template segment<_LenDim>(_BegDim) = block<_Idx>().act(
       v.template segment<_LenDim>(_BegDim),
       J_vout_m ?
       J_vout_m->template block<_LenDim, _LenDoF>(_BegDim, _BegDoF) :
@@ -337,33 +340,32 @@ BundleBase<_Derived>::adj_impl(
 {
   Jacobian adj = Jacobian::Zero();
   // cxx11 "fold expression"
-  auto l = {((adj.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = get<_Idx>().adj()), 0) ...};
+  auto l = {((adj.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().adj()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return adj;
 }
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<typename BundleBase<_Derived>::template PartType<_Idx>>
-BundleBase<_Derived>::get()
+Eigen::Map<typename BundleBase<_Derived>::template BlockType<_Idx>>
+BundleBase<_Derived>::block()
 {
-  return Eigen::Map<PartType<_Idx>>(
+  return Eigen::Map<BlockType<_Idx>>(
     static_cast<_Derived &>(*this).coeffs().data() +
-    internal::bundle::intseq_element<_Idx, BegRep>::value);
+    internal::intseq_element<_Idx, BegRep>::value);
 }
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<const typename BundleBase<_Derived>::template PartType<_Idx>>
-BundleBase<_Derived>::get() const
+Eigen::Map<const typename BundleBase<_Derived>::template BlockType<_Idx>>
+BundleBase<_Derived>::block() const
 {
-  return Eigen::Map<const PartType<_Idx>>(
-    static_cast<const _Derived &>(*this).coeffs().data() + internal::bundle::intseq_element<_Idx,
-    BegRep>::value);
+  return Eigen::Map<const BlockType<_Idx>>(
+    static_cast<const _Derived &>(*this).coeffs().data() +
+    internal::intseq_element<_Idx, BegRep>::value);
 }
 
-namespace internal
-{
+namespace internal {
 
 /**
  * @brief Random specialization for Bundle objects.
@@ -380,7 +382,7 @@ struct RandomEvaluatorImpl<BundleBase<Derived>>
   static void run(BundleBase<Derived> & m, intseq<_Idx...>)
   {
     m = typename BundleBase<Derived>::LieGroup(
-      BundleBase<Derived>::template PartType<_Idx>::Random() ...);
+      BundleBase<Derived>::template BlockType<_Idx>::Random() ...);
   }
 };
 

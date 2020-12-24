@@ -3,10 +3,8 @@
 
 #include "manif/impl/bundle/BundleTangent.h"
 
-namespace manif
-{
-namespace internal
-{
+namespace manif {
+namespace internal {
 
 /**
  * @brief traits specialization for Eigen Map
@@ -38,8 +36,7 @@ struct traits<Eigen::Map<const BundleTangent<_Scalar, T...>, 0>>
 }  // namespace manif
 
 
-namespace Eigen
-{
+namespace Eigen {
 
 /**
  * @brief Specialization of Map for manif::Bundle
@@ -51,6 +48,7 @@ class Map<manif::BundleTangent<_Scalar, T...>, 0>
   using Base = manif::BundleTangentBase<Map<manif::BundleTangent<_Scalar, T...>, 0>>;
 
 public:
+
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -66,6 +64,7 @@ public:
   const DataType & coeffs() const {return data_;}
 
 protected:
+
   DataType data_;
 };
 
@@ -79,6 +78,7 @@ class Map<const manif::BundleTangent<_Scalar, T...>, 0>
   using Base = manif::BundleTangentBase<Map<const manif::BundleTangent<_Scalar, T...>, 0>>;
 
 public:
+
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
@@ -90,6 +90,7 @@ public:
   const DataType & coeffs() const {return data_;}
 
 protected:
+
   const DataType data_;
 };
 
