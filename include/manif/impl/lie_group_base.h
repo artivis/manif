@@ -158,9 +158,10 @@ public:
    * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
    * @return
    */
-  Vector act(const Vector& v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+  template <typename _EigenDerived>
+  Vector act(const Eigen::MatrixBase<_EigenDerived>& v,
+             tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, DoF>>> J_vout_m = {},
+             tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, Dim>>> J_vout_v = {}) const;
 
   /**
    * @brief Get the Adjoint of the Lie group element this.
@@ -601,10 +602,13 @@ LieGroupBase<_Derived>::adj() const
 }
 
 template <typename _Derived>
+template <typename _EigenDerived>
 typename LieGroupBase<_Derived>::Vector
-LieGroupBase<_Derived>::act(const Vector& v,
-                            OptJacobianRef J_vout_m,
-                            OptJacobianRef J_vout_v) const
+LieGroupBase<_Derived>::act(
+  const Eigen::MatrixBase<_EigenDerived>& v,
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, DoF>>> J_vout_m,
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, Dim>>> J_vout_v
+) const
 {
   return derived().act(v, J_vout_m, J_vout_v);
 }
