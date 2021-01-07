@@ -48,6 +48,19 @@ struct traitscast<_Class<_Scalar>, _NewScalar>
   using cast = _Class<_NewScalar>;
 };
 
+/**
+ * @brief Specialization for Rn.
+ */
+template <
+  template <typename, unsigned int> class _Class,
+  typename _NewScalar,
+  typename _Scalar,
+  unsigned int _Dim>
+struct traitscast<_Class<_Scalar, _Dim>, _NewScalar>
+{
+  using cast = _Class<_NewScalar, _Dim>;
+};
+
 //! @brief A traits for detecting AutoDiff scalar types
 template <typename Scalar> struct is_ad : std::integral_constant<bool, false> { };
 

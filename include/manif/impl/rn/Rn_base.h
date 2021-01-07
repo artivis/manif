@@ -1,10 +1,8 @@
 #ifndef _MANIF_MANIF_RN_BASE_H_
 #define _MANIF_MANIF_RN_BASE_H_
 
-#include "manif/impl/so2/SO2_properties.h"
+#include "manif/impl/rn/Rn_properties.h"
 #include "manif/impl/lie_group_base.h"
-
-#include <iostream>
 
 namespace manif {
 
