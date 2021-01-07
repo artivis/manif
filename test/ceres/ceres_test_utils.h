@@ -6,27 +6,196 @@
 
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \
   using TEST_##manifold##_JACOBIANS_CERES_TESTER = JacobianCeresTester<manifold>;               \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_OBJECTIVE_JACOBIANS) \
-  { /*evalObjectiveJacs();*/ }                                                                  \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_JACOBIANS)           \
-  { evalJacs(); }
+  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_INVERSE_JACOBIAN)    \
+  { evalInverseJac(); }                                                                         \
+  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RMINUS_JACOBIANS)    \
+  { evalRminusJacs(); }                                                                         \
+  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LMINUS_JACOBIANS)    \
+  { evalLminusJacs(); }
 
 namespace manif {
+
+template <template <typename LieGroup> class Derived, typename LieGroup>
+struct MakeUnaryCostFuncHelper
+{
+  static
+  std::shared_ptr<
+    ceres::AutoDiffCostFunction<
+      Derived<LieGroup>, LieGroup::RepSize, LieGroup::RepSize>>
+  make_costfunc()
+  {
+    return std::make_shared<
+        ceres::AutoDiffCostFunction<
+          Derived<LieGroup>,
+          LieGroup::RepSize,
+          LieGroup::RepSize>>(new Derived<LieGroup>());
+  }
+};
+
+template <template <typename LieGroup> class Derived, typename LieGroup>
+struct MakeBinaryCostFuncHelper
+{
+  static
+  std::shared_ptr<
+    ceres::AutoDiffCostFunction<
+      Derived<LieGroup>, LieGroup::DoF, LieGroup::RepSize, LieGroup::RepSize>>
+  make_costfunc()
+  {
+    return std::make_shared<
+        ceres::AutoDiffCostFunction<
+          Derived<LieGroup>,
+          LieGroup::DoF,
+          LieGroup::RepSize,
+          LieGroup::RepSize>>(new Derived<LieGroup>());
+  }
+};
+
+template <typename _LieGroup>
+struct CeresRminusFunctor : MakeBinaryCostFuncHelper<CeresRminusFunctor, _LieGroup>
+{
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
+
+  template <typename _Scalar>
+  using LieGroupTemplate = typename LieGroup::template LieGroupTemplate<_Scalar>;
+
+  template <typename _Scalar>
+  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+
+  using Jacobian =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::DoF,
+                  LieGroup::RepSize,
+                  Eigen::RowMajor>;
+
+  template <typename T>
+  bool operator()(const T* const lhs_raw,
+                  const T* const rhs_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> lhs_state(lhs_raw);
+    const Eigen::Map<const LieGroupTemplate<T>> rhs_state(rhs_raw);
+
+    Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
+
+    residuals = lhs_state - rhs_state;
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
+struct CeresLminusFunctor : MakeBinaryCostFuncHelper<CeresLminusFunctor, _LieGroup>
+{
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
+
+  template <typename _Scalar>
+  using LieGroupTemplate = typename LieGroup::template LieGroupTemplate<_Scalar>;
+
+  template <typename _Scalar>
+  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+
+  using Jacobian =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::DoF,
+                  LieGroup::RepSize,
+                  Eigen::RowMajor>;
+
+  template <typename T>
+  bool operator()(const T* const lhs_raw,
+                  const T* const rhs_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> lhs_state(lhs_raw);
+    const Eigen::Map<const LieGroupTemplate<T>> rhs_state(rhs_raw);
+
+    Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
+
+    residuals = lhs_state.lminus(rhs_state);
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
+struct CeresInverseFunctor : MakeUnaryCostFuncHelper<CeresInverseFunctor, _LieGroup>
+{
+  template <typename _Scalar>
+  using LieGroupTemplate = typename _LieGroup::template LieGroupTemplate<_Scalar>;
+
+  using Jacobian =
+    Eigen::Matrix<typename _LieGroup::Scalar,
+                  _LieGroup::RepSize,
+                  _LieGroup::RepSize,
+                  Eigen::RowMajor>;
+
+  template <typename T>
+  bool operator()(const T* const state_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
+    Eigen::Map<LieGroupTemplate<T>> residuals(residuals_raw);
+
+    residuals = state.inverse();
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
+struct CeresLogFunctor
+{
+  using LieGroup = _LieGroup;
+  using Tangent  = typename _LieGroup::Tangent;
+
+  template <typename _Scalar>
+  using LieGroupTemplate = typename LieGroup::template LieGroupTemplate<_Scalar>;
+
+  template <typename _Scalar>
+  using TangentTemplate = typename Tangent::template TangentTemplate<_Scalar>;
+
+  using Jacobian =
+    Eigen::Matrix<typename _LieGroup::Scalar,
+                  _LieGroup::DoF,
+                  _LieGroup::RepSize,
+                  Eigen::RowMajor>;
+
+  template <typename T>
+  bool operator()(const T* const state_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
+    Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
+
+    residuals = state.log();
+
+    return true;
+  }
+
+  static
+  std::shared_ptr<
+    ceres::AutoDiffCostFunction<
+      CeresInverseFunctor<LieGroup>, LieGroup::DoF, LieGroup::RepSize>>
+  make_costfunc()
+  {
+    return std::make_shared<
+        ceres::AutoDiffCostFunction<
+          CeresInverseFunctor<LieGroup>,
+          LieGroup::DoF,
+          LieGroup::RepSize>>(new CeresInverseFunctor<LieGroup>());
+  }
+};
 
 template <typename _LieGroup>
 class JacobianCeresTester : public ::testing::Test
 {
   using LieGroup  = _LieGroup;
-  using Tangent   = typename _LieGroup::Tangent;
+  using Tangent   = typename LieGroup::Tangent;
+  using Jacobian  = typename LieGroup::Jacobian;
 
   using ManifObjective = CeresObjectiveFunctor<LieGroup>;
   using ManifLocalParameterization = CeresLocalParameterizationFunctor<LieGroup>;
-
-  using ObjectiveJacobian =
-    Eigen::Matrix<typename LieGroup::Scalar,
-                  1,
-                  LieGroup::RepSize,
-                  Eigen::RowMajor>;
 
   using LocalParamJacobian =
     Eigen::Matrix<typename LieGroup::Scalar,
@@ -35,6 +204,38 @@ class JacobianCeresTester : public ::testing::Test
                   (LieGroup::DoF>1)?
                     Eigen::RowMajor:
                     Eigen::ColMajor>;
+
+  using LocalParameterizationPtr = std::shared_ptr<ceres::LocalParameterization>;
+
+  using Inverse = CeresInverseFunctor<LieGroup>;
+  using Rminus = CeresRminusFunctor<LieGroup>;
+  using Lminus = CeresLminusFunctor<LieGroup>;
+  // using Log = CeresLogFunctor<LieGroup>;
+
+  // void local_deparameterization_ComputeJacobian(
+  //   double* state,
+  //   double* lhs_adJ_locdepar
+  // )
+  // {
+  //   // Compute the local_de-parameterization (?) Jac
+  //   double** params = new double*[2];
+  //   params[0] = state;
+  //   params[1] = state;
+
+  //   typename Rminus::Jacobian rhs_adJ_locdepar;
+  //   double** jacs = new double*[2];
+  //   jacs[0] = lhs_adJ_locdepar;
+  //   jacs[1] = rhs_adJ_locdepar.data();
+
+  //   Tangent d;
+
+  //   Rminus::make_costfunc()->Evaluate(params, d.data(), jacs);
+
+  //   EXPECT_MANIF_NEAR(Tangent::Zero(), d);
+
+  //   delete[] params;
+  //   delete[] jacs;
+  // }
 
 public:
 
@@ -48,141 +249,177 @@ public:
     std::srand((unsigned int) time(0));
 
     state = LieGroup::Random();
+    state_other = LieGroup::Random();
 
     delta = Tangent::Random();
 
-    objective_value = LieGroup::Random();
+    state_raw = state.data();
+    state_other_raw = state_other.data();
 
-    state_plus_delta_analytic = LieGroup::Identity();
-    state_plus_delta_autodiff = LieGroup::Identity();
+    delta_raw = delta.data();
   }
-/*
-  void evalObjectiveJacs()
+
+  void evalInverseJac()
   {
-    // Analytic
+    parameters = &state_raw;
 
-//    ManifObjective analytic_obj(objective_value);
-
-    double*  parameter;
-    double** parameters;
-    parameter  = state.data();
-    parameters = &parameter;
-
-    Tangent residuals = Tangent::Zero();
-//    ObjectiveJacobian analyticJ_y_r;
-
-    double*  jacobian;
-    double** jacobians;
-//    jacobian  = analyticJ_y_r.data();
-//    jacobians = &jacobian;
-
-//    analytic_obj.Evaluate(parameters, residuals.data(), jacobians);
-//    EXPECT_DOUBLE_EQ(0, residuals);
-
-//    ManifLocalParameterization analytic_local_parameterization;
-
-//    analytic_local_parameterization.Plus(state.data(), delta.data(),
-//                                         state_plus_delta_analytic.data());
-
-//    LocalParamJacobian analyticJ_r_R;
-//    analytic_local_parameterization.ComputeJacobian(state.data(),
-//                                                    analyticJ_r_R.data());
+    typename Inverse::Jacobian ad_r_J_out_spd;
+    double*  ad_r_J_out_s_raw = ad_r_J_out_spd.data();
+    jacobians = &ad_r_J_out_s_raw;
 
     // Autodiff
 
-    std::shared_ptr<ceres::CostFunction> autodiff_obj =
-        make_objective_autodiff<LieGroup>(objective_value);
+    Inverse::make_costfunc()->Evaluate(
+      parameters, state_other_raw, jacobians
+    );
 
-    ObjectiveJacobian autodiffJ_y_r;
+    EXPECT_MANIF_NEAR(state.inverse(), state_other);
 
-    jacobian = autodiffJ_y_r.data();
+    local_parameterization->ComputeJacobian(
+      state_raw, J_locpar.data()
+    );
 
-    autodiff_obj->Evaluate(parameters, residuals.data(), jacobians);
-//    EXPECT_DOUBLE_EQ(0, residuals);
+    // Compute the local_de-parameterization (?) Jac
+    parameters = new double*[2];
+    parameters[0] = state_other_raw;
+    parameters[1] = state_other_raw;
 
-    std::shared_ptr<ceres::LocalParameterization>
-      auto_diff_local_parameterization =
-        make_local_parameterization_autodiff<LieGroup>();
+    typename Rminus::Jacobian adJ_locdepar, dadJ_out_RO;
+    jacobians = new double*[2];
+    jacobians[0] = adJ_locdepar.data();
+    jacobians[1] = dadJ_out_RO.data();
 
-    auto_diff_local_parameterization->Plus(state.data(), delta.data(),
-                                           state_plus_delta_autodiff.data());
+    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
 
-    LocalParamJacobian autodiffJ_r_R;
-    auto_diff_local_parameterization->ComputeJacobian(state.data(),
-                                                      autodiffJ_r_R.data());
+    EXPECT_MANIF_NEAR(Tangent::Zero(), delta);
 
-//    EXPECT_MANIF_NEAR(state_plus_delta_analytic,
-//                      state_plus_delta_result, tol_);
-    EXPECT_MANIF_NEAR(state_plus_delta_analytic,
-                      state_plus_delta_autodiff, tol_);
+    // typename Rminus::Jacobian adJ_locdepar;
+    // local_deparameterization_ComputeJacobian(
+    //   state_other_raw, adJ_locdepar.data()
+    // );
 
-//    typename LieGroup::Jacobian analyticJ_y_R = analyticJ_y_r * analyticJ_r_R;
-    typename LieGroup::Jacobian autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
+    adJ_out_s = adJ_locdepar * (ad_r_J_out_spd * J_locpar);
 
-//    EXPECT_EIGEN_NEAR(analyticJ_y_R, autodiffJ_y_R);
+    state.inverse(J_out_s);
+
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+
+    delete[] parameters;
+    delete[] jacobians;
   }
-*/
+
   /**
    * @brief evalJacs, Compare the manif analytic rminus Jac to
    * these obtain from ceres autodiff.
    */
-  void evalJacs()
+  void evalRminusJacs()
   {
-    double*  parameter;
-    double** parameters;
-    parameter  = state.data();
-    parameters = &parameter;
+    parameters = new double*[2];
+    parameters[0] = state_raw;
+    parameters[1] = state_other_raw;
 
-    double residuals = 1e19;
-
-    double*  jacobian;
-    double** jacobians;
-    jacobians = &jacobian;
+    typename Rminus::Jacobian adJ_out_R, adJ_out_RO;
+    double*  adJ_out_R_raw = adJ_out_R.data();
+    double*  adJ_out_RO_raw = adJ_out_RO.data();
+    jacobians = new double*[2];
+    jacobians[0] = adJ_out_R_raw;
+    jacobians[1] = adJ_out_RO_raw;
 
     // Autodiff
 
-    std::shared_ptr<ceres::CostFunction> autodiff_obj =
-        make_objective_autodiff<LieGroup>(objective_value);
+    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
 
-    ObjectiveJacobian autodiffJ_y_r;
-    jacobian = autodiffJ_y_r.data();
-    (void)jacobian;
+    EXPECT_MANIF_NEAR(state.rminus(state_other), delta);
 
-    autodiff_obj->Evaluate(parameters, &residuals, jacobians);
+    local_parameterization->ComputeJacobian(
+      state_raw, lhs_adJ_locpar.data()
+    );
 
-    std::shared_ptr<ceres::LocalParameterization>
-      auto_diff_local_parameterization =
-        make_local_parameterization_autodiff<LieGroup>();
+    adJ_out_s = adJ_out_R * lhs_adJ_locpar;
 
-    auto_diff_local_parameterization->Plus(state.data(), delta.data(),
-                                           state_plus_delta_autodiff.data());
+    local_parameterization->ComputeJacobian(
+      state_other_raw, rhs_adJ_locpar.data()
+    );
 
-    LocalParamJacobian autodiffJ_r_R;
-    auto_diff_local_parameterization->ComputeJacobian(state.data(),
-                                                      autodiffJ_r_R.data());
+    adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
 
-    Eigen::Matrix<double,1,LieGroup::DoF> autodiffJ_y_R = autodiffJ_y_r * autodiffJ_r_R;
-    (void)autodiffJ_y_R;
+    state.rminus(state_other, J_out_s, J_out_so);
 
-//    typename LieGroup::Jacobian manifJ_y_R;
-//    objective_value.rminus(state, LieGroup::_, manifJ_y_R);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
 
-//    EXPECT_EIGEN_NEAR(autodiffJ_y_R, manifJ_y_R);
+    delete[] parameters;
+    delete[] jacobians;
+  }
+
+  /**
+   * @brief evalJacs, Compare the manif analytic lminus Jac to
+   * these obtain from ceres autodiff.
+   */
+  void evalLminusJacs()
+  {
+    parameters = new double*[2];
+    parameters[0] = state_raw;
+    parameters[1] = state_other_raw;
+
+    typename Lminus::Jacobian adJ_out_R, adJ_out_RO;
+    double*  adJ_out_R_raw = adJ_out_R.data();
+    double*  adJ_out_RO_raw = adJ_out_RO.data();
+    jacobians = new double*[2];
+    jacobians[0] = adJ_out_R_raw;
+    jacobians[1] = adJ_out_RO_raw;
+
+    // Autodiff
+
+    Lminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+
+    EXPECT_MANIF_NEAR(state.lminus(state_other), delta);
+
+    local_parameterization->ComputeJacobian(
+      state_raw, lhs_adJ_locpar.data()
+    );
+
+    adJ_out_s = adJ_out_R * lhs_adJ_locpar;
+
+    local_parameterization->ComputeJacobian(
+      state_other_raw, rhs_adJ_locpar.data()
+    );
+
+    adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
+
+    state.lminus(state_other, J_out_s, J_out_so);
+
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+
+    delete[] parameters;
+    delete[] jacobians;
   }
 
 protected:
 
-  double tol_ = 1e-8;
+  double *state_raw, *state_other_raw;
+  double **parameters;
+
+  double *delta_raw;
+
+  // double *Ja, *Jb;
+  double **jacobians;
+
+  LocalParameterizationPtr local_parameterization =
+    make_local_parameterization_autodiff<LieGroup>();
 
   LieGroup state;
+  LieGroup state_other;
+
   Tangent  delta;
 
-  LieGroup objective_value;
+  Jacobian J_out_s, J_out_so,
+           adJ_out_s, adJ_out_so;
 
-  LieGroup state_plus_delta_analytic;
-  LieGroup state_plus_delta_autodiff;
+  LocalParamJacobian J_locpar, lhs_adJ_locpar, rhs_adJ_locpar;
 };
 
-} /* namespace manif */
+} // namespace manif
 
-#endif /* _MANIF_MANIF_CERES_TEST_UTILS_H_ */
+#endif // _MANIF_MANIF_CERES_TEST_UTILS_H_
