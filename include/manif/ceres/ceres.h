@@ -10,6 +10,10 @@
 namespace manif {
 namespace internal {
 struct YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS{};
+
+template <typename _Scalar, int _N>
+struct is_ad<ceres::Jet<_Scalar, _N>> : std::integral_constant<bool, true> { };
+
 } /* namespace internal */
 
 #ifdef _MANIF_MANIF_SO2_H_
