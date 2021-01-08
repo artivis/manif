@@ -296,13 +296,13 @@ SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
   const SO3Tangent<Scalar> so3tan = asSO3().log();
 
   Tangent tan((typename Tangent::DataType() <<
-               so3tan.ljac().inverse()*translation(),
+               so3tan.ljacinv()*translation(),
                so3tan.coeffs()).finished());
 
   if (J_t_m)
   {
     // Jr^-1
-    (*J_t_m) = tan.rjac().inverse();
+    (*J_t_m) = tan.rjacinv();
   }
 
   return tan;

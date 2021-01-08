@@ -194,8 +194,8 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
      *            = atan(-sin(angle), -cos(angle))
      */
     const Scalar two_angle = Scalar(2.0) * ((cos_angle < Scalar(0.0)) ?
-                                 atan2(-sin_angle, -cos_angle) :
-                                 atan2( sin_angle,  cos_angle));
+                                 Scalar(atan2(-sin_angle, -cos_angle)) :
+                                 Scalar(atan2( sin_angle,  cos_angle)));
 
     log_coeff = two_angle / sin_angle;
   }
