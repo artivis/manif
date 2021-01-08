@@ -10,6 +10,10 @@
   { evalInverseJac(); }                                                                         \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LOG_JACOBIAN)        \
   { evalLogJac(); }                                                                             \
+  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RPLUS_JACOBIANS)     \
+  { evalRplusJacs(); }                                                                          \
+  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LPLUS_JACOBIANS)     \
+  { evalLplusJacs(); }                                                                          \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RMINUS_JACOBIANS)    \
   { evalRminusJacs(); }                                                                         \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LMINUS_JACOBIANS)    \
@@ -18,6 +22,8 @@
   { evalComposeJacs(); }                                                                        \
   TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_BETWEEN_JACOBIANS)   \
   { evalBetweenJacs(); }
+  // TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS)
+  // { evalActJacs(); }
 
 #define __MANIF_FUNCTOR_COMMON_TYPEDEF                                            \
   using LieGroup = _LieGroup;                                                     \
@@ -68,6 +74,78 @@ struct MakeBinaryCostFuncHelper
 };
 
 template <typename _LieGroup>
+struct CeresRplusFunctor : MakeBinaryCostFuncHelper<
+  CeresRplusFunctor, _LieGroup::RepSize, _LieGroup::RepSize, _LieGroup::DoF, _LieGroup
+>
+{
+  __MANIF_FUNCTOR_COMMON_TYPEDEF;
+
+  using J_out_s =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::RepSize,
+                  Eigen::RowMajor>;
+  using J_out_d =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::DoF,
+                  (LieGroup::DoF>1)?
+                    Eigen::RowMajor:
+                    Eigen::ColMajor>;
+
+  template <typename T>
+  bool operator()(const T* const state_raw,
+                  const T* const delta_raw,
+                  T* state_plus_delta_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
+    const Eigen::Map<const TangentTemplate<T>> delta(delta_raw);
+
+    Eigen::Map<LieGroupTemplate<T>> state_plus_delta(state_plus_delta_raw);
+
+    state_plus_delta = state.rplus(delta);
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
+struct CeresLplusFunctor : MakeBinaryCostFuncHelper<
+  CeresLplusFunctor, _LieGroup::RepSize, _LieGroup::RepSize, _LieGroup::DoF, _LieGroup
+>
+{
+  __MANIF_FUNCTOR_COMMON_TYPEDEF;
+
+  using J_out_s =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::RepSize,
+                  Eigen::RowMajor>;
+  using J_out_d =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::DoF,
+                  (LieGroup::DoF>1)?
+                    Eigen::RowMajor:
+                    Eigen::ColMajor>;
+
+  template <typename T>
+  bool operator()(const T* const state_raw,
+                  const T* const delta_raw,
+                  T* state_plus_delta_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
+    const Eigen::Map<const TangentTemplate<T>> delta(delta_raw);
+
+    Eigen::Map<LieGroupTemplate<T>> state_plus_delta(state_plus_delta_raw);
+
+    state_plus_delta = state.lplus(delta);
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
 struct CeresRminusFunctor : MakeBinaryCostFuncHelper<
   CeresRminusFunctor, _LieGroup::DoF, _LieGroup::RepSize, _LieGroup::RepSize, _LieGroup
 >
@@ -90,7 +168,7 @@ struct CeresRminusFunctor : MakeBinaryCostFuncHelper<
 
     Eigen::Map<TangentTemplate<T>> residuals(residuals_raw);
 
-    residuals = lhs_state - rhs_state;
+    residuals = lhs_state.rminus(rhs_state);
 
     return true;
   }
@@ -225,9 +303,49 @@ struct CeresBetweenFunctor : MakeBinaryCostFuncHelper<
 };
 
 template <typename _LieGroup>
+struct CeresActFunctor : MakeBinaryCostFuncHelper<
+  CeresActFunctor, _LieGroup::Dim, _LieGroup::RepSize, _LieGroup::Dim, _LieGroup
+>
+{
+  __MANIF_FUNCTOR_COMMON_TYPEDEF;
+
+  template <typename T>
+  using VectorTemplate = Eigen::Matrix<T, LieGroup::Dim, 1>;
+
+  using J_vout_s =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::Dim,
+                  LieGroup::RepSize,
+                  Eigen::RowMajor>;
+  using J_vout_vin =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::Dim,
+                  LieGroup::Dim,
+                  (LieGroup::Dim>1)?
+                    Eigen::RowMajor:
+                    Eigen::ColMajor>;
+
+  template <typename T>
+  bool operator()(const T* const state_raw,
+                  const T* const vector_raw,
+                  T* vector_out_raw) const
+  {
+    const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
+    const Eigen::Map<const VectorTemplate<T>> vector(vector_raw);
+
+    Eigen::Map<VectorTemplate<T>> vector_out(vector_out_raw);
+
+    vector_out = state.act(vector);
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
 class JacobianCeresTester : public ::testing::Test
 {
   using LieGroup  = _LieGroup;
+  using Scalar    = typename LieGroup::Scalar;
   using Tangent   = typename LieGroup::Tangent;
   using Jacobian  = typename LieGroup::Jacobian;
 
@@ -245,11 +363,17 @@ class JacobianCeresTester : public ::testing::Test
   using LocalParameterizationPtr = std::shared_ptr<ceres::LocalParameterization>;
 
   using Inverse = CeresInverseFunctor<LieGroup>;
+  using Rplus = CeresRplusFunctor<LieGroup>;
+  using Lplus = CeresLplusFunctor<LieGroup>;
   using Rminus = CeresRminusFunctor<LieGroup>;
   using Lminus = CeresLminusFunctor<LieGroup>;
   using Log = CeresLogFunctor<LieGroup>;
   using Compose = CeresComposeFunctor<LieGroup>;
   using Between = CeresBetweenFunctor<LieGroup>;
+  using Act = CeresActFunctor<LieGroup>;
+
+  static_assert(std::is_same<double, Scalar>::value,
+                "Scalar must be double!");
 
   // void local_deparameterization_ComputeJacobian(
   //   double* state,
@@ -362,6 +486,104 @@ public:
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
   }
 
+  void evalRplusJacs()
+  {
+    parameters = new double*[2];
+    parameters[0] = state_raw;
+    parameters[1] = delta_raw;
+
+    typename Rplus::J_out_s adJ_out_R;
+    typename Rplus::J_out_d adJ_out_RO;
+    double*  adJ_out_R_raw = adJ_out_R.data();
+    double*  adJ_out_RO_raw = adJ_out_RO.data();
+    jacobians = new double*[2];
+    jacobians[0] = adJ_out_R_raw;
+    jacobians[1] = adJ_out_RO_raw;
+
+    Rplus::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
+
+    EXPECT_MANIF_NEAR(state.rplus(delta, J_out_s, J_out_so), state_out);
+
+    local_parameterization->ComputeJacobian(
+      state_raw, lhs_adJ_locpar.data()
+    );
+
+    // Compute the local_de-parameterization (?) Jac
+    parameters[0] = state_out_raw;
+    parameters[1] = state_out_raw;
+
+    typename Rminus::Jacobian adJ_locdepar, adJ_unused;
+    jacobians[0] = adJ_locdepar.data();
+    jacobians[1] = adJ_unused.data();
+
+    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    //
+
+    adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
+
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+
+    local_parameterization->ComputeJacobian(
+      state_other_raw, rhs_adJ_locpar.data()
+    );
+
+    adJ_out_so = adJ_locdepar * adJ_out_RO;
+
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+
+    delete[] parameters;
+    delete[] jacobians;
+  }
+
+  void evalLplusJacs()
+  {
+    parameters = new double*[2];
+    parameters[0] = state_raw;
+    parameters[1] = delta_raw;
+
+    typename Lplus::J_out_s adJ_out_R;
+    typename Lplus::J_out_d adJ_out_RO;
+    double*  adJ_out_R_raw = adJ_out_R.data();
+    double*  adJ_out_RO_raw = adJ_out_RO.data();
+    jacobians = new double*[2];
+    jacobians[0] = adJ_out_R_raw;
+    jacobians[1] = adJ_out_RO_raw;
+
+    Lplus::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
+
+    EXPECT_MANIF_NEAR(state.lplus(delta, J_out_s, J_out_so), state_out);
+
+    local_parameterization->ComputeJacobian(
+      state_raw, lhs_adJ_locpar.data()
+    );
+
+    // Compute the local_de-parameterization (?) Jac
+    parameters[0] = state_out_raw;
+    parameters[1] = state_out_raw;
+
+    typename Rminus::Jacobian adJ_locdepar, adJ_unused;
+    jacobians[0] = adJ_locdepar.data();
+    jacobians[1] = adJ_unused.data();
+
+    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    //
+
+    adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
+
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+
+    local_parameterization->ComputeJacobian(
+      state_other_raw, rhs_adJ_locpar.data()
+    );
+
+    adJ_out_so = adJ_locdepar * adJ_out_RO;
+
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+
+    delete[] parameters;
+    delete[] jacobians;
+  }
+
   /**
    * @brief evalJacs, Compare the manif analytic rminus Jac to
    * these obtain from ceres autodiff.
@@ -378,8 +600,6 @@ public:
     jacobians = new double*[2];
     jacobians[0] = adJ_out_R_raw;
     jacobians[1] = adJ_out_RO_raw;
-
-    // Autodiff
 
     Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
 
@@ -544,6 +764,48 @@ public:
     delete[] jacobians;
   }
 
+  void evalActJacs()
+  {
+    using Vector = typename _LieGroup::Vector;
+
+    Vector vin = Vector::Random(),
+           vout;
+
+    double *vin_raw = vin.data(),
+           *vout_raw = vout.data();
+
+    parameters = new double*[2];
+    parameters[0] = state_raw;
+    parameters[1] = vin_raw;
+
+    typename Act::J_vout_s adJ_vout_sr;
+    typename Act::J_vout_vin adJ_vout_vin;
+    double*  adJ_out_R_raw = adJ_vout_sr.data();
+    double*  adJ_out_RO_raw = adJ_vout_vin.data();
+    jacobians = new double*[2];
+    jacobians[0] = adJ_out_R_raw;
+    jacobians[1] = adJ_out_RO_raw;
+
+    Act::make_costfunc()->Evaluate(parameters, vout_raw, jacobians);
+
+    Eigen::Matrix<double, LieGroup::Dim, LieGroup::DoF> J_vout_s;
+    Eigen::Matrix<double, LieGroup::Dim, LieGroup::Dim> J_vout_v;
+    EXPECT_EIGEN_NEAR(state.act(vin, J_vout_s, J_vout_v), vout);
+
+    local_parameterization->ComputeJacobian(
+      state_raw, lhs_adJ_locpar.data()
+    );
+
+    Eigen::Matrix<double, LieGroup::Dim, LieGroup::DoF>
+      adJ_vout_s = adJ_vout_sr * lhs_adJ_locpar;
+
+    EXPECT_EIGEN_NEAR(J_vout_s, adJ_vout_s);
+    EXPECT_EIGEN_NEAR(J_vout_v, adJ_vout_vin);
+
+    delete[] parameters;
+    delete[] jacobians;
+  }
+
 protected:
 
   double *state_raw, *state_other_raw, *state_out_raw;
@@ -551,7 +813,6 @@ protected:
 
   double *delta_raw;
 
-  // double *Ja, *Jb;
   double **jacobians;
 
   LocalParameterizationPtr local_parameterization =
