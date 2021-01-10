@@ -153,8 +153,8 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
 
     py::buffer_info lhs_buf = lhs.request();
 
-    if (lhs_buf.ndim != 2)
-        throw std::runtime_error("Number of dimensions must be 2");
+    // if (lhs_buf.ndim != 2)
+        // throw std::runtime_error("Number of dimensions must be 2");
 
     if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
         throw std::runtime_error("Input shapes must match");

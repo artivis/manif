@@ -1,5 +1,8 @@
 set(PYBIND11_CPP_STANDARD -std=c++11)
 pybind11_add_module(manifpy
+
+  bindings_eigen_quaternion.cpp
+
   bindings_rn.cpp
   bindings_so2.cpp
   bindings_so3.cpp
