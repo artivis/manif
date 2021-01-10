@@ -173,23 +173,26 @@ jobs:
   pybind11:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        python-version: [3.6]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Setup
         run: |
-          sudo apt install -y libeigen3-dev
-          pip3 install numpy pybind11-global pytest
-          mkdir ${{runner.workspace}}/build
-      - name: Configure CMake
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_PYTHON_BINDINGS=ON -DBUILD_TESTING_PYTHON=ON -Dpybind11_DIR=~/.local/share/cmake/pybind11/
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install -r requirements.txt
       - name: Build
-        working-directory: ${{runner.workspace}}/build
-        run: make -j2
+        run: python setup.py install
       - name: Test
-        working-directory: ${{runner.workspace}}/build
-        run: make test
+        run: pytest
 
   # arm64:
   #   needs: [build-ubuntu]
