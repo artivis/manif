@@ -10,6 +10,8 @@ function(manif_add_pytest target)
   )
 endfunction()
 
+manif_add_pytest(test_eigen_quaternion)
+
 manif_add_pytest(test_manif)
 manif_add_pytest(test_so2)
 manif_add_pytest(test_se2)
