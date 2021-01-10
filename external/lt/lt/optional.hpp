@@ -1254,6 +1254,7 @@ public:
 
     *this = nullopt;
     this->construct(std::forward<Args>(args)...);
+    return value();
   }
 
   /// \group emplace
