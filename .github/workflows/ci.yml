@@ -186,9 +186,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Setup
         run: |
-          sudo apt install -y libeigen3-dev
+          sudo apt update
+          sudo apt install -y libeigen3-dev pybind11-dev
           python -m pip install --upgrade pip
-          pip install pybind11 pytest
+          pip install pytest
           pip install -r requirements.txt
       - name: Build
         run: python setup.py install
