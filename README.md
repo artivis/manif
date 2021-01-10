@@ -9,8 +9,9 @@
 [![JOSS](http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg)](http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160)
 
 ## Package Summary
-**manif** is a header-only C++11 Lie theory library for state-estimation
+**manif** is a Lie theory library for state-estimation
 targeted at robotics applications.
+It is developed as a header-only C++11 library with Python 3 wrappers.
 
 At the moment, it provides the groups:
   - R(n): Euclidean space with addition.
@@ -39,7 +40,7 @@ It also supports template scalar types. In particular, it can work with the
 [see related paragraph on Jacobians below](#jacobians).
 
 All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)).
-It allows one to write generic code abstracting the Lie group details.  
+It allows one to write generic code abstracting the Lie group details.
 Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code)
 
 #### Details
@@ -71,28 +72,29 @@ ___
 ### Dependencies
 
 - Eigen 3 :
-    + Linux ( Ubuntu and similar ) 
-    
+    + Linux ( Ubuntu and similar )
+
       ```terminal
       apt-get install libeigen3-dev
       ```
-    
-    + OS X 
-    
+
+    + OS X
+
       ```terminal
       brew install eigen
       ```
 
 - [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
-### Installation
-<!--
-#### Binaries
+For the Python 3 wrappers:
+
 ```terminal
-$ apt-get install manif
+$ pip install -r requirements
 ```
--->
-<!--#### From source-->
+
+### Installation
+
+#### From source
 
 ```terminal
 $ git clone https://github.com/artivis/manif.git
@@ -129,6 +131,15 @@ add_executable(${PROJECT_NAME} src/foo.cpp)
 target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${manif_INCLUDE_DIRS})
 ```
 
+#### Python 3
+
+```terminal
+$ git clone https://github.com/artivis/manif.git
+$ cd manif
+$ pip install -r requirements
+$ python setup.py install
+```
+
 ## Features
 
 ### Available Operations
@@ -157,7 +168,7 @@ Above, <img src="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf
 
 ### Jacobians
 
-All operations come with their respective analytical Jacobian matrices.  
+All operations come with their respective analytical Jacobian matrices.
 Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
 
 Currently, **manif** implements the **right Jacobian** (see [here](http://arxiv.org/abs/1812.01537) for reference), whose definition reads:
@@ -207,7 +218,7 @@ representation vector of the group element
 
 For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
-[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
+[`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.
 
 For reference of the size of the Jacobians returned when using ```ceres::Jet```, **manif** implements rotations in the following way:
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
@@ -252,7 +263,7 @@ These demos are:
 -   [`se2_sam.cpp`](examples/se2_sam.cpp): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
 -   [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
 -   [`se3_sam_selfcalib.cpp`](examples/se3_sam_selfcalib.cpp): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
--   [`se_2_3_localization.cpp`](examples/se_2_3_localization.cpp): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity). 
+-   [`se_2_3_localization.cpp`](examples/se_2_3_localization.cpp): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).
 
 ## Publications
 
@@ -299,7 +310,7 @@ In a rush? Here is your Lie group theory take away:
 
 ## They use **manif**
 
-You may find [here](projects.md) a list of work and projects using **manif**.  
+You may find [here](projects.md) a list of work and projects using **manif**.
 Your project is not listed? Let us know about it!
 
 ## Contributing
