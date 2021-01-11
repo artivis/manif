@@ -171,7 +171,7 @@ jobs:
         run: make test
 
   pybind11:
-    needs: [build-ubuntu]
+    needs: [build-ubuntu, build-mac]
     strategy:
       fail-fast: false
       matrix:

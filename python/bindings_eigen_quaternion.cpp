@@ -9,7 +9,10 @@ void wrap_Eigen_quaternion(pybind11::module &m)
   using Scalar = double;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
-  pybind11::class_<Eigen::QuaternionBase<Quaternion>> quat_base(m, "QuaternionBase");
+  pybind11::class_<
+    Eigen::QuaternionBase<Quaternion>,
+    std::unique_ptr<Eigen::QuaternionBase<Quaternion>, pybind11::nodelete>
+  > quat_base(m, "QuaternionBase");
   pybind11::class_<Quaternion, Eigen::QuaternionBase<Quaternion>> quat(m, "Quaternion");
 
   quat.attr("__doc__") = "Python bindings for Eigen::Quaternion<double>.";
