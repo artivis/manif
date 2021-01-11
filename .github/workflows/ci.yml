@@ -184,10 +184,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Setup pybind11
+        run: |
+          git clone https://github.com/pybind/pybind11.git
+          cd pybind11
+          pip install .
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libeigen3-dev pybind11-dev
+          sudo apt install -y libeigen3-dev
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
