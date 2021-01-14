@@ -134,7 +134,7 @@ struct traitscast<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxC
  *             | x  0 |
  */
 template <typename _Scalar>
-typename std::enable_if<std::is_arithmetic<_Scalar>::value,
+typename std::enable_if<std::is_arithmetic<_Scalar>::value || internal::is_ad<_Scalar>::value,
                         Eigen::Matrix<_Scalar, 2, 2>>::type
 skew(const _Scalar v)
 {
