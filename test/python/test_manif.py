@@ -1,6 +1,3 @@
-import numpy as np
-import pytest
-
 from manifpy import \
     R1, R1Tangent, \
     R2, R2Tangent, \
@@ -11,15 +8,19 @@ from manifpy import \
     R7, R7Tangent, \
     R8, R8Tangent, \
     R9, R9Tangent, \
-    SO2, SO2Tangent, \
     SE2, SE2Tangent, \
-    SO3, SO3Tangent, \
     SE3, SE3Tangent, \
-    SE_2_3, SE_2_3Tangent
+    SE_2_3, SE_2_3Tangent, \
+    SO2, SO2Tangent, \
+    SO3, SO3Tangent
+
+import numpy as np
+
+import pytest
 
 
 @pytest.mark.parametrize(
-    "LieGroup, Tangent",
+    'LieGroup, Tangent',
     [
      (R1, R1Tangent),
      (R2, R2Tangent),
@@ -30,11 +31,11 @@ from manifpy import \
      (R7, R7Tangent),
      (R8, R8Tangent),
      (R9, R9Tangent),
-     (SO2, SO2Tangent),
-     (SO3, SO3Tangent),
      (SE2, SE2Tangent),
      (SE3, SE3Tangent),
      (SE_2_3, SE_2_3Tangent),
+     (SO2, SO2Tangent),
+     (SO3, SO3Tangent),
     ]
 )
 class TestCommon:
@@ -203,7 +204,9 @@ class TestCommon:
     def test_smallAdj(self, LieGroup, Tangent):
 
         if LieGroup in (SO2, R1):
-            pytest.skip("hat is a scalar (Dim 1), numpy doesn't support matmul")
+            pytest.skip(
+                "hat is a scalar (Dim 1), numpy doesn't support matmul"
+            )
 
         delta = Tangent.Random()
         delta_other = Tangent.Random()
@@ -221,7 +224,7 @@ class TestCommon:
         state_out = state.inverse(J_sout_s)
 
         state_pert = (state+w).inverse()
-        state_lin  = state_out.rplus(J_sout_s * w)
+        state_lin = state_out.rplus(J_sout_s * w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -233,7 +236,7 @@ class TestCommon:
         state_out = state.log(J_sout_s)
 
         state_pert = (state+w).log()
-        state_lin  = state_out + (J_sout_s*w)
+        state_lin = state_out + (J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -245,7 +248,7 @@ class TestCommon:
         state_out = delta.exp(J_sout_s)
 
         state_pert = (delta+w).exp()
-        state_lin  = state_out + (J_sout_s*w)
+        state_lin = state_out + (J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -253,7 +256,7 @@ class TestCommon:
         state_out = delta.exp(J_sout_s)
 
         state_pert = (delta+w).exp()
-        state_lin  = state_out + (J_sout_s*w)
+        state_lin = state_out + (J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -267,58 +270,58 @@ class TestCommon:
         state_out = state.compose(state_other, J_sout_s, J_sout_so)
 
         state_pert = (state+w).compose(state_other)
-        state_lin  = state_out + J_sout_s*w
+        state_lin = state_out + J_sout_s*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.compose(state_other+w)
-        state_lin  = state_out + J_sout_so*w
+        state_lin = state_out + J_sout_so*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
-        #
-
-        state_out = state.compose(state_other, J_out_self = J_sout_s, J_out_other = J_sout_so)
+        state_out = state.compose(
+            state_other,
+            J_out_self=J_sout_s,
+            J_out_other=J_sout_so
+        )
 
         state_pert = (state+w).compose(state_other)
-        state_lin  = state_out + J_sout_s*w
+        state_lin = state_out + J_sout_s*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.compose(state_other+w)
-        state_lin  = state_out + J_sout_so*w
+        state_lin = state_out + J_sout_so*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
-        #
-
-        state_out = state.compose(state_other, J_out_other = J_sout_so, J_out_self = J_sout_s)
+        state_out = state.compose(
+            state_other,
+            J_out_other=J_sout_so,
+            J_out_self=J_sout_s
+        )
 
         state_pert = (state+w).compose(state_other)
-        state_lin  = state_out + J_sout_s*w
+        state_lin = state_out + J_sout_s*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.compose(state_other+w)
-        state_lin  = state_out + J_sout_so*w
+        state_lin = state_out + J_sout_so*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
-        #
-
-        state_out = state.compose(state_other, J_out_self = J_sout_s)
+        state_out = state.compose(state_other, J_out_self=J_sout_s)
 
         state_pert = (state+w).compose(state_other)
-        state_lin  = state_out + J_sout_s*w
+        state_lin = state_out + J_sout_s*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
-        #
-
-        state_out = state.compose(state_other, J_out_other = J_sout_so)
+        state_out = state.compose(state_other, J_out_other=J_sout_so)
 
         state_pert = state.compose(state_other+w)
-        state_lin  = state_out + J_sout_so*w
+        state_lin = state_out + J_sout_so*w
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -332,12 +335,12 @@ class TestCommon:
         state_out = state.between(state_other, J_sout_s, J_sout_so)
 
         state_pert = (state + w).between(state_other)
-        state_lin  = state_out + (J_sout_s * w)
+        state_lin = state_out + (J_sout_s * w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.between(state_other + w)
-        state_lin  = state_out + (J_sout_so * w)
+        state_lin = state_out + (J_sout_so * w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -351,12 +354,12 @@ class TestCommon:
         state_out = state.rplus(delta, J_sout_s, J_sout_t)
 
         state_pert = (state+w).rplus(delta)
-        state_lin  = state_out.rplus(J_sout_s*w)
+        state_lin = state_out.rplus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.rplus(delta+w)
-        state_lin  = state_out.rplus(J_sout_t*w)
+        state_lin = state_out.rplus(J_sout_t*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -370,12 +373,12 @@ class TestCommon:
         state_out = state.lplus(delta, J_sout_s, J_sout_t)
 
         state_pert = (state+w).lplus(delta)
-        state_lin  = state_out.rplus(J_sout_s*w)
+        state_lin = state_out.rplus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.lplus(delta+w)
-        state_lin  = state_out.rplus(J_sout_t*w)
+        state_lin = state_out.rplus(J_sout_t*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -389,12 +392,12 @@ class TestCommon:
         state_out = state.plus(delta, J_sout_s, J_sout_t)
 
         state_pert = (state+w).plus(delta)
-        state_lin  = state_out.plus(J_sout_s*w)
+        state_lin = state_out.plus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.plus(delta+w)
-        state_lin  = state_out.plus(J_sout_t*w)
+        state_lin = state_out.plus(J_sout_t*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -408,12 +411,12 @@ class TestCommon:
         state_out = state.rminus(state_other, J_sout_s, J_sout_so)
 
         state_pert = (state+w).rminus(state_other)
-        state_lin  = state_out.plus(J_sout_s*w)
+        state_lin = state_out.plus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.rminus(state_other+w)
-        state_lin  = state_out.plus(J_sout_so*w)
+        state_lin = state_out.plus(J_sout_so*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -427,12 +430,12 @@ class TestCommon:
         state_out = state.lminus(state_other, J_sout_s, J_sout_so)
 
         state_pert = (state+w).lminus(state_other)
-        state_lin  = state_out.plus(J_sout_s*w)
+        state_lin = state_out.plus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.lminus(state_other+w)
-        state_lin  = state_out.plus(J_sout_so*w)
+        state_lin = state_out.plus(J_sout_so*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -446,12 +449,12 @@ class TestCommon:
         state_out = state.minus(state_other, J_sout_s, J_sout_so)
 
         state_pert = (state+w).minus(state_other)
-        state_lin  = state_out.plus(J_sout_s*w)
+        state_lin = state_out.plus(J_sout_s*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
         state_pert = state.minus(state_other+w)
-        state_lin  = state_out.plus(J_sout_so*w)
+        state_lin = state_out.plus(J_sout_so*w)
 
         assert state_pert.isApprox(state_lin, eps=1e-7)
 
@@ -471,14 +474,18 @@ class TestCommon:
         assert state + delta == state.adj() * delta + state
 
         if LieGroup in (SO2, R1):
-            pytest.skip("Adj is a scalar (Dim 1), numpy doesn't support inversion")
+            pytest.skip(
+                "Adj is a scalar (Dim 1), numpy doesn't support inversion"
+            )
 
         assert np.allclose(np.linalg.inv(state.adj()), state.inverse().adj())
 
     def test_Adj2(self, LieGroup, Tangent):
 
         if LieGroup in (SO2, R1):
-            pytest.skip("Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support matmul")
+            pytest.skip(
+                "Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support matmul"
+            )
 
         state = LieGroup.Random()
 
@@ -504,7 +511,7 @@ class TestCommon:
         assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
         assert np.allclose(Jl, (-tan).rjac())
 
-    @pytest.mark.skip(reason="invrjac/invljac not implemented yet")
+    @pytest.mark.skip(reason='invrjac/invljac not implemented yet')
     def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
         state = LieGroup.Random()
 
@@ -515,10 +522,10 @@ class TestCommon:
         Jrinv = tan.rjacinv()
         Jlinv = tan.ljacinv()
 
-        I = np.identity(LieGroup.DoF)
+        Id = np.identity(LieGroup.DoF)
 
-        assert I == Jr @ Jrinv
-        assert I == Jl @ Jlinv
+        assert Id == Jr @ Jrinv
+        assert Id == Jl @ Jlinv
 
     def test_ActJac(self, LieGroup, Tangent):
         state = LieGroup.Identity()
@@ -532,12 +539,12 @@ class TestCommon:
         pointout = state.act(point, J_pout_s, J_pout_p)
 
         point_pert = (state + w).act(point)
-        point_lin  = pointout + J_pout_s @ w.coeffs()
+        point_lin = pointout + J_pout_s @ w.coeffs()
 
         assert np.allclose(point_pert, point_lin)
 
         point_pert = state.act(point + w_point)
-        point_lin  = pointout + J_pout_p @ w_point
+        point_lin = pointout + J_pout_p @ w_point
 
         assert np.allclose(point_pert, point_lin)
 
@@ -552,12 +559,12 @@ class TestCommon:
         delta_out = delta.plus(delta_other, J_tout_t0, J_tout_t1)
 
         delta_pert = (delta+w).plus(delta_other)
-        delta_lin  = delta_out.plus(J_tout_t0*w)
+        delta_lin = delta_out.plus(J_tout_t0*w)
 
         assert delta_pert == delta_lin
 
         delta_pert = delta.plus(delta_other+w)
-        delta_lin  = delta_out.plus(J_tout_t1*w)
+        delta_lin = delta_out.plus(J_tout_t1*w)
 
         assert delta_pert == delta_lin
 
@@ -572,11 +579,11 @@ class TestCommon:
         delta_out = delta.minus(delta_other, J_tout_t0, J_tout_t1)
 
         delta_pert = (delta+w).minus(delta_other)
-        delta_lin  = delta_out.plus(J_tout_t0*w)
+        delta_lin = delta_out.plus(J_tout_t0*w)
 
         assert delta_pert == delta_lin
 
         delta_pert = delta.minus(delta_other+w)
-        delta_lin  = delta_out.plus(J_tout_t1*w)
+        delta_lin = delta_out.plus(J_tout_t1*w)
 
         assert delta_pert == delta_lin

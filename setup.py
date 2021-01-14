@@ -1,32 +1,38 @@
-import setuptools
 import os
-import re
-import sys
-import sysconfig
 import platform
 import subprocess
+import sys
 
-from distutils.version import LooseVersion
-from setuptools import setup, find_packages, Extension
+import setuptools
+# import re
+# import sysconfig
+# from distutils.version import LooseVersion
+from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
 
-'''
+
+"""
 Modified from https://www.benjack.io/2017/06/12/python-cpp-tests.html
-'''
+"""
+
+
 class CMakeExtension(Extension):
+
     def __init__(self, name, sourcedir=''):
         Extension.__init__(self, name, sources=[])
         self.sourcedir = os.path.abspath(sourcedir)
 
 
 class CMakeBuild(build_ext):
+
     def run(self):
         try:
-            out = subprocess.check_output(['cmake', '--version'])
+            # out =
+            subprocess.check_output(['cmake', '--version'])
         except OSError:
             raise RuntimeError(
-                "CMake must be installed to build the following extensions: " +
-                ", ".join(e.name for e in self.extensions))
+                'CMake must be installed to build the following extensions: ' +
+                ', '.join(e.name for e in self.extensions))
 
         # if platform.system() == "Windows":
         #     cmake_version = LooseVersion(re.search(r'version\s*([\d.]+)',
@@ -47,7 +53,7 @@ class CMakeBuild(build_ext):
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
 
-        if platform.system() == "Windows":
+        if platform.system() == 'Windows':
             cmake_args += ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}'.format(
                 cfg.upper(),
                 extdir)]
@@ -70,21 +76,22 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args,
                               cwd=self.build_temp)
 
-with open("README.md", "r") as f:
+
+with open('README.md', 'r') as f:
     long_description = f.read()
 
 setup(
-    name="manifpy",
-    version="0.0.3",
-    author="Jeremie Deray",
-    author_email="deray.jeremie@gmail.com",
-    description="A small library for Lie theory.",
+    name='manifpy',
+    version='0.0.3',
+    author='Jeremie Deray',
+    author_email='deray.jeremie@gmail.com',
+    description='A small library for Lie theory.',
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type='text/markdown',
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "Operating System :: POSIX :: Linux"
+        'Programming Language :: Python :: 3',
+        'Operating System :: POSIX :: Linux'
     ],
     ext_modules=[CMakeExtension('manifpy')],
     python_requires='>=3.6',

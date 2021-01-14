@@ -1,17 +1,16 @@
-import numpy as np
-import pytest
-
 from manifpy import Quaternion
+
+import numpy as np
 
 
 def test_constructor():
-    q = Quaternion(1,2,3,4)
+    q = Quaternion(1, 2, 3, 4)
     assert 2 == q.x()
     assert 3 == q.y()
     assert 4 == q.z()
     assert 1 == q.w()
 
-    q = Quaternion(np.array([1,2,3,4]))
+    q = Quaternion(np.array([1, 2, 3, 4]))
     assert 1 == q.x()
     assert 2 == q.y()
     assert 3 == q.z()
@@ -23,11 +22,13 @@ def test_constructor():
     assert 0 == q.z()
     assert 1 == q.w()
 
+
 def test_vec():
-    vec = Quaternion(1,2,3,4).vec()
+    vec = Quaternion(1, 2, 3, 4).vec()
     assert 2 == vec[0]
     assert 3 == vec[1]
     assert 4 == vec[2]
+
 
 def test_identity():
     q = Quaternion.Identity()
@@ -37,7 +38,7 @@ def test_identity():
     assert 0 == q.z()
     assert 1 == q.w()
 
-    q_other = Quaternion()
+    q_other = Quaternion.Identity()
     q_other.setIdentity()
 
     assert q.isApprox(q_other)
@@ -49,13 +50,13 @@ def test_identity():
     assert q_inv.isApprox(q_other)
     assert q_inv.isApprox(q.conjugate())
 
-    assert (3,3) == q.toRotationMatrix().shape
+    assert (3, 3) == q.toRotationMatrix().shape
     assert (np.identity(3) == q.toRotationMatrix()).all()
 
-    assert (3,3) == q.matrix().shape
+    assert (3, 3) == q.matrix().shape
     assert (np.identity(3) == q.matrix()).all()
 
     assert 1 == q.norm()
     assert 1 == q.squaredNorm()
-    assert 1 == q.dot(q) # cos(0)
+    assert 1 == q.dot(q)  # cos(0)
     assert 0 == q.angularDistance(q)
