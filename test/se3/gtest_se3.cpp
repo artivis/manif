@@ -3,8 +3,6 @@
 #include "manif/SE3.h"
 #include "../common_tester.h"
 
-#include <Eigen/Geometry>
-
 using namespace manif;
 
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_DATATYPE)
@@ -82,27 +80,6 @@ TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
 }
 
-TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
-{
-  // EXPECT_THROW(
-  //   SE3d se3(SE3d(1, 1)),
-  //   manif::invalid_argument
-  // );
-
-  SE3d::DataType values; values << 0,0,0, 1,1,1,1;
-
-  EXPECT_THROW(
-    SE3d se3(values),
-    manif::invalid_argument
-  );
-
-  try {
-    SE3d se3(values);
-  } catch (manif::invalid_argument& e) {
-    EXPECT_FALSE(std::string(e.what()).empty());
-  }
-}
-
 TEST(TEST_SE3, TEST_SE3_DATA)
 {
   SE3d::DataType values; values << 0,0,0, 0,0,0,1;
@@ -125,6 +102,77 @@ TEST(TEST_SE3, TEST_SE3_DATA)
   EXPECT_DOUBLE_EQ(0, *data_ptr);
   ++data_ptr;
   EXPECT_DOUBLE_EQ(1, *data_ptr);
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_AXIS_ANGLE)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  Eigen::AngleAxis<double> axisAngle(0.23, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond quat(axisAngle);
+
+  se3.quat(axisAngle);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_QUATERNION)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  Eigen::AngleAxis<double> axisAngle(0.23, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond quat(axisAngle);
+
+  se3.quat(quat);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_SO3)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+  SO3d so3(Eigen::AngleAxis<double>(0.23, Eigen::Vector3d::UnitZ()));
+
+  se3.quat(so3);
+
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(0), se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(1), se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(2), se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(so3.coeffs()(3), se3.coeffs()(6));
+}
+
+TEST(TEST_SE3, TEST_SE3_SET_TRANSLATION)
+{
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d se3(values);
+
+  se3.translation(Eigen::Vector3d(1,1,1));
+
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(3));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(4));
+  EXPECT_DOUBLE_EQ(0, se3.coeffs()(5));
+  EXPECT_DOUBLE_EQ(1, se3.coeffs()(6));
 }
 
 TEST(TEST_SE3, TEST_SE3_CAST)
@@ -255,7 +303,7 @@ TEST(TEST_SE3, TEST_SE3_INVERSE)
 
   se3 = SE3d::Random();
 
-  Eigen::Isometry3d iso(se3.asSO3().quat());
+  Eigen::Isometry3d iso(se3.quat());
   iso.translation() = se3.translation();
 
   EXPECT_EIGEN_NEAR(iso.matrix(), se3.transform());
@@ -353,9 +401,59 @@ TEST(TEST_SE3, TEST_SE3_ISOMETRY)
   EXPECT_DOUBLE_EQ(3, se3h.matrix()(2,3));
 }
 
+#ifndef MANIF_NO_DEBUG
 
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  // EXPECT_THROW(
+  //   SE3d se3(SE3d(1, 1)),
+  //   manif::invalid_argument
+  // );
+
+  SE3d::DataType values; values << 0,0,0, 1,1,1,1;
+
+  EXPECT_THROW(
+    SE3d se3(values),
+    manif::invalid_argument
+  );
+
+  try {
+    SE3d se3(values);
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
+TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SE3d::DataType;
+  EXPECT_THROW(
+    SE3d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SE3, TEST_SE3_NORMALIZE)
+{
+  using DataType = SE3d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SE3d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SE3d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SE3d b = map
+  );
+}
+
+#endif
 
 MANIF_TEST(SE3d);
+
+MANIF_TEST_MAP(SE3d);
 
 MANIF_TEST_JACOBIANS(SE3d);
 

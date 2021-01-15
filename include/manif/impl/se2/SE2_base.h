@@ -38,6 +38,16 @@ public:
 
   // LieGroup common API
 
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE2Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SE2Base)
+
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
@@ -149,10 +159,6 @@ public:
    * @brief Normalize the underlying complex number.
    */
   void normalize();
-
-protected:
-
-  using Base::coeffs_nonconst;
 };
 
 template <typename _Derived>
@@ -246,7 +252,7 @@ SE2Base<_Derived>::log(OptJacobianRef J_t_m) const
   if (J_t_m)
   {
     // Jr^-1
-    (*J_t_m) = tan.rjac().inverse();
+    (*J_t_m) = tan.rjacinv();
   }
 
   return tan;
@@ -383,7 +389,7 @@ SE2Base<_Derived>::y() const
 template <typename _Derived>
 void SE2Base<_Derived>::normalize()
 {
-  coeffs_nonconst().template tail<2>().normalize();
+  coeffs().template tail<2>().normalize();
 }
 
 namespace internal {
@@ -397,6 +403,23 @@ struct RandomEvaluatorImpl<SE2Base<Derived>>
   {
     using Tangent = typename LieGroupBase<Derived>::Tangent;
     m = Tangent::Random().exp();
+  }
+};
+
+//! @brief Assignment assert specialization for SE2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SE2Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    MANIF_ASSERT(
+      abs(data.template tail<2>().norm()-typename SE2Base<Derived>::Scalar(1)) <
+      Constants<typename SE2Base<Derived>::Scalar>::eps_s,
+      "SE2 assigned data not normalized !",
+      invalid_argument
+    );
   }
 };
 

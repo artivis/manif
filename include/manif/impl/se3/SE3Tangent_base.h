@@ -25,7 +25,6 @@ private:
 
 public:
 
-  MANIF_TANGENT_PROPERTIES
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
@@ -37,8 +36,15 @@ public:
   using Base::data;
   using Base::coeffs;
 
-  SE3TangentBase()  = default;
-  ~SE3TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE3TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SE3TangentBase)
 
   // Tangent common API
 
@@ -123,10 +129,10 @@ public: /// @todo make protected
 
   Eigen::Map<SO3Tangent<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
+    return Eigen::Map<SO3Tangent<Scalar>>(coeffs().data()+3);
   }
 
-private:
+// private:
 
   template <typename _EigenDerived>
   static void fillQ(Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Q,
@@ -369,7 +375,7 @@ template <typename Derived>
 struct GeneratorEvaluator<SE3TangentBase<Derived>>
 {
   static typename SE3TangentBase<Derived>::LieAlg
-  run(const int i)
+  run(const unsigned int i)
   {
     using LieAlg = typename SE3TangentBase<Derived>::LieAlg;
     using Scalar = typename SE3TangentBase<Derived>::Scalar;
@@ -445,8 +451,9 @@ struct RandomEvaluatorImpl<SE3TangentBase<Derived>>
 {
   static void run(SE3TangentBase<Derived>& m)
   {
-    m.coeffs().setRandom();                // in [-1,1]
-    m.coeffs().template tail<3>() *= MANIF_PI; // in [-PI,PI]
+    m.coeffs().template head<3>().setRandom();
+    // In ball of radius PI
+    m.coeffs().template tail<3>() = randPointInBall(MANIF_PI);
   }
 };
 

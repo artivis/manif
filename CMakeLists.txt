@@ -7,13 +7,16 @@ string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_CAPS)
 
 # Check that the compoiler has c++11 support
 # Crash otherwise.
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
-else()
-  message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} "
-    "has no C++11 support. Please use a different C++ compiler.")
+
+if(NOT MSVC)
+  include(CheckCXXCompilerFlag)
+  CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+  if(COMPILER_SUPPORTS_CXX11)
+    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
+  else()
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} "
+      "has no C++11 support. Please use a different C++ compiler.")
+  endif()
 endif()
 
 # Finding Eigen is somewhat complicated.
@@ -41,7 +44,10 @@ endif()
 if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
   message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
                   "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
-endif(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
+  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
+                  "Beware that the move semantic has a bug and resolves to a simple copy.")
+endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
 # catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
@@ -79,16 +85,8 @@ endif(TARGET Eigen3::Eigen)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   target_compile_options(${PROJECT_NAME} INTERFACE -ftemplate-depth=512)
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  # GCC is not strict enough by default, so enable most of the warnings.
-  target_compile_options(${PROJECT_NAME} INTERFACE
-    -Werror=all
-    -Werror=extra
-    -Wno-unknown-pragmas
-    -Wno-sign-compare
-    -Wno-unused-parameter
-    -Wno-missing-field-initializers
-  )
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  target_compile_options(${PROJECT_NAME} INTERFACE /bigobj)
 endif()
 
 #############
@@ -156,10 +154,6 @@ install(
   DESTINATION include
 )
 
-install(FILES package.xml
-  DESTINATION share/${PROJECT_NAME}
-#  DESTINATION "${config_install_dir}"
-)
 
 ##############
 ## Examples ##
@@ -180,6 +174,7 @@ endif(BUILD_EXAMPLES)
 # ------------------------------------------------------------------------------
 
 if(ENABLE_COVERAGE)
+  add_definitions(-DMANIF_COVERAGE_ENABLED)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
@@ -191,28 +186,58 @@ endif()
 # CppCheck
 # ------------------------------------------------------------------------------
 
-# if(ENABLE_CPPCHECK)
-#
-#   list(APPEND CPPCHECK_ARGS
-#     --enable=warning,style,performance,portability,unusedFunction
-#     --std=c++11
-#     --verbose
-#     --error-exitcode=1
-#     --language=c++
-#     -DMAIN=main
-#     -I ${CMAKE_SOURCE_DIR}/include
-#       ${CMAKE_SOURCE_DIR}/include/*.h
-#       #${CMAKE_SOURCE_DIR}/examples/*.cpp
-#       ${CMAKE_SOURCE_DIR}/test/*.cpp
-#   )
-#
-#
-#   add_custom_target(check
-#     COMMAND cppcheck ${CPPCHECK_ARGS}
-#     COMMENT "running cppcheck"
-#   )
-#
-# endif()
+if(ENABLE_CPPCHECK)
+
+  # Find CppCheck executable
+  find_program(CPPCHECK "cppcheck")
+  if(CPPCHECK)
+
+      # Set export commands on
+      # set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+      list(APPEND CPPCHECK_ARGS
+        --enable=all
+        --std=c++11
+        # --verbose
+        --quiet
+        # --check-config
+        --xml-version=2
+        --language=c++
+        # Comment the line below to run cppcheck-html
+        --error-exitcode=1
+        --inline-suppr
+        --suppress=*:*googletest-*
+        --suppress=missingIncludeSystem
+        --suppress=missingInclude
+        --suppress=unmatchedSuppression:*
+        --suppress=syntaxError:*tangent_base.h:370
+        # Uncomment the line below to run cppcheck-html
+        # --output-file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/examples
+        ${CMAKE_SOURCE_DIR}/test
+      )
+
+      add_custom_target(run-cppcheck
+          COMMAND ${CPPCHECK} ${CPPCHECK_ARGS}
+          COMMENT "Generate cppcheck report for the project"
+      )
+
+      find_program(CPPCHECK_HTML "cppcheck-htmlreport")
+      if(CPPCHECK_HTML)
+          add_custom_target(cppcheck-html
+              COMMAND ${CPPCHECK_HTML}
+              --title=${CMAKE_PROJECT_NAME}
+              --file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
+              --report-dir=${CMAKE_BINARY_DIR}/cppcheck_results
+              --source-dir=${CMAKE_SOURCE_DIR}
+              COMMENT "Convert cppcheck report to HTML output"
+          )
+          ADD_DEPENDENCIES(cppcheck-html run-cppcheck)
+      endif()
+  endif()
+
+endif()
 
 # ------------------------------------------------------------------------------
 # Valgrind
@@ -224,6 +249,7 @@ if(ENABLE_VALGRIND)
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --leak-check=full")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --track-fds=yes")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --trace-children=yes")
+  set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --show-reachable=yes")
   set(MEMORYCHECK_COMMAND_OPTIONS "${MEMORYCHECK_COMMAND_OPTIONS} --error-exitcode=1")
 endif()
 

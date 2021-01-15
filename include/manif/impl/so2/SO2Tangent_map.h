@@ -14,6 +14,7 @@ struct traits< Eigen::Map<SO2Tangent<_Scalar>,0> >
   using typename traits<SO2Tangent<_Scalar>>::Scalar;
   using traits<SO2Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SO2TangentBase<Eigen::Map<SO2Tangent<Scalar>, 0>>;
 };
 
 //! @brief traits specialization for Eigen Map const
@@ -24,6 +25,7 @@ struct traits< Eigen::Map<const SO2Tangent<_Scalar>,0> >
   using typename traits<const SO2Tangent<_Scalar>>::Scalar;
   using traits<const SO2Tangent<_Scalar>>::DoF;
   using DataType = ::Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SO2TangentBase<Eigen::Map<const SO2Tangent<Scalar>, 0>>;
 };
 
 } /* namespace internal */
@@ -45,6 +47,8 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(Scalar* coeffs) : data_(coeffs) { }
+
+  MANIF_TANGENT_MAP_ASSIGN_OP(SO2Tangent)
 
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }

@@ -59,8 +59,8 @@ template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const LieGroupBase<_DerivedA>& manifold_a,
             const LieGroupBase<_DerivedB>& manifold_b,
-            const std::string manifold_a_name = "manifold_a",
-            const std::string manifold_b_name = "manifold_b",
+            const std::string& manifold_a_name = "manifold_a",
+            const std::string& manifold_b_name = "manifold_b",
             double tolerance = 1e-5)
 {
   auto result =
@@ -80,8 +80,8 @@ template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult
 isManifNear(const TangentBase<_DerivedA>& tangent_a,
             const TangentBase<_DerivedB>& tangent_b,
-            const std::string tangent_a_name = "tangent_a",
-            const std::string tangent_b_name = "tangent_b",
+            const std::string& tangent_a_name = "tangent_a",
+            const std::string& tangent_b_name = "tangent_b",
             double tolerance = 1e-5)
 {
   return isEigenMatrixNear(tangent_a.coeffs(), tangent_b.coeffs(),

@@ -2,7 +2,6 @@
 #define _MANIF_TEST_EIGEN_GTEST_H_
 
 #include <gtest/gtest.h>
-#include <Eigen/Dense>
 
 namespace manif {
 namespace detail {
@@ -85,11 +84,11 @@ isEigenMatrixDimSize(const detail::EigenIndex dim,
   const auto sizes = DimGetter()(ms...);
 
   bool result = true;
-  auto f = [&result, &dim](const detail::EigenIndex i)
-                          { result &= (dim == i);};
+  auto f = [&result, &dim](const detail::EigenIndex i){ result &= (dim == i);};
 
   detail::call_for_each(f, sizes);
 
+  // cppcheck-suppress knownConditionTrueFalse
   if (!result)
   {
     std::stringstream ss;
@@ -196,8 +195,8 @@ isEigenMatrixSameSize(const Eigen::MatrixBase<Derived>& m0,
 template <class _DerivedA, class _DerivedB>
 inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_DerivedA>& matrix_a,
                                                     const Eigen::MatrixBase<_DerivedB>& matrix_b,
-                                                    const std::string matrix_a_name = "matrix_a",
-                                                    const std::string matrix_b_name = "matrix_b",
+                                                    const std::string& matrix_a_name = "matrix_a",
+                                                    const std::string& matrix_b_name = "matrix_b",
                                                     double tolerance = 1e-8)
 {
   const ::testing::AssertionResult size_check =
@@ -244,6 +243,21 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 #define EXPECT_EIGEN_NEAR(...) \
   __EXPECT_EIGEN_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
+
+#define EXPECT_EIGEN_NOT_NEAR_DEFAULT_TOL(A,B) \
+  EXPECT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B))
+
+#define EXPECT_EIGEN_NOT_NEAR_TOL(A,B,tol) \
+  EXPECT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B, tol))
+
+#define __EXPECT_EIGEN_NOT_NEAR_CHOOSER(...) \
+  __GET_4TH_ARG(__VA_ARGS__, EXPECT_EIGEN_NOT_NEAR_TOL, \
+                  EXPECT_EIGEN_NOT_NEAR_DEFAULT_TOL, )
+
+#define EXPECT_EIGEN_NOT_NEAR(...) \
+  __EXPECT_EIGEN_NOT_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
+
+
 #define ASSERT_EIGEN_NEAR_DEFAULT_TOL(A,B) \
   ASSERT_TRUE(manif::isEigenMatrixNear(A, B, #A, #B))
 
@@ -256,6 +270,19 @@ inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_Der
 
 #define ASSERT_EIGEN_NEAR(...) \
   __ASSERT_EIGEN_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
+
+#define ASSERT_EIGEN_NOT_NEAR_DEFAULT_TOL(A,B) \
+  ASSERT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B))
+
+#define ASSERT_EIGEN_NOT_NEAR_TOL(A,B,tol) \
+  ASSERT_FALSE(manif::isEigenMatrixNear(A, B, #A, #B, tol))
+
+#define __ASSERT_EIGEN_NOT_NEAR_CHOOSER(...) \
+  __GET_4TH_ARG(__VA_ARGS__, ASSERT_EIGEN_NOT_NEAR_TOL, \
+                ASSERT_EIGEN_NOT_NEAR_DEFAULT_TOL, )
+
+#define ASSERT_EIGEN_NOT_NEAR(...) \
+  __ASSERT_EIGEN_NOT_NEAR_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
 
 /*
  * E.g

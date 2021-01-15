@@ -21,6 +21,8 @@ class CeresConstraintFunctor
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(Tangent)
+
   using Covariance = Eigen::Matrix<double, LieGroup::DoF, LieGroup::DoF>;
   using InformationMatrix = Covariance;
 

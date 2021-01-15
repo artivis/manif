@@ -8,7 +8,7 @@ template <typename Derived>
 struct GeneratorEvaluator
 {
   static typename Derived::LieAlg
-  run(const int)
+  run(const unsigned int)
   {
     /// @todo print actual Derived type
     static_assert(constexpr_false<Derived>(),

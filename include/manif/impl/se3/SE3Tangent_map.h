@@ -14,6 +14,7 @@ struct traits< Eigen::Map<SE3Tangent<_Scalar>,0> >
   using typename traits<SE3Tangent<_Scalar>>::Scalar;
   using traits<SE3Tangent<_Scalar>>::DoF;
   using DataType = Eigen::Map<Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SE3TangentBase<Eigen::Map<SE3Tangent<Scalar>, 0>>;
 };
 
 //! @brief traits specialization for Eigen Map
@@ -24,6 +25,7 @@ struct traits< Eigen::Map<const SE3Tangent<_Scalar>,0> >
   using typename traits<const SE3Tangent<_Scalar>>::Scalar;
   using traits<const SE3Tangent<_Scalar>>::DoF;
   using DataType = Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+  using Base = SE3TangentBase<Eigen::Map<const SE3Tangent<Scalar>, 0>>;
 };
 
 } /* namespace internal */
@@ -47,6 +49,8 @@ public:
   MANIF_INHERIT_TANGENT_OPERATOR
 
   Map(Scalar* coeffs) : data_(coeffs) { }
+
+  MANIF_TANGENT_MAP_ASSIGN_OP(SE3Tangent)
 
   DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }

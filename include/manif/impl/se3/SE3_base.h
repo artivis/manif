@@ -5,8 +5,6 @@
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/so3/SO3_map.h"
 
-#include <Eigen/Geometry>
-
 namespace manif {
 
 //
@@ -41,6 +39,16 @@ public:
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
   // LieGroup common API
+
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SE3Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SE3Base)
 
   /**
    * @brief Get the inverse.
@@ -155,9 +163,30 @@ public:
    */
   void normalize();
 
-protected:
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion a unitary quaternion
+   */
+  void quat(const QuaternionDataType& quaternion);
 
-  using Base::coeffs_nonconst;
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion an Eigen::Vector representing a unitary quaternion
+   */
+  template <typename _EigenDerived>
+  void quat(const Eigen::MatrixBase<_EigenDerived>& quaternion);
+
+  /**
+   * @brief Set the rotational as a so3 object.
+   * @param so3 a manif::SO3 object
+   */
+  void quat(const SO3<Scalar>& so3);
+
+  /**
+   * @brief Set the translation of the SE3 object
+   * @param translation, 3d-vector representing the translation
+   */
+  void translation(const Translation& translation);
 
 public: /// @todo make protected
 
@@ -168,7 +197,7 @@ public: /// @todo make protected
 
   Eigen::Map<SO3<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3<Scalar>>(coeffs_nonconst().data()+3);
+    return Eigen::Map<SO3<Scalar>>(coeffs().data()+3);
   }
 };
 
@@ -211,6 +240,38 @@ SE3Base<_Derived>::translation() const
 }
 
 template <typename _Derived>
+void SE3Base<_Derived>::quat(const QuaternionDataType& quaternion)
+{
+  quat(quaternion.coeffs());
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
+{
+  using std::abs;
+  assert_vector_dim(quaternion, 4);
+  MANIF_ASSERT(abs(quaternion.norm()-Scalar(1)) <
+               Constants<Scalar>::eps_s,
+               "The quaternion is not normalized !",
+               invalid_argument);
+
+  asSO3().coeffs() = quaternion;
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::quat(const SO3<Scalar>& so3)
+{
+  quat(so3.coeffs());
+}
+
+template <typename _Derived>
+void SE3Base<_Derived>::translation(const Translation& translation)
+{
+  coeffs().template head<3>() = translation;
+}
+
+template <typename _Derived>
 typename SE3Base<_Derived>::LieGroup
 SE3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const
 {
@@ -235,13 +296,13 @@ SE3Base<_Derived>::log(OptJacobianRef J_t_m) const
   const SO3Tangent<Scalar> so3tan = asSO3().log();
 
   Tangent tan((typename Tangent::DataType() <<
-               so3tan.ljac().inverse()*translation(),
+               so3tan.ljacinv()*translation(),
                so3tan.coeffs()).finished());
 
   if (J_t_m)
   {
     // Jr^-1
-    (*J_t_m) = tan.rjac().inverse();
+    (*J_t_m) = tan.rjacinv();
   }
 
   return tan;
@@ -361,7 +422,7 @@ SE3Base<_Derived>::z() const
 template <typename _Derived>
 void SE3Base<_Derived>::normalize()
 {
-  coeffs_nonconst().template tail<4>().normalize();
+  coeffs().template tail<4>().normalize();
 }
 
 namespace internal {
@@ -385,6 +446,7 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
     using Scalar      = typename SE3Base<Derived>::Scalar;
     using Translation = typename SE3Base<Derived>::Translation;
     using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
+    using LieGroup    = typename SE3Base<Derived>::LieGroup;
 
     const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
                  u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
@@ -392,10 +454,27 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
     const Scalar a = sqrt(1. - u1),
                  b = sqrt(u1);
 
-    m = Derived(Translation::Random(),
-                Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
+    m = LieGroup(Translation::Random(),
+                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
 
     //m = Derived(Translation::Random(), Quaternion::UnitRandom());
+  }
+};
+
+//! @brief Assignment assert specialization for SE2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SE3Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    MANIF_ASSERT(
+      abs(data.template tail<4>().norm()-typename SE3Base<Derived>::Scalar(1)) <
+      Constants<typename SE3Base<Derived>::Scalar>::eps_s,
+      "SE3 assigned data not normalized !",
+      manif::invalid_argument
+    );
   }
 };
 

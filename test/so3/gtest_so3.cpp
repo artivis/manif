@@ -56,25 +56,6 @@ TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_ROLL_PITCH_YAW)
   EXPECT_DOUBLE_EQ(1, so3.w());
 }
 
-TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
-{
-  EXPECT_THROW(
-    SO3d so3(SO3d(1, 1, 1, 1)),
-    manif::invalid_argument
-  );
-
-  EXPECT_THROW(
-    SO3d so3(SO3d::DataType(1, 1, 1, 1)),
-    manif::invalid_argument
-  );
-
-  try {
-    SO3d so3(SO3d::DataType(1, 1, 1, 1));
-  } catch (manif::invalid_argument& e) {
-    EXPECT_FALSE(std::string(e.what()).empty());
-  }
-}
-
 TEST(TEST_SO3, TEST_SO3_IDENTITY)
 {
   SO3d so3;
@@ -168,7 +149,7 @@ TEST(TEST_SO3, TEST_SO3_ROTATION)
 
 TEST(TEST_SO3, TEST_SO3_ASSIGN_OP)
 {
-  SO3d so3a = SO3d::Random();
+  SO3d so3a;
   SO3d so3b = SO3d::Random();
 
   so3a = so3b;
@@ -318,9 +299,9 @@ TEST(TEST_SO3, TEST_SO3_RMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
@@ -343,9 +324,9 @@ TEST(TEST_SO3, TEST_SO3_LMINUS)
 
   so3c = so3a.rminus(so3b);
 
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(0));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(1));
-  EXPECT_DOUBLE_EQ(0, so3c.coeffs()(2));
+  EXPECT_NEAR(0, so3c.coeffs()(0), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(1), 1e-15);
+  EXPECT_NEAR(0, so3c.coeffs()(2), 1e-15);
 
   // todo subtracting something from something
 }
@@ -566,7 +547,57 @@ TEST(TEST_SO3, TEST_SO3_ACT)
   EXPECT_NEAR( 1, transformed_point.z(), 1e-15);
 }
 
+#ifndef MANIF_NO_DEBUG
+
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SO3d so3(SO3d(1, 1, 1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SO3d so3(SO3d::DataType(1, 1, 1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SO3d so3(SO3d::DataType(1, 1, 1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
+TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SO3d::DataType;
+  EXPECT_THROW(
+    SO3d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SO3, TEST_SO3_NORMALIZE)
+{
+  using DataType = SO3d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SO3d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SO3d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SO3d b = map
+  );
+}
+
+#endif
+
 MANIF_TEST(SO3d);
+
+MANIF_TEST_MAP(SO3d);
 
 MANIF_TEST_JACOBIANS(SO3d);
 

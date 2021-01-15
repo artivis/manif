@@ -59,23 +59,27 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
   using Base::normalize;
+
+protected:
+
+  using Base::derived;
+
+public:
 
   SO2()  = default;
   ~SO2() = default;
 
+  MANIF_COPY_CONSTRUCTOR(SO2)
+  MANIF_MOVE_CONSTRUCTOR(SO2)
+
   // Copy constructor given base
-  SO2(const Base& o);
-
-  template <typename _DerivedOther>
-  SO2(const SO2Base<_DerivedOther>& o);
-
   template <typename _DerivedOther>
   SO2(const LieGroupBase<_DerivedOther>& o);
 
-  // Copy constructor given Eigen
-  template <typename _EigenDerived>
-  SO2(const Eigen::MatrixBase<_EigenDerived>& data);
+  MANIF_GROUP_ASSIGN_OP(SO2)
 
   /**
    * @brief Constructor given the real and imaginary part
@@ -92,6 +96,7 @@ public:
   // LieGroup common API
 
   //! Get a const reference to the underlying DataType.
+  DataType& coeffs();
   const DataType& coeffs() const;
 
   // SO2 specific API
@@ -100,45 +105,14 @@ public:
 
 protected:
 
-  friend struct LieGroupBase<SO2<Scalar>>;
-  DataType& coeffs_nonconst();
-
   DataType data_;
 };
 
 MANIF_EXTRA_GROUP_TYPEDEF(SO2)
 
 template <typename _Scalar>
-template <typename _EigenDerived>
-SO2<_Scalar>::SO2(const Eigen::MatrixBase<_EigenDerived>& data)
-  : data_(data)
-{
-  using std::abs;
-  MANIF_CHECK(abs(data_.norm()-Scalar(1)) < Constants<Scalar>::eps_s,
-              "SO2 constructor argument not normalized !",
-              invalid_argument);
-}
-
-template <typename _Scalar>
-SO2<_Scalar>::SO2(const Base& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
 template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const SO2Base<_DerivedOther>& o)
-  : SO2(o.coeffs())
-{
-  //
-}
-
-template <typename _Scalar>
-template <typename _DerivedOther>
-SO2<_Scalar>::SO2(
-    const LieGroupBase<_DerivedOther>& o)
+SO2<_Scalar>::SO2(const LieGroupBase<_DerivedOther>& o)
   : SO2(o.coeffs())
 {
   //
@@ -161,7 +135,7 @@ SO2<_Scalar>::SO2(const Scalar theta)
 
 template <typename _Scalar>
 typename SO2<_Scalar>::DataType&
-SO2<_Scalar>::coeffs_nonconst()
+SO2<_Scalar>::coeffs()
 {
   return data_;
 }

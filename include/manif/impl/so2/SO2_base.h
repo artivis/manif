@@ -35,6 +35,16 @@ public:
 
   // LieGroup common API
 
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO2Base)
+
+public:
+
+  MANIF_GROUP_ML_ASSIGN_OP(SO2Base)
+
   /**
    * @brief Get the inverse of this.
    * @param[out] -optional- J_minv_m Jacobian of the inverse wrt this.
@@ -129,9 +139,7 @@ public:
    */
   void normalize();
 
-protected:
-
-  using Base::coeffs_nonconst;
+// protected:
 
   /// @todo given a Eigen::Map<const SO2>
   /// coeffs()->x() return a reference to
@@ -297,7 +305,7 @@ SO2Base<_Derived>::angle() const
 template <typename _Derived>
 void SO2Base<_Derived>::normalize()
 {
-  coeffs_nonconst().normalize();
+  coeffs().normalize();
 }
 
 namespace internal {
@@ -311,6 +319,23 @@ struct RandomEvaluatorImpl<SO2Base<Derived>>
   {
     using Tangent = typename LieGroupBase<Derived>::Tangent;
     m = Tangent::Random().exp();
+  }
+};
+
+//! @brief Assignment assert specialization for SO2Base objects
+template <typename Derived>
+struct AssignmentEvaluatorImpl<SO2Base<Derived>>
+{
+  template <typename T>
+  static void run_impl(const T& data)
+  {
+    using std::abs;
+    MANIF_ASSERT(
+      abs(data.norm()-typename SO2Base<Derived>::Scalar(1)) <
+      Constants<typename SO2Base<Derived>::Scalar>::eps_s,
+      "SO2 assigned data not normalized !",
+      invalid_argument
+    );
   }
 };
 

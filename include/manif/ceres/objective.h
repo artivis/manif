@@ -16,6 +16,8 @@ class CeresObjectiveFunctor
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
+
   template <typename... Args>
   CeresObjectiveFunctor(Args&&... args)
     : target_state_(std::forward<Args>(args)...)

@@ -1,7 +1,7 @@
 # manif
 ## A small header-only library for Lie theory.
 
-[![travis](https://travis-ci.com/artivis/manif.svg?branch=devel)](https://travis-ci.com/artivis/manif)
+[![GHA](https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel)](https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel)
 [![appveyor](https://ci.appveyor.com/api/projects/status/l0q7b0shhonvejrd?svg=true)](https://ci.appveyor.com/project/artivis/manif)
 [![Documentation](https://codedocs.xyz/artivis/manif.svg)](https://codedocs.xyz/artivis/manif/)
 [![codecov](https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg)](https://codecov.io/gh/artivis/manif)
@@ -13,16 +13,19 @@
 targeted at robotics applications.
 
 At the moment, it provides the groups:
+  - R(n): Euclidean space with addition.
   - SO(2): rotations in the plane.
   - SE(2): rigid motion (rotation and translation) in the plane.
   - SO(3): rotations in 3D space.
   - SE(3): rigid motion (rotation and translation) in 3D space.
+  - SE_2(3): extended pose (rotation, translation and velocity) in 3D space, introduced (to the best of knowledge) in this [paper](https://arxiv.org/pdf/1410.1465.pdf).  NOTE: The implementation here differs slightly from the developments in the [paper](https://arxiv.org/pdf/1410.1465.pdf).
 
 Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper](http://arxiv.org/abs/1812.01537).
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
 The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average robotician who is interested in designing rigorous and elegant state estimation algorithms.
+In a rush? Check out our [Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
 
 **manif** has been designed for an easy integration to larger projects:
   - A single dependency on [Eigen](http://eigen.tuxfamily.org),
@@ -61,17 +64,26 @@ ___
   <a href="#they-use-manif">They use manif</a> •
   <a href="#contributing">Contributing</a>
 </p>
-
 ___
 
 ## Quick Start
 
 ### Dependencies
 
--   Eigen 3 :
-  - Ubuntu and similar ```apt-get install libeigen3-dev```
-  - OS X ```brew install eigen```
--   [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
+- Eigen 3 :
+    + Linux ( Ubuntu and similar ) 
+    
+      ```terminal
+      apt-get install libeigen3-dev
+      ```
+    
+    + OS X 
+    
+      ```terminal
+      brew install eigen
+      ```
+
+- [lt::optional](https://github.com/TartanLlama/optional) : included in the `external` folder
 
 ### Installation
 <!--
@@ -179,7 +191,7 @@ Shall you be interested only in a specific Jacobian, it can be retrieved without
 or conversely,
 
 ```cpp
-  auto composition = X.compose(Y, SO2::_, J_c_y);
+  auto composition = X.compose(Y, SO2d::_, J_c_y);
 ```
 
 #### A note on Jacobians
@@ -191,15 +203,22 @@ These Jacobians map tangent spaces, as described in [this paper](http://arxiv.or
 However, many non-linear solvers
 (e.g. [Ceres](http://ceres-solver.org/)) expect functions to be differentiated with respect to the underlying
 representation vector of the group element
-(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO^3"/>).
+(e.g. with respect to quaternion vector for <img src="https://latex.codecogs.com/png.latex?SO(3)"/>).
 
 For this reason **manif** is compliant with [Ceres](http://ceres-solver.org/)
 auto-differentiation and the
 [`ceres::Jet`](http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets) type.  
 
-For reference of the size of the Jacobians returned, **manif** implements rotations in the following way:
+For reference of the size of the Jacobians returned when using ```ceres::Jet```, **manif** implements rotations in the following way:
   - SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
-  - SO(3) and SE(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+  - SO(3), SE(3) and SE_2(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+
+Therefore, the respective Jacobian sizes using ```ceres::Jet``` are as follows:
+  - SO(2) : size 2
+  - SO(3) : size 4
+  - SE(2) : size 4
+  - SE(3) : size 7
+  - SE_2(3): size 10
 
 For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
 
@@ -233,10 +252,30 @@ These demos are:
 -   [`se2_sam.cpp`](examples/se2_sam.cpp): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
 -   [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
 -   [`se3_sam_selfcalib.cpp`](examples/se3_sam_selfcalib.cpp): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
+-   [`se_2_3_localization.cpp`](examples/se_2_3_localization.cpp): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity). 
 
 ## Publications
 
-If you use this work, please consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
+If you use this software, please consider citing
+[this paper](https://joss.theoj.org/papers/10.21105/joss.01371#) as follows:
+
+```
+@article{Deray-20-JOSS,
+  doi = {10.21105/joss.01371},
+  url = {https://doi.org/10.21105/joss.01371},
+  year = {2020},
+  publisher = {The Open Journal},
+  volume = {5},
+  number = {46},
+  pages = {1371},
+  author = {Jérémie Deray and Joan Solà},
+  title = {Manif: A micro {L}ie theory library for state estimation in robotics applications},
+  journal = {Journal of Open Source Software}
+}
+
+```
+
+You can also consider citing [this paper](http://arxiv.org/abs/1812.01537) as follows:
 
 ```
 @techreport{SOLA-18-Lie,
@@ -252,6 +291,11 @@ If you use this work, please consider citing [this paper](http://arxiv.org/abs/1
 Notice that this reference is the one referred to throughout the code documentation.
 Since this is a versioned work, please refer to [version 4, available here](http://arxiv.org/abs/1812.01537v4), of the paper when cross-referencing with the **manif** documentation.
 This will give the appropriate equation numbers.
+
+### Lie group cheat sheets
+
+In a rush? Here is your Lie group theory take away:
+[Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
 
 ## They use **manif**
 

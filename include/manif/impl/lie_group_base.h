@@ -5,6 +5,7 @@
 #include "manif/impl/traits.h"
 #include "manif/impl/eigen.h"
 #include "manif/impl/tangent_base.h"
+#include "manif/impl/assignment_assert.h"
 
 #include "manif/constants.h"
 
@@ -36,15 +37,44 @@ struct LieGroupBase
   template <typename _Scalar>
   using LieGroupTemplate = typename internal::traitscast<LieGroup, _Scalar>::cast;
 
-protected:
-
-  //! @brief Access the underlying data by reference
-  DataType& coeffs_nonconst();
-
 public:
 
   //! @brief Helper for skipping an optional parameter.
   static const OptJacobianRef _;
+
+protected:
+
+  MANIF_DEFAULT_CONSTRUCTOR(LieGroupBase)
+
+public:
+
+  /**
+   * @brief Assignment operator.
+   * @param[in] An element of the Lie group.
+   * @return A reference to this.
+   * @note This is a special case of the templated operator=. Its purpose is to
+   * prevent a default operator= from hiding the templated operator=.
+   */
+  _Derived& operator =(const LieGroupBase& m);
+
+  /**
+   * @brief Assignment operator.
+   * @param[in] An element of the Lie group.
+   * @return A reference to this.
+   */
+  template <typename _DerivedOther>
+  _Derived& operator =(const LieGroupBase<_DerivedOther>& m);
+
+  /**
+   * @brief Assignment operator given Eigen object.
+   * @param[in] An element of the Lie group.
+   * @return A reference to this.
+   */
+  template <typename _EigenDerived>
+  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& data);
+
+  //! @brief Access the underlying data by const reference
+  DataType& coeffs();
 
   //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
@@ -128,9 +158,10 @@ public:
    * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
    * @return
    */
-  Vector act(const Vector& v,
-             OptJacobianRef J_vout_m = {},
-             OptJacobianRef J_vout_v = {}) const;
+  template <typename _EigenDerived>
+  Vector act(const Eigen::MatrixBase<_EigenDerived>& v,
+             tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, DoF>>> J_vout_m = {},
+             tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, Dim>>> J_vout_v = {}) const;
 
   /**
    * @brief Get the Adjoint of the Lie group element this.
@@ -237,21 +268,6 @@ public:
   // Some operators
 
   /**
-   * @brief Assignment operator.
-   * @param[in] An element of the Lie group.
-   * @return A reference to this.
-   */
-  _Derived& operator =(const LieGroupBase<_Derived>& m);
-
-  /**
-   * @brief Assignment operator.
-   * @param[in] An element of the Lie group.
-   * @return A reference to this.
-   */
-  template <typename _DerivedOther>
-  _Derived& operator =(const LieGroupBase<_DerivedOther>& m);
-
-  /**
    * @brief Equality operator.
    * @param[in] An element of the same Lie group.
    * @return true if the Lie group element m is 'close' to this,
@@ -303,10 +319,10 @@ public:
   //! Static helper to create a random object of the Lie group.
   static LieGroup Random();
 
-private:
+protected:
 
-  _Derived& derived() { return *static_cast< _Derived* >(this); }
-  const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
+  inline _Derived& derived() & noexcept { return *static_cast< _Derived* >(this); }
+  inline const _Derived& derived() const & noexcept { return *static_cast< const _Derived* >(this); }
 };
 
 template <typename _Derived>
@@ -320,11 +336,42 @@ template <typename _Derived>
 const typename LieGroupBase<_Derived>::OptJacobianRef
 LieGroupBase<_Derived>::_ = {};
 
+// Copy
+
+template <typename _Derived>
+_Derived&
+LieGroupBase<_Derived>::operator =(const LieGroupBase& m)
+{
+  derived().coeffs() = m.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+_Derived&
+LieGroupBase<_Derived>::operator =(const LieGroupBase<_DerivedOther>& m)
+{
+  derived().coeffs() = m.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+_Derived&
+LieGroupBase<_Derived>::operator =(const Eigen::MatrixBase<_EigenDerived>& data)
+{
+  internal::AssignmentEvaluator<
+      typename internal::traits<_Derived>::Base>().run(data);
+
+  derived().coeffs() = data;
+  return derived();
+}
+
 template <typename _Derived>
 typename LieGroupBase<_Derived>::DataType&
-LieGroupBase<_Derived>::coeffs_nonconst()
+LieGroupBase<_Derived>::coeffs()
 {
-  return derived().coeffs_nonconst();
+  return derived().coeffs();
 }
 
 template <typename _Derived>
@@ -338,14 +385,14 @@ template <typename _Derived>
 typename LieGroupBase<_Derived>::Scalar*
 LieGroupBase<_Derived>::data()
 {
-  return derived().coeffs_nonconst().data();
+  return derived().coeffs().data();
 }
 
 template <typename _Derived>
 const typename LieGroupBase<_Derived>::Scalar*
 LieGroupBase<_Derived>::data() const
 {
-  derived().coeffs().data();
+  return derived().coeffs().data();
 }
 
 template <typename _Derived>
@@ -555,10 +602,13 @@ LieGroupBase<_Derived>::adj() const
 }
 
 template <typename _Derived>
+template <typename _EigenDerived>
 typename LieGroupBase<_Derived>::Vector
-LieGroupBase<_Derived>::act(const Vector& v,
-                            OptJacobianRef J_vout_m,
-                            OptJacobianRef J_vout_v) const
+LieGroupBase<_Derived>::act(
+  const Eigen::MatrixBase<_EigenDerived>& v,
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, DoF>>> J_vout_m,
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, Dim, Dim>>> J_vout_v
+) const
 {
   return derived().act(v, J_vout_m, J_vout_v);
 }
@@ -566,30 +616,11 @@ LieGroupBase<_Derived>::act(const Vector& v,
 // Operators
 
 template <typename _Derived>
-_Derived&
-LieGroupBase<_Derived>::operator =(
-    const LieGroupBase<_Derived>& m)
-{
-  derived().coeffs_nonconst() = m.coeffs();
-  return derived();
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-_Derived&
-LieGroupBase<_Derived>::operator =(
-    const LieGroupBase<_DerivedOther>& m)
-{
-  derived().coeffs_nonconst() = m.coeffs();
-  return derived();
-}
-
-template <typename _Derived>
 template <typename _DerivedOther>
 bool LieGroupBase<_Derived>::operator ==(
     const LieGroupBase<_DerivedOther>& m)
 {
-  return isApprox(m, Constants<Scalar>::eps);
+  return isApprox(m);
 }
 
 template <typename _Derived>

@@ -84,25 +84,6 @@ TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_COPY)
   EXPECT_DOUBLE_EQ(MANIF_PI/4., se2.angle());
 }
 
-TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
-{
-  EXPECT_THROW(
-    SE2d se2(SE2d(4, 2, 1, 1)),
-    manif::invalid_argument
-  );
-
-  EXPECT_THROW(
-    SE2d se2(SE2d::DataType(4, 2, 1, 1)),
-    manif::invalid_argument
-  );
-
-  try {
-    SE2d se2(SE2d::DataType(4, 2, 1, 1));
-  } catch (manif::invalid_argument& e) {
-    EXPECT_FALSE(std::string(e.what()).empty());
-  }
-}
-
 TEST(TEST_SE2, TEST_SE2_COEFFS)
 {
   SE2d se2(4, 2, 0);
@@ -523,7 +504,57 @@ TEST(TEST_SE2, TEST_SE2_ACT)
   EXPECT_NEAR(1, transformed_point.y(), 1e-15);
 }
 
+#ifndef MANIF_NO_DEBUG
+
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
+{
+  EXPECT_THROW(
+    SE2d se2(SE2d(4, 2, 1, 1)),
+    manif::invalid_argument
+  );
+
+  EXPECT_THROW(
+    SE2d se2(SE2d::DataType(4, 2, 1, 1)),
+    manif::invalid_argument
+  );
+
+  try {
+    SE2d se2(SE2d::DataType(4, 2, 1, 1));
+  } catch (manif::invalid_argument& e) {
+    EXPECT_FALSE(std::string(e.what()).empty());
+  }
+}
+
+TEST(TEST_SE2, TEST_SE2_CONSTRUCTOR_UNNORMALIZED)
+{
+  using DataType = typename SE2d::DataType;
+  EXPECT_THROW(
+    SE2d(DataType::Random()*10.), manif::invalid_argument
+  );
+}
+
+TEST(TEST_SE2, TEST_SE2_NORMALIZE)
+{
+  using DataType = SE2d::DataType;
+  DataType data = DataType::Random() * 100.;
+
+  EXPECT_THROW(
+    SE2d a(data), manif::invalid_argument
+  );
+
+  Eigen::Map<SE2d> map(data.data());
+  map.normalize();
+
+  EXPECT_NO_THROW(
+    SE2d b = map
+  );
+}
+
+#endif
+
 MANIF_TEST(SE2d);
+
+MANIF_TEST_MAP(SE2d);
 
 MANIF_TEST_JACOBIANS(SE2d);
 

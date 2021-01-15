@@ -2,17 +2,22 @@
 #define _MANIF_MANIF_TEST_COMMON_TESTER_H_
 
 #include "test_utils.h"
+#include "test_func.h"
 #include "manif/algorithms/interpolation.h"
 #include "manif/algorithms/average.h"
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MISC)                \
+  { evalMisc(); }                                                         \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COPY_CONSTRUCTOR)    \
   { evalCopyConstructor(); }                                              \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_UNNORMALIZE_DATA)    \
-  { evalConstructorUnnormalizedData(); }                                  \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MOVE_CONSTRUCTOR)    \
+  { evalMoveConstructor(); }                                              \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_ASSIGNMENT)          \
   { evalAssignment(); }                                                   \
+  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_MOVE_ASSIGNMENT)     \
+  { evalMoveAssignment(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_DATA_PTR_VALID)      \
   { evalDataPtrValid(); }                                                 \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_PLUS_IS_RPLUS)       \
@@ -32,7 +37,7 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_LIFT_RETRACT)        \
   { evalLiftRetr(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_RETRACT_LIFT)        \
-  { evalLiftRetr(); }                                                     \
+  { evalRetrLift(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_COMPOSE_WITH_INV)    \
   { evalComposeWithInv(); }                                               \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_BETWEEN_SELF)        \
@@ -67,8 +72,6 @@
   { evalInner(); }                                                        \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NUMERICAL_STABILITY) \
   { evalNumericalStability(); }                                           \
-  TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_NORMALIZE)           \
-  { evalNormalize(); }                                                    \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
   { evalSmallAdj(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
@@ -111,6 +114,20 @@
   TEST_F(TEST_##manifold##_JACOBIANS_TESTER, TEST_##manifold##_MINUS_T_JACOBIANS) \
   { evalTanMinusTanJac(); }
 
+#define MANIF_TEST_MAP(manifold)                                          \
+  using TEST_##manifold##_MAP_TESTER = CommonMapTester<manifold>;         \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_DATA_PTR)        \
+  { evalDataPtr(); }                                                      \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_ASSIGN_OP)       \
+  { evalAssignOp(); }                                                     \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_MOVE_ASSIGN_OP)  \
+  { evalMoveAssignOp(); }                                                 \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_RANDOM)      \
+  { evalSetRandom(); }                                                    \
+  TEST_F(TEST_##manifold##_MAP_TESTER, TEST_##manifold##_SET_IDENTITY)    \
+  { evalSetIdentity(); }
+
+
 namespace manif {
 
 /**
@@ -125,6 +142,8 @@ class CommonTester : public ::testing::Test
 
 public:
 
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
+
   CommonTester()  = default;
   ~CommonTester() = default;
 
@@ -138,18 +157,28 @@ public:
     delta = Tangent::Random();
   }
 
+  void evalMisc()
+  {
+    if (std::is_nothrow_move_constructible<Scalar>::value)
+    {
+      EXPECT_TRUE(std::is_nothrow_move_constructible<LieGroup>::value)
+        << "LieGroup should be nothrow move constructible";
+      EXPECT_TRUE(std::is_nothrow_move_constructible<Tangent>::value)
+        << "Tangent should be nothrow move constructible";
+    }
+  }
+
   void evalCopyConstructor()
   {
     LieGroup state_copy(state);
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
   }
 
-  void evalConstructorUnnormalizedData()
+  void evalMoveConstructor()
   {
-    using DataType = typename LieGroup::DataType;
-    EXPECT_THROW(
-      LieGroup(DataType::Random()*10.), manif::invalid_argument
-    );
+    LieGroup state_copy(state);
+    LieGroup state_move(std::move(state));
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
   }
 
   void evalAssignment()
@@ -157,6 +186,45 @@ public:
     LieGroup state_copy;
     state_copy = state;
     EXPECT_MANIF_NEAR(state, state_copy, tol_);
+
+    state_copy = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_copy, tol_);
+
+    // copy derived to base
+    copy_assign(state_copy, state);
+    EXPECT_MANIF_NEAR(state, state_copy, tol_);
+
+    state_copy = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_copy, tol_);
+
+    // copy base to base
+    copy_assign_base(state_copy, state);
+    EXPECT_MANIF_NEAR(state, state_copy, tol_);
+  }
+
+  void evalMoveAssignment()
+  {
+    LieGroup state_copy(state);
+    LieGroup state_move = std::move(state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
+
+    state_move = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state_copy, state_move, tol_);
+    state = state_copy;
+    EXPECT_MANIF_NEAR(state_copy, state, tol_);
+
+    // move derived to base
+    move_assign(state_move, state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
+
+    state_move = LieGroup::Random();
+    EXPECT_MANIF_NOT_NEAR(state, state_move, tol_);
+    state = state_copy;
+    EXPECT_MANIF_NEAR(state_copy, state, tol_);
+
+    // move base to base
+    move_assign_base(state_move, state);
+    EXPECT_MANIF_NEAR(state_copy, state_move, tol_);
   }
 
   void evalDataPtrValid()
@@ -333,9 +401,12 @@ public:
     EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
                  std::runtime_error);
 
-    const auto dummy = LieGroup::Random();
-    EXPECT_MANIF_NEAR(dummy,
-     average_biinvariant(std::vector<LieGroup>{dummy}), tol_);
+    {
+      const auto dummy = LieGroup::Random();
+      std::vector<LieGroup> tmp;
+      tmp.push_back(dummy);
+      EXPECT_MANIF_NEAR(dummy, average_biinvariant(tmp), tol_);
+    }
 
     const LieGroup centroid = LieGroup::Random();
 
@@ -377,6 +448,7 @@ public:
     EXPECT_TRUE(state.isApprox(state, tol_));
     EXPECT_FALSE(state.isApprox(state_other, tol_));
 
+    // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(state == state);
     EXPECT_FALSE(state == state_other);
 
@@ -391,6 +463,7 @@ public:
     EXPECT_TRUE(delta.isApprox(delta, tol_));
     EXPECT_FALSE(delta.isApprox(delta+delta, tol_));
 
+    // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(delta == delta);
     EXPECT_FALSE(delta == (delta+delta));
   }
@@ -460,6 +533,13 @@ public:
     w << delta_data;
 
     EXPECT_EIGEN_NEAR(delta_data, w.coeffs());
+
+    EXPECT_EIGEN_NEAR((delta*3.14).coeffs(), delta_data*3.14);
+    EXPECT_EIGEN_NEAR((3.14*delta).coeffs(), 3.14*delta_data);
+    EXPECT_EIGEN_NEAR((delta*=3.14).coeffs(), delta_data*=3.14);
+
+    EXPECT_EIGEN_NEAR((delta/5.12).coeffs(), delta_data/5.12);
+    EXPECT_EIGEN_NEAR((delta/=5.12).coeffs(), delta_data/=5.12);
   }
 
   void evalGeneratorsHat()
@@ -525,22 +605,6 @@ public:
     ) << "+= failed at iteration " << i ;
   }
 
-  void evalNormalize()
-  {
-    typename LieGroup::DataType data = LieGroup::DataType::Random() * 100.;
-
-    EXPECT_THROW(
-      LieGroup a(data), manif::invalid_argument
-    );
-
-    Eigen::Map<LieGroup> map(data.data());
-    map.normalize();
-
-    EXPECT_NO_THROW(
-      LieGroup b = map
-    );
-  }
-
   void evalSmallAdj()
   {
     const Tangent delta_other = Tangent::Random();
@@ -562,7 +626,8 @@ public:
 
 protected:
 
-  Scalar tol_ = Constants<Scalar>::eps;
+  // relax eps for float type
+  Scalar tol_ = (std::is_same<Scalar, float>::value)? 5e-7 : 1e-8;
 
   LieGroup state;
   LieGroup state_other;
@@ -595,9 +660,12 @@ template <typename _LieGroup>
 class JacobianTester : public ::testing::Test
 {
   using LieGroup = _LieGroup;
-  using Tangent  = typename _LieGroup::Tangent;
+  using Scalar   = typename LieGroup::Scalar;
+  using Tangent  = typename LieGroup::Tangent;
 
 public:
+
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
 
   JacobianTester()  = default;
   ~JacobianTester() = default;
@@ -901,7 +969,7 @@ public:
     Point point_pert = (state+w).act(point);
     Point point_lin  = pointout + (J_pout_s*w.coeffs());
 
-    EXPECT_EIGEN_NEAR(point_pert, point_lin, 1e-7);
+    EXPECT_EIGEN_NEAR(point_pert, point_lin, tol_);
 
     // Jac wrt second element
 
@@ -966,12 +1034,139 @@ public:
 protected:
 
   double w_order_ = 1e-4;
-  double tol_ = 1e-8;
+
+  // relax tolerance for float type
+  Scalar tol_ = (std::is_same<Scalar, float>::value)? 1e-4 : 1e-7;
 
   LieGroup state;
   LieGroup state_other;
   Tangent  delta;
   Tangent  w; //
+};
+
+template <typename _LieGroup>
+class CommonMapTester : public ::testing::Test
+{
+  using LieGroup = _LieGroup;
+  using Tangent  = typename LieGroup::Tangent;
+  using Scalar   = typename LieGroup::Scalar;
+
+  using LieGroupDataType = typename LieGroup::DataType;
+  using TangentDataType  = typename Tangent::DataType;
+
+  using MapLieGroup = Eigen::Map<LieGroup>;
+  using MapTangent  = Eigen::Map<Tangent>;
+
+public:
+
+  MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE(LieGroup)
+
+  CommonMapTester()
+    : state_map(nullptr), state_other_map(nullptr), delta_map(nullptr) {}
+
+  ~CommonMapTester() = default;
+
+  void SetUp() override
+  {
+    std::srand((unsigned int) time(0));
+
+    state_data.setRandom();
+    state_other_data.setRandom();
+    delta_data.setRandom();
+
+    new (&state_map) Eigen::Map<LieGroup>(state_data.data());
+    new (&state_other_map) Eigen::Map<LieGroup>(state_other_data.data());
+    new (&delta_map) Eigen::Map<Tangent>(delta_data.data());
+
+    ASSERT_EIGEN_NEAR(state_data, state_map.coeffs());
+    ASSERT_EIGEN_NEAR(state_other_data, state_other_map.coeffs());
+    ASSERT_EIGEN_NEAR(delta_data, delta_map.coeffs());
+
+    ASSERT_EIGEN_NOT_NEAR(state_data, state_other_data);
+  }
+
+  void evalDataPtr()
+  {
+    Scalar* data_ptr = state_map.data();
+
+    ASSERT_NE(nullptr, data_ptr);
+    EXPECT_EQ(state_data.data(), data_ptr);
+
+    data_ptr = delta_map.data();
+
+    ASSERT_NE(nullptr, data_ptr);
+    EXPECT_EQ(delta_data.data(), data_ptr);
+  }
+
+  void evalAssignOp()
+  {
+    const LieGroupDataType state_data_init = state_data;
+
+    EXPECT_EIGEN_NEAR(state_data, state_data_init);
+
+    state_map = state_other_map;
+
+    EXPECT_EIGEN_NEAR(state_other_data, state_data);
+  }
+
+  void evalMoveAssignOp()
+  {
+    const Scalar* data_ptr = state_map.data();
+    const Scalar* other_data_ptr = state_other_map.data();
+
+    ASSERT_NE(data_ptr, other_data_ptr);
+
+    state_map = std::move(state_other_map);
+
+    EXPECT_EIGEN_NEAR(state_other_data, state_map.coeffs());
+
+    EXPECT_EQ(data_ptr, state_data.data());
+    EXPECT_NE(other_data_ptr, state_data.data());
+  }
+
+  void evalSetRandom()
+  {
+    const LieGroupDataType state_data_init = state_data;
+    const TangentDataType delta_data_init = delta_data;
+
+    EXPECT_EIGEN_NEAR(state_data, state_data_init);
+    EXPECT_EIGEN_NEAR(delta_data, delta_data_init);
+
+    state_map.setRandom();
+    delta_map.setRandom();
+
+    EXPECT_EIGEN_NOT_NEAR(state_data_init, state_data);
+    EXPECT_EIGEN_NOT_NEAR(delta_data_init, delta_data);
+  }
+
+  void evalSetIdentity()
+  {
+    const LieGroupDataType state_data_init = state_data;
+    const TangentDataType delta_data_init = delta_data;
+
+    EXPECT_EIGEN_NEAR(state_data, state_data_init);
+    EXPECT_EIGEN_NEAR(delta_data, delta_data_init);
+
+    state_map.setIdentity();
+    delta_map.setZero();
+
+    EXPECT_EIGEN_NOT_NEAR(state_data_init, state_data);
+    EXPECT_EIGEN_NOT_NEAR(delta_data_init, delta_data);
+
+    EXPECT_EIGEN_NEAR(LieGroup::Identity().coeffs(), state_data);
+    EXPECT_EIGEN_NEAR(Tangent::Zero().coeffs(), delta_data);
+  }
+
+protected:
+
+  LieGroupDataType state_data;
+  LieGroupDataType state_other_data;
+  TangentDataType delta_data;
+
+  MapLieGroup state_map;
+  MapLieGroup state_other_map;
+
+  MapTangent delta_map;
 };
 
 } /* namespace manif */

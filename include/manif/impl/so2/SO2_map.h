@@ -46,15 +46,17 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
 
   Map(Scalar* coeffs) : data_(coeffs) { }
 
+  MANIF_GROUP_MAP_ASSIGN_OP(SO2)
+
+  DataType& coeffs() { return data_; }
   const DataType& coeffs() const { return data_; }
 
 protected:
-
-  friend struct manif::LieGroupBase<Map<manif::SO2<_Scalar>, 0>>;
-  DataType& coeffs_nonconst() { return data_; }
 
   DataType data_;
 };
@@ -72,6 +74,8 @@ public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
+  using Base::transform;
+  using Base::rotation;
 
   Map(const Scalar* coeffs) : data_(coeffs) { }
 

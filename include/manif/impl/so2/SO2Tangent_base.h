@@ -24,16 +24,20 @@ private:
 
 public:
 
-  static constexpr int Dim = internal::LieGroupProperties<Type>::Dim;
-  static constexpr int DoF = internal::LieGroupProperties<Type>::DoF;
-
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
   using Base::coeffs;
 
-  SO2TangentBase()  = default;
-  ~SO2TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO2TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SO2TangentBase)
 
   // Tangent common API
 
@@ -197,9 +201,9 @@ template <typename Derived>
 struct GeneratorEvaluator<SO2TangentBase<Derived>>
 {
   static typename SO2TangentBase<Derived>::LieAlg
-  run(const int i)
+  run(const unsigned int i)
   {
-    MANIF_CHECK(i==0 && i<SO2TangentBase<Derived>::DoF,
+    MANIF_CHECK(i==0,
                 "Index i must be 0!",
                 invalid_argument);
 

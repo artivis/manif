@@ -24,8 +24,6 @@ private:
 
 public:
 
-  MANIF_TANGENT_PROPERTIES
-
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
@@ -33,8 +31,15 @@ public:
 
   using Base::coeffs;
 
-  SO3TangentBase()  = default;
-  ~SO3TangentBase() = default;
+protected:
+
+  using Base::derived;
+
+  MANIF_DEFAULT_CONSTRUCTOR(SO3TangentBase)
+
+public:
+
+  MANIF_TANGENT_ML_ASSIGN_OP(SO3TangentBase)
 
   /**
    * @brief Hat operator of SO3.
@@ -254,7 +259,7 @@ template <typename Derived>
 struct GeneratorEvaluator<SO3TangentBase<Derived>>
 {
   static typename SO3TangentBase<Derived>::LieAlg
-  run(const int i)
+  run(const unsigned int i)
   {
     using LieAlg = typename SO3TangentBase<Derived>::LieAlg;
     using Scalar = typename SO3TangentBase<Derived>::Scalar;
@@ -300,8 +305,8 @@ struct RandomEvaluatorImpl<SO3TangentBase<Derived>>
 {
   static void run(SO3TangentBase<Derived>& m)
   {
-    // in [-1,1]  / in [-PI,PI]
-    m.coeffs().setRandom() *= MANIF_PI;
+    // In ball of radius PI
+    m.coeffs() = randPointInBall(MANIF_PI);
   }
 };
 

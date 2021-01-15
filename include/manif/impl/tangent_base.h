@@ -39,10 +39,35 @@ struct TangentBase
   template <typename _Scalar>
   using TangentTemplate = typename internal::traitscast<Tangent, _Scalar>::cast;
 
+protected:
+
+  MANIF_DEFAULT_CONSTRUCTOR(TangentBase)
+
 public:
 
-  TangentBase()  = default;
-  ~TangentBase() = default;
+  /**
+   * @brief Assignment operator.
+   * @param[in] t An element of the same Tangent group.
+   * @return A reference to this.
+   */
+  _Derived& operator =(const TangentBase& t);
+
+  /**
+   * @brief Assignment operator.
+   * @param[in] t An element of the same Tangent group.
+   * @return A reference to this.
+   */
+  template <typename _DerivedOther>
+  _Derived& operator =(const TangentBase<_DerivedOther>& t);
+
+  /**
+   * @brief Assignment operator.
+   * @param[in] t A DataType object.
+   * @return A reference to this.
+   * @see DataType.
+   */
+  template <typename _EigenDerived>
+  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 
   //! @brief Access the underlying data by reference
   DataType& coeffs();
@@ -240,7 +265,7 @@ public:
    */
   template <typename _EigenDerived>
   bool isApprox(const Eigen::MatrixBase<_EigenDerived>& v,
-                const Scalar eps) const;
+                const Scalar eps = Constants<Scalar>::eps) const;
 
   /**
    * @brief Evaluate whether this and t are 'close'.
@@ -252,35 +277,11 @@ public:
    */
   template <typename _DerivedOther>
   bool isApprox(const TangentBase<_DerivedOther>& t,
-                const Scalar eps) const;
+                const Scalar eps = Constants<Scalar>::eps) const;
 
   // Some operators
 
   // Copy assignment
-
-  /**
-   * @brief Assignment operator.
-   * @param[in] t An element of the same Tangent group.
-   * @return A reference to this.
-   */
-  _Derived& operator =(const TangentBase<_Derived>& t);
-
-  /**
-   * @brief Assignment operator.
-   * @param[in] t An element of the same Tangent group.
-   * @return A reference to this.
-   */
-  template <typename _DerivedOther>
-  _Derived& operator =(const TangentBase<_DerivedOther>& t);
-
-  /**
-   * @brief Assignment operator.
-   * @param[in] t A DataType object.
-   * @return A reference to this.
-   * @see DataType.
-   */
-  template <typename _EigenDerived>
-  _Derived& operator =(const Eigen::MatrixBase<_EigenDerived>& v);
 
   template <typename T>
   auto operator <<(T&& v)
@@ -314,12 +315,10 @@ public:
   _Derived& operator -=(const Eigen::MatrixBase<_EigenDerived>& v);
 
   //! @brief Multiply the underlying vector with a scalar.
-  template <typename T>
-  Tangent operator *=(const T scalar);
+  Tangent operator *=(const Scalar scalar);
 
   //! @brief Divide the underlying vector with a scalar.
-  template <typename T>
-  Tangent operator /=(const T scalar);
+  Tangent operator /=(const Scalar scalar);
 
   // static helpers
 
@@ -332,11 +331,39 @@ public:
   //! Static helper to get a Basis of the Lie group.
   static InnerWeight W();
 
-private:
+protected:
 
-  _Derived& derived() { return *static_cast< _Derived* >(this); }
-  const _Derived& derived() const { return *static_cast< const _Derived* >(this); }
+  inline _Derived& derived() & noexcept { return *static_cast< _Derived* >(this); }
+  inline const _Derived& derived() const & noexcept { return *static_cast< const _Derived* >(this); }
 };
+
+// Copy
+
+template <typename _Derived>
+_Derived&
+TangentBase<_Derived>::operator =(const TangentBase& t)
+{
+  coeffs() = t.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+_Derived&
+TangentBase<_Derived>::operator =(const TangentBase<_DerivedOther>& t)
+{
+  coeffs() = t.coeffs();
+  return derived();
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+_Derived&
+TangentBase<_Derived>::operator =(const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  coeffs() = v;
+  return derived();
+}
 
 template <typename _Derived>
 typename TangentBase<_Derived>::DataType&
@@ -605,36 +632,6 @@ bool TangentBase<_Derived>::isApprox(
 
 // Operators
 
-// Copy assignment
-
-template <typename _Derived>
-_Derived&
-TangentBase<_Derived>::operator =(
-    const TangentBase<_Derived>& t)
-{
-  coeffs() = t.coeffs();
-  return derived();
-}
-
-template <typename _Derived>
-template <typename _DerivedOther>
-_Derived&
-TangentBase<_Derived>::operator =(
-    const TangentBase<_DerivedOther>& t)
-{
-  coeffs() = t.coeffs();
-  return derived();
-}
-
-template <typename _Derived>
-template <typename _EigenDerived>
-_Derived& TangentBase<_Derived>::operator =(
-    const Eigen::MatrixBase<_EigenDerived>& v)
-{
-  coeffs() = v;
-  return derived();
-}
-
 template <typename _Derived>
 template <typename T>
 auto TangentBase<_Derived>::operator <<(T&& v)
@@ -783,36 +780,42 @@ operator -(const Eigen::MatrixBase<_EigenDerived>& v,
 }
 
 template <typename _Derived>
-template <typename T>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator *=(const T scalar)
+TangentBase<_Derived>::operator *=(const Scalar scalar)
 {
   coeffs() *= scalar;
   return derived();
 }
 
 template <typename _Derived>
-template <typename T>
 typename TangentBase<_Derived>::Tangent
-TangentBase<_Derived>::operator /=(const T scalar)
+TangentBase<_Derived>::operator /=(const Scalar scalar)
 {
   coeffs() /= scalar;
   return derived();
 }
 
-template <typename _Derived, typename T>
+template <typename _Derived>
 typename TangentBase<_Derived>::Tangent
 operator *(const TangentBase<_Derived>& t,
-           const T scalar)
+           const typename _Derived::Scalar scalar)
 {
   typename TangentBase<_Derived>::Tangent ret(t);
   return ret *= scalar;
 }
 
-template <typename _Derived, typename T>
+template <typename _Derived>
+typename TangentBase<_Derived>::Tangent
+operator *(const typename _Derived::Scalar scalar,
+           const TangentBase<_Derived>& t)
+{
+  return t * scalar;
+}
+
+template <typename _Derived>
 typename TangentBase<_Derived>::Tangent
 operator /(const TangentBase<_Derived>& t,
-           const T scalar)
+           const typename _Derived::Scalar scalar)
 {
   typename TangentBase<_Derived>::Tangent ret(t);
   return ret /= scalar;
@@ -832,7 +835,7 @@ bool operator ==(
     const TangentBase<_Derived>& ta,
     const TangentBase<_DerivedOther>& tb)
 {
-  return ta.isApprox(tb, Constants<typename TangentBase<_Derived>::Scalar>::eps);
+  return ta.isApprox(tb);
 }
 
 template <typename _Derived, typename _EigenDerived>
@@ -840,7 +843,7 @@ bool operator ==(
     const TangentBase<_Derived>& t,
     const Eigen::MatrixBase<_EigenDerived>& v)
 {
-  return t.isApprox(v, Constants<typename TangentBase<_Derived>::Scalar>::eps);
+  return t.isApprox(v);
 }
 
 // Utils
