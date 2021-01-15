@@ -11,14 +11,15 @@
 
 void wrap_SE3(pybind11::module &m)
 {
-  using Scalar = manif::SE3d::Scalar;
+  using SE3d = manif::SE3d;
+  using Scalar = SE3d::Scalar;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
-  pybind11::class_<manif::LieGroupBase<manif::SE3d>, std::unique_ptr<manif::LieGroupBase<manif::SE3d>, py::nodelete>> SE3_base(m, "SE3Base");
+  pybind11::class_<manif::LieGroupBase<SE3d>, std::unique_ptr<manif::LieGroupBase<SE3d>, py::nodelete>> SE3_base(m, "SE3Base");
   pybind11::class_<manif::TangentBase<manif::SE3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE3Tangentd>, py::nodelete>> SE3_tan_base(m, "SE3TangentBase");
 
-  pybind11::class_<manif::SE3d, manif::LieGroupBase<manif::SE3d>> SE3(m, "SE3");
-  wrap_lie_group_base<manif::SE3d, manif::LieGroupBase<manif::SE3d>>(SE3);
+  pybind11::class_<SE3d, manif::LieGroupBase<SE3d>> SE3(m, "SE3");
+  wrap_lie_group_base<SE3d, manif::LieGroupBase<SE3d>>(SE3);
 
   SE3.def(py::init<const Scalar, const Scalar, const Scalar,
                    const Scalar, const Scalar, const Scalar>());
@@ -27,15 +28,18 @@ void wrap_SE3(pybind11::module &m)
   // SE3.def(py::init<const Translation&, const manif::SO3<Scalar>&>());
   // SE3.def(py::init<igen::Transform<Scalar, 3, Eigen::Isometry>&>());
 
-  SE3.def("transform", &manif::SE3d::transform);
-  // SE3.def("isometry", &manif::SE3d::isometry);
-  SE3.def("rotation", &manif::SE3d::rotation);
-  // SE3.def("quat", &manif::SE3d::quat);
-  // SE3.def("translation", &manif::SE3d::translation);
-  SE3.def("x", &manif::SE3d::x);
-  SE3.def("y", &manif::SE3d::y);
-  SE3.def("z", &manif::SE3d::z);
-  SE3.def("normalize", &manif::SE3d::normalize);
+  SE3.def("transform", &SE3d::transform);
+  // SE3.def("isometry", &SE3d::isometry);
+  SE3.def("rotation", &SE3d::rotation);
+  // SE3.def("quat", &SE3d::quat);
+  SE3.def(
+    "translation",
+    static_cast<SE3d::Translation (SE3d::*)(void) const>(&SE3d::translation)
+  );
+  SE3.def("x", &SE3d::x);
+  SE3.def("y", &SE3d::y);
+  SE3.def("z", &SE3d::z);
+  SE3.def("normalize", &SE3d::normalize);
 
   pybind11::class_<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>> SE3_tan(m, "SE3Tangent");
   wrap_tangent_base<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>>(SE3_tan);
