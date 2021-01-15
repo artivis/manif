@@ -108,8 +108,14 @@ from numpy.linalg import inv
 
 
 Vector = np.array
-Covariance = np.zeros((SE3.DoF, SE3.DoF))
-Jacobian = np.zeros((SE3.DoF, SE3.DoF))
+
+
+def Covariance():
+    return np.zeros((SE3.DoF, SE3.DoF))
+
+
+def Jacobian():
+    return np.zeros((SE3.DoF, SE3.DoF))
 
 
 if __name__ == '__main__':
@@ -122,14 +128,15 @@ if __name__ == '__main__':
     X_simulation = SE3.Identity()
     X = SE3.Identity()
     X_unfiltered = SE3.Identity()
-    P = Covariance
+    P = Covariance()
 
     u_nom = Vector([0.1, 0.0, 0.0, 0.0, 0.0, 0.05])
     u_sigmas = Vector([0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
     U = np.diagflat(np.square(u_sigmas))
 
     # Declare the Jacobians of the motion wrt robot and control
-    J_x = J_u = Jacobian
+    J_x = Jacobian()
+    J_u = Jacobian()
 
     # Define five landmarks in R^3
     landmarks = []
@@ -146,13 +153,13 @@ if __name__ == '__main__':
     R = np.diagflat(np.square(y_sigmas))
 
     # Declare some temporaries
-    J_xi_x = Jacobian
+    J_xi_x = Jacobian()
     J_e_xi = np.zeros((SE3.Dim, SE3.DoF))
 
     # CONFIGURATION DONE
 
     # pretty print
-    np.set_printoptions(precision=3)
+    np.set_printoptions(precision=3, suppress=True)
 
     # DEBUG
     print('X STATE     :    X      Y      Z    TH_x   TH_y   TH_z ')
