@@ -2,8 +2,8 @@
 Changelog for package manif
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2021-01-17)
+------------------
 * Add traits `is_ad` (`#199 <https://github.com/artivis/manif/issues/199>`_)
   * add traits is_ad & ceres spe
 * Merge pull request `#194 <https://github.com/artivis/manif/issues/194>`_ from pettni/minor_fixes
