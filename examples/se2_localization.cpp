@@ -118,6 +118,8 @@ typedef Array<double, 3, 1> Array3d;
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // START CONFIGURATION
     //
     //

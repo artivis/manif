@@ -229,6 +229,8 @@ static const int MAX_ITER       = 20;           // for the solver
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // DEBUG INFO
     cout << endl;
     cout << "2D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;

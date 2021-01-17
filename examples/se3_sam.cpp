@@ -229,6 +229,8 @@ static const int MAX_ITER       = 20;           // for the solver
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // DEBUG INFO
     cout << endl;
     cout << "3D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;
@@ -349,7 +351,7 @@ int main()
 
     //// Simulator ###################################################################
     poses_simu. push_back(X_simu);
-    poses.      push_back(Xi + SE3Tangentd::Random());  // use very noisy priors
+    poses.      push_back(Xi + (SE3Tangentd::Random()*0.1));  // use very noisy priors
 
     // temporal loop
     for (int i = 0; i < NUM_POSES; ++i)
@@ -358,7 +360,7 @@ int main()
         for (const auto& k : pairs[i])
         {
             // simulate measurement
-            b       = landmarks_simu[k];              // lmk coordinates in world frame
+            b       = landmarks_simu[k];                // lmk coordinates in world frame
             y_noise = y_sigmas * ArrayY::Random();      // measurement noise
             y       = X_simu.inverse().act(b);          // landmark measurement, before adding noise
 
@@ -380,7 +382,7 @@ int main()
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi + SE3Tangentd::Random()); // use very noisy priors
+            poses.      push_back(Xi + (SE3Tangentd::Random()*0.1)); // use very noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
@@ -528,7 +530,6 @@ int main()
                 // advance rows
                 row += Dim;
             }
-
         }
 
         // 4. Solve -----------------------------------------------------------------
