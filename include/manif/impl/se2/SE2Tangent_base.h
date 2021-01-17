@@ -340,18 +340,19 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
 
 //! @brief Inner weight matrix specialization for SE2TangentBase objects.
 template <typename Derived>
-struct WEvaluator<SE2TangentBase<Derived>>
+struct InnerWeightsEvaluator<SE2TangentBase<Derived>>
 {
-  static typename Derived::Jacobian
+  static typename Derived::InnerWeightsMatrix
   run()
   {
-    using Jacobian = typename SE2TangentBase<Derived>::Jacobian;
-    using Scalar   = typename SE2TangentBase<Derived>::Scalar;
+    using InnerWeightsMatrix = typename SE2TangentBase<Derived>::InnerWeightsMatrix;
+    using Scalar = typename SE2TangentBase<Derived>::Scalar;
 
-    const static Jacobian W(
-            (Jacobian() << Scalar(1), Scalar(0), Scalar(0),
-                           Scalar(0), Scalar(1), Scalar(0),
-                           Scalar(0), Scalar(0), Scalar(2) ).finished());
+    const static InnerWeightsMatrix W(
+      (InnerWeightsMatrix() << Scalar(1), Scalar(0), Scalar(0),
+                               Scalar(0), Scalar(1), Scalar(0),
+                               Scalar(0), Scalar(0), Scalar(2) ).finished()
+    );
 
     return W;
   }

@@ -32,7 +32,7 @@ struct TangentBase
   using Jacobian = typename internal::traits<_Derived>::Jacobian;
   using LieAlg   = typename internal::traits<_Derived>::LieAlg;
 
-  using InnerWeight = Jacobian;
+  using InnerWeightsMatrix = Jacobian;
 
   using OptJacobianRef = tl::optional<Eigen::Ref<Jacobian>>;
 
@@ -113,14 +113,14 @@ public:
    * @return the weight matrix.
    * @see generator
    */
-  InnerWeight w() const;
+  InnerWeightsMatrix innerWeights() const;
 
   /**
    * @brief Get inner product of this and another Tangent
    * weightedby W.
    * @return The inner product of this and t.
    * @note ip = v0' . W . v1
-   * @see w()
+   * @see innerWeights()
    */
   template <typename _DerivedOther>
   Scalar inner(const TangentBase<_DerivedOther>& t) const;
@@ -128,7 +128,7 @@ public:
   /**
    * @brief Get the Euclidean weighted norm.
    * @return The Euclidean weighted norm.
-   * @see w()
+   * @see innerWeights()
    * @see squaredWeightedNorm()
    */
   Scalar weightedNorm() const;
@@ -136,7 +136,7 @@ public:
   /**
    * @brief Get the squared Euclidean weighted norm.
    * @return The squared Euclidean weighted norm.
-   * @see w()
+   * @see innerWeights()
    * @see WeightedNorm()
    */
   Scalar squaredWeightedNorm() const;
@@ -329,7 +329,7 @@ public:
   //! Static helper to get a Basis of the Lie group.
   static LieAlg Generator(const int i);
   //! Static helper to get a Basis of the Lie group.
-  static InnerWeight W();
+  static InnerWeightsMatrix InnerWeights();
 
 protected:
 
@@ -440,10 +440,10 @@ TangentBase<_Derived>::generator(const int i) const
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::InnerWeight
-TangentBase<_Derived>::w() const
+typename TangentBase<_Derived>::InnerWeightsMatrix
+TangentBase<_Derived>::innerWeights() const
 {
-  return W();
+  return InnerWeights();
 }
 
 template <typename _Derived>
@@ -451,7 +451,7 @@ template <typename _DerivedOther>
 typename TangentBase<_Derived>::Scalar
 TangentBase<_Derived>::inner(const TangentBase<_DerivedOther>& t) const
 {
-  return (coeffs().transpose() * W() * t.coeffs())(0);
+  return (coeffs().transpose() * InnerWeights() * t.coeffs())(0);
 }
 
 template <class _Derived>
@@ -466,7 +466,7 @@ template <class _Derived>
 typename TangentBase<_Derived>::Scalar
 TangentBase<_Derived>::squaredWeightedNorm() const
 {
-  return (coeffs().transpose() * W() * coeffs())(0);
+  return (coeffs().transpose() * InnerWeights() * coeffs())(0);
 }
 
 template <class _Derived>
@@ -666,10 +666,10 @@ TangentBase<_Derived>::Generator(const int i)
 }
 
 template <typename _Derived>
-typename TangentBase<_Derived>::InnerWeight
-TangentBase<_Derived>::W()
+typename TangentBase<_Derived>::InnerWeightsMatrix
+TangentBase<_Derived>::InnerWeights()
 {
-  return internal::WEvaluator<
+  return internal::InnerWeightsEvaluator<
       typename internal::traits<_Derived>::Base>::run();
 }
 

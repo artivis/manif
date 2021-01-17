@@ -17,25 +17,25 @@ struct GeneratorEvaluator
 };
 
 template <typename Derived>
-struct WEvaluator
+struct InnerWeightsEvaluator
 {
-  static typename Derived::InnerWeight
+  static typename Derived::InnerWeightsMatrix
   run()
   {
-    using InnerWeight = typename Derived::InnerWeight;
+    using InnerWeightsMatrix = typename Derived::InnerWeightsMatrix;
 
     auto computeW = []()
     {
-      InnerWeight W = InnerWeight::Zero();
+      InnerWeightsMatrix W = InnerWeightsMatrix::Zero();
 
-      for (int r=0; r<Derived::DoF; ++r)
-        for (int c=0; c<Derived::DoF; ++c)
-          W(r,c) = (Derived::Generator(r)*Derived::Generator(c).transpose()).trace();
+      for (int r = 0; r <Derived::DoF; ++r)
+        for (int c = 0; c < Derived::DoF; ++c)
+          W(r,c) = (Derived::Generator(r) * Derived::Generator(c).transpose()).trace();
 
       return W;
     };
 
-    const static InnerWeight W = computeW();
+    const static InnerWeightsMatrix W = computeW();
 
     return W;
   }
