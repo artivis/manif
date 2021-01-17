@@ -194,7 +194,7 @@ if __name__ == '__main__':
 
             y = X_simulation.inverse().act(b)             # landmark measurement, before adding noise
 
-            y = Vector(y) + y_noise                       # landmark measurement, noisy
+            y = y + y_noise                               # landmark measurement, noisy
             measurements[i] = y                           # store for the estimator just below
 
         # II. Estimation
@@ -215,7 +215,6 @@ if __name__ == '__main__':
 
             # expectation
             e = X.inverse(J_xi_x).act(b, J_e_xi)          # note: e = R.tr * ( b - t ), for X = (R,t).
-            e = Vector(e)
             H = J_e_xi @ J_xi_x                           # Jacobian of the measurements wrt the robot pose. note: H = J_e_x = J_e_xi * J_xi_x
             E = H @ P @ H.transpose()
 
