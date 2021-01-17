@@ -83,7 +83,7 @@ TEST(TEST_SO3, TEST_SO3TAN_ANGVEL)
   SO3Tangentd so3tan(SO3Tangentd::DataType(1,2,3));
 
   EXPECT_EIGEN_NEAR(SO3Tangentd::DataType(1,2,3),
-                    so3tan.angVel());
+                    so3tan.ang());
 }
 
 TEST(TEST_SO3, TEST_SO3_RANDOM)

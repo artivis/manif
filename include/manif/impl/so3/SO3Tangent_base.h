@@ -27,8 +27,8 @@ public:
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  using AngVel = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using ConstAngVel = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using AngBlock = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using ConstAngBlock = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
 
   // Tangent common API
 
@@ -110,8 +110,8 @@ public:
   Scalar z() const;
 
   //! @brief Get the angular part.
-  AngVel angVel();
-  const ConstAngVel angVel() const;
+  AngBlock ang();
+  const ConstAngBlock ang() const;
 };
 
 template <typename _Derived>
@@ -260,15 +260,15 @@ SO3TangentBase<_Derived>::z() const
 }
 
 template <typename _Derived>
-typename SO3TangentBase<_Derived>::AngVel
-SO3TangentBase<_Derived>::angVel()
+typename SO3TangentBase<_Derived>::AngBlock
+SO3TangentBase<_Derived>::ang()
 {
   return coeffs().template tail<3>();
 }
 
 template <typename _Derived>
-const typename SO3TangentBase<_Derived>::ConstAngVel
-SO3TangentBase<_Derived>::angVel() const
+const typename SO3TangentBase<_Derived>::ConstAngBlock
+SO3TangentBase<_Derived>::ang() const
 {
   return coeffs().template tail<3>();
 }

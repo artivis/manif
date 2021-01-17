@@ -29,12 +29,10 @@ public:
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
 
-  using LinVel = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using AngVel = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using LinAcc = typename DataType::template FixedSegmentReturnType<3>::Type;
-  using ConstLinVel = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
-  using ConstAngVel = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
-  using ConstLinAcc = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using LinBlock = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using AngBlock = typename DataType::template FixedSegmentReturnType<3>::Type;
+  using ConstLinBlock = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
+  using ConstAngBlock = typename DataType::template ConstFixedSegmentReturnType<3>::Type;
 
   using Base::data;
   using Base::coeffs;
@@ -94,16 +92,16 @@ public:
   // SE_2_3Tangent specific API
 
   //! @brief Get the linear velocity part.
-  LinVel linVel();
-  const ConstLinVel linVel() const;
+  LinBlock lin();
+  const ConstLinBlock lin() const;
 
   //! @brief Get the angular part.
-  AngVel angVel();
-  const ConstAngVel angVel() const;
+  AngBlock ang();
+  const ConstAngBlock ang() const;
 
   //! @brief Get the linear acceleration part
-  LinAcc linAcc();
-  const ConstLinAcc linAcc() const;
+  LinBlock lin2();
+  const ConstLinBlock lin2() const;
 
 public: /// @todo make protected
 
@@ -131,9 +129,9 @@ SE_2_3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   const Eigen::Map<const SO3Tangent<Scalar>> so3 = asSO3();
   const typename SO3<Scalar>::Jacobian so3_ljac = so3.ljac();
 
-  return LieGroup(so3_ljac*linVel(),
+  return LieGroup(so3_ljac*lin(),
                   so3.exp().quat(),
-                  so3_ljac*linAcc());
+                  so3_ljac*lin2());
 }
 
 template <typename _Derived>
@@ -225,54 +223,54 @@ SE_2_3TangentBase<_Derived>::smallAdj() const
   Jacobian smallAdj;
   smallAdj.template block<6, 3>(3, 0).setZero();
   smallAdj.template block<6, 3>(0, 6).setZero();
-  smallAdj.template block<3,3>(0, 3) = skew(linVel());
-  smallAdj.template topLeftCorner<3,3>() = skew(angVel());
+  smallAdj.template block<3,3>(0, 3) = skew(lin());
+  smallAdj.template topLeftCorner<3,3>() = skew(ang());
   smallAdj.template block<3,3>(3,3) = smallAdj.template topLeftCorner<3,3>();
   smallAdj.template bottomRightCorner<3,3>() = smallAdj.template topLeftCorner<3,3>();
-  smallAdj.template block<3,3>(6, 3) = skew(linAcc());
+  smallAdj.template block<3,3>(6, 3) = skew(lin2());
   return smallAdj;
 }
 
 // SE_2_3Tangent specific API
 
 template <typename _Derived>
-typename SE_2_3TangentBase<_Derived>::LinVel
-SE_2_3TangentBase<_Derived>::linVel()
+typename SE_2_3TangentBase<_Derived>::LinBlock
+SE_2_3TangentBase<_Derived>::lin()
 {
   return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-const typename SE_2_3TangentBase<_Derived>::ConstLinVel
-SE_2_3TangentBase<_Derived>::linVel() const
+const typename SE_2_3TangentBase<_Derived>::ConstLinBlock
+SE_2_3TangentBase<_Derived>::lin() const
 {
   return coeffs().template head<3>();
 }
 
 template <typename _Derived>
-typename SE_2_3TangentBase<_Derived>::AngVel
-SE_2_3TangentBase<_Derived>::angVel()
+typename SE_2_3TangentBase<_Derived>::AngBlock
+SE_2_3TangentBase<_Derived>::ang()
 {
   return coeffs().template segment<3>(3);
 }
 
 template <typename _Derived>
-const typename SE_2_3TangentBase<_Derived>::ConstAngVel
-SE_2_3TangentBase<_Derived>::angVel() const
+const typename SE_2_3TangentBase<_Derived>::ConstAngBlock
+SE_2_3TangentBase<_Derived>::ang() const
 {
   return coeffs().template segment<3>(3);
 }
 
 template <typename _Derived>
-typename SE_2_3TangentBase<_Derived>::LinAcc
-SE_2_3TangentBase<_Derived>::linAcc()
+typename SE_2_3TangentBase<_Derived>::LinBlock
+SE_2_3TangentBase<_Derived>::lin2()
 {
   return coeffs().template tail<3>();
 }
 
 template <typename _Derived>
-const typename SE_2_3TangentBase<_Derived>::ConstLinAcc
-SE_2_3TangentBase<_Derived>::linAcc() const
+const typename SE_2_3TangentBase<_Derived>::ConstLinBlock
+SE_2_3TangentBase<_Derived>::lin2() const
 {
   return coeffs().template tail<3>();
 }

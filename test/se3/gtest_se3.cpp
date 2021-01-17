@@ -408,10 +408,10 @@ TEST(TEST_SE3, TEST_SE3TAN_LINANGVEL)
   SE3Tangentd se3tan(data);
 
   EXPECT_EIGEN_NEAR(Eigen::Vector3d(1,2,3),
-                    se3tan.linVel());
+                    se3tan.lin());
 
   EXPECT_EIGEN_NEAR(Eigen::Vector3d(4,5,6),
-                    se3tan.angVel());
+                    se3tan.ang());
 }
 
 #ifndef MANIF_NO_DEBUG

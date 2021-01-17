@@ -316,13 +316,13 @@ TEST(TEST_SE_2_3, TEST_SE_2_3TAN_LINANGVELACC)
   SE_2_3Tangentd se23tan(data);
 
   EXPECT_EIGEN_NEAR(Eigen::Vector3d(1,2,3),
-                    se23tan.linVel());
+                    se23tan.lin());
 
   EXPECT_EIGEN_NEAR(Eigen::Vector3d(4,5,6),
-                    se23tan.angVel());
+                    se23tan.ang());
 
   EXPECT_EIGEN_NEAR(Eigen::Vector3d(7,8,9),
-                    se23tan.linAcc());
+                    se23tan.lin2());
 }
 
 #ifndef MANIF_NO_DEBUG
