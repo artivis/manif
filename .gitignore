@@ -7,3 +7,6 @@ build
 doc
 doxygen_warnings.txt
 *.cache
+.vscode
+*.egg-info
+*.so
