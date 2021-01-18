@@ -32,7 +32,7 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
 
   py_class.def("generator", &_Tangent::generator);
 
-  // py_class.def("innerWeights", &_Tangent::w);
+  // py_class.def("innerWeights", &_Tangent::innerWeights);
   py_class.def("inner", &_Tangent::template inner<_Tangent>);
 
   py_class.def("weightedNorm", &_Tangent::weightedNorm);
