@@ -206,6 +206,8 @@ typedef Matrix<double, 9, 9> Matrix9d;
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // START CONFIGURATION
     //
     //
