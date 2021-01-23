@@ -1,4 +1,4 @@
-from manifpy import Quaternion, SO3, SO3Tangent
+from manifpy import SO3, SO3Tangent
 
 import numpy as np
 
@@ -22,11 +22,11 @@ def test_constructor():
     assert 0 == state.z()
     assert 1 == state.w()
 
-    state = SO3(Quaternion(1, 0, 0, 0))
-    assert 0 == state.x()
-    assert 0 == state.y()
-    assert 0 == state.z()
-    assert 1 == state.w()
+    # state = SO3(Quaternion(1, 0, 0, 0))
+    # assert 0 == state.x()
+    # assert 0 == state.y()
+    # assert 0 == state.z()
+    # assert 1 == state.w()
 
     # state = SO3(AngleAxis(0, UnitX()))
     # assert 0 == state.x()
@@ -71,8 +71,8 @@ def test_rotation():
     assert (np.identity(3) == rotation).all()
 
 
-def test_quaternion():
-    state = SO3.Identity()
-    quaternion = state.quat()
+# def test_quaternion():
+#     state = SO3.Identity()
+#     quaternion = state.quat()
 
-    assert Quaternion.Identity().isApprox(quaternion)
+#     assert Quaternion.Identity().isApprox(quaternion)
