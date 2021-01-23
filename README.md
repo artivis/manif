@@ -50,7 +50,7 @@ It also supports template scalar types. In particular, it can work with the
 
 All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP][crtp]).
 It allows one to write generic code abstracting the Lie group details.
-Please find more information in the related [wiki page](https://github.com/artivis/manif/wiki/Writing-generic-code)
+Please find more information in the related [documentation page](doc/Writing-generic-code).
 
 ### Details
 
@@ -289,13 +289,13 @@ Therefore, the respective Jacobian sizes using `ceres::Jet` are as follows:
 - SE(3) : size 7
 - SE_2(3): size 10
 
-For more information, please refer to the [Ceres wiki page](https://github.com/artivis/manif/wiki/Using-manif-with-Ceres).
+For more information, please refer to the [Ceres documentation page](doc/On-the-use-with-Ceres).
 
 ## Documentation
 
 The API documentation can be found online at [codedocs.xyz/artivis/manif][manif-doc].
 
-Some more general documentation and tips on the use of the library is available on the [wiki-page](https://github.com/artivis/manif/wiki).
+Some more general information and tips on the use of the library is available on the documentation `Related Pages`.
 
 To generate the documentation on your machine, type in the terminal
 

@@ -46,8 +46,8 @@ PROJECT_BRIEF          = "A small library for Lie group theory with application 
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT = include
-INPUT += README.md
+INPUT = include README.md doc
+
 
 #---------------------------------------------------------------------------
 # Shared
@@ -767,7 +767,7 @@ INPUT_ENCODING         = UTF-8
 # *.md, *.mm, *.dox, *.py, *.f90, *.f, *.for, *.tcl, *.vhd, *.vhdl, *.ucf,
 # *.qsf, *.as and *.js.
 
-FILE_PATTERNS          = *.c *.cpp *.h *.hpp
+FILE_PATTERNS          = *.c *.cpp *.h *.hpp *.md
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -835,7 +835,7 @@ EXAMPLE_RECURSIVE      = NO
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             =
+IMAGE_PATH             = doc/images
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
