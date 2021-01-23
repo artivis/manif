@@ -55,7 +55,7 @@ Please find more information in the related [wiki page](https://github.com/artiv
 ### Details
 
 - Maintainer status: maintained
-- Maintainer: Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
+- Maintainer: Jeremie Deray
 - Authors:
   - Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
   - Joan Sola [jsola@iri.upc.edu](mailto:jsola@iri.upc.edu)
@@ -96,7 +96,7 @@ ___
 
 - [lt::optional][optional-repo] : included in the `external` folder
 
-For the Python 3 wrappers:
+In addition for the Python 3 wrappers:
 
 ```terminal
 pip install -r requirements
@@ -159,8 +159,9 @@ To do so we can use,
 python3 -m pip install "pybind11[global]"
 ```
 
-which is not recommended if we are installing with our system Python,
+Note that this is not recommended when using one's system Python,
 as it will add files to `/usr/local/include/pybind11` and `/usr/local/share/cmake/pybind11`.
+
 Another way is to use `CMake` to install it,
 
 ```terminal
@@ -281,6 +282,7 @@ For reference of the size of the Jacobians returned when using `ceres::Jet`, **m
 
 Therefore, the respective Jacobian sizes using `ceres::Jet` are as follows:
 
+- ℝ(n) : size n
 - SO(2) : size 2
 - SO(3) : size 4
 - SE(2) : size 4
@@ -309,16 +311,16 @@ find in the section [Publications](#publications).
 
 ## Tutorials and application demos
 
-We provide some self-contained and self-explained executables implementing some real problems.
+We provide some self-contained and self-explained executables implementing some real problems both in C++ and Python.
 Their source code is located in `manif/examples/`.
 These demos are:
 
-- [`se2_localization.cpp`](examples/se2_localization.cpp)/[`se2_localization.py`](examples/se2_localization.py): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
-- [`se3_localization.cpp`](examples/se3_localization.cpp)/[`se3_localization.py`](examples/se3_localization.py): 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.
-- [`se2_sam.cpp`](examples/se2_sam.cpp): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
-- [`se3_sam.cpp`](examples/se3_sam.cpp): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
-- [`se3_sam_selfcalib.cpp`](examples/se3_sam_selfcalib.cpp): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
-- [`se_2_3_localization.cpp`](examples/se_2_3_localization.cpp): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).
+- `se2_localization` [`.cpp`](examples/se2_localization.cpp)/[`.py`](examples/se2_localization.py): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
+- `se3_localization` [`.cpp`](examples/se3_localization.cpp)/[`.py`](examples/se3_localization.py): 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.
+- `se2_sam.` [`cpp`](examples/se2_sam.cpp)/[`.py`](examples/se2_sam.py): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
+- `se3_sam` [`.cpp`](examples/se3_sam.cpp)/[`.py`](examples/se3_sam.py): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
+- `se3_sam_selfcalib` [`.cpp`](examples/se3_sam_selfcalib.cpp)/[`.py`](examples/se3_sam_selfcalib.py): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
+- `se_2_3_localization` [`.cpp`](examples/se_2_3_localization.cpp)/[`.py`](examples/se_2_3_localization.py): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).
 
 ## Publications
 
