@@ -301,10 +301,10 @@ To generate the documentation on your machine, type in the terminal
 
 ```terminal
 cd manif
-doxygen .doxygen.txt
+doxygen docs/doxygen.txt
 ```
 
-and find it at `manif/doc/html/index.html`.
+and find it at `manif/docs/html/index.html`.
 
 Throughout the code documentation we refer to 'the paper' which you can
 find in the section [Publications](#publications).

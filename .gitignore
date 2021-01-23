@@ -4,7 +4,7 @@
 .settings
 .tags
 build
-doc/html
+docs/html
 doxygen_warnings.txt
 *.cache
 .vscode
