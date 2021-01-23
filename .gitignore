@@ -10,3 +10,5 @@ doxygen_warnings.txt
 .vscode
 *.egg-info
 *.so
+__pycache__
+.pytest_cache
