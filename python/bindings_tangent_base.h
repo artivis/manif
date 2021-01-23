@@ -11,7 +11,6 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
   using DataType = typename _Tangent::DataType;
   using Jacobian = typename _Tangent::Jacobian;
   using OptJacobianRef = typename _Tangent::OptJacobianRef;
-  using InnerWeight = typename _Tangent::InnerWeight;
 
   py_class.attr("Dim") = _Tangent::Dim;
   py_class.attr("DoF") = _Tangent::DoF;
@@ -32,7 +31,7 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
 
   py_class.def("generator", &_Tangent::generator);
 
-  // py_class.def("innerWeights", &_Tangent::innerWeights);
+  py_class.def("innerWeights", &_Tangent::innerWeights);
   py_class.def("inner", &_Tangent::template inner<_Tangent>);
 
   py_class.def("weightedNorm", &_Tangent::weightedNorm);
@@ -116,7 +115,7 @@ void wrap_tangent_base(py::class_<_Tangent, _Args...>& py_class) {
   py_class.def_static("Zero", &_Tangent::Zero);
   py_class.def_static("Random", &_Tangent::Random);
   py_class.def_static("Generator", &_Tangent::Generator);
-  py_class.def_static("InnerWeights", &_Tangent::W);
+  py_class.def_static("InnerWeights", &_Tangent::InnerWeights);
 
   // operator overloads
   py_class.def(-py::self)
