@@ -4,6 +4,7 @@
 .settings
 .tags
 build
+docs/xml
 docs/html
 doxygen_warnings.txt
 *.cache

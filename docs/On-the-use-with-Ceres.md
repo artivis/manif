@@ -22,7 +22,7 @@ Therefore we have to compute the Jacobian
 
 ![J_e_omega][latex7]
 
-the **Jacobian of ![f(x)][latex8] with respect to a perturbation on the tangent space**,
+the **Jacobian of** ![f(x)][latex8] **with respect to a perturbation on the tangent space**,
 so that the state update happens on the manifold tangent space.
 
 In Ceres' framework, the computation of this Jacobian is decoupled
@@ -221,20 +221,18 @@ std::cout << "Average state:\nx:" << average_state.x()
 [ceres-jet]: http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets
 
 [latex1]: https://latex.codecogs.com/png.latex?SO^3
-[latex2]: https://latex.codecogs.com/png.latex?\bf&space;x
+[latex2]: https://latex.codecogs.com/png.latex?\bf&amp;space;x
 [latex3]: https://latex.codecogs.com/png.latex?\omega
-[latex4]: https://latex.codecogs.com/png.latex?\bf&space;x
-[latex5]: https://latex.codecogs.com/png.latex?{\bf&space;e}=f({\bf&space;x})
-[latex6]: https://latex.codecogs.com/png.latex?f({\bf&space;x\oplus\omega})\approx{\bf&space;e}+{\bf&space;J}_{\omega}^{e}~\omega&space;.
-[latex7]: https://latex.codecogs.com/svg.latex?{\bf&space;J}_{\omega}^{e}=\frac{\delta{\bf&space;e}}{\delta{\bf&space;x}}=\frac{\delta&space;f({\bf&space;x})}{\delta{\bf&space;x}}=\lim_{\omega\to0}\frac{f({\bf&space;x}\oplus\omega)\ominus&space;f({\bf&space;x})}{\omega},&space;(1)
-[latex8]: https://latex.codecogs.com/png.latex?f({\bf&space;x})
-[latex9]: https://latex.codecogs.com/png.latex?{\bf&space;e}=f({\bf&space;x})
-[latex10]: https://latex.codecogs.com/svg.latex?{\bf&space;J}_{{\bf&space;x}\oplus\omega}^{e}=\frac{\delta{\bf&space;e}}{\delta({\bf&space;x}\oplus\omega)}=\lim_{\mathbf&space;h\to0}\frac{&space;f({\bf&space;x}+\mathbf&space;h)-f({\bf&space;x})}{\mathbf&space;h}.&space;(2)
-[latex11]: https://latex.codecogs.com/png.latex?{\bf&space;x}\oplus\mathbf\omega
+[latex4]: https://latex.codecogs.com/png.latex?\bf&amp;space;x
+[latex5]: https://latex.codecogs.com/png.latex?{\bf&amp;space;e}=f({\bf&amp;space;x})
+[latex6]: https://latex.codecogs.com/png.latex?f({\bf&amp;space;x\oplus\omega})\approx{\bf&amp;space;e}+{\bf&amp;space;J}_{\omega}^{e}~\omega&amp;space;.
+[latex7]: https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta{\bf&amp;space;x}}=\frac{\delta&amp;space;f({\bf&amp;space;x})}{\delta{\bf&amp;space;x}}=\lim_{\omega\to0}\frac{f({\bf&amp;space;x}\oplus\omega)\ominus&amp;space;f({\bf&amp;space;x})}{\omega},&amp;space;(1)
+[latex8]: https://latex.codecogs.com/png.latex?f({\bf&amp;space;x})
+[latex9]: https://latex.codecogs.com/png.latex?{\bf&amp;space;e}=f({\bf&amp;space;x})
+[latex10]: https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta({\bf&amp;space;x}\oplus\omega)}=\lim_{\mathbf&amp;space;h\to0}\frac{&amp;space;f({\bf&amp;space;x}+\mathbf&amp;space;h)-f({\bf&amp;space;x})}{\mathbf&amp;space;h}.&amp;space;(2)
+[latex11]: https://latex.codecogs.com/png.latex?{\bf&amp;space;x}\oplus\mathbf\omega
 [latex12]: https://latex.codecogs.com/png.latex?\mathbf\omega
 [latex13]: https://latex.codecogs.com/png.latex?\omega=0
-[latex14]: https://latex.codecogs.com/svg.latex?{\bf&space;J}_{\omega}^{{\bf&space;x}\oplus\omega}=\frac{\delta({\bf&space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&space;x}\oplus(\omega+\delta\omega)-{\bf&space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&space;x}\oplus\delta\omega-{\bf&space;x}}{\delta\omega}.&space;(3)
-[latex15]: https://latex.codecogs.com/svg.latex?{\bf&space;J}_{\omega}^{e}={\bf&space;J}_{{\bf&space;x}\oplus\omega}^{e}\times{\bf&space;J}_{\omega}^{{\bf&space;x}\oplus\omega}.&space;(4)
-[latex16]: https://latex.codecogs.com/png.latex?{\bf&space;x}\oplus\mathbf\omega
-[latex17]:
-[latex18]:
+[latex14]: https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}=\frac{\delta({\bf&amp;space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus(\omega+\delta\omega)-{\bf&amp;space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus\delta\omega-{\bf&amp;space;x}}{\delta\omega}.&amp;space;(3)
+[latex15]: https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{e}={\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}\times{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}.&amp;space;(4)
+[latex16]: https://latex.codecogs.com/png.latex?{\bf&amp;space;x}\oplus\mathbf\omega

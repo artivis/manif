@@ -84,13 +84,13 @@ ___
 - Eigen 3 :
   - Linux ( Ubuntu and similar )
 
-      ```terminal
+      ```
       apt-get install libeigen3-dev
       ```
 
   - OS X
 
-      ```terminal
+      ```
       brew install eigen
       ```
 
@@ -120,7 +120,7 @@ git clone https://github.com/artivis/manif.git
 catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
 ```
 
-#### Use **manif** in your C++ project
+#### Use manif in your C++ project
 
 In your project `CMakeLists.txt` :
 
@@ -149,7 +149,7 @@ auto state = manif::SE3d::Identity();
 
 ```
 
-#### Use **manif** in your Python 3 project
+#### Use manif in your Python 3 project
 
 The Python wrappers are generated using [`pybind11`][pybind11]. So first we need to install it,
 but we want it available directly in our environment root so that `CMake` can find it.
@@ -180,7 +180,7 @@ python3 -m pip install -r requirements
 python3 -m pip install .
 ```
 
-##### Use **manifpy** in your project
+##### Use manifpy in your project
 
 ```python
 from manifpy import SE3
@@ -270,7 +270,7 @@ These Jacobians map tangent spaces, as described in [this paper][jsola18].
 However, many non-linear solvers
 (e.g. [Ceres][ceres]) expect functions to be differentiated with respect to the underlying
 representation vector of the group element
-(e.g. with respect to quaternion vector for ![SO3][latex23]).
+(e.g. with respect to quaternion vector for `SO3`).
 
 For this reason **manif** is compliant with [Ceres][ceres]
 auto-differentiation and the [`ceres::Jet`][ceres-jet] type.
@@ -301,7 +301,7 @@ To generate the documentation on your machine, type in the terminal
 
 ```terminal
 cd manif
-doxygen docs/doxygen.txt
+doxygen docs/Doxyfile
 ```
 
 and find it at `manif/docs/html/index.html`.
@@ -365,7 +365,7 @@ This will give the appropriate equation numbers.
 In a rush? Here is your Lie group theory take away:
 [Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
 
-## They use **manif**
+## They use manif
 
 You may find [here](projects.md) a list of work and projects using **manif**.
 Your project is not listed? Let us know about it!
@@ -423,14 +423,14 @@ For a PullRequest to get merged into `devel`, it must pass
 [badge-joss]: http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160
 [badge-joss-img]: http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg
 
-[latex1]: https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}^{-1}
-[latex2]: https://latex.codecogs.com/png.latex?\mathbf&space;\mathcal{X}&space;\circ&space;\mathbf&space;\mathcal{Y}
+[latex1]: https://latex.codecogs.com/png.latex?\mathbf&amp;space;\mathcal{X}^{-1}
+[latex2]: https://latex.codecogs.com/png.latex?\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}
 [latex3]: https://latex.codecogs.com/png.latex?\varphi^\wedge
-[latex4]: https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&space;v
+[latex4]: https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&amp;space;v
 [latex5]: https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi^\wedge)
-[latex6]: https://latex.codecogs.com/png.latex?\log(\mathbf&space;\mathcal{X})^\vee
-[latex7]: https://latex.codecogs.com/png.latex?\operatorname{Adj}(\mathbf&space;\mathcal{X})
-[latex8]: https://latex.codecogs.com/png.latex?\operatorname{adj}(\mathbf&space;\varphi^\wedge)
+[latex6]: https://latex.codecogs.com/png.latex?\log(\mathbf&amp;space;\mathcal{X})^\vee
+[latex7]: https://latex.codecogs.com/png.latex?\operatorname{Adj}(\mathbf&amp;space;\mathcal{X})
+[latex8]: https://latex.codecogs.com/png.latex?\operatorname{adj}(\mathbf&amp;space;\varphi^\wedge)
 [latex9]: https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)
 [latex10]: https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}
 [latex11]: https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee
@@ -444,5 +444,5 @@ For a PullRequest to get merged into `devel`, it must pass
 [latex19]: https://latex.codecogs.com/png.latex?\mathbb{R}^n
 [latex20]: https://latex.codecogs.com/png.latex?\mathbf{v}
 [latex21]: https://latex.codecogs.com/png.latex?\mathbb{R}^n
-[latex22]: https://latex.codecogs.com/svg.latex?\frac{\delta&space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}
+[latex22]: https://latex.codecogs.com/svg.latex?\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}
 [latex23]: https://latex.codecogs.com/png.latex?SO(3)
