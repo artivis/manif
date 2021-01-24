@@ -18,12 +18,13 @@ void wrap_SO3(pybind11::module &m)
   pybind11::class_<manif::TangentBase<manif::SO3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SO3Tangentd>, py::nodelete>> SO3_tan_base(m, "SO3TangentBase");
 
   pybind11::class_<manif::SO3d, manif::LieGroupBase<manif::SO3d>> SO3(m, "SO3");
-  wrap_lie_group_base<manif::SO3d, manif::LieGroupBase<manif::SO3d>>(SO3);
 
   SO3.def(py::init<const Scalar, const Scalar, const Scalar>());
   SO3.def(py::init<const Scalar, const Scalar, const Scalar, const Scalar>());
-  SO3.def(py::init<const Quaternion&>());
-  SO3.def(py::init<const Eigen::AngleAxis<Scalar>&>());
+  // SO3.def(py::init<const Quaternion&>());
+  // SO3.def(py::init<const Eigen::AngleAxis<Scalar>&>());
+
+  wrap_lie_group_base<manif::SO3d, manif::LieGroupBase<manif::SO3d>>(SO3);
 
   SO3.def("transform", &manif::SO3d::transform);
   SO3.def("rotation", &manif::SO3d::rotation);
@@ -31,7 +32,7 @@ void wrap_SO3(pybind11::module &m)
   SO3.def("y", &manif::SO3d::y);
   SO3.def("z", &manif::SO3d::z);
   SO3.def("w", &manif::SO3d::w);
-  SO3.def("quat", &manif::SO3d::quat);
+  // SO3.def("quat", &manif::SO3d::quat);
   SO3.def("normalize", &manif::SO3d::normalize);
 
   pybind11::class_<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>> SO3_tan(m, "SO3Tangent");
