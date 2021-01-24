@@ -18,6 +18,9 @@ void wrap_SO3(pybind11::module &m)
   pybind11::class_<manif::TangentBase<manif::SO3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SO3Tangentd>, py::nodelete>> SO3_tan_base(m, "SO3TangentBase");
 
   pybind11::class_<manif::SO3d, manif::LieGroupBase<manif::SO3d>> SO3(m, "SO3");
+  pybind11::class_<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>> SO3_tan(m, "SO3Tangent");
+
+  // group
 
   SO3.def(py::init<const Scalar, const Scalar, const Scalar>());
   SO3.def(py::init<const Scalar, const Scalar, const Scalar, const Scalar>());
@@ -35,7 +38,8 @@ void wrap_SO3(pybind11::module &m)
   // SO3.def("quat", &manif::SO3d::quat);
   SO3.def("normalize", &manif::SO3d::normalize);
 
-  pybind11::class_<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>> SO3_tan(m, "SO3Tangent");
+  // tangent
+
   wrap_tangent_base<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>>(SO3_tan);
 
   SO3_tan.def("x", &manif::SO3Tangentd::x);

@@ -20,6 +20,10 @@ void wrap_SE_2_3(pybind11::module &m)
   pybind11::class_<manif::TangentBase<manif::SE_2_3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE_2_3Tangentd>, py::nodelete>> SE_2_3_tan_base(m, "SE_2_3TangentBase");
 
   pybind11::class_<manif::SE_2_3d, manif::LieGroupBase<manif::SE_2_3d>> SE_2_3(m, "SE_2_3");
+  pybind11::class_<manif::SE_2_3Tangentd, manif::TangentBase<manif::SE_2_3Tangentd>> SE_2_3_tan(m, "SE_2_3Tangent");
+
+  //group
+
   wrap_lie_group_base<manif::SE_2_3d, manif::LieGroupBase<manif::SE_2_3d>>(SE_2_3);
 
   // SE_2_3.def(py::init<const Translation&, const Quaternion&, const LinearVelocity&>());
@@ -43,7 +47,7 @@ void wrap_SE_2_3(pybind11::module &m)
   SE_2_3.def("vz", &manif::SE_2_3d::vz);
   SE_2_3.def("normalize", &manif::SE_2_3d::normalize);
 
-  pybind11::class_<manif::SE_2_3Tangentd, manif::TangentBase<manif::SE_2_3Tangentd>> SE_2_3_tan(m, "SE_2_3Tangent");
+  // tangent
   wrap_tangent_base<manif::SE_2_3Tangentd, manif::TangentBase<manif::SE_2_3Tangentd>>(SE_2_3_tan);
 
   // SE_2_3_tan.def("v", &manif::SE3Tangentd::v);

@@ -17,6 +17,10 @@ void wrap_SO2(pybind11::module &m)
   pybind11::class_<manif::TangentBase<manif::SO2Tangentd>, std::unique_ptr<manif::TangentBase<manif::SO2Tangentd>, py::nodelete>> SO2_tan_base(m, "SO2TangentBase");
 
   pybind11::class_<manif::SO2d, manif::LieGroupBase<manif::SO2d>> SO2(m, "SO2");
+  pybind11::class_<manif::SO2Tangentd, manif::TangentBase<manif::SO2Tangentd>> SO2_tan(m, "SO2Tangent");
+
+  //group
+
   wrap_lie_group_base<manif::SO2d, manif::LieGroupBase<manif::SO2d>>(SO2);
 
   SO2.def(py::init<const Scalar>());
@@ -29,10 +33,10 @@ void wrap_SO2(pybind11::module &m)
   SO2.def("angle", &manif::SO2d::angle);
   SO2.def("normalize", &manif::SO2d::normalize);
 
-  pybind11::class_<manif::SO2Tangentd, manif::TangentBase<manif::SO2Tangentd>> SO2_tan(m, "SO2Tangent");
+  // tangent
+
   wrap_tangent_base<manif::SO2Tangentd, manif::TangentBase<manif::SO2Tangentd>>(SO2_tan);
 
   SO2_tan.def(py::init<const Scalar>());
-
   SO2_tan.def("angle", &manif::SO2Tangentd::angle);
 }

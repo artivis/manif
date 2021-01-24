@@ -19,6 +19,10 @@ void wrap_SE3(pybind11::module &m)
   pybind11::class_<manif::TangentBase<manif::SE3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE3Tangentd>, py::nodelete>> SE3_tan_base(m, "SE3TangentBase");
 
   pybind11::class_<SE3d, manif::LieGroupBase<SE3d>> SE3(m, "SE3");
+  pybind11::class_<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>> SE3_tan(m, "SE3Tangent");
+
+  // group
+
   wrap_lie_group_base<SE3d, manif::LieGroupBase<SE3d>>(SE3);
 
   SE3.def(py::init<const Scalar, const Scalar, const Scalar,
@@ -41,7 +45,8 @@ void wrap_SE3(pybind11::module &m)
   SE3.def("z", &SE3d::z);
   SE3.def("normalize", &SE3d::normalize);
 
-  pybind11::class_<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>> SE3_tan(m, "SE3Tangent");
+  //tangent
+
   wrap_tangent_base<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>>(SE3_tan);
 
   // SE3_tan.def("v", &manif::SE3Tangentd::v);

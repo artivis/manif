@@ -15,17 +15,23 @@ void wrap_SE2(pybind11::module &m)
   using Scalar = manif::SE2d::Scalar;
   using Translation = manif::SE2d::Translation;
 
+  // group declaration and constructors
+
   pybind11::class_<manif::LieGroupBase<manif::SE2d>, std::unique_ptr<manif::LieGroupBase<manif::SE2d>, py::nodelete>> SE2_base(m, "SE2Base");
   pybind11::class_<manif::TangentBase<manif::SE2Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE2Tangentd>, py::nodelete>> SE2_tan_base(m, "SE2TangentBase");
 
   pybind11::class_<manif::SE2d, manif::LieGroupBase<manif::SE2d>> SE2(m, "SE2");
-  wrap_lie_group_base<manif::SE2d, manif::LieGroupBase<manif::SE2d>>(SE2);
+  pybind11::class_<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>> SE2_tan(m, "SE2Tangent");
+
+  // group
 
   SE2.def(py::init<const Scalar, const Scalar, const Scalar>());
   SE2.def(py::init<const Scalar, const Scalar, const Scalar, const Scalar>());
   SE2.def(py::init<const Scalar, const Scalar, const std::complex<Scalar>&>());
   SE2.def(py::init<const Translation&, const std::complex<Scalar>&>());
-  SE2.def(py::init<const Eigen::Transform<Scalar, 2, Eigen::Isometry>&>());
+  // SE2.def(py::init<const Eigen::Transform<Scalar, 2, Eigen::Isometry>&>());
+
+  wrap_lie_group_base<manif::SE2d, manif::LieGroupBase<manif::SE2d>>(SE2);
 
   SE2.def("transform", &manif::SE2d::transform);
   // SE2.def("isometry", &manif::SE2d::isometry);
@@ -38,9 +44,9 @@ void wrap_SE2(pybind11::module &m)
   SE2.def("y", &manif::SE2d::y);
   SE2.def("normalize", &manif::SE2d::normalize);
 
-  pybind11::class_<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>> SE2_tan(m, "SE2Tangent");
-  wrap_tangent_base<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>>(SE2_tan);
+  // tangent
 
+  wrap_tangent_base<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>>(SE2_tan);
   SE2_tan.def(py::init<const Scalar, const Scalar, const Scalar>());
 
   SE2_tan.def("x", &manif::SE2Tangentd::x);
