@@ -36,7 +36,7 @@ void wrap_SE_2_3(pybind11::module &m)
 
   // SE_2_3.def("isometry", &manif::SE_2_3d::isometry);
   SE_2_3.def("rotation", &manif::SE_2_3d::rotation);
-  SE_2_3.def("quat", &manif::SE_2_3d::quat);
+  // SE_2_3.def("quat", &manif::SE_2_3d::quat);
   SE_2_3.def("translation", &manif::SE_2_3d::translation);
   SE_2_3.def("x", &manif::SE_2_3d::x);
   SE_2_3.def("y", &manif::SE_2_3d::y);
