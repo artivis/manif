@@ -56,7 +56,7 @@ jobs:
       - name: Build Python docs
         run: python3 ${{runner.workspace}}/m.css/documentation/python.py conf_python.py
       - name: Build C++ docs
-        run: python3 ${{runner.workspace}}/m.css/documentation/doxygen.py Doxyfile-mcss
+        run: python3 ${{runner.workspace}}/m.css/documentation/doxygen.py conf_cpp.py
       - name: Build site
         run: python3 ${{runner.workspace}}/m.css/documentation/doxygen.py conf.py
 
