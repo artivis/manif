@@ -7,4 +7,4 @@ GENERATE_XML            = YES
 XML_PROGRAMLISTING      = NO
 
 XML_OUTPUT = "site/xml"
-HTML_OUTPUT = "site/html"
+HTML_OUTPUT = "site"

@@ -9,5 +9,5 @@ XML_PROGRAMLISTING      = NO
 XML_OUTPUT = "site/cpp/xml"
 HTML_OUTPUT = "site/cpp"
 
-##! M_MAIN_PROJECT_URL = ../html/index.html
+##! M_MAIN_PROJECT_URL = ../index.html
 ##! M_SHOW_UNDOCUMENTED = YES
