@@ -9,17 +9,19 @@
 #include "bindings_lie_group_base.h"
 #include "bindings_tangent_base.h"
 
-void wrap_SE3(pybind11::module &m)
+namespace py = pybind11;
+
+void wrap_SE3(py::module &m)
 {
   using SE3d = manif::SE3d;
   using Scalar = SE3d::Scalar;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
-  pybind11::class_<manif::LieGroupBase<SE3d>, std::unique_ptr<manif::LieGroupBase<SE3d>, py::nodelete>> SE3_base(m, "SE3Base");
-  pybind11::class_<manif::TangentBase<manif::SE3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE3Tangentd>, py::nodelete>> SE3_tan_base(m, "SE3TangentBase");
+  py::class_<manif::LieGroupBase<SE3d>, std::unique_ptr<manif::LieGroupBase<SE3d>, py::nodelete>> SE3_base(m, "_SE3Base");
+  py::class_<manif::TangentBase<manif::SE3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE3Tangentd>, py::nodelete>> SE3_tan_base(m, "_SE3TangentBase");
 
-  pybind11::class_<SE3d, manif::LieGroupBase<SE3d>> SE3(m, "SE3");
-  pybind11::class_<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>> SE3_tan(m, "SE3Tangent");
+  py::class_<SE3d, manif::LieGroupBase<SE3d>> SE3(m, "SE3");
+  py::class_<manif::SE3Tangentd, manif::TangentBase<manif::SE3Tangentd>> SE3_tan(m, "SE3Tangent");
 
   // group
 

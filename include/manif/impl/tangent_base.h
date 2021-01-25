@@ -117,7 +117,7 @@ public:
 
   /**
    * @brief Get inner product of this and another Tangent
-   * weightedby W.
+   * weighted by W.
    * @return The inner product of this and t.
    * @note ip = v0' . W . v1
    * @see innerWeights()

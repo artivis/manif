@@ -9,16 +9,18 @@
 #include "bindings_lie_group_base.h"
 #include "bindings_tangent_base.h"
 
-void wrap_SO3(pybind11::module &m)
+namespace py = pybind11;
+
+void wrap_SO3(py::module &m)
 {
   using Scalar = manif::SO3d::Scalar;
   using Quaternion = Eigen::Quaternion<Scalar>;
 
-  pybind11::class_<manif::LieGroupBase<manif::SO3d>, std::unique_ptr<manif::LieGroupBase<manif::SO3d>, py::nodelete>> SO3_base(m, "SO3Base");
-  pybind11::class_<manif::TangentBase<manif::SO3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SO3Tangentd>, py::nodelete>> SO3_tan_base(m, "SO3TangentBase");
+  py::class_<manif::LieGroupBase<manif::SO3d>, std::unique_ptr<manif::LieGroupBase<manif::SO3d>, py::nodelete>> SO3_base(m, "_SO3Base");
+  py::class_<manif::TangentBase<manif::SO3Tangentd>, std::unique_ptr<manif::TangentBase<manif::SO3Tangentd>, py::nodelete>> SO3_tan_base(m, "_SO3TangentBase");
 
-  pybind11::class_<manif::SO3d, manif::LieGroupBase<manif::SO3d>> SO3(m, "SO3");
-  pybind11::class_<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>> SO3_tan(m, "SO3Tangent");
+  py::class_<manif::SO3d, manif::LieGroupBase<manif::SO3d>> SO3(m, "SO3");
+  py::class_<manif::SO3Tangentd, manif::TangentBase<manif::SO3Tangentd>> SO3_tan(m, "SO3Tangent");
 
   // group
 

@@ -11,7 +11,7 @@ void wrap_SE3(pybind11::module &m);
 void wrap_SE_2_3(pybind11::module &m);
 
 PYBIND11_MODULE(manifpy, m) {
-  m.doc() = "Python bindings for the manif library,"
+  m.doc() = "Python bindings for the manif library, "
             "a small library for Lie theory.";
 
   wrap_Rn(m);

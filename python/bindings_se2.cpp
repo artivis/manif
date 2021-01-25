@@ -10,18 +10,20 @@
 #include "bindings_lie_group_base.h"
 #include "bindings_tangent_base.h"
 
-void wrap_SE2(pybind11::module &m)
+namespace py = pybind11;
+
+void wrap_SE2(py::module &m)
 {
   using Scalar = manif::SE2d::Scalar;
   using Translation = manif::SE2d::Translation;
 
   // group declaration and constructors
 
-  pybind11::class_<manif::LieGroupBase<manif::SE2d>, std::unique_ptr<manif::LieGroupBase<manif::SE2d>, py::nodelete>> SE2_base(m, "SE2Base");
-  pybind11::class_<manif::TangentBase<manif::SE2Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE2Tangentd>, py::nodelete>> SE2_tan_base(m, "SE2TangentBase");
+  py::class_<manif::LieGroupBase<manif::SE2d>, std::unique_ptr<manif::LieGroupBase<manif::SE2d>, py::nodelete>> SE2_base(m, "_SE2Base");
+  py::class_<manif::TangentBase<manif::SE2Tangentd>, std::unique_ptr<manif::TangentBase<manif::SE2Tangentd>, py::nodelete>> SE2_tan_base(m, "_SE2TangentBase");
 
-  pybind11::class_<manif::SE2d, manif::LieGroupBase<manif::SE2d>> SE2(m, "SE2");
-  pybind11::class_<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>> SE2_tan(m, "SE2Tangent");
+  py::class_<manif::SE2d, manif::LieGroupBase<manif::SE2d>> SE2(m, "SE2");
+  py::class_<manif::SE2Tangentd, manif::TangentBase<manif::SE2Tangentd>> SE2_tan(m, "SE2Tangent");
 
   // group
 
