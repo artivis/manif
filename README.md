@@ -59,7 +59,7 @@ Please find more information in the related [documentation page](doc/Writing-gen
 - Authors:
   - Jeremie Deray [deray.jeremie@gmail.com](mailto:deray.jeremie@gmail.com)
   - Joan Sola [jsola@iri.upc.edu](mailto:jsola@iri.upc.edu)
-- License: MIT
+- License: [MIT](LICENSE)
 - Bug / feature tracker: [github.com/artivis/manif/issues][manif-issue]
 - Source: [github.com/artivis/manif.git][manif-repo] (branch: devel)
 
@@ -79,118 +79,8 @@ ___
 
 ## Quick Start
 
-### Dependencies
-
-- Eigen 3 :
-  - Linux ( Ubuntu and similar )
-
-      ```
-      apt-get install libeigen3-dev
-      ```
-
-  - OS X
-
-      ```
-      brew install eigen
-      ```
-
-- [lt::optional][optional-repo] : included in the `external` folder
-
-In addition for the Python 3 wrappers:
-
-```terminal
-pip install -r requirements
-```
-
-### Installation
-
-#### From source
-
-```terminal
-git clone https://github.com/artivis/manif.git
-cd manif && mkdir build && cd build
-cmake -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON ..
-make install
-```
-
-##### Using catkin_tools
-
-```terminal
-git clone https://github.com/artivis/manif.git
-catkin build manif --cmake-args -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
-```
-
-#### Use manif in your C++ project
-
-In your project `CMakeLists.txt` :
-
-```cmake
-project(foo)
-# Find the Eigen library
-find_package(Eigen3 REQUIRED)
-target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${EIGEN3_INCLUDE_DIRS})
-# Find the manif library
-find_package(manif REQUIRED)
-add_executable(${PROJECT_NAME} src/foo.cpp)
-# Add manif include directories to the target
-target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${manif_INCLUDE_DIRS})
-```
-
-In your code:
-
-```cpp
-#include <manif/manif.h>
-
-...
-
-auto state = manif::SE3d::Identity();
-
-...
-
-```
-
-#### Use manif in your Python 3 project
-
-The Python wrappers are generated using [`pybind11`][pybind11]. So first we need to install it,
-but we want it available directly in our environment root so that `CMake` can find it.
-To do so we can use,
-
-```terminal
-python3 -m pip install "pybind11[global]"
-```
-
-Note that this is not recommended when using one's system Python,
-as it will add files to `/usr/local/include/pybind11` and `/usr/local/share/cmake/pybind11`.
-
-Another way is to use `CMake` to install it,
-
-```terminal
-git clone https://github.com/pybind/pybind11.git
-cd pybind11 && mkdir build && cd build
-cmake ..
-make install
-```
-
-We can now generate `manif` Python bindings,
-
-```terminal
-git clone https://github.com/artivis/manif.git
-cd manif
-python3 -m pip install -r requirements
-python3 -m pip install .
-```
-
-##### Use manifpy in your project
-
-```python
-from manifpy import SE3
-
-...
-
-state = SE3.Identity()
-
-...
-```
+Get quickly started with **manif** following our 'quick start' guides for both
+[C++](docs/pages/cpp/Quick-start.md) and [Python](docs/pages/python/Quick-start.md).
 
 ## Features
 
@@ -293,82 +183,27 @@ For more information, please refer to the [Ceres documentation page](doc/On-the-
 
 ## Documentation
 
-The API documentation can be found online at [codedocs.xyz/artivis/manif][manif-doc].
+The documentation is available online at the accompanying [website](manif).
+Both the [C++](cpp) and the [Python](python) APIs are documented.
 
-Some more general information and tips on the use of the library is available on the documentation `Related Pages`.
+Do you want to build it locally? Find out how on the [dedicated page](docs/pages/documentation.md).
 
-To generate the documentation on your machine, type in the terminal
-
-```terminal
-cd manif
-doxygen docs/Doxyfile
-```
-
-and find it at `manif/docs/html/index.html`.
-
-Throughout the code documentation we refer to 'the paper' which you can
-find in the section [Publications](#publications).
+Note: throughout the code documentation we refer to 'the paper' which you can
+find on [the dedicated page](docs/pages/publication.md).
 
 ## Tutorials and application demos
 
-We provide some self-contained and self-explained executables implementing some real problems both in C++ and Python.
-Their source code is located in `manif/examples/`.
-These demos are:
+We provide some self-contained and self-explained [C++ examples](docs/pages/cpp/Quick-start.md#tutorials-and-application-demos) to help you get started.
 
-- `se2_localization` [`.cpp`](examples/se2_localization.cpp)/[`.py`](examples/se2_localization.py): 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.
-- `se3_localization` [`.cpp`](examples/se3_localization.cpp)/[`.py`](examples/se3_localization.py): 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.
-- `se2_sam.` [`cpp`](examples/se2_sam.cpp)/[`.py`](examples/se2_sam.py): 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.
-- `se3_sam` [`.cpp`](examples/se3_sam.cpp)/[`.py`](examples/se3_sam.py): 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.
-- `se3_sam_selfcalib` [`.cpp`](examples/se3_sam_selfcalib.cpp)/[`.py`](examples/se3_sam_selfcalib.py): 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.
-- `se_2_3_localization` [`.cpp`](examples/se_2_3_localization.cpp)/[`.py`](examples/se_2_3_localization.py): A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).
+You prefer Python? The same examples are also available in [Python](docs/pages/python/Quick-start.md#tutorials-and-application-demos).
 
 ## Publications
 
-If you use this software, please consider citing [this paper][deray20] as follows:
-
-```latex
-@article{Deray-20-JOSS,
-  doi = {10.21105/joss.01371},
-  url = {https://doi.org/10.21105/joss.01371},
-  year = {2020},
-  publisher = {The Open Journal},
-  volume = {5},
-  number = {46},
-  pages = {1371},
-  author = {Jérémie Deray and Joan Solà},
-  title = {Manif: A micro {L}ie theory library for state estimation in robotics applications},
-  journal = {Journal of Open Source Software}
-}
-```
-
-You can also consider citing [this paper][jsola18] as follows:
-
-```latex
-@techreport{SOLA-18-Lie,
-    Address = {Barcelona},
-    Author = {Joan Sol\`a and Jeremie Deray and Dinesh Atchuthan},
-    Institution = {{Institut de Rob\`otica i Inform\`atica Industrial}},
-    Number = {IRI-TR-18-01},
-    Title = {A micro {L}ie theory for state estimation in robotics},
-    Howpublished="\url{http://arxiv.org/abs/1812.01537}",
-    Year = {2018}
-}
-```
-
-Notice that this reference is the one referred to throughout the code documentation.
-Since this is a versioned work, please refer to [version 4, available here][jsola18v],
-of the paper when cross-referencing with the **manif** documentation.
-This will give the appropriate equation numbers.
-
-### Lie group cheat sheets
-
-In a rush? Here is your Lie group theory take away:
-[Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
+Check our related [publications](docs/pages/publication.md).
 
 ## They use manif
 
-You may find [here](projects.md) a list of work and projects using **manif**.
-Your project is not listed? Let us know about it!
+Find out [who's already using **manif**](docs/pages/projects.md).
 
 ## Contributing
 

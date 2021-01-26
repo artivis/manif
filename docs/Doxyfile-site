@@ -46,7 +46,7 @@ PROJECT_BRIEF          = ""
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT = "../README.md"
+INPUT = "../README.md" "./pages/projects.md" "./pages/documentation.md" "./pages/publication.md"
 
 #---------------------------------------------------------------------------
 # Shared

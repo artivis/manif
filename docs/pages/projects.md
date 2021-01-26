@@ -1,4 +1,4 @@
-# A curated list of work and projects using **manif**
+# A curated list of work and projects using manif
 
 ## They cite us
 
@@ -7,7 +7,7 @@ You may find on Google Scholar publications citing either:
 - the [Lie theory paper][jsola18] accompanying **manif** - see [here][jsola18-scholar]
 - the [**manif** library paper][deray20] - see [here][deray20-scholar]
 
-## They use **manif**
+## They use manif
 
 - [`lie-group-controllers`][lie-group-controllers-repo], header-only C++ libraries containing controllers designed for Lie Groups.
 

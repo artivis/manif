@@ -46,9 +46,7 @@ PROJECT_BRIEF          = "C++ API"
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT = "../include" "../docs"
-
-# "../README.md"
+INPUT = "../include" "./pages/cpp"
 
 #---------------------------------------------------------------------------
 # Shared
@@ -816,7 +814,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = "../example"
+EXAMPLE_PATH           =
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -884,7 +882,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = # README.md
+USE_MDFILE_AS_MAINPAGE =
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
