@@ -135,16 +135,13 @@ class TestCommon:
 
         assert state == state.log().exp()
 
-    # def test_ExpLog(self, LieGroup, Tangent):
-    #     delta = Tangent.Random()
+    def test_ExpLog(self, LieGroup, Tangent):
+        delta = Tangent.Random()
 
-    #     state = delta.exp()
-    #     delta_other = state.log()
-    #     print(delta)
-    #     print(delta.exp().log())
-    #     print(delta_other)
+        state = delta.exp()
+        delta_other = state.log()
 
-    #     assert delta == delta_other
+        assert delta == delta_other
 
     def test_Between(self, LieGroup, Tangent):
         state = LieGroup.Random()
@@ -202,11 +199,6 @@ class TestCommon:
         assert np.allclose(point, pout)
 
     def test_smallAdj(self, LieGroup, Tangent):
-
-        if LieGroup in (SO2, R1):
-            pytest.skip(
-                "hat is a scalar (Dim 1), numpy doesn't support matmul"
-            )
 
         delta = Tangent.Random()
         delta_other = Tangent.Random()
@@ -467,25 +459,23 @@ class TestCommon:
         Adjb = state_other.adj()
         Adjc = state.compose(state_other).adj()
 
-        # assert ((Adja @ Adjb) == Adjc).all()
-
         assert np.allclose(Adja @ Adjb, Adjc)
 
         assert state + delta == state.adj() * delta + state
 
-        if LieGroup in (SO2, R1):
-            pytest.skip(
-                "Adj is a scalar (Dim 1), numpy doesn't support inversion"
+        if LieGroup.DoF == 1:
+            # Adj is a scalar (Dim 1), numpy doesn't support inversion
+            assert np.allclose(
+                np.ones((LieGroup.DoF, LieGroup.DoF))/state.adj(),
+                state.inverse().adj()
             )
-
-        assert np.allclose(np.linalg.inv(state.adj()), state.inverse().adj())
+        else:
+            assert np.allclose(
+                np.linalg.inv(state.adj()),
+                state.inverse().adj()
+            )
 
     def test_Adj2(self, LieGroup, Tangent):
-
-        if LieGroup in (SO2, R1):
-            pytest.skip(
-                "Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support matmul"
-            )
 
         state = LieGroup.Random()
 
@@ -496,7 +486,16 @@ class TestCommon:
         Jl = tan.ljac()
 
         assert np.allclose(Jl, Adj @ Jr)
-        assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+
+        if LieGroup.DoF == 1:
+            # Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support inv
+            assert np.allclose(
+                Adj,
+                Jl * np.ones((LieGroup.DoF, LieGroup.DoF))/Jr
+            )
+        else:
+            assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+
         assert np.allclose(Jl, (-tan).rjac())
 
         state.setIdentity()
@@ -508,24 +507,33 @@ class TestCommon:
         Jl = tan.ljac()
 
         assert np.allclose(Jl, Adj @ Jr)
-        assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+
+        if LieGroup.DoF == 1:
+            # Jr/Jl/Adj are scalar (Dim 1), numpy doesn't support inv
+            assert np.allclose(
+                Adj,
+                Jl * np.ones((LieGroup.DoF, LieGroup.DoF))/Jr
+            )
+        else:
+            assert np.allclose(Adj, Jl @ np.linalg.inv(Jr))
+
         assert np.allclose(Jl, (-tan).rjac())
 
-    @pytest.mark.skip(reason='invrjac/invljac not implemented yet')
-    def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
-        state = LieGroup.Random()
+    # @pytest.mark.skip(reason='invrjac/invljac not implemented yet')
+    # def test_JrJrinvJlJlinv(self, LieGroup, Tangent):
+    #     state = LieGroup.Random()
 
-        tan = state.log()
-        Jr = tan.rjac()
-        Jl = tan.ljac()
+    #     tan = state.log()
+    #     Jr = tan.rjac()
+    #     Jl = tan.ljac()
 
-        Jrinv = tan.rjacinv()
-        Jlinv = tan.ljacinv()
+    #     Jrinv = tan.rjacinv()
+    #     Jlinv = tan.ljacinv()
 
-        Id = np.identity(LieGroup.DoF)
+    #     Id = np.identity(LieGroup.DoF)
 
-        assert Id == Jr @ Jrinv
-        assert Id == Jl @ Jlinv
+    #     assert Id == Jr @ Jrinv
+    #     assert Id == Jl @ Jlinv
 
     def test_ActJac(self, LieGroup, Tangent):
         state = LieGroup.Identity()
