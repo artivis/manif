@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_s_o3__base_8h" local="no">SO3_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4_1a9cd4576d20c3ae7cd2b27cd192828f03" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;::run_impl</definition>
+        <argsstring>(const T &amp;data)</argsstring>
+        <name>run_impl</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3_base.h" line="399" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3_base.h" bodystart="399" bodyend="408"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Assignment assert specialization for <ref refid="structmanif_1_1_s_e2_base" kindref="compound">SE2Base</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3_base.h" line="396" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3_base.h" bodystart="397" bodyend="409"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4_1a9cd4576d20c3ae7cd2b27cd192828f03" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</scope><name>run_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

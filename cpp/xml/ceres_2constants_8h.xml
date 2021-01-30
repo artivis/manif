@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="ceres_2constants_8h" kind="file" language="C++">
+    <compoundname>ceres/constants.h</compoundname>
+    <includes refid="constants_8h" local="yes">manif/constants.h</includes>
+    <includes local="no">ceres/jet.h</includes>
+    <includedby refid="ceres_8h" local="yes">ceres.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>constants.h</label>
+        <link refid="ceres_2constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ceres/jet.h</label>
+      </node>
+      <node id="3">
+        <label>cmath</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>ceres.h</label>
+        <link refid="ceres_8h_source"/>
+      </node>
+      <node id="1">
+        <label>constants.h</label>
+        <link refid="ceres_2constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/ceres/constants.h"/>
+  </compounddef>
+</doxygen>

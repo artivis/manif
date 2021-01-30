@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::SE3 struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>SE3 <span class="m-thin">struct</span>
+        </h1>
+        <p>Represent an element of <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a>.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_base.html" class="m-doc">SE3Base&lt;SE3&lt;_Scalar&gt;&gt;</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> group.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a413ddb2f8a492e0ff1df9d7e9202d2f1">
+              using <a href="#a413ddb2f8a492e0ff1df9d7e9202d2f1" class="m-doc-self">Translation</a> = typename Base::Translation
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa501d335ac0ad84718b888c6f7f4d430">
+              using <a href="#aa501d335ac0ad84718b888c6f7f4d430" class="m-doc-self">Quaternion</a> = Eigen::Quaternion&lt;Scalar&gt;
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a82f8fabb8e4e355bf4f508605519d0a0">
+              <span class="m-doc-wrap-bumper"><a href="#a82f8fabb8e4e355bf4f508605519d0a0" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aef589c0b1dc0135892e18397380d8b69">
+              <span class="m-doc-wrap-bumper"><a href="#aef589c0b1dc0135892e18397380d8b69" class="m-doc-self">~SE3</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2ad3a9facadd992e9936e18fc683a3f3">
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper"><a href="#a2ad3a9facadd992e9936e18fc683a3f3" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; o)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2238fd799e71ed6e3fbe4b6b435d8e4f" class="m-doc">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const Eigen::Quaternion&lt;Scalar&gt;&amp; q)</span>
+            </dt>
+            <dd>Constructor given a translation and a unit quaternion.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aa837486062d89c1629f2332c0f5e89fc" class="m-doc">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const Eigen::AngleAxis&lt;Scalar&gt;&amp; angle_axis)</span>
+            </dt>
+            <dd>Constructor given a translation and an angle axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aceca32f3c8bcbfbaf8802a873296f8d2" class="m-doc">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>&lt;Scalar&gt;&amp; SO3)</span>
+            </dt>
+            <dd>Constructor given a translation and <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a5d4c7b87daa82ccab7d409b490b0a0e5" class="m-doc">SE3</a>(</span><span class="m-doc-wrap">const Scalar x,
+              const Scalar y,
+              const Scalar z,
+              const Scalar roll,
+              const Scalar pitch,
+              const Scalar yaw)</span>
+            </dt>
+            <dd>Constructor given translation components and roll-pitch-yaw angles.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#af463cee23b88a451f3d23caf560835b3" class="m-doc">SE3</a>(</span><span class="m-doc-wrap">const Eigen::Transform&lt;_Scalar, 3, Eigen::Isometry&gt;&amp; h)</span>
+            </dt>
+            <dd>Constructor from a 3D Eigen::Isometry&lt;Scalar&gt;</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="aeba83f2a7ff383f74b203dbdea25e1ed">
+              <span class="m-doc-wrap-bumper">auto <a href="#aeba83f2a7ff383f74b203dbdea25e1ed" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad4b9fc82066b694ce22a415eac0188e2">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad4b9fc82066b694ce22a415eac0188e2" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a568187f8159c99d2cc49a8e0ee356124">
+              DataType <a href="#a568187f8159c99d2cc49a8e0ee356124" class="m-doc-self">data_</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a2238fd799e71ed6e3fbe4b6b435d8e4f"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2238fd799e71ed6e3fbe4b6b435d8e4f" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const Eigen::Quaternion&lt;Scalar&gt;&amp; q)</span></span>
+            </h3>
+            <p>Constructor given a translation and a unit quaternion.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A translation vector.</td>
+                </tr>
+                <tr>
+                  <td>q&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A unit quaternion.</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Exceptions</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="structmanif_1_1invalid__argument.html" class="m-doc">manif::<wbr />invalid_argument</a></td>
+                  <td>on un-normalized complex number.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa837486062d89c1629f2332c0f5e89fc"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa837486062d89c1629f2332c0f5e89fc" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const Eigen::AngleAxis&lt;Scalar&gt;&amp; angle_axis)</span></span>
+            </h3>
+            <p>Constructor given a translation and an angle axis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A translation vector.</td>
+                </tr>
+                <tr>
+                  <td>angle_axis&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>An angle-axis.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aceca32f3c8bcbfbaf8802a873296f8d2"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aceca32f3c8bcbfbaf8802a873296f8d2" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const Translation&amp; t,
+              const <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>&lt;Scalar&gt;&amp; SO3)</span></span>
+            </h3>
+            <p>Constructor given a translation and <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A translation vector.</td>
+                </tr>
+                <tr>
+                  <td>SO3</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d4c7b87daa82ccab7d409b490b0a0e5"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d4c7b87daa82ccab7d409b490b0a0e5" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const Scalar x,
+              const Scalar y,
+              const Scalar z,
+              const Scalar roll,
+              const Scalar pitch,
+              const Scalar yaw)</span></span>
+            </h3>
+            <p>Constructor given translation components and roll-pitch-yaw angles.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The x component of the translation.</td>
+                </tr>
+                <tr>
+                  <td>y&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The y component of the translation.</td>
+                </tr>
+                <tr>
+                  <td>z&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The z component of the translation.</td>
+                </tr>
+                <tr>
+                  <td>roll&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The roll angle.</td>
+                </tr>
+                <tr>
+                  <td>pitch&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The pitch angle.</td>
+                </tr>
+                <tr>
+                  <td>yaw&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The yaw angle.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af463cee23b88a451f3d23caf560835b3"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af463cee23b88a451f3d23caf560835b3" class="m-doc-self">SE3</a>(</span><span class="m-doc-wrap">const Eigen::Transform&lt;_Scalar, 3, Eigen::Isometry&gt;&amp; h)</span></span>
+            </h3>
+            <p>Constructor from a 3D Eigen::Isometry&lt;Scalar&gt;</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">h&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>an isometry object from Eigen</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix. This is used to speed up certain methods of Transform, especially <a href="structmanif_1_1_s_e3_base.html#afe44a1cff6a1f43473c6193d4232e70b" class="m-doc">inverse()</a>.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

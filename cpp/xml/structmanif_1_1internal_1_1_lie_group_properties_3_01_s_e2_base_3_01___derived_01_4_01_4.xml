@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;</compoundname>
+    <includes refid="_s_e2__properties_8h" local="no">SE2_properties.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4_1a708a1af4609aba6d5a6c54d4565107f6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" line="18" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4_1aad69e00014ee0225d2d0ad8ae68cd5db" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Space dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" line="19" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traits specialization </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" line="16" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_properties.h" bodystart="17" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4_1a708a1af4609aba6d5a6c54d4565107f6" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4_1aad69e00014ee0225d2d0ad8ae68cd5db" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;</scope><name>DoF</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

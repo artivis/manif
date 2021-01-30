@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::RandomEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_s_o2__base_8h" local="no">SO2_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4_1ae3b02e96a9e13aa2bed0c51c3e5657fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(T &amp;m)</argsstring>
+        <name>run</name>
+        <param>
+          <type>T &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="318" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="318" bodyend="322"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Random specialization for <ref refid="structmanif_1_1_s_o2_base" kindref="compound">SO2Base</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="315" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="316" bodyend="323"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4_1ae3b02e96a9e13aa2bed0c51c3e5657fd" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

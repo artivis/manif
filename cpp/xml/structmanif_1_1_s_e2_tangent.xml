@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_s_e2_tangent" kind="struct" language="C++" prot="public">
+    <compoundname>manif::SE2Tangent</compoundname>
+    <basecompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</basecompoundref>
+    <includes refid="_s_e2_tangent_8h" local="no">SE2Tangent.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_tangent_1a0aaabd0ef6b8b68b7c16c7d0b0f0d4a7" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_s_e2_tangent_base" kindref="compound">SE2TangentBase</ref>&lt; <ref refid="structmanif_1_1_s_e2_tangent" kindref="compound">SE2Tangent</ref>&lt; _Scalar &gt; &gt;</type>
+        <definition>using manif::SE2Tangent&lt; _Scalar &gt;::Base =  SE2TangentBase&lt;SE2Tangent&lt;_Scalar&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="47" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_tangent_1ae0625c43781ef8276f5920b0f84577a2" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_s_e2_tangent" kindref="compound">SE2Tangent</ref>&lt; _Scalar &gt;</type>
+        <definition>using manif::SE2Tangent&lt; _Scalar &gt;::Type =  SE2Tangent&lt;_Scalar&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="48" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_s_e2_tangent_1ad93ea5d69ea54ae61f175ee8c965535c" prot="protected" static="no" mutable="no">
+        <type>DataType</type>
+        <definition>DataType manif::SE2Tangent&lt; _Scalar &gt;::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="87" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1aefc084ce4990e59ca52411394cebda2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_TANGENT_TYPEDEF MANIF_INHERIT_TANGENT_API MANIF_INHERIT_TANGENT_OPERATOR</type>
+        <definition>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_TANGENT_TYPEDEF MANIF_INHERIT_TANGENT_API MANIF_INHERIT_TANGENT_OPERATOR manif::SE2Tangent&lt; _Scalar &gt;::SE2Tangent</definition>
+        <argsstring>()=default</argsstring>
+        <name>SE2Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="62" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a81e92aff66b64b18bb291aafe0026674" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::SE2Tangent&lt; _Scalar &gt;::~SE2Tangent</definition>
+        <argsstring>()=default</argsstring>
+        <name>~SE2Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="63" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a061fd5ee5c99efc50be4e48b30e0b7bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>manif::SE2Tangent&lt; _Scalar &gt;::SE2Tangent</definition>
+        <argsstring>(const TangentBase&lt; _DerivedOther &gt; &amp;o)</argsstring>
+        <name>SE2Tangent</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="70" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="94" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a5c047836865535cbdbc19b02b25dc65e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::SE2Tangent&lt; _Scalar &gt;::SE2Tangent</definition>
+        <argsstring>(const Scalar x, const Scalar y, const Scalar theta)</argsstring>
+        <name>SE2Tangent</name>
+        <param>
+          <type>const Scalar</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const Scalar</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const Scalar</type>
+          <declname>theta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="74" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="101" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1ab4ac273daa5e6d010cabb20af3d3b25c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>SE2Tangent&lt; _Scalar &gt;::DataType &amp; manif::SE2Tangent&lt; _Scalar &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="78" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a3070b9d16dfd9ac140dff73b51feaa48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const SE2Tangent&lt; _Scalar &gt;::DataType &amp; manif::SE2Tangent&lt; _Scalar &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="79" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="118" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represent an element of the tangent space of <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e2_tangent_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::SE2Tangent&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_e2_tangent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e2_tangent_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::SE2Tangent&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_e2_tangent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="43" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="44" bodyend="88"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>angle</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1a0aaabd0ef6b8b68b7c16c7d0b0f0d4a7" prot="private" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1ab4ac273daa5e6d010cabb20af3d3b25c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1a3070b9d16dfd9ac140dff73b51feaa48" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>data</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SE2Tangent</scope><name>data</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1ad93ea5d69ea54ae61f175ee8c965535c" prot="protected" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>data_</name></member>
+      <member refid="structmanif_1_1_tangent_base_1adf320fca86420a44f1e80cf003800dfb" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SE2Tangent</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SE2Tangent</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a82f2a6247e29d5448263fcc08279bd64" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>exp</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Generator</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1adc9baa1061d4722fa26842eae2e07729" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>hat</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>inner</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>InnerWeightsMatrix</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8e7408713b9750c12418ae9ba9dbd90" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a8baef49ae68f130cda30e49f6f402999" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>LieAlg</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2662a9b7a2dc0d5b1d34e1517e258300" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a41211983cd6b079d52bd5e23c2f044df" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljac</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a78c6848ad03d27864eb9633da29b27e1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2a7e0e996eef0cb4bd537d172f04cdb2" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a375b870e90fabfce45b5a74c46c54b62" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acc8d41b513681114f8091f53d81626a1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc150adf396c8432ce0ba909571bd70c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6be164dc3b9118f3bfebd7f59b4a7a38" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a1271777d229f54a5dd0f0f12d45f043f" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a35e627252748a0268c6ee908d2d09b12" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc51a6333c409460fc017b2303cd2484" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a3fa85584b927625ddeb8f482008623c6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab59f8be2812f60af208fcbb2e3683699" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator/=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4d991baead4165a238e5a76fd7c57db8" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a414b302f5e268f819a0e992f18dd682d" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab26fdad01bd80b6c628465f4b82a0411" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a08bbcf10f4f7ed8210566e3a12556c8a" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a606e1b9c212b8320f65378437d302c0b" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abc26abf20f27e8ba2353557c565c04fd" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a09deb968ba7b4df4a4c04e1a7431936d" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>retract</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a343dc5b0fc4d3b98296c8a885193d1e6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjac</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ad06291edca01f9a97aaf338b414d2897" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a87ed7fdbe3f5cf3a8f9e27f58f4e8743" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1aefc084ce4990e59ca52411394cebda2b" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>SE2Tangent</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1a061fd5ee5c99efc50be4e48b30e0b7bb" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>SE2Tangent</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1a5c047836865535cbdbc19b02b25dc65e" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>SE2Tangent</name></member>
+      <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>setZero</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a6327d3fae0b79844d7a8076212003ac0" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>smallAdj</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7439ba89e703a34202391e2a6a9aeda1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>squaredWeightedNorm</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>TangentTemplate</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1ae0625c43781ef8276f5920b0f84577a2" prot="private" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>weightedNorm</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a47763b4785b21aab469c308223bbc9cc" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>x</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a2a0d4789c4c98ca38cd888e900e0a795" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>y</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a69d9ad80a547f43f038ee3f60df21ba8" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Zero</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_1a81e92aff66b64b18bb291aafe0026674" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>~SE2Tangent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

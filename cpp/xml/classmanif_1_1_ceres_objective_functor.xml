@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="classmanif_1_1_ceres_objective_functor" kind="class" language="C++" prot="public">
+    <compoundname>manif::CeresObjectiveFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename _LieGroup</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_objective_functor_1a3713e648d58ce283cd1a30d5b41473c7" prot="private" static="no">
+        <type>_LieGroup</type>
+        <definition>using manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::LieGroup =  _LieGroup</definition>
+        <argsstring></argsstring>
+        <name>LieGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="11" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_objective_functor_1a69fce986d70458281f3f3030d0ac06dc" prot="private" static="no">
+        <type>typename _LieGroup::Tangent</type>
+        <definition>using manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::Tangent =  typename _LieGroup::Tangent</definition>
+        <argsstring></argsstring>
+        <name>Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="12" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_objective_functor_1a49310eb90d64cd4266a7dbac7325dc9b" prot="private" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>typename LieGroup::template LieGroupTemplate&lt; _Scalar &gt;</type>
+        <definition>using manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::LieGroupTemplate =  typename LieGroup::template LieGroupTemplate&lt;_Scalar&gt;</definition>
+        <argsstring></argsstring>
+        <name>LieGroupTemplate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="15" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classmanif_1_1_ceres_objective_functor_1ac155334e60770dedc2ba446c983ac269" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::weight_</definition>
+        <argsstring></argsstring>
+        <name>weight_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="76" column="10" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmanif_1_1_ceres_objective_functor_1ac603290436f1a376a266b64f67836930" prot="protected" static="no" mutable="no">
+        <type>LieGroup</type>
+        <definition>LieGroup manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::target_state_</definition>
+        <argsstring></argsstring>
+        <name>target_state_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="77" column="12" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1af5663a54af76241163923fcaf33c50db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::CeresObjectiveFunctor</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>CeresObjectiveFunctor</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="22" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a4263fe7eb551013d086b1d741fcfde33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::CeresObjectiveFunctor</definition>
+        <argsstring>(const LieGroup &amp;target_state, const double weight=1)</argsstring>
+        <name>CeresObjectiveFunctor</name>
+        <param>
+          <type>const LieGroup &amp;</type>
+          <declname>target_state</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>weight</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="28" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a735e891dab209ea68f42519aafa7f751" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::~CeresObjectiveFunctor</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CeresObjectiveFunctor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="36" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a8b093f0c03ff1ab33cfc67030a69c542" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::operator()</definition>
+        <argsstring>(const T *const state_raw, T *residuals_raw) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T *const</type>
+          <declname>state_raw</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>residuals_raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="39" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="39" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a51390aa45647ce1d7d7cafac0a163887" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LieGroup</type>
+        <definition>CeresObjectiveFunctor&lt; _LieGroup &gt;::LieGroup manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::getTargetState</definition>
+        <argsstring>() const</argsstring>
+        <name>getTargetState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="68" column="12" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a4e6bc91937113dbde91b8aa2549684a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::setTargetState</definition>
+        <argsstring>(const LieGroup &amp;target_state) const</argsstring>
+        <name>setTargetState</name>
+        <param>
+          <type>const LieGroup &amp;</type>
+          <declname>target_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="69" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a5fe16912e28bc528aa017ff5c900400f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::weight</definition>
+        <argsstring>(const double weight)</argsstring>
+        <name>weight</name>
+        <param>
+          <type>const double</type>
+          <declname>weight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="71" column="15" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_objective_functor_1a9d5d83eff4e4367a7edd9eb51165758e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double manif::CeresObjectiveFunctor&lt; _LieGroup &gt;::weight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>weight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="72" column="17" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/ceres/objective.h" line="9" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/objective.h" bodystart="10" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classmanif_1_1_ceres_objective_functor_1af5663a54af76241163923fcaf33c50db" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>CeresObjectiveFunctor</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a4263fe7eb551013d086b1d741fcfde33" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>CeresObjectiveFunctor</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a51390aa45647ce1d7d7cafac0a163887" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>getTargetState</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a3713e648d58ce283cd1a30d5b41473c7" prot="private" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>LieGroup</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a49310eb90d64cd4266a7dbac7325dc9b" prot="private" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>LieGroupTemplate</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a8b093f0c03ff1ab33cfc67030a69c542" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>operator()</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a4e6bc91937113dbde91b8aa2549684a8" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>setTargetState</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a69fce986d70458281f3f3030d0ac06dc" prot="private" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>Tangent</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1ac603290436f1a376a266b64f67836930" prot="protected" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>target_state_</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a5fe16912e28bc528aa017ff5c900400f" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>weight</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a9d5d83eff4e4367a7edd9eb51165758e" prot="public" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>weight</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1ac155334e60770dedc2ba446c983ac269" prot="protected" virt="non-virtual"><scope>manif::CeresObjectiveFunctor</scope><name>weight_</name></member>
+      <member refid="classmanif_1_1_ceres_objective_functor_1a735e891dab209ea68f42519aafa7f751" prot="public" virt="virtual"><scope>manif::CeresObjectiveFunctor</scope><name>~CeresObjectiveFunctor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

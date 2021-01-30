@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_2bbafa0deb1a81174da6ec3a071be910" kind="dir">
+    <compoundname>so2</compoundname>
+    <innerfile refid="impl_2so2_2_s_o2_8h">impl/so2/SO2.h</innerfile>
+    <innerfile refid="_s_o2__base_8h">SO2_base.h</innerfile>
+    <innerfile refid="_s_o2__map_8h">SO2_map.h</innerfile>
+    <innerfile refid="_s_o2__properties_8h">SO2_properties.h</innerfile>
+    <innerfile refid="_s_o2_tangent_8h">SO2Tangent.h</innerfile>
+    <innerfile refid="_s_o2_tangent__base_8h">SO2Tangent_base.h</innerfile>
+    <innerfile refid="_s_o2_tangent__map_8h">SO2Tangent_map.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/so2/"/>
+  </compounddef>
+</doxygen>

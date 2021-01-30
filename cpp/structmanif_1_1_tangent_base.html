@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::TangentBase struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>TangentBase <span class="m-thin">struct</span>
+        </h1>
+        <p>Base class for Lie groups&#x27; tangents. Defines the minimum common API.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>.</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_rn_tangent_base.html" class="m-doc">RnTangentBase</a>
+            </dt>
+            <dd>The base class of the R^n tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_rn_tangent_base.html" class="m-doc">RnTangentBase</a>
+            </dt>
+            <dd>The base class of the R^n tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_rn_tangent_base.html" class="m-doc">RnTangentBase</a>
+            </dt>
+            <dd>The base class of the R^n tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">SE3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">SE3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">SE3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e__2__3_tangent_base.html" class="m-doc">SE_2_3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e__2__3_tangent_base.html" class="m-doc">SE_2_3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e__2__3_tangent_base.html" class="m-doc">SE_2_3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o2_tangent_base.html" class="m-doc">SO2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o2_tangent_base.html" class="m-doc">SO2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o2_tangent_base.html" class="m-doc">SO2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">SO3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">SO3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">SO3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_rn_tangent_base.html" class="m-doc">RnTangentBase</a>
+            </dt>
+            <dd>The base class of the R^n tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">SE3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e__2__3_tangent_base.html" class="m-doc">SE_2_3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o2_tangent_base.html" class="m-doc">SO2TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a> tangent.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">SO3TangentBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> tangent.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a5e950e12d3b90e86b9e8d1c88ae44d3c">
+              using <a href="#a5e950e12d3b90e86b9e8d1c88ae44d3c" class="m-doc-self">Scalar</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Scalar
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2662a9b7a2dc0d5b1d34e1517e258300">
+              using <a href="#a2662a9b7a2dc0d5b1d34e1517e258300" class="m-doc-self">LieGroup</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::LieGroup
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a28e3e53e1c1c91f29a8417e7e3a3a654">
+              using <a href="#a28e3e53e1c1c91f29a8417e7e3a3a654" class="m-doc-self">Tangent</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Tangent
+            </dt>
+            <dd><span></span></dd>
+            <dt id="adf320fca86420a44f1e80cf003800dfb">
+              using <a href="#adf320fca86420a44f1e80cf003800dfb" class="m-doc-self">DataType</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::DataType
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab8e7408713b9750c12418ae9ba9dbd90">
+              using <a href="#ab8e7408713b9750c12418ae9ba9dbd90" class="m-doc-self">Jacobian</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Jacobian
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a8baef49ae68f130cda30e49f6f402999">
+              using <a href="#a8baef49ae68f130cda30e49f6f402999" class="m-doc-self">LieAlg</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::LieAlg
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a151e1d9be260ac7bab172b950017a57c">
+              using <a href="#a151e1d9be260ac7bab172b950017a57c" class="m-doc-self">InnerWeightsMatrix</a> = Jacobian
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab26fdad01bd80b6c628465f4b82a0411">
+              using <a href="#ab26fdad01bd80b6c628465f4b82a0411" class="m-doc-self">OptJacobianRef</a> = tl::optional&lt;Eigen::Ref&lt;Jacobian&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0c8b928c0e5710577fe171046920411c">
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              using <a href="#a0c8b928c0e5710577fe171046920411c" class="m-doc-self">TangentTemplate</a> = typename <a href="structmanif_1_1internal_1_1traitscast.html" class="m-doc">internal::<wbr />traitscast</a>&lt;Tangent, _Scalar&gt;::<a href="structmanif_1_1_tangent_base.html#a9c4d27fc308816b507af1734a42c01c1" class="m-doc">cast</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a6c72f3d4af207ef853df0387a31a8334">
+              static int <a href="#a6c72f3d4af207ef853df0387a31a8334" class="m-doc-self">Dim</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abc26abf20f27e8ba2353557c565c04fd">
+              static int <a href="#abc26abf20f27e8ba2353557c565c04fd" class="m-doc-self">RepSize</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a10a74cacca2371dfe8260727bd9bdf37">
+              static int <a href="#a10a74cacca2371dfe8260727bd9bdf37" class="m-doc-self">DoF</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a69d9ad80a547f43f038ee3f60df21ba8">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a69d9ad80a547f43f038ee3f60df21ba8" class="m-doc-self">Zero</a>(</span><span class="m-doc-wrap">) -&gt; Tangent</span>
+            </dt>
+            <dd>Static helper the create a Tangent object set to Zero.</dd>
+            <dt id="abdc6586b6f1bc615dc252df10a0e4f2a">
+              <span class="m-doc-wrap-bumper">static auto <a href="#abdc6586b6f1bc615dc252df10a0e4f2a" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; Tangent</span>
+            </dt>
+            <dd>Static helper the create a random Tangent object.</dd>
+            <dt id="acce070bec9a040c8a3195168756f9b99">
+              <span class="m-doc-wrap-bumper">static auto <a href="#acce070bec9a040c8a3195168756f9b99" class="m-doc-self">Generator</a>(</span><span class="m-doc-wrap">const int i) -&gt; LieAlg</span>
+            </dt>
+            <dd>Static helper to get a Basis of the Lie group.</dd>
+            <dt id="a0a29f4a104f11fd83823fcafa1e6b2c9">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0a29f4a104f11fd83823fcafa1e6b2c9" class="m-doc-self">InnerWeights</a>(</span><span class="m-doc-wrap">) -&gt; InnerWeightsMatrix</span>
+            </dt>
+            <dd>Static helper to get a Basis of the Lie group.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a414b302f5e268f819a0e992f18dd682d" class="m-doc">operator=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&amp; t) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2703d13faf7a912f8078129b2a4e66c6" class="m-doc">operator=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8fc7edb0d20e2ecda82fd6d536cb425" class="m-doc">operator=</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt id="a573f842dc25ee3125f8959ccdacb5240">
+              <span class="m-doc-wrap-bumper">auto <a href="#a573f842dc25ee3125f8959ccdacb5240" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by reference.</dd>
+            <dt id="a2e28e350e07e2ec1d2a164bd39d3370a">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e28e350e07e2ec1d2a164bd39d3370a" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+            <dt id="a6004be883d35b1e2a1ac04efd63c7443">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6004be883d35b1e2a1ac04efd63c7443" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) -&gt; Scalar*</span>
+            </dt>
+            <dd>Access the underlying data by pointer.</dd>
+            <dt id="a56bf87afd42cd3c795d1a2878ca99010">
+              <span class="m-doc-wrap-bumper">auto <a href="#a56bf87afd42cd3c795d1a2878ca99010" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) const -&gt; const Scalar*</span>
+            </dt>
+            <dd>Access the underlying data by const pointer.</dd>
+            <dt id="a9c4d27fc308816b507af1734a42c01c1">
+              <div class="m-doc-template">template&lt;class _NewScalar&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9c4d27fc308816b507af1734a42c01c1" class="m-doc-self">cast</a>(</span><span class="m-doc-wrap">) const -&gt; TangentTemplate&lt;_NewScalar&gt;</span>
+            </dt>
+            <dd>Cast the Tangent object to a copy of a different scalar type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a04926ad935d5d3504cb69123128b5022" class="m-doc">setZero</a>(</span><span class="m-doc-wrap">) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Set the Tangent object this to Zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af7bd211079a17ccc135877c1d96aaeed" class="m-doc">setRandom</a>(</span><span class="m-doc-wrap">) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Set the LieGroup object this to a random value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2dbd4f126e05b21b0adee045844579a4" class="m-doc">generator</a>(</span><span class="m-doc-wrap">const int i) const -&gt; LieAlg</span>
+            </dt>
+            <dd>Get the ith basis element of the Lie Algebra.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7f05a48c9ffd4d5f582f0062c8bf9f55" class="m-doc">innerWeights</a>(</span><span class="m-doc-wrap">) const -&gt; InnerWeightsMatrix</span>
+            </dt>
+            <dd>Get the weight matrix of the Weighted Euclidean inner product, relative to the space basis.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83d40f212a18ed4c9b28e56ca4f5704c" class="m-doc">inner</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get inner product of this and another Tangent weighted by W.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aebc062717b43ce0d4f623191b3a4e626" class="m-doc">weightedNorm</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the Euclidean weighted norm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7439ba89e703a34202391e2a6a9aeda1" class="m-doc">squaredWeightedNorm</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the squared Euclidean weighted norm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e9722a81dfde9006f26c1ff0d2a65fa" class="m-doc">hat</a>(</span><span class="m-doc-wrap">) const -&gt; LieAlg</span>
+            </dt>
+            <dd>Hat operator of the Tangent element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a>(</span><span class="m-doc-wrap">OptJacobianRef J_m_t = OptJacobianRef{}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Get the Lie group element.</dd>
+            <dt id="a16ec60694f825f03727e09f257d6da1f">
+              <span class="m-doc-wrap-bumper">auto <a href="#a16ec60694f825f03727e09f257d6da1f" class="m-doc-self">retract</a>(</span><span class="m-doc-wrap">OptJacobianRef J_m_t = OptJacobianRef{}) const -&gt; MANIF_DEPRECATED LieGroup</span>
+            </dt>
+            <dd>This function is deprecated. Please considere using <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a> instead.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4533ec7b13c30b5ec8fb1d5c84039502" class="m-doc">rplus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Right oplus operation of the Lie group.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a375b870e90fabfce45b5a74c46c54b62" class="m-doc">lplus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Left oplus operation of the Lie group.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a08bbcf10f4f7ed8210566e3a12556c8a" class="m-doc">plus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>An alias for the right oplus operation.</dd>
+            <dt id="a606e1b9c212b8320f65378437d302c0b">
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a606e1b9c212b8320f65378437d302c0b" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t,
+              OptJacobianRef J_mout_ta = {},
+              OptJacobianRef J_mout_tb = {}) const -&gt; Tangent</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="acc8d41b513681114f8091f53d81626a1">
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#acc8d41b513681114f8091f53d81626a1" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t,
+              OptJacobianRef J_mout_ta = {},
+              OptJacobianRef J_mout_tb = {}) const -&gt; Tangent</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a11c72414544c6161c77ff3683b58d94c" class="m-doc">rjac</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd>Get the right Jacobian.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7a2388b41455b45aee88a3be3fa76f0e" class="m-doc">ljac</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd>Get the left Jacobian.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename U = _Derived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad06291edca01f9a97aaf338b414d2897" class="m-doc">rjacinv</a>(</span><span class="m-doc-wrap">) const -&gt; std::enable_if&lt;<a href="structmanif_1_1internal_1_1has__rjacinv.html" class="m-doc">internal::<wbr />has_rjacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename U = _Derived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a87ed7fdbe3f5cf3a8f9e27f58f4e8743" class="m-doc">rjacinv</a>(</span><span class="m-doc-wrap">) const -&gt; std::enable_if&lt;! <a href="structmanif_1_1internal_1_1has__rjacinv.html" class="m-doc">internal::<wbr />has_rjacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename U = _Derived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a78c6848ad03d27864eb9633da29b27e1" class="m-doc">ljacinv</a>(</span><span class="m-doc-wrap">) const -&gt; std::enable_if&lt;<a href="structmanif_1_1internal_1_1has__ljacinv.html" class="m-doc">internal::<wbr />has_ljacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename U = _Derived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2a7e0e996eef0cb4bd537d172f04cdb2" class="m-doc">ljacinv</a>(</span><span class="m-doc-wrap">) const -&gt; std::enable_if&lt;! <a href="structmanif_1_1internal_1_1has__ljacinv.html" class="m-doc">internal::<wbr />has_ljacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd95afc304c76ec8df6d8e8da676d90c" class="m-doc">smallAdj</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a09d1ca10487c6c7cc43ff456a1664b65" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
+              const Scalar eps = <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a>&lt;Scalar&gt;::eps) const -&gt; bool</span>
+            </dt>
+            <dd>Evaluate whether this and v are &#x27;close&#x27;.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a11263b30dc75dbdf769c86a26001c320" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t,
+              const Scalar eps = <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a>&lt;Scalar&gt;::eps) const -&gt; bool</span>
+            </dt>
+            <dd>Evaluate whether this and t are &#x27;close&#x27;.</dd>
+            <dt id="a4d991baead4165a238e5a76fd7c57db8">
+              <div class="m-doc-template">template&lt;typename T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4d991baead4165a238e5a76fd7c57db8" class="m-doc-self">operator&lt;&lt;</a>(</span><span class="m-doc-wrap">T&amp;&amp; v) -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a35e627252748a0268c6ee908d2d09b12">
+              <span class="m-doc-wrap-bumper">auto <a href="#a35e627252748a0268c6ee908d2d09b12" class="m-doc-self">operator-</a>(</span><span class="m-doc-wrap">) const -&gt; Tangent</span>
+            </dt>
+            <dd>Equivalent to v * -1.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afc150adf396c8432ce0ba909571bd70c" class="m-doc">operator+</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Left oplus operator.</dd>
+            <dt id="a6be164dc3b9118f3bfebd7f59b4a7a38">
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6be164dc3b9118f3bfebd7f59b4a7a38" class="m-doc-self">operator+=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>In-place plus operator, simple vector in-place plus operation.</dd>
+            <dt id="afc51a6333c409460fc017b2303cd2484">
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#afc51a6333c409460fc017b2303cd2484" class="m-doc-self">operator-=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>In-place minus operator, simple vector in-place minus operation.</dd>
+            <dt id="a1271777d229f54a5dd0f0f12d45f043f">
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1271777d229f54a5dd0f0f12d45f043f" class="m-doc-self">operator+=</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>In-place plus operator, simple vector in-place plus operation.</dd>
+            <dt id="a3fa85584b927625ddeb8f482008623c6">
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3fa85584b927625ddeb8f482008623c6" class="m-doc-self">operator-=</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>In-place minus operator, simple vector in-place minus operation.</dd>
+            <dt id="aeec01529723a9090073be80e6e3983a2">
+              <span class="m-doc-wrap-bumper">auto <a href="#aeec01529723a9090073be80e6e3983a2" class="m-doc-self">operator*=</a>(</span><span class="m-doc-wrap">const Scalar scalar) -&gt; Tangent</span>
+            </dt>
+            <dd>Multiply the underlying vector with a scalar.</dd>
+            <dt id="ab59f8be2812f60af208fcbb2e3683699">
+              <span class="m-doc-wrap-bumper">auto <a href="#ab59f8be2812f60af208fcbb2e3683699" class="m-doc-self">operator/=</a>(</span><span class="m-doc-wrap">const Scalar scalar) -&gt; Tangent</span>
+            </dt>
+            <dd>Divide the underlying vector with a scalar.</dd>
+            <dt id="aaef816e134cd084829636a27a71b7aae">
+              <div class="m-doc-template">template&lt;class _NewScalar&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaef816e134cd084829636a27a71b7aae" class="m-doc-self">cast</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_Derived&gt;::template TangentTemplate&lt;_NewScalar&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a18e1a216f401f804a09047242bf987a7">
+              <span class="m-doc-wrap-bumper">auto <a href="#a18e1a216f401f804a09047242bf987a7" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) &amp; -&gt; _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa2305ee8102e265616aa35416179b377">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa2305ee8102e265616aa35416179b377" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) const &amp; -&gt; const _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a414b302f5e268f819a0e992f18dd682d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a414b302f5e268f819a0e992f18dd682d" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&amp; t)</span></span>
+            </h3>
+            <p>Assignment operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>An element of the same Tangent group.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2703d13faf7a912f8078129b2a4e66c6"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2703d13faf7a912f8078129b2a4e66c6" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t)</span></span>
+            </h3>
+            <p>Assignment operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>An element of the same Tangent group.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab8fc7edb0d20e2ecda82fd6d536cb425"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8fc7edb0d20e2ecda82fd6d536cb425" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v)</span></span>
+            </h3>
+            <p>Assignment operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p>DataType.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a04926ad935d5d3504cb69123128b5022"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04926ad935d5d3504cb69123128b5022" class="m-doc-self">setZero</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Set the Tangent object this to Zero.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af7bd211079a17ccc135877c1d96aaeed"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af7bd211079a17ccc135877c1d96aaeed" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Set the LieGroup object this to a random value.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2dbd4f126e05b21b0adee045844579a4"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieAlg manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2dbd4f126e05b21b0adee045844579a4" class="m-doc-self">generator</a>(</span><span class="m-doc-wrap">const int i) const</span></span>
+            </h3>
+            <p>Get the ith basis element of the Lie Algebra.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the ith basis element of the Lie Algebra.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7f05a48c9ffd4d5f582f0062c8bf9f55"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">InnerWeightsMatrix manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7f05a48c9ffd4d5f582f0062c8bf9f55" class="m-doc-self">innerWeights</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the weight matrix of the Weighted Euclidean inner product, relative to the space basis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the weight matrix.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a2dbd4f126e05b21b0adee045844579a4" class="m-doc">generator</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a83d40f212a18ed4c9b28e56ca4f5704c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Scalar manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83d40f212a18ed4c9b28e56ca4f5704c" class="m-doc-self">inner</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t) const</span></span>
+            </h3>
+            <p>Get inner product of this and another Tangent weighted by W.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The inner product of this and t.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>ip = v0&#x27; . W . v1</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a7f05a48c9ffd4d5f582f0062c8bf9f55" class="m-doc">innerWeights()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aebc062717b43ce0d4f623191b3a4e626"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Scalar manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aebc062717b43ce0d4f623191b3a4e626" class="m-doc-self">weightedNorm</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the Euclidean weighted norm.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The Euclidean weighted norm.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a7f05a48c9ffd4d5f582f0062c8bf9f55" class="m-doc">innerWeights()</a></p><p><a href="structmanif_1_1_tangent_base.html#a7439ba89e703a34202391e2a6a9aeda1" class="m-doc">squaredWeightedNorm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7439ba89e703a34202391e2a6a9aeda1"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Scalar manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7439ba89e703a34202391e2a6a9aeda1" class="m-doc-self">squaredWeightedNorm</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the squared Euclidean weighted norm.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The squared Euclidean weighted norm.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a7f05a48c9ffd4d5f582f0062c8bf9f55" class="m-doc">innerWeights()</a></p><p>WeightedNorm()</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8e9722a81dfde9006f26c1ff0d2a65fa"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieAlg manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e9722a81dfde9006f26c1ff0d2a65fa" class="m-doc-self">hat</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Hat operator of the Tangent element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The isomorphic element in the Lie algebra.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>See Eq. (10).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9720e984db5900bce796bf47cda977ee"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9720e984db5900bce796bf47cda977ee" class="m-doc-self">exp</a>(</span><span class="m-doc-wrap">OptJacobianRef J_m_t = OptJacobianRef{}) const</span></span>
+            </h3>
+            <p>Get the Lie group element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Associated Lie group element.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This is the <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp()</a> map with the argument in vector form.</p><p>See Eq. (23).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4533ec7b13c30b5ec8fb1d5c84039502"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4533ec7b13c30b5ec8fb1d5c84039502" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const</span></span>
+            </h3>
+            <p>Right oplus operation of the Lie group.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>An element of the Lie group.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>See Eq. (25).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a375b870e90fabfce45b5a74c46c54b62"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a375b870e90fabfce45b5a74c46c54b62" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const</span></span>
+            </h3>
+            <p>Left oplus operation of the Lie group.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>An element of the Lie group.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>See Eq. (27).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a08bbcf10f4f7ed8210566e3a12556c8a"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a08bbcf10f4f7ed8210566e3a12556c8a" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m,
+              OptJacobianRef J_mout_t = {},
+              OptJacobianRef J_mout_m = {}) const</span></span>
+            </h3>
+            <p>An alias for the right oplus operation.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a4533ec7b13c30b5ec8fb1d5c84039502" class="m-doc">rplus</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a11c72414544c6161c77ff3683b58d94c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Jacobian manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a11c72414544c6161c77ff3683b58d94c" class="m-doc-self">rjac</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the right Jacobian.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>this is the right Jacobian of <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a>, what is commonly known as &quot;the right Jacobian&quot;.</p><p>See Eq. (41) for the right Jacobian of general functions.</p><p>See Eqs. (126,143,163,179,191) for implementations of the right Jacobian of <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a>.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7a2388b41455b45aee88a3be3fa76f0e"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Jacobian manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7a2388b41455b45aee88a3be3fa76f0e" class="m-doc-self">ljac</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the left Jacobian.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>this is the left Jacobian of <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a>, what is commonly known as &quot;the left Jacobian&quot;.</p><p>See Eq. (44) for the left Jacobian of general functions.</p><p>See Eqs. (126,145,164,179,191) for implementations of the left Jacobian of <a href="structmanif_1_1_tangent_base.html#a9720e984db5900bce796bf47cda977ee" class="m-doc">exp</a>.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad06291edca01f9a97aaf338b414d2897"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename U = _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::enable_if&lt;<a href="structmanif_1_1internal_1_1has__rjacinv.html" class="m-doc">internal::<wbr />has_rjacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad06291edca01f9a97aaf338b414d2897" class="m-doc-self">rjacinv</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>Calls Derived&#x27;s &#x27;overload&#x27;</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a87ed7fdbe3f5cf3a8f9e27f58f4e8743"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename U = _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::enable_if&lt;! <a href="structmanif_1_1internal_1_1has__rjacinv.html" class="m-doc">internal::<wbr />has_rjacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a87ed7fdbe3f5cf3a8f9e27f58f4e8743" class="m-doc-self">rjacinv</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>Calls Base default impl</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a78c6848ad03d27864eb9633da29b27e1"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename U = _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::enable_if&lt;<a href="structmanif_1_1internal_1_1has__ljacinv.html" class="m-doc">internal::<wbr />has_ljacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a78c6848ad03d27864eb9633da29b27e1" class="m-doc-self">ljacinv</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>Calls Derived&#x27;s &#x27;overload&#x27;</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2a7e0e996eef0cb4bd537d172f04cdb2"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename U = _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::enable_if&lt;! <a href="structmanif_1_1internal_1_1has__ljacinv.html" class="m-doc">internal::<wbr />has_ljacinv</a>&lt;U&gt;::value, typename <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;U&gt;::Jacobian&gt;::type manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2a7e0e996eef0cb4bd537d172f04cdb2" class="m-doc-self">ljacinv</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>Calls Base default impl</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acd95afc304c76ec8df6d8e8da676d90c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Jacobian manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd95afc304c76ec8df6d8e8da676d90c" class="m-doc-self">smallAdj</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>[description]</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a09d1ca10487c6c7cc43ff456a1664b65"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">bool manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09d1ca10487c6c7cc43ff456a1664b65" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
+              const Scalar eps = <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a>&lt;Scalar&gt;::eps) const</span></span>
+            </h3>
+            <p>Evaluate whether this and v are &#x27;close&#x27;.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">v&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A vector.</td>
+                </tr>
+                <tr>
+                  <td>eps&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Threshold for equality copmarison.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if the Tangent element t is &#x27;close&#x27; to this, false otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This evaluation is performed element-wise.</p>
+          </div></section>
+          <section class="m-doc-details" id="a11263b30dc75dbdf769c86a26001c320"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">bool manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a11263b30dc75dbdf769c86a26001c320" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; t,
+              const Scalar eps = <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a>&lt;Scalar&gt;::eps) const</span></span>
+            </h3>
+            <p>Evaluate whether this and t are &#x27;close&#x27;.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">t&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>An element of the same Tangent group.</td>
+                </tr>
+                <tr>
+                  <td>eps&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Threshold for equality copmarison.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if the Tangent element t is &#x27;close&#x27; to this, false otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This evaluation is performed element-wise.</p>
+          </div></section>
+          <section class="m-doc-details" id="afc150adf396c8432ce0ba909571bd70c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afc150adf396c8432ce0ba909571bd70c" class="m-doc-self">operator+</a>(</span><span class="m-doc-wrap">const LieGroup&amp; m) const</span></span>
+            </h3>
+            <p>Left oplus operator.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a375b870e90fabfce45b5a74c46c54b62" class="m-doc">lplus</a>.</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

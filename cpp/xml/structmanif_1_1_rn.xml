@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_rn" kind="struct" language="C++" prot="public">
+    <compoundname>manif::Rn</compoundname>
+    <basecompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</basecompoundref>
+    <includes refid="impl_2rn_2_rn_8h" local="no">Rn.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>_N</declname>
+        <defname>_N</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_rn_1a5e8750f2e1f514614bdc69fc27b794e0" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_rn_base" kindref="compound">RnBase</ref>&lt; <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, _N &gt; &gt;</type>
+        <definition>using manif::Rn&lt; _Scalar, _N &gt;::Base =  RnBase&lt;Rn&lt;_Scalar, _N&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="56" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_rn_1a53385b61b484c20c592987d038fa6a24" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, _N &gt;</type>
+        <definition>using manif::Rn&lt; _Scalar, _N &gt;::Type =  Rn&lt;_Scalar, _N&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="57" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_rn_1a29c418039fe57c14b0aa2847e290cc31" prot="protected" static="no" mutable="no">
+        <type>DataType</type>
+        <definition>DataType manif::Rn&lt; _Scalar, _N &gt;::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="94" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_rn_1a1aaacfe671f979ca24af2e9516f30e61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_COMPLETE_GROUP_TYPEDEF MANIF_INHERIT_GROUP_API</type>
+        <definition>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_COMPLETE_GROUP_TYPEDEF MANIF_INHERIT_GROUP_API manif::Rn&lt; _Scalar, _N &gt;::Rn</definition>
+        <argsstring>()=default</argsstring>
+        <name>Rn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="70" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_1a3ca74b0f8d4e27f69d6f658b869fcf06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Rn&lt; _Scalar, _N &gt;::~Rn</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Rn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="71" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_1ad67669d7aec12482f050db5d30a3ae2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>manif::Rn&lt; _Scalar, _N &gt;::Rn</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedOther &gt; &amp;o)</argsstring>
+        <name>Rn</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="78" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="119" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_1a20b224ccd64c260df26299b9411c78ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>Rn&lt; _Scalar, _N &gt;::DataType &amp; manif::Rn&lt; _Scalar, _N &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Get a reference to the underlying DataType. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="85" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="127" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_1a3125d4296a8f55b825a304c7a7ad3469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const Rn&lt; _Scalar, _N &gt;::DataType &amp; manif::Rn&lt; _Scalar, _N &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Get a const reference to the underlying DataType. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="88" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="134" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an element of <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::Rn&lt; _Scalar, _N &gt;</label>
+        <link refid="structmanif_1_1_rn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::Rn&lt; _Scalar, _N &gt;</label>
+        <link refid="structmanif_1_1_rn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="50" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="51" bodyend="95"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>_</name></member>
+      <member refid="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>act</name></member>
+      <member refid="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_rn_1a5e8750f2e1f514614bdc69fc27b794e0" prot="private" virt="non-virtual"><scope>manif::Rn</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>between</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_rn_1a20b224ccd64c260df26299b9411c78ca" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_1a3125d4296a8f55b825a304c7a7ad3469" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>data</name></member>
+      <member refid="structmanif_1_1_rn_1a29c418039fe57c14b0aa2847e290cc31" prot="protected" virt="non-virtual"><scope>manif::Rn</scope><name>data_</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::Rn</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::Rn</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::Rn</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::Rn</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad574c33ba40f0fcdc14cf234c03dc646" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_rn_base_1a43583c967752e9a39aedebe7fdf379cb" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>log</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_rn_1a1aaacfe671f979ca24af2e9516f30e61" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Rn</name></member>
+      <member refid="structmanif_1_1_rn_1ad67669d7aec12482f050db5d30a3ae2d" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Rn</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad46f010f05b753c5d00dffa6d0f0d78e" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Transformation</name></member>
+      <member refid="structmanif_1_1_rn_1a53385b61b484c20c592987d038fa6a24" prot="private" virt="non-virtual"><scope>manif::Rn</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>Vector</name></member>
+      <member refid="structmanif_1_1_rn_1a3ca74b0f8d4e27f69d6f658b869fcf06" prot="public" virt="non-virtual"><scope>manif::Rn</scope><name>~Rn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

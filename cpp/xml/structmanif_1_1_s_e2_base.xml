@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_s_e2_base" kind="struct" language="C++" prot="public">
+    <compoundname>manif::SE2Base</compoundname>
+    <basecompoundref refid="structmanif_1_1_lie_group_base" prot="public" virt="non-virtual">manif::LieGroupBase&lt; _Derived &gt;</basecompoundref>
+    <includes refid="_s_e2__base_8h" local="no">SE2_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1acc45e0fef27751835a1870df5003c01f" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Base =  LieGroupBase&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="23" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1aa014c41cb5c88de7b5291b971b898e43" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_s_e2_base" kindref="compound">SE2Base</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Type =  SE2Base&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1a149f54a7047c39e533ad7dddd6fa3d0a" prot="public" static="no">
+        <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Rotation</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Rotation =  typename internal::traits&lt;_Derived&gt;::Rotation</definition>
+        <argsstring></argsstring>
+        <name>Rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="34" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1a940a2d4a7f3c3898ac92aacffec9d6f2" prot="public" static="no">
+        <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Translation</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Translation =  typename internal::traits&lt;_Derived&gt;::Translation</definition>
+        <argsstring></argsstring>
+        <name>Translation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1a5e9903214f592acaa597a11a0102cfae" prot="public" static="no">
+        <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Transformation</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Transformation =  typename internal::traits&lt;_Derived&gt;::Transformation</definition>
+        <argsstring></argsstring>
+        <name>Transformation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="36" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_e2_base_1a27a0e8d5f108482f4301d10955493454" prot="public" static="no">
+        <type>Eigen::Transform&lt; Scalar, 2, Eigen::Isometry &gt;</type>
+        <definition>using manif::SE2Base&lt; _Derived &gt;::Isometry =  Eigen::Transform&lt;Scalar, 2, Eigen::Isometry&gt;</definition>
+        <argsstring></argsstring>
+        <name>Isometry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="37" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a385578d24aaec3aa8dee95dc1709a6f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LieGroup</type>
+        <definition>SE2Base&lt; _Derived &gt;::LieGroup manif::SE2Base&lt; _Derived &gt;::inverse</definition>
+        <argsstring>(OptJacobianRef J_minv_m={}) const</argsstring>
+        <name>inverse</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_minv_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get the inverse of this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_minv_m Jacobian of the inverse wrt this. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>See Eqs. (154, 160). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="56" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="199" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a315b35a56e7c9fd42c9cc19cac99bb90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Tangent</type>
+        <definition>SE2Base&lt; _Derived &gt;::Tangent manif::SE2Base&lt; _Derived &gt;::log</definition>
+        <argsstring>(OptJacobianRef J_t_m={}) const</argsstring>
+        <name>log</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_t_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get the <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> corresponding Lie algebra element in vector form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_t_m Jacobian of the tangent wrt to this. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> tangent of this. </para>
+</simplesect>
+<simplesect kind="note"><para>This is the <ref refid="structmanif_1_1_s_e2_base_1a315b35a56e7c9fd42c9cc19cac99bb90" kindref="member">log()</ref> map in vector form. </para>
+</simplesect>
+<simplesect kind="note"><para>See Eqs. (157, 158). </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structmanif_1_1_s_e2_tangent" kindref="compound">SE2Tangent</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="66" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="216" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a830f657dbefe76b6dd4a9e201b05767b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_DEPRECATED Tangent</type>
+        <definition>SE2Base&lt; _Derived &gt;::Tangent manif::SE2Base&lt; _Derived &gt;::lift</definition>
+        <argsstring>(OptJacobianRef J_t_m={}) const</argsstring>
+        <name>lift</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_t_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>This function is deprecated. Please considere using <ref refid="structmanif_1_1_s_e2_base_1a315b35a56e7c9fd42c9cc19cac99bb90" kindref="member">log</ref> instead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="74" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="263" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a4e738fe12f6a41d07137ae3fbc5d1e84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>SE2Base&lt; _Derived &gt;::LieGroup manif::SE2Base&lt; _Derived &gt;::compose</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedOther &gt; &amp;m, OptJacobianRef J_mc_ma={}, OptJacobianRef J_mc_mb={}) const</argsstring>
+        <name>compose</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_mc_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_mc_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Composition of this and another <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> element. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_ma Jacobian of the composition wrt this. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_mb Jacobian of the composition wrt m. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The composition of &apos;this . m&apos;. </para>
+</simplesect>
+<simplesect kind="note"><para>See Eq. (155) &amp; Eqs. (161,162). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="85" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="271" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a32216d574fa5bd8bf0f29f41dcda571d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Matrix&lt; Scalar, 2, 1 &gt;</type>
+        <definition>Eigen::Matrix&lt;Scalar, 2, 1&gt; manif::SE2Base&lt; _Derived &gt;::act</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 3 &gt;&gt;&gt; J_vout_m={}, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 2 &gt;&gt;&gt; J_vout_v={}) const</argsstring>
+        <name>act</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 3 &gt;&gt;&gt;</type>
+          <declname>J_vout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 2 &gt;&gt;&gt;</type>
+          <declname>J_vout_v</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Rigid motion action on a 2D point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A 2D point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_vout_m The Jacobian of the new object wrt this. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_vout_v The Jacobian of the new object wrt input object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transformed 2D point. </para>
+</simplesect>
+<simplesect kind="note"><para>See Eq. (165) &amp; Eqs. (166,167). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="99" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a0d11125c66e139dfcde4881162ac5d40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SE2Base&lt; _Derived &gt;::Jacobian manif::SE2Base&lt; _Derived &gt;::adj</definition>
+        <argsstring>() const</argsstring>
+        <name>adj</name>
+        <briefdescription>
+<para>Get the adjoint matrix of <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> at this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>See Eq. (159). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="107" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="342" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a57077d9e099ebadedb7453dfb6430ba6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Transformation</type>
+        <definition>SE2Base&lt; _Derived &gt;::Transformation manif::SE2Base&lt; _Derived &gt;::transform</definition>
+        <argsstring>() const</argsstring>
+        <name>transform</name>
+        <briefdescription>
+<para>Get the transformation matrix (2D isometry). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>T = | R t | | 0 1 | </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="116" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="166" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a79e9cf50ee1a768723a99261fe352cd7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Isometry</type>
+        <definition>SE2Base&lt; _Derived &gt;::Isometry manif::SE2Base&lt; _Derived &gt;::isometry</definition>
+        <argsstring>() const</argsstring>
+        <name>isometry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the isometry object (Eigen 2D isometry). <simplesect kind="note"><para>T = | R t | | 0 1 | </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="123" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a2a4c07bb3559cf744d7fe08d55f174e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Rotation</type>
+        <definition>SE2Base&lt; _Derived &gt;::Rotation manif::SE2Base&lt; _Derived &gt;::rotation</definition>
+        <argsstring>() const</argsstring>
+        <name>rotation</name>
+        <briefdescription>
+<para>Get the rotational part of this as a rotation matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="126" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a0f22dc835383d7a7822c6c5cc9f9c2bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Translation</type>
+        <definition>SE2Base&lt; _Derived &gt;::Translation manif::SE2Base&lt; _Derived &gt;::translation</definition>
+        <argsstring>() const</argsstring>
+        <name>translation</name>
+        <briefdescription>
+<para>Get the translational part of this as a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="129" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="192" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1aa0f3397fc51c0ec9e9216a0f61e7647b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SE2Base&lt; _Derived &gt;::Scalar manif::SE2Base&lt; _Derived &gt;::real</definition>
+        <argsstring>() const</argsstring>
+        <name>real</name>
+        <briefdescription>
+<para>Get the real part of the underlying complex number representing the rotational part. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="135" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="355" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1acfd8f5c0e9560a858efb109972da3aee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SE2Base&lt; _Derived &gt;::Scalar manif::SE2Base&lt; _Derived &gt;::imag</definition>
+        <argsstring>() const</argsstring>
+        <name>imag</name>
+        <briefdescription>
+<para>Get the imaginary part of the underlying complex number representing the rotational part. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="141" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1abe394534d27c689b8487a92a4751c9a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SE2Base&lt; _Derived &gt;::Scalar manif::SE2Base&lt; _Derived &gt;::angle</definition>
+        <argsstring>() const</argsstring>
+        <name>angle</name>
+        <briefdescription>
+<para>Get the angle (rad.) of the rotational part. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="146" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="369" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1af519c48f07f5d8b62d3b7458a89d478c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SE2Base&lt; _Derived &gt;::Scalar manif::SE2Base&lt; _Derived &gt;::x</definition>
+        <argsstring>() const</argsstring>
+        <name>x</name>
+        <briefdescription>
+<para>Get the x component of the translational part. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="151" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="377" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a4f4e4e060dec2ff511ef916b3320a0b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SE2Base&lt; _Derived &gt;::Scalar manif::SE2Base&lt; _Derived &gt;::y</definition>
+        <argsstring>() const</argsstring>
+        <name>y</name>
+        <briefdescription>
+<para>Get the y component of the translational part. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="156" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="384" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1aaaf84b864aed1216108b0aba676f476e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void manif::SE2Base&lt; _Derived &gt;::normalize</definition>
+        <argsstring>()</argsstring>
+        <name>normalize</name>
+        <briefdescription>
+<para>Normalize the underlying complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="161" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="390" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a88af7f6d682384803c7c2a3ee8367ab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Matrix&lt; typename <ref refid="structmanif_1_1_s_e2_base" kindref="compound">SE2Base</ref>&lt; _Derived &gt;::Scalar, 2, 1 &gt;</type>
+        <definition>Eigen::Matrix&lt;typename SE2Base&lt;_Derived&gt;::Scalar, 2, 1&gt; manif::SE2Base&lt; _Derived &gt;::act</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 3 &gt;&gt;&gt; J_vout_m, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 2 &gt;&gt;&gt; J_vout_v) const</argsstring>
+        <name>act</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 3 &gt;&gt;&gt;</type>
+          <declname>J_vout_m</declname>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, 2, 2 &gt;&gt;&gt;</type>
+          <declname>J_vout_v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="319" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="319" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by const reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by const reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>_Derived &amp;</type>
+        <definition>_Derived&amp; manif::LieGroupBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_e2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const _Derived &amp;</type>
+        <definition>const _Derived&amp; manif::LieGroupBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() const &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The base class of the <ref refid="structmanif_1_1_s_e2" kindref="compound">SE2</ref> group. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>See Appendix C of the paper. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::SE2Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::SE2Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" line="19" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_base.h" bodystart="20" bodyend="162"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>_</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a32216d574fa5bd8bf0f29f41dcda571d" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a88af7f6d682384803c7c2a3ee8367ab3" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>act</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SE2Base</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a0d11125c66e139dfcde4881162ac5d40" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1abe394534d27c689b8487a92a4751c9a8" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>angle</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1acc45e0fef27751835a1870df5003c01f" prot="private" virt="non-virtual"><scope>manif::SE2Base</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>between</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SE2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a4e738fe12f6a41d07137ae3fbc5d1e84" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::SE2Base</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::SE2Base</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SE2Base</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SE2Base</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1acfd8f5c0e9560a858efb109972da3aee" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>imag</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a385578d24aaec3aa8dee95dc1709a6f2" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a79e9cf50ee1a768723a99261fe352cd7" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>isometry</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a27a0e8d5f108482f4301d10955493454" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Isometry</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a830f657dbefe76b6dd4a9e201b05767b" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a315b35a56e7c9fd42c9cc19cac99bb90" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>log</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1aaaf84b864aed1216108b0aba676f476e" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>normalize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1aa0f3397fc51c0ec9e9216a0f61e7647b" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>real</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a149f54a7047c39e533ad7dddd6fa3d0a" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Rotation</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a2a4c07bb3559cf744d7fe08d55f174e7" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>rotation</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a57077d9e099ebadedb7453dfb6430ba6" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a5e9903214f592acaa597a11a0102cfae" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Transformation</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a940a2d4a7f3c3898ac92aacffec9d6f2" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Translation</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a0f22dc835383d7a7822c6c5cc9f9c2bb" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>translation</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1aa014c41cb5c88de7b5291b971b898e43" prot="private" virt="non-virtual"><scope>manif::SE2Base</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>Vector</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1af519c48f07f5d8b62d3b7458a89d478c" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>x</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a4f4e4e060dec2ff511ef916b3320a0b9" prot="public" virt="non-virtual"><scope>manif::SE2Base</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

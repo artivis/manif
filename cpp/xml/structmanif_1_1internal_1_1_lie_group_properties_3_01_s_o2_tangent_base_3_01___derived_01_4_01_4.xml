@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_tangent_base_3_01___derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::LieGroupProperties&lt; SO2TangentBase&lt; _Derived &gt; &gt;</compoundname>
+    <includes refid="_s_o2__properties_8h" local="no">SO2_properties.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_tangent_base_3_01___derived_01_4_01_4_1a9a34430a3f2d5a5b0013699792986457" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SO2TangentBase&lt; _Derived &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" line="26" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_tangent_base_3_01___derived_01_4_01_4_1af4572df5b8d8843b003f02a9cfa9a970" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SO2TangentBase&lt; _Derived &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Space dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" line="27" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traits specialization </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" line="24" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_properties.h" bodystart="25" bodyend="28"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_tangent_base_3_01___derived_01_4_01_4_1a9a34430a3f2d5a5b0013699792986457" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SO2TangentBase&lt; _Derived &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_tangent_base_3_01___derived_01_4_01_4_1af4572df5b8d8843b003f02a9cfa9a970" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SO2TangentBase&lt; _Derived &gt; &gt;</scope><name>DoF</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

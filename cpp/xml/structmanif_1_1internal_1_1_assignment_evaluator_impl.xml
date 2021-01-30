@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_assignment_evaluator_impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::AssignmentEvaluatorImpl</compoundname>
+    <derivedcompoundref refid="structmanif_1_1internal_1_1_assignment_evaluator" prot="public" virt="non-virtual">manif::internal::AssignmentEvaluator&lt; Derived &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_assignment_evaluator_impl_1afc4465dcfcb03686fcf49fc3e6d0abb1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::AssignmentEvaluatorImpl&lt; Derived &gt;::run_impl</definition>
+        <argsstring>(const T &amp;)</argsstring>
+        <name>run_impl</name>
+        <param>
+          <type>const T &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" line="10" column="27" bodyfile="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" bodystart="10" bodyend="10"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::AssignmentEvaluator&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_assignment_evaluator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::internal::AssignmentEvaluatorImpl&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_assignment_evaluator_impl"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" line="8" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" bodystart="9" bodyend="11"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_1afc4465dcfcb03686fcf49fc3e6d0abb1" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluatorImpl</scope><name>run_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

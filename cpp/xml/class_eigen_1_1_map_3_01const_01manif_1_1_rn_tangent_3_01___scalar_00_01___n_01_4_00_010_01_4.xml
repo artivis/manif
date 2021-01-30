@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</compoundname>
+    <basecompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</basecompoundref>
+    <includes refid="_rn_tangent__map_8h" local="no">RnTangent_map.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class _Scalar</type>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>_N</declname>
+        <defname>_N</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a29e42f10134e17bd3a0ebd42164b1dee" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_rn_tangent_base" kindref="compound">manif::RnTangentBase</ref>&lt; Map&lt; const <ref refid="structmanif_1_1_rn_tangent" kindref="compound">manif::RnTangent</ref>&lt; _Scalar, _N &gt;, 0 &gt; &gt;</type>
+        <definition>using Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;::Base =  manif::RnTangentBase&lt;Map&lt;const manif::RnTangent&lt;_Scalar, _N&gt;, 0&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="66" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a19c1559b087c86b1a0244a7a8800f86b" prot="protected" static="no" mutable="no">
+        <type>const DataType</type>
+        <definition>const DataType Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="80" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a11c12d999c164e09a2c08016bc6c0d5a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>MANIF_TANGENT_TYPEDEF MANIF_INHERIT_TANGENT_API MANIF_INHERIT_TANGENT_OPERATOR</type>
+        <definition>MANIF_TANGENT_TYPEDEF MANIF_INHERIT_TANGENT_API MANIF_INHERIT_TANGENT_OPERATOR Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;::Map</definition>
+        <argsstring>(const Scalar *coeffs)</argsstring>
+        <name>Map</name>
+        <param>
+          <type>const Scalar *</type>
+          <declname>coeffs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="74" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1acbcafa09042724e50bfe682de59bbe3a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const DataType&amp; Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="76" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Specialization of Map for const <ref refid="structmanif_1_1_rn_tangent" kindref="compound">manif::RnTangent</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_tangent_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_tangent_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="63" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="65" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a29e42f10134e17bd3a0ebd42164b1dee" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>cast</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1acbcafa09042724e50bfe682de59bbe3a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" virt="non-virtual" ambiguityscope="RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;::"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a19c1559b087c86b1a0244a7a8800f86b" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data_</name></member>
+      <member refid="structmanif_1_1_tangent_base_1adf320fca86420a44f1e80cf003800dfb" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a8f7cb0ddbf1d330f4fac736bf316b103" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>exp</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>generator</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a444bd2a713d82b9e3100fbf55cf77c29" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>hat</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>inner</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>InnerWeightsMatrix</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8e7408713b9750c12418ae9ba9dbd90" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a8baef49ae68f130cda30e49f6f402999" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>LieAlg</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2662a9b7a2dc0d5b1d34e1517e258300" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1ac6feb540d5e00226fae388f3289be042" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>ljac</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a3e5c553fdc356cfdf228d68a0fbd8402" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>ljacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a375b870e90fabfce45b5a74c46c54b62" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>lplus</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a11c12d999c164e09a2c08016bc6c0d5a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Map</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acc8d41b513681114f8091f53d81626a1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc150adf396c8432ce0ba909571bd70c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6be164dc3b9118f3bfebd7f59b4a7a38" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a1271777d229f54a5dd0f0f12d45f043f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a35e627252748a0268c6ee908d2d09b12" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc51a6333c409460fc017b2303cd2484" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a3fa85584b927625ddeb8f482008623c6" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab59f8be2812f60af208fcbb2e3683699" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator/=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4d991baead4165a238e5a76fd7c57db8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a414b302f5e268f819a0e992f18dd682d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab26fdad01bd80b6c628465f4b82a0411" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a08bbcf10f4f7ed8210566e3a12556c8a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a606e1b9c212b8320f65378437d302c0b" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abc26abf20f27e8ba2353557c565c04fd" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a1c393e66739bbb2908cf9bec1792cffd" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>retract</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1af67ff1df5bbadafc7570247b7c82ae18" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>rjac</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1adb296c4392ef7a4541743347f787c02e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>rjacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>setZero</name></member>
+      <member refid="structmanif_1_1_rn_tangent_base_1a44dd4814dbf93f0458325533f5da6814" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>smallAdj</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7439ba89e703a34202391e2a6a9aeda1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>squaredWeightedNorm</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>TangentTemplate</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>weightedNorm</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a69d9ad80a547f43f038ee3f60df21ba8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Zero</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

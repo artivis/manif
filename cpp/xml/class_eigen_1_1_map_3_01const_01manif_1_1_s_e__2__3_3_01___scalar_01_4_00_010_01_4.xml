@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</compoundname>
+    <basecompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
+    <includes refid="_s_e__2__3__map_8h" local="no">SE_2_3_map.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class _Scalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ae9e74148fb2f640a45953abefb57f405" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_s_e__2__3_base" kindref="compound">manif::SE_2_3Base</ref>&lt; Map&lt; const <ref refid="structmanif_1_1_s_e__2__3" kindref="compound">manif::SE_2_3</ref>&lt; _Scalar &gt;, 0 &gt; &gt;</type>
+        <definition>using Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;::Base =  manif::SE_2_3Base&lt;Map&lt;const manif::SE_2_3&lt;_Scalar&gt;, 0&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" line="70" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1aec16f4265887886aa866086b69fec942" prot="protected" static="no" mutable="no">
+        <type>const DataType</type>
+        <definition>const DataType Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" line="84" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ad23c0a6121e8e0e14f03fd543039b2a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;::Map</definition>
+        <argsstring>(const Scalar *coeffs)</argsstring>
+        <name>Map</name>
+        <param>
+          <type>const Scalar *</type>
+          <declname>coeffs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" line="78" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ac1e410882d7dea56f966892a3112570d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const DataType&amp; Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" line="80" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Specialization of Map for const <ref refid="structmanif_1_1_s_e__2__3" kindref="compound">manif::SE_2_3</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e__2__3_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e__2__3_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" line="67" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_map.h" bodystart="69" bodyend="85"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>_</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a4d16515e33ebfa6926caab5f87b75f5e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a3c591f0b4f8ea6e8ff2abb2c093cbe9a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1ad89d0fda81288e2c3f7dc00271237872" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a630f905f36c91fe54b23f28918fb5fb0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>asSO3</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1ad7bfd86935d971485100661681d46b75" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>asSO3</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ae9e74148fb2f640a45953abefb57f405" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>between</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ac1e410882d7dea56f966892a3112570d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" virt="non-virtual" ambiguityscope="SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;::"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a0e91c798caaa5c8d17256af46b16b21a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1aec16f4265887886aa866086b69fec942" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>data_</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1ae246d31fa937c887846ce535e4bdfb46" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Isometry</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a2c6f7ea1399c48c3b890cb642b2cddaa" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>isometry</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1ac66bc1823ed5baf8b6cb921c12111014" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a703b5a35c95ad5b2330261e3d1f36927" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>linearVelocity</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a2186a21f6b286465d518fa0d9e25fa65" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>LinearVelocity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a85c4112602ab4fa03242282ed54ce4fc" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>log</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>lplus</name></member>
+      <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4_1ad23c0a6121e8e0e14f03fd543039b2a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Map</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a2240fa9856d556c60b2abae8b95da7c5" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>normalize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a612122be3b06e060ca3ce3ff274033dd" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>quat</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1acb461324505843bd082d92c4b03fe604" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>QuaternionDataType</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a80f7dabb87f07212a7b7787358b098fa" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>rotation</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1aee1f9d8fa81ddd6a053310d73851a49b" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Rotation</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1add05d0a0cddf0b80fa8957ad9f8b5a39" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Translation</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1aaa6c8050fb37d924532e2a473706f9bb" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>translation</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>Vector</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a9b799fd9173fafdb8e8953a3361df27c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>vx</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a7119ecee85387bafd336579bb2d07125" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>vy</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a63d12c74e3780d95190c97b5358a3d75" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>vz</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a73db41759a35e666db6660bff884c0e6" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>x</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1acf2652b833c4f93c370a20cf0858f11f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>y</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1ac9a2c1f585e6977e4c64d38a2b9f347e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

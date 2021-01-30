@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</compoundname>
+    <includes refid="eigen_8h" local="no">eigen.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>_Rows</declname>
+        <defname>_Rows</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>_Cols</declname>
+        <defname>_Cols</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>_Options</declname>
+        <defname>_Options</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>_MaxRows</declname>
+        <defname>_MaxRows</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>_MaxCols</declname>
+        <defname>_MaxCols</defname>
+      </param>
+      <param>
+        <type>typename NewScalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" prot="public" static="no">
+        <type>Eigen::Matrix&lt; NewScalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;</type>
+        <definition>using manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;::cast =  Eigen::Matrix&lt;NewScalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols&gt;</definition>
+        <argsstring></argsstring>
+        <name>cast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="126" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traitscast specialization that come handy when writing thing like using Matrix3f = typename traitscast&lt;Matrix3d, float&gt;::cast; </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="124" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="125" bodyend="127"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" prot="public" virt="non-virtual"><scope>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</scope><name>cast</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

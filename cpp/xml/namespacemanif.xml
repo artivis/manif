@@ -1,0 +1,2904 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="namespacemanif" kind="namespace" language="C++">
+    <compoundname>manif</compoundname>
+    <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
+    <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
+    <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
+    <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
+    <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
+    <innerclass refid="structmanif_1_1_lie_group_base" prot="public">manif::LieGroupBase</innerclass>
+    <innerclass refid="structmanif_1_1runtime__error" prot="public">manif::runtime_error</innerclass>
+    <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
+    <innerclass refid="structmanif_1_1_rn" prot="public">manif::Rn</innerclass>
+    <innerclass refid="structmanif_1_1_rn_tangent" prot="public">manif::RnTangent</innerclass>
+    <innerclass refid="structmanif_1_1_rn_base" prot="public">manif::RnBase</innerclass>
+    <innerclass refid="structmanif_1_1_rn_tangent_base" prot="public">manif::RnTangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_e2" prot="public">manif::SE2</innerclass>
+    <innerclass refid="structmanif_1_1_s_e2_tangent" prot="public">manif::SE2Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e2_base" prot="public">manif::SE2Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_e2_tangent_base" prot="public">manif::SE2TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_e3" prot="public">manif::SE3</innerclass>
+    <innerclass refid="structmanif_1_1_s_e3_tangent" prot="public">manif::SE3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e3_base" prot="public">manif::SE3Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_e3_tangent_base" prot="public">manif::SE3TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_e__2__3" prot="public">manif::SE_2_3</innerclass>
+    <innerclass refid="structmanif_1_1_s_e__2__3_tangent" prot="public">manif::SE_2_3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e__2__3_base" prot="public">manif::SE_2_3Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public">manif::SE_2_3TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_o2" prot="public">manif::SO2</innerclass>
+    <innerclass refid="structmanif_1_1_s_o2_tangent" prot="public">manif::SO2Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_o2_base" prot="public">manif::SO2Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_o2_tangent_base" prot="public">manif::SO2TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_o3" prot="public">manif::SO3</innerclass>
+    <innerclass refid="structmanif_1_1_s_o3_tangent" prot="public">manif::SO3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_o3_base" prot="public">manif::SO3Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_o3_tangent_base" prot="public">manif::SO3TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_tangent_base" prot="public">manif::TangentBase</innerclass>
+    <innernamespace refid="namespacemanif_1_1detail">manif::detail</innernamespace>
+    <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>INTERP_METHOD</name>
+        <enumvalue id="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9ba42052f3dc6b466b6132c1a1dd1f3c135" prot="public">
+          <name>SLERP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9baccd681e34e5e40fbce74618c3ccffcff" prot="public">
+          <name>CUBIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9ba9b2f119cf49c074cb6ad654e6ce86af7" prot="public">
+          <name>CNSMOOTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="276" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="277" bodyend="281"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="ceres_8h_1ac6ddd9b278529245f92e46842fd29c63" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresConstraintSO2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresConstraintSO2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="24" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a2b5927ae30a820a6079a2b986d73d08c" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresLocalParameterizationSO2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresLocalParameterizationSO2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="25" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1ad20159821fd04530436a69c8c3cd3423" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresObjectiveSO2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresObjectiveSO2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="26" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a3f7b2abd726b9f6eb42bf8f5ef70387a" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresConstraintSO3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresConstraintSO3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="34" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1aee09e7904bdab5c5d0a2826f348d4154" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresLocalParameterizationSO3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresLocalParameterizationSO3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="35" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1acaa0b20d837b7c4e512e043936f987dc" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresObjectiveSO3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresObjectiveSO3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="36" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a4324f19851d969ecec715fb89101309c" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresConstraintSE2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresConstraintSE2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="44" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a43d21464a06e1600765d7ba0cafefd68" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresLocalParameterizationSE2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresLocalParameterizationSE2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="45" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a2570a7c7229594e3814b302ac334f111" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresObjectiveSE2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresObjectiveSE2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="46" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresConstraintSE3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresConstraintSE3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="54" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a32997ad0b092395eb2530d1c86354b7c" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresLocalParameterizationSE3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresLocalParameterizationSE3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="55" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="ceres_8h_1a40da5c261df2138cd2f6df516ce22120" prot="public" static="no">
+        <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
+        <definition>using manif::CeresObjectiveSE3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <argsstring></argsstring>
+        <name>CeresObjectiveSE3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="56" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 1 &gt;</type>
+        <definition>using manif::R1 = typedef Rn&lt;_Scalar, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>R1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="97" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a477fdb281fd6b72f55dd2b63012a7054" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 2 &gt;</type>
+        <definition>using manif::R2 = typedef Rn&lt;_Scalar, 2&gt;</definition>
+        <argsstring></argsstring>
+        <name>R2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="98" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a6dffbe7afe32b8136b0572869c6b601c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 3 &gt;</type>
+        <definition>using manif::R3 = typedef Rn&lt;_Scalar, 3&gt;</definition>
+        <argsstring></argsstring>
+        <name>R3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="99" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1abc04f58b3bfe90ce7efa222ed0b7937b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 4 &gt;</type>
+        <definition>using manif::R4 = typedef Rn&lt;_Scalar, 4&gt;</definition>
+        <argsstring></argsstring>
+        <name>R4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="100" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a946b27b1124dc1f4656ff68b84545d37" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 5 &gt;</type>
+        <definition>using manif::R5 = typedef Rn&lt;_Scalar, 5&gt;</definition>
+        <argsstring></argsstring>
+        <name>R5</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="101" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a263f21fc8c1aa6cbd50ac314ec2e657f" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 6 &gt;</type>
+        <definition>using manif::R6 = typedef Rn&lt;_Scalar, 6&gt;</definition>
+        <argsstring></argsstring>
+        <name>R6</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="102" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a08ac29332a6512078aa5fda2a7a8df67" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 7 &gt;</type>
+        <definition>using manif::R7 = typedef Rn&lt;_Scalar, 7&gt;</definition>
+        <argsstring></argsstring>
+        <name>R7</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="103" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1aa3dbb8b0e1735d0abf72e8281c805193" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 8 &gt;</type>
+        <definition>using manif::R8 = typedef Rn&lt;_Scalar, 8&gt;</definition>
+        <argsstring></argsstring>
+        <name>R8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="104" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a9a4af6400706ef5322b3a1d4ac6ee196" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, 9 &gt;</type>
+        <definition>using manif::R9 = typedef Rn&lt;_Scalar, 9&gt;</definition>
+        <argsstring></argsstring>
+        <name>R9</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="105" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1af9871e10feaf4dae441549e5f418eceb" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 1 &gt;</type>
+        <definition>using manif::R1Tangent = typedef RnTangent&lt;_Scalar, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>R1Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="86" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1abca13aca626f9073b402246eee5c3408" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 2 &gt;</type>
+        <definition>using manif::R2Tangent = typedef RnTangent&lt;_Scalar, 2&gt;</definition>
+        <argsstring></argsstring>
+        <name>R2Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="87" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1abc1aca110d483a28ab4ffd7c598eacc8" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 3 &gt;</type>
+        <definition>using manif::R3Tangent = typedef RnTangent&lt;_Scalar, 3&gt;</definition>
+        <argsstring></argsstring>
+        <name>R3Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="88" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1a6ee0f3d326f4436023f93a82e6ec7a6d" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 4 &gt;</type>
+        <definition>using manif::R4Tangent = typedef RnTangent&lt;_Scalar, 4&gt;</definition>
+        <argsstring></argsstring>
+        <name>R4Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="89" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1a34a791334f3112a4507a4a83487c2209" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 5 &gt;</type>
+        <definition>using manif::R5Tangent = typedef RnTangent&lt;_Scalar, 5&gt;</definition>
+        <argsstring></argsstring>
+        <name>R5Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="90" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1a55992733f37ddb2141de2d27c60f23b8" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 6 &gt;</type>
+        <definition>using manif::R6Tangent = typedef RnTangent&lt;_Scalar, 6&gt;</definition>
+        <argsstring></argsstring>
+        <name>R6Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="91" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1a8e52f0a72f3886c655c2e2aa00d09024" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 7 &gt;</type>
+        <definition>using manif::R7Tangent = typedef RnTangent&lt;_Scalar, 7&gt;</definition>
+        <argsstring></argsstring>
+        <name>R7Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="92" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1ab00a8303f4fbf1d74463daee9065ec4b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 8 &gt;</type>
+        <definition>using manif::R8Tangent = typedef RnTangent&lt;_Scalar, 8&gt;</definition>
+        <argsstring></argsstring>
+        <name>R8Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="93" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_rn_tangent_8h_1ae21187f91283001ad81f934f4500c887" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, 9 &gt;</type>
+        <definition>using manif::R9Tangent = typedef RnTangent&lt;_Scalar, 9&gt;</definition>
+        <argsstring></argsstring>
+        <name>R9Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="94" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="average_8h_1a88548cd01475eb746463ee47e8d7798a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
+            <declname>Container</declname>
+            <defname>Container</defname>
+          </param>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>LieGroup manif::average_biinvariant</definition>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <name>average_biinvariant</name>
+        <param>
+          <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>typename LieGroup::Scalar</type>
+          <declname>eps</declname>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_iterations</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+<para>Compute an average point on Lie groups given a list of &apos;close&apos; points. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">points</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of &apos;close&apos; points to compute an average point from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">eps</parametername>
+<parametername direction="in">update</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>norm threshold to break the iterative averaging. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">max_iterations</parametername>
+<parametername direction="in">max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of iterations. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The average point of the input points.</para>
+</simplesect>
+<simplesect kind="note"><para>see (a) &quot;Bi-invariant Means in Lie Groups.
+Application to Left-in variant Polyaffine Transformations&quot; p. 21 Sec. 4.2 <ref refid="" kindref="compound">see also (b) &quot;A globally convergent numerical algorithm for computing the center of
+mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.721.8010&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.721.8010&amp;rep=rep1&amp;type=pdf</ulink> </ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="54" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="54" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="average_8h_1a64c41649d654147e9a5dd9f6b37f1387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
+            <declname>Container</declname>
+            <defname>Container</defname>
+          </param>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>LieGroup manif::average</definition>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <name>average</name>
+        <param>
+          <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>typename LieGroup::Scalar</type>
+          <declname>eps</declname>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_iterations</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="113" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="113" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="average_8h_1a8888896150c391239eff3eead0b655d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
+            <declname>Container</declname>
+            <defname>Container</defname>
+          </param>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>LieGroup manif::average_frechet_left</definition>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <name>average_frechet_left</name>
+        <param>
+          <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>typename LieGroup::Scalar</type>
+          <declname>eps</declname>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_iterations</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="169" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="169" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="average_8h_1a3f8c30418ab3318e402a806200cf9e4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
+            <declname>Container</declname>
+            <defname>Container</defname>
+          </param>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>LieGroup manif::average_frechet_right</definition>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <name>average_frechet_right</name>
+        <param>
+          <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>typename LieGroup::Scalar</type>
+          <declname>eps</declname>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_iterations</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="222" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="222" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="bezier_8h_1abfd020f6bb8fb5e19c5f8435e782ada2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; typename LieGroup::LieGroup &gt;</type>
+        <definition>std::vector&lt;typename LieGroup::LieGroup&gt; manif::computeBezierCurve</definition>
+        <argsstring>(const std::vector&lt; LieGroup &gt; &amp;control_points, const unsigned int degree, const unsigned int k_interp)</argsstring>
+        <name>computeBezierCurve</name>
+        <param>
+          <type>const std::vector&lt; LieGroup &gt; &amp;</type>
+          <declname>control_points</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>degree</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>k_interp</declname>
+        </param>
+        <briefdescription>
+<para>Curve fitting using the DeCasteljau algorithm on Lie groups. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trajectory</parametername>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>discretized trajectory. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>degree</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>degree of smoothness of the fitted curve. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k_interp</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of points to interpolate between two consecutive points of the trajectory. interpolate k_interp for t in ]0,1]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>closed_curve</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the input trajectory is closed or not. If true, the first and the last points of the input trajectory are used to interpolate points inbetween. Default false. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The interpolated smooth trajectory</para>
+</simplesect>
+<simplesect kind="note"><para>A naive implementation of the DeCasteljau algorithm on Lie groups.</para>
+</simplesect>
+<ref refid="" kindref="compound">https://www.wikiwand.com/en/De_Casteljau%27s_algorithm</ref></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/bezier.h" line="33" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/bezier.h" bodystart="33" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="decasteljau_8h_1aaee6cd5d9ceadf81b992b0588ede894b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename LieGroup</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; typename LieGroup::LieGroup &gt;</type>
+        <definition>std::vector&lt;typename LieGroup::LieGroup&gt; manif::decasteljau</definition>
+        <argsstring>(const std::vector&lt; LieGroup &gt; &amp;trajectory, const unsigned int degree, const unsigned int k_interp, const bool closed_curve=false)</argsstring>
+        <name>decasteljau</name>
+        <param>
+          <type>const std::vector&lt; LieGroup &gt; &amp;</type>
+          <declname>trajectory</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>degree</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>k_interp</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>closed_curve</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Curve fitting using the DeCasteljau algorithm on Lie groups. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trajectory</parametername>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>discretized trajectory. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>degree</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>degree of smoothness of the fitted curve. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k_interp</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of points to interpolate between two consecutive points of the trajectory. interpolate k_interp for t in ]0,1]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>closed_curve</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the input trajectory is closed or not. If true, the first and the last points of the input trajectory are used to interpolate points inbetween. Default false. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The interpolated smooth trajectory</para>
+</simplesect>
+<simplesect kind="note"><para>A naive implementation of the DeCasteljau algorithm on Lie groups.</para>
+</simplesect>
+<ref refid="" kindref="compound">https://www.wikiwand.com/en/De_Casteljau%27s_algorithm</ref></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/decasteljau.h" line="31" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/decasteljau.h" bodystart="31" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1a039949a766aced0ba6b70e666f42ee34" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::binomial_coefficient</definition>
+        <argsstring>(const T n, const T k)</argsstring>
+        <name>binomial_coefficient</name>
+        <param>
+          <type>const T</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>Constexpr function to compute binomial coefficient. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="12" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="12" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1acd03b1bdbc5b9a6a191431c49cbda958" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::ipow</definition>
+        <argsstring>(const T base, const int exp, T carry=1)</argsstring>
+        <name>ipow</name>
+        <param>
+          <type>const T</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>exp</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>carry</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Constexpr function to compute power. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="25" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1adebc43a184092f1b146e15776ea172be" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::polynomialBernstein</definition>
+        <argsstring>(const T n, const T i, const T t)</argsstring>
+        <name>polynomialBernstein</name>
+        <param>
+          <type>const T</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Constexpr function to compute the Bernstein polynomial. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="33" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1aa34dab229333417af321bf8646ef3e98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T manif::smoothing_phi</definition>
+        <argsstring>(const T t, const std::size_t degree)</argsstring>
+        <name>smoothing_phi</name>
+        <param>
+          <type>const T</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const std::size_t</type>
+          <declname>degree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="42" column="3" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="42" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1af56f6df32ff3e0e4cd75088a07862e19" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::LieGroup</type>
+        <definition>static LieGroupBase&lt;_Derived&gt;::LieGroup manif::interpolate_slerp</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;ma, const LieGroupBase&lt; _Derived &gt; &amp;mb, const _Scalar t)</argsstring>
+        <name>interpolate_slerp</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ma</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>mb</declname>
+        </param>
+        <param>
+          <type>const _Scalar</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Slerp interpolation. @detail Interpolate a point mc between ma and mb at t in [0,1]. mc=ma if t=0 mc=mb if t=1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Final Point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time at which to interpolate in [0,1]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_ma Jacobian of the interpolated point wrt ma. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_mb Jacobian of the interpolated point wrt mb. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="92" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="92" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1aaf694703bb0cc2672cd72be078299907" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::LieGroup</type>
+        <definition>static LieGroupBase&lt;_Derived&gt;::LieGroup manif::interpolate_cubic</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;ma, const LieGroupBase&lt; _Derived &gt; &amp;mb, const _Scalar t, const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;ta=LieGroupBase&lt; _Derived &gt;::Tangent::Zero(), const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;tb=LieGroupBase&lt; _Derived &gt;::Tangent::Zero())</argsstring>
+        <name>interpolate_cubic</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ma</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>mb</declname>
+        </param>
+        <param>
+          <type>const _Scalar</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>ta</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>tb</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <briefdescription>
+<para>Cubic interpolation. @detail Interpolate a point mc between ma and mb at t in [0,1]. mc=ma if t=0 mc=mb if t=1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Final Point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time at which to interpolate in [0,1]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ta. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tb. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_ma Jacobian of the interpolated point wrt ma. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_mb Jacobian of the interpolated point wrt mb. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="162" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="162" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1a834c3c1151581f818aaba705030d8590" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::LieGroup</type>
+        <definition>static LieGroupBase&lt;_Derived&gt;::LieGroup manif::interpolate_smooth</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;ma, const LieGroupBase&lt; _Derived &gt; &amp;mb, const _Scalar t, const unsigned int m, const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;ta=LieGroupBase&lt; _Derived &gt;::Tangent::Zero(), const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;tb=LieGroupBase&lt; _Derived &gt;::Tangent::Zero())</argsstring>
+        <name>interpolate_smooth</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ma</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>mb</declname>
+        </param>
+        <param>
+          <type>const _Scalar</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>ta</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>tb</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <briefdescription>
+<para>Smooth interpolation. @detail Interpolate a point mc between ma and mb at t in [0,1]. mc=ma if t=0 mc=mb if t=1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Final Point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time at which to interpolate in [0,1]. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ta. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tb. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_ma Jacobian of the interpolated point wrt ma. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_mb Jacobian of the interpolated point wrt mb.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>&quot;A two-step algorithm of smooth spline
+generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leite and Rui C. Rodrigues. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="239" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="239" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="interpolation_8h_1aef456041f95ce4198f8488e22e177f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::LieGroup</type>
+        <definition>LieGroupBase&lt;_Derived&gt;::LieGroup manif::interpolate</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;ma, const LieGroupBase&lt; _Derived &gt; &amp;mb, const _Scalar t, const INTERP_METHOD method=INTERP_METHOD::SLERP, const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;ta=LieGroupBase&lt; _Derived &gt;::Tangent::Zero(), const typename LieGroupBase&lt; _Derived &gt;::Tangent &amp;tb=LieGroupBase&lt; _Derived &gt;::Tangent::Zero())</argsstring>
+        <name>interpolate</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ma</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>mb</declname>
+        </param>
+        <param>
+          <type>const _Scalar</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const INTERP_METHOD</type>
+          <declname>method</declname>
+          <defval>INTERP_METHOD::SLERP</defval>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>ta</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent &amp;</type>
+          <declname>tb</declname>
+          <defval><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;::Tangent::Zero()</defval>
+        </param>
+        <briefdescription>
+<para>A helper function for interpolation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para>interpolate_slerp. </para>
+</simplesect>
+<simplesect kind="see"><para>interpolate_cubic. </para>
+</simplesect>
+<simplesect kind="see"><para>interpolate_smooth. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="291" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="291" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="ceres__utils_8h_1adb02ae0e31e731f19dff21982f8170a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _LieGroup</type>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; ceres::AutoDiffLocalParameterization&lt; <ref refid="classmanif_1_1_ceres_local_parameterization_functor" kindref="compound">CeresLocalParameterizationFunctor</ref>&lt; _LieGroup &gt;, _LieGroup::RepSize, _LieGroup::DoF &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; ceres::AutoDiffLocalParameterization&lt;CeresLocalParameterizationFunctor&lt;_LieGroup&gt;, _LieGroup::RepSize, _LieGroup::DoF&gt; &gt; manif::make_local_parameterization_autodiff</definition>
+        <argsstring>()</argsstring>
+        <name>make_local_parameterization_autodiff</name>
+        <briefdescription>
+<para>Helper function to create a Ceres autodiff local parameterization wrapper. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classmanif_1_1_ceres_local_parameterization_functor" kindref="compound">CeresLocalParameterizationFunctor</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="21" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="ceres__utils_8h_1aa83ef037aa43ad8fe1dccdbe8c1eb1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; ceres::AutoDiffCostFunction&lt; <ref refid="classmanif_1_1_ceres_objective_functor" kindref="compound">CeresObjectiveFunctor</ref>&lt; _LieGroup &gt;, 1, _LieGroup::RepSize &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; ceres::AutoDiffCostFunction&lt; CeresObjectiveFunctor&lt;_LieGroup&gt;, 1, _LieGroup::RepSize&gt; &gt; manif::make_objective_autodiff</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>make_objective_autodiff</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Helper function to create a Ceres autodiff objective wrapper. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classmanif_1_1_ceres_objective_functor" kindref="compound">CeresObjectiveFunctor</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="36" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="36" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="ceres__utils_8h_1a84514b43e5738e0aba8495bdbc58eaca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _LieGroup</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; ceres::AutoDiffCostFunction&lt; <ref refid="classmanif_1_1_ceres_constraint_functor" kindref="compound">CeresConstraintFunctor</ref>&lt; _LieGroup &gt;, _LieGroup::DoF, _LieGroup::RepSize, _LieGroup::RepSize &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; ceres::AutoDiffCostFunction&lt; CeresConstraintFunctor&lt;_LieGroup&gt;, _LieGroup::DoF, _LieGroup::RepSize, _LieGroup::RepSize&gt; &gt; manif::make_constraint_autodiff</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>make_constraint_autodiff</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Helper function to create a Ceres autodiff constraint wrapper. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classmanif_1_1_ceres_constraint_functor" kindref="compound">CeresConstraintFunctor</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="52" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="52" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1ae20663fb2bed30bfb785d8590f4f45a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>const _Derived::DataType &amp;</type>
+        <definition>const _Derived::DataType&amp; manif::coeffs</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group)</argsstring>
+        <name>coeffs</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="10" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="10" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a69e05e9dc6702cee89ece996d37ce0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>const _Derived::DataType &amp;</type>
+        <definition>const _Derived::DataType&amp; manif::coeffs</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;tangent)</argsstring>
+        <name>coeffs</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="17" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a82db5fa0bc6163129d0a50cf3124ba25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>const _Derived::Scalar *</type>
+        <definition>const _Derived::Scalar* manif::data</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group)</argsstring>
+        <name>data</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="24" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a9f7301aacc32b1e95b4e287c2f7db2d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::Scalar *</type>
+        <definition>_Derived::Scalar* manif::data</definition>
+        <argsstring>(LieGroupBase&lt; _Derived &gt; &amp;lie_group)</argsstring>
+        <name>data</name>
+        <param>
+          <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="31" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a235491fb309c83cf453a52817a123e8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>const _Derived::Scalar *</type>
+        <definition>const _Derived::Scalar* manif::data</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;tangent)</argsstring>
+        <name>data</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="38" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a566cc74cdb71fb94651f2bb7464da72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::Scalar *</type>
+        <definition>_Derived::Scalar* manif::data</definition>
+        <argsstring>(TangentBase&lt; _Derived &gt; &amp;tangent)</argsstring>
+        <name>data</name>
+        <param>
+          <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="45" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a7a068c52f8235362ae316edf9e069a7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::identity</definition>
+        <argsstring>(LieGroupBase&lt; _Derived &gt; &amp;lie_group)</argsstring>
+        <name>identity</name>
+        <param>
+          <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="52" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a4e507312642be570258356358ac4c5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _LieGroup</type>
+          </param>
+        </templateparamlist>
+        <type>_LieGroup</type>
+        <definition>_LieGroup manif::Identity</definition>
+        <argsstring>()</argsstring>
+        <name>Identity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="58" column="11" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a513af9be91fc9169dc270d7849a86f23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::zero</definition>
+        <argsstring>(TangentBase&lt; _Derived &gt; &amp;tangent)</argsstring>
+        <name>zero</name>
+        <param>
+          <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="65" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1aed5c7b7cdd948a7f72d8a2a3587bbf5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Tangent</type>
+          </param>
+        </templateparamlist>
+        <type>_Tangent</type>
+        <definition>_Tangent manif::Zero</definition>
+        <argsstring>()</argsstring>
+        <name>Zero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="71" column="10" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a5906dc016d463552a7fb76c028da7931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::random</definition>
+        <argsstring>(LieGroupBase&lt; _Derived &gt; &amp;lie_group)</argsstring>
+        <name>random</name>
+        <param>
+          <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="78" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a17856dfe22b0e8e11a0ccdbb1ead3fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Type</type>
+          </param>
+        </templateparamlist>
+        <type>_Type</type>
+        <definition>_Type manif::Random</definition>
+        <argsstring>()</argsstring>
+        <name>Random</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="84" column="7" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a3c19e6c137b556ddb069f166866aea00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::random</definition>
+        <argsstring>(TangentBase&lt; _Derived &gt; &amp;tangent)</argsstring>
+        <name>random</name>
+        <param>
+          <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="91" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a011e436350b65006d6232e656486d8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::LieGroup</type>
+        <definition>_Derived::LieGroup manif::inverse</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group, typename _Derived::OpJacobianRef J_minv_m={})</argsstring>
+        <name>inverse</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OpJacobianRef</type>
+          <declname>J_minv_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="98" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="98" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a648a67f6d91d5dee23dba0d42022d87a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedMan</type>
+          </param>
+          <param>
+            <type>typename _DerivedTan</type>
+          </param>
+        </templateparamlist>
+        <type>_DerivedMan::LieGroup</type>
+        <definition>_DerivedMan::LieGroup manif::rplus</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedMan &gt; &amp;lie_group, const TangentBase&lt; _DerivedTan &gt; &amp;tangent, typename _DerivedMan::OpJacobianRef J_mout_m={}, typename _DerivedMan::OpJacobianRef J_mout_t={})</argsstring>
+        <name>rplus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedMan &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedTan &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="106" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="106" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1afc0e615b2d824170754cc5f88e658035" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedMan</type>
+          </param>
+          <param>
+            <type>typename _DerivedTan</type>
+          </param>
+        </templateparamlist>
+        <type>_DerivedMan::LieGroup</type>
+        <definition>_DerivedMan::LieGroup manif::lplus</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedMan &gt; &amp;lie_group, const TangentBase&lt; _DerivedTan &gt; &amp;tangent, typename _DerivedMan::OpJacobianRef J_mout_m={}, typename _DerivedMan::OpJacobianRef J_mout_t={})</argsstring>
+        <name>lplus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedMan &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedTan &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="116" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="116" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1acfc673b2f49e06dc48ec22e4c4b26aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedMan</type>
+          </param>
+          <param>
+            <type>typename _DerivedTan</type>
+          </param>
+        </templateparamlist>
+        <type>_DerivedMan::LieGroup</type>
+        <definition>_DerivedMan::LieGroup manif::plus</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedMan &gt; &amp;lie_group, const TangentBase&lt; _DerivedTan &gt; &amp;tangent, typename _DerivedMan::OpJacobianRef J_mout_m={}, typename _DerivedMan::OpJacobianRef J_mout_t={})</argsstring>
+        <name>plus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedMan &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedTan &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _DerivedMan::OpJacobianRef</type>
+          <declname>J_mout_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="126" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="126" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a87b037d5a558d46e17f98d5b00a40ddf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived0</type>
+          </param>
+          <param>
+            <type>typename _Derived1</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived0::Tangent</type>
+        <definition>_Derived0::Tangent manif::rminus</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived0 &gt; &amp;lie_group_lhs, const LieGroupBase&lt; _Derived1 &gt; &amp;lie_group_rhs, typename _Derived0::OptJacobianRef J_t_ma={}, typename _Derived0::OptJacobianRef J_t_mb={})</argsstring>
+        <name>rminus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived0 &gt; &amp;</type>
+          <declname>lie_group_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived1 &gt; &amp;</type>
+          <declname>lie_group_rhs</declname>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="136" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="136" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a704d432231d85be05d27f9ffc74d3833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived0</type>
+          </param>
+          <param>
+            <type>typename _Derived1</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived0::Tangent</type>
+        <definition>_Derived0::Tangent manif::lminus</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived0 &gt; &amp;lie_group_lhs, const LieGroupBase&lt; _Derived1 &gt; &amp;lie_group_rhs, typename _Derived0::OptJacobianRef J_t_ma={}, typename _Derived0::OptJacobianRef J_t_mb={})</argsstring>
+        <name>lminus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived0 &gt; &amp;</type>
+          <declname>lie_group_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived1 &gt; &amp;</type>
+          <declname>lie_group_rhs</declname>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="146" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="146" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a4b41435976d7cc36a9ca72e05688a89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived0</type>
+          </param>
+          <param>
+            <type>typename _Derived1</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived0::Tangent</type>
+        <definition>_Derived0::Tangent manif::minus</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived0 &gt; &amp;lie_group_lhs, const LieGroupBase&lt; _Derived1 &gt; &amp;lie_group_rhs, typename _Derived0::OptJacobianRef J_t_ma={}, typename _Derived0::OptJacobianRef J_t_mb={})</argsstring>
+        <name>minus</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived0 &gt; &amp;</type>
+          <declname>lie_group_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived1 &gt; &amp;</type>
+          <declname>lie_group_rhs</declname>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_t_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="156" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="156" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a35fbecd3477d57f6a60c1c5d88edd602" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>MANIF_DEPRECATED _Derived::Tangent</type>
+        <definition>MANIF_DEPRECATED _Derived::Tangent manif::lift</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group, typename _Derived::OptJacobianRef J_l_m={})</argsstring>
+        <name>lift</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_l_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="167" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="167" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1aa005874089802e0315df9074f7f89c48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::Tangent</type>
+        <definition>_Derived::Tangent manif::log</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group, typename _Derived::OptJacobianRef J_l_m={})</argsstring>
+        <name>log</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_l_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="175" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="175" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1adadc051b9518af950b2de1e82c86eae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>MANIF_DEPRECATED _Derived::LieGroup</type>
+        <definition>MANIF_DEPRECATED _Derived::LieGroup manif::retract</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;tangent, typename _Derived::OptJacobianRef J_r_t={})</argsstring>
+        <name>retract</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_r_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="184" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a204ec012f89c5f0a1f829390a3ba9ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::LieGroup</type>
+        <definition>_Derived::LieGroup manif::exp</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;tangent, typename _Derived::OptJacobianRef J_e_t={})</argsstring>
+        <name>exp</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>tangent</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_e_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="192" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="192" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a70ea23f1f27fdde8c4b36dc47b85966a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived0</type>
+          </param>
+          <param>
+            <type>typename _Derived1</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived0::LieGroup</type>
+        <definition>_Derived0::LieGroup manif::compose</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived0 &gt; &amp;lie_group_lhs, const LieGroupBase&lt; _Derived1 &gt; &amp;lie_group_rhs, typename _Derived0::OptJacobianRef J_mc_ma={}, typename _Derived0::OptJacobianRef J_mc_mb={})</argsstring>
+        <name>compose</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived0 &gt; &amp;</type>
+          <declname>lie_group_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived1 &gt; &amp;</type>
+          <declname>lie_group_rhs</declname>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_mc_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_mc_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="200" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="200" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a971cd9d0dc1600a7f139f10e043aa080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived0</type>
+          </param>
+          <param>
+            <type>typename _Derived1</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived0::LieGroup</type>
+        <definition>_Derived0::LieGroup manif::between</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived0 &gt; &amp;lie_group_lhs, const LieGroupBase&lt; _Derived1 &gt; &amp;lie_group_rhs, typename _Derived0::OptJacobianRef J_mc_ma={}, typename _Derived0::OptJacobianRef J_mc_mb={})</argsstring>
+        <name>between</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived0 &gt; &amp;</type>
+          <declname>lie_group_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived1 &gt; &amp;</type>
+          <declname>lie_group_rhs</declname>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_mc_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived0::OptJacobianRef</type>
+          <declname>J_mc_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="210" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="210" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="functions_8h_1a60b95930002126191ea31ccf40485fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Derived::Vector</type>
+        <definition>_Derived::Vector manif::act</definition>
+        <argsstring>(const LieGroupBase&lt; _Derived &gt; &amp;lie_group, typename _Derived::Vector v, typename _Derived::OptJacobianRef J_vout_m={}, typename _Derived::OptJacobianRef J_vout_v={})</argsstring>
+        <name>act</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>lie_group</declname>
+        </param>
+        <param>
+          <type>typename _Derived::Vector</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_vout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>typename _Derived::OptJacobianRef</type>
+          <declname>J_vout_v</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="220" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="220" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="eigen_8h_1a58f911f257dddfa789c94d90510b5b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_arithmetic&lt; _Scalar &gt;::value||<ref refid="structmanif_1_1internal_1_1is__ad" kindref="compound">internal::is_ad</ref>&lt; _Scalar &gt;::value, Eigen::Matrix&lt; _Scalar, 2, 2 &gt; &gt;::type</type>
+        <definition>std::enable_if&lt;std::is_arithmetic&lt;_Scalar&gt;::value || internal::is_ad&lt;_Scalar&gt;::value, Eigen::Matrix&lt;_Scalar, 2, 2&gt; &gt;::type manif::skew</definition>
+        <argsstring>(const _Scalar v)</argsstring>
+        <name>skew</name>
+        <param>
+          <type>const _Scalar</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Return a 2x2 skew matrix given a scalar. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>[x] = | 0 -x | | x 0 | </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="139" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="139" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="eigen_8h_1a19dd1467c1dfb4e720587c16e1ebce78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;(internal::is_base_of_v&lt; Eigen::MatrixBase&lt; _Derived &gt;, _Derived &gt;) &amp;&amp;_Derived::RowsAtCompileTime==3), Eigen::Matrix&lt; typename _Derived::Scalar, 3, 3 &gt; &gt;::type</type>
+        <definition>std::enable_if&lt;(internal::is_base_of_v&lt;Eigen::MatrixBase&lt;_Derived&gt;, _Derived&gt;) &amp;&amp; _Derived::RowsAtCompileTime == 3), Eigen::Matrix&lt;typename _Derived::Scalar, 3, 3&gt; &gt;::type manif::skew</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _Derived &gt; &amp;v)</argsstring>
+        <name>skew</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _Derived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Return a 3x3 skew matrix given 3-vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>[v] = | 0 -v(2) +v(1) | | +v(2) 0 -v(0) | | -v(1) +v(0) 0 | </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="156" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="156" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Matrix&lt; Scalar, 3, 1 &gt;</type>
+        <definition>Eigen::Matrix&lt;Scalar, 3, 1&gt; manif::randPointInBall</definition>
+        <argsstring>(Scalar radius)</argsstring>
+        <name>randPointInBall</name>
+        <param>
+          <type>Scalar</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="169" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="169" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Stream</type>
+          </param>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Stream &amp;</type>
+        <definition>_Stream&amp; manif::operator&lt;&lt;</definition>
+        <argsstring>(_Stream &amp;s, const manif::LieGroupBase&lt; _Derived &gt; &amp;m)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>_Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">manif::LieGroupBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="693" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="693" bodyend="699"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_e2_tangent_8h_1a728e852117939343122920bdf7e76783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SE2Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_e2_tangent" kindref="compound">SE2Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="90" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" declline="90" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_e3_tangent_8h_1a5f2d061318b41df8b122263dc109f857" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SE3Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_e3_tangent" kindref="compound">SE3Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent.h" line="86" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent.h" declline="86" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_e__2__3_tangent_8h_1a4b15dc0814f98a234001ec21990badd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SE_2_3Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_e__2__3_tangent" kindref="compound">SE_2_3Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" line="85" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" declline="85" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_o2_tangent_8h_1a1b6499354c5bf1549a84650fb53855c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SO2Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_o2_tangent" kindref="compound">SO2Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent.h" line="89" column="1" declfile="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent.h" declline="89" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_o3_tangent_8h_1ab713caeb88a3c0bffea4615c96d3853c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SO3Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_o3_tangent" kindref="compound">SO3Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent.h" line="86" column="1" declfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent.h" declline="86" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a715bb1945632397ac518e48541f599a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator+</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;ta, const TangentBase&lt; _DerivedOther &gt; &amp;tb)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="719" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="719" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a1ff2bbb013fb8ffb73c82afceda6131b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator-</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;ta, const TangentBase&lt; _DerivedOther &gt; &amp;tb)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="728" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="728" bodyend="733"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a61a0ddf27c7a0ad2e2bfc0a1b0e1fb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator+</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;t, const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="755" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="755" bodyend="760"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a2cdb3f0147ec5b11a72545ef5fddb6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator-</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;t, const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="764" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="764" bodyend="769"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1aa42ef5cd0fabd1f45a7ad1822f2ebe51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto manif::operator+</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v, const TangentBase&lt; _Derived &gt; &amp;t) -&gt; decltype(v+t.coeffs())</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="773" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="773" bodyend="778"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1ab952d0f1ec392a23cafb8920fd8821ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto manif::operator-</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v, const TangentBase&lt; _Derived &gt; &amp;t) -&gt; decltype(v - t.coeffs())</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="782" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="782" bodyend="787"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a05b955ac883e34528df3de4cb17dc6b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator*</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;t, const typename _Derived::Scalar scalar)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const typename _Derived::Scalar</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="807" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="807" bodyend="812"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a1b530e2c328e3c2b31095d26a4f5f02b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator*</definition>
+        <argsstring>(const typename _Derived::Scalar scalar, const TangentBase&lt; _Derived &gt; &amp;t)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const typename _Derived::Scalar</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="816" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="816" bodyend="820"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a71fefaa810e45ad464813862ae80e75a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;::Tangent</type>
+        <definition>TangentBase&lt;_Derived&gt;::Tangent manif::operator/</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;t, const typename _Derived::Scalar scalar)</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const typename _Derived::Scalar</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="824" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="824" bodyend="829"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1a63bf1a9645754b8e4f5ce5ab0c8e5cc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt;::Tangent</type>
+        <definition>TangentBase&lt;_DerivedOther&gt;::Tangent manif::operator*</definition>
+        <argsstring>(const typename TangentBase&lt; _DerivedOther &gt;::Jacobian &amp;J, const TangentBase&lt; _DerivedOther &gt; &amp;t)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const typename <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt;::Jacobian &amp;</type>
+          <declname>J</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="833" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="833" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1aeb6a053cf7d4578c97d0aa9eb9d69ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool manif::operator==</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;ta, const TangentBase&lt; _DerivedOther &gt; &amp;tb)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="841" column="6" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="841" bodyend="846"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1aaae84429b756548d52a2be9680db1378" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool manif::operator==</definition>
+        <argsstring>(const TangentBase&lt; _Derived &gt; &amp;t, const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="849" column="6" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="849" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="tangent__base_8h_1af50b5e49aec75ae950fdcde247071e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Stream</type>
+          </param>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>_Stream &amp;</type>
+        <definition>_Stream&amp; manif::operator&lt;&lt;</definition>
+        <argsstring>(_Stream &amp;s, const manif::TangentBase&lt; _Derived &gt; &amp;m)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>_Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmanif_1_1_tangent_base" kindref="compound">manif::TangentBase</ref>&lt; _Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="859" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="859" bodyend="865"/>
+      </memberdef>
+      <memberdef kind="function" id="utils_8h_1a18b90a86a6200162b35cb7d811f60e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T manif::pi2pi</definition>
+        <argsstring>(T angle)</argsstring>
+        <name>pi2pi</name>
+        <param>
+          <type>T</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+<para>Wrap an angle in -pi,pi. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The angle to be wrapped in radians </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The wrapped angle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="14" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="14" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="utils_8h_1acef0c918075389f40c545e2b4027c06e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::toRad</definition>
+        <argsstring>(const T deg)</argsstring>
+        <name>toRad</name>
+        <param>
+          <type>const T</type>
+          <declname>deg</declname>
+        </param>
+        <briefdescription>
+<para>Conversion to radians. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">deg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>angle in degrees </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>angle in radians </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="28" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="utils_8h_1a680866a07b3fb917acfc21d001e4b244" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::toDeg</definition>
+        <argsstring>(const T rad)</argsstring>
+        <name>toDeg</name>
+        <param>
+          <type>const T</type>
+          <declname>rad</declname>
+        </param>
+        <briefdescription>
+<para>Conversion to degrees. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>angle in radians </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>angle in degrees </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="39" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="utils_8h_1a2fd98a5e8a312235a4926f80908b04e5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::approxSqrtInv</definition>
+        <argsstring>(const T x)</argsstring>
+        <name>approxSqrtInv</name>
+        <param>
+          <type>const T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Degree 2 polynomial approximation of 1/sqrt(x) (reciprocal sqrt). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>~1/sqrt(x) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="50" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="50" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="7" column="1"/>
+  </compounddef>
+</doxygen>

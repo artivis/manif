@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>manif</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md__home_ubuntu_manif_README"/> </para>
+<sect1 id="index_1autotoc_md1">
+<title>A small header-only library for Lie theory</title>
+<para><ulink url="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel"><image type="html" name="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel" alt="GHA" inline="yes"></image>
+</ulink> <ulink url="https://ci.appveyor.com/project/artivis/manif"><image type="html" name="https://ci.appveyor.com/api/projects/status/l0q7b0shhonvejrd?svg=true" alt="appveyor" inline="yes"></image>
+</ulink> <ulink url="https://codedocs.xyz/artivis/manif"><image type="html" name="https://codedocs.xyz/artivis/manif.svg" alt="Documentation" inline="yes"></image>
+</ulink> <ulink url="https://codecov.io/gh/artivis/manif"><image type="html" name="https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg" alt="codecov" inline="yes"></image>
+</ulink> <image type="html" name="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub" inline="yes"></image>
+ <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371"><image type="html" name="http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg" alt="JOSS" inline="yes"></image>
+</ulink></para>
+</sect1>
+<sect1 id="index_1autotoc_md2">
+<title>Package Summary</title>
+<para><bold>manif</bold> is a Lie theory library for state-estimation targeted at robotics applications. It is developed as a header-only C++11 library with Python 3 wrappers.</para>
+<para>At the moment, it provides the groups:</para>
+<para><itemizedlist>
+<listitem><para>ℝ(n): Euclidean space with addition.</para>
+</listitem><listitem><para>SO(2): rotations in the plane.</para>
+</listitem><listitem><para>SE(2): rigid motion (rotation and translation) in the plane.</para>
+</listitem><listitem><para>SO(3): rotations in 3D space.</para>
+</listitem><listitem><para>SE(3): rigid motion (rotation and translation) in 3D space.</para>
+</listitem><listitem><para>SE_2(3): extended pose (rotation, translation and velocity) in 3D space, introduced (to the best of knowledge) in this <ulink url="https://arxiv.org/pdf/1410.1465.pdf">paper</ulink>. NOTE: The implementation here differs slightly from the developments in the <ulink url="https://arxiv.org/pdf/1410.1465.pdf">paper</ulink>.</para>
+</listitem></itemizedlist>
+</para>
+<para>Other Lie groups can and will be added, contributions are welcome.</para>
+<para><bold>manif</bold> is based on the mathematical presentation of the Lie theory available in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>. We recommend every user of <bold>manif</bold> to read the paper (17 pages) before starting to use the library. The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average roboticist who is interested in designing rigorous and elegant state estimation algorithms. In a rush? Check out our <ulink url="paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink>.</para>
+<para>It provides analytic computation of Jacobians for all the operations listed <ulink url="#features">below</ulink>.</para>
+<sect2 id="index_1autotoc_md3">
+<title>Details</title>
+<para><itemizedlist>
+<listitem><para>Maintainer status: maintained</para>
+</listitem><listitem><para>Maintainer: Jeremie Deray</para>
+</listitem><listitem><para>Authors:<itemizedlist>
+<listitem><para>Jeremie Deray <ulink url="mailto:deray.jeremie@gmail.com">deray.jeremie@gmail.com</ulink></para>
+</listitem><listitem><para>Joan Sola <ulink url="mailto:jsola@iri.upc.edu">jsola@iri.upc.edu</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>License: [MIT](LICENSE)</para>
+</listitem><listitem><para>Bug / feature tracker: <ulink url="https://github.com/artivis/manif/issues">github.com/artivis/manif/issues</ulink></para>
+</listitem><listitem><para>Source: <ulink url="https://github.com/artivis/manif.git">github.com/artivis/manif.git</ulink> (branch: devel)</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md4">
+<title>Quick Start</title>
+<para>Get quickly started with <bold>manif</bold> following our &apos;quick start&apos; guides for both C++ and Python.</para>
+</sect1>
+<sect1 id="index_1autotoc_md5">
+<title>Features</title>
+<sect2 id="index_1autotoc_md6">
+<title>Available Operations</title>
+<para><table rows="18" cols="3"><row>
+<entry thead="yes" align='left'><para>Operation   </para>
+</entry><entry thead="yes" align='center'><para></para>
+</entry><entry thead="yes" align='center'><para>Code    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para></para>
+</entry><entry thead="no" align='center'><para>Base Operation   </para>
+</entry><entry thead="no" align='center'><para></para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Inverse   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf&amp;space;\mathcal{X}^{-1}" alt="\mathbf\Phi^{-1}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.inverse()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Composition   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}" alt="\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X * Y</computeroutput><linebreak/>
+<computeroutput>X.compose(Y)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Hat   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\varphi^\wedge" alt="\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.hat()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Act on vector   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\circ\mathbf&amp;space;v" alt="\mathbf\mathcal{X}\circ\mathbf v" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.act(v)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Retract to group element   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\exp(\mathbf\varphi^\wedge)" alt="\exp(\mathbf\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.exp()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Lift to tangent space   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\log(\mathbf&amp;space;\mathcal{X})^\vee" alt="\log(\mathbf\mathcal{X})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.log()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Manifold Adjoint   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\operatorname{Adj}(\mathbf&amp;space;\mathcal{X})" alt="\operatorname{Adj}(\mathbf\mathcal{X})" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.adj()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Tangent adjoint   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\operatorname{adj}(\mathbf&amp;space;\varphi^\wedge)" alt="\operatorname{adj}(\mathbf\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.smallAdj()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para></para>
+</entry><entry thead="no" align='center'><para>Composed Operation   </para>
+</entry><entry thead="no" align='center'><para></para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Manifold right plus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" alt="\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X + w</computeroutput><linebreak/>
+<computeroutput>X.plus(w)</computeroutput><linebreak/>
+<computeroutput>X.rplus(w)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Manifold left plus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" alt="\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w + X</computeroutput><linebreak/>
+<computeroutput>w.plus(X)</computeroutput><linebreak/>
+<computeroutput>w.lplus(X)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Manifold right minus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee" alt="\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X - Y</computeroutput><linebreak/>
+<computeroutput>X.minus(Y)</computeroutput><linebreak/>
+<computeroutput>X.rminus(Y)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Manifold left minus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" alt="\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.lminus(Y)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Between   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}" alt="\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.between(Y)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Inner Product   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\langle\varphi,\tau\rangle" alt="\langle\varphi,\tau\rangle" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.inner(t)</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no" align='left'><para>Norm   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/png.latex?\left\lVert\varphi\right\rVert" alt="\left\lVert\varphi\right\rVert" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.weightedNorm()</computeroutput><linebreak/>
+<computeroutput>w.squaredWeightedNorm()</computeroutput>   </para>
+</entry></row>
+</table>
+</para>
+<para>Above, <image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\mathcal{X},\mathbf\mathcal{Y}" alt="\mathbf\mathcal{X},\mathbf\mathcal{Y}" inline="yes"></image>
+ represent group elements, <image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\varphi^\wedge,\tau^\wedge" alt="\mathbf\varphi^\wedge,\tau^\wedge" inline="yes"></image>
+ represent elements in the Lie algebra of the Lie group, <image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\varphi,\tau" alt="\mathbf\varphi,\tau" inline="yes"></image>
+ or <computeroutput>w,t</computeroutput> represent the same elements of the tangent space but expressed in Cartesian coordinates in <image type="html" name="https://latex.codecogs.com/png.latex?\mathbb{R}^n" alt="\mathbb{R}^n" inline="yes"></image>
+, and <image type="html" name="https://latex.codecogs.com/png.latex?\mathbf{v}" alt="\mathbf{v}" inline="yes"></image>
+ or <computeroutput>v</computeroutput> represents any element of <image type="html" name="https://latex.codecogs.com/png.latex?\mathbb{R}^n" alt="\mathbb{R}^n" inline="yes"></image>
+.</para>
+</sect2>
+<sect2 id="index_1autotoc_md7">
+<title>Jacobians</title>
+<para>All operations come with their respective analytical Jacobian matrices. Throughout <bold>manif</bold>, <bold>Jacobians are differentiated with respect to a local perturbation on the tangent space</bold>. These Jacobians map tangent spaces, as described in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>.</para>
+<para>Currently, <bold>manif</bold> implements the <bold>right Jacobian</bold>, whose definition reads:</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}" alt="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}" inline="yes"></image>
+</para>
+<para>The Jacobians of any of the aforementionned operations can then be evaluated:</para>
+<para>in C++,</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">SE3d<sp/>X<sp/>=<sp/>SE3d::Random();</highlight></codeline>
+<codeline><highlight class="normal">SE3Tangentd<sp/>w<sp/>=<sp/>SE3Tangentd::Random();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">SE3d::Jacobian<sp/>J_o_x,<sp/>J_o_w;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>X_plus_w<sp/>=<sp/>X.plus(w,<sp/>J_o_x,<sp/>J_o_w);</highlight></codeline>
+</programlisting></para>
+<para>in Python,</para>
+<para><programlisting filename=".python"><codeline><highlight class="normal">X<sp/>=<sp/>SE3.Random()</highlight></codeline>
+<codeline><highlight class="normal">w<sp/>=<sp/>SE3Tangentd.Random()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">J_o_x<sp/>=<sp/>np.zeros((SE3.DoF,<sp/>SE3.DoF))</highlight></codeline>
+<codeline><highlight class="normal">J_o_w<sp/>=<sp/>np.zeros((SE3.DoF,<sp/>SE3.DoF))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">X_plus_w<sp/>=<sp/>X.plus(w,<sp/>J_o_x,<sp/>J_o_w)</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md8">
+<title>Documentation</title>
+<para>The documentation is available online at the accompanying [website](manif). Both the [C++](cpp) and the [Python](python) APIs are documented.</para>
+<para>Do you want to build it locally? Find out how on the <ref refid="md_pages_documentation" kindref="compound">dedicated page</ref>.</para>
+<para>Note: throughout the code documentation we refer to &apos;the paper&apos; which you can find on <ref refid="md_pages_publication" kindref="compound">the dedicated page</ref>.</para>
+</sect1>
+<sect1 id="index_1autotoc_md9">
+<title>Tutorials and application demos</title>
+<para>We provide some self-contained and self-explained <ulink url="docs/pages/cpp/Quick-start.md#tutorials-and-application-demos">C++ examples</ulink> to help you get started.</para>
+<para>You prefer Python? The same examples are also <ulink url="docs/pages/python/Quick-start.md#tutorials-and-application-demos">available in Python</ulink>.</para>
+</sect1>
+<sect1 id="index_1autotoc_md10">
+<title>Publications</title>
+<para>Check out our related <ref refid="md_pages_publication" kindref="compound">publications</ref> and how to cite them.</para>
+</sect1>
+<sect1 id="index_1autotoc_md11">
+<title>They use manif</title>
+<para>Find out <ref refid="md_pages_projects" kindref="compound">who&apos;s already using manif</ref>.</para>
+</sect1>
+<sect1 id="index_1autotoc_md12">
+<title>Contributing</title>
+<para>Want to contribute? Great! Check out our contribution guidelines. </para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/README.md"/>
+  </compounddef>
+</doxygen>

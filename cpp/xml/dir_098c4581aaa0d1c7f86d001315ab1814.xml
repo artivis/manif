@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_098c4581aaa0d1c7f86d001315ab1814" kind="dir">
+    <compoundname>impl</compoundname>
+    <innerdir refid="dir_2f0aa0d26578fbbbaac7fcfc1fa7f977">rn</innerdir>
+    <innerdir refid="dir_06b430863ab2111e423628285ed898f1">se2</innerdir>
+    <innerdir refid="dir_7449c1c0042ef6ac660434b1ddf567b0">se3</innerdir>
+    <innerdir refid="dir_2b84527ec924f8623774721117896c95">se_2_3</innerdir>
+    <innerdir refid="dir_eb8bd41501b9014d56ec9b114587795e">so2</innerdir>
+    <innerdir refid="dir_7b12d306e2d7ee7d082163a21d47eaeb">so3</innerdir>
+    <innerfile refid="assignment__assert_8h">assignment_assert.h</innerfile>
+    <innerfile refid="eigen_8h">eigen.h</innerfile>
+    <innerfile refid="generator_8h">generator.h</innerfile>
+    <innerfile refid="lie__group__base_8h">lie_group_base.h</innerfile>
+    <innerfile refid="macro_8h">macro.h</innerfile>
+    <innerfile refid="random_8h">random.h</innerfile>
+    <innerfile refid="tangent__base_8h">tangent_base.h</innerfile>
+    <innerfile refid="traits_8h">traits.h</innerfile>
+    <innerfile refid="utils_8h">utils.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/"/>
+  </compounddef>
+</doxygen>

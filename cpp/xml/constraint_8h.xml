@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="constraint_8h" kind="file" language="C++">
+    <compoundname>constraint.h</compoundname>
+    <includes local="no">Eigen/Core</includes>
+    <includes local="no">Eigen/Cholesky</includes>
+    <includes local="no">Eigen/Eigenvalues</includes>
+    <includedby refid="ceres_8h" local="yes">ceres.h</includedby>
+    <includedby refid="ceres__utils_8h" local="yes">ceres_utils.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>constraint.h</label>
+        <link refid="constraint_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Eigen/Cholesky</label>
+      </node>
+      <node id="2">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="4">
+        <label>Eigen/Eigenvalues</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>ceres.h</label>
+        <link refid="ceres_8h_source"/>
+      </node>
+      <node id="3">
+        <label>ceres_utils.h</label>
+        <link refid="ceres__utils_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>constraint.h</label>
+        <link refid="constraint_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h"/>
+  </compounddef>
+</doxygen>

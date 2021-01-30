@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="md_pages_publication" kind="page">
+    <compoundname>md_pages_publication</compoundname>
+    <title>Publications</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_pages_publication_1autotoc_md22">
+<title>Citing manif</title>
+<para>If you use this software, please consider citing <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371">this paper</ulink> as follows:</para>
+<para><programlisting filename=".latex"><codeline><highlight class="normal">@article{Deray-20-JOSS,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doi<sp/>=<sp/>{10.21105/joss.01371},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>url<sp/>=<sp/>{https://doi.org/10.21105/joss.01371},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>year<sp/>=<sp/>{2020},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>publisher<sp/>=<sp/>{The<sp/>Open<sp/>Journal},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>volume<sp/>=<sp/>{5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>number<sp/>=<sp/>{46},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pages<sp/>=<sp/>{1371},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>author<sp/>=<sp/>{Jérémie<sp/>Deray<sp/>and<sp/>Joan<sp/>Solà},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>title<sp/>=<sp/>{Manif:<sp/>A<sp/>micro<sp/>{L}ie<sp/>theory<sp/>library<sp/>for<sp/>state<sp/>estimation<sp/>in<sp/>robotics<sp/>applications},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>journal<sp/>=<sp/>{Journal<sp/>of<sp/>Open<sp/>Source<sp/>Software}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>You can also consider citing <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink> as follows:</para>
+<para><programlisting filename=".latex"><codeline><highlight class="normal">@techreport{SOLA-18-Lie,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Address<sp/>=<sp/>{Barcelona},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Author<sp/>=<sp/>{Joan<sp/>Sol\`a<sp/>and<sp/>Jeremie<sp/>Deray<sp/>and<sp/>Dinesh<sp/>Atchuthan},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Institution<sp/>=<sp/>{{Institut<sp/>de<sp/>Rob\`otica<sp/>i<sp/>Inform\`atica<sp/>Industrial}},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Number<sp/>=<sp/>{IRI-TR-18-01},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Title<sp/>=<sp/>{A<sp/>micro<sp/>{L}ie<sp/>theory<sp/>for<sp/>state<sp/>estimation<sp/>in<sp/>robotics},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Howpublished=&quot;\url{http://arxiv.org/abs/1812.01537}&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Year<sp/>=<sp/>{2018}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>Note that this reference is the one referred to throughout the code documentation. Since this is a versioned work, please refer to <ulink url="http://arxiv.org/abs/1812.01537v4">version 4, available here</ulink>, of the paper when cross-referencing with the <bold>manif</bold> documentation. This will give the appropriate equation numbers.</para>
+</sect1>
+<sect1 id="md_pages_publication_1autotoc_md23">
+<title>Lie group cheat sheets</title>
+<para>In a rush? Check out our Lie group theory take away, the <ulink url="https://github.com/artivis/manif/blob/devel/paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink> (or hit <ulink url="https://github.com/artivis/manif/raw/devel/paper/Lie_theory_cheat_sheet.pdf">dowload</ulink>). </para>
+</sect1>
+    </detaileddescription>
+    <location file="pages/publication.md"/>
+  </compounddef>
+</doxygen>

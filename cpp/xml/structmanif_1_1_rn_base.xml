@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_rn_base" kind="struct" language="C++" prot="public">
+    <compoundname>manif::RnBase</compoundname>
+    <basecompoundref refid="structmanif_1_1_lie_group_base" prot="public" virt="non-virtual">manif::LieGroupBase&lt; _Derived &gt;</basecompoundref>
+    <includes refid="_rn__base_8h" local="no">Rn_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_rn_base_1ae14e9d5e972ec4923c4335fb49e4cb5e" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::RnBase&lt; _Derived &gt;::Base =  LieGroupBase&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_rn_base_1a15ec5c6177c24aca44cf1ec3ce5926f0" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_rn_base" kindref="compound">RnBase</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::RnBase&lt; _Derived &gt;::Type =  RnBase&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="25" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1_rn_base_1ad46f010f05b753c5d00dffa6d0f0d78e" prot="public" static="no">
+        <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Transformation</type>
+        <definition>using manif::RnBase&lt; _Derived &gt;::Transformation =  typename internal::traits&lt;_Derived&gt;::Transformation</definition>
+        <argsstring></argsstring>
+        <name>Transformation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1ad574c33ba40f0fcdc14cf234c03dc646" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LieGroup</type>
+        <definition>RnBase&lt; _Derived &gt;::LieGroup manif::RnBase&lt; _Derived &gt;::inverse</definition>
+        <argsstring>(OptJacobianRef J_minv_m={}) const</argsstring>
+        <name>inverse</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_minv_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get the inverse of this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_minv_m Jacobian of the inverse wrt this. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>r^-1 = -r </para>
+</simplesect>
+<simplesect kind="note"><para>See Appendix E and Eq. (189). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="54" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="128" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Tangent</type>
+        <definition>RnBase&lt; _Derived &gt;::Tangent manif::RnBase&lt; _Derived &gt;::log</definition>
+        <argsstring>(OptJacobianRef J_t_m={}) const</argsstring>
+        <name>log</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_t_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get the <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> corresponding Lie algebra element in vector form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_t_m Jacobian of the tangent wrt to this. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> tangent of this. </para>
+</simplesect>
+<simplesect kind="note"><para>This is the <ref refid="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" kindref="member">log()</ref> map in vector form. </para>
+</simplesect>
+<simplesect kind="note"><para>See Appendix E. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="64" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="138" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a43583c967752e9a39aedebe7fdf379cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_DEPRECATED Tangent</type>
+        <definition>RnBase&lt; _Derived &gt;::Tangent manif::RnBase&lt; _Derived &gt;::lift</definition>
+        <argsstring>(OptJacobianRef J_t_m={}) const</argsstring>
+        <name>lift</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_t_m</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>This function is deprecated. Please considere using <ref refid="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" kindref="member">log</ref> instead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="72" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type>LieGroup</type>
+        <definition>RnBase&lt; _Derived &gt;::LieGroup manif::RnBase&lt; _Derived &gt;::compose</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedOther &gt; &amp;m, OptJacobianRef J_mc_ma={}, OptJacobianRef J_mc_mb={}) const</argsstring>
+        <name>compose</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_mc_ma</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_mc_mb</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Composition of this and another <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> element. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_ma Jacobian of the composition wrt this. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_mc_mb Jacobian of the composition wrt m. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The composition of &apos;this . m&apos;. </para>
+</simplesect>
+<simplesect kind="note"><para>See Eq. (190). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="83" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="156" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _EigenDerived</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto manif::RnBase&lt; _Derived &gt;::act</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;v, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, Dim, DoF &gt;&gt;&gt; J_vout_m={}, tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, Dim, Dim &gt;&gt;&gt; J_vout_v={}) const -&gt; Eigen::Matrix&lt; Scalar, Dim, 1 &gt;</argsstring>
+        <name>act</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _EigenDerived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, Dim, DoF &gt;&gt;&gt;</type>
+          <declname>J_vout_m</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>tl::optional&lt; Eigen::Ref&lt; Eigen::Matrix&lt; Scalar, Dim, Dim &gt;&gt;&gt;</type>
+          <declname>J_vout_v</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Translation action on a 2-vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A 2-vector. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_vout_m The Jacobian of the new object wrt this. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_vout_v The Jacobian of the new object wrt input object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated 2-vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="96" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="183" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>RnBase&lt; _Derived &gt;::Jacobian manif::RnBase&lt; _Derived &gt;::adj</definition>
+        <argsstring>() const</argsstring>
+        <name>adj</name>
+        <briefdescription>
+<para>Get the ajoint matrix of <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> at this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>See Eqs. (188). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="105" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="205" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Transformation</type>
+        <definition>RnBase&lt; _Derived &gt;::Transformation manif::RnBase&lt; _Derived &gt;::transform</definition>
+        <argsstring>() const</argsstring>
+        <name>transform</name>
+        <briefdescription>
+<para>Get the transformation matrix (2D isometry). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>T = | 0 t | | 0 1 | </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="114" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="119" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by const reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by const reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>_Derived &amp;</type>
+        <definition>_Derived&amp; manif::LieGroupBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const _Derived &amp;</type>
+        <definition>const _Derived&amp; manif::LieGroupBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() const &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The base class of the <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref> group. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>See Appendix E. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::RnBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::RnBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="20" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="21" bodyend="115"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>_</name></member>
+      <member refid="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>act</name></member>
+      <member refid="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_rn_base_1ae14e9d5e972ec4923c4335fb49e4cb5e" prot="private" virt="non-virtual"><scope>manif::RnBase</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>between</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_rn_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::RnBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::RnBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::RnBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::RnBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad574c33ba40f0fcdc14cf234c03dc646" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_rn_base_1a43583c967752e9a39aedebe7fdf379cb" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>log</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_rn_base_1ad46f010f05b753c5d00dffa6d0f0d78e" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Transformation</name></member>
+      <member refid="structmanif_1_1_rn_base_1a15ec5c6177c24aca44cf1ec3ce5926f0" prot="private" virt="non-virtual"><scope>manif::RnBase</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

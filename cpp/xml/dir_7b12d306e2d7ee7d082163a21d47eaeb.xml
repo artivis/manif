@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_7b12d306e2d7ee7d082163a21d47eaeb" kind="dir">
+    <compoundname>so3</compoundname>
+    <innerfile refid="impl_2so3_2_s_o3_8h">impl/so3/SO3.h</innerfile>
+    <innerfile refid="_s_o3__base_8h">SO3_base.h</innerfile>
+    <innerfile refid="_s_o3__map_8h">SO3_map.h</innerfile>
+    <innerfile refid="_s_o3__properties_8h">SO3_properties.h</innerfile>
+    <innerfile refid="_s_o3_tangent_8h">SO3Tangent.h</innerfile>
+    <innerfile refid="_s_o3_tangent__base_8h">SO3Tangent_base.h</innerfile>
+    <innerfile refid="_s_o3_tangent__map_8h">SO3Tangent_map.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/so3/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_generator_evaluator" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::GeneratorEvaluator</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_generator_evaluator_1a65a1a0a1d7bc82e25ff5b496e1c5b3d9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Derived::LieAlg</type>
+        <definition>static Derived::LieAlg manif::internal::GeneratorEvaluator&lt; Derived &gt;::run</definition>
+        <argsstring>(const unsigned int)</argsstring>
+        <name>run</name>
+        <param>
+          <type>const unsigned int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/generator.h" line="11" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/generator.h" bodystart="11" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/generator.h" line="8" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/generator.h" bodystart="9" bodyend="17"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_generator_evaluator_1a65a1a0a1d7bc82e25ff5b496e1c5b3d9" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

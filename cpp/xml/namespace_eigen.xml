@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="namespace_eigen" kind="namespace" language="C++">
+    <compoundname>Eigen</compoundname>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="34" column="1"/>
+  </compounddef>
+</doxygen>

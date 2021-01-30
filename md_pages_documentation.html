@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Building the documentation | manif</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">manif</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="./cpp/index.html">C++</a></li>
+            <li><a href="./python/index.html">Python</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="./md_pages_publication.html">Publications</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          Building the documentation
+        </h1>
+<p>We detail here how to build the documentation locally. The overall documentation relies on two tools, namely <a href="https://www.doxygen.nl/index.html">Doxygen</a> and <a href="https://mcss.mosra.cz/">m.css</a>. The former is mainly used to build the C++ API documentation while the former is used to generate the Python API documentation and the overall documentation website.</p><p>See how to build each below.</p><section id="autotoc_md17"><h2><a href="#autotoc_md17">mcss</a></h2><pre class="m-code">python3 -m pip install jinja2 Pygments
+sudo apt install -y doxygen graphicsmagick-imagemagick-compat
+git clone git://github.com/mosra/m.css</pre></section><section id="autotoc_md18"><h2><a href="#autotoc_md18">C++ API</a></h2><p>The C++ API documentation relies only on Doxygen. If you are fine with the antiquated look of a Doxygen-based website, here is how to build it.</p><p>First let&#x27;s make sure doxygen is installed,</p><pre class="m-code">apt install -y doxygen</pre><p>Let us now build to doc,</p><pre class="m-code">cd manif/docs
+doxygen Doxyfile</pre><p>You can now explore the website by opening the file <code>manif/docs/html/index.html</code> in your web browser.</p></section><section id="autotoc_md19"><h2><a href="#autotoc_md19">Python API</a></h2><pre class="m-code">cd manif/docs
+python3 ~/path/to/m.css/documentation/doxygen.py conf_cpp.py</pre></section><section id="autotoc_md20"><h2><a href="#autotoc_md20">Building the website</a></h2><pre class="m-code">cd manif/docs
+mkdir -p site/cpp</pre><pre class="m-code">python3 ~/path/to/m.css/documentation/python.py conf_python.py
+python3 ~/path/to/m.css/documentation/doxygen.py conf_cpp.py
+python3 ~/path/to/m.css/documentation/doxygen.py conf.py</pre></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

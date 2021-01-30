@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_3e1434e2774b8e70c9c54ab707a213ff" kind="dir">
+    <compoundname>ceres</compoundname>
+    <innerfile refid="ceres_8h">ceres.h</innerfile>
+    <innerfile refid="ceres__utils_8h">ceres_utils.h</innerfile>
+    <innerfile refid="ceres_2constants_8h">ceres/constants.h</innerfile>
+    <innerfile refid="constraint_8h">constraint.h</innerfile>
+    <innerfile refid="local__parametrization_8h">local_parametrization.h</innerfile>
+    <innerfile refid="objective_8h">objective.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/ceres/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="md_pages_projects" kind="page">
+    <compoundname>md_pages_projects</compoundname>
+    <title>A curated list of work and projects using manif</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_pages_projects_1autotoc_md14">
+<title>They cite us</title>
+<para>You may find on Google Scholar publications citing either:</para>
+<para><itemizedlist>
+<listitem><para>the <ulink url="http://arxiv.org/abs/1812.01537">Lie theory paper</ulink> accompanying <bold>manif</bold> - see <ulink url="https://scholar.google.com/scholar?oi=bibs&amp;cites=16456301708818968338">here</ulink></para>
+</listitem><listitem><para>the <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371"><bold>manif</bold> library paper</ulink> - see <ulink url="https://scholar.google.fr/scholar?oi=bibs&amp;hl=fr&amp;cites=1235228860941456363">here</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_pages_projects_1autotoc_md15">
+<title>They use manif</title>
+<para><itemizedlist>
+<listitem><para><ulink url="https://github.com/dic-iit/lie-group-controllers"><computeroutput>lie-group-controllers</computeroutput></ulink>, header-only C++ libraries containing controllers designed for Lie Groups.</para>
+</listitem><listitem><para><ulink url="https://github.com/dic-iit/bipedal-locomotion-framework"><computeroutput>bipedal-locomotion-framework</computeroutput></ulink>, The BipedalLocomotionFramework project is a suite of libraries for achieving bipedal locomotion on humanoid robots.</para>
+</listitem></itemizedlist>
+</para>
+<para>Your project is not listed here? Let us know about it! </para>
+</sect1>
+    </detaileddescription>
+    <location file="pages/projects.md"/>
+  </compounddef>
+</doxygen>

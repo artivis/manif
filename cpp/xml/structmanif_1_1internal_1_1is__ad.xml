@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1is__ad" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::is_ad</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, false &gt;</basecompoundref>
+    <includes refid="traits_8h" local="no">traits.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A traits for detecting AutoDiff scalar types. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::is_ad&lt; Scalar &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__ad"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, false &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::internal::is_ad&lt; Scalar &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__ad"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, false &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="52" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="52" bodyend="52"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

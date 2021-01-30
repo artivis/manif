@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::RandomEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_s_e3_tangent__base_8h" local="no">SE3Tangent_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4_1a11d0a20ef194d75d62d1d1e9ff0b4f44" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(SE3TangentBase&lt; Derived &gt; &amp;m)</argsstring>
+        <name>run</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_e3_tangent_base" kindref="compound">SE3TangentBase</ref>&lt; Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent_base.h" line="452" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent_base.h" bodystart="452" bodyend="457"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Random specialization for <ref refid="structmanif_1_1_s_e3_tangent_base" kindref="compound">SE3TangentBase</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent_base.h" line="450" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent_base.h" bodystart="451" bodyend="458"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4_1a11d0a20ef194d75d62d1d1e9ff0b4f44" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

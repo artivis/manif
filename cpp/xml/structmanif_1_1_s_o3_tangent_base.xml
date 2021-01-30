@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_s_o3_tangent_base" kind="struct" language="C++" prot="public">
+    <compoundname>manif::SO3TangentBase</compoundname>
+    <basecompoundref refid="structmanif_1_1_tangent_base" prot="public" virt="non-virtual">manif::TangentBase&lt; _Derived &gt;</basecompoundref>
+    <includes refid="_s_o3_tangent__base_8h" local="no">SO3Tangent_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_s_o3_tangent_base_1ae16af024450bda928e07f64222ddf0c7" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::SO3TangentBase&lt; _Derived &gt;::Base =  TangentBase&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="22" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_s_o3_tangent_base_1ac8df63fc5b4b4da8c953e7882bf147b8" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_s_o3_tangent_base" kindref="compound">SO3TangentBase</ref>&lt; _Derived &gt;</type>
+        <definition>using manif::SO3TangentBase&lt; _Derived &gt;::Type =  SO3TangentBase&lt;_Derived&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="23" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aaab3e3747842c32fb573d3c7a880ad0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LieAlg</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::LieAlg manif::SO3TangentBase&lt; _Derived &gt;::hat</definition>
+        <argsstring>() const</argsstring>
+        <name>hat</name>
+        <briefdescription>
+<para>Hat operator of <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An element of the Lie algebra so3 (skew-symmetric matrix). </para>
+</simplesect>
+<simplesect kind="note"><para>See example 3 of the paper. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="49" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="227" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LieGroup</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::LieGroup manif::SO3TangentBase&lt; _Derived &gt;::exp</definition>
+        <argsstring>(OptJacobianRef J_m_t={}) const</argsstring>
+        <name>exp</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_m_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Get the <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref> element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">-optional-</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>J_m_t Jacobian of the <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref> element wrt this. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref> element. </para>
+</simplesect>
+<simplesect kind="note"><para>This is the <ref refid="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" kindref="member">exp()</ref> map with the argument in vector form. </para>
+</simplesect>
+<simplesect kind="note"><para>See Eq. (132) and Eq. (143). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="58" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="112" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ad3fae9c95cf2ca0c94a13d46a0c56f6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_DEPRECATED LieGroup</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::LieGroup manif::SO3TangentBase&lt; _Derived &gt;::retract</definition>
+        <argsstring>(OptJacobianRef J_m_t={}) const</argsstring>
+        <name>retract</name>
+        <param>
+          <type>OptJacobianRef</type>
+          <declname>J_m_t</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>This function is deprecated. Please considere using <ref refid="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" kindref="member">exp</ref> instead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="66" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="151" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aa1c549ab4ad326b7bd269ce2bf54196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Jacobian manif::SO3TangentBase&lt; _Derived &gt;::rjac</definition>
+        <argsstring>() const</argsstring>
+        <name>rjac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the right Jacobian of <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>. <simplesect kind="note"><para>See Eq. (143). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="72" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a4f569dbdb67563527d27a4f765f794de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Jacobian manif::SO3TangentBase&lt; _Derived &gt;::ljac</definition>
+        <argsstring>() const</argsstring>
+        <name>ljac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the left Jacobian of <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>. <simplesect kind="note"><para>See Eq. (145). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="78" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="165" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ab6e0056209e4c0eb429a503a3ce674c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Jacobian manif::SO3TangentBase&lt; _Derived &gt;::rjacinv</definition>
+        <argsstring>() const</argsstring>
+        <name>rjacinv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the inverse of the right Jacobian of <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>. <simplesect kind="note"><para>See Eq. (144). </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structmanif_1_1_s_o3_tangent_base_1aa1c549ab4ad326b7bd269ce2bf54196e" kindref="member">rjac</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="85" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a898daa10bb62f58971553ec3e9f30cf1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Jacobian manif::SO3TangentBase&lt; _Derived &gt;::ljacinv</definition>
+        <argsstring>() const</argsstring>
+        <name>ljacinv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the inverse of the left Jacobian of <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>. <simplesect kind="note"><para>See Eq. (146). </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structmanif_1_1_s_o3_tangent_base_1a4f569dbdb67563527d27a4f765f794de" kindref="member">ljac</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="92" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="196" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aedda2b323400ba39f6d403c2c25f3df1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Jacobian</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Jacobian manif::SO3TangentBase&lt; _Derived &gt;::smallAdj</definition>
+        <argsstring>() const</argsstring>
+        <name>smallAdj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="98" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="220" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ab94eec26f7d0841bba2e2f66e6cd8881" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Scalar manif::SO3TangentBase&lt; _Derived &gt;::x</definition>
+        <argsstring>() const</argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="103" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="236" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ae747a642593f8bd903363ce007851566" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Scalar manif::SO3TangentBase&lt; _Derived &gt;::y</definition>
+        <argsstring>() const</argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="105" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="243" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1af49907f7b2fe5d03cd6334c64e9260a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Scalar</type>
+        <definition>SO3TangentBase&lt; _Derived &gt;::Scalar manif::SO3TangentBase&lt; _Derived &gt;::z</definition>
+        <argsstring>() const</argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="107" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="250" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>TangentBase&lt; _Derived &gt;::DataType &amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="377" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const TangentBase&lt; _Derived &gt;::DataType &amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Access the underlying data by const reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="384" bodyend="387"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>_Derived &amp;</type>
+        <definition>_Derived&amp; manif::TangentBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="36" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="336" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const _Derived &amp;</type>
+        <definition>const _Derived&amp; manif::TangentBase&lt; _Derived &gt;::derived</definition>
+        <argsstring>() const &amp;noexcept</argsstring>
+        <name>derived</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="36" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="337" bodyend="337"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The base class of the <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref> tangent. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>See Appendix B. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::SO3TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_o3_tangent_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::SO3TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_o3_tangent_base"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_tangent_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" line="18" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="19" bodyend="108"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ae16af024450bda928e07f64222ddf0c7" prot="private" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SO3TangentBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1adf320fca86420a44f1e80cf003800dfb" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SO3TangentBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::SO3TangentBase</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>exp</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>generator</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1aaab3e3747842c32fb573d3c7a880ad0a" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>hat</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>inner</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>InnerWeightsMatrix</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8e7408713b9750c12418ae9ba9dbd90" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a8baef49ae68f130cda30e49f6f402999" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>LieAlg</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2662a9b7a2dc0d5b1d34e1517e258300" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a4f569dbdb67563527d27a4f765f794de" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>ljac</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a898daa10bb62f58971553ec3e9f30cf1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>ljacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a375b870e90fabfce45b5a74c46c54b62" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acc8d41b513681114f8091f53d81626a1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc150adf396c8432ce0ba909571bd70c" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a6be164dc3b9118f3bfebd7f59b4a7a38" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a1271777d229f54a5dd0f0f12d45f043f" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a35e627252748a0268c6ee908d2d09b12" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_tangent_base_1afc51a6333c409460fc017b2303cd2484" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a3fa85584b927625ddeb8f482008623c6" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator-=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab59f8be2812f60af208fcbb2e3683699" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator/=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4d991baead4165a238e5a76fd7c57db8" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a414b302f5e268f819a0e992f18dd682d" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ab26fdad01bd80b6c628465f4b82a0411" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a08bbcf10f4f7ed8210566e3a12556c8a" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a606e1b9c212b8320f65378437d302c0b" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_tangent_base_1abc26abf20f27e8ba2353557c565c04fd" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ad3fae9c95cf2ca0c94a13d46a0c56f6e" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>retract</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1aa1c549ab4ad326b7bd269ce2bf54196e" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>rjac</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ab6e0056209e4c0eb429a503a3ce674c8" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>rjacinv</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>setZero</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1aedda2b323400ba39f6d403c2c25f3df1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>smallAdj</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7439ba89e703a34202391e2a6a9aeda1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>squaredWeightedNorm</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>TangentTemplate</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ac8df63fc5b4b4da8c953e7882bf147b8" prot="private" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>weightedNorm</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ab94eec26f7d0841bba2e2f66e6cd8881" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>x</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ae747a642593f8bd903363ce007851566" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>y</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1af49907f7b2fe5d03cd6334c64e9260a1" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>z</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a69d9ad80a547f43f038ee3f60df21ba8" prot="public" virt="non-virtual"><scope>manif::SO3TangentBase</scope><name>Zero</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

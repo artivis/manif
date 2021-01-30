@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</compoundname>
+    <basecompoundref refid="structmanif_1_1internal_1_1traits" prot="public" virt="non-virtual">manif::internal::traits&lt; const Rn&lt; _Scalar, _N &gt; &gt;</basecompoundref>
+    <includes refid="_rn__map_8h" local="no">Rn_map.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>_N</declname>
+        <defname>_N</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4_1aea5c6c60b87cf7076a57e5f83289b7de" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_rn_base" kindref="compound">RnBase</ref>&lt; Eigen::Map&lt; const <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; Scalar, _N &gt;, 0 &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;::Base =  RnBase&lt;Eigen::Map&lt;const Rn&lt;Scalar, _N&gt;, 0&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="27" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4_1a111cc173356f24c6463e7f37ebd4488e" prot="public" static="no">
+        <type>Eigen::Map&lt; const Eigen::Matrix&lt; Scalar, RepSize, 1 &gt;, 0 &gt;</type>
+        <definition>using manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;::DataType =  Eigen::Map&lt;const Eigen::Matrix&lt;Scalar, RepSize, 1&gt;, 0&gt;</definition>
+        <argsstring></argsstring>
+        <name>DataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="28" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traits specialization for Eigen Map const </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::internal::traits&lt; const Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::internal::traits&lt; const Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="22" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="24" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4_1aea5c6c60b87cf7076a57e5f83289b7de" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4_1a111cc173356f24c6463e7f37ebd4488e" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</scope><name>DataType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_rn__properties_8h" kind="file" language="C++">
+    <compoundname>Rn_properties.h</compoundname>
+    <includes refid="traits_8h" local="yes">manif/impl/traits.h</includes>
+    <includedby refid="_rn_tangent__base_8h" local="yes">RnTangent_base.h</includedby>
+    <includedby refid="_rn_8h" local="yes">Rn.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Rn_properties.h</label>
+        <link refid="_rn__properties_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif/impl/traits.h</label>
+        <link refid="traits_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>Rn.h</label>
+        <link refid="_rn_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>RnTangent.h</label>
+        <link refid="_rn_tangent_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>RnTangent_base.h</label>
+        <link refid="_rn_tangent__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>RnTangent_map.h</label>
+        <link refid="_rn_tangent__map_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Rn_properties.h</label>
+        <link refid="_rn__properties_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>manif.h</label>
+        <link refid="manif_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_rn_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; RnBase&lt; _Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_rn_tangent_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; RnTangentBase&lt; _Derived &gt; &gt;</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_properties.h"/>
+  </compounddef>
+</doxygen>

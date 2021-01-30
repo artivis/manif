@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_rn_tangent__base_8h" local="no">RnTangent_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1a8cb8e7944a7092c257cd5d2999079751" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structmanif_1_1_rn_tangent_base" kindref="compound">RnTangentBase</ref>&lt; Derived &gt;::LieAlg</type>
+        <definition>static RnTangentBase&lt;Derived&gt;::LieAlg manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(const unsigned int i)</argsstring>
+        <name>run</name>
+        <param>
+          <type>const unsigned int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_base.h" line="179" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="179" bodyend="192"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generator specialization for <ref refid="structmanif_1_1_rn_tangent_base" kindref="compound">RnTangentBase</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_base.h" line="176" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="177" bodyend="193"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1a8cb8e7944a7092c257cd5d2999079751" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traits&lt; const T &gt;</compoundname>
+    <basecompoundref refid="structmanif_1_1internal_1_1traits" prot="public" virt="non-virtual">manif::internal::traits&lt; T &gt;</basecompoundref>
+    <includes refid="traits_8h" local="no">traits.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>the following is from the Eigen library here we say once and for all that <ref refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4" kindref="compound">traits&lt;const T&gt;</ref> == traits&lt;T&gt;</para>
+</simplesect>
+When constness must affect traits, it has to be constness on template parameters on which T itself depends. For example, traits&lt;Map&lt;const T&gt; &gt; != traits&lt;Map&lt;T&gt; &gt;, but traits&lt;const Map&lt;T&gt; &gt; == traits&lt;Map&lt;T&gt; &gt; </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::traits&lt; T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits"/>
+      </node>
+      <node id="1">
+        <label>manif::internal::traits&lt; const T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::internal::traits&lt; T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits"/>
+      </node>
+      <node id="1">
+        <label>manif::internal::traits&lt; const T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="26" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="26" bodyend="26"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

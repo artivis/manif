@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_random_evaluator_impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::RandomEvaluatorImpl</compoundname>
+    <derivedcompoundref refid="structmanif_1_1internal_1_1_random_evaluator" prot="public" virt="non-virtual">manif::internal::RandomEvaluator&lt; Derived &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_1a67102cf3448632e1393493c716e6e290" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; Derived &gt;::run</definition>
+        <argsstring>(T &amp;)</argsstring>
+        <name>run</name>
+        <param>
+          <type>T &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/random.h" line="11" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/random.h" bodystart="11" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::RandomEvaluator&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_random_evaluator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::internal::RandomEvaluatorImpl&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_random_evaluator_impl"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/random.h" line="8" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/random.h" bodystart="9" bodyend="17"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_1a67102cf3448632e1393493c716e6e290" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quick start | manif Python API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">Python API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-12 m-col-m-none">
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="classes.html">Classes</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="../cpp/index.html">C++</a></li>
+            <li><a href="https://github.com/artivis/manif">Github</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          Quick start
+        </h1>
+<aside class="contents" id="table-of-contents">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#getting-pybind11" id="id1">Getting Pybind11</a></li>
+<li><a href="#installation" id="id2">Installation</a><ul>
+<li><a href="#dependencies" id="id3">Dependencies</a></li>
+<li><a href="#from-source" id="id4">From source</a></li>
+</ul>
+</li>
+<li><a href="#use-manifpy-in-your-project" id="id5">Use manifpy in your project</a></li>
+<li><a href="#tutorials-and-application-demos" id="id6">Tutorials and application demos</a></li>
+</ul>
+</aside>
+<section id="getting-pybind11">
+<h2><a href="#id1">Getting Pybind11</a></h2>
+<p>The Python wrappers are generated using <a href="https://pybind11.readthedocs.io/en/stable/index.html">pybind11</a>. So first we need to install it,
+but we want it available directly in our environment root so that <code>CMake</code> can find it.
+To do so we can use,</p>
+<pre class="code bash">python3 -m pip install <span class="s2">&quot;pybind11[global]&quot;</span></pre>
+<p>Note that this is not recommended when using one's system Python,
+as it will add files to <code>/usr/local/include/pybind11</code> and <code>/usr/local/share/cmake/pybind11</code>.</p>
+<p>Another way is to use <code>CMake</code> to install it,</p>
+<pre class="code bash">git clone https://github.com/pybind/pybind11.git
+<span class="nb">cd</span> pybind11 <span class="o">&amp;&amp;</span> mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake ..
+make install</pre>
+</section>
+<section id="installation">
+<h2><a href="#id2">Installation</a></h2>
+<section id="dependencies">
+<h3><a href="#id3">Dependencies</a></h3>
+<ul>
+<li><p>Eigen 3 :</p>
+<ul>
+<li><p>Linux ( Ubuntu and similar )</p>
+<pre class="code bash">apt-get install libeigen3-dev</pre>
+</li>
+<li><p>OS X</p>
+<pre class="code bash">brew install eigen</pre>
+</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/TartanLlama/optional">lt::optional</a> : included in the <code>external</code> folder</p>
+</li>
+</ul>
+<p>Python bindings also depends on <code>numpy</code>.</p>
+<pre class="code bash">python3 -m pip install -r requirements</pre>
+</section>
+<section id="from-source">
+<h3><a href="#id4">From source</a></h3>
+<p>To generate <code>manif</code> Python bindings run,</p>
+<pre class="code bash">git clone https://github.com/artivis/manif.git
+<span class="nb">cd</span> manif
+python3 -m pip install .</pre>
+</section>
+</section>
+<section id="use-manifpy-in-your-project">
+<h2><a href="#id5">Use manifpy in your project</a></h2>
+<pre class="code python"><span class="kn">from</span> <span class="nn">manifpy</span> <span class="kn">import</span> <span class="n">SE3</span>
+
+<span class="o">...</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">SE3</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
+
+<span class="o">...</span></pre>
+</section>
+<section id="tutorials-and-application-demos">
+<h2><a href="#id6">Tutorials and application demos</a></h2>
+<p>We provide some self-contained and self-explained executables implementing some real problems.
+Their source code is located in <code>manif/examples/</code>.
+These demos are:</p>
+<ul>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se2_localization.py">se2_localization.py</a> : 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.</li>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se3_localization.py">se3_localization.py</a> : 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.</li>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se2_sam.py">se2_sam.py</a> : 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.</li>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se3_sam.py">se3_sam.py</a> : 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.</li>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se3_sam_selfcalib.py">se3_sam_selfcalib.py</a> : 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.</li>
+<li><a href="https://github.com/artivis/manif/tree/devel/examples/se_2_3_localization.py">se_2_3_localization.py</a> : A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).</li>
+</ul>
+<p>To run a demo, simply go to the <code>manif/examples/</code> folder and run,</p>
+<pre class="code bash"><span class="nb">cd</span> manif/examples
+python3 se2_localization.py</pre>
+</section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for modules, classes, functions and other
+            symbols. You can omit any prefix from the symbol path; adding a <code>.</code>
+            suffix lists all members of given symbol.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif Python API. Created with <a href="https://mcss.mosra.cz/documentation/python/">m.css Python doc generator</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

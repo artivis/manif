@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::RnBase struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>RnBase <span class="m-thin">struct</span>
+        </h1>
+        <p>The base class of the <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> group.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-info"><h4>Note</h4><p>See Appendix E.</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+              struct <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase&lt;_Derived&gt;</a>
+            </dt>
+            <dd>Base class for Lie groups. Defines the minimum common API.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="ad46f010f05b753c5d00dffa6d0f0d78e">
+              using <a href="#ad46f010f05b753c5d00dffa6d0f0d78e" class="m-doc-self">Transformation</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Transformation
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad574c33ba40f0fcdc14cf234c03dc646" class="m-doc">inverse</a>(</span><span class="m-doc-wrap">OptJacobianRef J_minv_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Get the inverse of this.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad4bea290adaad720c785e44ab101b946" class="m-doc">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; Tangent</span>
+            </dt>
+            <dd>Get the <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> corresponding Lie algebra element in vector form.</dd>
+            <dt id="a43583c967752e9a39aedebe7fdf379cb">
+              <span class="m-doc-wrap-bumper">auto <a href="#a43583c967752e9a39aedebe7fdf379cb" class="m-doc-self">lift</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; MANIF_DEPRECATED Tangent</span>
+            </dt>
+            <dd>This function is deprecated. Please considere using <a href="structmanif_1_1_rn_base.html#ad4bea290adaad720c785e44ab101b946" class="m-doc">log</a> instead.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a15083b89d53029e883983a482f8517ba" class="m-doc">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Composition of this and another <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> element.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a776b6ae57250eaf88780ad548cd42e96" class="m-doc">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v = {}) const -&gt; Eigen::Matrix&lt; Scalar, Dim, 1 &gt; -&gt; auto</span>
+            </dt>
+            <dd>Translation action on a 2-vector.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4c1c062df31c29088989e305305dc263" class="m-doc">adj</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd>Get the ajoint matrix of <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> at this.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1e2a07b6e078e74c957e8a469adb0fc" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
+            </dt>
+            <dd>Get the transformation matrix (2D isometry).</dd>
+            <dt id="a1ac9dd89b140080b8b0284c8bdfb5270">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ac9dd89b140080b8b0284c8bdfb5270" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+            <dt id="acee62f2ce8024b20db04c304031af85e">
+              <span class="m-doc-wrap-bumper">auto <a href="#acee62f2ce8024b20db04c304031af85e" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a7ce9db9ccb753dbe014d050fad09c385">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ce9db9ccb753dbe014d050fad09c385" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) &amp; -&gt; _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9380b9ee1ed9bbdcf3dcf284571f6901">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9380b9ee1ed9bbdcf3dcf284571f6901" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) const &amp; -&gt; const _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ad574c33ba40f0fcdc14cf234c03dc646"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad574c33ba40f0fcdc14cf234c03dc646" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">OptJacobianRef J_minv_m = {}) const</span></span>
+            </h3>
+            <p>Get the inverse of this.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>r^-1 = -r</p><p>See Appendix E and Eq. (189).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad4bea290adaad720c785e44ab101b946"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Tangent manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad4bea290adaad720c785e44ab101b946" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const</span></span>
+            </h3>
+            <p>Get the <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> corresponding Lie algebra element in vector form.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> tangent of this.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This is the <a href="structmanif_1_1_rn_base.html#ad4bea290adaad720c785e44ab101b946" class="m-doc">log()</a> map in vector form.</p><p>See Appendix E.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_rn_tangent.html" class="m-doc">RnTangent</a>.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a15083b89d53029e883983a482f8517ba"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a15083b89d53029e883983a482f8517ba" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const</span></span>
+            </h3>
+            <p>Composition of this and another <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">m&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Another <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> element.</td>
+                </tr>
+                <tr>
+                  <td>J_mc_ma</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_mc_mb</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The composition of &#x27;this . m&#x27;.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>See Eq. (190).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a776b6ae57250eaf88780ad548cd42e96"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a776b6ae57250eaf88780ad548cd42e96" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v = {}) const -&gt; Eigen::Matrix&lt; Scalar, Dim, 1 &gt;</span></span>
+            </h3>
+            <p>Translation action on a 2-vector.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">v</td>
+                  <td>A 2-vector.</td>
+                </tr>
+                <tr>
+                  <td>J_vout_m</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_vout_v</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The translated 2-vector.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a4c1c062df31c29088989e305305dc263"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Jacobian manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4c1c062df31c29088989e305305dc263" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the ajoint matrix of <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> at this.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>See Eqs. (188).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad1e2a07b6e078e74c957e8a469adb0fc"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />RnBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad1e2a07b6e078e74c957e8a469adb0fc" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the transformation matrix (2D isometry).</p>
+<aside class="m-note m-info"><h4>Note</h4><p>T = | 0 t | | 0 1 |</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

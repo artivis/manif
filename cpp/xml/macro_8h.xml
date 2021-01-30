@@ -1,0 +1,1081 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="macro_8h" kind="file" language="C++">
+    <compoundname>macro.h</compoundname>
+    <includes local="no">stdexcept</includes>
+    <includedby refid="lie__group__base_8h" local="yes">lie_group_base.h</includedby>
+    <includedby refid="tangent__base_8h" local="yes">tangent_base.h</includedby>
+    <includedby refid="_rn_8h" local="yes">Rn.h</includedby>
+    <includedby refid="_s_e2_8h" local="yes">SE2.h</includedby>
+    <includedby refid="_s_e3_8h" local="yes">SE3.h</includedby>
+    <includedby refid="_s_e__2__3_8h" local="yes">SE_2_3.h</includedby>
+    <includedby refid="_s_o2_8h" local="yes">SO2.h</includedby>
+    <includedby refid="_s_o3_8h" local="yes">SO3.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>macro.h</label>
+        <link refid="macro_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdexcept</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12">
+        <label>Rn.h</label>
+        <link refid="_rn_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>SE2.h</label>
+        <link refid="_s_e2_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>SE3.h</label>
+        <link refid="_s_e3_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>SE_2_3.h</label>
+        <link refid="_s_e__2__3_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>SO2.h</label>
+        <link refid="_s_o2_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>SO3.h</label>
+        <link refid="_s_o3_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>average.h</label>
+        <link refid="average_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bezier.h</label>
+        <link refid="bezier_8h_source"/>
+      </node>
+      <node id="6">
+        <label>decasteljau.h</label>
+        <link refid="decasteljau_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>interpolation.h</label>
+        <link refid="interpolation_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>functions.h</label>
+        <link refid="functions_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lie_group_base.h</label>
+        <link refid="lie__group__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>macro.h</label>
+        <link refid="macro_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Rn.h</label>
+        <link refid="impl_2rn_2_rn_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>RnTangent.h</label>
+        <link refid="_rn_tangent_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>RnTangent_base.h</label>
+        <link refid="_rn_tangent__base_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>RnTangent_map.h</label>
+        <link refid="_rn_tangent__map_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Rn_base.h</label>
+        <link refid="_rn__base_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Rn_map.h</label>
+        <link refid="_rn__map_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>SE2.h</label>
+        <link refid="impl_2se2_2_s_e2_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>SE2Tangent.h</label>
+        <link refid="_s_e2_tangent_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>SE2Tangent_base.h</label>
+        <link refid="_s_e2_tangent__base_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>SE2Tangent_map.h</label>
+        <link refid="_s_e2_tangent__map_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SE2_base.h</label>
+        <link refid="_s_e2__base_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>SE2_map.h</label>
+        <link refid="_s_e2__map_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>SE3.h</label>
+        <link refid="impl_2se3_2_s_e3_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>SE3Tangent.h</label>
+        <link refid="_s_e3_tangent_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>SE3Tangent_base.h</label>
+        <link refid="_s_e3_tangent__base_8h_source"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>SE3Tangent_map.h</label>
+        <link refid="_s_e3_tangent__map_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>SE3_base.h</label>
+        <link refid="_s_e3__base_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>SE3_map.h</label>
+        <link refid="_s_e3__map_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>SE_2_3.h</label>
+        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>SE_2_3Tangent.h</label>
+        <link refid="_s_e__2__3_tangent_8h_source"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>SE_2_3Tangent_base.h</label>
+        <link refid="_s_e__2__3_tangent__base_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>SE_2_3Tangent_map.h</label>
+        <link refid="_s_e__2__3_tangent__map_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>SE_2_3_base.h</label>
+        <link refid="_s_e__2__3__base_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>SE_2_3_map.h</label>
+        <link refid="_s_e__2__3__map_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>SO2.h</label>
+        <link refid="impl_2so2_2_s_o2_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>SO2Tangent.h</label>
+        <link refid="_s_o2_tangent_8h_source"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>SO2Tangent_base.h</label>
+        <link refid="_s_o2_tangent__base_8h_source"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>SO2Tangent_map.h</label>
+        <link refid="_s_o2_tangent__map_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>SO2_base.h</label>
+        <link refid="_s_o2__base_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>SO2_map.h</label>
+        <link refid="_s_o2__map_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>SO3.h</label>
+        <link refid="impl_2so3_2_s_o3_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>SO3Tangent.h</label>
+        <link refid="_s_o3_tangent_8h_source"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>SO3Tangent_base.h</label>
+        <link refid="_s_o3_tangent__base_8h_source"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>SO3Tangent_map.h</label>
+        <link refid="_s_o3_tangent__map_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>SO3_map.h</label>
+        <link refid="_s_o3__map_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>tangent_base.h</label>
+        <link refid="tangent__base_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>manif.h</label>
+        <link refid="manif_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1runtime__error" prot="public">manif::runtime_error</innerclass>
+    <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <innernamespace refid="namespacemanif_1_1detail">manif::detail</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="macro_8h_1a7ba3690529e60792b6e5051d0596142c" prot="public" static="no">
+        <name>__MANIF_EXPAND</name>
+        <param><defname>x</defname></param>
+        <initializer>x</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="47" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ac2adf0ecddab949b2a1e6f1a1adb41af" prot="public" static="no">
+        <name>__MANIF_HAVE_CPP_ATTRIBUTE</name>
+        <param><defname>x</defname></param>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="52" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a0c84cdbf515886bb294fe8acc72e7894" prot="public" static="no">
+        <name>__MANIF_THROW_EXCEPT</name>
+        <param><defname>msg</defname></param>
+        <param><defname>except</defname></param>
+        <initializer>manif::detail::raise&lt;except&gt;(msg);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="55" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a299b1cb10e93f8438a6087a0cab36726" prot="public" static="no">
+        <name>__MANIF_THROW</name>
+        <param><defname>msg</defname></param>
+        <initializer>__MANIF_THROW_EXCEPT(msg, <ref refid="structmanif_1_1runtime__error" kindref="compound">manif::runtime_error</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="56" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1af9a172d695d81181f8407c8677488f99" prot="public" static="no">
+        <name>__MANIF_GET_MACRO_2</name>
+        <param><defname>_1</defname></param>
+        <param><defname>_2</defname></param>
+        <param><defname>NAME</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>NAME</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="58" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a0a83eda522051f356b048acdee250edf" prot="public" static="no">
+        <name>MANIF_THROW</name>
+        <param><defname>...</defname></param>
+        <initializer>  __MANIF_EXPAND(                                 \
+  __MANIF_GET_MACRO_2(__VA_ARGS__,                \
+                      __MANIF_THROW_EXCEPT,       \
+                      __MANIF_THROW)(__VA_ARGS__) )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="60" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a7d3ebe26bad02d08a8a5655924d46e7e" prot="public" static="no">
+        <name>__MANIF_CHECK_MSG_EXCEPT</name>
+        <param><defname>cond</defname></param>
+        <param><defname>msg</defname></param>
+        <param><defname>except</defname></param>
+        <initializer>  if (!(cond)) {MANIF_THROW(msg, except);}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="66" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a3c940a7e06b493a70e5f8a0fc7d01c22" prot="public" static="no">
+        <name>__MANIF_CHECK_MSG</name>
+        <param><defname>cond</defname></param>
+        <param><defname>msg</defname></param>
+        <initializer>  __MANIF_CHECK_MSG_EXCEPT(cond, msg, <ref refid="structmanif_1_1runtime__error" kindref="compound">manif::runtime_error</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="68" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1adbdc34718a74467ba51947e047de10bf" prot="public" static="no">
+        <name>__MANIF_CHECK</name>
+        <param><defname>cond</defname></param>
+        <initializer>  __MANIF_CHECK_MSG_EXCEPT(cond, &quot;Condition: &apos;&quot;#cond&quot;&apos; failed!&quot;, manif::runtime_error)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="70" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a7f953a84c497b2a05b4be79b43ced539" prot="public" static="no">
+        <name>__MANIF_GET_MACRO_3</name>
+        <param><defname>_1</defname></param>
+        <param><defname>_2</defname></param>
+        <param><defname>_3</defname></param>
+        <param><defname>NAME</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>NAME</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="73" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1aa0ecd8b0f8c80a03f59c20142f4e3daf" prot="public" static="no">
+        <name>MANIF_CHECK</name>
+        <param><defname>...</defname></param>
+        <initializer>  __MANIF_EXPAND(                                 \
+  __MANIF_GET_MACRO_3(__VA_ARGS__,                \
+                      __MANIF_CHECK_MSG_EXCEPT,   \
+                      __MANIF_CHECK_MSG,          \
+                      __MANIF_CHECK)(__VA_ARGS__) )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="75" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a028bc235b52cfb90da3f16eedcd70bef" prot="public" static="no">
+        <name>MANIF_ASSERT</name>
+        <param><defname>...</defname></param>
+        <initializer>    __MANIF_EXPAND(                                 \
+    __MANIF_GET_MACRO_3(__VA_ARGS__,                \
+                        __MANIF_CHECK_MSG_EXCEPT,   \
+                        __MANIF_CHECK_MSG,          \
+                        __MANIF_CHECK)(__VA_ARGS__) )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="87" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1aa5bd632f69359b049ffcfb143cbfd099" prot="public" static="no">
+        <name>MANIF_NOT_IMPLEMENTED_YET</name>
+        <initializer>  MANIF_THROW(&quot;Not implemented yet !&quot;);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="97" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ab040f4e2476e5d25a400d5f053b1854a" prot="public" static="no">
+        <name>MANIF_DEPRECATED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="109" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1adeb82a19a1ebf6ef601135225264c137" prot="public" static="no">
+        <name>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND</name>
+        <initializer>  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits&lt;typename Base::DataType&gt;::Alignment&gt;0))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="114" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a8087f6452059e17342adf7d57aa33694" prot="public" static="no">
+        <name>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE</name>
+        <param><defname>X</defname></param>
+        <initializer>  EIGEN_MAKE_ALIGNED_OPERATOR_NEW_IF((Eigen::internal::traits&lt;typename X::DataType&gt;::Alignment&gt;0))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="116" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a5307405c954ca8f0bf38e12e9ac0cd63" prot="public" static="no">
+        <name>MANIF_MOVE_NOEXCEPT</name>
+        <initializer>  noexcept(std::is_nothrow_move_constructible&lt;Scalar&gt;::value)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="119" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a7bcbb8c8120f048846ec793ac31a38e4" prot="public" static="no">
+        <name>MANIF_DEFAULT_CONSTRUCTOR</name>
+        <param><defname>X</defname></param>
+        <initializer>  X() = default;                      \
+  ~X() = default;                     \
+  X(const X&amp;) = default;              \
+  X(X&amp;&amp;) = default;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="122" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a1294ab77d3819e67dff4057a5446464f" prot="public" static="no">
+        <name>MANIF_GROUP_ML_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  _Derived&amp; operator =(const X&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  _Derived&amp; operator =(const LieGroupBase&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  _Derived&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return derived(); } \
+  _Derived&amp; operator =(X&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  _Derived&amp; operator =(LieGroupBase&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  _Derived&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) { coeffs() = std::move(o); return derived(); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="128" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a6ba4876b4df35a0c46f31325d0037a5b" prot="public" static="no">
+        <name>MANIF_GROUP_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  X&amp; operator=(const X&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(const X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(const LieGroupBase&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  X&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return derived(); }\
+  X&amp; operator=(X&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(X##Base&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(LieGroupBase&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  X&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) { coeffs() = std::move(o); return derived(); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="140" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a77a67c058b1e8585632ac1c9fc913731" prot="public" static="no">
+        <name>MANIF_GROUP_MAP_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(const manif::X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">manif::LieGroupBase</ref>&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _EigenDerived&gt;\
+  Map&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return *this; }\
+  Map&amp; operator=(Map&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(manif::X##Base&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(<ref refid="structmanif_1_1_lie_group_base" kindref="compound">manif::LieGroupBase</ref>&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _EigenDerived&gt;\
+  Map&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) { coeffs() = std::move(o); return *this; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="156" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ad3818c2d9ae1ded5883dde2b4be10b7e" prot="public" static="no">
+        <name>MANIF_TANGENT_ML_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  _Derived&amp; operator=(const X&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  _Derived&amp; operator =(const TangentBase&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  _Derived&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return derived(); }\
+  _Derived&amp; operator=(X&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  _Derived&amp; operator =(TangentBase&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  _Derived&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o); return derived(); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="172" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a6bd111ba0073f92cc6cbaf0827b8e31a" prot="public" static="no">
+        <name>MANIF_TANGENT_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  X&amp; operator=(const X&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(const X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(const TangentBase&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  X&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return derived(); }\
+  X&amp; operator=(X&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(X##Base&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _DerivedOther&gt;\
+  X&amp; operator =(TangentBase&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return derived(); }\
+  template &lt;typename _EigenDerived&gt;\
+  X&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o); return derived(); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="184" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1aa152db6b3a394171b3b825ce74aa8de6" prot="public" static="no">
+        <name>MANIF_TANGENT_MAP_ASSIGN_OP</name>
+        <param><defname>X</defname></param>
+        <initializer>  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(const manif::X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(const <ref refid="structmanif_1_1_tangent_base" kindref="compound">manif::TangentBase</ref>&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
+  template &lt;typename _EigenDerived&gt;\
+  Map&amp; operator =(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; o) { coeffs() = o; return *this; }\
+  Map&amp; operator=(Map&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(manif::X##Base&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _DerivedOther&gt;\
+  Map&amp; operator =(<ref refid="structmanif_1_1_tangent_base" kindref="compound">manif::TangentBase</ref>&lt;_DerivedOther&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o.coeffs()); return *this; }\
+  template &lt;typename _EigenDerived&gt;\
+  Map&amp; operator =(Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;&amp; o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o); return *this; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="200" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a37aae07114eeffc7566acfebd3e4e834" prot="public" static="no">
+        <name>MANIF_COPY_CONSTRUCTOR</name>
+        <param><defname>X</defname></param>
+        <initializer>  X(const X&amp; o) : Base(), data_(o.coeffs()) { }                             \
+  X(const Base&amp; o) : Base(), data_(o.coeffs()) { }                          \
+  template &lt;typename D&gt; X(const Eigen::MatrixBase&lt;D&gt;&amp; o) : Base(), data_(o) \
+    { <ref refid="structmanif_1_1internal_1_1_assignment_evaluator" kindref="compound">manif::internal::AssignmentEvaluator</ref>&lt;Base&gt;().run(data_); }</initializer>
+        <briefdescription>
+<para>Automatically define: </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>copy constructor</para>
+</listitem><listitem><para>copy constructor given Base object</para>
+</listitem><listitem><para>copy constructor given Eigen object </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="222" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ab982705d209e066a28e4754ba4d5cfd4" prot="public" static="no">
+        <name>MANIF_MOVE_CONSTRUCTOR</name>
+        <param><defname>X</defname></param>
+        <initializer>  X(X&amp;&amp; o) MANIF_MOVE_NOEXCEPT : Base(), data_(std::move(o.coeffs())) { }         \
+  X(Base&amp;&amp; o) MANIF_MOVE_NOEXCEPT : Base(), data_(std::move(o.coeffs())) { }      \
+  template &lt;typename D&gt; X(Eigen::MatrixBase&lt;D&gt;&amp;&amp; o) : Base(), data_(std::move(o)) \
+    { <ref refid="structmanif_1_1internal_1_1_assignment_evaluator" kindref="compound">manif::internal::AssignmentEvaluator</ref>&lt;Base&gt;().run(data_); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="228" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a15113aaed87f3abf49a58c29ea1f694f" prot="public" static="no">
+        <name>MANIF_COEFFS_FUNCTIONS</name>
+        <param></param>
+        <initializer>  DataType&amp; coeffs() &amp; { return data_; }              \
+  const DataType&amp; coeffs() const &amp; { return data_; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="234" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ad9001a7115235d7523d44923769227dc" prot="public" static="no">
+        <name>MANIF_INHERIT_GROUP_AUTO_API</name>
+        <initializer>  using Base::setRandom;                \
+  using Base::rplus;                    \
+  using Base::lplus;                    \
+  using Base::rminus;                   \
+  using Base::lminus;                   \
+  using Base::between;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="240" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a0da630a4fca3f274c46bbd1e1e27bbfe" prot="public" static="no">
+        <name>MANIF_INHERIT_GROUP_API</name>
+        <initializer>  MANIF_INHERIT_GROUP_AUTO_API      \
+  using Base::setIdentity;          \
+  using Base::inverse;              \
+  using Base::lift;                 \
+  using Base::log;                  \
+  using Base::adj;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="248" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a35d019cc4a3b4f286479e07a82fc23e2" prot="public" static="no">
+        <name>MANIF_INHERIT_GROUP_OPERATOR</name>
+        <initializer>  using Base::operator +;               \
+  using Base::operator +=;              \
+  using Base::operator -;               \
+  using Base::operator *;               \
+  using Base::operator *=;              \
+  using Base::operator =;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="256" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a1daa9ca2fc7bf6ec215acb841be883ea" prot="public" static="no">
+        <name>MANIF_GROUP_PROPERTIES</name>
+        <initializer>  using Base::Dim;             \
+  using Base::DoF;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="264" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1ad3f28bdabc1b2a573341b4fcee67ae29" prot="public" static="no">
+        <name>MANIF_GROUP_TYPEDEF</name>
+        <initializer>  MANIF_GROUP_PROPERTIES                                \
+  using Scalar         = typename Base::Scalar;         \
+  using LieGroup       = typename Base::LieGroup;       \
+  using Tangent        = typename Base::Tangent;        \
+  using Jacobian       = typename Base::Jacobian;       \
+  using DataType       = typename Base::DataType;       \
+  using Vector         = typename Base::Vector;         \
+  using OptJacobianRef = typename Base::OptJacobianRef;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="268" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a5f3004407317e69592f24b373a5d5ef9" prot="public" static="no">
+        <name>MANIF_COMPLETE_GROUP_TYPEDEF</name>
+        <initializer>  MANIF_GROUP_TYPEDEF                \
+  MANIF_INHERIT_GROUP_OPERATOR</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="278" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a85fe53652a0e03f85cf5e416a835f5cd" prot="public" static="no">
+        <name>MANIF_EXTRA_GROUP_TYPEDEF</name>
+        <param><defname>group</defname></param>
+        <initializer>  using group##f = group&lt;float&gt;;         \
+  using group##d = group&lt;double&gt;;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="282" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a922628c7329776df7642635475ced8e3" prot="public" static="no">
+        <name>MANIF_INHERIT_TANGENT_API</name>
+        <initializer>  using Base::setZero;            \
+  using Base::setRandom;          \
+  using Base::retract;            \
+  using Base::exp;                \
+  using Base::hat;                \
+  using Base::rjac;               \
+  using Base::ljac;               \
+  using Base::smallAdj;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="288" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a2527d575c49f874467a52c3188e7e81f" prot="public" static="no">
+        <name>MANIF_INHERIT_TANGENT_OPERATOR</name>
+        <initializer>  using Base::operator +=;             \
+  using Base::operator -=;             \
+  using Base::operator *=;             \
+  using Base::operator /=;             \
+  using Base::operator =;              \
+  using Base::operator &lt;&lt;;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="298" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a4a3138c40460a69a79c3100d38860192" prot="public" static="no">
+        <name>MANIF_TANGENT_PROPERTIES</name>
+        <initializer>using Base::Dim;                 \
+using Base::DoF;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="306" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1af5b9d7df86687bfaf5c8d3f12b28a3bc" prot="public" static="no">
+        <name>MANIF_TANGENT_TYPEDEF</name>
+        <initializer>  MANIF_TANGENT_PROPERTIES                  \
+  using Scalar   = typename Base::Scalar;   \
+  using LieGroup = typename Base::LieGroup; \
+  using Tangent  = typename Base::Tangent;  \
+  using Jacobian = typename Base::Jacobian; \
+  using DataType = typename Base::DataType; \
+  using LieAlg   = typename Base::LieAlg;   \
+  using OptJacobianRef = typename Base::OptJacobianRef;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="310" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="macro_8h_1a452d7c4972f7f593fd70e3042d5eb00a" prot="public" static="no">
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param><defname>tangent</defname></param>
+        <initializer>  using tangent##f = tangent&lt;float&gt;;         \
+  using tangent##d = tangent&lt;double&gt;;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="320" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/macro.h"/>
+  </compounddef>
+</doxygen>

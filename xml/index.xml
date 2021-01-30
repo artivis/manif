@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.2" xml:lang="en-US">
+  <compound refid="documentation_8md" kind="file"><name>documentation.md</name>
+  </compound>
+  <compound refid="projects_8md" kind="file"><name>projects.md</name>
+  </compound>
+  <compound refid="publication_8md" kind="file"><name>publication.md</name>
+  </compound>
+  <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="md_pages_projects" kind="page"><name>md_pages_projects</name>
+  </compound>
+  <compound refid="md_pages_documentation" kind="page"><name>md_pages_documentation</name>
+  </compound>
+  <compound refid="md_pages_publication" kind="page"><name>md_pages_publication</name>
+  </compound>
+  <compound refid="dir_208d2690607c4e3d3fabfa1d18673d36" kind="dir"><name>pages</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

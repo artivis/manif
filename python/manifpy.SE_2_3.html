@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manifpy.SE_2_3 | manif Python API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">Python API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-12 m-col-m-none">
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="classes.html">Classes</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="../cpp/index.html">C++</a></li>
+            <li><a href="https://github.com/artivis/manif">Github</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span>SE_2_3 <span class="m-thin">class</span>
+        </h1>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#staticmethods">Static methods</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#dunder-methods">Special methods</a></li>
+                <li><a href="#data">Data</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="staticmethods">
+          <h2><a href="#staticmethods">Static methods</a></h2>
+          <dl class="m-doc">
+            <dt id="Identity">
+              <span class="m-doc-wrap-bumper">def <a href="#Identity" class="m-doc-self">Identity</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Static helper to create an object set at the Lie group Identity.</dd>
+            <dt id="Random">
+              <span class="m-doc-wrap-bumper">def <a href="#Random" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Static helper to create a random object of the Lie group.</dd>
+          </dl>
+        </section>
+        <section id="methods">
+          <h2><a href="#methods">Methods</a></h2>
+          <dl class="m-doc">
+            <dt id="act">
+              <span class="m-doc-wrap-bumper">def <a href="#act" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">self,
+              p: numpy.ndarray[numpy.float64[3, 1]],
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_p: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
+            </dt>
+            <dd>Get the action of the Lie group object on a point.</dd>
+            <dt id="adj">
+              <span class="m-doc-wrap-bumper">def <a href="#adj" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[9, 9]]</span>
+            </dt>
+            <dd>Return the Adjoint of the Lie group object self.</dd>
+            <dt id="between">
+              <span class="m-doc-wrap-bumper">def <a href="#between" class="m-doc-self">between</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Return the between of self and another object of the same Lie group.</dd>
+            <dt id="coeffs">
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[10, 1]]</span>
+            </dt>
+            <dd>Get a reference to underlying data.</dd>
+            <dt id="coeffs_copy">
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[10, 1]]</span>
+            </dt>
+            <dd>Return a copy of underlying data.</dd>
+            <dt id="compose">
+              <span class="m-doc-wrap-bumper">def <a href="#compose" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Return the composition of self and another object of the same Lie group.</dd>
+            <dt id="inverse">
+              <span class="m-doc-wrap-bumper">def <a href="#inverse" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">self,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Return the inverse of the Lie group object.</dd>
+            <dt id="isApprox">
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              eps: float = 1e-10) -&gt; bool</span>
+            </dt>
+            <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
+            <dt id="linearVelocity">
+              <span class="m-doc-wrap-bumper">def <a href="#linearVelocity" class="m-doc-self">linearVelocity</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
+            </dt>
+            <dd></dd>
+            <dt id="lminus">
+              <span class="m-doc-wrap-bumper">def <a href="#lminus" class="m-doc-self">lminus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></span>
+            </dt>
+            <dd>Left ominus operation of the Lie group.</dd>
+            <dt id="log">
+              <span class="m-doc-wrap-bumper">def <a href="#log" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">self,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></span>
+            </dt>
+            <dd>Return the corresponding Lie algebra element in vector form.</dd>
+            <dt id="lplus">
+              <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
+              tau: manifpy._SE_2_3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Left oplus operation of the Lie group.</dd>
+            <dt id="minus">
+              <span class="m-doc-wrap-bumper">def <a href="#minus" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></span>
+            </dt>
+            <dd>An alias for the &#x27;rminus&#x27; function.</dd>
+            <dt id="normalize">
+              <span class="m-doc-wrap-bumper">def <a href="#normalize" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            </dt>
+            <dd></dd>
+            <dt id="plus">
+              <span class="m-doc-wrap-bumper">def <a href="#plus" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
+              tau: manifpy._SE_2_3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>An alias for the &#x27;rplus&#x27; function.</dd>
+            <dt id="rminus">
+              <span class="m-doc-wrap-bumper">def <a href="#rminus" class="m-doc-self">rminus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._SE_2_3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></span>
+            </dt>
+            <dd>Right ominus operation of the Lie group.</dd>
+            <dt id="rotation">
+              <span class="m-doc-wrap-bumper">def <a href="#rotation" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
+            </dt>
+            <dd></dd>
+            <dt id="rplus">
+              <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
+              tau: manifpy._SE_2_3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None,
+              J_out_tau: typing.Optional[numpy.ndarray[numpy.float64[9, 9], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Right oplus operation of the Lie group.</dd>
+            <dt id="setIdentity">
+              <span class="m-doc-wrap-bumper">def <a href="#setIdentity" class="m-doc-self">setIdentity</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Set self to the Lie group Identity.</dd>
+            <dt id="setRandom">
+              <span class="m-doc-wrap-bumper">def <a href="#setRandom" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Set self to a random value.</dd>
+            <dt id="translation">
+              <span class="m-doc-wrap-bumper">def <a href="#translation" class="m-doc-self">translation</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
+            </dt>
+            <dd></dd>
+            <dt id="vx">
+              <span class="m-doc-wrap-bumper">def <a href="#vx" class="m-doc-self">vx</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+            <dt id="vy">
+              <span class="m-doc-wrap-bumper">def <a href="#vy" class="m-doc-self">vy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+            <dt id="vz">
+              <span class="m-doc-wrap-bumper">def <a href="#vz" class="m-doc-self">vz</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+            <dt id="x">
+              <span class="m-doc-wrap-bumper">def <a href="#x" class="m-doc-self">x</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+            <dt id="y">
+              <span class="m-doc-wrap-bumper">def <a href="#y" class="m-doc-self">y</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+            <dt id="z">
+              <span class="m-doc-wrap-bumper">def <a href="#z" class="m-doc-self">z</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="dunder-methods">
+          <h2><a href="#dunder-methods">Special methods</a></h2>
+          <dl class="m-doc">
+            <dt id="__add__">
+              <span class="m-doc-wrap-bumper">def <a href="#__add__" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Operator overload for the &#x27;plus&#x27; function.</dd>
+            <dt id="__eq__">
+              <span class="m-doc-wrap-bumper">def <a href="#__eq__" class="m-doc-self">__eq__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a><span class="m-text m-dim">, /</span>) -&gt; bool</span>
+            </dt>
+            <dd>Operator overload for the &#x27;isApprox&#x27; function.</dd>
+            <dt id="__init__-6eef6">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-6eef6" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            </dt>
+            <dd>Default constructor, uninitialized data.</dd>
+            <dt id="__init__-6767d">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-6767d" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
+              arg0: numpy.ndarray[numpy.float64[10, 1]]<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            </dt>
+            <dd>Constructor given data vector.</dd>
+            <dt id="__init__-fd530">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-fd530" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
+              arg0: float,
+              arg1: float,
+              arg2: float,
+              arg3: float,
+              arg4: float,
+              arg5: float,
+              arg6: float,
+              arg7: float,
+              arg8: float<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            </dt>
+            <dd></dd>
+            <dt id="__mul__">
+              <span class="m-doc-wrap-bumper">def <a href="#__mul__" class="m-doc-self">__mul__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a></span>
+            </dt>
+            <dd>Operator overload for the &#x27;compose&#x27; function.</dd>
+            <dt id="__str__">
+              <span class="m-doc-wrap-bumper">def <a href="#__str__" class="m-doc-self">__str__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; str</span>
+            </dt>
+            <dd></dd>
+            <dt id="__sub__">
+              <span class="m-doc-wrap-bumper">def <a href="#__sub__" class="m-doc-self">__sub__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy.SE_2_3.html" class="m-doc">SE_2_3</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></span>
+            </dt>
+            <dd>Operator overload for the &#x27;minus&#x27; function.</dd>
+          </dl>
+        </section>
+        <section id="data">
+          <h2><a href="#data">Data</a></h2>
+          <dl class="m-doc">
+            <dt id="Dim">
+              <a href="#Dim" class="m-doc-self">Dim</a> = 3
+            </dt>
+            <dd></dd>
+            <dt id="DoF">
+              <a href="#DoF" class="m-doc-self">DoF</a> = 9
+            </dt>
+            <dd></dd>
+            <dt id="RepSize">
+              <a href="#RepSize" class="m-doc-self">RepSize</a> = 10
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for modules, classes, functions and other
+            symbols. You can omit any prefix from the symbol path; adding a <code>.</code>
+            suffix lists all members of given symbol.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif Python API. Created with <a href="https://mcss.mosra.cz/documentation/python/">m.css Python doc generator</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

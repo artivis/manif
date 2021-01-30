@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traitscast" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traitscast</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename _Class</type>
+      </param>
+      <param>
+        <type>typename _NewScalar</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>A traits helper to cast. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>e.g. template &lt;typename NewScalar&gt; using LieGroupTemplate = typename traitscast&lt;LieGroup, NewScalar&gt;::cast; </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="38" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="38" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Quick start</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md_pages_cpp_Quick_start"/><itemizedlist>
+<listitem><para><ulink url="#quick-start">Quick start</ulink><itemizedlist>
+<listitem><para><ulink url="#installation">Installation</ulink><itemizedlist>
+<listitem><para><ulink url="#dependencies">Dependencies</ulink></para>
+</listitem><listitem><para><ulink url="#from-source">From source</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><ulink url="#use-manif-in-your-project">Use manif in your project</ulink></para>
+</listitem><listitem><para><ulink url="#tutorials-and-application-demos">Tutorials and application demos</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>manif</bold> has been designed for an easy integration to larger projects:</para>
+<para><itemizedlist>
+<listitem><para>A single dependency on <ulink url="http://eigen.tuxfamily.org">Eigen</ulink>,</para>
+</listitem><listitem><para>header-only for easy integration,</para>
+</listitem><listitem><para>templated on the underlying scalar type so that one can use its own,</para>
+</listitem><listitem><para>and C++11, since not everyone gets to enjoy the latest C++ features, especially in industry.</para>
+</listitem></itemizedlist>
+</para>
+<para>All Lie group classes defined in <bold>manif</bold> have in common that they inherit from a templated base class (<ulink url="https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern">CRTP</ulink>). It allows one to write generic code abstracting the Lie group details. Please find more information in the related [documentation page](Writing-generic-code).</para>
+<para>The library supports template scalar types. In particular, it can work with the <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> type, allowing for automatic Jacobian computation <ndash/> <ulink url="#jacobians">see related paragraph on Jacobians below</ulink>.</para>
+<sect1 id="index_1autotoc_md6">
+<title>Installation</title>
+<sect2 id="index_1autotoc_md7">
+<title>Dependencies</title>
+<para><itemizedlist>
+<listitem><para>Eigen 3 :<itemizedlist>
+<listitem><para>Linux ( Ubuntu and similar )</para>
+<para>``` apt-get install libeigen3-dev ```</para>
+</listitem><listitem><para>OS X</para>
+<para>``` brew install eigen ```</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><ulink url="https://github.com/TartanLlama/optional">lt::optional</ulink> : included in the <computeroutput>external</computeroutput> folder</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md8">
+<title>From source</title>
+<para><programlisting filename=".terminal"><codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/artivis/manif.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>manif<sp/>&amp;&amp;<sp/>mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>install</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md9">
+<title>Use manif in your project</title>
+<para>In your project <computeroutput>CMakeLists.txt</computeroutput> :</para>
+<para><programlisting filename=".cmake"><codeline><highlight class="normal">project(foo)</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Find<sp/>the<sp/>Eigen<sp/>library</highlight></codeline>
+<codeline><highlight class="normal">find_package(Eigen3<sp/>REQUIRED)</highlight></codeline>
+<codeline><highlight class="normal">target_include_directories(${PROJECT_NAME}<sp/>SYSTEM<sp/>PUBLIC<sp/>${EIGEN3_INCLUDE_DIRS})</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Find<sp/>the<sp/>manif<sp/>library</highlight></codeline>
+<codeline><highlight class="normal">find_package(manif<sp/>REQUIRED)</highlight></codeline>
+<codeline><highlight class="normal">add_executable(${PROJECT_NAME}<sp/>src/foo.cpp)</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Add<sp/>manif<sp/>include<sp/>directories<sp/>to<sp/>the<sp/>target</highlight></codeline>
+<codeline><highlight class="normal">target_include_directories(${PROJECT_NAME}<sp/>SYSTEM<sp/>PUBLIC<sp/>${manif_INCLUDE_DIRS})</highlight></codeline>
+</programlisting></para>
+<para>In your code:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;manif/manif.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">...</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">auto<sp/>state<sp/>=<sp/>manif::SE3d::Identity();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">...</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="index_1autotoc_md10">
+<title>Tutorials and application demos</title>
+<para>We provide some self-contained and self-explained executables implementing some real problems. Their source code is located in <computeroutput>manif/examples/</computeroutput>. These demos are:</para>
+<para><itemizedlist>
+<listitem><para><ulink url="examples/se2_localization.cpp"><computeroutput>se2_localization.cpp</computeroutput></ulink>: 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.</para>
+</listitem><listitem><para><ulink url="examples/se3_localization.cpp"><computeroutput>se3_localization.cpp</computeroutput></ulink>: 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.</para>
+</listitem><listitem><para><ulink url="examples/se2_sam.cpp"><computeroutput>se2_sam.cpp</computeroutput></ulink>: 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.</para>
+</listitem><listitem><para><ulink url="examples/se3_sam.cpp"><computeroutput>se3_sam.cpp</computeroutput></ulink>: 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.</para>
+</listitem><listitem><para><ulink url="examples/se3_sam_selfcalib.cpp"><computeroutput>se3_sam_selfcalib.cpp</computeroutput></ulink>: 3D smoothing and mapping (SAM) with self-calibration, with simultaneous estimation of robot poses, landmark locations and sensor parameters, based on SE3 robot poses. This implements a 3D version of the example V.C in the paper.</para>
+</listitem><listitem><para><ulink url="examples/se_2_3_localization.cpp"><computeroutput>se_2_3_localization.cpp</computeroutput></ulink>: A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).</para>
+</listitem></itemizedlist>
+</para>
+<para>To build the demos, simply pass the related flag to CMake,</para>
+<para><programlisting filename=".terminal"><codeline><highlight class="normal">cmake<sp/>-DBUILD_EXAMPLES=ON<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>examples</highlight></codeline>
+<codeline><highlight class="normal">./se2_localization</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+    <location file="pages/cpp/Quick-start.md"/>
+  </compounddef>
+</doxygen>
