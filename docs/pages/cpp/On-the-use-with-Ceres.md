@@ -1,12 +1,38 @@
 # Ceres
 
-While the `manif` package differentiates Jacobians with respect to a
-local perturbation on the tangent space,
-many non-linear solvers
-(including [Ceres][ceres]) expect them to be differentiated
-with respect to the underlying representation vector of the group element
-(e.g. wrt the quaternion parameters vector
-for ![SO3][latex1].
+- [Ceres](#ceres)
+  - [Jacobians](#jacobians)
+  - [Example : A group-abstract `LocalParameterization`](#example--a-group-abstract-localparameterization)
+  - [Example : A small Ceres problem](#example--a-small-ceres-problem)
+
+The **manif** package differentiates Jacobians with respect to a
+local perturbation on the tangent space.
+These Jacobians map tangent spaces, as described in [this paper][jsola18].
+
+However, many non-linear solvers
+(e.g. [Ceres][ceres]) expect functions to be differentiated with respect to the underlying
+representation vector of the group element
+(e.g. with respect to quaternion vector for `SO3`).
+
+For this reason **manif** is compliant with [Ceres][ceres]
+auto-differentiation and the [`ceres::Jet`][ceres-jet] type.
+
+For reference of the size of the Jacobians returned when using `ceres::Jet`,
+**manif** implements rotations in the following way:
+
+- SO(2) and SE(2): as a complex number with `real = cos(theta)` and `imag = sin(theta)` values.
+- SO(3), SE(3) and SE_2(3): as a unit quaternion, using the underlying `Eigen::Quaternion` type.
+
+Therefore, the respective Jacobian sizes using `ceres::Jet` are as follows:
+
+- ℝ(n) : size n
+- SO(2) : size 2
+- SO(3) : size 4
+- SE(2) : size 4
+- SE(3) : size 7
+- SE_2(3): size 10
+
+## Jacobians
 
 Considering,
 
@@ -214,6 +240,8 @@ std::cout << "Average state:\nx:" << average_state.x()
 ```
 
 [//]: # (URLs)
+
+[jsola18]: http://arxiv.org/abs/1812.01537
 
 [ceres]: http://ceres-solver.org/
 [ceres-costfunction]: http://ceres-solver.org/nnls_modeling.html#costfunction

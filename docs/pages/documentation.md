@@ -1,4 +1,4 @@
-# Documentation
+# Building the documentation
 
 We detail here how to build the documentation locally.
 The overall documentation relies on two tools,

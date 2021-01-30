@@ -12,9 +12,9 @@ In this example, `k` points in `SE2` are generated on a 8-shaped curve (large bl
 Between consecutive points, `p` new points are interpolated (in `]0,1[`, smaller red arrows).
 The results for each interpolation algorithm is shown in the following figures:
 
-![SE2 Slerp interpolation](images/se2_interp_slerp.png)
-![SE2 Cubic interpolation](images/se2_interp_cubic.png)
-![SE2 Cn Smooth interpolation](images/se2_interp_cnsmooth.png)
+![SE2 Slerp interpolation](../../images/se2_interp_slerp.png)
+![SE2 Cubic interpolation](../../images/se2_interp_cubic.png)
+![SE2 Cn Smooth interpolation](../../images/se2_interp_cnsmooth.png)
 
 To reproduce the figures:
 

@@ -1,12 +1,20 @@
 # Quick start
 
-## Pybind11
+- [Quick start](#quick-start)
+  - [Getting Pybind11](#getting-pybind11)
+  - [Installation](#installation)
+    - [Dependencies](#dependencies)
+    - [From source](#from-source)
+  - [Use manifpy in your project](#use-manifpy-in-your-project)
+  - [Tutorials and application demos](#tutorials-and-application-demos)
 
-The Python wrappers are generated using [`pybind11`][pybind11]. So first we need to install it,
+## Getting Pybind11
+
+The Python wrappers are generated using [pybind11][pybind11-rtd]. So first we need to install it,
 but we want it available directly in our environment root so that `CMake` can find it.
 To do so we can use,
 
-```terminal
+```bash
 python3 -m pip install "pybind11[global]"
 ```
 
@@ -15,7 +23,7 @@ as it will add files to `/usr/local/include/pybind11` and `/usr/local/share/cmak
 
 Another way is to use `CMake` to install it,
 
-```terminal
+```bash
 git clone https://github.com/pybind/pybind11.git
 cd pybind11 && mkdir build && cd build
 cmake ..
@@ -43,7 +51,7 @@ make install
 
 Python bindings also depends on `numpy`.
 
-```terminal
+```bash
 python3 -m pip install -r requirements
 ```
 
@@ -51,7 +59,7 @@ python3 -m pip install -r requirements
 
 To generate `manif` Python bindings run,
 
-```terminal
+```bash
 git clone https://github.com/artivis/manif.git
 cd manif
 python3 -m pip install .
@@ -84,7 +92,12 @@ These demos are:
 
 To run a demo, simply go to the `manif/examples/` folder and run,
 
-```terminal
+```bash
 cd manif/examples
 python3 se2_localization.py
 ```
+
+[//]: # (URLs)
+
+[pybind11-rtd]: https://pybind11.readthedocs.io/en/stable/index.html
+[optional-repo]: https://github.com/TartanLlama/optional

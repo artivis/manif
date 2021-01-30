@@ -10,6 +10,7 @@ You may find on Google Scholar publications citing either:
 ## They use manif
 
 - [`lie-group-controllers`][lie-group-controllers-repo], header-only C++ libraries containing controllers designed for Lie Groups.
+- [`bipedal-locomotion-framework`][bipedal-locomotion-framework], The BipedalLocomotionFramework project is a suite of libraries for achieving bipedal locomotion on humanoid robots.
 
 Your project is not listed here? Let us know about it!
 
@@ -21,3 +22,4 @@ Your project is not listed here? Let us know about it!
 [deray20-scholar]: https://scholar.google.fr/scholar?oi=bibs&hl=fr&cites=1235228860941456363
 
 [lie-group-controllers-repo]: https://github.com/dic-iit/lie-group-controllers
+[bipedal-locomotion-framework]: https://github.com/dic-iit/bipedal-locomotion-framework

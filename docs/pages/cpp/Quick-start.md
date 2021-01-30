@@ -1,5 +1,27 @@
 # Quick start
 
+- [Quick start](#quick-start)
+  - [Installation](#installation)
+    - [Dependencies](#dependencies)
+    - [From source](#from-source)
+  - [Use manif in your project](#use-manif-in-your-project)
+  - [Tutorials and application demos](#tutorials-and-application-demos)
+
+**manif** has been designed for an easy integration to larger projects:
+
+- A single dependency on [Eigen][eigen],
+- header-only for easy integration,
+- templated on the underlying scalar type so that one can use its own,
+- and C++11, since not everyone gets to enjoy the latest C++ features, especially in industry.
+
+All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP][crtp]).
+It allows one to write generic code abstracting the Lie group details.
+Please find more information in the related [documentation page](Writing-generic-code).
+
+The library supports template scalar types. In particular, it can work with the
+[`ceres::Jet`][ceres-jet] type, allowing for automatic Jacobian computation --
+[see related paragraph on Jacobians below](#jacobians).
+
 ## Installation
 
 ### Dependencies
@@ -7,13 +29,13 @@
 - Eigen 3 :
   - Linux ( Ubuntu and similar )
 
-      ```bash
+      ```
       apt-get install libeigen3-dev
       ```
 
   - OS X
 
-      ```bash
+      ```
       brew install eigen
       ```
 
@@ -24,7 +46,7 @@
 ```terminal
 git clone https://github.com/artivis/manif.git
 cd manif && mkdir build && cd build
-cmake
+cmake ..
 make install
 ```
 
@@ -79,4 +101,9 @@ cd examples
 ./se2_localization
 ```
 
+[//]: # (URLs)
+
+[eigen]: http://eigen.tuxfamily.org
+[crtp]: https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 [optional-repo]: https://github.com/TartanLlama/optional
+[ceres-jet]: http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets

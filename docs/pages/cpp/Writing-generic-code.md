@@ -1,5 +1,10 @@
 # Writing generic code
 
+- [Writing generic code](#writing-generic-code)
+  - [Examples](#examples)
+    - [Small example](#small-example)
+    - [Multiple templated arguments](#multiple-templated-arguments)
+
 All Lie group classes defined in `manif` have in common that they inherit from a templated base class.
 Therefore, template-based generic code can be written - similarly to Eigen.
 

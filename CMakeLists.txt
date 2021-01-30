@@ -26,7 +26,7 @@ endif()
 find_package(Eigen3 QUIET)
 
 if(NOT EIGEN3_FOUND)
-  LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
   find_package(Eigen3 REQUIRED)
 endif()
 

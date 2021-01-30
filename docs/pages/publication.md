@@ -40,9 +40,12 @@ This will give the appropriate equation numbers.
 
 ## Lie group cheat sheets
 
-In a rush? Here is your Lie group theory take away:
-[Lie group cheat sheet](paper/Lie_theory_cheat_sheet.pdf).
+In a rush? Check out our Lie group theory take away, the
+[Lie group cheat sheet][cheat-sheet]
+(or hit [dowload][cheat-sheet-download]).
 
 [jsola18]: http://arxiv.org/abs/1812.01537
 [jsola18v]: http://arxiv.org/abs/1812.01537v4
 [deray20]: https://joss.theoj.org/papers/10.21105/joss.01371
+[cheat-sheet]: https://github.com/artivis/manif/blob/devel/paper/Lie_theory_cheat_sheet.pdf
+[cheat-sheet-download]: https://github.com/artivis/manif/raw/devel/paper/Lie_theory_cheat_sheet.pdf

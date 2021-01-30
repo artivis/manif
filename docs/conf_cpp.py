@@ -5,7 +5,7 @@ SHOW_UNDOCUMENTED = True
 
 LINKS_NAVBAR1 = [
     ('Pages', 'pages', []),
-    ('Namespaces', 'namespaces', []),
+    # ('Namespaces', 'namespaces', []),
     ('Classes', 'annotated', []),
     ('Files', 'files', [])
 ]
