@@ -1,12 +1,12 @@
 /**
- * \file se2_localization.cpp
+ * \file se2_localization_ukfm.cpp
  *
  *  Created on: Dec 10, 2018
- *     \author: jsola
+ *     \author: artivis
  *
  *  ---------------------------------------------------------
  *  This file is:
- *  (c) 2018 Joan Sola @ IRI-CSIC, Barcelona, Catalonia
+ *  (c) 2021 Jeremie Deray
  *
  *  This file is part of `manif`, a C++ template-only library
  *  for Lie theory targeted at estimation for robotics.
