@@ -182,7 +182,7 @@ int main()
 
 
     // DEBUG
-    cout << std::fixed   << std::setprecision(4) << std::showpos << endl;
+    cout << std::fixed   << std::setprecision(3) << std::showpos << endl;
     cout << "X STATE     :    X      Y    THETA" << endl;
     cout << "----------------------------------" << endl;
     cout << "X initial   : " << X_simulation.log().coeffs().transpose() << endl;
@@ -280,11 +280,9 @@ int main()
         //// IV. Results ##############################################################################
 
         // DEBUG
-        cout << "X simulated : " << X_simulation.log().coeffs().transpose() << "." << endl;
-        cout << "X estimated : " << X.log().coeffs().transpose()
-             << ". |d|=" << (X_simulation - X).squaredWeightedNorm() <<endl;
-        cout << "X unfilterd : " << X_unfiltered.log().coeffs().transpose()
-             << ". |d|=" << (X_simulation - X_unfiltered).squaredWeightedNorm() <<endl;
+        cout << "X simulated : " << X_simulation.log().coeffs().transpose() << endl;
+        cout << "X estimated : " << X.log().coeffs().transpose() << endl;
+        cout << "X unfilterd : " << X_unfiltered.log().coeffs().transpose() << endl;
         cout << "----------------------------------" << endl;
         // END DEBUG
 
