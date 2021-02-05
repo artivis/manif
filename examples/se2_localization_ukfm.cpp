@@ -171,11 +171,14 @@ compute_sigma_weights(const Scalar state_size,
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // START CONFIGURATION
     //
     //
     const int NUMBER_OF_LMKS_TO_MEASURE = 3;
     constexpr int DoF = manif::SE2d::DoF;
+    constexpr int SystemNoiseSize = manif::SE2d::DoF;
     // Measurement Dim
     constexpr int Rp = 2;
 
@@ -242,7 +245,7 @@ int main()
 
     Matrix<double, DoF, DoF> xis;
     Matrix<double, DoF, DoF*2> xis_new;
-    Matrix<double, DoF, 2*2> xis_new2;
+    Matrix<double, DoF, SystemNoiseSize*2> xis_new2;
 
     //
     //
@@ -303,8 +306,7 @@ int main()
         X_new = X + u_est;                        // X * exp(u)
 
         // set sigma points
-        Matrix3d PLt = P.llt().matrixL();
-        xis = w_d.sqrt_d_lambda * PLt;
+        xis = w_d.sqrt_d_lambda * P.llt().matrixL().toDenseMatrix();
 
         // sigma points on manifold
         for (int i = 0; i < DoF; ++i)
@@ -312,8 +314,8 @@ int main()
           s_j_p = X + manif::SE2Tangentd( xis.col(i));
           s_j_m = X + manif::SE2Tangentd(-xis.col(i));
 
-          xis_new.col(i) = (X_new - (s_j_p + u_est)).coeffs();
-          xis_new.col(i + DoF) = (X_new - (s_j_m + u_est)).coeffs();
+          xis_new.col(i) = (X_new.lminus(s_j_p + u_est)).coeffs();
+          xis_new.col(i + DoF) = (X_new.lminus(s_j_m + u_est)).coeffs();
         }
 
         // compute covariance
@@ -324,13 +326,13 @@ int main()
                 w_d.w0 * xi_mean * xi_mean.transpose();
 
         // sigma points on manifold
-        for (int i = 0; i < 2; ++i)
+        for (int i = 0; i < SystemNoiseSize; ++i)
         {
           w_p =  w_q.sqrt_d_lambda * Uchol.col(i);
           w_m = -w_q.sqrt_d_lambda * Uchol.col(i);
 
-          xis_new2.col(i) = (X_new - (X + (u_est + w_p))).coeffs();
-          xis_new2.col(i + 2) = (X_new - (X + (u_est + w_m))).coeffs();
+          xis_new2.col(i) = (X_new.lminus(X + (u_est + w_p))).coeffs();
+          xis_new2.col(i + SystemNoiseSize) = (X_new.lminus(X + (u_est + w_m))).coeffs();
         }
 
         xi_mean = w_q.wj * xis_new2.rowwise().sum();
@@ -356,8 +358,7 @@ int main()
             e = X.inverse().act(b);
 
             // set sigma points
-            PLt = P.llt().matrixL();
-            xis = w_u.sqrt_d_lambda * PLt;
+            xis = w_u.sqrt_d_lambda * P.llt().matrixL().toDenseMatrix();
 
             // compute measurement sigma points
             for (int i = 0; i < DoF; ++i)
@@ -408,11 +409,9 @@ int main()
         //// IV. Results ##############################################################################
 
         // DEBUG
-        cout << "X simulated : " << X_simulation.log().coeffs().transpose() << "." << endl;
-        cout << "X estimated : " << X.log().coeffs().transpose()
-             << ". |d|=" << (X_simulation - X).squaredWeightedNorm() <<endl;
-        cout << "X unfilterd : " << X_unfiltered.log().coeffs().transpose()
-             << ". |d|=" << (X_simulation - X_unfiltered).squaredWeightedNorm() <<endl;
+        cout << "X simulated : " << X_simulation.log().coeffs().transpose() << "\n";
+        cout << "X estimated : " << X.log().coeffs().transpose() << "\n";
+        cout << "X unfilterd : " << X_unfiltered.log().coeffs().transpose() << "\n";
         cout << "----------------------------------" << endl;
         // END DEBUG
 
