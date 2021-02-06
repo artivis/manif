@@ -26,7 +26,7 @@
  *  This demo showcases an application of an Unscented Kalman Filter on Manifold,
  *  based on the paper
  *  'A Code for Unscented Kalman Filtering on Manifolds (UKF-M)'
- *  [https://arxiv.org/pdf/2002.00878.pdf].
+ *  [https://arxiv.org/pdf/2002.00878.pdf], M. Brossard, A. Barrau and S. Bonnabel.
  *
  *  The following is an abstract of the example hereafter.
  *  Please consult the aforemention paper for better UKF-M reference
