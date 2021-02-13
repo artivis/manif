@@ -401,6 +401,19 @@ TEST(TEST_SE3, TEST_SE3_ISOMETRY)
   EXPECT_DOUBLE_EQ(3, se3h.matrix()(2,3));
 }
 
+TEST(TEST_SE3, TEST_SE3TAN_LINANGVEL)
+{
+  SE3Tangentd::DataType data;
+  data << 1,2,3,4,5,6;
+  SE3Tangentd se3tan(data);
+
+  EXPECT_EIGEN_NEAR(Eigen::Vector3d(1,2,3),
+                    se3tan.lin());
+
+  EXPECT_EIGEN_NEAR(Eigen::Vector3d(4,5,6),
+                    se3tan.ang());
+}
+
 #ifndef MANIF_NO_DEBUG
 
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_NOT_NORMALIZED_ARGS)
