@@ -365,7 +365,7 @@ int main()
 
     //// Simulator ###################################################################
     poses_simu. push_back(X_simu);
-    poses.      push_back(Xi + SE3Tangentd::Random()*0.1);  // use very noisy priors
+    poses.      push_back(Xi + SE3Tangentd::Random()*0.1);  // use noisy priors
 
     // temporal loop
     for (int i = 0; i < NUM_POSES; ++i)
@@ -397,7 +397,7 @@ int main()
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi + SE3Tangentd::Random()*0.1); // use very noisy priors
+            poses.      push_back(Xi + SE3Tangentd::Random()*0.1); // use noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
