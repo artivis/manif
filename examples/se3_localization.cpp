@@ -120,6 +120,8 @@ typedef Matrix<double, 6, 6> Matrix6d;
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // START CONFIGURATION
     //
     //
