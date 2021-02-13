@@ -55,6 +55,7 @@ option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
 option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
+option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
 
 if (BUILD_PYTHON_BINDINGS)
   find_package(pybind11 REQUIRED)
@@ -269,3 +270,10 @@ if(BUILD_TESTING)
   add_subdirectory(test)
 
 endif(BUILD_TESTING)
+
+if(BUILD_PYTHON_BINDINGS AND (BUILD_TESTING OR BUILD_TESTING_PYTHON))
+
+  enable_testing()
+  add_subdirectory(test/python)
+
+endif()
