@@ -4,8 +4,11 @@
 .settings
 .tags
 build
-doc
-doxygen_warnings.txt
+docs/xml
+docs/html
+docs/site
+docs/m.css
+*doxygen_warnings.txt
 *.cache
 .vscode
 *.egg-info

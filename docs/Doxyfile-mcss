@@ -1,0 +1,12 @@
+@INCLUDE                = Doxyfile
+
+PROJECT_BRIEF = "C++ API"
+
+USE_MDFILE_AS_MAINPAGE = "pages/cpp/Quick-start.md"
+
+GENERATE_HTML           = NO
+GENERATE_XML            = YES
+XML_PROGRAMLISTING      = NO
+
+XML_OUTPUT = "site/cpp/xml"
+HTML_OUTPUT = "site/cpp"
