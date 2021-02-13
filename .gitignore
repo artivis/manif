@@ -6,3 +6,9 @@
 build
 doc
 doxygen_warnings.txt
+*.cache
+.vscode
+*.egg-info
+*.so
+*__pycache__
+.pytest_cache

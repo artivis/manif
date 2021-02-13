@@ -54,6 +54,12 @@ endif()
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
+option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
+
+if (BUILD_PYTHON_BINDINGS)
+  find_package(pybind11 REQUIRED)
+  add_subdirectory(python)
+endif()
 
 ###########
 ## Build ##
