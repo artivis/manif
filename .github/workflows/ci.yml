@@ -9,6 +9,9 @@ on:
       - devel
   workflow_dispatch:
 
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
 jobs:
 
   build-ubuntu:
@@ -55,7 +58,9 @@ jobs:
     strategy:
       matrix:
         # Xcode 10.3 & Xcode 12.2
-        os: [macos-10.15, macos-11.0]
+        # removing macos-11.0 for now, see
+        #https://github.com/actions/virtual-environments/issues/841
+        os: [macos-10.15]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
