@@ -117,7 +117,7 @@ public:
 
   /**
    * @brief Get inner product of this and another Tangent
-   * weightedby W.
+   * weighted by W.
    * @return The inner product of this and t.
    * @note ip = v0' . W . v1
    * @see innerWeights()
@@ -336,6 +336,13 @@ protected:
   inline _Derived& derived() & noexcept { return *static_cast< _Derived* >(this); }
   inline const _Derived& derived() const & noexcept { return *static_cast< const _Derived* >(this); }
 };
+
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::Dim;
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::DoF;
+template <typename _Derived>
+constexpr int TangentBase<_Derived>::RepSize;
 
 // Copy
 
