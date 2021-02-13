@@ -152,11 +152,11 @@ public:
                    OptJacobianRef J_mc_mb = {}) const;
 
   /**
-   * @brief TODO tofix
-   * @param  v
+   * @brief Get the action of the Lie group object on a point.
+   * @param[in] v A point.
    * @param[out] -optional- J_vout_m Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v Jacobian of the new object wrt input object.
-   * @return
+   * @return A point acted upon by the object.
    */
   template <typename _EigenDerived>
   Vector act(const Eigen::MatrixBase<_EigenDerived>& v,
@@ -256,7 +256,7 @@ public:
   /**
    * @brief Evaluate whether this and m are 'close'.
    * @param[in] m An element of the same Lie Group.
-   * @param[in] eps Threshold for equality copmarison.
+   * @param[in] eps Threshold for equality comparison.
    * @return true if the Lie group element m is 'close' to this,
    * false otherwise.
    * @see TangentBase::isApprox
@@ -275,7 +275,7 @@ public:
    * @see isApprox.
    */
   template <typename _DerivedOther>
-  bool operator ==(const LieGroupBase<_DerivedOther>& m);
+  bool operator ==(const LieGroupBase<_DerivedOther>& m) const;
 
   /**
    * @brief Right oplus operator.
@@ -618,7 +618,7 @@ LieGroupBase<_Derived>::act(
 template <typename _Derived>
 template <typename _DerivedOther>
 bool LieGroupBase<_Derived>::operator ==(
-    const LieGroupBase<_DerivedOther>& m)
+    const LieGroupBase<_DerivedOther>& m) const
 {
   return isApprox(m);
 }
