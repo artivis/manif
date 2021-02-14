@@ -195,7 +195,7 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [latex9]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)
 [latex10]: https://latex.codecogs.com/svg.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}
 [latex11]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee
-[latex12]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee
+[latex12]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee\phantom{.}
 [latex13]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}
 [latex14]: https://latex.codecogs.com/svg.latex?\langle\varphi,\tau\rangle
 [latex15]: https://latex.codecogs.com/svg.latex?\left\lVert\varphi\right\rVert
