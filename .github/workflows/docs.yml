@@ -46,7 +46,15 @@ jobs:
       - name: Fetch apt deps
         run: |
           sudo apt update
-          sudo apt install -y libeigen3-dev flex bison doxygen graphicsmagick-imagemagick-compat
+          sudo apt install -y libeigen3-dev flex bison graphicsmagick-imagemagick-compat
+
+      - name: Make install Doxygen
+        run: |
+          git clone --depth 1 --branch Release_1_9_1 https://github.com/doxygen/doxygen.git
+          mkdir build && cd build
+          cmake -G "Unix Makefiles" ..
+          sudo make install
+
       - name: Fetch Python deps
         run: python -m pip install jinja2 Pygments docutils
       - name: Fetch m.css
