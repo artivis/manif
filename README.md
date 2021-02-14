@@ -98,7 +98,8 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
-Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**. These Jacobians map tangent spaces, as described in [this paper][jsola18].
+Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
+These Jacobians map tangent spaces, as described in [this paper][jsola18].
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
@@ -131,8 +132,8 @@ in Python,
 
 ## Documentation
 
-The documentation is available online at the accompanying [website](manif).
-Both the [C++](cpp) and the [Python](python) APIs are documented.
+The documentation is available online at the accompanying [website][manif-doc].
+Both the [C++][manif-doc-cpp] and the [Python][manif-doc-python] APIs are documented.
 
 Do you want to build it locally?
 Find out how on the [dedicated page](docs/pages/documentation.md).
@@ -172,7 +173,9 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 
 [manif-repo]: https://github.com/artivis/manif.git
 [manif-issue]: https://github.com/artivis/manif/issues
-[manif-doc]: https://codedocs.xyz/artivis/manif
+[manif-doc]: https://artivis.github.io/manif/
+[manif-doc-cpp]: https://artivis.github.io/manif/cpp/index.html
+[manif-doc-python]: https://artivis.github.io/manif/python/index.html
 [cheat_sheet]: paper/Lie_theory_cheat_sheet.pdf
 
 [optional-repo]: https://github.com/TartanLlama/optional
