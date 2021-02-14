@@ -83,6 +83,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: site
+          path: site
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
