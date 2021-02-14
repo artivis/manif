@@ -1,0 +1,10 @@
+@INCLUDE                = Doxyfile-site
+
+PROJECT_BRIEF = ""
+
+GENERATE_HTML           = NO
+GENERATE_XML            = YES
+XML_PROGRAMLISTING      = NO
+
+XML_OUTPUT = "site/xml"
+HTML_OUTPUT = "site"
