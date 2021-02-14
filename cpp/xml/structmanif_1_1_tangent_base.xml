@@ -1,31 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structmanif_1_1_tangent_base" kind="struct" language="C++" prot="public">
     <compoundname>manif::TangentBase</compoundname>
-    <derivedcompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e3_tangent_base" prot="public" virt="non-virtual">manif::SE3TangentBase&lt; Map&lt; const manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e3_tangent_base" prot="public" virt="non-virtual">manif::SE3TangentBase&lt; Map&lt; manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e3_tangent_base" prot="public" virt="non-virtual">manif::SE3TangentBase&lt; SE3Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; SE_2_3Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; SO2Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; SO3Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; _Derived &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; _Derived &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e3_tangent_base" prot="public" virt="non-virtual">manif::SE3TangentBase&lt; _Derived &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; _Derived &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; _Derived &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <includes refid="tangent__base_8h" local="no">tangent_base.h</includes>
     <templateparamlist>
       <param>
@@ -44,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="28" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="28" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1a2662a9b7a2dc0d5b1d34e1517e258300" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::LieGroup</type>
@@ -57,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="29" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="29" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="29" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Tangent</type>
@@ -70,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="30" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="30" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1adf320fca86420a44f1e80cf003800dfb" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::DataType</type>
@@ -83,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="31" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1ab8e7408713b9750c12418ae9ba9dbd90" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Jacobian</type>
@@ -96,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1a8baef49ae68f130cda30e49f6f402999" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::LieAlg</type>
@@ -109,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" static="no">
         <type>Jacobian</type>
@@ -122,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="35" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1ab26fdad01bd80b6c628465f4b82a0411" prot="public" static="no">
         <type>tl::optional&lt; Eigen::Ref&lt; Jacobian &gt; &gt;</type>
@@ -135,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="37" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="37" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" static="no">
         <templateparamlist>
@@ -153,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="40" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -169,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="24" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="24" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_tangent_base_1abc26abf20f27e8ba2353557c565c04fd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -183,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="25" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="25" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -197,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="26" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="26" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -229,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="53" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="351" bodyend="355"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="53" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="351" bodyend="355"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -264,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="61" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="360" bodyend="364"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="61" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="360" bodyend="364"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -301,11 +277,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="70" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="369" bodyend="373"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="70" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="369" bodyend="373"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_tangent_base_1ac340556312ac360f57d84384cef95ea8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
-        <definition>TangentBase&lt; _Derived &gt;::DataType &amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>const TangentBase&lt; _Derived &gt;::DataType &amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>()</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -315,11 +291,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="73" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="377" bodyend="380"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="73" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="377" bodyend="380"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
-        <definition>const TangentBase&lt; _Derived &gt;::DataType &amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>const DataType&amp; manif::TangentBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>() const</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -329,11 +305,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="75" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="384" bodyend="387"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="75" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar *</type>
-        <definition>TangentBase&lt; _Derived &gt;::Scalar * manif::TangentBase&lt; _Derived &gt;::data</definition>
+        <definition>const TangentBase&lt; _Derived &gt;::Scalar * manif::TangentBase&lt; _Derived &gt;::data</definition>
         <argsstring>()</argsstring>
         <name>data</name>
         <briefdescription>
@@ -343,11 +319,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="78" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="391" bodyend="394"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="78" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="391" bodyend="394"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_tangent_base_1aa594b4a17fe54bef228340020b963ce5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Scalar *</type>
-        <definition>const TangentBase&lt; _Derived &gt;::Scalar * manif::TangentBase&lt; _Derived &gt;::data</definition>
+        <definition>const Scalar* manif::TangentBase&lt; _Derived &gt;::data</definition>
         <argsstring>() const</argsstring>
         <name>data</name>
         <briefdescription>
@@ -357,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="80" column="16" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="398" bodyend="401"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="80" column="16"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -376,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="85" column="19"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="85" column="19"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Derived &amp;</type>
@@ -393,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="93" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="412" bodyend="416"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="93" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="412" bodyend="416"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Derived &amp;</type>
@@ -410,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="99" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="419" bodyend="426"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="99" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="419" bodyend="426"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieAlg</type>
@@ -431,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="108" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="444" bodyend="447"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="108" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="444" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>InnerWeightsMatrix</type>
@@ -450,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="116" column="22" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="451" bodyend="454"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="116" column="22" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="451" bodyend="454"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -480,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="126" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="459" bodyend="462"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="126" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="459" bodyend="462"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -501,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="134" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="466" bodyend="470"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="134" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="466" bodyend="470"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a7439ba89e703a34202391e2a6a9aeda1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -522,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="142" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="474" bodyend="477"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="142" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="474" bodyend="477"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a8e9722a81dfde9006f26c1ff0d2a65fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieAlg</type>
@@ -541,7 +517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="149" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="481" bodyend="484"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="149" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="481" bodyend="484"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a9720e984db5900bce796bf47cda977ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -576,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="158" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="430" bodyend="433"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="158" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="430" bodyend="433"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a16ec60694f825f03727e09f257d6da1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED LieGroup</type>
@@ -595,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="167" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="437" bodyend="440"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="167" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="437" bodyend="440"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -653,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="178" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="488" bodyend="493"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="178" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="488" bodyend="493"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a375b870e90fabfce45b5a74c46c54b62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -711,7 +687,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="190" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="497" bodyend="502"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="190" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="497" bodyend="502"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a08bbcf10f4f7ed8210566e3a12556c8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -742,7 +718,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="198" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="506" bodyend="511"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="198" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="506" bodyend="511"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a606e1b9c212b8320f65378437d302c0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -774,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="203" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="516" bodyend="527"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="203" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="516" bodyend="527"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1acc8d41b513681114f8091f53d81626a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -806,7 +782,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="208" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="532" bodyend="546"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="208" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="532" bodyend="546"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a11c72414544c6161c77ff3683b58d94c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -827,7 +803,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="218" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="550" bodyend="553"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="218" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="550" bodyend="553"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a7a2388b41455b45aee88a3be3fa76f0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -848,7 +824,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="226" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="557" bodyend="560"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="226" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="557" bodyend="560"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1ad06291edca01f9a97aaf338b414d2897" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -870,7 +846,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="232" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="568" bodyend="571"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="232" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="568" bodyend="571"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a87ed7fdbe3f5cf3a8f9e27f58f4e8743" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -892,7 +868,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="238" column="10"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="238" column="10"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a78c6848ad03d27864eb9633da29b27e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -914,7 +890,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="244" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="588" bodyend="591"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="244" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="588" bodyend="591"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a2a7e0e996eef0cb4bd537d172f04cdb2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -936,7 +912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="250" column="10"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="250" column="10"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1acd95afc304c76ec8df6d8e8da676d90c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -952,7 +928,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="256" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="605" bodyend="608"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="256" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="605" bodyend="608"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1000,7 +976,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="267" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="612" bodyend="629"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="267" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="612" bodyend="629"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1048,7 +1024,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="279" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="633" bodyend="638"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="279" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="633" bodyend="638"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a4d991baead4165a238e5a76fd7c57db8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1070,7 +1046,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="287" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="644" bodyend="648"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="287" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="644" bodyend="648"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a35e627252748a0268c6ee908d2d09b12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -1084,7 +1060,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="293" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="687" bodyend="690"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="293" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="687" bodyend="690"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1afc150adf396c8432ce0ba909571bd70c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -1105,7 +1081,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="299" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="694" bodyend="697"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="299" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="694" bodyend="697"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a6be164dc3b9118f3bfebd7f59b4a7a38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1128,7 +1104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="303" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="701" bodyend="706"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="303" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="701" bodyend="706"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1afc51a6333c409460fc017b2303cd2484" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1151,7 +1127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="307" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="710" bodyend="715"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="307" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="710" bodyend="715"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a1271777d229f54a5dd0f0f12d45f043f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1174,7 +1150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="311" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="737" bodyend="742"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="311" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="737" bodyend="742"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a3fa85584b927625ddeb8f482008623c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1197,7 +1173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="315" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="746" bodyend="751"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="315" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="746" bodyend="751"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -1215,7 +1191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="318" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="791" bodyend="795"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="318" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="791" bodyend="795"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1ab59f8be2812f60af208fcbb2e3683699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -1233,7 +1209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="321" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="799" bodyend="803"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="321" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="799" bodyend="803"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1251,7 +1227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="406" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="406" bodyend="409"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="406" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="406" bodyend="409"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1267,7 +1243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="326" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="654" bodyend="658"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="326" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="654" bodyend="658"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -1281,7 +1257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="328" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="662" bodyend="665"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="328" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="662" bodyend="665"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>LieAlg</type>
@@ -1299,7 +1275,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="330" column="17" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="669" bodyend="673"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="330" column="17" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="669" bodyend="673"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>InnerWeightsMatrix</type>
@@ -1313,7 +1289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="332" column="29" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="677" bodyend="681"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="332" column="29" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="677" bodyend="681"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -1328,7 +1304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="336" column="19" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="336" bodyend="336"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="336" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="336" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -1341,7 +1317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="337" column="25" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="337" bodyend="337"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="337" column="25" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="337" bodyend="337"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1352,284 +1328,26 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3">
-        <label>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="8" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>Eigen::Map&lt; const manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="14" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>Eigen::Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="20" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>Eigen::Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="26" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>Eigen::Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="32" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>Eigen::Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="10" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>Eigen::Map&lt; manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="16" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>Eigen::Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="22" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>Eigen::Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="28" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="34" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>manif::RnTangentBase&lt; Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>manif::RnTangentBase&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>manif::SE2TangentBase&lt; Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>manif::SE2TangentBase&lt; Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>manif::SE3TangentBase&lt; Map&lt; const manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>manif::SE3TangentBase&lt; Map&lt; manif::SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>manif::SE3TangentBase&lt; SE3Tangent&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>manif::SE_2_3TangentBase&lt; Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>manif::SE_2_3TangentBase&lt; Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>manif::SE_2_3TangentBase&lt; SE_2_3Tangent&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>manif::SO2TangentBase&lt; Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>manif::SO2TangentBase&lt; Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>manif::SO2TangentBase&lt; SO2Tangent&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>manif::SO3TangentBase&lt; Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>manif::SO3TangentBase&lt; SO3Tangent&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>manif::RnTangent&lt; _Scalar, _N &gt;</label>
-        <link refid="structmanif_1_1_rn_tangent"/>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="38">
-        <label>manif::RnTangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_rn_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>manif::SE2Tangent&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_e2_tangent"/>
-        <childnode refid="12" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>manif::SE2TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_e2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>manif::SE3Tangent&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_e3_tangent"/>
-        <childnode refid="18" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>manif::SE3TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_e3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>manif::SE_2_3Tangent&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_tangent"/>
-        <childnode refid="24" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>manif::SE_2_3TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>manif::SO2Tangent&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_o2_tangent"/>
-        <childnode refid="30" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="42">
-        <label>manif::SO2TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_o2_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>manif::SO3Tangent&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_o3_tangent"/>
-        <childnode refid="36" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="43">
-        <label>manif::SO3TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_o3_tangent_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>manif::TangentBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_tangent_base"/>
-      </node>
-    </inheritancegraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="22" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="23" bodyend="338"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="23" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="22" bodyend="338"/>
     <listofallmembers>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>cast</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>data</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ac340556312ac360f57d84384cef95ea8" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aa594b4a17fe54bef228340020b963ce5" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>data</name></member>
       <member refid="structmanif_1_1_tangent_base_1adf320fca86420a44f1e80cf003800dfb" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>DataType</name></member>
       <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" prot="protected" virt="non-virtual"><scope>manif::TangentBase</scope><name>derived</name></member>
       <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual"><scope>manif::TangentBase</scope><name>derived</name></member>
       <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>Dim</name></member>
       <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>DoF</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9720e984db5900bce796bf47cda977ee" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>exp</name></member>
-      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_tangent_base_1a8e9722a81dfde9006f26c1ff0d2a65fa" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::TangentBase</scope><name>isApprox</name></member>

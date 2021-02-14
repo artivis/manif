@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</basecompoundref>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="59" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="59" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="59" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="50" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="50" bodyend="50"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="50" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ab5937e48e3b3f0882a6c96ed604047c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="54" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="54" bodyend="54"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="54" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ab9969716ff953355f94e95874b6065dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="55" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="55" bodyend="55"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="55" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -95,6 +95,10 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
       <node id="1">
         <label>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
@@ -106,13 +110,13 @@
         <link refid="structmanif_1_1_rn_base"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
       <node id="1">
         <label>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
@@ -125,12 +129,8 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" line="40" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_map.h" bodystart="42" bodyend="60"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="42" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" bodystart="40" bodyend="60"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>_</name></member>
       <member refid="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>act</name></member>
@@ -142,14 +142,12 @@
       <member refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ab5937e48e3b3f0882a6c96ed604047c3" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>coeffs</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ab9969716ff953355f94e95874b6065dc" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>coeffs</name></member>
       <member refid="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>compose</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a8c7ec39a257f1b248fd10216d1f1a863" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab89449c0da10c2906f6d283aa89a8bf0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1abacb1425720506a9b9b417485c693784" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>data_</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>DataType</name></member>
       <member refid="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
       <member refid="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>derived</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Dim</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>DoF</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Identity</name></member>

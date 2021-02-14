@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="dir_eb8bd41501b9014d56ec9b114587795e" kind="dir">
     <compoundname>so2</compoundname>
     <innerfile refid="impl_2so2_2_s_o2_8h">impl/so2/SO2.h</innerfile>
@@ -13,6 +13,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/"/>
   </compounddef>
 </doxygen>

@@ -1,18 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="ceres_2constants_8h" kind="file" language="C++">
     <compoundname>ceres/constants.h</compoundname>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
     <includes local="no">ceres/jet.h</includes>
     <includedby refid="ceres_8h" local="yes">ceres.h</includedby>
     <incdepgraph>
-      <node id="1">
-        <label>constants.h</label>
-        <link refid="ceres_2constants_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="3">
+        <label>cmath</label>
       </node>
       <node id="2">
         <label>manif/constants.h</label>
@@ -22,14 +20,16 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>constants.h</label>
+        <link refid="ceres_2constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>ceres/jet.h</label>
-      </node>
-      <node id="3">
-        <label>cmath</label>
-      </node>
-      <node id="4">
-        <label>limits</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -50,6 +50,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/ceres/constants.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h"/>
   </compounddef>
 </doxygen>

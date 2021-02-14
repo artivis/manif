@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="67" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="67" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="67" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="52" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="52" bodyend="52"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="52" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a2c868973ae3ad72fd8ddf6ba63061c13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="56" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="56" bodyend="56"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="56" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a9701b151b2fb116c96d7eff440f042fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="57" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="57" bodyend="57"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="57" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -103,7 +103,7 @@
         </childnode>
       </node>
       <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <label>manif::LieGroupBase&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
@@ -121,16 +121,16 @@
         </childnode>
       </node>
       <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <label>manif::LieGroupBase&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="40" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="42" bodyend="68"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="42" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="40" bodyend="68"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a32216d574fa5bd8bf0f29f41dcda571d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a88af7f6d682384803c7c2a3ee8367ab3" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="LieGroupBase&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;::"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a0d11125c66e139dfcde4881162ac5d40" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>adj</name></member>
       <member refid="structmanif_1_1_s_e2_base_1abe394534d27c689b8487a92a4751c9a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>angle</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a1835ad4e8777b02a49c8783ed190cbe5" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Base</name></member>
@@ -140,22 +140,20 @@
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a2c868973ae3ad72fd8ddf6ba63061c13" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a9701b151b2fb116c96d7eff440f042fb" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a4e738fe12f6a41d07137ae3fbc5d1e84" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>compose</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a8c7ec39a257f1b248fd10216d1f1a863" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab89449c0da10c2906f6d283aa89a8bf0" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1af8f5b95e1da9f3d565718d21e9d7f520" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>data_</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>DataType</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>derived</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Dim</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>DoF</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Identity</name></member>
       <member refid="structmanif_1_1_s_e2_base_1acfd8f5c0e9560a858efb109972da3aee" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>imag</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a385578d24aaec3aa8dee95dc1709a6f2" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>inverse</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>
-      <member refid="structmanif_1_1_s_e2_base_1a27a0e8d5f108482f4301d10955493454" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Isometry</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a79e9cf50ee1a768723a99261fe352cd7" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>isometry</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a27a0e8d5f108482f4301d10955493454" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Isometry</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>Jacobian</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>LieGroup</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>LieGroupTemplate</name></member>

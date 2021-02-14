@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structmanif_1_1_constants" kind="struct" language="C++" prot="public">
     <compoundname>manif::Constants</compoundname>
     <includes refid="constants_8h" local="no">constants.h</includes>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/constants.h" line="50" column="28" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="50" column="28" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_1ae240036f032c3b6a2614f3e2ac0277f9" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr _Scalar</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/constants.h" line="51" column="28" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="51" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="51" column="28" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_1ac23324a00c93bbd7b8fb2dd149d9125e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr _Scalar</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/constants.h" line="52" column="28" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="52" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="52" column="28" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_1a1a93e23545c006cedf04ebfcb61a2c67" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr _Scalar</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/constants.h" line="54" column="28" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="54" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="54" column="28" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_1a4a6fcba990d563cc71be67900c7865b3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr _Scalar</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/constants.h" line="55" column="28" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="55" column="28" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -85,7 +85,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/constants.h" line="48" column="1" bodyfile="/home/ubuntu/manif/include/manif/constants.h" bodystart="49" bodyend="56"/>
+    <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="49" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="48" bodyend="56"/>
     <listofallmembers>
       <member refid="structmanif_1_1_constants_1a359b064d1701ae93d75b812d2cd6903b" prot="public" virt="non-virtual"><scope>manif::Constants</scope><name>eps</name></member>
       <member refid="structmanif_1_1_constants_1ae240036f032c3b6a2614f3e2ac0277f9" prot="public" virt="non-virtual"><scope>manif::Constants</scope><name>eps_s</name></member>

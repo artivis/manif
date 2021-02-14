@@ -57,7 +57,6 @@
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pro-attribs">Protected variables</a></li>
@@ -65,16 +64,6 @@
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
-              struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase&lt;SE2Tangent&lt;_Scalar&gt;&gt;</a>
-            </dt>
-            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> tangent.</dd>
-          </dl>
-        </section>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -102,14 +91,18 @@
               <span class="m-doc-wrap-bumper">auto <a href="#aefc084ce4990e59ca52411394cebda2b" class="m-doc-self">SE2Tangent</a>(</span><span class="m-doc-wrap">) -&gt; MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_TANGENT_TYPEDEF MANIF_INHERIT_TANGENT_API MANIF_INHERIT_TANGENT_OPERATOR <span class="m-label m-flat m-info">defaulted</span></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ab4ac273daa5e6d010cabb20af3d3b25c">
-              <span class="m-doc-wrap-bumper">auto <a href="#ab4ac273daa5e6d010cabb20af3d3b25c" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="a6691fc72e950aa8762cd6c7889bb92b6">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6691fc72e950aa8762cd6c7889bb92b6" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a3070b9d16dfd9ac140dff73b51feaa48">
-              <span class="m-doc-wrap-bumper">auto <a href="#a3070b9d16dfd9ac140dff73b51feaa48" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="a4a8a8d86b29991b1eecc84bcfead2c9b">
+              <span class="m-doc-wrap-bumper">auto <a href="#a4a8a8d86b29991b1eecc84bcfead2c9b" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
+            <dt id="a9c89a30f03489149c0da6b8289f06b48">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9c89a30f03489149c0da6b8289f06b48" class="m-doc-self">angle</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the rotational part.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -165,7 +158,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

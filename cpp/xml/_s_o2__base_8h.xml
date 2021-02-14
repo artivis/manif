@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_s_o2__base_8h" kind="file" language="C++">
     <compoundname>SO2_base.h</compoundname>
     <includes refid="_s_o2__properties_8h" local="yes">manif/impl/so2/SO2_properties.h</includes>
@@ -7,17 +7,18 @@
     <includedby refid="impl_2so2_2_s_o2_8h" local="yes">SO2.h</includedby>
     <includedby refid="_s_o2_8h" local="yes">SO2.h</includedby>
     <incdepgraph>
-      <node id="12">
-        <label>manif/constants.h</label>
-        <link refid="constants_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
+      <node id="14">
+        <label>limits</label>
       </node>
-      <node id="19">
-        <label>manif/impl/assignment_assert.h</label>
-        <link refid="assignment__assert_8h_source"/>
+      <node id="16">
+        <label>manif/impl/generator.h</label>
+        <link refid="generator_8h_source"/>
+      </node>
+      <node id="10">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="11">
+        <label>Eigen/Geometry</label>
       </node>
       <node id="8">
         <label>manif/impl/eigen.h</label>
@@ -31,9 +32,14 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>manif/impl/generator.h</label>
-        <link refid="generator_8h_source"/>
+      <node id="13">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>stdexcept</label>
+      </node>
+      <node id="9">
+        <label>Eigen/Core</label>
       </node>
       <node id="5">
         <label>manif/impl/lie_group_base.h</label>
@@ -53,29 +59,19 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>manif/impl/macro.h</label>
-        <link refid="macro_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="17">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
-      </node>
-      <node id="1">
-        <label>SO2_base.h</label>
-        <link refid="_s_o2__base_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
       <node id="2">
         <label>manif/impl/so2/SO2_properties.h</label>
         <link refid="_s_o2__properties_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="19">
+        <label>manif/impl/assignment_assert.h</label>
+        <link refid="assignment__assert_8h_source"/>
       </node>
       <node id="15">
         <label>manif/impl/tangent_base.h</label>
@@ -95,50 +91,52 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SO2_base.h</label>
+        <link refid="_s_o2__base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>manif/impl/macro.h</label>
+        <link refid="macro_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>type_traits</label>
+      </node>
       <node id="3">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>Eigen/Core</label>
-      </node>
-      <node id="11">
-        <label>Eigen/Geometry</label>
-      </node>
-      <node id="10">
-        <label>Eigen/LU</label>
-      </node>
-      <node id="13">
-        <label>cmath</label>
-      </node>
-      <node id="14">
-        <label>limits</label>
-      </node>
       <node id="18">
         <label>lt/optional.hpp</label>
       </node>
-      <node id="7">
-        <label>stdexcept</label>
-      </node>
-      <node id="4">
-        <label>type_traits</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>SO2_map.h</label>
+        <link refid="_s_o2__map_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>SO2.h</label>
         <link refid="_s_o2_8h_source"/>
         <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>SO2.h</label>
-        <link refid="impl_2so2_2_s_o2_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -149,15 +147,17 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>SO2_map.h</label>
-        <link refid="_s_o2__map_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="5">
         <label>manif.h</label>
         <link refid="manif_8h_source"/>
+      </node>
+      <node id="2">
+        <label>SO2.h</label>
+        <link refid="impl_2so2_2_s_o2_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structmanif_1_1_s_o2_base" prot="public">manif::SO2Base</innerclass>
@@ -169,6 +169,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h"/>
   </compounddef>
 </doxygen>

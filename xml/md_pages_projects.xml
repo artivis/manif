@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_pages_projects" kind="page">
     <compoundname>md_pages_projects</compoundname>
     <title>A curated list of work and projects using manif</title>
@@ -25,6 +25,5 @@
 <para>Your project is not listed here? Let us know about it! </para>
 </sect1>
     </detaileddescription>
-    <location file="pages/projects.md"/>
   </compounddef>
 </doxygen>

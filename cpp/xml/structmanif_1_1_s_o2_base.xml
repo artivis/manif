@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structmanif_1_1_s_o2_base" kind="struct" language="C++" prot="public">
     <compoundname>manif::SO2Base</compoundname>
     <basecompoundref refid="structmanif_1_1_lie_group_base" prot="public" virt="non-virtual">manif::LieGroupBase&lt; _Derived &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="22" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="22" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_o2_base_1a3ae7cdf93c3d2b3da38f0fd319ed0b21" prot="private" static="no">
         <type><ref refid="structmanif_1_1_s_o2_base" kindref="compound">SO2Base</ref>&lt; _Derived &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="23" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="23" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="23" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_o2_base_1ac31aa877144ff1947eb7b1f3f1086eb3" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Transformation</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="34" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="34" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="54" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="174" bodyend="180"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="54" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="174" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a5cb80ea50d86a215838e7fe1f9457ec8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="64" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="184" bodyend="190"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="64" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="184" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a3b6d8ec4746f36d8d4dece9499193d2e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED Tangent</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="72" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="194" bodyend="197"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="72" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="194" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1aa494d786626efe695e75fa77d1c93215" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="84" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="202" bodyend="234"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="84" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="202" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a64005c1b4a954f9904505f64ae26e599" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -281,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="98" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="98" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a2e1bf3f1a99df984c4ce3b00da69c643" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -298,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="106" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="261" bodyend="265"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="106" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="261" bodyend="265"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a1cd0799fe942b79afb517a5c057ab3a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Transformation</type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="115" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="154" bodyend="159"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="115" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="154" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a91f748c9d1f7f3a060c77732cb11494a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Rotation</type>
@@ -329,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="120" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="163" bodyend="170"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="120" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="163" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1abf21956540d210cc3f21203e2d271430" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -343,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="125" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="271" bodyend="274"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="125" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="271" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a7b12dfd74ed5e918add5d7602ac4e84e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="130" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="278" bodyend="281"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="130" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="278" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a9fb166112c866af02ff2dd8027ef554a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -371,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="135" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="285" bodyend="289"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="135" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="285" bodyend="289"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a928a2b3585f96233645faf55bd25061e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="140" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="306" bodyend="309"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="140" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="306" bodyend="309"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1af621d80593f003e58927c365d2bac9a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -415,11 +415,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="239" column="9" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="239" bodyend="257"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="239" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="239" bodyend="257"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_s_o2_base_1ae5875d9b148871931c86a3ab04a9c7a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
-        <definition>LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>()</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -429,11 +429,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="31" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
-        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>const DataType&amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>() const</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -443,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="31" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="31" column="3"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -458,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -483,30 +483,30 @@
 </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SO2Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SO2Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="18" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="19" bodyend="150"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="19" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="18" bodyend="150"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_o2_base_1a64005c1b4a954f9904505f64ae26e599" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>act</name></member>
@@ -518,12 +518,12 @@
       <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>between</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>cast</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>cast</name></member>
-      <member refid="structmanif_1_1_s_o2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_s_o2_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SO2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1ae5875d9b148871931c86a3ab04a9c7a8" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SO2Base</scope><name>coeffs</name></member>
       <member refid="structmanif_1_1_s_o2_base_1aa494d786626efe695e75fa77d1c93215" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>compose</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>data</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a8c7ec39a257f1b248fd10216d1f1a863" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab89449c0da10c2906f6d283aa89a8bf0" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>data</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::SO2Base</scope><name>DataType</name></member>
       <member refid="structmanif_1_1_s_o2_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::SO2Base</scope><name>derived</name></member>
       <member refid="structmanif_1_1_s_o2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::SO2Base</scope><name>derived</name></member>

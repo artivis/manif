@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
-  <compounddef id="md_pages_cpp__writing_generic_code" kind="page">
-    <compoundname>md_pages_cpp_Writing_generic_code</compoundname>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_pages_cpp__writing-generic-code" kind="page">
+    <compoundname>md_pages_cpp_Writing-generic-code</compoundname>
     <title>Writing generic code</title>
     <briefdescription>
     </briefdescription>
@@ -18,9 +18,9 @@
 </listitem></itemizedlist>
 </para>
 <para>All Lie group classes defined in <computeroutput>manif</computeroutput> have in common that they inherit from a templated base class. Therefore, template-based generic code can be written - similarly to Eigen.</para>
-<sect1 id="md_pages_cpp__writing_generic_code_1autotoc_md12">
+<sect1 id="md_pages_cpp__writing-generic-code_1autotoc_md12">
 <title>Examples</title>
-<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md13">
+<sect2 id="md_pages_cpp__writing-generic-code_1autotoc_md13">
 <title>Small example</title>
 <para>Let us write a simple function that take any group object and prints some information about it,</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -29,7 +29,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">manif;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Derived&gt;</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>print(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LieGroupBase&lt;Derived&gt;&amp;<sp/>g)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>print(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase&lt;Derived&gt;</ref>&amp;<sp/>g)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Degrees<sp/>of<sp/>freedom:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>g::DoF<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Underlying<sp/>representation<sp/>vector<sp/>size:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>g::RepSize<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -46,7 +46,7 @@
 <codeline><highlight class="stringliteral">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md14">
+<sect2 id="md_pages_cpp__writing-generic-code_1autotoc_md14">
 <title>Multiple templated arguments</title>
 <para>Let us write a function that takes two group objects and performs some computation,</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;manif/manif.h&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -56,8 +56,8 @@
 <codeline><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DerivedA,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DerivedB&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DerivedA::Scalar</highlight></codeline>
 <codeline><highlight class="normal">ominusSquaredWeightedNorm(</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LieGroupBase&lt;DerivedA&gt;&amp;<sp/>state,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LieGroupBase&lt;DerivedB&gt;&amp;<sp/>state_other</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase&lt;DerivedA&gt;</ref>&amp;<sp/>state,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase&lt;DerivedB&gt;</ref>&amp;<sp/>state_other</highlight></codeline>
 <codeline><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(state-state_other).squaredWeightedNorm();</highlight></codeline>
@@ -79,6 +79,5 @@
 </sect2>
 </sect1>
     </detaileddescription>
-    <location file="pages/cpp/Writing-generic-code.md"/>
   </compounddef>
 </doxygen>

@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="local__parametrization_8h" kind="file" language="C++">
     <compoundname>local_parametrization.h</compoundname>
     <includes local="no">Eigen/Core</includes>
     <includedby refid="ceres_8h" local="yes">ceres.h</includedby>
     <includedby refid="ceres__utils_8h" local="yes">ceres_utils.h</includedby>
     <incdepgraph>
+      <node id="2">
+        <label>Eigen/Core</label>
+      </node>
       <node id="1">
         <label>local_parametrization.h</label>
         <link refid="local__parametrization_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>Eigen/Core</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -42,6 +42,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h"/>
   </compounddef>
 </doxygen>

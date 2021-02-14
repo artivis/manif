@@ -49,7 +49,7 @@
         <h1>
           Interpolation with manif
         </h1>
-<p><code>manif</code> provides three interpolation algorithms located in <a href="../include/manif/algorithms/interpolation.h"><code>algorithms/interpolation.h</code></a>. They are:</p><ol><li>Slerp interpolation</li><li>Cubic interpolation</li><li>CN-smooth interpolation</li></ol><p>A brief usage example is shown in <a href="../examples/se2_interpolation.cpp"><code>examples/se2_interpolation.cpp</code></a>. In this example, <code>k</code> points in <code>SE2</code> are generated on a 8-shaped curve (large blue arrows). Between consecutive points, <code>p</code> new points are interpolated (in <code>]0,1[</code>, smaller red arrows). The results for each interpolation algorithm is shown in the following figures:</p><img class="m-image" src="../../images/se2_interp_slerp.png" alt="Image" /><img class="m-image" src="../../images/se2_interp_cubic.png" alt="Image" /><img class="m-image" src="../../images/se2_interp_cnsmooth.png" alt="Image" /><p>To reproduce the figures:</p><pre class="m-code">cd manif/build/examples
+<p><code>manif</code> provides three interpolation algorithms located in <a href="../include/manif/algorithms/interpolation.h"><code>algorithms/interpolation.h</code></a>. They are:</p><ol><li>Slerp interpolation</li><li>Cubic interpolation</li><li>CN-smooth interpolation</li></ol><p>A brief usage example is shown in <a href="../examples/se2_interpolation.cpp"><code>examples/se2_interpolation.cpp</code></a>. In this example, <code>k</code> points in <code>SE2</code> are generated on a 8-shaped curve (large blue arrows). Between consecutive points, <code>p</code> new points are interpolated (in <code>]0,1[</code>, smaller red arrows). The results for each interpolation algorithm is shown in the following figures:</p><img class="m-image" src="se2_interp_slerp.png" alt="Image" /><img class="m-image" src="se2_interp_cubic.png" alt="Image" /><img class="m-image" src="se2_interp_cnsmooth.png" alt="Image" /><p>To reproduce the figures:</p><pre class="m-code">cd manif/build/examples
 ./se2_interpolation 9 0 40 &gt; se2_interp_slerp.csv
 ./se2_interpolation 9 1 40 &gt; se2_interp_cubic.csv
 ./se2_interpolation 9 2 40 &gt; se2_interp_cnsmooth.csv</pre><p>Then open Matlab and edit the visualization script <a href="../examples/scripts/plot_interpolation.m"><code>examples/scripts/plot_interpolation.m</code></a>. One should edit both the <code>path</code> and <code>file_base</code> variables. Run the script to visualize the plot.</p>
@@ -97,7 +97,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

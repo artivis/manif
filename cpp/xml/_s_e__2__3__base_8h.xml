@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_s_e__2__3__base_8h" kind="file" language="C++">
     <compoundname>SE_2_3_base.h</compoundname>
     <includes refid="_s_e__2__3__properties_8h" local="yes">manif/impl/se_2_3/SE_2_3_properties.h</includes>
@@ -9,17 +9,52 @@
     <includedby refid="impl_2se__2__3_2_s_e__2__3_8h" local="yes">SE_2_3.h</includedby>
     <includedby refid="_s_e__2__3_8h" local="yes">SE_2_3.h</includedby>
     <incdepgraph>
-      <node id="12">
-        <label>manif/constants.h</label>
-        <link refid="constants_8h_source"/>
-        <childnode refid="13" relation="include">
+      <node id="22">
+        <label>manif/impl/so3/SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>manif/impl/assignment_assert.h</label>
-        <link refid="assignment__assert_8h_source"/>
+      <node id="1">
+        <label>SE_2_3_base.h</label>
+        <link refid="_s_e__2__3__base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>limits</label>
+      </node>
+      <node id="16">
+        <label>manif/impl/generator.h</label>
+        <link refid="generator_8h_source"/>
+      </node>
+      <node id="10">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="23">
+        <label>manif/impl/so3/SO3_properties.h</label>
+        <link refid="_s_o3__properties_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>manif/impl/utils.h</label>
+        <link refid="utils_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Eigen/Geometry</label>
       </node>
       <node id="8">
         <label>manif/impl/eigen.h</label>
@@ -33,9 +68,30 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>manif/impl/generator.h</label>
-        <link refid="generator_8h_source"/>
+      <node id="2">
+        <label>manif/impl/se_2_3/SE_2_3_properties.h</label>
+        <link refid="_s_e__2__3__properties_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>cmath</label>
+      </node>
+      <node id="27">
+        <label>manif/impl/se3/SE3_base.h</label>
+        <link refid="_s_e3__base_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>stdexcept</label>
+      </node>
+      <node id="9">
+        <label>Eigen/Core</label>
       </node>
       <node id="5">
         <label>manif/impl/lie_group_base.h</label>
@@ -55,77 +111,9 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>manif/impl/macro.h</label>
-        <link refid="macro_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="17">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
-      </node>
-      <node id="26">
-        <label>manif/impl/se3/SE3.h</label>
-        <link refid="impl_2se3_2_s_e3_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>manif/impl/se3/SE3_base.h</label>
-        <link refid="_s_e3__base_8h_source"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>manif/impl/se3/SE3_map.h</label>
-        <link refid="_s_e3__map_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>manif/impl/se3/SE3_properties.h</label>
-        <link refid="_s_e3__properties_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>SE_2_3_base.h</label>
-        <link refid="_s_e__2__3__base_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>manif/impl/se_2_3/SE_2_3_properties.h</label>
-        <link refid="_s_e__2__3__properties_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>manif/impl/so3/SO3.h</label>
-        <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>manif/impl/so3/SO3_base.h</label>
-        <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
       <node id="20">
         <label>manif/impl/so3/SO3_map.h</label>
@@ -133,11 +121,9 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="23">
-        <label>manif/impl/so3/SO3_properties.h</label>
-        <link refid="_s_o3__properties_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="19">
+        <label>manif/impl/assignment_assert.h</label>
+        <link refid="assignment__assert_8h_source"/>
       </node>
       <node id="15">
         <label>manif/impl/tangent_base.h</label>
@@ -157,58 +143,58 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
+      <node id="26">
+        <label>manif/impl/se3/SE3.h</label>
+        <link refid="impl_2se3_2_s_e3_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>manif/impl/se3/SE3_map.h</label>
+        <link refid="_s_e3__map_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>manif/impl/macro.h</label>
+        <link refid="macro_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>manif/impl/so3/SO3.h</label>
+        <link refid="impl_2so3_2_s_o3_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>manif/impl/se3/SE3_properties.h</label>
+        <link refid="_s_e3__properties_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>type_traits</label>
+      </node>
       <node id="3">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="24">
-        <label>manif/impl/utils.h</label>
-        <link refid="utils_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>Eigen/Core</label>
-      </node>
-      <node id="11">
-        <label>Eigen/Geometry</label>
-      </node>
-      <node id="10">
-        <label>Eigen/LU</label>
-      </node>
-      <node id="13">
-        <label>cmath</label>
-      </node>
-      <node id="14">
-        <label>limits</label>
-      </node>
       <node id="18">
         <label>lt/optional.hpp</label>
       </node>
-      <node id="7">
-        <label>stdexcept</label>
-      </node>
-      <node id="4">
-        <label>type_traits</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>SE_2_3.h</label>
-        <link refid="_s_e__2__3_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>SE_2_3.h</label>
-        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="1">
         <label>SE_2_3_base.h</label>
         <link refid="_s_e__2__3__base_8h"/>
@@ -221,6 +207,20 @@
         <label>SE_2_3_map.h</label>
         <link refid="_s_e__2__3__map_8h_source"/>
         <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SE_2_3.h</label>
+        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SE_2_3.h</label>
+        <link refid="_s_e__2__3_8h_source"/>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -237,6 +237,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h"/>
   </compounddef>
 </doxygen>

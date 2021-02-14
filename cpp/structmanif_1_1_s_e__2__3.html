@@ -57,7 +57,6 @@
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -66,16 +65,6 @@
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
-              struct <a href="structmanif_1_1_s_e__2__3_base.html" class="m-doc">SE_2_3Base&lt;SE_2_3&lt;_Scalar&gt;&gt;</a>
-            </dt>
-            <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> group.</dd>
-          </dl>
-        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -149,14 +138,22 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="aa9a5f0f18b25945bcaad2c696e843583">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa9a5f0f18b25945bcaad2c696e843583" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="aa892f711d6b7dd61f6bdc342c60b9615">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa892f711d6b7dd61f6bdc342c60b9615" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a20c8d19ef9af57a7ae825cd5c29ec900">
-              <span class="m-doc-wrap-bumper">auto <a href="#a20c8d19ef9af57a7ae825cd5c29ec900" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="a467ee4bde4d8db545cda0c2e3ab4af33">
+              <span class="m-doc-wrap-bumper">auto <a href="#a467ee4bde4d8db545cda0c2e3ab4af33" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
+            <dt id="a80f7dabb87f07212a7b7787358b098fa">
+              <span class="m-doc-wrap-bumper">auto <a href="#a80f7dabb87f07212a7b7787358b098fa" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; Rotation</span>
+            </dt>
+            <dd>Get the rotational part of this as a rotation matrix.</dd>
+            <dt id="a2240fa9856d556c60b2abae8b95da7c5">
+              <span class="m-doc-wrap-bumper">void <a href="#a2240fa9856d556c60b2abae8b95da7c5" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Normalize the underlying quaternion.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -400,7 +397,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

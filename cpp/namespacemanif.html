@@ -78,11 +78,6 @@
           <h2><a href="#nested-classes">Classes</a></h2>
           <dl class="m-doc">
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar, int N&gt;</div>
-              struct <a href="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4.html" class="m-doc">Constants&lt;ceres::Jet&lt;_Scalar, N&gt;&gt;</a>
-            </dt>
-            <dd>Specialize <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a> traits for the ceres::Jet type.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _LieGroup&gt;</div>
               class <a href="classmanif_1_1_ceres_constraint_functor.html" class="m-doc">CeresConstraintFunctor</a>
             </dt>
@@ -103,23 +98,29 @@
             </dt>
             <dd>Traits to define some constant scalar.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
-              struct <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>
+              <div class="m-doc-template">template&lt;typename _Scalar, int N&gt;</div>
+              struct <a href="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4.html" class="m-doc">Constants&lt;ceres::Jet&lt;_Scalar, N&gt;&gt;</a>
             </dt>
-            <dd>Base class for Lie groups. Defines the minimum common API.</dd>
-            <dt>
-              struct <a href="structmanif_1_1runtime__error.html" class="m-doc">runtime_error</a>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Specialize <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a> traits for the ceres::Jet type.</dd>
             <dt>
               struct <a href="structmanif_1_1invalid__argument.html" class="m-doc">invalid_argument</a>
             </dt>
             <dd><span></span></dd>
             <dt>
+              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+              struct <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>
+            </dt>
+            <dd>Base class for Lie groups. Defines the minimum common API.</dd>
+            <dt>
               <div class="m-doc-template">template&lt;typename _Scalar, unsigned int _N&gt;</div>
               struct <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a>
             </dt>
             <dd>Represents an element of <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_rn_base.html" class="m-doc">RnBase</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> group.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Scalar, unsigned int _N&gt;</div>
               struct <a href="structmanif_1_1_rn_tangent.html" class="m-doc">RnTangent</a>
@@ -127,29 +128,28 @@
             <dd>Represents an element of tangent space of <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
-              struct <a href="structmanif_1_1_rn_base.html" class="m-doc">RnBase</a>
-            </dt>
-            <dd>The base class of the <a href="structmanif_1_1_rn.html" class="m-doc">Rn</a> group.</dd>
-            <dt>
-              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_rn_tangent_base.html" class="m-doc">RnTangentBase</a>
             </dt>
             <dd>The base class of the R^n tangent.</dd>
+            <dt>
+              struct <a href="structmanif_1_1runtime__error.html" class="m-doc">runtime_error</a>
+            </dt>
+            <dd><span></span></dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
               struct <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a>
             </dt>
             <dd>Represents an element of <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a>.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1_s_e2_tangent.html" class="m-doc">SE2Tangent</a>
-            </dt>
-            <dd>Represent an element of the tangent space of <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a>.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e2_base.html" class="m-doc">SE2Base</a>
             </dt>
             <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              struct <a href="structmanif_1_1_s_e2_tangent.html" class="m-doc">SE2Tangent</a>
+            </dt>
+            <dd>Represent an element of the tangent space of <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e2_tangent_base.html" class="m-doc">SE2TangentBase</a>
@@ -161,15 +161,15 @@
             </dt>
             <dd>Represent an element of <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a>.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1_s_e3_tangent.html" class="m-doc">SE3Tangent</a>
-            </dt>
-            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a>.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e3_base.html" class="m-doc">SE3Base</a>
             </dt>
             <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_tangent.html" class="m-doc">SE3Tangent</a>
+            </dt>
+            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">SE3TangentBase</a>
@@ -181,15 +181,15 @@
             </dt>
             <dd>Represent an element of <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a>.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1_s_e__2__3_tangent.html" class="m-doc">SE_2_3Tangent</a>
-            </dt>
-            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a>.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e__2__3_base.html" class="m-doc">SE_2_3Base</a>
             </dt>
             <dd>The base class of the <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              struct <a href="structmanif_1_1_s_e__2__3_tangent.html" class="m-doc">SE_2_3Tangent</a>
+            </dt>
+            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_e__2__3_tangent_base.html" class="m-doc">SE_2_3TangentBase</a>
@@ -201,15 +201,15 @@
             </dt>
             <dd>Represents an element of <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a>.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1_s_o2_tangent.html" class="m-doc">SO2Tangent</a>
-            </dt>
-            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a>.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_o2_base.html" class="m-doc">SO2Base</a>
             </dt>
             <dd>The base class of the <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a> group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              struct <a href="structmanif_1_1_s_o2_tangent.html" class="m-doc">SO2Tangent</a>
+            </dt>
+            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_o2.html" class="m-doc">SO2</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_o2_tangent_base.html" class="m-doc">SO2TangentBase</a>
@@ -221,15 +221,15 @@
             </dt>
             <dd>Represents an element of <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1_s_o3_tangent.html" class="m-doc">SO3Tangent</a>
-            </dt>
-            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>.</dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_o3_base.html" class="m-doc">SO3Base</a>
             </dt>
             <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Scalar&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_tangent.html" class="m-doc">SO3Tangent</a>
+            </dt>
+            <dd>Represents an element of tangent space of <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
               struct <a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">SO3TangentBase</a>
@@ -871,7 +871,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

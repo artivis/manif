@@ -57,7 +57,6 @@
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -66,16 +65,6 @@
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
-              struct <a href="structmanif_1_1_s_e2_base.html" class="m-doc">SE2Base&lt;SE2&lt;_Scalar&gt;&gt;</a>
-            </dt>
-            <dd>The base class of the <a href="structmanif_1_1_s_e2.html" class="m-doc">SE2</a> group.</dd>
-          </dl>
-        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -134,14 +123,46 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="aff34005e83bcf5ca5732fe7e98bfb283">
-              <span class="m-doc-wrap-bumper">auto <a href="#aff34005e83bcf5ca5732fe7e98bfb283" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="af3c0db16481b3e58d593035c8712b6cc">
+              <span class="m-doc-wrap-bumper">auto <a href="#af3c0db16481b3e58d593035c8712b6cc" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd>Access the underlying data.</dd>
-            <dt id="adfd50e4662a248f7a32a53c198defb87">
-              <span class="m-doc-wrap-bumper">auto <a href="#adfd50e4662a248f7a32a53c198defb87" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="a3077cf1379ed3b3c86884e59c1834121">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3077cf1379ed3b3c86884e59c1834121" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd>Access the underlying data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a57077d9e099ebadedb7453dfb6430ba6" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
+            </dt>
+            <dd>Get the transformation matrix (2D isometry).</dd>
+            <dt id="a2a4c07bb3559cf744d7fe08d55f174e7">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2a4c07bb3559cf744d7fe08d55f174e7" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; Rotation</span>
+            </dt>
+            <dd>Get the rotational part of this as a rotation matrix.</dd>
+            <dt id="aaaf84b864aed1216108b0aba676f476e">
+              <span class="m-doc-wrap-bumper">void <a href="#aaaf84b864aed1216108b0aba676f476e" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Normalize the underlying complex number.</dd>
+            <dt id="abe394534d27c689b8487a92a4751c9a8">
+              <span class="m-doc-wrap-bumper">auto <a href="#abe394534d27c689b8487a92a4751c9a8" class="m-doc-self">angle</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the angle (rad.) of the rotational part.</dd>
+            <dt id="aa0f3397fc51c0ec9e9216a0f61e7647b">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa0f3397fc51c0ec9e9216a0f61e7647b" class="m-doc-self">real</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the real part of the underlying complex number representing the rotational part.</dd>
+            <dt id="acfd8f5c0e9560a858efb109972da3aee">
+              <span class="m-doc-wrap-bumper">auto <a href="#acfd8f5c0e9560a858efb109972da3aee" class="m-doc-self">imag</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the imaginary part of the underlying complex number representing the rotational part.</dd>
+            <dt id="af519c48f07f5d8b62d3b7458a89d478c">
+              <span class="m-doc-wrap-bumper">auto <a href="#af519c48f07f5d8b62d3b7458a89d478c" class="m-doc-self">x</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the x component of the translational part.</dd>
+            <dt id="a4f4e4e060dec2ff511ef916b3320a0b9">
+              <span class="m-doc-wrap-bumper">auto <a href="#a4f4e4e060dec2ff511ef916b3320a0b9" class="m-doc-self">y</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the y component of the translational part.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -321,7 +342,17 @@
                 </tr>
               </tbody>
             </table>
-<p>Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix. This is used to speed up certain methods of Transform, especially <a href="structmanif_1_1_s_e2_base.html#a385578d24aaec3aa8dee95dc1709a6f2" class="m-doc">inverse()</a>.</p>
+<p>Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix. This is used to speed up certain methods of Transform, especially inverse().</p>
+          </div></section>
+          <section class="m-doc-details" id="a57077d9e099ebadedb7453dfb6430ba6"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Scalar&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />SE2&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a57077d9e099ebadedb7453dfb6430ba6" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Get the transformation matrix (2D isometry).</p>
+<aside class="m-note m-info"><h4>Note</h4><p>T = | R t | | 0 1 |</p></aside>
           </div></section>
         </section>
       </div>
@@ -368,7 +399,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
