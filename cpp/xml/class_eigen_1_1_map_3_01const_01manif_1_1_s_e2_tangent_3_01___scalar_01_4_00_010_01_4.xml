@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" line="70" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="70" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" line="70" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" line="84" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="84" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" line="84" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" line="78" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="78" bodyend="78"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" line="78" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_1a38548a29f5df63f29dec407ba2f0d7ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" line="80" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="80" bodyend="80"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" line="80" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="80" bodyend="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -77,16 +77,16 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SE2TangentBase&lt; Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_e2_tangent_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -95,16 +95,16 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SE2TangentBase&lt; Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_e2_tangent_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -112,7 +112,7 @@
         <link refid="structmanif_1_1_tangent_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" line="67" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="69" bodyend="85"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" line="67" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_map.h" bodystart="69" bodyend="85"/>
     <listofallmembers>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>angle</name></member>
       <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_1a5d12f9a372871ae091624e7f6b0c7f69" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>Base</name></member>

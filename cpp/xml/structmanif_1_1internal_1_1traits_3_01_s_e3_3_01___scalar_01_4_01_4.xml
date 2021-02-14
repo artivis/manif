@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::traits&lt; SE3&lt; _Scalar &gt; &gt;</compoundname>
     <derivedcompoundref refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public" virt="non-virtual">manif::internal::traits&lt; Eigen::Map&lt; SE3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="19" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="19" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="19" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a4dcde1cda9e6e4bce4c058487afd4cd8" prot="public" static="no">
         <type><ref refid="structmanif_1_1_s_e3" kindref="compound">SE3</ref>&lt; _Scalar &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="21" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="21" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a8db1add00cf4213faa46a8831bd781b3" prot="public" static="no">
         <type><ref refid="structmanif_1_1_s_e3_tangent" kindref="compound">SE3Tangent</ref>&lt; _Scalar &gt;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="22" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="22" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a7e3ba2889ce5297856fb9206a245e308" prot="public" static="no">
         <type><ref refid="structmanif_1_1_s_e3_base" kindref="compound">SE3Base</ref>&lt; <ref refid="structmanif_1_1_s_e3" kindref="compound">SE3</ref>&lt; _Scalar &gt; &gt;</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="24" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a78a658413b48ae5e5068397adc7b9ac9" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, RepSize, 1 &gt;</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="31" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a1b7ce252217ec391d5b96a876a8bfffa" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, DoF &gt;</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1af092bdacd0827281f0a795312038fdd7" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, 4, 4 &gt;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="34" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="34" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a955959505974e62b84274f1eebe38368" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, Dim, Dim &gt;</type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="35" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1ad6bcba72056833bd7a2e78f4332f54ac" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, Dim, 1 &gt;</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="36" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a6f347edea36705a41f146c025e6c01f0" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, Dim, 1 &gt;</type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="37" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="37" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="26" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="26" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1ad7bcc2c45f3b3e2cecbbeda3bb5c6449" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="27" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="27" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="27" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a7fe266774a8e85045f1349d02330ce4e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="28" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="28" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -202,7 +202,7 @@
         <link refid="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4"/>
       </node>
     </inheritancegraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" line="17" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3.h" bodystart="18" bodyend="38"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="17" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="18" bodyend="38"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a7e3ba2889ce5297856fb9206a245e308" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; SE3&lt; _Scalar &gt; &gt;</scope><name>Base</name></member>
       <member refid="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4_1a78a658413b48ae5e5068397adc7b9ac9" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; SE3&lt; _Scalar &gt; &gt;</scope><name>DataType</name></member>

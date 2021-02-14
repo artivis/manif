@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_inner_weights_evaluator" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::InnerWeightsEvaluator</compoundname>
     <templateparamlist>
@@ -19,14 +19,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/generator.h" line="23" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/generator.h" bodystart="23" bodyend="41"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/generator.h" line="23" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/generator.h" bodystart="23" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/generator.h" line="20" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/generator.h" bodystart="21" bodyend="42"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/generator.h" line="20" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/generator.h" bodystart="21" bodyend="42"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_inner_weights_evaluator_1a0b5898be344ce96b5f26631e9ef430de" prot="public" virt="non-virtual"><scope>manif::internal::InnerWeightsEvaluator</scope><name>run</name></member>
     </listofallmembers>

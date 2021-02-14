@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1_s_e2_tangent" kind="struct" language="C++" prot="public">
     <compoundname>manif::SE2Tangent</compoundname>
     <basecompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; SE2Tangent&lt; _Scalar &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="47" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e2_tangent_1ae0625c43781ef8276f5920b0f84577a2" prot="private" static="no">
         <type><ref refid="structmanif_1_1_s_e2_tangent" kindref="compound">SE2Tangent</ref>&lt; _Scalar &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="48" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="48" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="87" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="87" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="87" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="62" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="62" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a81e92aff66b64b18bb291aafe0026674" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="63" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="63" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a061fd5ee5c99efc50be4e48b30e0b7bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="70" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="94" bodyend="98"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="70" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="94" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a5c047836865535cbdbc19b02b25dc65e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="74" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="101" bodyend="107"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="74" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="101" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1ab4ac273daa5e6d010cabb20af3d3b25c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="78" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="111" bodyend="114"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="78" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_1a3070b9d16dfd9ac140dff73b51feaa48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="79" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="118" bodyend="121"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="79" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="118" bodyend="121"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -194,7 +194,7 @@
         <link refid="structmanif_1_1_tangent_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="43" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="44" bodyend="88"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="43" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" bodystart="44" bodyend="88"/>
     <listofallmembers>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>angle</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_1a0aaabd0ef6b8b68b7c16c7d0b0f0d4a7" prot="private" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Base</name></member>

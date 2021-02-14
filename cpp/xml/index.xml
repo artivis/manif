@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.2" xml:lang="en-US">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
   <compound refid="structmanif_1_1internal_1_1_assignment_evaluator" kind="struct"><name>manif::internal::AssignmentEvaluator</name>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1a96e6be816d29c85c016addef40624323" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1aa15b4cb48297c0128d2ce33a73497355" kind="function"><name>run</name></member>
@@ -620,10 +620,10 @@
   <compound refid="structmanif_1_1_s_e3_tangent_base" kind="struct"><name>manif::SE3TangentBase</name>
     <member refid="structmanif_1_1_s_e3_tangent_base_1af6e34fa055dbbd493c5f4a531e55661b" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a82a039580fd8a6723390b167005db8dd" kind="typedef"><name>Type</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a0e0f58d097b1b0b4a151e79b201a9f98" kind="typedef"><name>BlockV</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a91119b4484803b9d2db9f5f263bcbe3d" kind="typedef"><name>BlockW</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1aa4430a6364f0e3da7240b06e3715132e" kind="typedef"><name>ConstBlockV</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1abd515802dde4d102b6246b400321c1f3" kind="typedef"><name>ConstBlockW</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1aaed9dbc055cd95b83d914fe04dd07498" kind="typedef"><name>LinBlock</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a50b10f42bf88efd4f626cc19eec77484" kind="typedef"><name>AngBlock</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a31c1837d3f82025adfe0dcc92fdcaca5" kind="typedef"><name>ConstLinBlock</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a941e8ab16fbbe31cd2af7cb3cbfe6ca7" kind="typedef"><name>ConstAngBlock</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1ab31d7c85a29ec114cf74fb6cfa031a9b" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a505dd744283eb1749972442cc32bb9ac" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1ac8fe59e9507847b69514845b9ab0fa65" kind="function"><name>retract</name></member>
@@ -632,10 +632,10 @@
     <member refid="structmanif_1_1_s_e3_tangent_base_1a9e6ed7844af1700fc042504422fdc1d6" kind="function"><name>rjacinv</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a4d37828334564cc61d39ef30596e8407" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a30349df92ba3ba5ded88ee323d00a117" kind="function"><name>smallAdj</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a662adbdc70240b690a00ffe39aa34c08" kind="function"><name>v</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a3c8a1529cbd997c7df908a3d01563bc2" kind="function"><name>v</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1ad78aed35ed2aa8565afeeb911d4c6e54" kind="function"><name>w</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1aea242dcc0586b04442f7e062bc78b3af" kind="function"><name>w</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a2e113b4de7940d2934c87ab1259f47a9" kind="function"><name>lin</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1afd9ed7c2ba14dc535312a753fe3dbec2" kind="function"><name>lin</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1ae6fbfebe8fcbb81e0a13fc4cac92214f" kind="function"><name>ang</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a5fb1b3bc8434b7e48c25763660352f36" kind="function"><name>ang</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a11c0f99d7e7b4992743b5a8aa19133ae" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a53046daee9eadb30785805c18ecc76e9" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
@@ -711,24 +711,22 @@
   <compound refid="structmanif_1_1_s_e__2__3_tangent_base" kind="struct"><name>manif::SE_2_3TangentBase</name>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a653a2395b2d5b79877bdcbbd4e68d45d" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a48921dfa548f8dc25c7677135bbb2311" kind="typedef"><name>Type</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1afa70c2e1cf34fdd86836ed53bef238b3" kind="typedef"><name>BlockV</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1af1205cefcbc511c777eb7f9e0744e873" kind="typedef"><name>BlockW</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ad5eb40b02e00fc946fcb759ad325efa2" kind="typedef"><name>BlockA</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a3bec56a4fa6a57790a4673f4a569ccd9" kind="typedef"><name>ConstBlockV</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a4701d9595dbae769c9d61bdd0f5f0fb8" kind="typedef"><name>ConstBlockW</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ada8be5a25c56b0bde54672e1d8f7c129" kind="typedef"><name>ConstBlockA</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1af20fefcd76e938510b9d2dbb455b485c" kind="typedef"><name>LinBlock</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aae6addce1e98e442d54678f46f6643cf" kind="typedef"><name>AngBlock</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa483be50ded39bfb22c0b173f57914b5" kind="typedef"><name>ConstLinBlock</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a4b9f72b6d5372fe680c68e0f9d2f53aa" kind="typedef"><name>ConstAngBlock</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a024931ba85ec1d2e15e2958c0f63e98c" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1afb04b180007af7452a9a9c2d43dbeeb2" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a42b4dd820700280dc83093e16f281759" kind="function"><name>retract</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a888c7c2cf058a9585d2a752dfd47a175" kind="function"><name>rjac</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a81455b0a5ffd68e9b22789f70a6f6b0c" kind="function"><name>ljac</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a985dd3e5043972ffa3a9e4f4cc5f9e0b" kind="function"><name>smallAdj</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a6385479d8af27b3dbf0143c3de8bf787" kind="function"><name>v</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ae3f194b3429dffcbd830c1149842e3df" kind="function"><name>v</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa0007e84b295d7061cbe4363d9a68c8b" kind="function"><name>w</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ad95057d1c278b7c74a31127316ffb51b" kind="function"><name>w</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a1db8f9692b7488d990ca81e631811606" kind="function"><name>a</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa4da521afacabb7062efc8351292973a" kind="function"><name>a</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a121cc1a16405baa4cbffce0237bfefa2" kind="function"><name>lin</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a54baf1c0a41a315cb011ccfd50eb3f30" kind="function"><name>lin</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ab57ae22dfcd701f9a53be062b07f287a" kind="function"><name>ang</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a8ec40104c599586db8180cc0acaf89fc" kind="function"><name>ang</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a609f2564ebc95a2afb62baa5575e8cd5" kind="function"><name>lin2</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a4d9158d3c0ce40d4fbbd5851fc5b8d35" kind="function"><name>lin2</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a79ece91e02932444c23bb6133c831b42" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ac812296a91e91061533962df09eab4ea" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
@@ -855,6 +853,8 @@
   <compound refid="structmanif_1_1_s_o3_tangent_base" kind="struct"><name>manif::SO3TangentBase</name>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ae16af024450bda928e07f64222ddf0c7" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ac8df63fc5b4b4da8c953e7882bf147b8" kind="typedef"><name>Type</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1a3f4a340016269c4ab60eabcdb5907c1f" kind="typedef"><name>AngBlock</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1a3e891e8f5ef045ec637724a908f21604" kind="typedef"><name>ConstAngBlock</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1aaab3e3747842c32fb573d3c7a880ad0a" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ad3fae9c95cf2ca0c94a13d46a0c56f6e" kind="function"><name>retract</name></member>
@@ -866,6 +866,8 @@
     <member refid="structmanif_1_1_s_o3_tangent_base_1ab94eec26f7d0841bba2e2f66e6cd8881" kind="function"><name>x</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ae747a642593f8bd903363ce007851566" kind="function"><name>y</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1af49907f7b2fe5d03cd6334c64e9260a1" kind="function"><name>z</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1ac6cf668ba31b449e42f719bde7285c1f" kind="function"><name>ang</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1ad419f605dc0c342e1764a36cb4d7e1f7" kind="function"><name>ang</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
@@ -1195,6 +1197,9 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4_1a2a9847dcd93b402d4f2b2f5ce7c8321f" kind="typedef"><name>cast</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4_1ac251582bf6a22698133b00d2e82a276c" kind="typedef"><name>cast</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" kind="struct"><name>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" kind="typedef"><name>cast</name></member>

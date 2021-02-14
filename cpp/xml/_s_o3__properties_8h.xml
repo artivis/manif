@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="_s_o3__properties_8h" kind="file" language="C++">
     <compoundname>SO3_properties.h</compoundname>
     <includes refid="traits_8h" local="yes">manif/impl/traits.h</includes>
@@ -13,41 +13,31 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="3">
+        <label>type_traits</label>
+      </node>
       <node id="2">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>type_traits</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="13">
-        <label>SE3.h</label>
-        <link refid="_s_e3_8h_source"/>
-        <childnode refid="12" relation="include">
+      <node id="16">
+        <label>SO3Tangent.h</label>
+        <link refid="_s_o3_tangent_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>SE_2_3.h</label>
-        <link refid="_s_e__2__3_8h_source"/>
-        <childnode refid="12" relation="include">
+      <node id="2">
+        <label>SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="14">
-        <label>SO3.h</label>
-        <link refid="_s_o3_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>SE3.h</label>
-        <link refid="impl_2se3_2_s_e3_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -56,68 +46,6 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>SE3Tangent_base.h</label>
-        <link refid="_s_e3_tangent__base_8h_source"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>SE3Tangent_map.h</label>
-        <link refid="_s_e3_tangent__map_8h_source"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>SE3_base.h</label>
-        <link refid="_s_e3__base_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>SE3_map.h</label>
-        <link refid="_s_e3__map_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>SE_2_3.h</label>
-        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>SE_2_3Tangent.h</label>
-        <link refid="_s_e__2__3_tangent_8h_source"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>SE_2_3Tangent_base.h</label>
-        <link refid="_s_e__2__3_tangent__base_8h_source"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>SE_2_3Tangent_map.h</label>
-        <link refid="_s_e__2__3_tangent__map_8h_source"/>
-        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -134,20 +62,30 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>SO3.h</label>
-        <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="4" relation="include">
+      <node id="22">
+        <label>SE_2_3Tangent.h</label>
+        <link refid="_s_e__2__3_tangent_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SO3_properties.h</label>
+        <link refid="_s_o3__properties_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>SO3Tangent.h</label>
-        <link refid="_s_o3_tangent_8h_source"/>
-        <childnode refid="17" relation="include">
+      <node id="5">
+        <label>SE3_base.h</label>
+        <link refid="_s_e3__base_8h_source"/>
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -158,22 +96,10 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>SO3Tangent_map.h</label>
-        <link refid="_s_o3_tangent__map_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>SO3_base.h</label>
-        <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
+      <node id="14">
+        <label>SO3.h</label>
+        <link refid="_s_o3_8h_source"/>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -186,12 +112,86 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>SO3_properties.h</label>
-        <link refid="_s_o3__properties_8h"/>
-        <childnode refid="2" relation="include">
+      <node id="23">
+        <label>SE_2_3Tangent_map.h</label>
+        <link refid="_s_e__2__3_tangent__map_8h_source"/>
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+      </node>
+      <node id="9">
+        <label>SE_2_3.h</label>
+        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>SE3.h</label>
+        <link refid="impl_2se3_2_s_e3_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>SE3_map.h</label>
+        <link refid="_s_e3__map_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>SE_2_3Tangent_base.h</label>
+        <link refid="_s_e__2__3_tangent__base_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>SE_2_3.h</label>
+        <link refid="_s_e__2__3_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SO3.h</label>
+        <link refid="impl_2so3_2_s_o3_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>SE3Tangent_map.h</label>
+        <link refid="_s_e3_tangent__map_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SE3.h</label>
+        <link refid="_s_e3_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>SE3Tangent_base.h</label>
+        <link refid="_s_e3_tangent__base_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>SO3Tangent_map.h</label>
+        <link refid="_s_o3_tangent__map_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -209,6 +209,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3_properties.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_properties.h"/>
   </compounddef>
 </doxygen>

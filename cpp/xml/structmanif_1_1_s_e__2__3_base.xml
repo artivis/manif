@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1_s_e__2__3_base" kind="struct" language="C++" prot="public">
     <compoundname>manif::SE_2_3Base</compoundname>
     <basecompoundref refid="structmanif_1_1_lie_group_base" prot="public" virt="non-virtual">manif::LieGroupBase&lt; _Derived &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="36" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e__2__3_base_1a50f4f7014084d69749365f978d7d8e80" prot="private" static="no">
         <type><ref refid="structmanif_1_1_s_e__2__3_base" kindref="compound">SE_2_3Base</ref>&lt; _Derived &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="37" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="37" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="47" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e__2__3_base_1add05d0a0cddf0b80fa8957ad9f8b5a39" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Translation</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="48" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="48" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e__2__3_base_1a2186a21f6b286465d518fa0d9e25fa65" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::LinearVelocity</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="49" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="49" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, 5, 5 &gt;</type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="50" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="50" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_e__2__3_base_1acb461324505843bd082d92c4b03fe604" prot="public" static="no">
         <type>Eigen::Quaternion&lt; Scalar &gt;</type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="51" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="51" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="51" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="69" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="238" bodyend="250"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="69" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="238" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a85c4112602ab4fa03242282ed54ce4fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="78" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="254" bodyend="270"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="78" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="254" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1ac66bc1823ed5baf8b6cb921c12111014" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED Tangent</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="86" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="274" bodyend="277"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="86" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="274" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a0e91c798caaa5c8d17256af46b16b21a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="96" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="282" bodyend="306"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="96" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="282" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a4d16515e33ebfa6926caab5f87b75f5e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -309,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="110" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="110" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1ad89d0fda81288e2c3f7dc00271237872" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -323,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="117" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="337" bodyend="362"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="117" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="337" bodyend="362"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a2c6f7ea1399c48c3b890cb642b2cddaa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" kindref="member">Isometry</ref></type>
@@ -339,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="127" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="199" bodyend="206"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="127" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="199" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a80f7dabb87f07212a7b7787358b098fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Rotation</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="132" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="210" bodyend="213"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="132" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="210" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a612122be3b06e060ca3ce3ff274033dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QuaternionDataType</type>
@@ -367,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="137" column="22" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="217" bodyend="220"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="137" column="22" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="217" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1aaa6c8050fb37d924532e2a473706f9bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Translation</type>
@@ -381,7 +381,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="142" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="224" bodyend="227"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="142" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="224" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a73db41759a35e666db6660bff884c0e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -395,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="147" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="368" bodyend="371"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="147" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="368" bodyend="371"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1acf2652b833c4f93c370a20cf0858f11f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -409,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="152" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="375" bodyend="378"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="152" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="375" bodyend="378"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1ac9a2c1f585e6977e4c64d38a2b9f347e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -423,7 +423,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="157" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="382" bodyend="385"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="157" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="382" bodyend="385"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a703b5a35c95ad5b2330261e3d1f36927" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LinearVelocity</type>
@@ -437,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="162" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="231" bodyend="234"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="162" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="231" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a9b799fd9173fafdb8e8953a3361df27c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -451,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="167" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="389" bodyend="392"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="167" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="389" bodyend="392"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a7119ecee85387bafd336579bb2d07125" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -465,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="172" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="396" bodyend="399"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="172" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="396" bodyend="399"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a63d12c74e3780d95190c97b5358a3d75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -479,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="177" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="403" bodyend="406"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="177" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="403" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a2240fa9856d556c60b2abae8b95da7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -493,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="182" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="409" bodyend="412"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="182" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="409" bodyend="412"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a630f905f36c91fe54b23f28918fb5fb0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Eigen::Map&lt; const <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>&lt; Scalar &gt; &gt;</type>
@@ -506,7 +506,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="186" column="14" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="186" bodyend="189"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="186" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="186" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1ad7bfd86935d971485100661681d46b75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Eigen::Map&lt; <ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>&lt; Scalar &gt; &gt;</type>
@@ -519,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="191" column="14" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="191" bodyend="194"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="191" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="191" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a3c591f0b4f8ea6e8ff2abb2c093cbe9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -549,7 +549,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="311" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="311" bodyend="332"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="311" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="311" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -563,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -577,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -592,7 +592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="57" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="57" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="57" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="57" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -618,30 +618,30 @@ observer&quot;. However, note that the serialization used in that paper is diffe
 </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SE_2_3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e__2__3_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SE_2_3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e__2__3_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="32" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="33" bodyend="195"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="32" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" bodystart="33" bodyend="195"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1a4d16515e33ebfa6926caab5f87b75f5e" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>act</name></member>

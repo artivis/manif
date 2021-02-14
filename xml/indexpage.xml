@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
     <title>manif</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><anchor id="index_1md__home_ubuntu_manif_README"/> </para>
+<para><anchor id="index_1md__home_runner_work_manif_manif_README"/> </para>
 <sect1 id="index_1autotoc_md1">
 <title>A small header-only library for Lie theory</title>
 <para><ulink url="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel"><image type="html" name="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel" alt="GHA" inline="yes"></image>
 </ulink> <ulink url="https://ci.appveyor.com/project/artivis/manif"><image type="html" name="https://ci.appveyor.com/api/projects/status/l0q7b0shhonvejrd?svg=true" alt="appveyor" inline="yes"></image>
-</ulink> <ulink url="https://codedocs.xyz/artivis/manif"><image type="html" name="https://codedocs.xyz/artivis/manif.svg" alt="Documentation" inline="yes"></image>
+</ulink> <ulink url="https://artivis.github.io/manif/"><image type="html" name="https://codedocs.xyz/artivis/manif.svg" alt="Documentation" inline="yes"></image>
 </ulink> <ulink url="https://codecov.io/gh/artivis/manif"><image type="html" name="https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg" alt="codecov" inline="yes"></image>
 </ulink> <image type="html" name="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub" inline="yes"></image>
  <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371"><image type="html" name="http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg" alt="JOSS" inline="yes"></image>
@@ -148,7 +148,7 @@
 </entry></row>
 <row>
 <entry thead="no" align='left'><para>Manifold left minus   </para>
-</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" alt="\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" inline="yes"></image>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee\phantom{.}" alt="\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" inline="yes"></image>
    </para>
 </entry><entry thead="no" align='center'><para><computeroutput>X.lminus(Y)</computeroutput>    </para>
 </entry></row>
@@ -209,7 +209,7 @@
 </sect1>
 <sect1 id="index_1autotoc_md8">
 <title>Documentation</title>
-<para>The documentation is available online at the accompanying [website](manif). Both the [C++](cpp) and the [Python](python) APIs are documented.</para>
+<para>The documentation is available online at the accompanying <ulink url="https://artivis.github.io/manif/">website</ulink>. Both the <ulink url="https://artivis.github.io/manif/cpp/index.html">C++</ulink> and the <ulink url="https://artivis.github.io/manif/python/index.html">Python</ulink> APIs are documented.</para>
 <para>Do you want to build it locally? Find out how on the <ref refid="md_pages_documentation" kindref="compound">dedicated page</ref>.</para>
 <para>Note: throughout the code documentation we refer to &apos;the paper&apos; which you can find on <ref refid="md_pages_publication" kindref="compound">the dedicated page</ref>.</para>
 </sect1>
@@ -231,6 +231,6 @@
 <para>Want to contribute? Great! Check out our contribution guidelines. </para>
 </sect1>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/README.md"/>
+    <location file="/home/runner/work/manif/manif/README.md"/>
   </compounddef>
 </doxygen>

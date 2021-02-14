@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1_s_o3" kind="struct" language="C++" prot="public">
     <compoundname>manif::SO3</compoundname>
     <basecompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="55" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="55" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_o3_1a96a9d4d64884ececde3e28ab36d7f972" prot="private" static="no">
         <type><ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>&lt; _Scalar &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="56" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="56" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="56" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_o3_1a781883da29b550c7ce422f28c7be6d4e" prot="private" static="no">
         <type>Eigen::Quaternion&lt; _Scalar &gt;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="58" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="58" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="58" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="121" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="121" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="121" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="75" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="75" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1ab19a653c6065ce076d9dab9d20402776" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="76" column="3"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="76" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1a15a357d6e7419a4a98b20399b3273574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="83" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="128" bodyend="132"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="83" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="128" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1af7f915b0b64dec1ea141b96d91fa5fac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="92" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="135" bodyend="139"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="92" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="135" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1ab8331ba658adb2cadb5af80b3bb5d125" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -222,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="102" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="142" bodyend="147"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="102" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="142" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1ae13c6051579b5913b1eb52ec90842faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="108" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="150" bodyend="154"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="108" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="150" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1a10e465936480ba86420d6004125f6edd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="113" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="157" bodyend="165"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="113" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="157" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1a25d0f6d6d45a281b7f68e755d2215ea7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -279,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="116" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="169" bodyend="172"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="116" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="169" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_1af54b902b37f1bfb20be925eb64b00e66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="117" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="176" bodyend="179"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="117" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="176" bodyend="179"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -307,15 +307,15 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SO3&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o3"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -325,18 +325,18 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
       <node id="1">
         <label>manif::SO3&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o3"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" line="51" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3.h" bodystart="52" bodyend="122"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" line="51" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3.h" bodystart="52" bodyend="122"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::SO3</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_o3_base_1a68aaac3a6fc58f85309112324f4113e9" prot="public" virt="non-virtual"><scope>manif::SO3</scope><name>act</name></member>

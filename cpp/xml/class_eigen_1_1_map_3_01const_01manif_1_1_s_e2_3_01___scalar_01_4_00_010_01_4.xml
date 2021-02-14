@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="77" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="77" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="77" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="98" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="98" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="98" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="86" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="86" bodyend="86"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="86" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1acb128f38fc93b4b45ee14170cf182844" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="88" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="88" bodyend="88"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="88" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="88" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -112,7 +112,7 @@
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="74" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="76" bodyend="99"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="74" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="76" bodyend="99"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a32216d574fa5bd8bf0f29f41dcda571d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>

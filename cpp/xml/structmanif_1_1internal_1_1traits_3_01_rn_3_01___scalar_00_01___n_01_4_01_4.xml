@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::traits&lt; Rn&lt; _Scalar, _N &gt; &gt;</compoundname>
     <derivedcompoundref refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public" virt="non-virtual">manif::internal::traits&lt; Eigen::Map&lt; Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="19" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="19" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="19" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a322cb151dc90e58869a001b3f14e9948" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, _N &gt;</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="21" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="21" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1ab2e27c736a6efa174275c1a63accfcaa" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, _N &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="22" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="22" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a8b2bb9431f0f8f0713fe23bcea792fa5" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn_base" kindref="compound">RnBase</ref>&lt; <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, _N &gt; &gt;</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="24" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a07f31af3374c21f9473b1c3bd0f1fe0a" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, RepSize, 1 &gt;</type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="30" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="30" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a865ecd27d5efdd298b5614a8a976918d" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, DoF &gt;</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a5cb99a1ad29485b44ed985a2bc4a4a94" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, DoF &gt;</type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1ad7f3b8d1d26a285fd01263b4f6e8281f" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, 1 &gt;</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="34" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="34" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="26" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="26" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a4cff95e8725e07c503758e6586bf8446" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="27" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="27" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="27" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1ab83e3ac33bfa8642d9d8a393b3454bda" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="28" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="28" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -170,18 +170,18 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::traits&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4"/>
+      </node>
       <node id="2">
         <label>manif::internal::traits&lt; Eigen::Map&lt; Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1">
-        <label>manif::internal::traits&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
-        <link refid="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4"/>
-      </node>
     </inheritancegraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="17" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="18" bodyend="35"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="17" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="18" bodyend="35"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a8b2bb9431f0f8f0713fe23bcea792fa5" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Rn&lt; _Scalar, _N &gt; &gt;</scope><name>Base</name></member>
       <member refid="structmanif_1_1internal_1_1traits_3_01_rn_3_01___scalar_00_01___n_01_4_01_4_1a07f31af3374c21f9473b1c3bd0f1fe0a" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Rn&lt; _Scalar, _N &gt; &gt;</scope><name>DataType</name></member>

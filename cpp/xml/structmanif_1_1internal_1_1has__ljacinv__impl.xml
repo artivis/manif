@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1has__ljacinv__impl" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::has_ljacinv_impl</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
@@ -39,7 +39,7 @@
         <label>std::false_type</label>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="61" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="61" bodyend="61"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="74" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="74" bodyend="74"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classmanif_1_1_ceres_constraint_functor" kind="class" language="C++" prot="public">
     <compoundname>manif::CeresConstraintFunctor</compoundname>
     <templateparamlist>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="13" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="13" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="13" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_constraint_functor_1ae922ccf7fd4cdd676d10ed898d343fdd" prot="private" static="no">
         <type>typename _LieGroup::Tangent</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="14" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="14" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="14" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_constraint_functor_1a569ee40752ac84bb6eccc08db6dd8449" prot="private" static="no">
         <templateparamlist>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="17" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="17" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="17" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_constraint_functor_1ad45dc473c3868bc7b683722170fd5b38" prot="private" static="no">
         <templateparamlist>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="20" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="20" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="20" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="26" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="26" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_constraint_functor_1a03abe8051ae3c533f5441b8c18263dad" prot="public" static="no">
         <type>Covariance</type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="27" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="27" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="27" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="84" column="11" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="84" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="84" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmanif_1_1_ceres_constraint_functor_1ad66fbfcaac88462ba58b7735efdd3778" prot="protected" static="no" mutable="no">
         <type>Covariance</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="86" column="14" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="86" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="86" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmanif_1_1_ceres_constraint_functor_1a21a10ad961c7928e000dfddbce0dfc21" prot="protected" static="no" mutable="no">
         <type>InformationMatrix</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="87" column="21" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="87" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="87" column="21" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="30" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="30" bodyend="35"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="30" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="30" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a2df8b6d0fdc7908558aa878e390fb3a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="38" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="38" bodyend="44"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="38" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="38" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a0225a88f601b531e6906d19d61122af3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="46" column="11"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="46" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a1900c7e6315bc5a36a31ec0237047669" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -235,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="49" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="49" bodyend="70"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="49" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="49" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a6f91c1bcec8fd9bdcfab0eb412442d17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="72" column="11" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="92" bodyend="95"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="72" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a12b70e36706fff2683f4ffcd0c1202c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="73" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="98" bodyend="102"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="73" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="98" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1a1590c05e4e2b9456f51e69bc98e5eb0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Covariance</type>
@@ -278,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="75" column="14" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="106" bodyend="109"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="75" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_constraint_functor_1abb47134f88d83b2369b9dcbd4509a1a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -295,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="76" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="112" bodyend="118"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="76" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="112" bodyend="118"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -310,14 +310,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="80" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="121" bodyend="143"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="80" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="121" bodyend="143"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/ceres/constraint.h" line="11" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/constraint.h" bodystart="12" bodyend="88"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" line="11" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constraint.h" bodystart="12" bodyend="88"/>
     <listofallmembers>
       <member refid="classmanif_1_1_ceres_constraint_functor_1a25de2e168be5b36252a6bbcd7a053d96" prot="public" virt="non-virtual"><scope>manif::CeresConstraintFunctor</scope><name>CeresConstraintFunctor</name></member>
       <member refid="classmanif_1_1_ceres_constraint_functor_1a2df8b6d0fdc7908558aa878e390fb3a9" prot="public" virt="non-virtual"><scope>manif::CeresConstraintFunctor</scope><name>CeresConstraintFunctor</name></member>

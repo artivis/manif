@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</compoundname>
     <includes refid="traits_8h" local="no">traits.h</includes>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="48" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="48" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -39,7 +39,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="46" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="47" bodyend="49"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="46" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="47" bodyend="49"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4_1a2a9847dcd93b402d4f2b2f5ce7c8321f" prot="public" virt="non-virtual"><scope>manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</scope><name>cast</name></member>
     </listofallmembers>

@@ -1,21 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="_s_e2__map_8h" kind="file" language="C++">
     <compoundname>SE2_map.h</compoundname>
     <includes refid="impl_2se2_2_s_e2_8h" local="yes">manif/impl/se2/SE2.h</includes>
     <includedby refid="_s_e2_8h" local="yes">SE2.h</includedby>
     <incdepgraph>
-      <node id="14">
-        <label>manif/constants.h</label>
-        <link refid="constants_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+      <node id="16">
+        <label>limits</label>
+      </node>
+      <node id="18">
+        <label>manif/impl/generator.h</label>
+        <link refid="generator_8h_source"/>
+      </node>
+      <node id="12">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="22">
+        <label>manif/impl/utils.h</label>
+        <link refid="utils_8h_source"/>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="21">
-        <label>manif/impl/assignment_assert.h</label>
-        <link refid="assignment__assert_8h_source"/>
+      <node id="13">
+        <label>Eigen/Geometry</label>
       </node>
       <node id="10">
         <label>manif/impl/eigen.h</label>
@@ -29,9 +36,20 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>manif/impl/generator.h</label>
-        <link refid="generator_8h_source"/>
+      <node id="15">
+        <label>cmath</label>
+      </node>
+      <node id="9">
+        <label>stdexcept</label>
+      </node>
+      <node id="11">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="4">
+        <label>manif/impl/se2/SE2_properties.h</label>
+        <link refid="_s_e2__properties_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>manif/impl/lie_group_base.h</label>
@@ -51,12 +69,6 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>manif/impl/macro.h</label>
-        <link refid="macro_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
       <node id="19">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
@@ -67,27 +79,15 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>manif/impl/se2/SE2_base.h</label>
-        <link refid="_s_e2__base_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
       <node id="1">
         <label>SE2_map.h</label>
         <link refid="_s_e2__map_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>manif/impl/se2/SE2_properties.h</label>
-        <link refid="_s_e2__properties_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="21">
+        <label>manif/impl/assignment_assert.h</label>
+        <link refid="assignment__assert_8h_source"/>
       </node>
       <node id="17">
         <label>manif/impl/tangent_base.h</label>
@@ -107,41 +107,41 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
+      <node id="14">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>manif/impl/macro.h</label>
+        <link refid="macro_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
       <node id="5">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="22">
-        <label>manif/impl/utils.h</label>
-        <link refid="utils_8h_source"/>
-        <childnode refid="14" relation="include">
+      <node id="3">
+        <label>manif/impl/se2/SE2_base.h</label>
+        <link refid="_s_e2__base_8h_source"/>
+        <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>Eigen/Core</label>
-      </node>
-      <node id="13">
-        <label>Eigen/Geometry</label>
-      </node>
-      <node id="12">
-        <label>Eigen/LU</label>
-      </node>
-      <node id="15">
-        <label>cmath</label>
-      </node>
-      <node id="16">
-        <label>limits</label>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
       <node id="20">
         <label>lt/optional.hpp</label>
-      </node>
-      <node id="9">
-        <label>stdexcept</label>
-      </node>
-      <node id="6">
-        <label>type_traits</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -173,6 +173,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h"/>
   </compounddef>
 </doxygen>

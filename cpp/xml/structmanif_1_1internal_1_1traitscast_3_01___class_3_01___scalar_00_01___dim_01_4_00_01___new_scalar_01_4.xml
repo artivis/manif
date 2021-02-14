@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</compoundname>
+    <includes refid="traits_8h" local="no">traits.h</includes>
+    <templateparamlist>
+      <param>
+        <type>template&lt; typename, unsigned int &gt; class</type>
+        <declname>_Class</declname>
+        <defname>_Class</defname>
+      </param>
+      <param>
+        <type>typename _NewScalar</type>
+      </param>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>_Dim</declname>
+        <defname>_Dim</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4_1ac251582bf6a22698133b00d2e82a276c" prot="public" static="no">
+        <type>_Class&lt; _NewScalar, _Dim &gt;</type>
+        <definition>using manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;::cast =  _Class&lt;_NewScalar, _Dim&gt;</definition>
+        <argsstring></argsstring>
+        <name>cast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="61" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Specialization for <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="59" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="60" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4_1ac251582bf6a22698133b00d2e82a276c" prot="public" virt="non-virtual"><scope>manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</scope><name>cast</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

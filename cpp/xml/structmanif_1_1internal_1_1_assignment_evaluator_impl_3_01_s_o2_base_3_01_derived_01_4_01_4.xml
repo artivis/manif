@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::AssignmentEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</compoundname>
     <includes refid="_s_o2__base_8h" local="no">SO2_base.h</includes>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="330" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="330" bodyend="339"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="330" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="330" bodyend="339"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,7 +37,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" line="327" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_base.h" bodystart="328" bodyend="340"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" line="327" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="328" bodyend="340"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4_1a5a763d8854ea7b7dd2f436f92e3a1daf" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</scope><name>run_impl</name></member>
     </listofallmembers>

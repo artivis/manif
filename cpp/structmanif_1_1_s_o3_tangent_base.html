@@ -58,6 +58,7 @@
               Reference
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pro-methods">Protected functions</a></li>
               </ul>
@@ -73,6 +74,19 @@
               struct <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase&lt;_Derived&gt;</a>
             </dt>
             <dd>Base class for Lie groups&#x27; tangents. Defines the minimum common API.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a3f4a340016269c4ab60eabcdb5907c1f">
+              using <a href="#a3f4a340016269c4ab60eabcdb5907c1f" class="m-doc-self">AngBlock</a> = typename DataType::template FixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">Type</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3e891e8f5ef045ec637724a908f21604">
+              using <a href="#a3e891e8f5ef045ec637724a908f21604" class="m-doc-self">ConstAngBlock</a> = typename DataType::template ConstFixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_o3_tangent_base.html" class="m-doc">Type</a>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -116,6 +130,14 @@
             <dd><span></span></dd>
             <dt id="af49907f7b2fe5d03cd6334c64e9260a1">
               <span class="m-doc-wrap-bumper">auto <a href="#af49907f7b2fe5d03cd6334c64e9260a1" class="m-doc-self">z</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac6cf668ba31b449e42f719bde7285c1f">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac6cf668ba31b449e42f719bde7285c1f" class="m-doc-self">ang</a>(</span><span class="m-doc-wrap">) -&gt; AngBlock</span>
+            </dt>
+            <dd>Get the angular part.</dd>
+            <dt id="ad419f605dc0c342e1764a36cb4d7e1f7">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad419f605dc0c342e1764a36cb4d7e1f7" class="m-doc-self">ang</a>(</span><span class="m-doc-wrap">) const -&gt; const ConstAngBlock</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a573f842dc25ee3125f8959ccdacb5240">
@@ -260,7 +282,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

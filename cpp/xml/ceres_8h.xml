@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="ceres_8h" kind="file" language="C++">
     <compoundname>ceres.h</compoundname>
     <includes refid="ceres_2constants_8h" local="yes">manif/ceres/constants.h</includes>
@@ -8,6 +8,21 @@
     <includes refid="objective_8h" local="yes">manif/ceres/objective.h</includes>
     <includes refid="ceres__utils_8h" local="yes">manif/ceres/ceres_utils.h</includes>
     <incdepgraph>
+      <node id="9">
+        <label>Eigen/Cholesky</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="14">
+        <label>ceres/autodiff_local_parameterization.h</label>
+      </node>
+      <node id="4">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>Eigen/Core</label>
+      </node>
       <node id="1">
         <label>ceres.h</label>
         <link refid="ceres_8h"/>
@@ -20,6 +35,16 @@
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>manif/ceres/constraint.h</label>
+        <link refid="constraint_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -36,33 +61,12 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>manif/ceres/constants.h</label>
-        <link refid="ceres_2constants_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>manif/ceres/constraint.h</label>
-        <link refid="constraint_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
+      <node id="10">
+        <label>Eigen/Eigenvalues</label>
       </node>
       <node id="11">
         <label>manif/ceres/local_parametrization.h</label>
         <link refid="local__parametrization_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>manif/ceres/objective.h</label>
-        <link refid="objective_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
@@ -74,29 +78,25 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>Eigen/Cholesky</label>
+      <node id="2">
+        <label>manif/ceres/constants.h</label>
+        <link refid="ceres_2constants_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="8">
-        <label>Eigen/Core</label>
-      </node>
-      <node id="10">
-        <label>Eigen/Eigenvalues</label>
-      </node>
-      <node id="15">
-        <label>ceres/autodiff_cost_function.h</label>
-      </node>
-      <node id="14">
-        <label>ceres/autodiff_local_parameterization.h</label>
+      <node id="12">
+        <label>manif/ceres/objective.h</label>
+        <link refid="objective_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>ceres/jet.h</label>
       </node>
-      <node id="4">
-        <label>cmath</label>
-      </node>
-      <node id="5">
-        <label>limits</label>
+      <node id="15">
+        <label>ceres/autodiff_cost_function.h</label>
       </node>
     </incdepgraph>
     <innerclass refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" prot="public">manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</innerclass>
@@ -107,6 +107,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h"/>
   </compounddef>
 </doxygen>

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="12" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="12" bodyend="12"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="12" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="12" bodyend="12"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

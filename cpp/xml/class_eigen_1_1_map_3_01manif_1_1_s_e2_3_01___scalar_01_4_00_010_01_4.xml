@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="67" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="67" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="67" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="52" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="52" bodyend="52"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="52" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a2c868973ae3ad72fd8ddf6ba63061c13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="56" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="56" bodyend="56"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="56" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4_1a9701b151b2fb116c96d7eff440f042fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="57" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="57" bodyend="57"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="57" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -125,7 +125,7 @@
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" line="40" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2_map.h" bodystart="42" bodyend="68"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" line="40" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2_map.h" bodystart="42" bodyend="68"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a32216d574fa5bd8bf0f29f41dcda571d" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>

@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1_lie_group_base" kind="struct" language="C++" prot="public">
     <compoundname>manif::LieGroupBase</compoundname>
     <derivedcompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; SE2&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_base" prot="public" virt="non-virtual">manif::SE3Base&lt; Map&lt; const manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_base" prot="public" virt="non-virtual">manif::SE3Base&lt; Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_base" prot="public" virt="non-virtual">manif::SE3Base&lt; SE3&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; SE_2_3&lt; _Scalar &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_rn_base" prot="public" virt="non-virtual">manif::RnBase&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_base" prot="public" virt="non-virtual">manif::SE3Base&lt; _Derived &gt;</derivedcompoundref>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="28" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="28" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::LieGroup</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="29" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="29" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="29" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::DataType</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="30" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="30" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Tangent</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="31" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Jacobian</type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="32" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" static="no">
         <type>typename <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">internal::traits</ref>&lt; _Derived &gt;::Vector</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" static="no">
         <type>tl::optional&lt; Eigen::Ref&lt; Jacobian &gt; &gt;</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="35" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" static="no">
         <templateparamlist>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="38" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="38" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="38" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="24" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="24" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="25" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="25" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="26" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="26" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" static="yes" mutable="no">
         <type>const OptJacobianRef</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="43" column="31" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="43" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="58" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="343" bodyend="347"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="58" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="343" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -268,7 +268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="66" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="352" bodyend="356"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="66" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="352" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="74" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="361" bodyend="368"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="74" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="361" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -317,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="77" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="77" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -331,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="80" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="80" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar *</type>
@@ -345,7 +345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="83" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="386" bodyend="389"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="83" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="386" bodyend="389"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Scalar *</type>
@@ -359,7 +359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="85" column="16" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="393" bodyend="396"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="85" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="393" bodyend="396"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="90" column="20"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="90" column="20"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Derived &amp;</type>
@@ -397,7 +397,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="102" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="408" bodyend="413"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="102" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="408" bodyend="413"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Derived &amp;</type>
@@ -416,7 +416,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="110" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="417" bodyend="424"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="110" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="417" bodyend="424"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a5b9c88987e97efb4ded4e1ceca236b46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -451,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="122" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="428" bodyend="431"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="122" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="428" bodyend="431"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a27c13e0e833debe4c1b28a1dee828032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -486,7 +486,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="131" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="543" bodyend="546"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="131" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="543" bodyend="546"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ae6ff30b30fc54178a527e1190a38ce3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED Tangent</type>
@@ -505,7 +505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="139" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="550" bodyend="553"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="139" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="550" bodyend="553"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1aeb8cc8385a9e89c815c749ebfd3c7f14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -568,7 +568,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="150" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="558" bodyend="564"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="150" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="558" bodyend="564"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -629,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="162" column="10" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="607" bodyend="614"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="162" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="607" bodyend="614"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7eee19e807f43489efd4601a8727e9a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -646,7 +646,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="170" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="599" bodyend="602"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="170" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="599" bodyend="602"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -709,7 +709,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="183" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="436" bodyend="447"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="183" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="436" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -772,7 +772,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="196" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="452" bodyend="468"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="196" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="452" bodyend="468"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -808,7 +808,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="205" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="473" bodyend="479"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="205" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="473" bodyend="479"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -871,7 +871,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="218" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="484" bodyend="501"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="218" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="484" bodyend="501"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -934,7 +934,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="231" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="506" bodyend="528"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="231" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="506" bodyend="528"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -970,7 +970,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="240" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="533" bodyend="539"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="240" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="533" bodyend="539"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1030,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="252" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="569" bodyend="587"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="252" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="569" bodyend="587"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1080,7 +1080,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="265" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="591" bodyend="595"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="265" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="591" bodyend="595"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1117,7 +1117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="278" column="8" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="620" bodyend="624"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="278" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="620" bodyend="624"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1143,7 +1143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="285" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="629" bodyend="633"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="285" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="629" bodyend="633"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1169,7 +1169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="292" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="638" bodyend="643"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="292" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="638" bodyend="643"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1195,7 +1195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="299" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="648" bodyend="652"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="299" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="648" bodyend="652"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1221,7 +1221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="306" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="657" bodyend="661"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="306" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="657" bodyend="661"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1247,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="313" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="666" bodyend="671"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="313" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="666" bodyend="671"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1265,7 +1265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="401" column="14" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="401" bodyend="404"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="401" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="401" bodyend="404"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1281,7 +1281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="318" column="19" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="677" bodyend="681"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="318" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="677" bodyend="681"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -1295,7 +1295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="320" column="19" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="685" bodyend="688"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="320" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="685" bodyend="688"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -1310,7 +1310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="324" column="19" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="324" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -1323,7 +1323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="325" column="25" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="325" column="25" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1335,16 +1335,10 @@
 </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
-        <label>Eigen::Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="8" relation="public-inheritance">
+      <node id="17">
+        <label>Eigen::Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="16" relation="public-inheritance">
         </childnode>
       </node>
       <node id="15">
@@ -1353,116 +1347,8 @@
         <childnode refid="14" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="21">
-        <label>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="20" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>Eigen::Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="26" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="32" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="10" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>Eigen::Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="16" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>Eigen::Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="22" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="28" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>Eigen::Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="34" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>manif::RnBase&lt; Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>manif::RnBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
-        <link refid="structmanif_1_1_rn_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>manif::SE2Base&lt; SE2&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e2_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>manif::SE3Base&lt; Map&lt; const manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>manif::SE3Base&lt; Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>manif::SE3Base&lt; SE3&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+      <node id="41">
+        <label>manif::SE_2_3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e__2__3_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
@@ -1473,14 +1359,56 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="24">
-        <label>manif::SE_2_3Base&lt; SE_2_3&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_base"/>
+      <node id="11">
+        <label>Eigen::Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>manif::SE2&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_e2"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>manif::SO2&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_o2"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>manif::SE_2_3&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_e__2__3"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>manif::SO3Base&lt; Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_o3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_o3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>Eigen::Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::RnBase&lt; Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="26">
-        <label>manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <label>manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
@@ -1491,54 +1419,26 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="30">
-        <label>manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o2_base"/>
-        <childnode refid="1" relation="public-inheritance">
+      <node id="29">
+        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="28" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
-        <label>manif::SO3Base&lt; Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</label>
-        <link refid="structmanif_1_1_s_o3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
-      <node id="7">
-        <label>manif::Rn&lt; _Scalar, _N &gt;</label>
-        <link refid="structmanif_1_1_rn"/>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="38">
-        <label>manif::RnBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_rn_base"/>
+      <node id="18">
+        <label>manif::SE3Base&lt; SE3&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e3_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="13">
-        <label>manif::SE2&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_e2"/>
+        <label>Eigen::Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e2_3_01___scalar_01_4_00_010_01_4"/>
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
-        <label>manif::SE2Base&lt; _Derived &gt;</label>
+      <node id="12">
+        <label>manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_e2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
@@ -1549,40 +1449,40 @@
         <childnode refid="18" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
-        <label>manif::SE3Base&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_e3_base"/>
-        <childnode refid="1" relation="public-inheritance">
+      <node id="35">
+        <label>manif::SO3&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_o3"/>
+        <childnode refid="34" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="25">
-        <label>manif::SE_2_3&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3"/>
-        <childnode refid="24" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>manif::SE_2_3Base&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_s_e__2__3_base"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>manif::SO2&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_o2"/>
-        <childnode refid="30" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="42">
-        <label>manif::SO2Base&lt; _Derived &gt;</label>
+      <node id="30">
+        <label>manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
-        <label>manif::SO3&lt; _Scalar &gt;</label>
-        <link refid="structmanif_1_1_s_o3"/>
-        <childnode refid="36" relation="public-inheritance">
+      <node id="7">
+        <label>manif::Rn&lt; _Scalar, _N &gt;</label>
+        <link refid="structmanif_1_1_rn"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>manif::SE2Base&lt; SE2&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>manif::SE3Base&lt; Map&lt; const manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e3_base"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="43">
@@ -1591,8 +1491,108 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="5">
+        <label>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>manif::SE3Base&lt; Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>manif::SO2Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_o2_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>manif::SE3Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_e3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Eigen::Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>manif::SE2Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>manif::RnBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e__2__3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>manif::SE_2_3Base&lt; SE_2_3&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_e__2__3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_o3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>manif::RnBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_rn_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="23">
+        <label>Eigen::Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>Eigen::Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
     </inheritancegraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="22" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="23" bodyend="326"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="22" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="23" bodyend="326"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>_</name></member>
       <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>act</name></member>

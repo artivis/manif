@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::traits&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</compoundname>
     <derivedcompoundref refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public" virt="non-virtual">manif::internal::traits&lt; Eigen::Map&lt; RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</derivedcompoundref>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="13" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="13" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="13" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a31a5c9633060476d85003abaaaa55aaa" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>&lt; _Scalar, _N &gt;</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="15" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="15" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="15" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a20a51de0e09873efa615b97e89af22ad" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn_tangent" kindref="compound">RnTangent</ref>&lt; _Scalar, _N &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="16" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="16" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="16" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1ad3cd97a844950523149a18adb0efd5bf" prot="public" static="no">
         <type><ref refid="structmanif_1_1_rn_tangent_base" kindref="compound">RnTangentBase</ref>&lt; <ref refid="structmanif_1_1_rn_tangent" kindref="compound">Tangent</ref> &gt;</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="18" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="18" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="18" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a4c0231e766cb1c78bec4e40f66e4bea4" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, 1 &gt;</type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="24" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a7cc2c89351edf17462a90e3afcafdf1d" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF, DoF &gt;</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="26" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="26" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a9fa5b2fe8a343325f8a04f29dadf9580" prot="public" static="no">
         <type>Eigen::Matrix&lt; Scalar, DoF+1, DoF+1 &gt;</type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="27" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="27" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="27" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="20" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="20" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="20" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1ab2718213b298b2130e3aa4b3b7b6aa87" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="21" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="21" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a438880dff272b9704659a3083ec173c0" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="22" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="22" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,7 +168,7 @@
         <link refid="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4"/>
       </node>
     </inheritancegraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="11" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="12" bodyend="28"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="11" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="12" bodyend="28"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1ad3cd97a844950523149a18adb0efd5bf" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</scope><name>Base</name></member>
       <member refid="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4_1a4c0231e766cb1c78bec4e40f66e4bea4" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</scope><name>DataType</name></member>

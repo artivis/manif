@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="60" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="60" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="60" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="51" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="51" bodyend="51"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="51" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a346759027c3ff3fedfefee39f8b71a1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="55" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="55" bodyend="55"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="55" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a62a825ca5f782c08e5cf3ec4964699ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="56" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="56" bodyend="56"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="56" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -90,16 +90,16 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -108,16 +108,16 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -125,13 +125,17 @@
         <link refid="structmanif_1_1_tangent_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" line="40" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="42" bodyend="61"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" line="40" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_map.h" bodystart="42" bodyend="61"/>
     <listofallmembers>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ac6cf668ba31b449e42f719bde7285c1f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>ang</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1ad419f605dc0c342e1764a36cb4d7e1f7" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>ang</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a3f4a340016269c4ab60eabcdb5907c1f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>AngBlock</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a349bca1e346d96bd609039af0ae5b346" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>Base</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a346759027c3ff3fedfefee39f8b71a1f" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a62a825ca5f782c08e5cf3ec4964699ff" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o3_tangent_base_1a3e891e8f5ef045ec637724a908f21604" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>ConstAngBlock</name></member>
       <member refid="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
       <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>data</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1ac25d4e5cca19d1519d8a1cdd095614fa" prot="protected" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>data_</name></member>
@@ -147,8 +151,8 @@
       <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>generator</name></member>
       <member refid="structmanif_1_1_s_o3_tangent_base_1aaab3e3747842c32fb573d3c7a880ad0a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>

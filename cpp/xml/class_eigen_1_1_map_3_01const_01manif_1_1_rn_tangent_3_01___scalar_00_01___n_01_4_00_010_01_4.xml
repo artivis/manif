@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_rn_tangent_base" prot="public" virt="non-virtual">manif::RnTangentBase&lt; Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</basecompoundref>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="66" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="66" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" line="66" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="80" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="80" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" line="80" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="74" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="74" bodyend="74"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" line="74" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1acbcafa09042724e50bfe682de59bbe3a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="76" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="76" bodyend="76"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" line="76" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="76" bodyend="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -117,7 +117,7 @@
         <link refid="structmanif_1_1_tangent_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" line="63" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="65" bodyend="81"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" line="63" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_map.h" bodystart="65" bodyend="81"/>
     <listofallmembers>
       <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_1a29e42f10134e17bd3a0ebd42164b1dee" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>Base</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</scope><name>cast</name></member>

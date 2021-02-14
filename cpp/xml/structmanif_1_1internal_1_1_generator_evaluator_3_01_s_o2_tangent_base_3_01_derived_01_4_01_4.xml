@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::GeneratorEvaluator&lt; SO2TangentBase&lt; Derived &gt; &gt;</compoundname>
     <includes refid="_s_o2_tangent__base_8h" local="no">SO2Tangent_base.h</includes>
@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent_base.h" line="204" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent_base.h" bodystart="204" bodyend="214"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent_base.h" line="204" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent_base.h" bodystart="204" bodyend="214"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,7 +32,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent_base.h" line="201" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent_base.h" bodystart="202" bodyend="215"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent_base.h" line="201" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent_base.h" bodystart="202" bodyend="215"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4_1a7f8ec001be0e0e04c3480eae61b013e4" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; SO2TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
     </listofallmembers>

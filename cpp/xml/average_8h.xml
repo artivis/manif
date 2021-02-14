@@ -1,30 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="average_8h" kind="file" language="C++">
     <compoundname>average.h</compoundname>
     <includes refid="lie__group__base_8h" local="yes">manif/impl/lie_group_base.h</includes>
     <includes local="no">iostream</includes>
     <includedby refid="manif_8h" local="yes">manif.h</includedby>
     <incdepgraph>
-      <node id="1">
-        <label>average.h</label>
-        <link refid="average_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
+      <node id="13">
+        <label>limits</label>
       </node>
-      <node id="11">
-        <label>manif/constants.h</label>
-        <link refid="constants_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
+      <node id="15">
+        <label>manif/impl/generator.h</label>
+        <link refid="generator_8h_source"/>
       </node>
-      <node id="18">
-        <label>manif/impl/assignment_assert.h</label>
-        <link refid="assignment__assert_8h_source"/>
+      <node id="9">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="10">
+        <label>Eigen/Geometry</label>
       </node>
       <node id="7">
         <label>manif/impl/eigen.h</label>
@@ -38,9 +31,14 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>manif/impl/generator.h</label>
-        <link refid="generator_8h_source"/>
+      <node id="12">
+        <label>cmath</label>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>Eigen/Core</label>
       </node>
       <node id="2">
         <label>manif/impl/lie_group_base.h</label>
@@ -60,15 +58,21 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>manif/impl/macro.h</label>
-        <link refid="macro_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="16">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
+      </node>
+      <node id="1">
+        <label>average.h</label>
+        <link refid="average_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>manif/impl/assignment_assert.h</label>
+        <link refid="assignment__assert_8h_source"/>
       </node>
       <node id="14">
         <label>manif/impl/tangent_base.h</label>
@@ -88,38 +92,34 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
+      <node id="11">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>manif/impl/macro.h</label>
+        <link refid="macro_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
       <node id="5">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>Eigen/Core</label>
-      </node>
-      <node id="10">
-        <label>Eigen/Geometry</label>
-      </node>
-      <node id="9">
-        <label>Eigen/LU</label>
-      </node>
-      <node id="12">
-        <label>cmath</label>
-      </node>
-      <node id="19">
-        <label>iostream</label>
-      </node>
-      <node id="13">
-        <label>limits</label>
-      </node>
       <node id="17">
         <label>lt/optional.hpp</label>
-      </node>
-      <node id="4">
-        <label>stdexcept</label>
-      </node>
-      <node id="6">
-        <label>type_traits</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -139,6 +139,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ubuntu/manif/include/manif/algorithms/average.h"/>
+    <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h"/>
   </compounddef>
 </doxygen>

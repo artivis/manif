@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="md_pages_cpp__on_the_use_with__ceres" kind="page">
     <compoundname>md_pages_cpp_On_the_use_with_Ceres</compoundname>
     <title>Ceres</title>
@@ -9,7 +9,7 @@
 <para><itemizedlist>
 <listitem><para><ulink url="#ceres">Ceres</ulink><itemizedlist>
 <listitem><para><ulink url="#jacobians">Jacobians</ulink></para>
-</listitem><listitem><para><ulink url="#example--a-group-abstract-localparameterization">Example : A group-abstract <computeroutput>LocalParameterization</computeroutput></ulink></para>
+</listitem><listitem><para><ulink url="#example--a-group-abstract-localparameterization">Example : A group-abstract LocalParameterization</ulink></para>
 </listitem><listitem><para><ulink url="#example--a-small-ceres-problem">Example : A small Ceres problem</ulink></para>
 </listitem></itemizedlist>
 </para>
@@ -101,7 +101,7 @@
 <para>Below are presented two small examples illustrating how <computeroutput>manif</computeroutput> can be used with <computeroutput>Ceres</computeroutput>.</para>
 </sect1>
 <sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md3">
-<title>Example : A group-abstract &lt;tt&gt;LocalParameterization&lt;/tt&gt;</title>
+<title>Example : A group-abstract LocalParameterization</title>
 <para>Is shown here how one can implement a <computeroutput>ceres::LocalParameterization</computeroutput>-derived class using <computeroutput>manif</computeroutput>, that does the <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
  for any group implemented in <computeroutput>manif</computeroutput> passed as a template parameter.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_LieGroup&gt;</highlight></codeline>

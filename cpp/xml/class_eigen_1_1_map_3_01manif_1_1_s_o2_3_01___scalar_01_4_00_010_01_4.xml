@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4" kind="class" language="C++" prot="public">
     <compoundname>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</compoundname>
     <basecompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="43" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="61" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="61" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="61" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="52" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="52" bodyend="52"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="52" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4_1a955da775d574dd13ca8958060c43c9b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="56" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="56" bodyend="56"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="56" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4_1a706928a6bd107cda62252589a0594a5f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="57" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="57" bodyend="57"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="57" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -90,16 +90,16 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -108,16 +108,16 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
-        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -125,7 +125,7 @@
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" line="40" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2_map.h" bodystart="42" bodyend="62"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" line="40" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_map.h" bodystart="42" bodyend="62"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</scope><name>_</name></member>
       <member refid="structmanif_1_1_s_o2_base_1a64005c1b4a954f9904505f64ae26e599" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</scope><name>act</name></member>
