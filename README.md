@@ -36,18 +36,7 @@ in a simplified way so as to make the entrance to Lie theory easy for the averag
 who is interested in designing rigorous and elegant state estimation algorithms.
 In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
-<!-- **manif** has been designed for an easy integration to larger projects:
-
-- A single dependency on [Eigen][eigen],
-- header-only for easy integration,
-- templated on the underlying scalar type so that one can use its own,
-- and C++11, since not everyone gets to enjoy the latest C++ features, especially in industry. -->
-
 It provides analytic computation of Jacobians for all the operations listed [below](#features).
-
-<!-- All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP][crtp]).
-It allows one to write generic code abstracting the Lie group details.
-Please find more information in the related [documentation page](doc/Writing-generic-code). -->
 
 ### Details
 
