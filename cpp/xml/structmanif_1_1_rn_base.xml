@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1_rn_base" kind="struct" language="C++" prot="public">
     <compoundname>manif::RnBase</compoundname>
     <basecompoundref refid="structmanif_1_1_lie_group_base" prot="public" virt="non-virtual">manif::LieGroupBase&lt; _Derived &gt;</basecompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="22" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="22" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="24" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_rn_base_1a15ec5c6177c24aca44cf1ec3ce5926f0" prot="private" static="no">
         <type><ref refid="structmanif_1_1_rn_base" kindref="compound">RnBase</ref>&lt; _Derived &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="23" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="23" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="25" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="33" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="35" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="52" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="126" bodyend="132"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="54" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="128" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1ad4bea290adaad720c785e44ab101b946" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="62" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="136" bodyend="142"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="64" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="138" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a43583c967752e9a39aedebe7fdf379cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED Tangent</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="70" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="146" bodyend="149"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="72" column="11" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="81" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="154" bodyend="175"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="83" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="156" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -264,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="181" bodyend="199"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="96" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="183" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -281,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="103" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="203" bodyend="207"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="105" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="205" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Transformation</type>
@@ -298,11 +298,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="112" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="117" bodyend="122"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="114" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="119" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_rn_base_1ae5875d9b148871931c86a3ab04a9c7a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
-        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>()</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -312,11 +312,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_rn_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_rn_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
-        <definition>const DataType&amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
+        <definition>const LieGroupBase&lt; _Derived &gt;::DataType &amp; manif::LieGroupBase&lt; _Derived &gt;::coeffs</definition>
         <argsstring>() const</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="31" column="3"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="33" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -341,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="38" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -354,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="38" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="40" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -366,30 +366,30 @@
 </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
       <node id="1">
         <label>manif::RnBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_rn_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
       <node id="1">
         <label>manif::RnBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_rn_base"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
-        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
-        <link refid="structmanif_1_1_lie_group_base"/>
-      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="19" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="18" bodyend="113"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" line="20" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn_base.h" bodystart="21" bodyend="115"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>_</name></member>
       <member refid="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>act</name></member>
@@ -398,12 +398,12 @@
       <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>between</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>cast</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>cast</name></member>
-      <member refid="structmanif_1_1_rn_base_1ae5875d9b148871931c86a3ab04a9c7a8" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_rn_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_rn_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::RnBase</scope><name>coeffs</name></member>
       <member refid="structmanif_1_1_rn_base_1a15083b89d53029e883983a482f8517ba" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>compose</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1a8c7ec39a257f1b248fd10216d1f1a863" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
-      <member refid="structmanif_1_1_lie_group_base_1ab89449c0da10c2906f6d283aa89a8bf0" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>data</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::RnBase</scope><name>DataType</name></member>
       <member refid="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::RnBase</scope><name>derived</name></member>
       <member refid="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::RnBase</scope><name>derived</name></member>

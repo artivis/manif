@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_ef7024cf5f8b61be4a7f589e9cd18385" kind="dir">
+    <compoundname>include</compoundname>
+    <innerdir refid="dir_c7d5dcfe645b69b88f34a4c0e13e03bc">manif</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/"/>
+  </compounddef>
+</doxygen>

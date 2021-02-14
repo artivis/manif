@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="classmanif_1_1_ceres_local_parameterization_functor" kind="class" language="C++" prot="public">
     <compoundname>manif::CeresLocalParameterizationFunctor</compoundname>
     <includes refid="local__parametrization_8h" local="no">local_parametrization.h</includes>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="14" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="14" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="14" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_local_parameterization_functor_1ad471b57f454696b9e1572fde93cd92a7" prot="private" static="no">
         <type>typename _LieGroup::Tangent</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="15" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="15" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="15" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_local_parameterization_functor_1adcec7334eb7f40ef8b5c1575bb79f755" prot="private" static="no">
         <templateparamlist>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="18" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="18" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="18" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classmanif_1_1_ceres_local_parameterization_functor_1a1a8470dad0209897f34951a3f5b5b47b" prot="private" static="no">
         <templateparamlist>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="21" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="21" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="21" column="3" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="25" column="3"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="25" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_local_parameterization_functor_1a11a88fba5c9eeaf476fde08e285e2d65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="26" column="11"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="26" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classmanif_1_1_ceres_local_parameterization_functor_1aa8e95f3084f1aae6c71b9dfda2d832bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="29" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="29" bodyend="41"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="29" column="8" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="29" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -135,7 +135,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/local_parametrization.h" bodystart="12" bodyend="42"/>
+    <location file="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" line="12" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/local_parametrization.h" bodystart="13" bodyend="42"/>
     <listofallmembers>
       <member refid="classmanif_1_1_ceres_local_parameterization_functor_1a7f10af72efd311df58528fa6e43fa413" prot="public" virt="non-virtual"><scope>manif::CeresLocalParameterizationFunctor</scope><name>CeresLocalParameterizationFunctor</name></member>
       <member refid="classmanif_1_1_ceres_local_parameterization_functor_1a96a68f0b398d3d9aad0d83cb978db173" prot="private" virt="non-virtual"><scope>manif::CeresLocalParameterizationFunctor</scope><name>LieGroup</name></member>

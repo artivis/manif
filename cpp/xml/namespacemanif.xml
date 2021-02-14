@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="namespacemanif" kind="namespace" language="C++">
     <compoundname>manif</compoundname>
+    <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
     <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
-    <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
-    <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
     <innerclass refid="structmanif_1_1_lie_group_base" prot="public">manif::LieGroupBase</innerclass>
-    <innerclass refid="structmanif_1_1_rn" prot="public">manif::Rn</innerclass>
-    <innerclass refid="structmanif_1_1_rn_base" prot="public">manif::RnBase</innerclass>
-    <innerclass refid="structmanif_1_1_rn_tangent" prot="public">manif::RnTangent</innerclass>
-    <innerclass refid="structmanif_1_1_rn_tangent_base" prot="public">manif::RnTangentBase</innerclass>
     <innerclass refid="structmanif_1_1runtime__error" prot="public">manif::runtime_error</innerclass>
+    <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
+    <innerclass refid="structmanif_1_1_rn" prot="public">manif::Rn</innerclass>
+    <innerclass refid="structmanif_1_1_rn_tangent" prot="public">manif::RnTangent</innerclass>
+    <innerclass refid="structmanif_1_1_rn_base" prot="public">manif::RnBase</innerclass>
+    <innerclass refid="structmanif_1_1_rn_tangent_base" prot="public">manif::RnTangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_e2" prot="public">manif::SE2</innerclass>
-    <innerclass refid="structmanif_1_1_s_e2_base" prot="public">manif::SE2Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e2_tangent" prot="public">manif::SE2Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e2_base" prot="public">manif::SE2Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e2_tangent_base" prot="public">manif::SE2TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_e3" prot="public">manif::SE3</innerclass>
-    <innerclass refid="structmanif_1_1_s_e3_base" prot="public">manif::SE3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e3_tangent" prot="public">manif::SE3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e3_base" prot="public">manif::SE3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e3_tangent_base" prot="public">manif::SE3TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_e__2__3" prot="public">manif::SE_2_3</innerclass>
-    <innerclass refid="structmanif_1_1_s_e__2__3_base" prot="public">manif::SE_2_3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e__2__3_tangent" prot="public">manif::SE_2_3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_e__2__3_base" prot="public">manif::SE_2_3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public">manif::SE_2_3TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_o2" prot="public">manif::SO2</innerclass>
-    <innerclass refid="structmanif_1_1_s_o2_base" prot="public">manif::SO2Base</innerclass>
     <innerclass refid="structmanif_1_1_s_o2_tangent" prot="public">manif::SO2Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_o2_base" prot="public">manif::SO2Base</innerclass>
     <innerclass refid="structmanif_1_1_s_o2_tangent_base" prot="public">manif::SO2TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_o3" prot="public">manif::SO3</innerclass>
-    <innerclass refid="structmanif_1_1_s_o3_base" prot="public">manif::SO3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_o3_tangent" prot="public">manif::SO3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_o3_base" prot="public">manif::SO3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_o3_tangent_base" prot="public">manif::SO3TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_tangent_base" prot="public">manif::TangentBase</innerclass>
     <innernamespace refid="namespacemanif_1_1detail">manif::detail</innernamespace>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="277" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="276" bodyend="281"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="276" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="277" bodyend="281"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="24" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="24" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a2b5927ae30a820a6079a2b986d73d08c" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="25" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="25" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1ad20159821fd04530436a69c8c3cd3423" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="26" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="26" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a3f7b2abd726b9f6eb42bf8f5ef70387a" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="34" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="34" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1aee09e7904bdab5c5d0a2826f348d4154" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="35" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="35" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1acaa0b20d837b7c4e512e043936f987dc" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="36" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="36" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a4324f19851d969ecec715fb89101309c" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="44" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="44" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a43d21464a06e1600765d7ba0cafefd68" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="45" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="45" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a2570a7c7229594e3814b302ac334f111" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="46" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="46" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="54" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="54" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="54" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a32997ad0b092395eb2530d1c86354b7c" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="55" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="55" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a40da5c261df2138cd2f6df516ce22120" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="56" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="56" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres.h" line="56" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8" prot="public" static="no">
         <templateparamlist>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="97" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="97" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="97" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a477fdb281fd6b72f55dd2b63012a7054" prot="public" static="no">
         <templateparamlist>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="98" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="98" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="98" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a6dffbe7afe32b8136b0572869c6b601c" prot="public" static="no">
         <templateparamlist>
@@ -280,7 +280,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="99" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="99" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="99" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1abc04f58b3bfe90ce7efa222ed0b7937b" prot="public" static="no">
         <templateparamlist>
@@ -298,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="100" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="100" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="100" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a946b27b1124dc1f4656ff68b84545d37" prot="public" static="no">
         <templateparamlist>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="101" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="101" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="101" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a263f21fc8c1aa6cbd50ac314ec2e657f" prot="public" static="no">
         <templateparamlist>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="102" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="102" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="102" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a08ac29332a6512078aa5fda2a7a8df67" prot="public" static="no">
         <templateparamlist>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="103" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="103" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="103" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1aa3dbb8b0e1735d0abf72e8281c805193" prot="public" static="no">
         <templateparamlist>
@@ -370,7 +370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="104" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="104" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="104" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a9a4af6400706ef5322b3a1d4ac6ee196" prot="public" static="no">
         <templateparamlist>
@@ -388,7 +388,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" line="105" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn.h" bodystart="105" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" line="105" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/Rn.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1af9871e10feaf4dae441549e5f418eceb" prot="public" static="no">
         <templateparamlist>
@@ -406,7 +406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="86" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="86" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="86" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1abca13aca626f9073b402246eee5c3408" prot="public" static="no">
         <templateparamlist>
@@ -424,7 +424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="87" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="87" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="87" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1abc1aca110d483a28ab4ffd7c598eacc8" prot="public" static="no">
         <templateparamlist>
@@ -442,7 +442,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="88" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="88" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="88" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1a6ee0f3d326f4436023f93a82e6ec7a6d" prot="public" static="no">
         <templateparamlist>
@@ -460,7 +460,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="89" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="89" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="89" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1a34a791334f3112a4507a4a83487c2209" prot="public" static="no">
         <templateparamlist>
@@ -478,7 +478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="90" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="90" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="90" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1a55992733f37ddb2141de2d27c60f23b8" prot="public" static="no">
         <templateparamlist>
@@ -496,7 +496,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="91" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="91" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="91" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1a8e52f0a72f3886c655c2e2aa00d09024" prot="public" static="no">
         <templateparamlist>
@@ -514,7 +514,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="92" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="92" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="92" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1ab00a8303f4fbf1d74463daee9065ec4b" prot="public" static="no">
         <templateparamlist>
@@ -532,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="93" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="93" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="93" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_rn_tangent_8h_1ae21187f91283001ad81f934f4500c887" prot="public" static="no">
         <templateparamlist>
@@ -550,7 +550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" line="94" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent.h" bodystart="94" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" line="94" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/rn/RnTangent.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -629,7 +629,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="54" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="54" bodyend="108"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="54" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="54" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="average_8h_1a64c41649d654147e9a5dd9f6b37f1387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -671,7 +671,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="113" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="113" bodyend="160"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="113" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="113" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="average_8h_1a8888896150c391239eff3eead0b655d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -713,7 +713,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="169" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="169" bodyend="217"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="169" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="169" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="average_8h_1a3f8c30418ab3318e402a806200cf9e4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -755,7 +755,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="222" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="222" bodyend="270"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="222" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/average.h" bodystart="222" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="bezier_8h_1abfd020f6bb8fb5e19c5f8435e782ada2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -827,7 +827,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/bezier.h" line="33" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/bezier.h" bodystart="33" bodyend="87"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/bezier.h" line="33" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/bezier.h" bodystart="33" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="decasteljau_8h_1aaee6cd5d9ceadf81b992b0588ede894b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -904,7 +904,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/decasteljau.h" line="31" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/decasteljau.h" bodystart="31" bodyend="114"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/decasteljau.h" line="31" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/decasteljau.h" bodystart="31" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1a039949a766aced0ba6b70e666f42ee34" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -931,7 +931,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="12" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="12" bodyend="19"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="12" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="12" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1acd03b1bdbc5b9a6a191431c49cbda958" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -963,7 +963,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="25" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="25" bodyend="27"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="25" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="25" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1adebc43a184092f1b146e15776ea172be" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -994,7 +994,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="33" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="33" bodyend="36"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="33" column="13" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1aa34dab229333417af321bf8646ef3e98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1020,7 +1020,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="42" bodyend="77"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="42" column="3" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="42" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1af56f6df32ff3e0e4cd75088a07862e19" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1096,7 +1096,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="92" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="92" bodyend="145"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="92" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="92" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1aaf694703bb0cc2672cd72be078299907" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1198,7 +1198,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="162" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="162" bodyend="218"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="162" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="162" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1a834c3c1151581f818aaba705030d8590" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1307,7 +1307,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="239" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="239" bodyend="274"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="239" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="239" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="interpolation_8h_1aef456041f95ce4198f8488e22e177f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1363,7 +1363,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="291" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="291" bodyend="321"/>
+        <location file="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" line="291" column="1" bodyfile="/home/ubuntu/manif/include/manif/algorithms/interpolation.h" bodystart="291" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1adb02ae0e31e731f19dff21982f8170a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1385,7 +1385,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="21" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="21" bodyend="26"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="21" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="21" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1aa83ef037aa43ad8fe1dccdbe8c1eb1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1416,7 +1416,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="36" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="36" bodyend="42"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="36" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="36" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1a84514b43e5738e0aba8495bdbc58eaca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1447,7 +1447,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="52" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="52" bodyend="61"/>
+        <location file="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" line="52" column="1" bodyfile="/home/ubuntu/manif/include/manif/ceres/ceres_utils.h" bodystart="52" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1ae20663fb2bed30bfb785d8590f4f45a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1469,7 +1469,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="10" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="10" bodyend="13"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="10" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="10" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a69e05e9dc6702cee89ece996d37ce0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1491,7 +1491,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="17" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="17" bodyend="20"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="17" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="17" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a82db5fa0bc6163129d0a50cf3124ba25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1513,7 +1513,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="24" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="24" bodyend="27"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="24" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="24" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a9f7301aacc32b1e95b4e287c2f7db2d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1535,7 +1535,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="31" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="31" bodyend="34"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="31" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a235491fb309c83cf453a52817a123e8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1557,7 +1557,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="38" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="38" bodyend="41"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="38" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a566cc74cdb71fb94651f2bb7464da72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1579,7 +1579,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="45" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="45" bodyend="48"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="45" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a7a068c52f8235362ae316edf9e069a7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1601,7 +1601,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="52" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="52" bodyend="55"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="52" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a4e507312642be570258356358ac4c5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1619,7 +1619,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="58" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="58" bodyend="61"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="58" column="11" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a513af9be91fc9169dc270d7849a86f23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1641,7 +1641,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="65" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="65" bodyend="68"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="65" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1aed5c7b7cdd948a7f72d8a2a3587bbf5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1659,7 +1659,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="71" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="71" bodyend="74"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="71" column="10" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a5906dc016d463552a7fb76c028da7931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1681,7 +1681,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="78" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="78" bodyend="81"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="78" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a17856dfe22b0e8e11a0ccdbb1ead3fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1699,7 +1699,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="84" column="7" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="84" bodyend="87"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="84" column="7" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="84" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a3c19e6c137b556ddb069f166866aea00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1721,7 +1721,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="91" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="91" bodyend="94"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="91" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="91" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a011e436350b65006d6232e656486d8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1748,7 +1748,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="98" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="98" bodyend="102"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="98" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="98" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a648a67f6d91d5dee23dba0d42022d87a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1787,7 +1787,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="106" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="106" bodyend="112"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="106" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="106" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1afc0e615b2d824170754cc5f88e658035" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1826,7 +1826,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="116" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="116" bodyend="122"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="116" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="116" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1acfc673b2f49e06dc48ec22e4c4b26aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1865,7 +1865,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="126" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="126" bodyend="132"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="126" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="126" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a87b037d5a558d46e17f98d5b00a40ddf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1904,7 +1904,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="136" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="136" bodyend="142"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="136" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="136" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a704d432231d85be05d27f9ffc74d3833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1943,7 +1943,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="146" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="146" bodyend="152"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="146" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="146" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a4b41435976d7cc36a9ca72e05688a89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1982,7 +1982,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="156" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="156" bodyend="162"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="156" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="156" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a35fbecd3477d57f6a60c1c5d88edd602" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2009,7 +2009,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="167" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="167" bodyend="171"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="167" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="167" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1aa005874089802e0315df9074f7f89c48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2036,7 +2036,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="175" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="175" bodyend="179"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="175" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="175" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1adadc051b9518af950b2de1e82c86eae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2063,7 +2063,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="184" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="184" bodyend="188"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="184" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="184" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a204ec012f89c5f0a1f829390a3ba9ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2090,7 +2090,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="192" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="192" bodyend="196"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="192" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="192" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a70ea23f1f27fdde8c4b36dc47b85966a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2129,7 +2129,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="200" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="200" bodyend="206"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="200" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="200" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a971cd9d0dc1600a7f139f10e043aa080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2168,7 +2168,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="210" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="210" bodyend="216"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="210" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="210" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1a60b95930002126191ea31ccf40485fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2204,7 +2204,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/functions.h" line="220" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/functions.h" bodystart="220" bodyend="226"/>
+        <location file="/home/ubuntu/manif/include/manif/functions.h" line="220" column="1" bodyfile="/home/ubuntu/manif/include/manif/functions.h" bodystart="220" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a58f911f257dddfa789c94d90510b5b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2230,7 +2230,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="139" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="139" bodyend="144"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="139" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="139" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a19dd1467c1dfb4e720587c16e1ebce78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2256,7 +2256,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="156" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="156" bodyend="166"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="156" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="156" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2278,7 +2278,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="169" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="169" bodyend="194"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/eigen.h" line="169" column="15" bodyfile="/home/ubuntu/manif/include/manif/impl/eigen.h" bodystart="169" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2307,7 +2307,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="693" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="693" bodyend="699"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" line="693" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/lie_group_base.h" bodystart="693" bodyend="699"/>
       </memberdef>
       <memberdef kind="function" id="_s_e2_tangent_8h_1a728e852117939343122920bdf7e76783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2323,7 +2323,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" line="90" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent.h" declline="90" declcolumn="1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" line="90" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent.h" declline="90" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_s_e3_tangent_8h_1a5f2d061318b41df8b122263dc109f857" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2339,7 +2339,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3Tangent.h" line="86" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3Tangent.h" declline="86" declcolumn="1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent.h" line="86" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se3/SE3Tangent.h" declline="86" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_s_e__2__3_tangent_8h_1a4b15dc0814f98a234001ec21990badd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2355,7 +2355,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" line="85" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" declline="85" declcolumn="1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" line="85" column="1" declfile="/home/ubuntu/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" declline="85" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_s_o2_tangent_8h_1a1b6499354c5bf1549a84650fb53855c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2371,7 +2371,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent.h" line="89" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2Tangent.h" declline="89" declcolumn="1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent.h" line="89" column="1" declfile="/home/ubuntu/manif/include/manif/impl/so2/SO2Tangent.h" declline="89" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_s_o3_tangent_8h_1ab713caeb88a3c0bffea4615c96d3853c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2387,7 +2387,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent.h" line="86" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent.h" declline="86" declcolumn="1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent.h" line="86" column="1" declfile="/home/ubuntu/manif/include/manif/impl/so3/SO3Tangent.h" declline="86" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a715bb1945632397ac518e48541f599a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2416,7 +2416,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="719" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="719" bodyend="724"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="719" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="719" bodyend="724"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a1ff2bbb013fb8ffb73c82afceda6131b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2445,7 +2445,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="728" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="728" bodyend="733"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="728" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="728" bodyend="733"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a61a0ddf27c7a0ad2e2bfc0a1b0e1fb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2474,7 +2474,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="755" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="755" bodyend="760"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="755" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="755" bodyend="760"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a2cdb3f0147ec5b11a72545ef5fddb6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2503,7 +2503,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="764" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="764" bodyend="769"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="764" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="764" bodyend="769"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aa42ef5cd0fabd1f45a7ad1822f2ebe51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2532,7 +2532,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="773" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="773" bodyend="778"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="773" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="773" bodyend="778"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1ab952d0f1ec392a23cafb8920fd8821ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2561,7 +2561,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="782" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="782" bodyend="787"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="782" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="782" bodyend="787"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a05b955ac883e34528df3de4cb17dc6b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2587,7 +2587,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="807" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="807" bodyend="812"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="807" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="807" bodyend="812"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a1b530e2c328e3c2b31095d26a4f5f02b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2613,7 +2613,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="816" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="816" bodyend="820"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="816" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="816" bodyend="820"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a71fefaa810e45ad464813862ae80e75a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2639,7 +2639,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="824" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="824" bodyend="829"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="824" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="824" bodyend="829"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a63bf1a9645754b8e4f5ce5ab0c8e5cc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2665,7 +2665,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="833" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="833" bodyend="838"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="833" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="833" bodyend="838"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aeb6a053cf7d4578c97d0aa9eb9d69ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2694,7 +2694,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="841" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="841" bodyend="846"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="841" column="6" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="841" bodyend="846"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aaae84429b756548d52a2be9680db1378" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2723,7 +2723,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="849" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="849" bodyend="854"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="849" column="6" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="849" bodyend="854"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1af50b5e49aec75ae950fdcde247071e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2752,7 +2752,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="859" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="859" bodyend="865"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/tangent_base.h" line="859" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/tangent_base.h" bodystart="859" bodyend="865"/>
       </memberdef>
       <memberdef kind="function" id="utils_8h_1a18b90a86a6200162b35cb7d811f60e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2787,7 +2787,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/utils.h" line="14" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/utils.h" bodystart="14" bodyend="20"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="14" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="14" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="utils_8h_1acef0c918075389f40c545e2b4027c06e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2822,7 +2822,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/utils.h" line="28" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/utils.h" bodystart="28" bodyend="31"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="28" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="utils_8h_1a680866a07b3fb917acfc21d001e4b244" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2857,7 +2857,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/utils.h" line="39" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/utils.h" bodystart="39" bodyend="42"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="39" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="utils_8h_1a2fd98a5e8a312235a4926f80908b04e5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2892,13 +2892,13 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/utils.h" line="50" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/utils.h" bodystart="50" bodyend="53"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/utils.h" line="50" column="13" bodyfile="/home/ubuntu/manif/include/manif/impl/utils.h" bodystart="50" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="7" column="15"/>
+    <location file="/home/ubuntu/manif/include/manif/algorithms/average.h" line="7" column="1"/>
   </compounddef>
 </doxygen>

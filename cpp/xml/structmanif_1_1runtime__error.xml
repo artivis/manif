@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1runtime__error" kind="struct" language="C++" prot="public">
     <compoundname>manif::runtime_error</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -29,7 +29,7 @@
         <label>std::runtime_error</label>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="15" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="14" bodyend="18"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="14" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="15" bodyend="18"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

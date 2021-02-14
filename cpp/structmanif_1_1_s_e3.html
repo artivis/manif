@@ -57,6 +57,7 @@
             <li>
               Reference
               <ul>
+                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -65,6 +66,16 @@
             </li>
           </ul>
         </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_e3_base.html" class="m-doc">SE3Base&lt;SE3&lt;_Scalar&gt;&gt;</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a> group.</dd>
+          </dl>
+        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -127,26 +138,14 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="ab6f85a9dc752d236ff273cdded34cd27">
-              <span class="m-doc-wrap-bumper">auto <a href="#ab6f85a9dc752d236ff273cdded34cd27" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="aeba83f2a7ff383f74b203dbdea25e1ed">
+              <span class="m-doc-wrap-bumper">auto <a href="#aeba83f2a7ff383f74b203dbdea25e1ed" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a6ba4a57cc2e539fcb2dec612f142a749">
-              <span class="m-doc-wrap-bumper">auto <a href="#a6ba4a57cc2e539fcb2dec612f142a749" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="ad4b9fc82066b694ce22a415eac0188e2">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad4b9fc82066b694ce22a415eac0188e2" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a3f6f3f05569ab25b937f0bd7504e8c1a" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
-            </dt>
-            <dd></dd>
-            <dt id="a5b237a8ba83af8e874faa12a649d383f">
-              <span class="m-doc-wrap-bumper">auto <a href="#a5b237a8ba83af8e874faa12a649d383f" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; Rotation</span>
-            </dt>
-            <dd>Get the rotational part of this as a rotation matrix.</dd>
-            <dt id="aa9f521d27fa05cf548a129b4950c73ba">
-              <span class="m-doc-wrap-bumper">void <a href="#aa9f521d27fa05cf548a129b4950c73ba" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd>Normalize the underlying quaternion.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -308,16 +307,7 @@
                 </tr>
               </tbody>
             </table>
-<p>Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix. This is used to speed up certain methods of Transform, especially inverse().</p>
-          </div></section>
-          <section class="m-doc-details" id="a3f6f3f05569ab25b937f0bd7504e8c1a"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename _Scalar&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />SE3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f6f3f05569ab25b937f0bd7504e8c1a" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-<p>Get the transformation matrix (3D isometry).</p><aside class="m-note m-info"><h4>Note</h4><p>T = | R t | | 0 1 |</p></aside>
+<p>Isometry is a typedef from Eigen::Transform, in which the linear part is assumed a rotation matrix. This is used to speed up certain methods of Transform, especially <a href="structmanif_1_1_s_e3_base.html#afe44a1cff6a1f43473c6193d4232e70b" class="m-doc">inverse()</a>.</p>
           </div></section>
         </section>
       </div>
@@ -364,7 +354,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

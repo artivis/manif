@@ -57,6 +57,7 @@
             <li>
               Reference
               <ul>
+                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pro-attribs">Protected variables</a></li>
@@ -64,6 +65,16 @@
             </li>
           </ul>
         </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+              struct <a href="structmanif_1_1_s_o3_base.html" class="m-doc">SO3Base&lt;SO3&lt;_Scalar&gt;&gt;</a>
+            </dt>
+            <dd>The base class of the <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a> group.</dd>
+          </dl>
+        </section>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -106,30 +117,14 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a959442870ebce96d54656c4cb0a81a09">
-              <span class="m-doc-wrap-bumper">auto <a href="#a959442870ebce96d54656c4cb0a81a09" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="a25d0f6d6d45a281b7f68e755d2215ea7">
+              <span class="m-doc-wrap-bumper">auto <a href="#a25d0f6d6d45a281b7f68e755d2215ea7" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aa9695b46d0473ffe87832d6137bcaee5">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa9695b46d0473ffe87832d6137bcaee5" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="af54b902b37f1bfb20be925eb64b00e66">
+              <span class="m-doc-wrap-bumper">auto <a href="#af54b902b37f1bfb20be925eb64b00e66" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ab2d6a8931b39c5230ef55748a9ab6f57" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
-            </dt>
-            <dd>Get the transformation matrix (3D isometry).</dd>
-            <dt id="ac7a13b927b59ab0b91aeff7ea7a2af95">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac7a13b927b59ab0b91aeff7ea7a2af95" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; Rotation</span>
-            </dt>
-            <dd>Get a rotation matrix.</dd>
-            <dt id="a407db974019560ebec9ecc09bd78682a">
-              <span class="m-doc-wrap-bumper">auto <a href="#a407db974019560ebec9ecc09bd78682a" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">) const -&gt; QuaternionDataType</span>
-            </dt>
-            <dd>Get quaternion.</dd>
-            <dt id="a2c3ac0fa1ba5c75bb14c085cabb61cb3">
-              <span class="m-doc-wrap-bumper">void <a href="#a2c3ac0fa1ba5c75bb14c085cabb61cb3" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd>Normalize the underlying quaternion.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -216,16 +211,6 @@
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="ab2d6a8931b39c5230ef55748a9ab6f57"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename _Scalar&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />SO3&lt;_Scalar&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2d6a8931b39c5230ef55748a9ab6f57" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Get the transformation matrix (3D isometry).</p>
-<aside class="m-note m-info"><h4>Note</h4><p>T = | R 0 | | 0 1 |</p></aside>
-          </div></section>
         </section>
       </div>
     </div>
@@ -271,7 +256,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

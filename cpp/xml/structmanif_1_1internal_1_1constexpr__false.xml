@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1constexpr__false" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::constexpr_false</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
     <templateparamlist>
       <param>
         <type>typename T</type>
@@ -13,28 +13,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>false_type</label>
-      </node>
       <node id="1">
         <label>manif::internal::constexpr_false&lt; T &gt;</label>
         <link refid="structmanif_1_1internal_1_1constexpr__false"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>false_type</label>
-      </node>
       <node id="1">
         <label>manif::internal::constexpr_false&lt; T &gt;</label>
         <link refid="structmanif_1_1internal_1_1constexpr__false"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="15" column="38" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="15" bodyend="15"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="15" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="15" bodyend="15"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

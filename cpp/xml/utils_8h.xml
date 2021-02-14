@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="utils_8h" kind="file" language="C++">
     <compoundname>utils.h</compoundname>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
@@ -8,8 +8,13 @@
     <includedby refid="_rn_8h" local="yes">Rn.h</includedby>
     <includedby refid="_s_o2_8h" local="yes">SO2.h</includedby>
     <incdepgraph>
-      <node id="4">
-        <label>limits</label>
+      <node id="2">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>utils.h</label>
@@ -20,22 +25,99 @@
       <node id="3">
         <label>cmath</label>
       </node>
-      <node id="2">
-        <label>manif/constants.h</label>
-        <link refid="constants_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
+      <node id="4">
+        <label>limits</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="7">
-        <label>SO3_base.h</label>
-        <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="8" relation="include">
+      <node id="19">
+        <label>Rn.h</label>
+        <link refid="_rn_8h_source"/>
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+      </node>
+      <node id="5">
+        <label>SE2.h</label>
+        <link refid="_s_e2_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>SE3.h</label>
+        <link refid="_s_e3_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>SE_2_3.h</label>
+        <link refid="_s_e__2__3_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>SO2.h</label>
+        <link refid="_s_o2_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>SO3.h</label>
+        <link refid="_s_o3_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>SE2.h</label>
+        <link refid="impl_2se2_2_s_e2_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SE2_base.h</label>
+        <link refid="_s_e2__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SE2_map.h</label>
+        <link refid="_s_e2__map_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>SE3.h</label>
+        <link refid="impl_2se3_2_s_e3_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SE3_base.h</label>
+        <link refid="_s_e3__base_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>SE3_map.h</label>
+        <link refid="_s_e3__map_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>SE_2_3.h</label>
+        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -52,10 +134,30 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>SE2.h</label>
-        <link refid="_s_e2_8h_source"/>
-        <childnode refid="6" relation="include">
+      <node id="8">
+        <label>SO3.h</label>
+        <link refid="impl_2so3_2_s_o3_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>SO3_map.h</label>
+        <link refid="_s_o3__map_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -70,111 +172,9 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>SE3_base.h</label>
-        <link refid="_s_e3__base_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>SE2.h</label>
-        <link refid="impl_2se2_2_s_e2_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>SE2_map.h</label>
-        <link refid="_s_e2__map_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>SO3.h</label>
-        <link refid="_s_o3_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>SO3_map.h</label>
-        <link refid="_s_o3__map_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>Rn.h</label>
-        <link refid="_rn_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>SE_2_3.h</label>
-        <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>SE3.h</label>
-        <link refid="impl_2se3_2_s_e3_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>SO2.h</label>
-        <link refid="_s_o2_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>SE3_map.h</label>
-        <link refid="_s_e3__map_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>SE_2_3.h</label>
-        <link refid="_s_e__2__3_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>SO3.h</label>
-        <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>SE3.h</label>
-        <link refid="_s_e3_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="6">
         <label>manif.h</label>
         <link refid="manif_8h_source"/>
-      </node>
-      <node id="2">
-        <label>SE2_base.h</label>
-        <link refid="_s_e2__base_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacemanif">manif</innernamespace>
@@ -182,6 +182,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/utils.h"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/utils.h"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e3_base_3_01___derived_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::LieGroupProperties&lt; SE3Base&lt; _Derived &gt; &gt;</compoundname>
     <includes refid="_s_e3__properties_8h" local="no">SE3_properties.h</includes>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" line="18" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" bodystart="18" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" line="18" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e3_base_3_01___derived_01_4_01_4_1af35fb64ebc2ff0bff06ba2a7d305a999" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr int</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" line="19" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" bodystart="19" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" line="19" column="24" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -44,7 +44,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" line="17" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3_properties.h" bodystart="16" bodyend="20"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" line="16" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se3/SE3_properties.h" bodystart="17" bodyend="20"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e3_base_3_01___derived_01_4_01_4_1adca6f89a1d4df3a5ad2714c89d44c977" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SE3Base&lt; _Derived &gt; &gt;</scope><name>Dim</name></member>
       <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e3_base_3_01___derived_01_4_01_4_1af35fb64ebc2ff0bff06ba2a7d305a999" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SE3Base&lt; _Derived &gt; &gt;</scope><name>DoF</name></member>

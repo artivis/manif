@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
     <title>Quick start</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><itemizedlist>
+<para><anchor id="index_1md_pages_cpp_Quick_start"/><itemizedlist>
 <listitem><para><ulink url="#quick-start">Quick start</ulink><itemizedlist>
 <listitem><para><ulink url="#installation">Installation</ulink><itemizedlist>
 <listitem><para><ulink url="#dependencies">Dependencies</ulink></para>
@@ -82,7 +82,6 @@
 <para>We provide some self-contained and self-explained executables implementing some real problems. Their source code is located in <computeroutput>manif/examples/</computeroutput>. These demos are:</para>
 <para><itemizedlist>
 <listitem><para><ulink url="examples/se2_localization.cpp"><computeroutput>se2_localization.cpp</computeroutput></ulink>: 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the example V.A in the paper.</para>
-</listitem><listitem><para><ulink url="examples/se2_localization_ukfm.cpp"><computeroutput>se2_localization_ukfm.cpp</computeroutput></ulink>: 2D robot localization based on fixed landmarks using SE2 as robot poses. This implements the filter described in [&apos;A Code for Unscented Kalman Filtering on Manifolds (UKF-M)&apos;](brossard-ukfm), M. Brossard, A. Barrau and S. Bonnabel.</para>
 </listitem><listitem><para><ulink url="examples/se3_localization.cpp"><computeroutput>se3_localization.cpp</computeroutput></ulink>: 3D robot localization based on fixed landmarks using SE3 as robot poses. This re-implements the example above but in 3D.</para>
 </listitem><listitem><para><ulink url="examples/se2_sam.cpp"><computeroutput>se2_sam.cpp</computeroutput></ulink>: 2D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE2 robot poses. This implements a the example V.B in the paper.</para>
 </listitem><listitem><para><ulink url="examples/se3_sam.cpp"><computeroutput>se3_sam.cpp</computeroutput></ulink>: 3D smoothing and mapping (SAM) with simultaneous estimation of robot poses and landmark locations, based on SE3 robot poses. This implements a 3D version of the example V.B in the paper.</para>
@@ -98,5 +97,6 @@
 </programlisting> </para>
 </sect1>
     </detaileddescription>
+    <location file="pages/cpp/Quick-start.md"/>
   </compounddef>
 </doxygen>

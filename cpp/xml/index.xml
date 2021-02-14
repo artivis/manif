@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.2" xml:lang="en-US">
   <compound refid="structmanif_1_1internal_1_1_assignment_evaluator" kind="struct"><name>manif::internal::AssignmentEvaluator</name>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1a96e6be816d29c85c016addef40624323" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1aa15b4cb48297c0128d2ce33a73497355" kind="function"><name>run</name></member>
@@ -140,10 +140,10 @@
     <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" kind="function"><name>operator=</name></member>
     <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" kind="function"><name>operator=</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" kind="function"><name>operator=</name></member>
-    <member refid="structmanif_1_1_lie_group_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_lie_group_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_lie_group_base_1a8c7ec39a257f1b248fd10216d1f1a863" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_lie_group_base_1ab89449c0da10c2906f6d283aa89a8bf0" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" kind="function"><name>data</name></member>
     <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" kind="function"><name>cast</name></member>
     <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" kind="function"><name>setIdentity</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" kind="function"><name>setRandom</name></member>
@@ -433,8 +433,8 @@
     <member refid="structmanif_1_1_rn_1a1aaacfe671f979ca24af2e9516f30e61" kind="function"><name>Rn</name></member>
     <member refid="structmanif_1_1_rn_1a3ca74b0f8d4e27f69d6f658b869fcf06" kind="function"><name>~Rn</name></member>
     <member refid="structmanif_1_1_rn_1ad67669d7aec12482f050db5d30a3ae2d" kind="function"><name>Rn</name></member>
-    <member refid="structmanif_1_1_rn_1aada85c2b80cb5486d511303705e7fe8c" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_rn_1a4486a85dbbbeda9068ad1f1c4e58ee9f" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_1a20b224ccd64c260df26299b9411c78ca" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_1a3125d4296a8f55b825a304c7a7ad3469" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_rn_base" kind="struct"><name>manif::RnBase</name>
     <member refid="structmanif_1_1_rn_base_1ae14e9d5e972ec4923c4335fb49e4cb5e" kind="typedef"><name>Base</name></member>
@@ -447,8 +447,8 @@
     <member refid="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" kind="function"><name>act</name></member>
     <member refid="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" kind="function"><name>adj</name></member>
     <member refid="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" kind="function"><name>transform</name></member>
-    <member refid="structmanif_1_1_rn_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_rn_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_rn_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_rn_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -459,8 +459,8 @@
     <member refid="structmanif_1_1_rn_tangent_1afbc8c1fb413121e9d48a30d913cd003e" kind="function"><name>RnTangent</name></member>
     <member refid="structmanif_1_1_rn_tangent_1aaa7f0df9b3bf28305cb199d451f5c928" kind="function"><name>~RnTangent</name></member>
     <member refid="structmanif_1_1_rn_tangent_1a88763688156d8c7c4a37b6ff5ea68de3" kind="function"><name>RnTangent</name></member>
-    <member refid="structmanif_1_1_rn_tangent_1a19131b4a3ff367bad38b5cf2e42ef666" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_rn_tangent_1a9254b9c81c1fa880f16df731132ec4cd" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_tangent_1a2fafe77ea064f2b35e4e2167cad93d29" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_tangent_1a2a1a07413fdd1f05bf687f3b3133c70c" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_rn_tangent_base" kind="struct"><name>manif::RnTangentBase</name>
     <member refid="structmanif_1_1_rn_tangent_base_1ab47d38e7f7449ed90b1a10be1fdd2b1d" kind="typedef"><name>Base</name></member>
@@ -473,8 +473,8 @@
     <member refid="structmanif_1_1_rn_tangent_base_1adb296c4392ef7a4541743347f787c02e" kind="function"><name>rjacinv</name></member>
     <member refid="structmanif_1_1_rn_tangent_base_1a3e5c553fdc356cfdf228d68a0fbd8402" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_rn_tangent_base_1a44dd4814dbf93f0458325533f5da6814" kind="function"><name>smallAdj</name></member>
-    <member refid="structmanif_1_1_rn_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_rn_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_rn_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_rn_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_rn_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -493,16 +493,8 @@
     <member refid="structmanif_1_1_s_e2_1a85767068f5e4c85be5813d66f66d5587" kind="function"><name>SE2</name></member>
     <member refid="structmanif_1_1_s_e2_1a256f1d4283cc9faa02c08c43fc3f7bb1" kind="function"><name>SE2</name></member>
     <member refid="structmanif_1_1_s_e2_1abf406b849fcfb11f67bbdbf15b74c0cc" kind="function"><name>SE2</name></member>
-    <member refid="structmanif_1_1_s_e2_1af3c0db16481b3e58d593035c8712b6cc" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_1a3077cf1379ed3b3c86884e59c1834121" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_1a57077d9e099ebadedb7453dfb6430ba6" kind="function"><name>transform</name></member>
-    <member refid="structmanif_1_1_s_e2_1a2a4c07bb3559cf744d7fe08d55f174e7" kind="function"><name>rotation</name></member>
-    <member refid="structmanif_1_1_s_e2_1aaaf84b864aed1216108b0aba676f476e" kind="function"><name>normalize</name></member>
-    <member refid="structmanif_1_1_s_e2_1abe394534d27c689b8487a92a4751c9a8" kind="function"><name>angle</name></member>
-    <member refid="structmanif_1_1_s_e2_1aa0f3397fc51c0ec9e9216a0f61e7647b" kind="function"><name>real</name></member>
-    <member refid="structmanif_1_1_s_e2_1acfd8f5c0e9560a858efb109972da3aee" kind="function"><name>imag</name></member>
-    <member refid="structmanif_1_1_s_e2_1af519c48f07f5d8b62d3b7458a89d478c" kind="function"><name>x</name></member>
-    <member refid="structmanif_1_1_s_e2_1a4f4e4e060dec2ff511ef916b3320a0b9" kind="function"><name>y</name></member>
+    <member refid="structmanif_1_1_s_e2_1aff34005e83bcf5ca5732fe7e98bfb283" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_1adfd50e4662a248f7a32a53c198defb87" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e2_base" kind="struct"><name>manif::SE2Base</name>
     <member refid="structmanif_1_1_s_e2_base_1acc45e0fef27751835a1870df5003c01f" kind="typedef"><name>Base</name></member>
@@ -528,8 +520,8 @@
     <member refid="structmanif_1_1_s_e2_base_1a4f4e4e060dec2ff511ef916b3320a0b9" kind="function"><name>y</name></member>
     <member refid="structmanif_1_1_s_e2_base_1aaaf84b864aed1216108b0aba676f476e" kind="function"><name>normalize</name></member>
     <member refid="structmanif_1_1_s_e2_base_1a88af7f6d682384803c7c2a3ee8367ab3" kind="function"><name>act</name></member>
-    <member refid="structmanif_1_1_s_e2_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e2_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -541,9 +533,8 @@
     <member refid="structmanif_1_1_s_e2_tangent_1a81e92aff66b64b18bb291aafe0026674" kind="function"><name>~SE2Tangent</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_1a061fd5ee5c99efc50be4e48b30e0b7bb" kind="function"><name>SE2Tangent</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_1a5c047836865535cbdbc19b02b25dc65e" kind="function"><name>SE2Tangent</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_1a6691fc72e950aa8762cd6c7889bb92b6" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_1a4a8a8d86b29991b1eecc84bcfead2c9b" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_1a9c89a30f03489149c0da6b8289f06b48" kind="function"><name>angle</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_1ab4ac273daa5e6d010cabb20af3d3b25c" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_1a3070b9d16dfd9ac140dff73b51feaa48" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e2_tangent_base" kind="struct"><name>manif::SE2TangentBase</name>
     <member refid="structmanif_1_1_s_e2_tangent_base_1adf98268b8c73aa924e983ae7c112e85f" kind="typedef"><name>Base</name></member>
@@ -557,10 +548,10 @@
     <member refid="structmanif_1_1_s_e2_tangent_base_1a47763b4785b21aab469c308223bbc9cc" kind="function"><name>x</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a2a0d4789c4c98ca38cd888e900e0a795" kind="function"><name>y</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" kind="function"><name>angle</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_base_1aa594b4a17fe54bef228340020b963ce5" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e2_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -578,11 +569,8 @@
     <member refid="structmanif_1_1_s_e3_1aceca32f3c8bcbfbaf8802a873296f8d2" kind="function"><name>SE3</name></member>
     <member refid="structmanif_1_1_s_e3_1a5d4c7b87daa82ccab7d409b490b0a0e5" kind="function"><name>SE3</name></member>
     <member refid="structmanif_1_1_s_e3_1af463cee23b88a451f3d23caf560835b3" kind="function"><name>SE3</name></member>
-    <member refid="structmanif_1_1_s_e3_1ab6f85a9dc752d236ff273cdded34cd27" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e3_1a6ba4a57cc2e539fcb2dec612f142a749" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e3_1a3f6f3f05569ab25b937f0bd7504e8c1a" kind="function"><name>transform</name></member>
-    <member refid="structmanif_1_1_s_e3_1a5b237a8ba83af8e874faa12a649d383f" kind="function"><name>rotation</name></member>
-    <member refid="structmanif_1_1_s_e3_1aa9f521d27fa05cf548a129b4950c73ba" kind="function"><name>normalize</name></member>
+    <member refid="structmanif_1_1_s_e3_1aeba83f2a7ff383f74b203dbdea25e1ed" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_1ad4b9fc82066b694ce22a415eac0188e2" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e3_base" kind="struct"><name>manif::SE3Base</name>
     <member refid="structmanif_1_1_s_e3_base_1a596889051e822f1a14e41335d130b8e1" kind="typedef"><name>Base</name></member>
@@ -614,8 +602,8 @@
     <member refid="structmanif_1_1_s_e3_base_1aaa5f5ebcd83105d94cf9ac336deeccb9" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e3_base_1a15e2f4f32d2b3483a3cd5744613e9c61" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e3_base_1a3d39070f37bbf4194f35a91367507f87" kind="function"><name>act</name></member>
-    <member refid="structmanif_1_1_s_e3_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e3_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e3_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -626,16 +614,16 @@
     <member refid="structmanif_1_1_s_e3_tangent_1a3ff1fd579d032754e0b7a6b5f0725735" kind="function"><name>SE3Tangent</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_1a3776d90d4c60344fe67c4f87881b7bce" kind="function"><name>~SE3Tangent</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_1a8437ad70778846ec792c4b59951a6896" kind="function"><name>SE3Tangent</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_1ac538dcfcac6907cb7730730f63f18175" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_1a5161e320cd33d47ae0ec34a70c5fa97e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_1a9e6376ca4caca55322c50f33f3079cb3" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_1af55f09dca56f0beeefff8e6148b392c1" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e3_tangent_base" kind="struct"><name>manif::SE3TangentBase</name>
     <member refid="structmanif_1_1_s_e3_tangent_base_1af6e34fa055dbbd493c5f4a531e55661b" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a82a039580fd8a6723390b167005db8dd" kind="typedef"><name>Type</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1aaed9dbc055cd95b83d914fe04dd07498" kind="typedef"><name>LinBlock</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a50b10f42bf88efd4f626cc19eec77484" kind="typedef"><name>AngBlock</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a31c1837d3f82025adfe0dcc92fdcaca5" kind="typedef"><name>ConstLinBlock</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a941e8ab16fbbe31cd2af7cb3cbfe6ca7" kind="typedef"><name>ConstAngBlock</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a0e0f58d097b1b0b4a151e79b201a9f98" kind="typedef"><name>BlockV</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a91119b4484803b9d2db9f5f263bcbe3d" kind="typedef"><name>BlockW</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1aa4430a6364f0e3da7240b06e3715132e" kind="typedef"><name>ConstBlockV</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1abd515802dde4d102b6246b400321c1f3" kind="typedef"><name>ConstBlockW</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1ab31d7c85a29ec114cf74fb6cfa031a9b" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a505dd744283eb1749972442cc32bb9ac" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1ac8fe59e9507847b69514845b9ab0fa65" kind="function"><name>retract</name></member>
@@ -644,16 +632,16 @@
     <member refid="structmanif_1_1_s_e3_tangent_base_1a9e6ed7844af1700fc042504422fdc1d6" kind="function"><name>rjacinv</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a4d37828334564cc61d39ef30596e8407" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a30349df92ba3ba5ded88ee323d00a117" kind="function"><name>smallAdj</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a28ab2f081bf90fc23a8ebcaecb700313" kind="function"><name>lin</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1acae876b018ffa42449873ce15c1a4a01" kind="function"><name>lin</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1a0d7fe4f82746071aac6b1c7a28a52ce7" kind="function"><name>ang</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1afe06143c47c83569a461ab16971e4ec2" kind="function"><name>ang</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a662adbdc70240b690a00ffe39aa34c08" kind="function"><name>v</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a3c8a1529cbd997c7df908a3d01563bc2" kind="function"><name>v</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1ad78aed35ed2aa8565afeeb911d4c6e54" kind="function"><name>w</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1aea242dcc0586b04442f7e062bc78b3af" kind="function"><name>w</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a11c0f99d7e7b4992743b5a8aa19133ae" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a53046daee9eadb30785805c18ecc76e9" kind="function"><name>asSO3</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1aa594b4a17fe54bef228340020b963ce5" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e3_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a54119c9459837a12d20b93404197dfb7" kind="function"><name>fillQ</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e3_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
@@ -673,10 +661,8 @@
     <member refid="structmanif_1_1_s_e__2__3_1a3ec49a32588f3608c42cb8f940bd4b17" kind="function"><name>SE_2_3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_1a59f3d3d4542696698058125ad82630b3" kind="function"><name>SE_2_3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_1a209456c67ae0a03e03da86db0f564f4a" kind="function"><name>SE_2_3</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_1aa892f711d6b7dd61f6bdc342c60b9615" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_1a467ee4bde4d8db545cda0c2e3ab4af33" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_1a80f7dabb87f07212a7b7787358b098fa" kind="function"><name>rotation</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_1a2240fa9856d556c60b2abae8b95da7c5" kind="function"><name>normalize</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_1aa9a5f0f18b25945bcaad2c696e843583" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_1a20c8d19ef9af57a7ae825cd5c29ec900" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e__2__3_base" kind="struct"><name>manif::SE_2_3Base</name>
     <member refid="structmanif_1_1_s_e__2__3_base_1a4340d06ce41e587dbeaa788e39fb582e" kind="typedef"><name>Base</name></member>
@@ -707,8 +693,8 @@
     <member refid="structmanif_1_1_s_e__2__3_base_1a630f905f36c91fe54b23f28918fb5fb0" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1ad7bfd86935d971485100661681d46b75" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a3c591f0b4f8ea6e8ff2abb2c093cbe9a" kind="function"><name>act</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -719,34 +705,36 @@
     <member refid="structmanif_1_1_s_e__2__3_tangent_1a81e3163329423e34f67642ea35696b3a" kind="function"><name>SE_2_3Tangent</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_1a9df6f9825afe04e1b14b9253a42ce3f4" kind="function"><name>~SE_2_3Tangent</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_1a8365355c75b55c0ed5ed42f8c9989a11" kind="function"><name>SE_2_3Tangent</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_1a2556851dc6ce8cf64afa87f0c479c71c" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_1a806de7742c99e0b4e7546790f0f1a8cc" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_1a9ea6271b92a551376a6aa9ccaeb68b8e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_1a20c4d33ddf05034301eed81d2a79a091" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_e__2__3_tangent_base" kind="struct"><name>manif::SE_2_3TangentBase</name>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a653a2395b2d5b79877bdcbbd4e68d45d" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a48921dfa548f8dc25c7677135bbb2311" kind="typedef"><name>Type</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1af20fefcd76e938510b9d2dbb455b485c" kind="typedef"><name>LinBlock</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aae6addce1e98e442d54678f46f6643cf" kind="typedef"><name>AngBlock</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa483be50ded39bfb22c0b173f57914b5" kind="typedef"><name>ConstLinBlock</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a4b9f72b6d5372fe680c68e0f9d2f53aa" kind="typedef"><name>ConstAngBlock</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1afa70c2e1cf34fdd86836ed53bef238b3" kind="typedef"><name>BlockV</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1af1205cefcbc511c777eb7f9e0744e873" kind="typedef"><name>BlockW</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ad5eb40b02e00fc946fcb759ad325efa2" kind="typedef"><name>BlockA</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a3bec56a4fa6a57790a4673f4a569ccd9" kind="typedef"><name>ConstBlockV</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a4701d9595dbae769c9d61bdd0f5f0fb8" kind="typedef"><name>ConstBlockW</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ada8be5a25c56b0bde54672e1d8f7c129" kind="typedef"><name>ConstBlockA</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a024931ba85ec1d2e15e2958c0f63e98c" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1afb04b180007af7452a9a9c2d43dbeeb2" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a42b4dd820700280dc83093e16f281759" kind="function"><name>retract</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a888c7c2cf058a9585d2a752dfd47a175" kind="function"><name>rjac</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a81455b0a5ffd68e9b22789f70a6f6b0c" kind="function"><name>ljac</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a985dd3e5043972ffa3a9e4f4cc5f9e0b" kind="function"><name>smallAdj</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aec09c416cd53fd4ef70efb68c9d80c9a" kind="function"><name>lin</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a2ae00ab3f3f10a87e1ab8cf123a0369b" kind="function"><name>lin</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a7ba6210d0f10b8c7f4ba235c0eb4ff7b" kind="function"><name>ang</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ad7ef43c2dcce1792608ffad6f76004dd" kind="function"><name>ang</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a3d440bb7500c70dad2ef430962bac205" kind="function"><name>lin2</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a31a553149075afbe2a9717e29dba68ef" kind="function"><name>lin2</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a6385479d8af27b3dbf0143c3de8bf787" kind="function"><name>v</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ae3f194b3429dffcbd830c1149842e3df" kind="function"><name>v</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa0007e84b295d7061cbe4363d9a68c8b" kind="function"><name>w</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ad95057d1c278b7c74a31127316ffb51b" kind="function"><name>w</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a1db8f9692b7488d990ca81e631811606" kind="function"><name>a</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa4da521afacabb7062efc8351292973a" kind="function"><name>a</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a79ece91e02932444c23bb6133c831b42" kind="function"><name>asSO3</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ac812296a91e91061533962df09eab4ea" kind="function"><name>asSO3</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa594b4a17fe54bef228340020b963ce5" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -759,12 +747,8 @@
     <member refid="structmanif_1_1_s_o2_1aed4ddd10e7e455a2ddc94d82be0d22a1" kind="function"><name>SO2</name></member>
     <member refid="structmanif_1_1_s_o2_1a092731d157e2d02692ba64fe3eae7633" kind="function"><name>SO2</name></member>
     <member refid="structmanif_1_1_s_o2_1a985b62c807a79b3ccef592c91ae8d72e" kind="function"><name>SO2</name></member>
-    <member refid="structmanif_1_1_s_o2_1a9363ae29e4bf7a6eb58ef234548600d9" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_1abe38e3b2a419894cf9d3bc0907805b00" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_1a1cd0799fe942b79afb517a5c057ab3a9" kind="function"><name>transform</name></member>
-    <member refid="structmanif_1_1_s_o2_1a91f748c9d1f7f3a060c77732cb11494a" kind="function"><name>rotation</name></member>
-    <member refid="structmanif_1_1_s_o2_1a928a2b3585f96233645faf55bd25061e" kind="function"><name>normalize</name></member>
-    <member refid="structmanif_1_1_s_o2_1a9fb166112c866af02ff2dd8027ef554a" kind="function"><name>angle</name></member>
+    <member refid="structmanif_1_1_s_o2_1a44038a7dd18007f76392eddf4e15dd6a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_1a60e033c05ee1d94ef295b17a57d79885" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_o2_base" kind="struct"><name>manif::SO2Base</name>
     <member refid="structmanif_1_1_s_o2_base_1a83e8cd5023e88865106156442d885aca" kind="typedef"><name>Base</name></member>
@@ -784,8 +768,8 @@
     <member refid="structmanif_1_1_s_o2_base_1a9fb166112c866af02ff2dd8027ef554a" kind="function"><name>angle</name></member>
     <member refid="structmanif_1_1_s_o2_base_1a928a2b3585f96233645faf55bd25061e" kind="function"><name>normalize</name></member>
     <member refid="structmanif_1_1_s_o2_base_1af621d80593f003e58927c365d2bac9a3" kind="function"><name>act</name></member>
-    <member refid="structmanif_1_1_s_o2_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o2_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_o2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -797,9 +781,8 @@
     <member refid="structmanif_1_1_s_o2_tangent_1a7214caad2b37ef25b100d4b8d4941572" kind="function"><name>~SO2Tangent</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_1a5025c24fb82772c37f6086062a5c5d26" kind="function"><name>SO2Tangent</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_1ae01a7422fc4be131c8971a777ce9ea3a" kind="function"><name>SO2Tangent</name></member>
-    <member refid="structmanif_1_1_s_o2_tangent_1a81e04457ed91148933719a3f71dd5a5f" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_tangent_1a9de477187bfbb7203f06acb67950f9ba" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_tangent_1a5ad2db0eb612a2b7bf09ad8be28e9948" kind="function"><name>angle</name></member>
+    <member refid="structmanif_1_1_s_o2_tangent_1a425beb4a10fd7e3035d42b578c0db747" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_tangent_1a097f923be123606264b09faad9533450" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_o2_tangent_base" kind="struct"><name>manif::SO2TangentBase</name>
     <member refid="structmanif_1_1_s_o2_tangent_base_1ade79b6dac547830c642d6033e7d39bc9" kind="typedef"><name>Base</name></member>
@@ -813,8 +796,8 @@
     <member refid="structmanif_1_1_s_o2_tangent_base_1a3b8edb36d7dfb8b9749d36db064fa1a5" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_base_1a91d49dea9de29cef296e49c30f7c7d00" kind="function"><name>smallAdj</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_base_1a5ad2db0eb612a2b7bf09ad8be28e9948" kind="function"><name>angle</name></member>
-    <member refid="structmanif_1_1_s_o2_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o2_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o2_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_o2_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -830,12 +813,8 @@
     <member refid="structmanif_1_1_s_o3_1ab8331ba658adb2cadb5af80b3bb5d125" kind="function"><name>SO3</name></member>
     <member refid="structmanif_1_1_s_o3_1ae13c6051579b5913b1eb52ec90842faa" kind="function"><name>SO3</name></member>
     <member refid="structmanif_1_1_s_o3_1a10e465936480ba86420d6004125f6edd" kind="function"><name>SO3</name></member>
-    <member refid="structmanif_1_1_s_o3_1a959442870ebce96d54656c4cb0a81a09" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o3_1aa9695b46d0473ffe87832d6137bcaee5" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o3_1ab2d6a8931b39c5230ef55748a9ab6f57" kind="function"><name>transform</name></member>
-    <member refid="structmanif_1_1_s_o3_1ac7a13b927b59ab0b91aeff7ea7a2af95" kind="function"><name>rotation</name></member>
-    <member refid="structmanif_1_1_s_o3_1a407db974019560ebec9ecc09bd78682a" kind="function"><name>quat</name></member>
-    <member refid="structmanif_1_1_s_o3_1a2c3ac0fa1ba5c75bb14c085cabb61cb3" kind="function"><name>normalize</name></member>
+    <member refid="structmanif_1_1_s_o3_1a25d0f6d6d45a281b7f68e755d2215ea7" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_1af54b902b37f1bfb20be925eb64b00e66" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_o3_base" kind="struct"><name>manif::SO3Base</name>
     <member refid="structmanif_1_1_s_o3_base_1aded7e00933238abee22a08877dbccdc0" kind="typedef"><name>Base</name></member>
@@ -858,8 +837,8 @@
     <member refid="structmanif_1_1_s_o3_base_1a407db974019560ebec9ecc09bd78682a" kind="function"><name>quat</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a2c3ac0fa1ba5c75bb14c085cabb61cb3" kind="function"><name>normalize</name></member>
     <member refid="structmanif_1_1_s_o3_base_1ada7cc6fe709724ddfab376f1f12ae19a" kind="function"><name>act</name></member>
-    <member refid="structmanif_1_1_s_o3_base_1ae5875d9b148871931c86a3ab04a9c7a8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o3_base_1a9f28cae029ed29dbf4f83cfcafe3a72a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
   </compound>
@@ -870,14 +849,12 @@
     <member refid="structmanif_1_1_s_o3_tangent_1a19133ca97b1b55a2feff39289da19ac3" kind="function"><name>SO3Tangent</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_1aa7b3247e36a16a848fc02596fac52ae9" kind="function"><name>~SO3Tangent</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_1aef795a6d53815bd6b770b912ee99ebb6" kind="function"><name>SO3Tangent</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_1a179923d12536bf3ee9ea80c4672abf34" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_1ac227be4a8a5c6276ff27a810306cf84e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_1ab93c5943648f30e03c654799a7caf5a3" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_1a32024a94ee4230ae40abcc304ca815fe" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="structmanif_1_1_s_o3_tangent_base" kind="struct"><name>manif::SO3TangentBase</name>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ae16af024450bda928e07f64222ddf0c7" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ac8df63fc5b4b4da8c953e7882bf147b8" kind="typedef"><name>Type</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1a3f4a340016269c4ab60eabcdb5907c1f" kind="typedef"><name>AngBlock</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1a3e891e8f5ef045ec637724a908f21604" kind="typedef"><name>ConstAngBlock</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1aaab3e3747842c32fb573d3c7a880ad0a" kind="function"><name>hat</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ad3fae9c95cf2ca0c94a13d46a0c56f6e" kind="function"><name>retract</name></member>
@@ -889,10 +866,8 @@
     <member refid="structmanif_1_1_s_o3_tangent_base_1ab94eec26f7d0841bba2e2f66e6cd8881" kind="function"><name>x</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1ae747a642593f8bd903363ce007851566" kind="function"><name>y</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1af49907f7b2fe5d03cd6334c64e9260a1" kind="function"><name>z</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1a8cbcb0947c71ab09e68edef0c416bdae" kind="function"><name>ang</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1a76e6fa868667233aaf355d51d5c7de32" kind="function"><name>ang</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_s_o3_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_s_o3_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_s_o3_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -912,10 +887,10 @@
     <member refid="structmanif_1_1_tangent_base_1a414b302f5e268f819a0e992f18dd682d" kind="function"><name>operator=</name></member>
     <member refid="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" kind="function"><name>operator=</name></member>
     <member refid="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" kind="function"><name>operator=</name></member>
-    <member refid="structmanif_1_1_tangent_base_1ac340556312ac360f57d84384cef95ea8" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_tangent_base_1adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" kind="function"><name>coeffs</name></member>
-    <member refid="structmanif_1_1_tangent_base_1ae848e531a8002a31c94970f0de60bcc8" kind="function"><name>data</name></member>
-    <member refid="structmanif_1_1_tangent_base_1aa594b4a17fe54bef228340020b963ce5" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" kind="function"><name>data</name></member>
     <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" kind="function"><name>cast</name></member>
     <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" kind="function"><name>setZero</name></member>
     <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" kind="function"><name>setRandom</name></member>
@@ -1221,9 +1196,6 @@
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4_1a2a9847dcd93b402d4f2b2f5ce7c8321f" kind="typedef"><name>cast</name></member>
   </compound>
-  <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</name>
-    <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4_1ac251582bf6a22698133b00d2e82a276c" kind="typedef"><name>cast</name></member>
-  </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" kind="struct"><name>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" kind="typedef"><name>cast</name></member>
   </compound>
@@ -1344,6 +1316,8 @@
     <member refid="constants_8h_1add9d0de466af3750f594cd047644ce86" kind="function"><name>sqrtNewtonRaphson</name></member>
     <member refid="constants_8h_1a993aa01c37352be19230c645402cf75c" kind="function"><name>csqrt</name></member>
     <member refid="eigen_8h_1ad5b99f2fd8f15a517290323ab856b6f7" kind="function"><name>is_base_of_v</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="assignment__assert_8h" kind="file"><name>assignment_assert.h</name>
   </compound>
@@ -1553,9 +1527,9 @@
   </compound>
   <compound refid="md_pages_cpp__interpolation" kind="page"><name>md_pages_cpp_Interpolation</name>
   </compound>
-  <compound refid="md_pages_cpp__on-the-use-with-_ceres" kind="page"><name>md_pages_cpp_On-the-use-with-Ceres</name>
+  <compound refid="md_pages_cpp__on_the_use_with__ceres" kind="page"><name>md_pages_cpp_On_the_use_with_Ceres</name>
   </compound>
-  <compound refid="md_pages_cpp__writing-generic-code" kind="page"><name>md_pages_cpp_Writing-generic-code</name>
+  <compound refid="md_pages_cpp__writing_generic_code" kind="page"><name>md_pages_cpp_Writing_generic_code</name>
   </compound>
   <compound refid="dir_80ae130e730b0c846acfaa988d7ac321" kind="dir"><name>algorithms</name>
   </compound>

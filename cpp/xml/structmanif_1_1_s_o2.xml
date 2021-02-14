@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1_s_o2" kind="struct" language="C++" prot="public">
     <compoundname>manif::SO2</compoundname>
+    <basecompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</basecompoundref>
     <includes refid="impl_2so2_2_s_o2_8h" local="no">SO2.h</includes>
     <templateparamlist>
       <param>
@@ -20,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="55" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="55" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="structmanif_1_1_s_o2_1af86406d956ec427235c401a8ba0860e2" prot="private" static="no">
         <type><ref refid="structmanif_1_1_s_o2" kindref="compound">SO2</ref>&lt; _Scalar &gt;</type>
@@ -33,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="56" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="56" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="56" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -48,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="108" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="108" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="108" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="72" column="3"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="72" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_1a2f4da70e196162e9096dd137417bb009" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="73" column="3"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="73" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_1aed4ddd10e7e455a2ddc94d82be0d22a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -98,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="80" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="115" bodyend="119"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="80" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="115" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_1a092731d157e2d02692ba64fe3eae7633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -147,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="91" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="122" bodyend="126"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="91" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="122" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o2_1a985b62c807a79b3ccef592c91ae8d72e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -165,11 +166,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="129" bodyend="134"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="94" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="129" bodyend="134"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1a9363ae29e4bf7a6eb58ef234548600d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_s_o2_1a44038a7dd18007f76392eddf4e15dd6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
-        <definition>const SO2&lt; _Scalar &gt;::DataType &amp; manif::SO2&lt; _Scalar &gt;::coeffs</definition>
+        <definition>SO2&lt; _Scalar &gt;::DataType &amp; manif::SO2&lt; _Scalar &gt;::coeffs</definition>
         <argsstring>()</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -179,11 +180,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="99" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="138" bodyend="141"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="99" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="138" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1abe38e3b2a419894cf9d3bc0907805b00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="structmanif_1_1_s_o2_1a60e033c05ee1d94ef295b17a57d79885" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
-        <definition>const DataType&amp; manif::SO2&lt; _Scalar &gt;::coeffs</definition>
+        <definition>const SO2&lt; _Scalar &gt;::DataType &amp; manif::SO2&lt; _Scalar &gt;::coeffs</definition>
         <argsstring>() const</argsstring>
         <name>coeffs</name>
         <briefdescription>
@@ -192,66 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="100" column="18"/>
-      </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1a1cd0799fe942b79afb517a5c057ab3a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Transformation</type>
-        <definition>SO2Base&lt; _Derived &gt;::Transformation manif::SO2Base&lt; _Derived &gt;::transform</definition>
-        <argsstring>() const</argsstring>
-        <name>transform</name>
-        <briefdescription>
-<para>Get the transformation matrix (2D isometry). </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>T = | R 0 | | 0 1 | </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="62" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="154" bodyend="159"/>
-      </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1a91f748c9d1f7f3a060c77732cb11494a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Rotation</type>
-        <definition>SO2Base&lt; _Derived &gt;::Rotation manif::SO2Base&lt; _Derived &gt;::rotation</definition>
-        <argsstring>() const</argsstring>
-        <name>rotation</name>
-        <briefdescription>
-<para>Get the rotation matrix R. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="63" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="163" bodyend="170"/>
-      </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1a928a2b3585f96233645faf55bd25061e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void manif::SO2Base&lt; _Derived &gt;::normalize</definition>
-        <argsstring>()</argsstring>
-        <name>normalize</name>
-        <briefdescription>
-<para>Normalize the underlying complex number. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="64" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="306" bodyend="309"/>
-      </memberdef>
-      <memberdef kind="function" id="structmanif_1_1_s_o2_1a9fb166112c866af02ff2dd8027ef554a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Scalar</type>
-        <definition>SO2Base&lt; _Derived &gt;::Scalar manif::SO2Base&lt; _Derived &gt;::angle</definition>
-        <argsstring>() const</argsstring>
-        <name>angle</name>
-        <briefdescription>
-<para>Get the angle (rad.). </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="104" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2_base.h" bodystart="285" bodyend="289"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="100" column="18" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="145" bodyend="148"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -259,21 +201,110 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" line="10" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so2/SO2.h" bodystart="10" bodyend="-1"/>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_o2_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::SO2&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_o2"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_o2_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+      <node id="1">
+        <label>manif::SO2&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_o2"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" line="51" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/so2/SO2.h" bodystart="52" bodyend="109"/>
     <listofallmembers>
-      <member refid="structmanif_1_1_s_o2_1a9fb166112c866af02ff2dd8027ef554a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>angle</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>_</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a64005c1b4a954f9904505f64ae26e599" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1af621d80593f003e58927c365d2bac9a3" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>act</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SO2</scope><name>act</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a2e1bf3f1a99df984c4ce3b00da69c643" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a9fb166112c866af02ff2dd8027ef554a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>angle</name></member>
       <member refid="structmanif_1_1_s_o2_1a00840595d8a505d2b3747ba7b7332f12" prot="private" virt="non-virtual"><scope>manif::SO2</scope><name>Base</name></member>
-      <member refid="structmanif_1_1_s_o2_1a9363ae29e4bf7a6eb58ef234548600d9" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>coeffs</name></member>
-      <member refid="structmanif_1_1_s_o2_1abe38e3b2a419894cf9d3bc0907805b00" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>between</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_s_o2_1a44038a7dd18007f76392eddf4e15dd6a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o2_1a60e033c05ee1d94ef295b17a57d79885" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1aa494d786626efe695e75fa77d1c93215" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>data</name></member>
       <member refid="structmanif_1_1_s_o2_1ace98da24ec909d1a47ed03aad2f03e0c" prot="protected" virt="non-virtual"><scope>manif::SO2</scope><name>data_</name></member>
-      <member refid="structmanif_1_1_s_o2_1a928a2b3585f96233645faf55bd25061e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>normalize</name></member>
-      <member refid="structmanif_1_1_s_o2_1a91f748c9d1f7f3a060c77732cb11494a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>rotation</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::SO2</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::SO2</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SO2</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::SO2</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a7b12dfd74ed5e918add5d7602ac4e84e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>imag</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1aa219332ae988e2960537e24fc9712339" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a3b6d8ec4746f36d8d4dece9499193d2e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a5cb80ea50d86a215838e7fe1f9457ec8" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>log</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a928a2b3585f96233645faf55bd25061e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>normalize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1abf21956540d210cc3f21203e2d271430" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>real</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a91f748c9d1f7f3a060c77732cb11494a" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>rotation</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a579ed6c968969e0c1f8e3484e14f1787" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Rotation</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>setRandom</name></member>
       <member refid="structmanif_1_1_s_o2_1abc79f4544c2f6901314fa94fe078aa76" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>SO2</name></member>
       <member refid="structmanif_1_1_s_o2_1aed4ddd10e7e455a2ddc94d82be0d22a1" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>SO2</name></member>
       <member refid="structmanif_1_1_s_o2_1a092731d157e2d02692ba64fe3eae7633" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>SO2</name></member>
       <member refid="structmanif_1_1_s_o2_1a985b62c807a79b3ccef592c91ae8d72e" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>SO2</name></member>
-      <member refid="structmanif_1_1_s_o2_1a1cd0799fe942b79afb517a5c057ab3a9" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1a1cd0799fe942b79afb517a5c057ab3a9" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_s_o2_base_1ac31aa877144ff1947eb7b1f3f1086eb3" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Transformation</name></member>
       <member refid="structmanif_1_1_s_o2_1af86406d956ec427235c401a8ba0860e2" prot="private" virt="non-virtual"><scope>manif::SO2</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>Vector</name></member>
       <member refid="structmanif_1_1_s_o2_1a2f4da70e196162e9096dd137417bb009" prot="public" virt="non-virtual"><scope>manif::SO2</scope><name>~SO2</name></member>
     </listofallmembers>
   </compounddef>

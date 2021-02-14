@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
-  <compounddef id="md_pages_cpp__on-the-use-with-_ceres" kind="page">
-    <compoundname>md_pages_cpp_On-the-use-with-Ceres</compoundname>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="md__home_ubuntu_manif_docs_pages_cpp__on_the_use_with__ceres" kind="page">
+    <compoundname>md__home_ubuntu_manif_docs_pages_cpp_On_the_use_with_Ceres</compoundname>
     <title>Ceres</title>
     <briefdescription>
     </briefdescription>
@@ -9,7 +9,7 @@
 <para><itemizedlist>
 <listitem><para><ulink url="#ceres">Ceres</ulink><itemizedlist>
 <listitem><para><ulink url="#jacobians">Jacobians</ulink></para>
-</listitem><listitem><para><ulink url="#example--a-group-abstract-localparameterization">Example : A group-abstract LocalParameterization</ulink></para>
+</listitem><listitem><para><ulink url="#example--a-group-abstract-localparameterization">Example : A group-abstract <computeroutput>LocalParameterization</computeroutput></ulink></para>
 </listitem><listitem><para><ulink url="#example--a-small-ceres-problem">Example : A small Ceres problem</ulink></para>
 </listitem></itemizedlist>
 </para>
@@ -34,24 +34,24 @@
 </listitem><listitem><para>SE_2(3): size 10</para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md_pages_cpp__on-the-use-with-_ceres_1autotoc_md2">
+<sect1 id="md__home_ubuntu_manif_docs_pages_cpp__on_the_use_with__ceres_1autotoc_md2">
 <title>Jacobians</title>
 <para>Considering,</para>
-<para><image type="html" name="svg.latex?\color{white}\bf&amp;space;x" inline="yes"></image>
- a group element (e.g. S3), <image type="html" name="svg.latex?\color{white}\omega" inline="yes"></image>
- the vector tangent to the group at <image type="html" name="svg.latex?\color{white}\bf&amp;space;x" inline="yes"></image>
-, <image type="html" name="svg.latex?\color{white}{\bf&amp;space;e}=f({\bf&amp;space;x})" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/png.latex?\bf&amp;space;x" alt="x" inline="yes"></image>
+ a group element (e.g. S3), <image type="html" name="https://latex.codecogs.com/png.latex?\omega" alt="omega" inline="yes"></image>
+ the vector tangent to the group at <image type="html" name="https://latex.codecogs.com/png.latex?\bf&amp;space;x" alt="x" inline="yes"></image>
+, <image type="html" name="https://latex.codecogs.com/png.latex?{\bf&amp;space;e}=f({\bf&amp;space;x})" alt="f(x)" inline="yes"></image>
  an error function,</para>
 <para>one is interested in expressing the Taylor series of the error function,</para>
-<para><image type="html" name="svg.latex?\color{white}f({\bf&amp;space;x\oplus\omega})\approx{\bf&amp;space;e}+{\bf&amp;space;J}_{\omega}^{e}~\omega&amp;space;." inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/png.latex?f({\bf&amp;space;x\oplus\omega})\approx{\bf&amp;space;e}+{\bf&amp;space;J}_{\omega}^{e}~\omega&amp;space;." alt="f(x(+)omega)" inline="yes"></image>
 </para>
 <para>Therefore we have to compute the Jacobian</para>
-<para><image type="html" name="svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta{\bf&amp;space;x}}=\frac{\delta&amp;space;f({\bf&amp;space;x})}{\delta{\bf&amp;space;x}}=\lim_{\omega\to0}\frac{f({\bf&amp;space;x}\oplus\omega)\ominus&amp;space;f({\bf&amp;space;x})}{\omega},&amp;space;(1)" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta{\bf&amp;space;x}}=\frac{\delta&amp;space;f({\bf&amp;space;x})}{\delta{\bf&amp;space;x}}=\lim_{\omega\to0}\frac{f({\bf&amp;space;x}\oplus\omega)\ominus&amp;space;f({\bf&amp;space;x})}{\omega},&amp;space;(1)" alt="J_e_omega" inline="yes"></image>
 </para>
-<para>the <bold>Jacobian of</bold> <image type="html" name="svg.latex?\color{white}f({\bf&amp;space;x})" inline="yes"></image>
+<para>the <bold>Jacobian of</bold> <image type="html" name="https://latex.codecogs.com/png.latex?f({\bf&amp;space;x})" alt="f(x)" inline="yes"></image>
  <bold>with respect to a perturbation on the tangent space</bold>, so that the state update happens on the manifold tangent space.</para>
 <para>In Ceres&apos; framework, the computation of this Jacobian is decoupled in two folds as explained hereafter. The following terminology should sounds familiar to Ceres users.</para>
-<para>Ceres <ulink url="http://ceres-solver.org/nnls_modeling.html#costfunction"><computeroutput>CostFunction</computeroutput></ulink> is the class representing and implementing a function <image type="html" name="svg.latex?\color{white}{\bf&amp;space;e}=f({\bf&amp;space;x})" inline="yes"></image>
+<para>Ceres <ulink url="http://ceres-solver.org/nnls_modeling.html#costfunction"><computeroutput>CostFunction</computeroutput></ulink> is the class representing and implementing a function <image type="html" name="https://latex.codecogs.com/png.latex?{\bf&amp;space;e}=f({\bf&amp;space;x})" alt="f(x)" inline="yes"></image>
 , for instance,</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">QuadraticCostFunction<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>ceres::SizedCostFunction&lt;1,<sp/>1&gt;<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
@@ -71,7 +71,7 @@
 <codeline><highlight class="normal">};</highlight></codeline>
 </programlisting></para>
 <para>It produces the Jacobian,</para>
-<para><image type="html" name="svg.latex?\color{white}{\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta({\bf&amp;space;x}\oplus\omega)}=\lim_{\mathbf&amp;space;h\to0}\frac{&amp;space;f({\bf&amp;space;x}+\mathbf&amp;space;h)-f({\bf&amp;space;x})}{\mathbf&amp;space;h}.&amp;space;(2)" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta({\bf&amp;space;x}\oplus\omega)}=\lim_{\mathbf&amp;space;h\to0}\frac{&amp;space;f({\bf&amp;space;x}+\mathbf&amp;space;h)-f({\bf&amp;space;x})}{\mathbf&amp;space;h}.&amp;space;(2)" alt="J_e_x(+)omega" inline="yes"></image>
 </para>
 <para>In Ceres, a <ulink url="http://ceres-solver.org/nnls_modeling.html#localparameterization"><computeroutput>LocalParameterization</computeroutput></ulink> can be associated to a state.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="normal">Eigen::Quaterniond<sp/>my_state;</highlight></codeline>
@@ -86,23 +86,23 @@
 <codeline><highlight class="normal">problem_-&gt;SetParameterization(my_state.data(),</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>EigenQuaternionParameterization()<sp/>);</highlight></codeline>
 </programlisting></para>
-<para>The <computeroutput>LocalParameterization</computeroutput> class (and derived) performs the state update step of the optimization - the <image type="html" name="svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" inline="yes"></image>
- operation. While the function operates for any <image type="html" name="svg.latex?\color{white}\mathbf\omega" inline="yes"></image>
-, its Jacobian is evaluated for <image type="html" name="svg.latex?\color{white}\omega=0" inline="yes"></image>
+<para>The <computeroutput>LocalParameterization</computeroutput> class (and derived) performs the state update step of the optimization - the <image type="html" name="https://latex.codecogs.com/png.latex?{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
+ operation. While the function operates for any <image type="html" name="https://latex.codecogs.com/png.latex?\mathbf\omega" alt="omega" inline="yes"></image>
+, its Jacobian is evaluated for <image type="html" name="https://latex.codecogs.com/png.latex?\omega=0" alt="omega=0" inline="yes"></image>
  thus providing the Jacobian,</para>
-<para><image type="html" name="svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}=\frac{\delta({\bf&amp;space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus(\omega+\delta\omega)-{\bf&amp;space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus\delta\omega-{\bf&amp;space;x}}{\delta\omega}.&amp;space;(3)" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}=\frac{\delta({\bf&amp;space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus(\omega+\delta\omega)-{\bf&amp;space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus\delta\omega-{\bf&amp;space;x}}{\delta\omega}.&amp;space;(3)" alt="J_x(+)w_w" inline="yes"></image>
 </para>
 <para>Once both the <computeroutput>CostFunction</computeroutput> and <computeroutput>LocalParameterization</computeroutput>&apos;s Jacobians are evaluated, <computeroutput>Ceres</computeroutput> internally computes <computeroutput>(1)</computeroutput> with the following product,</para>
-<para><image type="html" name="svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{e}={\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}\times{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}.&amp;space;(4)" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?{\bf&amp;space;J}_{\omega}^{e}={\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}\times{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}.&amp;space;(4)" alt="J_e_w = J_e_x(+)omega * J_x(+)w_w" inline="yes"></image>
 </para>
 <para>Voila.</para>
 <para>The intermediate Jacobians (2-3) that <computeroutput>Ceres</computeroutput> requires are <bold>not</bold> available in <computeroutput>manif</computeroutput> since it provide directly the final Jacobian detailed in <computeroutput>(1)</computeroutput>.</para>
 <para>However, one still wants to use <computeroutput>manif</computeroutput> with his <computeroutput>Ceres</computeroutput>-based project. For this reason, <computeroutput>manif</computeroutput> is compliant with <computeroutput>Ceres</computeroutput> auto-differentiation and the <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> type to compute (2-3).</para>
 <para>Below are presented two small examples illustrating how <computeroutput>manif</computeroutput> can be used with <computeroutput>Ceres</computeroutput>.</para>
 </sect1>
-<sect1 id="md_pages_cpp__on-the-use-with-_ceres_1autotoc_md3">
-<title>Example : A group-abstract LocalParameterization</title>
-<para>Is shown here how one can implement a <computeroutput>ceres::LocalParameterization</computeroutput>-derived class using <computeroutput>manif</computeroutput>, that does the <image type="html" name="svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" inline="yes"></image>
+<sect1 id="md__home_ubuntu_manif_docs_pages_cpp__on_the_use_with__ceres_1autotoc_md3">
+<title>Example : A group-abstract &lt;tt&gt;LocalParameterization&lt;/tt&gt;</title>
+<para>Is shown here how one can implement a <computeroutput>ceres::LocalParameterization</computeroutput>-derived class using <computeroutput>manif</computeroutput>, that does the <image type="html" name="https://latex.codecogs.com/png.latex?{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
  for any group implemented in <computeroutput>manif</computeroutput> passed as a template parameter.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_LieGroup&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CeresLocalParameterization</highlight></codeline>
@@ -145,7 +145,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>CeresLocalParameterizationSE3<sp/>=<sp/>CeresLocalParameterizationFunctor&lt;SE3d&gt;;</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_pages_cpp__on-the-use-with-_ceres_1autotoc_md4">
+<sect1 id="md__home_ubuntu_manif_docs_pages_cpp__on_the_use_with__ceres_1autotoc_md4">
 <title>Example : A small Ceres problem</title>
 <para>This example highlights the use of the predefined <computeroutput>Ceres</computeroutput> helper classes available with <computeroutput>manif</computeroutput>. In this example, we compute an average point from 4 points in <computeroutput>SE2</computeroutput>.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Tell<sp/>ceres<sp/>not<sp/>to<sp/>take<sp/>ownership<sp/>of<sp/>the<sp/>raw<sp/>pointers</highlight><highlight class="normal"></highlight></codeline>
@@ -211,5 +211,6 @@
 </programlisting> </para>
 </sect1>
     </detaileddescription>
+    <location file="/home/ubuntu/manif/docs/pages/cpp/On-the-use-with-Ceres.md"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::InnerWeightsEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</compoundname>
     <includes refid="_s_e2_tangent__base_8h" local="no">SE2Tangent_base.h</includes>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="346" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="346" bodyend="358"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_base.h" line="346" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="346" bodyend="358"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,7 +28,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="344" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="343" bodyend="359"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_base.h" line="343" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="344" bodyend="359"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4_1ac9294744aca59c6153fb9d3df333aa60" prot="public" virt="non-virtual"><scope>manif::internal::InnerWeightsEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
     </listofallmembers>

@@ -1,19 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
     <title>manif</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para><anchor id="index_1md__home_ubuntu_manif_README"/> </para>
 <sect1 id="index_1autotoc_md1">
 <title>A small header-only library for Lie theory</title>
-<para><ulink url="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel"><image type="html" name="badge.svg?branch=devel" inline="yes"></image>
-</ulink> <ulink url="https://ci.appveyor.com/project/artivis/manif"><image type="html" name="l0q7b0shhonvejrd?svg=true" inline="yes"></image>
-</ulink> <ulink url="https://artivis.github.io/manif/"><image type="html" name="manif.svg" inline="yes"></image>
-</ulink> <ulink url="https://codecov.io/gh/artivis/manif"><image type="html" name="badge.svg" inline="yes"></image>
-</ulink> <image type="html" name="apistatus.svg" inline="yes"></image>
- <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371"><image type="html" name="status.svg" inline="yes"></image>
+<para><ulink url="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel"><image type="html" name="https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel" alt="GHA" inline="yes"></image>
+</ulink> <ulink url="https://ci.appveyor.com/project/artivis/manif"><image type="html" name="https://ci.appveyor.com/api/projects/status/l0q7b0shhonvejrd?svg=true" alt="appveyor" inline="yes"></image>
+</ulink> <ulink url="https://codedocs.xyz/artivis/manif"><image type="html" name="https://codedocs.xyz/artivis/manif.svg" alt="Documentation" inline="yes"></image>
+</ulink> <ulink url="https://codecov.io/gh/artivis/manif"><image type="html" name="https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg" alt="codecov" inline="yes"></image>
+</ulink> <image type="html" name="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub" inline="yes"></image>
+ <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371"><image type="html" name="http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg" alt="JOSS" inline="yes"></image>
 </ulink></para>
 </sect1>
 <sect1 id="index_1autotoc_md2">
@@ -58,133 +59,133 @@
 <sect2 id="index_1autotoc_md6">
 <title>Available Operations</title>
 <para><table rows="18" cols="3"><row>
-<entry thead="yes"><para>Operation </para>
-</entry><entry thead="yes"><para></para>
-</entry><entry thead="yes"><para>Code  </para>
+<entry thead="yes" align='left'><para>Operation   </para>
+</entry><entry thead="yes" align='center'><para></para>
+</entry><entry thead="yes" align='center'><para>Code    </para>
 </entry></row>
 <row>
-<entry thead="no"><para></para>
-</entry><entry thead="no"><para>Base Operation </para>
-</entry><entry thead="no"><para></para>
+<entry thead="no" align='left'><para></para>
+</entry><entry thead="no" align='center'><para>Base Operation   </para>
+</entry><entry thead="no" align='center'><para></para>
 </entry></row>
 <row>
-<entry thead="no"><para>Inverse </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf&amp;space;\mathcal{X}^{-1}" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.inverse()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Inverse   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf&amp;space;\mathcal{X}^{-1}" alt="\mathbf\Phi^{-1}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.inverse()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Composition </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X * Y</computeroutput><linebreak/>
-<computeroutput>X.compose(Y)</computeroutput>  </para>
+<entry thead="no" align='left'><para>Composition   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}" alt="\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X * Y</computeroutput><linebreak/>
+<computeroutput>X.compose(Y)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Hat </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\varphi^\wedge" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w.hat()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Hat   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\varphi^\wedge" alt="\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.hat()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Act on vector </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X}\circ\mathbf&amp;space;v" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.act(v)</computeroutput>  </para>
+<entry thead="no" align='left'><para>Act on vector   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\circ\mathbf&amp;space;v" alt="\mathbf\mathcal{X}\circ\mathbf v" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.act(v)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Retract to group element </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\exp(\mathbf\varphi^\wedge)" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w.exp()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Retract to group element   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\exp(\mathbf\varphi^\wedge)" alt="\exp(\mathbf\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.exp()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Lift to tangent space </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\log(\mathbf&amp;space;\mathcal{X})^\vee" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.log()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Lift to tangent space   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\log(\mathbf&amp;space;\mathcal{X})^\vee" alt="\log(\mathbf\mathcal{X})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.log()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Manifold Adjoint </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\operatorname{Adj}(\mathbf&amp;space;\mathcal{X})" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.adj()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Manifold Adjoint   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\operatorname{Adj}(\mathbf&amp;space;\mathcal{X})" alt="\operatorname{Adj}(\mathbf\mathcal{X})" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.adj()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Tangent adjoint </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\operatorname{adj}(\mathbf&amp;space;\varphi^\wedge)" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w.smallAdj()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Tangent adjoint   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\operatorname{adj}(\mathbf&amp;space;\varphi^\wedge)" alt="\operatorname{adj}(\mathbf\varphi^\wedge" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.smallAdj()</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para></para>
-</entry><entry thead="no"><para>Composed Operation </para>
-</entry><entry thead="no"><para></para>
+<entry thead="no" align='left'><para></para>
+</entry><entry thead="no" align='center'><para>Composed Operation   </para>
+</entry><entry thead="no" align='center'><para></para>
 </entry></row>
 <row>
-<entry thead="no"><para>Manifold right plus </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X + w</computeroutput><linebreak/>
+<entry thead="no" align='left'><para>Manifold right plus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" alt="\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X + w</computeroutput><linebreak/>
 <computeroutput>X.plus(w)</computeroutput><linebreak/>
-<computeroutput>X.rplus(w)</computeroutput>  </para>
+<computeroutput>X.rplus(w)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Manifold left plus </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w + X</computeroutput><linebreak/>
+<entry thead="no" align='left'><para>Manifold left plus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" alt="\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w + X</computeroutput><linebreak/>
 <computeroutput>w.plus(X)</computeroutput><linebreak/>
-<computeroutput>w.lplus(X)</computeroutput>  </para>
+<computeroutput>w.lplus(X)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Manifold right minus </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X - Y</computeroutput><linebreak/>
+<entry thead="no" align='left'><para>Manifold right minus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee" alt="\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X - Y</computeroutput><linebreak/>
 <computeroutput>X.minus(Y)</computeroutput><linebreak/>
-<computeroutput>X.rminus(Y)</computeroutput>  </para>
+<computeroutput>X.rminus(Y)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Manifold left minus </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee\phantom{.}" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.lminus(Y)</computeroutput>  </para>
+<entry thead="no" align='left'><para>Manifold left minus   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" alt="\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.lminus(Y)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Between </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>X.between(Y)</computeroutput>  </para>
+<entry thead="no" align='left'><para>Between   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}" alt="\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>X.between(Y)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Inner Product </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\langle\varphi,\tau\rangle" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w.inner(t)</computeroutput>  </para>
+<entry thead="no" align='left'><para>Inner Product   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\langle\varphi,\tau\rangle" alt="\langle\varphi,\tau\rangle" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.inner(t)</computeroutput>    </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Norm </para>
-</entry><entry thead="no"><para><image type="html" name="svg.latex?\color{white}\left\lVert\varphi\right\rVert" inline="yes"></image>
- </para>
-</entry><entry thead="no"><para><computeroutput>w.weightedNorm()</computeroutput><linebreak/>
-<computeroutput>w.squaredWeightedNorm()</computeroutput>  </para>
+<entry thead="no" align='left'><para>Norm   </para>
+</entry><entry thead="no" align='center'><para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\left\lVert\varphi\right\rVert" alt="\left\lVert\varphi\right\rVert" inline="yes"></image>
+   </para>
+</entry><entry thead="no" align='center'><para><computeroutput>w.weightedNorm()</computeroutput><linebreak/>
+<computeroutput>w.squaredWeightedNorm()</computeroutput>   </para>
 </entry></row>
 </table>
 </para>
-<para>Above, <image type="html" name="svg.latex?\color{white}\mathbf\mathcal{X},\mathbf\mathcal{Y}" inline="yes"></image>
- represent group elements, <image type="html" name="svg.latex?\color{white}\mathbf\varphi^\wedge,\tau^\wedge" inline="yes"></image>
- represent elements in the Lie algebra of the Lie group, <image type="html" name="svg.latex?\color{white}\mathbf\varphi,\tau" inline="yes"></image>
- or <computeroutput>w,t</computeroutput> represent the same elements of the tangent space but expressed in Cartesian coordinates in <image type="html" name="svg.latex?\color{white}\mathbb{R}^n" inline="yes"></image>
-, and <image type="html" name="svg.latex?\color{white}\mathbf{v}" inline="yes"></image>
- or <computeroutput>v</computeroutput> represents any element of <image type="html" name="svg.latex?\color{white}\mathbb{R}^n" inline="yes"></image>
+<para>Above, <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\mathcal{X},\mathbf\mathcal{Y}" alt="\mathbf\mathcal{X},\mathbf\mathcal{Y}" inline="yes"></image>
+ represent group elements, <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\varphi^\wedge,\tau^\wedge" alt="\mathbf\varphi^\wedge,\tau^\wedge" inline="yes"></image>
+ represent elements in the Lie algebra of the Lie group, <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\varphi,\tau" alt="\mathbf\varphi,\tau" inline="yes"></image>
+ or <computeroutput>w,t</computeroutput> represent the same elements of the tangent space but expressed in Cartesian coordinates in <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbb{R}^n" alt="\mathbb{R}^n" inline="yes"></image>
+, and <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf{v}" alt="\mathbf{v}" inline="yes"></image>
+ or <computeroutput>v</computeroutput> represents any element of <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbb{R}^n" alt="\mathbb{R}^n" inline="yes"></image>
 .</para>
 </sect2>
 <sect2 id="index_1autotoc_md7">
 <title>Jacobians</title>
 <para>All operations come with their respective analytical Jacobian matrices. Throughout <bold>manif</bold>, <bold>Jacobians are differentiated with respect to a local perturbation on the tangent space</bold>. These Jacobians map tangent spaces, as described in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>.</para>
 <para>Currently, <bold>manif</bold> implements the <bold>right Jacobian</bold>, whose definition reads:</para>
-<para><image type="html" name="svg.latex?\color{white}\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}" inline="yes"></image>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}" alt="\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}" inline="yes"></image>
 </para>
 <para>The Jacobians of any of the aforementionned operations can then be evaluated:</para>
 <para>in C++,</para>
@@ -208,9 +209,9 @@
 </sect1>
 <sect1 id="index_1autotoc_md8">
 <title>Documentation</title>
-<para>The documentation is available online at the accompanying <ulink url="https://artivis.github.io/manif/">website</ulink>. Both the <ulink url="https://artivis.github.io/manif/cpp/index.html">C++</ulink> and the <ulink url="https://artivis.github.io/manif/python/index.html">Python</ulink> APIs are documented.</para>
-<para>Do you want to build it locally? Find out how on the dedicated page.</para>
-<para>Note: throughout the code documentation we refer to &apos;the paper&apos; which you can find on the dedicated page.</para>
+<para>The documentation is available online at the accompanying [website](manif). Both the [C++](cpp) and the [Python](python) APIs are documented.</para>
+<para>Do you want to build it locally? Find out how on the <ref refid="md_pages_documentation" kindref="compound">dedicated page</ref>.</para>
+<para>Note: throughout the code documentation we refer to &apos;the paper&apos; which you can find on <ref refid="md_pages_publication" kindref="compound">the dedicated page</ref>.</para>
 </sect1>
 <sect1 id="index_1autotoc_md9">
 <title>Tutorials and application demos</title>
@@ -219,16 +220,17 @@
 </sect1>
 <sect1 id="index_1autotoc_md10">
 <title>Publications</title>
-<para>Check out our related publications and how to cite them.</para>
+<para>Check out our related <ref refid="md_pages_publication" kindref="compound">publications</ref> and how to cite them.</para>
 </sect1>
 <sect1 id="index_1autotoc_md11">
 <title>They use manif</title>
-<para>Find out who&apos;s already using manif.</para>
+<para>Find out <ref refid="md_pages_projects" kindref="compound">who&apos;s already using manif</ref>.</para>
 </sect1>
 <sect1 id="index_1autotoc_md12">
 <title>Contributing</title>
 <para>Want to contribute? Great! Check out our contribution guidelines. </para>
 </sect1>
     </detaileddescription>
+    <location file="/home/ubuntu/manif/README.md"/>
   </compounddef>
 </doxygen>

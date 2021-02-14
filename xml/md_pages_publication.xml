@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="md_pages_publication" kind="page">
     <compoundname>md_pages_publication</compoundname>
     <title>Publications</title>
@@ -40,5 +40,6 @@
 <para>In a rush? Check out our Lie group theory take away, the <ulink url="https://github.com/artivis/manif/blob/devel/paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink> (or hit <ulink url="https://github.com/artivis/manif/raw/devel/paper/Lie_theory_cheat_sheet.pdf">dowload</ulink>). </para>
 </sect1>
     </detaileddescription>
+    <location file="pages/publication.md"/>
   </compounddef>
 </doxygen>

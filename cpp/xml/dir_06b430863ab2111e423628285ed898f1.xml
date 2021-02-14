@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="dir_06b430863ab2111e423628285ed898f1" kind="dir">
     <compoundname>se2</compoundname>
     <innerfile refid="impl_2se2_2_s_e2_8h">impl/se2/SE2.h</innerfile>
@@ -13,6 +13,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/"/>
   </compounddef>
 </doxygen>

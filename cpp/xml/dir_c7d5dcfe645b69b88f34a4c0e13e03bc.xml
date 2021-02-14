@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_c7d5dcfe645b69b88f34a4c0e13e03bc" kind="dir">
+    <compoundname>manif</compoundname>
+    <innerdir refid="dir_a3e5feea5d6b9741eff57ac2f7fa33b6">algorithms</innerdir>
+    <innerdir refid="dir_3e1434e2774b8e70c9c54ab707a213ff">ceres</innerdir>
+    <innerdir refid="dir_b553bcf1f80e0147cf7ad24974e8a25d">impl</innerdir>
+    <innerfile refid="constants_8h">constants.h</innerfile>
+    <innerfile refid="functions_8h">functions.h</innerfile>
+    <innerfile refid="manif_8h">manif.h</innerfile>
+    <innerfile refid="_rn_8h">Rn.h</innerfile>
+    <innerfile refid="_s_e2_8h">SE2.h</innerfile>
+    <innerfile refid="_s_e3_8h">SE3.h</innerfile>
+    <innerfile refid="_s_e__2__3_8h">SE_2_3.h</innerfile>
+    <innerfile refid="_s_o2_8h">SO2.h</innerfile>
+    <innerfile refid="_s_o3_8h">SO3.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/"/>
+  </compounddef>
+</doxygen>

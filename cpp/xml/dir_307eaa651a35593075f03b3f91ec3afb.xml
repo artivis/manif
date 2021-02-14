@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_307eaa651a35593075f03b3f91ec3afb" kind="dir">
+    <compoundname>se2</compoundname>
+    <innerfile refid="impl_2se2_2_s_e2_8h">impl/se2/SE2.h</innerfile>
+    <innerfile refid="_s_e2__base_8h">SE2_base.h</innerfile>
+    <innerfile refid="_s_e2__map_8h">SE2_map.h</innerfile>
+    <innerfile refid="_s_e2__properties_8h">SE2_properties.h</innerfile>
+    <innerfile refid="_s_e2_tangent_8h">SE2Tangent.h</innerfile>
+    <innerfile refid="_s_e2_tangent__base_8h">SE2Tangent_base.h</innerfile>
+    <innerfile refid="_s_e2_tangent__map_8h">SE2Tangent_map.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ubuntu/manif/include/manif/impl/se2/"/>
+  </compounddef>
+</doxygen>

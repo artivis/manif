@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_assignment_evaluator" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::AssignmentEvaluator</compoundname>
     <basecompoundref refid="structmanif_1_1internal_1_1_assignment_evaluator_impl" prot="public" virt="non-virtual">manif::internal::AssignmentEvaluatorImpl&lt; Derived &gt;</basecompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" line="16" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" bodystart="16" bodyend="-1"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" line="16" column="3" bodyfile="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" line="18" column="20" bodyfile="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" bodystart="18" bodyend="18"/>
+        <location file="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" line="18" column="20" bodyfile="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" bodystart="18" bodyend="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,7 +75,7 @@
         <link refid="structmanif_1_1internal_1_1_assignment_evaluator_impl"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" line="15" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/assignment_assert.h" bodystart="14" bodyend="19"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" line="14" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/assignment_assert.h" bodystart="15" bodyend="19"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1a96e6be816d29c85c016addef40624323" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluator</scope><name>Base</name></member>
       <member refid="structmanif_1_1internal_1_1_assignment_evaluator_1aa15b4cb48297c0128d2ce33a73497355" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluator</scope><name>run</name></member>

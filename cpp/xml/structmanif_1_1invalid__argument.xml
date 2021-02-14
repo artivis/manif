@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1invalid__argument" kind="struct" language="C++" prot="public">
     <compoundname>manif::invalid_argument</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">invalid_argument</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::invalid_argument</basecompoundref>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>std::invalid_argument</label>
-      </node>
       <node id="1">
         <label>manif::invalid_argument</label>
         <link refid="structmanif_1_1invalid__argument"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::invalid_argument</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>std::invalid_argument</label>
-      </node>
       <node id="1">
         <label>manif::invalid_argument</label>
         <link refid="structmanif_1_1invalid__argument"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>std::invalid_argument</label>
+      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="21" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="20" bodyend="24"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/macro.h" line="20" column="1" bodyfile="/home/ubuntu/manif/include/manif/impl/macro.h" bodystart="21" bodyend="24"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

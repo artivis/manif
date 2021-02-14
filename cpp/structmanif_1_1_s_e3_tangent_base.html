@@ -57,6 +57,7 @@
             <li>
               Reference
               <ul>
+                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-static-methods">Public static functions</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -66,23 +67,33 @@
           </ul>
         </div>
 <aside class="m-note m-info"><h4>Note</h4><p>See Appendix D of the paper.</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+              struct <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase&lt;_Derived&gt;</a>
+            </dt>
+            <dd>Base class for Lie groups&#x27; tangents. Defines the minimum common API.</dd>
+          </dl>
+        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt id="aaed9dbc055cd95b83d914fe04dd07498">
-              using <a href="#aaed9dbc055cd95b83d914fe04dd07498" class="m-doc-self">LinBlock</a> = typename DataType::template FixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
+            <dt id="a0e0f58d097b1b0b4a151e79b201a9f98">
+              using <a href="#a0e0f58d097b1b0b4a151e79b201a9f98" class="m-doc-self">BlockV</a> = typename DataType::template FixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a50b10f42bf88efd4f626cc19eec77484">
-              using <a href="#a50b10f42bf88efd4f626cc19eec77484" class="m-doc-self">AngBlock</a> = typename DataType::template FixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
+            <dt id="a91119b4484803b9d2db9f5f263bcbe3d">
+              using <a href="#a91119b4484803b9d2db9f5f263bcbe3d" class="m-doc-self">BlockW</a> = typename DataType::template FixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a31c1837d3f82025adfe0dcc92fdcaca5">
-              using <a href="#a31c1837d3f82025adfe0dcc92fdcaca5" class="m-doc-self">ConstLinBlock</a> = typename DataType::template ConstFixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
+            <dt id="aa4430a6364f0e3da7240b06e3715132e">
+              using <a href="#aa4430a6364f0e3da7240b06e3715132e" class="m-doc-self">ConstBlockV</a> = typename DataType::template ConstFixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a941e8ab16fbbe31cd2af7cb3cbfe6ca7">
-              using <a href="#a941e8ab16fbbe31cd2af7cb3cbfe6ca7" class="m-doc-self">ConstAngBlock</a> = typename DataType::template ConstFixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
+            <dt id="abd515802dde4d102b6246b400321c1f3">
+              using <a href="#abd515802dde4d102b6246b400321c1f3" class="m-doc-self">ConstBlockW</a> = typename DataType::template ConstFixedSegmentReturnType&lt;3&gt;::<a href="structmanif_1_1_s_e3_tangent_base.html" class="m-doc">Type</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -129,20 +140,20 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a4d37828334564cc61d39ef30596e8407" class="m-doc">ljacinv</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
             </dt>
             <dd>Get the inverse left Jacobian of <a href="structmanif_1_1_s_e3.html" class="m-doc">SE3</a>.</dd>
-            <dt id="a28ab2f081bf90fc23a8ebcaecb700313">
-              <span class="m-doc-wrap-bumper">auto <a href="#a28ab2f081bf90fc23a8ebcaecb700313" class="m-doc-self">lin</a>(</span><span class="m-doc-wrap">) -&gt; LinBlock</span>
+            <dt id="a662adbdc70240b690a00ffe39aa34c08">
+              <span class="m-doc-wrap-bumper">auto <a href="#a662adbdc70240b690a00ffe39aa34c08" class="m-doc-self">v</a>(</span><span class="m-doc-wrap">) -&gt; BlockV</span>
             </dt>
             <dd>Get the linear part.</dd>
-            <dt id="acae876b018ffa42449873ce15c1a4a01">
-              <span class="m-doc-wrap-bumper">auto <a href="#acae876b018ffa42449873ce15c1a4a01" class="m-doc-self">lin</a>(</span><span class="m-doc-wrap">) const -&gt; const ConstLinBlock</span>
+            <dt id="a3c8a1529cbd997c7df908a3d01563bc2">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3c8a1529cbd997c7df908a3d01563bc2" class="m-doc-self">v</a>(</span><span class="m-doc-wrap">) const -&gt; const ConstBlockV</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a0d7fe4f82746071aac6b1c7a28a52ce7">
-              <span class="m-doc-wrap-bumper">auto <a href="#a0d7fe4f82746071aac6b1c7a28a52ce7" class="m-doc-self">ang</a>(</span><span class="m-doc-wrap">) -&gt; AngBlock</span>
+            <dt id="ad78aed35ed2aa8565afeeb911d4c6e54">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad78aed35ed2aa8565afeeb911d4c6e54" class="m-doc-self">w</a>(</span><span class="m-doc-wrap">) -&gt; BlockW</span>
             </dt>
             <dd>Get the angular part.</dd>
-            <dt id="afe06143c47c83569a461ab16971e4ec2">
-              <span class="m-doc-wrap-bumper">auto <a href="#afe06143c47c83569a461ab16971e4ec2" class="m-doc-self">ang</a>(</span><span class="m-doc-wrap">) const -&gt; const ConstAngBlock</span>
+            <dt id="aea242dcc0586b04442f7e062bc78b3af">
+              <span class="m-doc-wrap-bumper">auto <a href="#aea242dcc0586b04442f7e062bc78b3af" class="m-doc-self">w</a>(</span><span class="m-doc-wrap">) const -&gt; const ConstBlockW</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a11c0f99d7e7b4992743b5a8aa19133ae">
@@ -153,20 +164,20 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a53046daee9eadb30785805c18ecc76e9" class="m-doc-self">asSO3</a>(</span><span class="m-doc-wrap">) -&gt; Eigen::Map&lt;<a href="structmanif_1_1_s_o3_tangent.html" class="m-doc">SO3Tangent</a>&lt;Scalar&gt;&gt;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae848e531a8002a31c94970f0de60bcc8">
-              <span class="m-doc-wrap-bumper">auto <a href="#ae848e531a8002a31c94970f0de60bcc8" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) -&gt; Scalar*</span>
+            <dt id="a6004be883d35b1e2a1ac04efd63c7443">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6004be883d35b1e2a1ac04efd63c7443" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) -&gt; Scalar*</span>
             </dt>
             <dd>Access the underlying data by pointer.</dd>
-            <dt id="aa594b4a17fe54bef228340020b963ce5">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa594b4a17fe54bef228340020b963ce5" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) const -&gt; const Scalar*</span>
+            <dt id="a56bf87afd42cd3c795d1a2878ca99010">
+              <span class="m-doc-wrap-bumper">auto <a href="#a56bf87afd42cd3c795d1a2878ca99010" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) const -&gt; const Scalar*</span>
             </dt>
             <dd>Access the underlying data by const pointer.</dd>
-            <dt id="ac340556312ac360f57d84384cef95ea8">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac340556312ac360f57d84384cef95ea8" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            <dt id="a573f842dc25ee3125f8959ccdacb5240">
+              <span class="m-doc-wrap-bumper">auto <a href="#a573f842dc25ee3125f8959ccdacb5240" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
             </dt>
             <dd>Access the underlying data by reference.</dd>
-            <dt id="adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e">
-              <span class="m-doc-wrap-bumper">auto <a href="#adf3ac7ad4ad1a6eda3e8ed0ecdb7e20e" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            <dt id="a2e28e350e07e2ec1d2a164bd39d3370a">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e28e350e07e2ec1d2a164bd39d3370a" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
             </dt>
             <dd>Access the underlying data by const reference.</dd>
           </dl>
@@ -307,7 +318,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

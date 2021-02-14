@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1has__ljacinv__impl" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::has_ljacinv_impl</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">false_type</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
     <includes refid="traits_8h" local="no">traits.h</includes>
     <templateparamlist>
       <param>
@@ -18,28 +18,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
-        <label>false_type</label>
-      </node>
       <node id="1">
         <label>manif::internal::has_ljacinv_impl&lt; class, T &gt;</label>
         <link refid="structmanif_1_1internal_1_1has__ljacinv__impl"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>false_type</label>
-      </node>
       <node id="1">
         <label>manif::internal::has_ljacinv_impl&lt; class, T &gt;</label>
         <link refid="structmanif_1_1internal_1_1has__ljacinv__impl"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="74" column="51" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="74" bodyend="74"/>
+    <location file="/home/ubuntu/manif/include/manif/impl/traits.h" line="61" column="12" bodyfile="/home/ubuntu/manif/include/manif/impl/traits.h" bodystart="61" bodyend="61"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>
