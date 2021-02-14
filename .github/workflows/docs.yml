@@ -51,7 +51,7 @@ jobs:
       - name: Make install Doxygen
         run: |
           git clone --depth 1 --branch Release_1_9_1 https://github.com/doxygen/doxygen.git
-          mkdir build && cd build
+          cd doxygen && mkdir build && cd build
           cmake -G "Unix Makefiles" ..
           sudo make install
 
