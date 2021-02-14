@@ -36,18 +36,7 @@ in a simplified way so as to make the entrance to Lie theory easy for the averag
 who is interested in designing rigorous and elegant state estimation algorithms.
 In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
-<!-- **manif** has been designed for an easy integration to larger projects:
-
-- A single dependency on [Eigen][eigen],
-- header-only for easy integration,
-- templated on the underlying scalar type so that one can use its own,
-- and C++11, since not everyone gets to enjoy the latest C++ features, especially in industry. -->
-
 It provides analytic computation of Jacobians for all the operations listed [below](#features).
-
-<!-- All Lie group classes defined in **manif** have in common that they inherit from a templated base class ([CRTP][crtp]).
-It allows one to write generic code abstracting the Lie group details.
-Please find more information in the related [documentation page](doc/Writing-generic-code). -->
 
 ### Details
 
@@ -98,7 +87,8 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
-Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**. These Jacobians map tangent spaces, as described in [this paper][jsola18].
+Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
+These Jacobians map tangent spaces, as described in [this paper][jsola18].
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
@@ -131,8 +121,8 @@ in Python,
 
 ## Documentation
 
-The documentation is available online at the accompanying [website](manif).
-Both the [C++](cpp) and the [Python](python) APIs are documented.
+The documentation is available online at the accompanying [website][manif-doc].
+Both the [C++][manif-doc-cpp] and the [Python][manif-doc-python] APIs are documented.
 
 Do you want to build it locally?
 Find out how on the [dedicated page](docs/pages/documentation.md).
@@ -172,7 +162,9 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 
 [manif-repo]: https://github.com/artivis/manif.git
 [manif-issue]: https://github.com/artivis/manif/issues
-[manif-doc]: https://codedocs.xyz/artivis/manif
+[manif-doc]: https://artivis.github.io/manif/
+[manif-doc-cpp]: https://artivis.github.io/manif/cpp/index.html
+[manif-doc-python]: https://artivis.github.io/manif/python/index.html
 [cheat_sheet]: paper/Lie_theory_cheat_sheet.pdf
 
 [optional-repo]: https://github.com/TartanLlama/optional
@@ -203,7 +195,7 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [latex9]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)
 [latex10]: https://latex.codecogs.com/svg.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}
 [latex11]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee
-[latex12]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee
+[latex12]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee\phantom{.}
 [latex13]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}
 [latex14]: https://latex.codecogs.com/svg.latex?\langle\varphi,\tau\rangle
 [latex15]: https://latex.codecogs.com/svg.latex?\left\lVert\varphi\right\rVert

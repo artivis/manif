@@ -48,7 +48,7 @@ jobs:
           sudo apt update
           sudo apt install -y libeigen3-dev flex bison doxygen graphicsmagick-imagemagick-compat
       - name: Fetch Python deps
-        run: python -m pip install jinja2 Pygments
+        run: python -m pip install jinja2 Pygments docutils
       - name: Fetch m.css
         working-directory: ${{runner.workspace}}/manif/docs
         run: git clone git://github.com/mosra/m.css
