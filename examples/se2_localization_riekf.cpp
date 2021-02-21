@@ -18,8 +18,9 @@
  *  Demonstration example:
  *
  *  2D Robot localization based on fixed beacons using the
- *  Invariant Extended Kalman Filter method.
+ *  (Right) Invariant Extended Kalman Filter method.
  *
+ *  See se2_localization_liekf.cpp for the left invariant equivalent
  *  ---------------------------------------------------------
  *
  *  This demo corresponds to the application in chapter 4.3 (right invariant)
