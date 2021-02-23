@@ -31,7 +31,9 @@
  *  in the thesis
  *  'Practical Considerations and Extensions of the Invariant Extended Kalman Filtering Framework' J. Arsenault
  *
- *  Finally, it is ported from a Matlab example by Faraaz Ahmed, McGill University.
+ *  Finally, it is ported from an example (a matlab code plus a problem
+ *  formulation/explanation document) by Faraaz Ahmed and James Richard
+ *  Forbes, McGill University.
  *
  *  The following is an abstract of the content of the paper.
  *  Please consult the paper for better reference.
