@@ -256,7 +256,7 @@ int main()
             // expectation
             e = X.inverse().act(b);                         // note: e = R.tr * ( b - t ), for X = (R,t).
 
-            M = X.rotation().transpose();
+            M = X.rotation();
 
             H.topLeftCorner<2, 2>().setIdentity();
             H.topRightCorner<2, 1>() = manif::skew(double(1)) * b;
