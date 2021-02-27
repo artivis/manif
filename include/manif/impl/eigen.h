@@ -61,13 +61,13 @@
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::RowsAtCompileTime == Eigen::Dynamic, \
                 "x.rows != "#dim" ."); \
-  assert(x.rows() == dim && "x.cols != "#dim" .");
+  assert(x.rows() == dim && "x.rows != "#dim" .");
 
 #define assert_cols_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::ColsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::ColsAtCompileTime == Eigen::Dynamic, \
                 "x.cols != "#dim" ."); \
-  assert(x.cols() == dim && "x.rows != "#dim" .");
+  assert(x.cols() == dim && "x.cols != "#dim" .");
 
 #define assert_dim(x, rows, cols) \
   assert_rows_dim(x, rows); \
