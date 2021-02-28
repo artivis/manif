@@ -21,12 +21,6 @@ private:
 
   using IdxList = typename internal::traits<_Derived>::IdxList;
 
-  using BegDoF = typename internal::traits<_Derived>::BegDoF;
-  using LenDoF = typename internal::traits<_Derived>::LenDoF;
-
-  using BegRep = typename internal::traits<_Derived>::BegRep;
-  using LenRep = typename internal::traits<_Derived>::LenRep;
-
   using BegAlg = typename internal::traits<_Derived>::BegAlg;
   using LenAlg = typename internal::traits<_Derived>::LenAlg;
 
@@ -34,6 +28,16 @@ private:
   using BlockType = typename internal::traits<_Derived>::template BlockType<_Idx>;
 
 public:
+  // start index of DoF for each element as intseq
+  using BegDoF = typename internal::traits<_Derived>::BegDoF;
+  // length of DoF for each element as intseq
+  using LenDoF = typename internal::traits<_Derived>::LenDoF;
+
+  // start index of internal representation for each element as intseq
+  using BegRep = typename internal::traits<_Derived>::BegRep;
+  // lenth of internal representation for each element as intseq
+  using LenRep = typename internal::traits<_Derived>::LenRep;
+
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_API

@@ -21,14 +21,8 @@ private:
 
   using IdxList = typename internal::traits<_Derived>::IdxList;
 
-  using BegDoF = typename internal::traits<_Derived>::BegDoF;
-  using LenDoF = typename internal::traits<_Derived>::LenDoF;
-
   using BegDim = typename internal::traits<_Derived>::BegDim;
   using LenDim = typename internal::traits<_Derived>::LenDim;
-
-  using BegRep = typename internal::traits<_Derived>::BegRep;
-  using LenRep = typename internal::traits<_Derived>::LenRep;
 
   using BegTra = typename internal::traits<_Derived>::BegTra;
   using LenTra = typename internal::traits<_Derived>::LenTra;
@@ -37,6 +31,15 @@ private:
   using BlockType = typename internal::traits<_Derived>::template BlockType<Idx>;
 
 public:
+  // start index of DoF for each block as intseq
+  using BegDoF = typename internal::traits<_Derived>::BegDoF;
+  // length of DoF for each block as intseq
+  using LenDoF = typename internal::traits<_Derived>::LenDoF;
+
+  // start index of internal representation for each block as intseq
+  using BegRep = typename internal::traits<_Derived>::BegRep;
+  // lenth of internal representation for each block as intseq
+  using LenRep = typename internal::traits<_Derived>::LenRep;
 
   MANIF_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_AUTO_API
