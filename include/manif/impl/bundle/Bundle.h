@@ -33,7 +33,7 @@ struct traits<Bundle<_Scalar, _T ...>>
   using BegRep = intseq_psum_t<LenRep>;
 
   template<std::size_t _Idx>
-  using BlockType = typename bundle_element<_Idx, _T<_Scalar>...>::type;
+  using ElementType = typename bundle_element<_Idx, _T<_Scalar>...>::type;
 
   // Regular traits
   using Scalar = _Scalar;
@@ -67,7 +67,7 @@ struct traits<Bundle<_Scalar, _T ...>>
  *        (see also Example 7).
  *
  * A Bundle <G1, ..., Gn> of Lie groups can be utilized as
- * a single group with block-wise operations. This can be
+ * a single group with element-wise operations. This can be
  * convenient when working with aggregate states that consist of
  * multiple Lie group sub-states, like the example in Section VIIb
  * of the reference paper.
@@ -133,15 +133,15 @@ public:
   // Bundle specific API
 
   /**
-   * @brief Construct from Bundle blocks
+   * @brief Construct from Bundle elements
    */
-  Bundle(const _T<_Scalar> & ... blocks);
+  Bundle(const _T<_Scalar> & ... elements);
 
 protected:
 
-  // Helper for the blocks constructor
+  // Helper for the elements constructor
   template<int ... _BegRep, int ... _LenRep>
-  Bundle(internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... blocks);
+  Bundle(internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... elements);
 
 protected:
 
@@ -157,17 +157,17 @@ Bundle<_Scalar, _T...>::Bundle(const LieGroupBase<_DerivedOther> & o)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
-Bundle<_Scalar, _T...>::Bundle(const _T<_Scalar> & ... blocks)
-: Bundle(BegRep{}, LenRep{}, blocks ...)
+Bundle<_Scalar, _T...>::Bundle(const _T<_Scalar> & ... elements)
+: Bundle(BegRep{}, LenRep{}, elements ...)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
 template<int ... _BegRep, int ... _LenRep>
 Bundle<_Scalar, _T...>::Bundle(
-  internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... blocks)
+  internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... elements)
 {
   // c++11 "fold expression"
-  auto l = {((data_.template segment<_LenRep>(_BegRep) = blocks.coeffs()), 0) ...};
+  auto l = {((data_.template segment<_LenRep>(_BegRep) = elements.coeffs()), 0) ...};
   static_cast<void>(l);  // compiler warning
 }
 

@@ -60,6 +60,7 @@ static const int NUM_MEAS       = NUM_POSES * DoF + NUM_FACTORS * Dim;
 static const int MAX_ITER       = 20;           // for the solver
 
 
+// bundle state type to optimize over
 using BundleT = manif::Bundle<double,
     manif::SE2,
     manif::SE2,
@@ -76,11 +77,12 @@ using BundleT = manif::Bundle<double,
 template<std::size_t XI, std::size_t XJ>
 void add_pose_factor(
     const BundleT & X,
-    const manif::SE2d::Tangent & control,
+    const SE2Tangentd & control,
     const MatrixT & W,
     Eigen::Ref<Eigen::Matrix<double, 3, 1>> r,
     Eigen::Ref<Eigen::Matrix<double, 3, BundleT::DoF>> J)
 {
+    // index start position and length in the DoF of BundleT
     constexpr int BegI = manif::internal::intseq_element<XI, BundleT::BegDoF>::value;
     constexpr int LenI = manif::internal::intseq_element<XI, BundleT::LenDoF>::value;
     constexpr int BegJ = manif::internal::intseq_element<XJ, BundleT::BegDoF>::value;
@@ -88,23 +90,25 @@ void add_pose_factor(
 
     MatrixT         J_d_xi, J_d_xj; // Jacobian of motion wrt poses i and j
 
-    auto d = X.block<XJ>().rminus(X.block<XI>(), J_d_xj, J_d_xi);
+    auto d = X.element<XJ>().rminus(X.element<XI>(), J_d_xj, J_d_xi);
     r = W * (d - control).coeffs();
     J.setZero();
     J.block<3, LenI>(0, BegI) = W * J_d_xi;
     J.block<3, LenJ>(0, BegJ) = W * J_d_xj;
 }
 
+
 // Insert a landmark measurement factor of landmark LK
 // from pose XI into the residual-jacobian pair (r, J)
 template<std::size_t XI, std::size_t LK>
 void add_beacon_factor(
     const BundleT & X,
-    const Eigen::Vector2d & measurement,
-    const Eigen::Matrix2d & S,
+    const VectorY & measurement,
+    const MatrixY & S,
     Eigen::Ref<Eigen::Matrix<double, 2, 1>> r,
     Eigen::Ref<Eigen::Matrix<double, 2, BundleT::DoF>> J)
 {
+    // index start position and length in the DoF of BundleT
     constexpr int BegX = manif::internal::intseq_element<XI, BundleT::BegDoF>::value;
     constexpr int LenX = manif::internal::intseq_element<XI, BundleT::LenDoF>::value;
     constexpr int BegLMK = manif::internal::intseq_element<NUM_POSES + LK, BundleT::BegDoF>::value;
@@ -115,7 +119,7 @@ void add_beacon_factor(
     MatrixYT        J_e_x;          // Jacobian of measurement expectation wrt pose
     MatrixYB        J_e_b;          // Jacobian of measurement expectation wrt lmk
 
-    auto e = X.block<XI>().inverse(J_ix_x).act(X.block<NUM_POSES + LK>().coeffs(), J_e_ix, J_e_b);
+    auto e = X.element<XI>().inverse(J_ix_x).act(X.element<NUM_POSES + LK>().coeffs(), J_e_ix, J_e_b);
     J_e_x = J_e_ix * J_ix_x;
     r = S * (e - measurement);
     J.setZero();
@@ -279,15 +283,15 @@ int main()
         manif::R2d(landmarks[4]));
 
     cout << "prior" << std::showpos << endl;
-    cout << "pose  :" << X.block<0>().translation().transpose() << " " << X.block<0>().angle() << endl;
-    cout << "pose  :" << X.block<1>().translation().transpose() << " " << X.block<1>().angle() << endl;
-    cout << "pose  :" << X.block<2>().translation().transpose() << " " << X.block<2>().angle() << endl;
+    cout << "pose  :" << X.element<0>().translation().transpose() << " " << X.element<0>().angle() << endl;
+    cout << "pose  :" << X.element<1>().translation().transpose() << " " << X.element<1>().angle() << endl;
+    cout << "pose  :" << X.element<2>().translation().transpose() << " " << X.element<2>().angle() << endl;
 
-    cout << "lmk   :" << X.block<3>() << endl;
-    cout << "lmk   :" << X.block<4>() << endl;
-    cout << "lmk   :" << X.block<5>() << endl;
-    cout << "lmk   :" << X.block<6>() << endl;
-    cout << "lmk   :" << X.block<7>() << endl;
+    cout << "lmk   :" << X.element<3>() << endl;
+    cout << "lmk   :" << X.element<4>() << endl;
+    cout << "lmk   :" << X.element<5>() << endl;
+    cout << "lmk   :" << X.element<6>() << endl;
+    cout << "lmk   :" << X.element<7>() << endl;
     cout << "-----------------------------------------------" << endl;
 
     // iterate
@@ -301,7 +305,7 @@ int main()
         int row = 0;  // keep track of row in J and r
 
         // first residual: prior
-        r.segment<DoF>(row) = X.block<0>().lminus(SE2d::Identity(), J.block<DoF, DoF>(row, 0)).coeffs();
+        r.segment<DoF>(row) = X.element<0>().lminus(SE2d::Identity(), J.block<DoF, DoF>(row, 0)).coeffs();
         row += DoF;
 
         // motion residuals
@@ -338,7 +342,10 @@ int main()
         // compute optimal step
         // ATTENTION: This is an expensive step!!
         // ATTENTION: Use QR factorization and column reordering for larger problems!!
-        X += BundleT::Tangent(-(J.transpose() * J).inverse() * J.transpose() * r);
+        const auto dX = (-(J.transpose() * J).inverse() * J.transpose() * r).eval();
+
+        // update estimate
+        X += BundleT::Tangent(dX);
 
         // DEBUG INFO
         cout << "residual norm: " << std::scientific << r.norm() << ", step norm: " << dX.norm() << endl;
@@ -355,15 +362,15 @@ int main()
 
     // solved problem
     cout << "posterior" << std::showpos << endl;
-    cout << "pose  :" << X.block<0>().translation().transpose() << " " << X.block<0>().angle() << endl;
-    cout << "pose  :" << X.block<1>().translation().transpose() << " " << X.block<1>().angle() << endl;
-    cout << "pose  :" << X.block<2>().translation().transpose() << " " << X.block<2>().angle() << endl;
+    cout << "pose  :" << X.element<0>().translation().transpose() << " " << X.element<0>().angle() << endl;
+    cout << "pose  :" << X.element<1>().translation().transpose() << " " << X.element<1>().angle() << endl;
+    cout << "pose  :" << X.element<2>().translation().transpose() << " " << X.element<2>().angle() << endl;
 
-    cout << "lmk   :" << X.block<3>() << endl;
-    cout << "lmk   :" << X.block<4>() << endl;
-    cout << "lmk   :" << X.block<5>() << endl;
-    cout << "lmk   :" << X.block<6>() << endl;
-    cout << "lmk   :" << X.block<7>() << endl;
+    cout << "lmk   :" << X.element<3>() << endl;
+    cout << "lmk   :" << X.element<4>() << endl;
+    cout << "lmk   :" << X.element<5>() << endl;
+    cout << "lmk   :" << X.element<6>() << endl;
+    cout << "lmk   :" << X.element<7>() << endl;
 
     cout << "-----------------------------------------------" << endl;
 
