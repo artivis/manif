@@ -91,29 +91,29 @@ TEST(Bundle, Interface)
   GroupA G = GroupA::Random();
 
   auto Glog = G.log();
-  EXPECT_EIGEN_NEAR(Glog.block<0>().coeffs(), G.block<0>().log().coeffs());
-  EXPECT_EIGEN_NEAR(Glog.block<1>().coeffs(), G.block<1>().log().coeffs());
-  EXPECT_EIGEN_NEAR(Glog.block<2>().coeffs(), G.block<2>().log().coeffs());
+  EXPECT_EIGEN_NEAR(Glog.element<0>().coeffs(), G.element<0>().log().coeffs());
+  EXPECT_EIGEN_NEAR(Glog.element<1>().coeffs(), G.element<1>().log().coeffs());
+  EXPECT_EIGEN_NEAR(Glog.element<2>().coeffs(), G.element<2>().log().coeffs());
 
   auto Ginv = G.inverse();
-  EXPECT_EIGEN_NEAR(G.block<0>().inverse().coeffs(), Ginv.block<0>().coeffs());
-  EXPECT_EIGEN_NEAR(G.block<1>().inverse().coeffs(), Ginv.block<1>().coeffs());
-  EXPECT_EIGEN_NEAR(G.block<2>().inverse().coeffs(), Ginv.block<2>().coeffs());
+  EXPECT_EIGEN_NEAR(G.element<0>().inverse().coeffs(), Ginv.element<0>().coeffs());
+  EXPECT_EIGEN_NEAR(G.element<1>().inverse().coeffs(), Ginv.element<1>().coeffs());
+  EXPECT_EIGEN_NEAR(G.element<2>().inverse().coeffs(), Ginv.element<2>().coeffs());
 
   auto G_Ginv = G.compose(Ginv);
-  EXPECT_EIGEN_NEAR(G_Ginv.block<0>().inverse().coeffs(), R2d::Identity().coeffs());
-  EXPECT_EIGEN_NEAR(G_Ginv.block<1>().inverse().coeffs(), SO3d::Identity().coeffs());
-  EXPECT_EIGEN_NEAR(G_Ginv.block<2>().inverse().coeffs(), R1d::Identity().coeffs());
+  EXPECT_EIGEN_NEAR(G_Ginv.element<0>().inverse().coeffs(), R2d::Identity().coeffs());
+  EXPECT_EIGEN_NEAR(G_Ginv.element<1>().inverse().coeffs(), SO3d::Identity().coeffs());
+  EXPECT_EIGEN_NEAR(G_Ginv.element<2>().inverse().coeffs(), R1d::Identity().coeffs());
 
   typename GroupA::Vector vec;
 
   auto adj = G.adj();
   Eigen::Matrix2d adj0 = adj.block<2, 2>(0, 0);
-  EXPECT_EIGEN_NEAR(adj0, G.block<0>().adj());
+  EXPECT_EIGEN_NEAR(adj0, G.element<0>().adj());
   Eigen::Matrix3d adj1 = adj.block<3, 3>(2, 2);
-  EXPECT_EIGEN_NEAR(adj1, G.block<1>().adj());
+  EXPECT_EIGEN_NEAR(adj1, G.element<1>().adj());
   Eigen::Matrix<double, 1, 1> adj2 = adj.block<1, 1>(5, 5);
-  EXPECT_EIGEN_NEAR(adj2, G.block<2>().adj());
+  EXPECT_EIGEN_NEAR(adj2, G.element<2>().adj());
 }
 
 
@@ -138,9 +138,9 @@ TEST(BundleTangent, Interface)
   typename GroupA::Tangent tangent = GroupA::Tangent::Random();
   auto exp = tangent.exp();
 
-  EXPECT_EIGEN_NEAR(exp.block<0>().coeffs(), tangent.block<0>().exp().coeffs());
-  EXPECT_EIGEN_NEAR(exp.block<1>().coeffs(), tangent.block<1>().exp().coeffs());
-  EXPECT_EIGEN_NEAR(exp.block<2>().coeffs(), tangent.block<2>().exp().coeffs());
+  EXPECT_EIGEN_NEAR(exp.element<0>().coeffs(), tangent.element<0>().exp().coeffs());
+  EXPECT_EIGEN_NEAR(exp.element<1>().coeffs(), tangent.element<1>().exp().coeffs());
+  EXPECT_EIGEN_NEAR(exp.element<2>().coeffs(), tangent.element<2>().exp().coeffs());
 }
 
 
@@ -154,9 +154,9 @@ TEST(BundleTangent, Jacobians)
     Eigen::Matrix3d jac1 = jac.block<3, 3>(2, 2);
     Eigen::Matrix<double, 1, 1> jac2 = jac.block<1, 1>(5, 5);
 
-    EXPECT_EIGEN_NEAR(jac0, tangent.block<0>().rjac());
-    EXPECT_EIGEN_NEAR(jac1, tangent.block<1>().rjac());
-    EXPECT_EIGEN_NEAR(jac2, tangent.block<2>().rjac());
+    EXPECT_EIGEN_NEAR(jac0, tangent.element<0>().rjac());
+    EXPECT_EIGEN_NEAR(jac1, tangent.element<1>().rjac());
+    EXPECT_EIGEN_NEAR(jac2, tangent.element<2>().rjac());
   }
 
   {
@@ -165,9 +165,9 @@ TEST(BundleTangent, Jacobians)
     Eigen::Matrix3d jac1 = jac.block<3, 3>(2, 2);
     Eigen::Matrix<double, 1, 1> jac2 = jac.block<1, 1>(5, 5);
 
-    EXPECT_EIGEN_NEAR(jac0, tangent.block<0>().ljac());
-    EXPECT_EIGEN_NEAR(jac1, tangent.block<1>().ljac());
-    EXPECT_EIGEN_NEAR(jac2, tangent.block<2>().ljac());
+    EXPECT_EIGEN_NEAR(jac0, tangent.element<0>().ljac());
+    EXPECT_EIGEN_NEAR(jac1, tangent.element<1>().ljac());
+    EXPECT_EIGEN_NEAR(jac2, tangent.element<2>().ljac());
   }
 
   {
@@ -176,9 +176,9 @@ TEST(BundleTangent, Jacobians)
     Eigen::Matrix3d jac1 = jac.block<3, 3>(2, 2);
     Eigen::Matrix<double, 1, 1> jac2 = jac.block<1, 1>(5, 5);
 
-    EXPECT_EIGEN_NEAR(jac0, tangent.block<0>().rjacinv());
-    EXPECT_EIGEN_NEAR(jac1, tangent.block<1>().rjacinv());
-    EXPECT_EIGEN_NEAR(jac2, tangent.block<2>().rjacinv());
+    EXPECT_EIGEN_NEAR(jac0, tangent.element<0>().rjacinv());
+    EXPECT_EIGEN_NEAR(jac1, tangent.element<1>().rjacinv());
+    EXPECT_EIGEN_NEAR(jac2, tangent.element<2>().rjacinv());
   }
 
   {
@@ -187,9 +187,9 @@ TEST(BundleTangent, Jacobians)
     Eigen::Matrix3d jac1 = jac.block<3, 3>(2, 2);
     Eigen::Matrix<double, 1, 1> jac2 = jac.block<1, 1>(5, 5);
 
-    EXPECT_EIGEN_NEAR(jac0, tangent.block<0>().ljacinv());
-    EXPECT_EIGEN_NEAR(jac1, tangent.block<1>().ljacinv());
-    EXPECT_EIGEN_NEAR(jac2, tangent.block<2>().ljacinv());
+    EXPECT_EIGEN_NEAR(jac0, tangent.element<0>().ljacinv());
+    EXPECT_EIGEN_NEAR(jac1, tangent.element<1>().ljacinv());
+    EXPECT_EIGEN_NEAR(jac2, tangent.element<2>().ljacinv());
   }
 
   {
@@ -198,9 +198,9 @@ TEST(BundleTangent, Jacobians)
     Eigen::Matrix3d jac1 = jac.block<3, 3>(2, 2);
     Eigen::Matrix<double, 1, 1> jac2 = jac.block<1, 1>(5, 5);
 
-    EXPECT_EIGEN_NEAR(jac0, tangent.block<0>().smallAdj());
-    EXPECT_EIGEN_NEAR(jac1, tangent.block<1>().smallAdj());
-    EXPECT_EIGEN_NEAR(jac2, tangent.block<2>().smallAdj());
+    EXPECT_EIGEN_NEAR(jac0, tangent.element<0>().smallAdj());
+    EXPECT_EIGEN_NEAR(jac1, tangent.element<1>().smallAdj());
+    EXPECT_EIGEN_NEAR(jac2, tangent.element<2>().smallAdj());
   }
 }
 

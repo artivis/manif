@@ -33,7 +33,7 @@ struct traits<BundleTangent<_Scalar, _T...>>
   using BegAlg = intseq_psum_t<LenAlg>;
 
   template<std::size_t _Idx>
-  using BlockType = typename bundle_element<_Idx, _T<_Scalar>...>::type::Tangent;
+  using ElementType = typename bundle_element<_Idx, _T<_Scalar>...>::type::Tangent;
 
   // Regular traits
   using Scalar = _Scalar;
@@ -117,17 +117,17 @@ public:
   // BundleTangent specific API
 
   /**
-   * @brief Construct from BundleTangent blocks
+   * @brief Construct from BundleTangent elements
    */
-  BundleTangent(const typename _T<_Scalar>::Tangent & ... blocks);
+  BundleTangent(const typename _T<_Scalar>::Tangent & ... elements);
 
 protected:
 
-  // Helper for the blocks constructor
+  // Helper for the elements constructor
   template<int ... _BegRep, int ... _LenRep>
   BundleTangent(
     internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
-    const typename _T<_Scalar>::Tangent & ... blocks);
+    const typename _T<_Scalar>::Tangent & ... elements);
 
 protected:
 
@@ -142,18 +142,18 @@ BundleTangent<_Scalar, _T...>::BundleTangent(const TangentBase<_DerivedOther> & 
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
-BundleTangent<_Scalar, _T...>::BundleTangent(const typename _T<_Scalar>::Tangent & ... blocks)
-: BundleTangent(BegRep{}, LenRep{}, blocks ...)
+BundleTangent<_Scalar, _T...>::BundleTangent(const typename _T<_Scalar>::Tangent & ... elements)
+: BundleTangent(BegRep{}, LenRep{}, elements ...)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
 template<int ... _BegRep, int ... _LenRep>
 BundleTangent<_Scalar, _T...>::BundleTangent(
   internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
-  const typename _T<_Scalar>::Tangent & ... blocks)
+  const typename _T<_Scalar>::Tangent & ... elements)
 {
   // c++11 "fold expression"
-  auto l = {((data_.template segment<_LenRep>(_BegRep) = blocks.coeffs()), 0) ...};
+  auto l = {((data_.template segment<_LenRep>(_BegRep) = elements.coeffs()), 0) ...};
   static_cast<void>(l);  // compiler warning
 }
 

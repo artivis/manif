@@ -25,7 +25,7 @@ private:
   using LenAlg = typename internal::traits<_Derived>::LenAlg;
 
   template<int _Idx>
-  using BlockType = typename internal::traits<_Derived>::template BlockType<_Idx>;
+  using ElementType = typename internal::traits<_Derived>::template ElementType<_Idx>;
 
 public:
   // start index of DoF for each element as intseq
@@ -107,23 +107,23 @@ public:
   // BundleTangent specific API
 
   /**
-   * @brief Number of blocks in the BundleTangent
+   * @brief Number of elements in the BundleTangent
    */
   static constexpr std::size_t BundleSize = IdxList::size();
 
   /**
-   * @brief Access BundleTangent block as Map
-   * @tparam _Idx block index
+   * @brief Access BundleTangent element as Map
+   * @tparam _Idx element index
    */
   template<int _Idx>
-  Eigen::Map<BlockType<_Idx>> block();
+  Eigen::Map<ElementType<_Idx>> element();
 
   /**
-   * @brief Access BundleTangent block as Map to const
-   * @tparam _Idx block index
+   * @brief Access BundleTangent element as Map to const
+   * @tparam _Idx element index
    */
   template<int _Idx>
-  Eigen::Map<const BlockType<_Idx>> block() const;
+  Eigen::Map<const ElementType<_Idx>> element() const;
 
 protected:
 
@@ -175,7 +175,7 @@ BundleTangentBase<_Derived>::hat_impl(
 {
   LieAlg ret = LieAlg::Zero();
   // c++11 "fold expression"
-  auto l = {((ret.template block<_LenAlg, _LenAlg>(_BegAlg, _BegAlg) = block<_Idx>().hat()), 0) ...};
+  auto l = {((ret.template block<_LenAlg, _LenAlg>(_BegAlg, _BegAlg) = element<_Idx>().hat()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return ret;
 }
@@ -197,9 +197,9 @@ BundleTangentBase<_Derived>::exp_impl(
   OptJacobianRef J_m_t, intseq<_Idx...>, intseq<_BegDoF...>, intseq<_LenDoF...>) const
 {
   if (J_m_t) {
-    return LieGroup(block<_Idx>().exp(J_m_t->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...);
+    return LieGroup(element<_Idx>().exp(J_m_t->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...);
   }
-  return LieGroup(block<_Idx>().exp() ...);
+  return LieGroup(element<_Idx>().exp() ...);
 }
 
 template<typename _Derived>
@@ -252,7 +252,7 @@ BundleTangentBase<_Derived>::rjac_impl(
 {
   Jacobian Jr = Jacobian::Zero();
   // c++11 "fold expression"
-  auto l = {((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().rjac() ), 0) ...};
+  auto l = {((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().rjac() ), 0) ...};
   static_cast<void>(l);  // compiler warning
   return Jr;
 }
@@ -265,7 +265,7 @@ BundleTangentBase<_Derived>::ljac_impl(
 {
   Jacobian Jr = Jacobian::Zero();
   // c++11 "fold expression"
-  auto l = {((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().ljac()), 0) ...};
+  auto l = {((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().ljac()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return Jr;
 }
@@ -279,7 +279,7 @@ BundleTangentBase<_Derived>::rjacinv_impl(
   Jacobian Jr = Jacobian::Zero();
   // c++11 "fold expression"
   auto l = {
-    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().rjacinv()), 0) ...
+    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().rjacinv()), 0) ...
   };
   static_cast<void>(l);  // compiler warning
   return Jr;
@@ -294,7 +294,7 @@ BundleTangentBase<_Derived>::ljacinv_impl(
   Jacobian Jr = Jacobian::Zero();
   // c++11 "fold expression"
   auto l = {
-    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().ljacinv()), 0) ...
+    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().ljacinv()), 0) ...
   };
   static_cast<void>(l);  // compiler warning
   return Jr;
@@ -309,7 +309,7 @@ BundleTangentBase<_Derived>::smallAdj_impl(
   Jacobian Jr = Jacobian::Zero();
   // c++11 "fold expression"
   auto l = {
-    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().smallAdj()), 0) ...
+    ((Jr.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().smallAdj()), 0) ...
   };
   static_cast<void>(l);  // compiler warning
   return Jr;
@@ -317,20 +317,20 @@ BundleTangentBase<_Derived>::smallAdj_impl(
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<typename BundleTangentBase<_Derived>::template BlockType<_Idx>>
-BundleTangentBase<_Derived>::block()
+Eigen::Map<typename BundleTangentBase<_Derived>::template ElementType<_Idx>>
+BundleTangentBase<_Derived>::element()
 {
-  return Eigen::Map<BlockType<_Idx>>(
+  return Eigen::Map<ElementType<_Idx>>(
     static_cast<_Derived &>(*this).coeffs().data() +
     internal::intseq_element<_Idx, BegRep>::value);
 }
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<const typename BundleTangentBase<_Derived>::template BlockType<_Idx>>
-BundleTangentBase<_Derived>::block() const
+Eigen::Map<const typename BundleTangentBase<_Derived>::template ElementType<_Idx>>
+BundleTangentBase<_Derived>::element() const
 {
-  return Eigen::Map<const BlockType<_Idx>>(
+  return Eigen::Map<const ElementType<_Idx>>(
     static_cast<const _Derived &>(*this).coeffs().data() +
     internal::intseq_element<_Idx, BegRep>::value);
 }
@@ -372,8 +372,8 @@ struct GeneratorEvaluator<BundleTangentBase<Derived>>
     // c++11 "fold expression"
     auto l = {((Ei.template block<_LenAlg, _LenAlg>(_BegAlg, _BegAlg) =
       (i >= _BegDoF && i < _BegDoF + _LenDoF) ?
-      BundleTangentBase<Derived>::template BlockType<_Idx>::Generator(i - _BegDoF) :
-      BundleTangentBase<Derived>::template BlockType<_Idx>::LieAlg::Zero()
+      BundleTangentBase<Derived>::template ElementType<_Idx>::Generator(i - _BegDoF) :
+      BundleTangentBase<Derived>::template ElementType<_Idx>::LieAlg::Zero()
       ), 0) ...};
     static_cast<void>(l);  // compiler warning
     return Ei;
@@ -395,7 +395,7 @@ struct RandomEvaluatorImpl<BundleTangentBase<Derived>>
   static void run(BundleTangentBase<Derived> & m, intseq<_Idx...>)
   {
     m = typename BundleTangentBase<Derived>::Tangent(
-      BundleTangentBase<Derived>::template BlockType<_Idx>::Random() ...);
+      BundleTangentBase<Derived>::template ElementType<_Idx>::Random() ...);
   }
 };
 

@@ -28,17 +28,17 @@ private:
   using LenTra = typename internal::traits<_Derived>::LenTra;
 
   template<int Idx>
-  using BlockType = typename internal::traits<_Derived>::template BlockType<Idx>;
+  using ElementType = typename internal::traits<_Derived>::template ElementType<Idx>;
 
 public:
-  // start index of DoF for each block as intseq
+  // start index of DoF for each element as intseq
   using BegDoF = typename internal::traits<_Derived>::BegDoF;
-  // length of DoF for each block as intseq
+  // length of DoF for each element as intseq
   using LenDoF = typename internal::traits<_Derived>::LenDoF;
 
-  // start index of internal representation for each block as intseq
+  // start index of internal representation for each element as intseq
   using BegRep = typename internal::traits<_Derived>::BegRep;
-  // lenth of internal representation for each block as intseq
+  // lenth of internal representation for each element as intseq
   using LenRep = typename internal::traits<_Derived>::LenRep;
 
   MANIF_GROUP_TYPEDEF
@@ -116,28 +116,28 @@ public:
   // Bundle-specific API
 
   /**
-   * @brief Number of blocks in bundle
+   * @brief Number of elements in bundle
    */
   static constexpr std::size_t BundleSize = IdxList::size();
 
   /**
-   * @brief Get the block-diagonal transformation matrix
+   * @brief Get the element-diagonal transformation matrix
    */
   Transformation transform() const;
 
   /**
-   * @brief Access Bundle block as Map
-   * @tparam _Idx block index
+   * @brief Access Bundle element as Map
+   * @tparam _Idx element index
    */
   template<int _Idx>
-  Eigen::Map<BlockType<_Idx>> block();
+  Eigen::Map<ElementType<_Idx>> element();
 
   /**
-   * @brief Access Bundle block as Map to const
-   * @tparam _Idx block index
+   * @brief Access Bundle element as Map to const
+   * @tparam _Idx element index
    */
   template<int _Idx>
-  Eigen::Map<const BlockType<_Idx>> block() const;
+  Eigen::Map<const ElementType<_Idx>> element() const;
 
 protected:
 
@@ -191,7 +191,7 @@ BundleBase<_Derived>::transform_impl(
   Transformation ret = Transformation::Zero();
   // cxx11 "fold expression"
   auto l =
-  {((ret.template block<_LenTra, _LenTra>(_BegTra, _BegTra) = block<_Idx>().transform()), 0) ...};
+  {((ret.template element<_LenTra, _LenTra>(_BegTra, _BegTra) = element<_Idx>().transform()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return ret;
 }
@@ -214,10 +214,10 @@ BundleBase<_Derived>::inverse_impl(
 {
   if (J_minv_m) {
     return LieGroup(
-      block<_Idx>().inverse(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...
+      element<_Idx>().inverse(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF)) ...
     );
   }
-  return LieGroup(block<_Idx>().inverse() ...);
+  return LieGroup(element<_Idx>().inverse() ...);
 }
 
 template<typename _Derived>
@@ -238,10 +238,10 @@ BundleBase<_Derived>::log_impl(
 {
   if (J_minv_m) {
     return Tangent(
-      block<_Idx>().log(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF))...
+      element<_Idx>().log(J_minv_m->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF))...
     );
   }
-  return Tangent(block<_Idx>().log() ...);
+  return Tangent(element<_Idx>().log() ...);
 }
 
 template<typename _Derived>
@@ -274,8 +274,8 @@ BundleBase<_Derived>::compose_impl(
   intseq<_Idx...>, intseq<_BegDoF...>, intseq<_LenDoF...>) const
 {
   return LieGroup(
-    block<_Idx>().compose(
-      static_cast<const _DerivedOther &>(m).template block<_Idx>(),
+    element<_Idx>().compose(
+      static_cast<const _DerivedOther &>(m).template element<_Idx>(),
       J_mc_ma ?
       J_mc_ma->template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) :
       tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, _LenDoF, _LenDoF>>>{},
@@ -315,7 +315,7 @@ BundleBase<_Derived>::act_impl(
 {
   Vector ret;
   // cxx11 "fold expression"
-  auto l = {((ret.template segment<_LenDim>(_BegDim) = block<_Idx>().act(
+  auto l = {((ret.template segment<_LenDim>(_BegDim) = element<_Idx>().act(
       v.template segment<_LenDim>(_BegDim),
       J_vout_m ?
       J_vout_m->template block<_LenDim, _LenDoF>(_BegDim, _BegDoF) :
@@ -343,27 +343,27 @@ BundleBase<_Derived>::adj_impl(
 {
   Jacobian adj = Jacobian::Zero();
   // cxx11 "fold expression"
-  auto l = {((adj.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = block<_Idx>().adj()), 0) ...};
+  auto l = {((adj.template block<_LenDoF, _LenDoF>(_BegDoF, _BegDoF) = element<_Idx>().adj()), 0) ...};
   static_cast<void>(l);  // compiler warning
   return adj;
 }
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<typename BundleBase<_Derived>::template BlockType<_Idx>>
-BundleBase<_Derived>::block()
+Eigen::Map<typename BundleBase<_Derived>::template ElementType<_Idx>>
+BundleBase<_Derived>::element()
 {
-  return Eigen::Map<BlockType<_Idx>>(
+  return Eigen::Map<ElementType<_Idx>>(
     static_cast<_Derived &>(*this).coeffs().data() +
     internal::intseq_element<_Idx, BegRep>::value);
 }
 
 template<typename _Derived>
 template<int _Idx>
-Eigen::Map<const typename BundleBase<_Derived>::template BlockType<_Idx>>
-BundleBase<_Derived>::block() const
+Eigen::Map<const typename BundleBase<_Derived>::template ElementType<_Idx>>
+BundleBase<_Derived>::element() const
 {
-  return Eigen::Map<const BlockType<_Idx>>(
+  return Eigen::Map<const ElementType<_Idx>>(
     static_cast<const _Derived &>(*this).coeffs().data() +
     internal::intseq_element<_Idx, BegRep>::value);
 }
@@ -385,7 +385,7 @@ struct RandomEvaluatorImpl<BundleBase<Derived>>
   static void run(BundleBase<Derived> & m, intseq<_Idx...>)
   {
     m = typename BundleBase<Derived>::LieGroup(
-      BundleBase<Derived>::template BlockType<_Idx>::Random() ...);
+      BundleBase<Derived>::template ElementType<_Idx>::Random() ...);
   }
 };
 
