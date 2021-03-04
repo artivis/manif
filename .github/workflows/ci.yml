@@ -86,6 +86,41 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
 
+  build-win:
+    runs-on: ${{ matrix.combinations.os }}
+    strategy:
+      matrix:
+        combinations: [{
+          "os": "gcc",
+          "cmake_generator": "g++"
+         }, {
+          "os": "clang",
+          "cmake_generator": "clang++"
+        }]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        shell: bash
+        run: |
+          vcpkg install eigen
+          mkdir ${{runner.workspace}}/build
+      - name: Display config
+        shell: bash
+        run: |
+          echo "OS:" && $RUNNER_OS && echo ""
+          echo "Eigen:" && vcpkg list
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -G"${{ matrix.combinations.cmake_generator }}" -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: cmake --build . --config Release
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: ctest . -C Release
+
   cppcheck:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
