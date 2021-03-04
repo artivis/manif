@@ -103,7 +103,7 @@ jobs:
       - name: Setup
         shell: bash
         run: |
-          vcpkg install eigen
+          vcpkg install eigen3:x64-windows
           mkdir ${{runner.workspace}}/build
       - name: Display config
         shell: bash
