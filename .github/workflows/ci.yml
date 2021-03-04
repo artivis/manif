@@ -91,11 +91,11 @@ jobs:
     strategy:
       matrix:
         combinations: [{
-          "os": "gcc",
-          "cmake_generator": "g++"
+          "os": "windows-2016",
+          "cmake_generator": "Visual Studio 15 2017"
          }, {
-          "os": "clang",
-          "cmake_generator": "clang++"
+          "os": "windows-2019",
+          "cmake_generator": "Visual Studio 16 2019"
         }]
     steps:
       - name: Checkout
@@ -113,7 +113,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -G"${{ matrix.combinations.cmake_generator }}" -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -G"${{ matrix.combinations.cmake_generator }}" -A x64 -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: cmake --build . --config Release
