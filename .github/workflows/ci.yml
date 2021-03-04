@@ -104,7 +104,8 @@ jobs:
         shell: bash
         run: |
           vcpkg install eigen3:x64-windows
-          mkdir ${{runner.workspace}}/build
+          cd ${{runner.workspace}}
+          mkdir build
       - name: Display config
         shell: bash
         run: |
