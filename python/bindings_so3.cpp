@@ -26,6 +26,15 @@ void wrap_SO3(py::module &m)
 
   SO3.def(py::init<const Scalar, const Scalar, const Scalar>());
   SO3.def(py::init<const Scalar, const Scalar, const Scalar, const Scalar>());
+  SO3.def(py::init([](const Eigen::Vector4d& quat) {
+                       if(abs(quat.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+                           throw pybind11::value_error("The quaternion is not normalized!");
+                       }
+
+                       return manif::SO3d(quat);
+                   }),
+      py::arg("quaternion"));
+
   // SO3.def(py::init<const Quaternion&>());
   // SO3.def(py::init<const Eigen::AngleAxis<Scalar>&>());
 
