@@ -218,6 +218,10 @@ if(ENABLE_CPPCHECK)
         --suppress=missingInclude
         --suppress=unmatchedSuppression:*
         --suppress=syntaxError:*tangent_base.h:370
+        --suppress=unknownMacro:*test/common_tester.h
+        --suppress=unknownMacro:*test/ceres/ceres_test_utils.h
+        --suppress=constStatement:*examples*
+        --suppress=unreadVariable:*gtest_se2_autodiff.cpp:101
         # Uncomment the line below to run cppcheck-html
         # --output-file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
         ${CMAKE_SOURCE_DIR}/include
