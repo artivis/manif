@@ -361,13 +361,13 @@ int main()
             xis = w_u.sqrt_d_lambda * P.llt().matrixL().toDenseMatrix();
 
             // compute measurement sigma points
-            for (int i = 0; i < DoF; ++i)
+            for (int d = 0; d < DoF; ++d)
             {
-              s_j_p = X + manif::SE2Tangentd( xis.col(i));
-              s_j_m = X + manif::SE2Tangentd(-xis.col(i));
+              s_j_p = X + manif::SE2Tangentd( xis.col(d));
+              s_j_m = X + manif::SE2Tangentd(-xis.col(d));
 
-              yj.col(i) = s_j_p.inverse().act(b);
-              yj.col(i + DoF) = s_j_m.inverse().act(b);
+              yj.col(d) = s_j_p.inverse().act(b);
+              yj.col(d + DoF) = s_j_m.inverse().act(b);
             }
 
             // measurement mean
