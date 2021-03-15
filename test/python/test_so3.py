@@ -22,11 +22,11 @@ def test_constructor():
     assert 0 == state.z()
     assert 1 == state.w()
 
-    # state = SO3(Quaternion(1, 0, 0, 0))
-    # assert 0 == state.x()
-    # assert 0 == state.y()
-    # assert 0 == state.z()
-    # assert 1 == state.w()
+    state = SO3(quaternion=np.array([0, 0, 0, 1]))
+    assert 0 == state.x()
+    assert 0 == state.y()
+    assert 0 == state.z()
+    assert 1 == state.w()
 
     # state = SO3(AngleAxis(0, UnitX()))
     # assert 0 == state.x()
