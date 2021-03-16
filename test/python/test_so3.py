@@ -1,7 +1,7 @@
 from manifpy import SO3, SO3Tangent
 
 import numpy as np
-
+import pytest
 
 def test_constructor():
     state = SO3(0, 0, 0, 1)
@@ -22,11 +22,14 @@ def test_constructor():
     assert 0 == state.z()
     assert 1 == state.w()
 
-    # state = SO3(Quaternion(1, 0, 0, 0))
-    # assert 0 == state.x()
-    # assert 0 == state.y()
-    # assert 0 == state.z()
-    # assert 1 == state.w()
+    state = SO3(quaternion=np.array([0, 0, 0, 1]))
+    assert 0 == state.x()
+    assert 0 == state.y()
+    assert 0 == state.z()
+    assert 1 == state.w()
+
+    with pytest.raises(ValueError):
+        state = SO3(quaternion=np.array([1, 0, 0, 1]))
 
     # state = SO3(AngleAxis(0, UnitX()))
     # assert 0 == state.x()
@@ -47,6 +50,14 @@ def test_accessors():
     assert 0 == state.y()
     assert 0 == state.z()
     assert 1 == state.w()
+
+    assert ([0, 0, 0, 1] == state.quat()).all()
+
+    state.quat([0, 1, 0, 0])
+    assert ([0, 1, 0, 0] == state.quat()).all()
+
+    with pytest.raises(ValueError):
+        state.quat([0, 1, 0, 1])
 
     delta = SO3Tangent.Zero()
 

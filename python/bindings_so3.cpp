@@ -26,6 +26,15 @@ void wrap_SO3(py::module &m)
 
   SO3.def(py::init<const Scalar, const Scalar, const Scalar>());
   SO3.def(py::init<const Scalar, const Scalar, const Scalar, const Scalar>());
+  SO3.def(py::init([](const Eigen::Matrix<Scalar, 4, 1>& quat) {
+                       if(abs(quat.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+                           throw pybind11::value_error("The quaternion is not normalized!");
+                       }
+
+                       return manif::SO3d(quat);
+                   }),
+      py::arg("quaternion"));
+
   // SO3.def(py::init<const Quaternion&>());
   // SO3.def(py::init<const Eigen::AngleAxis<Scalar>&>());
 
@@ -37,7 +46,20 @@ void wrap_SO3(py::module &m)
   SO3.def("y", &manif::SO3d::y);
   SO3.def("z", &manif::SO3d::z);
   SO3.def("w", &manif::SO3d::w);
-  // SO3.def("quat", &manif::SO3d::quat);
+  SO3.def(
+      "quat",
+      [](const manif::SO3d& so3) -> Eigen::Matrix<Scalar, 4, 1> { return so3.coeffs(); });
+
+  SO3.def(
+      "quat",
+      [](manif::SO3d& so3, const Eigen::Matrix<Scalar, 4, 1>& quaternion) {
+          if(abs(quaternion.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+              throw pybind11::value_error("The quaternion is not normalized!");
+          }
+          so3.quat(quaternion);
+      },
+      py::arg("quaternion"));
+
   SO3.def("normalize", &manif::SO3d::normalize);
 
   // tangent

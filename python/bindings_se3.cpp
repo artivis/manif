@@ -29,7 +29,15 @@ void wrap_SE3(py::module &m)
 
   SE3.def(py::init<const Scalar, const Scalar, const Scalar,
                    const Scalar, const Scalar, const Scalar>());
-  // SE3.def(py::init<const Translation&, const Quaternion&>());
+  SE3.def(py::init([](const SE3d::Translation& pos, const Eigen::Matrix<Scalar, 4, 1>& quat) {
+                       if(abs(quat.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+                           throw pybind11::value_error("The quaternion is not normalized!");
+                       }
+                       return manif::SE3d(pos, quat);
+                   }),
+      py::arg("position"),
+      py::arg("quaternion"));
+
   // SE3.def(py::init<const Translation&, const Eigen::AngleAxis<Scalar>&>());
   // SE3.def(py::init<const Translation&, const manif::SO3<Scalar>&>());
   // SE3.def(py::init<igen::Transform<Scalar, 3, Eigen::Isometry>&>());
@@ -37,11 +45,29 @@ void wrap_SE3(py::module &m)
   SE3.def("transform", &SE3d::transform);
   // SE3.def("isometry", &SE3d::isometry);
   SE3.def("rotation", &SE3d::rotation);
-  // SE3.def("quat", &SE3d::quat);
+
   SE3.def(
-    "translation",
-    static_cast<SE3d::Translation (SE3d::*)(void) const>(&SE3d::translation)
-  );
+      "translation",
+      static_cast<SE3d::Translation (SE3d::*)(void) const>(&SE3d::translation));
+  SE3.def(
+      "translation",
+      static_cast<void (SE3d::*)(const SE3d::Translation&)>(&SE3d::translation),
+      py::arg("translation"));
+
+  SE3.def(
+      "quat",
+      [](const manif::SE3d& se3) -> Eigen::Matrix<Scalar, 4, 1> { return se3.coeffs().segment<4>(3); });
+
+  SE3.def(
+      "quat",
+      [](manif::SE3d& se3, const Eigen::Matrix<Scalar, 4, 1>& quaternion) {
+          if(abs(quaternion.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+              throw pybind11::value_error("The quaternion is not normalized!");
+          }
+          se3.quat(quaternion);
+      },
+      py::arg("quaternion"));
+
   SE3.def("x", &SE3d::x);
   SE3.def("y", &SE3d::y);
   SE3.def("z", &SE3d::z);

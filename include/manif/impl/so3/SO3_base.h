@@ -134,6 +134,19 @@ public:
    * @brief Normalize the underlying quaternion.
    */
   void normalize();
+
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion a unitary quaternion
+   */
+  void quat(const QuaternionDataType& quaternion);
+
+  /**
+   * @brief Set the rotational as a quaternion.
+   * @param quaternion an Eigen::Vector representing a unitary quaternion
+   */
+  template <typename _EigenDerived>
+  void quat(const Eigen::MatrixBase<_EigenDerived>& quaternion);
 };
 
 template <typename _Derived>
@@ -354,6 +367,26 @@ template <typename _Derived>
 void SO3Base<_Derived>::normalize()
 {
   coeffs().normalize();
+}
+
+template <typename _Derived>
+void SO3Base<_Derived>::quat(const QuaternionDataType& quaternion)
+{
+  quat(quaternion.coeffs());
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+void SO3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
+{
+  using std::abs;
+  assert_vector_dim(quaternion, 4);
+  MANIF_ASSERT(abs(quaternion.norm()-Scalar(1)) <
+               Constants<Scalar>::eps_s,
+               "The quaternion is not normalized !",
+               invalid_argument);
+
+  coeffs() = quaternion;
 }
 
 namespace internal {
