@@ -3,10 +3,9 @@ import platform
 import subprocess
 import sys
 
+import xml.etree.ElementTree as ET
+
 import setuptools
-# import re
-# import sysconfig
-# from distutils.version import LooseVersion
 from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
 
@@ -77,17 +76,24 @@ class CMakeBuild(build_ext):
                               cwd=self.build_temp)
 
 
+def get_package_xml_version():
+    tree = ET.parse('package.xml')
+    return tree.find('version').text
+
+
 with open('README.md', 'r') as f:
     long_description = f.read()
 
 setup(
     name='manifpy',
-    version='0.0.3',
+    version=get_package_xml_version(),
     author='Jeremie Deray',
     author_email='deray.jeremie@gmail.com',
     description='A small library for Lie theory.',
     long_description=long_description,
     long_description_content_type='text/markdown',
+    url='https://github.com/artivis/manif',
+    license='MIT',
     packages=setuptools.find_packages(),
     classifiers=[
         'Programming Language :: Python :: 3',

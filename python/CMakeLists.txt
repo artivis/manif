@@ -14,10 +14,6 @@ target_link_libraries(manifpy PRIVATE ${PROJECT_NAME})
 target_compile_definitions(manifpy PRIVATE EIGEN_DEFAULT_TO_ROW_MAJOR)
 
 # Set required C++11 flag
-if(CMAKE_VERSION VERSION_LESS "3.1")
-  set_target_properties(manifpy PROPERTIES COMPILE_FLAGS "-std=c++11")
-else()
-  set_property(TARGET manifpy PROPERTY CXX_STANDARD 11)
-  set_property(TARGET manifpy PROPERTY CXX_STANDARD_REQUIRED ON)
-  set_property(TARGET manifpy PROPERTY CXX_EXTENSIONS OFF)
-endif()
+set_property(TARGET manifpy PROPERTY CXX_STANDARD 11)
+set_property(TARGET manifpy PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET manifpy PROPERTY CXX_EXTENSIONS OFF)

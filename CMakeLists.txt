@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(manif CXX)
+cmake_minimum_required(VERSION 3.5.1)
+cmake_policy(SET CMP0048 NEW)
+
+project(manif VERSION 0.0.3 LANGUAGES CXX)
 
 # Get the project name in capital letters
 # for the lib namespace
@@ -139,7 +141,7 @@ configure_package_config_file(
 # Configure '<PROJECT-NAME>ConfigVersion.cmake'
 write_basic_package_version_file(
   "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
-  VERSION 0.0.0
+  VERSION ${PROJECT_VERSION}
   COMPATIBILITY AnyNewerVersion
 )
 
