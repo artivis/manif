@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="399" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="399" bodyend="408"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="432" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="432" bodyend="441"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,7 +37,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="396" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="397" bodyend="409"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="429" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="430" bodyend="442"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4_1a9cd4576d20c3ae7cd2b27cd192828f03" prot="public" virt="non-virtual"><scope>manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</scope><name>run_impl</name></member>
     </listofallmembers>

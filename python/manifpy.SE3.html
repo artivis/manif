@@ -159,6 +159,15 @@
               J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.SE3.html" class="m-doc">SE3</a></span>
             </dt>
             <dd>An alias for the &#x27;rplus&#x27; function.</dd>
+            <dt id="quat-6eef6">
+              <span class="m-doc-wrap-bumper">def <a href="#quat-6eef6" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[4, 1]]</span>
+            </dt>
+            <dd></dd>
+            <dt id="quat-f2eb6">
+              <span class="m-doc-wrap-bumper">def <a href="#quat-f2eb6" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">self,
+              quaternion: numpy.ndarray[numpy.float64[4, 1]]) -&gt; None</span>
+            </dt>
+            <dd></dd>
             <dt id="rminus">
               <span class="m-doc-wrap-bumper">def <a href="#rminus" class="m-doc-self">rminus</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._SE3Base,
@@ -189,8 +198,13 @@
               <span class="m-doc-wrap-bumper">def <a href="#transform" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[4, 4]]</span>
             </dt>
             <dd></dd>
-            <dt id="translation">
-              <span class="m-doc-wrap-bumper">def <a href="#translation" class="m-doc-self">translation</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
+            <dt id="translation-6eef6">
+              <span class="m-doc-wrap-bumper">def <a href="#translation-6eef6" class="m-doc-self">translation</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
+            </dt>
+            <dd></dd>
+            <dt id="translation-e9e39">
+              <span class="m-doc-wrap-bumper">def <a href="#translation-e9e39" class="m-doc-self">translation</a>(</span><span class="m-doc-wrap">self,
+              translation: numpy.ndarray[numpy.float64[3, 1]]) -&gt; None</span>
             </dt>
             <dd></dd>
             <dt id="x">
@@ -237,6 +251,12 @@
               arg3: float,
               arg4: float,
               arg5: float<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            </dt>
+            <dd></dd>
+            <dt id="__init__-2b3b0">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-2b3b0" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
+              position: numpy.ndarray[numpy.float64[3, 1]],
+              quaternion: numpy.ndarray[numpy.float64[4, 1]]) -&gt; None</span>
             </dt>
             <dd></dd>
             <dt id="__mul__">

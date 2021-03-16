@@ -158,6 +158,15 @@
               <span class="m-doc-wrap-bumper">void <a href="#a2c3ac0fa1ba5c75bb14c085cabb61cb3" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Normalize the underlying quaternion.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5e0fc0a4fdb6f727169955939d59f9b7" class="m-doc">quat</a>(</span><span class="m-doc-wrap">const QuaternionDataType&amp; quaternion)</span>
+            </dt>
+            <dd>Set the rotational as a quaternion.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a7ad3e8e0ae0d7c9643e4e4cac1bbe986" class="m-doc">quat</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; quaternion)</span>
+            </dt>
+            <dd>Set the rotational as a quaternion.</dd>
             <dt id="ada7cc6fe709724ddfab376f1f12ae19a">
               <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#ada7cc6fe709724ddfab376f1f12ae19a" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
@@ -313,6 +322,47 @@
             </h3>
             <p>Get the transformation matrix (3D isometry).</p>
 <aside class="m-note m-info"><h4>Note</h4><p>T = | R 0 | | 0 1 |</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5e0fc0a4fdb6f727169955939d59f9b7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void manif::<wbr />SO3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5e0fc0a4fdb6f727169955939d59f9b7" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">const QuaternionDataType&amp; quaternion)</span></span>
+            </h3>
+            <p>Set the rotational as a quaternion.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">quaternion</td>
+                  <td>a unitary quaternion</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7ad3e8e0ae0d7c9643e4e4cac1bbe986"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void manif::<wbr />SO3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ad3e8e0ae0d7c9643e4e4cac1bbe986" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; quaternion)</span></span>
+            </h3>
+            <p>Set the rotational as a quaternion.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">quaternion</td>
+                  <td>an Eigen::Vector representing a unitary quaternion</td>
+                </tr>
+              </tbody>
+            </table>
           </div></section>
         </section>
       </div>

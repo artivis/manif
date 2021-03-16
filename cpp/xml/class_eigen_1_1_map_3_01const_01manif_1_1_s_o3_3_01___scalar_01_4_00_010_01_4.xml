@@ -178,6 +178,8 @@
       <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>OptJacobianRef</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>plus</name></member>
       <member refid="structmanif_1_1_s_o3_base_1a407db974019560ebec9ecc09bd78682a" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>quat</name></member>
+      <member refid="structmanif_1_1_s_o3_base_1a5e0fc0a4fdb6f727169955939d59f9b7" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>quat</name></member>
+      <member refid="structmanif_1_1_s_o3_base_1a7ad3e8e0ae0d7c9643e4e4cac1bbe986" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>quat</name></member>
       <member refid="structmanif_1_1_s_o3_base_1a12ea0cd5364e582c48c345d734c31134" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>QuaternionDataType</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>Random</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</scope><name>RepSize</name></member>

@@ -834,6 +834,8 @@
     <member refid="structmanif_1_1_s_o3_base_1ac984cb6f6397fb6e63a544277c98efc3" kind="function"><name>w</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a407db974019560ebec9ecc09bd78682a" kind="function"><name>quat</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a2c3ac0fa1ba5c75bb14c085cabb61cb3" kind="function"><name>normalize</name></member>
+    <member refid="structmanif_1_1_s_o3_base_1a5e0fc0a4fdb6f727169955939d59f9b7" kind="function"><name>quat</name></member>
+    <member refid="structmanif_1_1_s_o3_base_1a7ad3e8e0ae0d7c9643e4e4cac1bbe986" kind="function"><name>quat</name></member>
     <member refid="structmanif_1_1_s_o3_base_1ada7cc6fe709724ddfab376f1f12ae19a" kind="function"><name>act</name></member>
     <member refid="structmanif_1_1_s_o3_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_s_o3_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
