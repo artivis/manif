@@ -15,7 +15,10 @@ def test_constructor():
     assert 1 == state.x()
     assert 2 == state.y()
     assert 3 == state.z()
-    assert ([0, 0, 0, 1] == state.quat).all()
+    assert ([0, 0, 0, 1] == state.quat()).all()
+
+    with pytest.raises(ValueError):
+        state = SE3(position=np.array([1,2,3]), quaternion=np.array([1, 0, 0, 1]))
 
     # state = SE3(np.array([1,2,3]), AngleAxis(0, UnitX()))
     # assert 0 == state.x()
@@ -34,14 +37,17 @@ def test_accessors():
     assert 0 == state.y()
     assert 0 == state.z()
 
-    assert (np.zeros([1,3]) == state.translation).all()
-    assert ([0, 0, 0, 1] == state.quat).all()
+    assert (np.zeros([1,3]) == state.translation()).all()
+    assert ([0, 0, 0, 1] == state.quat()).all()
 
-    state.translation = [1, 2, 3]
-    assert ([1, 2, 3] == state.translation).all()
+    state.translation([1, 2, 3])
+    assert ([1, 2, 3] == state.translation()).all()
 
-    state.quat = [0, 1, 0, 0]
-    assert ([0, 1, 0, 0] == state.quat).all()
+    state.quat([0, 1, 0, 0])
+    assert ([0, 1, 0, 0] == state.quat()).all()
+
+    with pytest.raises(ValueError):
+        state.quat([0, 1, 0, 1])
 
     delta = SE3Tangent.Zero()
 
