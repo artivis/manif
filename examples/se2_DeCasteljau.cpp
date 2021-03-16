@@ -27,18 +27,18 @@ int main(int argc, char** argv)
   const auto points = manif::generateSE2PointsOnHeightShape(k);
 
   std::cout << "Initial points:\n";
-  for (const auto& p : points)
-    std::cout << p.x() << ","
-              << p.y() << ","
-              << p.angle() << "\n";
+  for (const auto& point : points)
+    std::cout << point.x() << ","
+              << point.y() << ","
+              << point.angle() << "\n";
 
   std::cout << "Generated points:\n";
   const auto curve = manif::decasteljau(points, d, p, true);
 
-  for (const auto& p : curve)
-    std::cout << p.x() << ","
-              << p.y() << ","
-              << p.angle() << "\n";
+  for (const auto& point : curve)
+    std::cout << point.x() << ","
+              << point.y() << ","
+              << point.angle() << "\n";
 
   return EXIT_SUCCESS;
 }
