@@ -66,6 +66,17 @@ constexpr _Scalar Constants<_Scalar>::to_rad;
 template <typename _Scalar>
 constexpr _Scalar Constants<_Scalar>::to_deg;
 
+template <>
+struct Constants<float>
+{
+  static constexpr float eps      = float(1e-5);
+  static constexpr float eps_s    = float(1e-6); // ~
+  static constexpr float eps_sqrt = internal::csqrt(eps);
+
+  static constexpr float to_rad = float(MANIF_PI / 180.0);
+  static constexpr float to_deg = float(180.0 / MANIF_PI);
+};
+
 } /* namespace manif  */
 
 #endif /* _MANIF_MANIF_CONSTANTS_H_ */
