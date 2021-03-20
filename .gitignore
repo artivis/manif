@@ -3,7 +3,7 @@
 .project
 .settings
 .tags
-build
+build*
 docs/xml
 docs/html
 docs/site
