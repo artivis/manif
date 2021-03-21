@@ -431,7 +431,7 @@ public:
 
       const auto avg_shu = average_biinvariant(mans);
 
-      EXPECT_MANIF_NEAR(avg, avg_shu, 1e-5);
+      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-3 : 1e-5);
     }
   }
 
@@ -627,7 +627,7 @@ public:
 protected:
 
   // relax eps for float type
-  Scalar tol_ = (std::is_same<Scalar, float>::value)? 5e-7 : 1e-8;
+  Scalar tol_ = (std::is_same<Scalar, float>::value)? 1e-6 : 1e-8;
 
   LieGroup state;
   LieGroup state_other;

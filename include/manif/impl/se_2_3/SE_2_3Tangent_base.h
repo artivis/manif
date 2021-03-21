@@ -398,7 +398,7 @@ struct RandomEvaluatorImpl<SE_2_3TangentBase<Derived>>
     // in [-1,1]
     m.coeffs().setRandom();
     // In ball of radius PI
-    m.coeffs().template segment<3>(3) = randPointInBall(MANIF_PI);
+    m.coeffs().template segment<3>(3) = randPointInBall(MANIF_PI).template cast<typename Derived::Scalar>();
   }
 };
 

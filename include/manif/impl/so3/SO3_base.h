@@ -398,29 +398,10 @@ struct RandomEvaluatorImpl<SO3Base<Derived>>
   template <typename T>
   static void run(T& m)
   {
-
-    // @note:
-    // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
-    // which is the default version in Ubuntu 16.04
-    // So we copy its implementation here.
-
-    using std::sqrt;
-    using std::sin;
-    using std::cos;
-
     using Scalar     = typename SO3Base<Derived>::Scalar;
-    using Quaternion = typename SO3Base<Derived>::QuaternionDataType;
     using LieGroup   = typename SO3Base<Derived>::LieGroup;
 
-    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
-                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
-                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
-    const Scalar a = sqrt(1. - u1),
-                 b = sqrt(u1);
-    m = LieGroup(Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
-
-
-    // m = Derived(Quaternion::UnitRandom());
+    m = LieGroup(randQuat<Scalar>());
   }
 };
 
