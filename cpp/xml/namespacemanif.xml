@@ -7,6 +7,7 @@
     <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
+    <innerclass refid="structmanif_1_1_constants_3_01float_01_4" prot="public">manif::Constants&lt; float &gt;</innerclass>
     <innerclass refid="structmanif_1_1_lie_group_base" prot="public">manif::LieGroupBase</innerclass>
     <innerclass refid="structmanif_1_1runtime__error" prot="public">manif::runtime_error</innerclass>
     <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
@@ -2279,6 +2280,24 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="169" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="169" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="eigen_8h_1a0603576759173c5e8968e987b41e5f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Quaternion&lt; Scalar &gt;</type>
+        <definition>Eigen::Quaternion&lt;Scalar&gt; manif::randQuat</definition>
+        <argsstring>()</argsstring>
+        <name>randQuat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="197" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="197" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

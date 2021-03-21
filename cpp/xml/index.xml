@@ -77,6 +77,13 @@
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" kind="variable"><name>eps</name></member>
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a9ba778d1994605ee599f45d837cf4e3b" kind="variable"><name>eps_s</name></member>
   </compound>
+  <compound refid="structmanif_1_1_constants_3_01float_01_4" kind="struct"><name>manif::Constants&lt; float &gt;</name>
+    <member refid="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" kind="variable"><name>eps</name></member>
+    <member refid="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" kind="variable"><name>eps_s</name></member>
+    <member refid="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" kind="variable"><name>eps_sqrt</name></member>
+    <member refid="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" kind="variable"><name>to_rad</name></member>
+    <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" kind="variable"><name>to_deg</name></member>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1constexpr__false" kind="struct"><name>manif::internal::constexpr_false</name>
   </compound>
   <compound refid="structmanif_1_1internal_1_1_generator_evaluator" kind="struct"><name>manif::internal::GeneratorEvaluator</name>
@@ -1292,6 +1299,7 @@
     <member refid="eigen_8h_1a58f911f257dddfa789c94d90510b5b51" kind="function"><name>skew</name></member>
     <member refid="eigen_8h_1a19dd1467c1dfb4e720587c16e1ebce78" kind="function"><name>skew</name></member>
     <member refid="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" kind="function"><name>randPointInBall</name></member>
+    <member refid="eigen_8h_1a0603576759173c5e8968e987b41e5f55" kind="function"><name>randQuat</name></member>
     <member refid="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="_s_e2_tangent_8h_1a728e852117939343122920bdf7e76783" kind="function"><name>MANIF_EXTRA_TANGENT_TYPEDEF</name></member>
     <member refid="_s_e3_tangent_8h_1a5f2d061318b41df8b122263dc109f857" kind="function"><name>MANIF_EXTRA_TANGENT_TYPEDEF</name></member>

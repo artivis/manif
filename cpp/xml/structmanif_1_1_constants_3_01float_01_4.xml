@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_constants_3_01float_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::Constants&lt; float &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float manif::Constants&lt; float &gt;::eps</definition>
+        <argsstring></argsstring>
+        <name>eps</name>
+        <initializer>= float(1e-5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="72" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float manif::Constants&lt; float &gt;::eps_s</definition>
+        <argsstring></argsstring>
+        <name>eps_s</name>
+        <initializer>= float(1e-6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="73" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float manif::Constants&lt; float &gt;::eps_sqrt</definition>
+        <argsstring></argsstring>
+        <name>eps_sqrt</name>
+        <initializer>= internal::csqrt(eps)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="74" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float manif::Constants&lt; float &gt;::to_rad</definition>
+        <argsstring></argsstring>
+        <name>to_rad</name>
+        <initializer>= float(MANIF_PI / 180.0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="76" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float manif::Constants&lt; float &gt;::to_deg</definition>
+        <argsstring></argsstring>
+        <name>to_deg</name>
+        <initializer>= float(180.0 / MANIF_PI)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="77" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="70" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="71" bodyend="78"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps</name></member>
+      <member refid="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps_s</name></member>
+      <member refid="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps_sqrt</name></member>
+      <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>to_deg</name></member>
+      <member refid="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>to_rad</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
