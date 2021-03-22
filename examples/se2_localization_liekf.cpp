@@ -125,10 +125,8 @@ typedef Array<double, 3, 1> Array3d;
 
 int main()
 {
-    // std::srand((unsigned int) time(0));
-
     std::default_random_engine generator{
-        static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count())
+        static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count())
     };
     std::normal_distribution<> distribution{0,1};
     // Random double in N(0, 1)
