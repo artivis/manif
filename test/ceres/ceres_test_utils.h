@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_CERES_TEST_UTILS_H_
 #define _MANIF_MANIF_CERES_TEST_UTILS_H_
 
-#include "../test_utils.h"
+#include "../gtest_manif_utils.h"
 #include "manif/ceres/ceres.h"
 
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \

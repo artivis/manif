@@ -147,8 +147,9 @@ write_basic_package_version_file(
 
 # Config
 install(
-  FILES       "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
-              "${generated_dir}/${PROJECT_NAME}Config.cmake"
+  FILES
+    "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
+    "${generated_dir}/${PROJECT_NAME}Config.cmake"
   DESTINATION "${config_install_dir}"
 )
 
@@ -163,6 +164,13 @@ install(
   DESTINATION include
 )
 
+# Test utils
+install(
+  FILES
+    "${PROJECT_SOURCE_DIR}/test/gtest_eigen_utils.h"
+    "${PROJECT_SOURCE_DIR}/test/gtest_manif_utils.h"
+  DESTINATION "include/${PROJECT_NAME}/gtest"
+)
 
 ##############
 ## Examples ##

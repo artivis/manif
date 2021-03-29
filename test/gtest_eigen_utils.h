@@ -1,5 +1,5 @@
-#ifndef _MANIF_TEST_EIGEN_GTEST_H_
-#define _MANIF_TEST_EIGEN_GTEST_H_
+#ifndef _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_
+#define _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_
 
 #include <gtest/gtest.h>
 
@@ -295,4 +295,4 @@ EXPECT_TRUE(isEigenMatrixSameSize(Eigen::Vector2d::Zero(),
                                   Eigen::Vector4d::Zero()));
 */
 
-#endif /* _MANIF_TEST_EIGEN_GTEST_H_ */
+#endif /* _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_ */
