@@ -34,6 +34,10 @@ We recommend every user of **manif** to read the paper (17 pages) before startin
 The paper provides a thorough introduction to Lie theory,
 in a simplified way so as to make the entrance to Lie theory easy for the average roboticist
 who is interested in designing rigorous and elegant state estimation algorithms.
+
+You may also find the following video online,
+['Lie theory for the roboticist'][jsola-iri-lecture],
+a lecture given at [IRI-UPC][IRI-UPC].
 In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
 It provides analytic computation of Jacobians for all the operations listed [below](#features).
@@ -154,6 +158,10 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [jsola18v]: http://arxiv.org/abs/1812.01537v4
 [barrau15]: https://arxiv.org/pdf/1410.1465.pdf
 [deray20]: https://joss.theoj.org/papers/10.21105/joss.01371
+
+[jsola-iri-lecture]: https://www.youtube.com/watch?v=nHOcoIyJj2o
+[jsola-iros-workshop]: https://www.youtube.com/watch?v=QR1p0Rabuww
+[IRI-UPC]: https://www.iri.upc.edu/
 
 [eigen]: http://eigen.tuxfamily.org
 [ceres]: http://ceres-solver.org/
