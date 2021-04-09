@@ -1,7 +1,7 @@
 #ifndef _MANIF_MANIF_TEST_COMMON_TESTER_H_
 #define _MANIF_MANIF_TEST_COMMON_TESTER_H_
 
-#include "test_utils.h"
+#include "gtest_manif_utils.h"
 #include "test_func.h"
 #include "manif/algorithms/interpolation.h"
 #include "manif/algorithms/average.h"

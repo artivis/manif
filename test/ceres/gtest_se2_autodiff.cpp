@@ -3,7 +3,7 @@
 #include "manif/SE2.h"
 
 #include "manif/impl/utils.h"
-#include "../test_utils.h"
+#include "../gtest_manif_utils.h"
 
 #include "manif/ceres/ceres.h"
 
