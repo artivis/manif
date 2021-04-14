@@ -112,7 +112,7 @@ public: /// @todo make protected
 
   Eigen::Map<SO3Tangent<Scalar>> asSO3()
   {
-    return Eigen::Map<SO3Tangent<Scalar>>(coeffs.data()+3);
+    return Eigen::Map<SO3Tangent<Scalar>>(coeffs().data()+3);
   }
 
 };
