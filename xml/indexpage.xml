@@ -31,7 +31,8 @@
 </listitem></itemizedlist>
 </para>
 <para>Other Lie groups can and will be added, contributions are welcome.</para>
-<para><bold>manif</bold> is based on the mathematical presentation of the Lie theory available in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>. We recommend every user of <bold>manif</bold> to read the paper (17 pages) before starting to use the library. The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average roboticist who is interested in designing rigorous and elegant state estimation algorithms. In a rush? Check out our <ulink url="paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink>.</para>
+<para><bold>manif</bold> is based on the mathematical presentation of the Lie theory available in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>. We recommend every user of <bold>manif</bold> to read the paper (17 pages) before starting to use the library. The paper provides a thorough introduction to Lie theory, in a simplified way so as to make the entrance to Lie theory easy for the average roboticist who is interested in designing rigorous and elegant state estimation algorithms.</para>
+<para>You may also find the following video online, <ulink url="https://www.youtube.com/watch?v=nHOcoIyJj2o">&apos;Lie theory for the roboticist&apos;</ulink>, a lecture given at <ulink url="https://www.iri.upc.edu/">IRI-UPC</ulink>. In a rush? Check out our <ulink url="paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink>.</para>
 <para>It provides analytic computation of Jacobians for all the operations listed <ulink url="#features">below</ulink>.</para>
 <sect2 id="index_1autotoc_md3">
 <title>Details</title>
