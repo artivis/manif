@@ -245,7 +245,7 @@ SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    (*J_vout_m) = R * skew(Scalar(1)) * v;
+    J_vout_m->noalias() = R * skew(Scalar(1)) * v;
   }
 
   if (J_vout_v)
