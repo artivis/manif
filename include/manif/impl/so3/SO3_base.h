@@ -236,16 +236,15 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
 
   if (J_t_m)
   {
+    J_t_m->setIdentity();
+    J_t_m->noalias() += Scalar(0.5) * tan.hat();
     Scalar theta2 = tan.coeffs().squaredNorm();
-    typename Tangent::LieAlg W = tan.hat();
-    if (theta2 <= Constants<Scalar>::eps)
-      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W; // Small angle approximation
-    else
+    if (theta2 > Constants<Scalar>::eps)
     {
       Scalar theta = sqrt(theta2);  // rotation angle
-      Jacobian M;
-      M.noalias() = (Scalar(1) / theta2 - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) * (W * W);
-      J_t_m->noalias() = Jacobian::Identity() + Scalar(0.5) * W + M; //is this really more optimized?
+      J_t_m->noalias() +=
+        (Scalar(1) / theta2 - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) *
+        tan.hat() * tan.hat();
     }
   }
 
