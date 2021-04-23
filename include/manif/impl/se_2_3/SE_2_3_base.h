@@ -348,17 +348,20 @@ SE_2_3Base<_Derived>::adj() const
   /// with T = [t]_x
   /// with V = [v]_x
 
-  Jacobian Adj = Jacobian::Zero();
+  Jacobian Adj;
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
   Adj.template block<3,3>(3,3) =
       Adj.template topLeftCorner<3,3>();
 
-  Adj.template block<3,3>(0, 3) =
+  Adj.template block<3,3>(0, 3).noalias() =
     skew(translation()) * Adj.template topLeftCorner<3,3>();
-  Adj.template block<3,3>(6, 3) =
+  Adj.template block<3,3>(6, 3).noalias() =
     skew(linearVelocity()) * Adj.template topLeftCorner<3,3>();
+
+  Adj.template bottomLeftCorner<6,3>().setZero();
+  Adj.template topRightCorner<6,3>().setZero();
 
   return Adj;
 }
