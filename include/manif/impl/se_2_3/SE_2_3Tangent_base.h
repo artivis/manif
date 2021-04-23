@@ -166,17 +166,15 @@ SE_2_3TangentBase<_Derived>::rjac() const
 
   // fill Qv
   Eigen::Matrix<Scalar, 6, 1> vw;
-  vw << Scalar(-coeffs()(0)), Scalar(-coeffs()(1)), Scalar(-coeffs()(2)),
-        Scalar(-coeffs()(3)), Scalar(-coeffs()(4)), Scalar(-coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qv = Jr.template block<3,3>(0, 3);
-  SE3Tangent<Scalar>::fillQ(Qv, vw);
+  vw << -coeffs()(0), -coeffs()(1), -coeffs()(2),
+        -coeffs()(3), -coeffs()(4), -coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jr.template block<3,3>(0, 3), vw);
 
   // fill Qa
   Eigen::Matrix<Scalar, 6, 1> aw;
-  aw << Scalar(-coeffs()(6)), Scalar(-coeffs()(7)), Scalar(-coeffs()(8)),
-        Scalar(-coeffs()(3)), Scalar(-coeffs()(4)), Scalar(-coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qa = Jr.template block<3,3>(6, 3);
-  SE3Tangent<Scalar>::fillQ(Qa, aw);
+  aw << -coeffs()(6), -coeffs()(7), -coeffs()(8),
+        -coeffs()(3), -coeffs()(4), -coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jr.template block<3,3>(6, 3), aw);
 
   return Jr;
 }
@@ -194,17 +192,15 @@ SE_2_3TangentBase<_Derived>::ljac() const
 
   // fill Qv
   Eigen::Matrix<Scalar, 6, 1> vw;
-  vw << Scalar(coeffs()(0)), Scalar(coeffs()(1)), Scalar(coeffs()(2)),
-        Scalar(coeffs()(3)), Scalar(coeffs()(4)), Scalar(coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qv = Jl.template block<3,3>(0, 3);
-  SE3Tangent<Scalar>::fillQ(Qv, vw);
+  vw << coeffs()(0), coeffs()(1), coeffs()(2),
+        coeffs()(3), coeffs()(4), coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jl.template block<3,3>(0, 3), vw);
 
   // fill Qa
   Eigen::Matrix<Scalar, 6, 1> aw;
-  aw << Scalar(coeffs()(6)), Scalar(coeffs()(7)), Scalar(coeffs()(8)),
-        Scalar(coeffs()(3)), Scalar(coeffs()(4)), Scalar(coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qa = Jl.template block<3,3>(6, 3);
-  SE3Tangent<Scalar>::fillQ(Qa, aw);
+  aw << coeffs()(6), coeffs()(7), coeffs()(8),
+        coeffs()(3), coeffs()(4), coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jl.template block<3,3>(6, 3), aw);
 
   return Jl;
 }
