@@ -320,8 +320,8 @@ SE_2_3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    J_vout_m->template topLeftCorner<3,3>()  =  R;
-    J_vout_m->template block<3,3>(0, 3) = -R * skew(v);
+    J_vout_m->template topLeftCorner<3,3>() = R;
+    J_vout_m->template block<3,3>(0, 3).noalias() = -R * skew(v);
     J_vout_m->template topRightCorner<3,3>().setZero();
   }
 
