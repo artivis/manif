@@ -510,18 +510,18 @@ LieGroupBase<_Derived>::lminus(
 {
   const Tangent t = compose(m.inverse()).log();
 
-  if (J_t_ma || J_t_mb)
+  if (J_t_ma)
   {
-    const Jacobian J = t.rjacinv() * m.adj();
+    J_t_ma->noalias() = t.rjacinv() * m.adj();
 
-    if (J_t_ma)
-    {
-      (*J_t_ma) =  J;
-    }
     if (J_t_mb)
     {
-      (*J_t_mb) = -J;
+      *J_t_mb = -(*J_t_ma);
     }
+  }
+  else if (J_t_mb)
+  {
+    J_t_mb->noalias() = -(t.rjacinv() * m.adj());
   }
 
   return t;
