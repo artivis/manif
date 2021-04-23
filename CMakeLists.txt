@@ -56,6 +56,7 @@ endif()
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
+option(BUILD_BENCHMARKING "Build all benchmarks." OFF)
 option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
 option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
 
@@ -291,3 +292,13 @@ if(BUILD_PYTHON_BINDINGS AND (BUILD_TESTING OR BUILD_TESTING_PYTHON))
   add_subdirectory(test/python)
 
 endif()
+
+# ------------------------------------------------------------------------------
+# Benchmark
+# ------------------------------------------------------------------------------
+
+if(BUILD_BENCHMARKING)
+
+  add_subdirectory(benchmark)
+
+endif(BUILD_BENCHMARKING)
