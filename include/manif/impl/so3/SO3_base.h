@@ -154,7 +154,7 @@ typename SO3Base<_Derived>::Transformation
 SO3Base<_Derived>::transform() const
 {
   Transformation T = Transformation::Identity();
-  T.template block<3,3>(0,0) = rotation();
+  T.template topLeftCorner<3,3>() = rotation();
   return T;
 }
 

@@ -166,7 +166,7 @@ typename SE2Base<_Derived>::Transformation
 SE2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
-  T.template block<2,2>(0,0) = rotation();
+  T.template topLeftCorner<2,2>() = rotation();
   T(0,2) = x();
   T(1,2) = y();
   return T;

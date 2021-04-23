@@ -154,7 +154,7 @@ typename SO2Base<_Derived>::Transformation
 SO2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
-  T.template block<2,2>(0,0) = rotation();
+  T.template topLeftCorner<2, 2>() = rotation();
   return T;
 }
 
