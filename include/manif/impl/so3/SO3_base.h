@@ -288,8 +288,7 @@ SO3Base<_Derived>::compose(
 
   if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps)
   {
-    const Scalar scale = approxSqrtInv(ret_sqnorm);
-    ret_q.coeffs() *= scale;
+    ret_q.coeffs() *= approxSqrtInv(ret_sqnorm);
   }
 
   return LieGroup(ret_q);
