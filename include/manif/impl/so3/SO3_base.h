@@ -306,7 +306,7 @@ SO3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    (*J_vout_m) = -R * skew(v);
+    J_vout_m->noalias() = -R * skew(v);
   }
 
   if (J_vout_v)
