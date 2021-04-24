@@ -287,7 +287,7 @@ SO3Base<_Derived>::compose(
 
   const Scalar ret_sqnorm = ret_q.squaredNorm();
 
-  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps)
   {
     const Scalar scale = approxSqrtInv(ret_sqnorm);
     ret_q.coeffs() *= scale;
@@ -382,7 +382,7 @@ void SO3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
   using std::abs;
   assert_vector_dim(quaternion, 4);
   MANIF_ASSERT(abs(quaternion.norm()-Scalar(1)) <
-               Constants<Scalar>::eps_s,
+               Constants<Scalar>::eps,
                "The quaternion is not normalized !",
                invalid_argument);
 
@@ -415,7 +415,7 @@ struct AssignmentEvaluatorImpl<SO3Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.norm()-typename SO3Base<Derived>::Scalar(1)) <
-      Constants<typename SO3Base<Derived>::Scalar>::eps_s,
+      Constants<typename SO3Base<Derived>::Scalar>::eps,
       "SO3 assigned data not normalized !",
       manif::invalid_argument
     );

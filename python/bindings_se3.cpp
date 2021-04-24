@@ -30,7 +30,7 @@ void wrap_SE3(py::module &m)
   SE3.def(py::init<const Scalar, const Scalar, const Scalar,
                    const Scalar, const Scalar, const Scalar>());
   SE3.def(py::init([](const SE3d::Translation& pos, const Eigen::Matrix<Scalar, 4, 1>& quat) {
-                       if(abs(quat.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+                       if(abs(quat.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps) {
                            throw pybind11::value_error("The quaternion is not normalized!");
                        }
                        return manif::SE3d(pos, quat);
@@ -61,7 +61,7 @@ void wrap_SE3(py::module &m)
   SE3.def(
       "quat",
       [](manif::SE3d& se3, const Eigen::Matrix<Scalar, 4, 1>& quaternion) {
-          if(abs(quaternion.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps_s) {
+          if(abs(quaternion.norm() - Scalar(1)) >= manif::Constants<Scalar>::eps) {
               throw pybind11::value_error("The quaternion is not normalized!");
           }
           se3.quat(quaternion);

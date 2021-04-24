@@ -223,7 +223,7 @@ SO2Base<_Derived>::compose(
 
   const Scalar ret_sqnorm = ret_real*ret_real+ret_imag*ret_imag;
 
-  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps)
   {
     const Scalar scale = approxSqrtInv(ret_sqnorm);
     ret_real *= scale;
@@ -332,7 +332,7 @@ struct AssignmentEvaluatorImpl<SO2Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.norm()-typename SO2Base<Derived>::Scalar(1)) <
-      Constants<typename SO2Base<Derived>::Scalar>::eps_s,
+      Constants<typename SO2Base<Derived>::Scalar>::eps,
       "SO2 assigned data not normalized !",
       invalid_argument
     );

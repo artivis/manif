@@ -121,7 +121,7 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -143,7 +143,7 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
     (*J_m_t)(1,0) = -B;
     (*J_m_t)(1,1) =  A;
 
-    if (theta_sq < Constants<Scalar>::eps_s)
+    if (theta_sq < Constants<Scalar>::eps)
     {
       (*J_m_t)(0,2) = -y() / Scalar(2) + theta * x() / Scalar(6);
       (*J_m_t)(1,2) =  x() / Scalar(2) + theta * y() / Scalar(6);
@@ -213,6 +213,9 @@ template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
 SE2TangentBase<_Derived>::ljac() const
 {
+  using std::cos;
+  using std::sin;
+
   const Scalar theta = angle();
   const Scalar cos_theta = cos(theta);
   const Scalar sin_theta = sin(theta);
@@ -221,7 +224,7 @@ SE2TangentBase<_Derived>::ljac() const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -240,7 +243,7 @@ SE2TangentBase<_Derived>::ljac() const
   Jl(1,0) =  B;
   Jl(1,1) =  A;
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     Jl(0,2) =  y() / Scalar(2) + theta * x() / Scalar(6);
     Jl(1,2) = -x() / Scalar(2) + theta * y() / Scalar(6);
