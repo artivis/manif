@@ -181,7 +181,7 @@ SO3TangentBase<_Derived>::ljac() const
 
   // Small angle approximation
   if (theta_sq <= Constants<Scalar>::eps)
-    return Jacobian::Identity() - Scalar(0.5) * W;
+    return Jacobian::Identity() + Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
   Jacobian M1, M2;
@@ -211,7 +211,7 @@ SO3TangentBase<_Derived>::ljacinv() const
   const LieAlg W = hat();
 
   if (theta_sq <= Constants<Scalar>::eps)
-    return Jacobian::Identity() + Scalar(0.5) * W;
+    return Jacobian::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
   Jacobian M;
