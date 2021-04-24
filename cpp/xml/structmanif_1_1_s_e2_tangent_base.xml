@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="80" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="214" bodyend="255"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="80" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="214" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a6327d3fae0b79844d7a8076212003ac0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="86" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="259" bodyend="269"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="86" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="262" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a47763b4785b21aab469c308223bbc9cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="91" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="275" bodyend="278"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="91" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="278" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a2a0d4789c4c98ca38cd888e900e0a795" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="93" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="282" bodyend="285"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="93" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="285" bodyend="288"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -201,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="95" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="289" bodyend="292"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="95" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="292" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar *</type>

@@ -555,7 +555,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="average_8h_1a88548cd01475eb746463ee47e8d7798a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="average_8h_1abfe31d4fd9656f86c3967ade1bbc1d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
@@ -573,7 +573,7 @@
         </templateparamlist>
         <type>LieGroup</type>
         <definition>LieGroup manif::average_biinvariant</definition>
-        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps, int max_iterations=20)</argsstring>
         <name>average_biinvariant</name>
         <param>
           <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
@@ -582,7 +582,7 @@
         <param>
           <type>typename LieGroup::Scalar</type>
           <declname>eps</declname>
-          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps</defval>
         </param>
         <param>
           <type>int</type>
@@ -632,7 +632,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="54" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="54" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="average_8h_1a64c41649d654147e9a5dd9f6b37f1387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="average_8h_1a3e83110740f2a5c823e0828371ca5c3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
@@ -650,7 +650,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </templateparamlist>
         <type>LieGroup</type>
         <definition>LieGroup manif::average</definition>
-        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps, int max_iterations=20)</argsstring>
         <name>average</name>
         <param>
           <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
@@ -659,7 +659,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         <param>
           <type>typename LieGroup::Scalar</type>
           <declname>eps</declname>
-          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps</defval>
         </param>
         <param>
           <type>int</type>
@@ -674,7 +674,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="113" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="113" bodyend="160"/>
       </memberdef>
-      <memberdef kind="function" id="average_8h_1a8888896150c391239eff3eead0b655d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="average_8h_1ab22f058044a82639492eb371a6690d26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
@@ -692,7 +692,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </templateparamlist>
         <type>LieGroup</type>
         <definition>LieGroup manif::average_frechet_left</definition>
-        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps, int max_iterations=20)</argsstring>
         <name>average_frechet_left</name>
         <param>
           <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
@@ -701,7 +701,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         <param>
           <type>typename LieGroup::Scalar</type>
           <declname>eps</declname>
-          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps</defval>
         </param>
         <param>
           <type>int</type>
@@ -716,7 +716,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/algorithms/average.h" line="169" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/average.h" bodystart="169" bodyend="217"/>
       </memberdef>
-      <memberdef kind="function" id="average_8h_1a3f8c30418ab3318e402a806200cf9e4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="average_8h_1a42a7468756052fcf47a0cd192d08b50b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>template&lt; typename LieGroup, typename...Args &gt; class</type>
@@ -734,7 +734,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         </templateparamlist>
         <type>LieGroup</type>
         <definition>LieGroup manif::average_frechet_right</definition>
-        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps_s, int max_iterations=20)</argsstring>
+        <argsstring>(const Container&lt; LieGroup, Args... &gt; &amp;points, typename LieGroup::Scalar eps=Constants&lt; typename LieGroup::Scalar &gt;::eps, int max_iterations=20)</argsstring>
         <name>average_frechet_right</name>
         <param>
           <type>const Container&lt; LieGroup, Args... &gt; &amp;</type>
@@ -743,7 +743,7 @@ mass on compact Lie groups.&quot;  <ulink url="http://citeseerx.ist.psu.edu/view
         <param>
           <type>typename LieGroup::Scalar</type>
           <declname>eps</declname>
-          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps_s</defval>
+          <defval><ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt; typename LieGroup::Scalar &gt;::eps</defval>
         </param>
         <param>
           <type>int</type>

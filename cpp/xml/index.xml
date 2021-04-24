@@ -68,18 +68,15 @@
   </compound>
   <compound refid="structmanif_1_1_constants" kind="struct"><name>manif::Constants</name>
     <member refid="structmanif_1_1_constants_1a359b064d1701ae93d75b812d2cd6903b" kind="variable"><name>eps</name></member>
-    <member refid="structmanif_1_1_constants_1ae240036f032c3b6a2614f3e2ac0277f9" kind="variable"><name>eps_s</name></member>
     <member refid="structmanif_1_1_constants_1ac23324a00c93bbd7b8fb2dd149d9125e" kind="variable"><name>eps_sqrt</name></member>
     <member refid="structmanif_1_1_constants_1a1a93e23545c006cedf04ebfcb61a2c67" kind="variable"><name>to_rad</name></member>
     <member refid="structmanif_1_1_constants_1a4a6fcba990d563cc71be67900c7865b3" kind="variable"><name>to_deg</name></member>
   </compound>
   <compound refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" kind="struct"><name>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</name>
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" kind="variable"><name>eps</name></member>
-    <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a9ba778d1994605ee599f45d837cf4e3b" kind="variable"><name>eps_s</name></member>
   </compound>
   <compound refid="structmanif_1_1_constants_3_01float_01_4" kind="struct"><name>manif::Constants&lt; float &gt;</name>
     <member refid="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" kind="variable"><name>eps</name></member>
-    <member refid="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" kind="variable"><name>eps_s</name></member>
     <member refid="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" kind="variable"><name>eps_sqrt</name></member>
     <member refid="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" kind="variable"><name>to_rad</name></member>
     <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" kind="variable"><name>to_deg</name></member>
@@ -1252,10 +1249,10 @@
     <member refid="_rn_tangent_8h_1a8e52f0a72f3886c655c2e2aa00d09024" kind="typedef"><name>R7Tangent</name></member>
     <member refid="_rn_tangent_8h_1ab00a8303f4fbf1d74463daee9065ec4b" kind="typedef"><name>R8Tangent</name></member>
     <member refid="_rn_tangent_8h_1ae21187f91283001ad81f934f4500c887" kind="typedef"><name>R9Tangent</name></member>
-    <member refid="average_8h_1a88548cd01475eb746463ee47e8d7798a" kind="function"><name>average_biinvariant</name></member>
-    <member refid="average_8h_1a64c41649d654147e9a5dd9f6b37f1387" kind="function"><name>average</name></member>
-    <member refid="average_8h_1a8888896150c391239eff3eead0b655d2" kind="function"><name>average_frechet_left</name></member>
-    <member refid="average_8h_1a3f8c30418ab3318e402a806200cf9e4e" kind="function"><name>average_frechet_right</name></member>
+    <member refid="average_8h_1abfe31d4fd9656f86c3967ade1bbc1d0f" kind="function"><name>average_biinvariant</name></member>
+    <member refid="average_8h_1a3e83110740f2a5c823e0828371ca5c3c" kind="function"><name>average</name></member>
+    <member refid="average_8h_1ab22f058044a82639492eb371a6690d26" kind="function"><name>average_frechet_left</name></member>
+    <member refid="average_8h_1a42a7468756052fcf47a0cd192d08b50b" kind="function"><name>average_frechet_right</name></member>
     <member refid="bezier_8h_1abfd020f6bb8fb5e19c5f8435e782ada2" kind="function"><name>computeBezierCurve</name></member>
     <member refid="decasteljau_8h_1aaee6cd5d9ceadf81b992b0588ede894b" kind="function"><name>decasteljau</name></member>
     <member refid="interpolation_8h_1a039949a766aced0ba6b70e666f42ee34" kind="function"><name>binomial_coefficient</name></member>

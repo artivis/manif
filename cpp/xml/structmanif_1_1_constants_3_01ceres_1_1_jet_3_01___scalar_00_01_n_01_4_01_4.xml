@@ -19,7 +19,7 @@
         <definition>const ceres::Jet&lt; _Scalar, N &gt; manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;::eps</definition>
         <argsstring></argsstring>
         <name>eps</name>
-        <initializer>= ceres::Jet&lt;_Scalar, N&gt;(1e-10)</initializer>
+        <initializer>= ceres::Jet&lt;_Scalar, N&gt;(1e-14)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -28,30 +28,15 @@
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="15" column="27" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="15" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a9ba778d1994605ee599f45d837cf4e3b" prot="public" static="yes" mutable="no">
-        <type>const ceres::Jet&lt; _Scalar, N &gt;</type>
-        <definition>const ceres::Jet&lt; _Scalar, N &gt; manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;::eps_s</definition>
-        <argsstring></argsstring>
-        <name>eps_s</name>
-        <initializer>= ceres::Jet&lt;_Scalar, N&gt;(1e-15)</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="16" column="27" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="16" bodyend="-1"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Specialize <ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref> traits for the ceres::Jet type. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="14" bodyend="17"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="14" bodyend="16"/>
     <listofallmembers>
       <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" prot="public" virt="non-virtual"><scope>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</scope><name>eps</name></member>
-      <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a9ba778d1994605ee599f45d837cf4e3b" prot="public" virt="non-virtual"><scope>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</scope><name>eps_s</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

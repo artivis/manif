@@ -10,20 +10,6 @@
         <definition>constexpr float manif::Constants&lt; float &gt;::eps</definition>
         <argsstring></argsstring>
         <name>eps</name>
-        <initializer>= float(1e-5)</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="72" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr float</type>
-        <definition>constexpr float manif::Constants&lt; float &gt;::eps_s</definition>
-        <argsstring></argsstring>
-        <name>eps_s</name>
         <initializer>= float(1e-6)</initializer>
         <briefdescription>
         </briefdescription>
@@ -31,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="73" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="73" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="69" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -45,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="74" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="74" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="70" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -59,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="76" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="76" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="72" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr float</type>
@@ -73,17 +59,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="77" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="77" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="73" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="70" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="71" bodyend="78"/>
+    <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="67" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="68" bodyend="74"/>
     <listofallmembers>
       <member refid="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps</name></member>
-      <member refid="structmanif_1_1_constants_3_01float_01_4_1af28916734f645174bd55865e868e41dd" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps_s</name></member>
       <member refid="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>eps_sqrt</name></member>
       <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>to_deg</name></member>
       <member refid="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" prot="public" virt="non-virtual"><scope>manif::Constants&lt; float &gt;</scope><name>to_rad</name></member>

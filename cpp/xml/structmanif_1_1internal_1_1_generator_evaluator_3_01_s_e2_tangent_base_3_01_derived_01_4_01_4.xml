@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="301" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="301" bodyend="338"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="304" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="304" bodyend="341"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,7 +32,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="298" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="299" bodyend="339"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="301" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" bodystart="302" bodyend="342"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4_1a07f9d526f346bd6b560c50a1b25d3726" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
     </listofallmembers>
