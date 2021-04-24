@@ -6,21 +6,44 @@
 
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \
   using TEST_##manifold##_JACOBIANS_CERES_TESTER = JacobianCeresTester<manifold>;               \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_INVERSE_JACOBIAN)    \
+  INSTANTIATE_TEST_CASE_P(                                                                      \
+    TEST_##manifold##_JACOBIANS_CERES_TESTS,                                                    \
+    TEST_##manifold##_JACOBIANS_CERES_TESTER,                                                   \
+    ::testing::Values(                                                                          \
+      std::make_tuple(                                                                          \
+        manifold::Identity(),                                                                   \
+        manifold::Identity(),                                                                   \
+        manifold::Tangent::Zero(),                                                              \
+        manifold::Tangent::Zero()                                                               \
+      ),                                                                                        \
+      std::make_tuple(                                                                          \
+        (manifold::Tangent::Random()*1e-8).exp(),                                               \
+        (manifold::Tangent::Random()*1e-8).exp(),                                               \
+        manifold::Tangent::Random()*1e-8,                                                       \
+        manifold::Tangent::Random()*1e-8                                                        \
+      ),                                                                                        \
+      std::make_tuple(                                                                          \
+        manifold::Random(),                                                                     \
+        manifold::Random(),                                                                     \
+        manifold::Tangent::Random(),                                                            \
+        manifold::Tangent::Random()                                                             \
+      )                                                                                         \
+    ));                                                                                         \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_INVERSE_JACOBIAN)    \
   { evalInverseJac(); }                                                                         \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LOG_JACOBIAN)        \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LOG_JACOBIAN)        \
   { evalLogJac(); }                                                                             \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RPLUS_JACOBIANS)     \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RPLUS_JACOBIANS)     \
   { evalRplusJacs(); }                                                                          \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LPLUS_JACOBIANS)     \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LPLUS_JACOBIANS)     \
   { evalLplusJacs(); }                                                                          \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RMINUS_JACOBIANS)    \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RMINUS_JACOBIANS)    \
   { evalRminusJacs(); }                                                                         \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LMINUS_JACOBIANS)    \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LMINUS_JACOBIANS)    \
   { evalLminusJacs(); }                                                                         \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_COMPOSE_JACOBIANS)   \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_COMPOSE_JACOBIANS)   \
   { evalComposeJacs(); }                                                                        \
-  TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_BETWEEN_JACOBIANS)   \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_BETWEEN_JACOBIANS)   \
   { evalBetweenJacs(); }
   // TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS)
   // { evalActJacs(); }
@@ -342,7 +365,12 @@ struct CeresActFunctor : MakeBinaryCostFuncHelper<
 };
 
 template <typename _LieGroup>
-class JacobianCeresTester : public ::testing::Test
+class JacobianCeresTester
+  : public testing::TestWithParam<
+    std::tuple<
+      _LieGroup, _LieGroup, typename _LieGroup::Tangent, typename _LieGroup::Tangent
+    >
+  >
 {
   using LieGroup  = _LieGroup;
   using Scalar    = typename LieGroup::Scalar;
@@ -375,30 +403,21 @@ class JacobianCeresTester : public ::testing::Test
   static_assert(std::is_same<double, Scalar>::value,
                 "Scalar must be double!");
 
-  // void local_deparameterization_ComputeJacobian(
-  //   double* state,
-  //   double* lhs_adJ_locdepar
-  // )
-  // {
-  //   // Compute the local_de-parameterization (?) Jac
-  //   double** params = new double*[2];
-  //   params[0] = state;
-  //   params[1] = state;
+  const LieGroup& getState() const {
+    return std::get<0>(this->GetParam());
+  }
 
-  //   typename Rminus::Jacobian rhs_adJ_locdepar;
-  //   double** jacs = new double*[2];
-  //   jacs[0] = lhs_adJ_locdepar;
-  //   jacs[1] = rhs_adJ_locdepar.data();
+  const LieGroup& getStateOther() const {
+    return std::get<1>(this->GetParam());
+  }
 
-  //   Tangent d;
+  const Tangent& getDelta() const {
+    return std::get<2>(this->GetParam());
+  }
 
-  //   Rminus::make_costfunc()->Evaluate(params, d.data(), jacs);
-
-  //   EXPECT_MANIF_NEAR(Tangent::Zero(), d);
-
-  //   delete[] params;
-  //   delete[] jacs;
-  // }
+  const Tangent& getDeltaOther() const {
+    return std::get<3>(this->GetParam());
+  }
 
 public:
 
@@ -411,17 +430,12 @@ public:
   {
     std::srand((unsigned int) time(0));
 
-    state = LieGroup::Random();
-    state_other = LieGroup::Random();
-    state_out = LieGroup::Random();
-
-    delta = Tangent::Random();
-
-    state_raw = state.data();
-    state_other_raw = state_other.data();
+    state_raw = const_cast<double*>(getState().data());
+    state_other_raw = const_cast<double*>(getStateOther().data());
     state_out_raw = state_out.data();
 
-    delta_raw = delta.data();
+    delta_raw = const_cast<double*>(getDelta().data());
+    delta_out_raw = delta_out.data();
   }
 
   void evalInverseJac()
@@ -432,16 +446,16 @@ public:
     double*  ad_r_J_out_s_raw = ad_r_J_out_spd.data();
     jacobians = &ad_r_J_out_s_raw;
 
-    Inverse::make_costfunc()->Evaluate(parameters, state_other_raw, jacobians);
+    Inverse::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.inverse(), state_other);
+    EXPECT_MANIF_NEAR(getState().inverse(), state_out);
 
     local_parameterization->ComputeJacobian(state_raw, adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters = new double*[2];
-    parameters[0] = state_other_raw;
-    parameters[1] = state_other_raw;
+    parameters[0] = state_out_raw;
+    parameters[1] = state_out_raw;
 
     typename Rminus::Jacobian adJ_locdepar, dadJ_out_RO;
     jacobians = new double*[2];
@@ -450,18 +464,13 @@ public:
 
     Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(Tangent::Zero(), delta);
-
-    // typename Rminus::Jacobian adJ_locdepar;
-    // local_deparameterization_ComputeJacobian(
-    //   state_other_raw, adJ_locdepar.data()
-    // );
+    EXPECT_MANIF_NEAR(Tangent::Zero(), getDelta());
 
     adJ_out_s = adJ_locdepar * (ad_r_J_out_spd * adJ_locpar);
 
-    state.inverse(J_out_s);
+    getState().inverse(J_out_s);
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -475,15 +484,15 @@ public:
     double*  ad_r_J_out_s_raw = ad_r_J_out_spd.data();
     jacobians = &ad_r_J_out_s_raw;
 
-    Log::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Log::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.log(J_out_s), delta);
+    EXPECT_MANIF_NEAR(getState().log(J_out_s), delta_out);
 
     local_parameterization->ComputeJacobian(state_raw, adJ_locpar.data());
 
     adJ_out_s = ad_r_J_out_spd * adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
   }
 
   void evalRplusJacs()
@@ -502,7 +511,7 @@ public:
 
     Rplus::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.rplus(delta, J_out_s, J_out_so), state_out);
+    EXPECT_MANIF_NEAR(getState().rplus(getDelta(), J_out_s, J_out_so), state_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -516,12 +525,12 @@ public:
     jacobians[0] = adJ_locdepar.data();
     jacobians[1] = adJ_unused.data();
 
-    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Rminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
     //
 
     adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
     local_parameterization->ComputeJacobian(
       state_other_raw, rhs_adJ_locpar.data()
@@ -529,7 +538,7 @@ public:
 
     adJ_out_so = adJ_locdepar * adJ_out_RO;
 
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -551,7 +560,7 @@ public:
 
     Lplus::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.lplus(delta, J_out_s, J_out_so), state_out);
+    EXPECT_MANIF_NEAR(getState().lplus(getDelta(), J_out_s, J_out_so), state_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -570,7 +579,7 @@ public:
 
     adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
     local_parameterization->ComputeJacobian(
       state_other_raw, rhs_adJ_locpar.data()
@@ -578,7 +587,7 @@ public:
 
     adJ_out_so = adJ_locdepar * adJ_out_RO;
 
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -601,9 +610,9 @@ public:
     jacobians[0] = adJ_out_R_raw;
     jacobians[1] = adJ_out_RO_raw;
 
-    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Rminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.rminus(state_other), delta);
+    EXPECT_MANIF_NEAR(getState().rminus(getStateOther()), delta_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -617,10 +626,10 @@ public:
 
     adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
 
-    state.rminus(state_other, J_out_s, J_out_so);
+    getState().rminus(getStateOther(), J_out_s, J_out_so);
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -643,9 +652,9 @@ public:
     jacobians[0] = adJ_out_R_raw;
     jacobians[1] = adJ_out_RO_raw;
 
-    Lminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Lminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.lminus(state_other), delta);
+    EXPECT_MANIF_NEAR(getState().lminus(getStateOther()), delta_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -659,10 +668,10 @@ public:
 
     adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
 
-    state.lminus(state_other, J_out_s, J_out_so);
+    getState().lminus(getStateOther(), J_out_s, J_out_so);
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -683,7 +692,7 @@ public:
 
     Compose::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.compose(state_other, J_out_s, J_out_so), state_out);
+    EXPECT_MANIF_NEAR(getState().compose(getStateOther(), J_out_s, J_out_so), state_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -697,12 +706,12 @@ public:
     jacobians[0] = adJ_locdepar.data();
     jacobians[1] = adJ_unused.data();
 
-    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Rminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
     //
 
     adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
     local_parameterization->ComputeJacobian(
       state_other_raw, rhs_adJ_locpar.data()
@@ -710,7 +719,7 @@ public:
 
     adJ_out_so = adJ_locdepar * adJ_out_RO * rhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -731,7 +740,7 @@ public:
 
     Between::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
 
-    EXPECT_MANIF_NEAR(state.between(state_other, J_out_s, J_out_so), state_out);
+    EXPECT_MANIF_NEAR(getState().between(getStateOther(), J_out_s, J_out_so), state_out);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -745,12 +754,12 @@ public:
     jacobians[0] = adJ_locdepar.data();
     jacobians[1] = adJ_unused.data();
 
-    Rminus::make_costfunc()->Evaluate(parameters, delta_raw, jacobians);
+    Rminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
     //
 
     adJ_out_s = adJ_locdepar * adJ_out_R * lhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s);
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
     local_parameterization->ComputeJacobian(
       state_other_raw, rhs_adJ_locpar.data()
@@ -758,7 +767,7 @@ public:
 
     adJ_out_so = adJ_locdepar * adJ_out_RO * rhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so);
+    EXPECT_EIGEN_NEAR(J_out_so, adJ_out_so, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -790,7 +799,7 @@ public:
 
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::DoF> J_vout_s;
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::Dim> J_vout_v;
-    EXPECT_EIGEN_NEAR(state.act(vin, J_vout_s, J_vout_v), vout);
+    EXPECT_EIGEN_NEAR(getState().act(vin, J_vout_s, J_vout_v), vout, tol);
 
     local_parameterization->ComputeJacobian(
       state_raw, lhs_adJ_locpar.data()
@@ -799,8 +808,8 @@ public:
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::DoF>
       adJ_vout_s = adJ_vout_sr * lhs_adJ_locpar;
 
-    EXPECT_EIGEN_NEAR(J_vout_s, adJ_vout_s);
-    EXPECT_EIGEN_NEAR(J_vout_v, adJ_vout_vin);
+    EXPECT_EIGEN_NEAR(J_vout_s, adJ_vout_s, tol);
+    EXPECT_EIGEN_NEAR(J_vout_v, adJ_vout_vin, tol);
 
     delete[] parameters;
     delete[] jacobians;
@@ -808,19 +817,24 @@ public:
 
 protected:
 
+  double tol = 1e-12;
+
+  // @todo: Only SE2 Jr_inv fails at this tol...
+  // double tol = 1e-14;
+
   double *state_raw, *state_other_raw, *state_out_raw;
   double **parameters;
 
-  double *delta_raw;
+  double *delta_raw, *delta_out_raw;
 
   double **jacobians;
 
   LocalParameterizationPtr local_parameterization =
     make_local_parameterization_autodiff<LieGroup>();
 
-  LieGroup state, state_other, state_out;
+  LieGroup state_out;
 
-  Tangent  delta;
+  Tangent delta_out;
 
   Jacobian J_out_s, J_out_so,
            adJ_out_s, adJ_out_so;
