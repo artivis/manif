@@ -662,6 +662,7 @@ class JacobianTester : public ::testing::Test
   using LieGroup = _LieGroup;
   using Scalar   = typename LieGroup::Scalar;
   using Tangent  = typename LieGroup::Tangent;
+  using Jacobian = typename LieGroup::Jacobian;
 
 public:
 
@@ -683,203 +684,192 @@ public:
 
   void evalInverseJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
-    LieGroup state_out = state.inverse(J_sout_s);
+    LieGroup state_out = state.inverse(J_out_lhs);
 
     LieGroup state_pert = (state+w).inverse();
-    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_lin  = state_out.rplus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalLiftJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
-    Tangent state_out = state.log(J_sout_s);
+    Tangent state_out = state.log(J_out_lhs);
 
     Tangent state_pert = (state+w).log();
-    Tangent state_lin  = state_out + (J_sout_s*w);
+    Tangent state_lin  = state_out + (J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalRetractJac()
   {
-    typename LieGroup::Jacobian J_sout_s;
-    LieGroup state_out = delta.exp(J_sout_s);
+    LieGroup state_out = delta.exp(J_out_lhs);
 
     LieGroup state_pert = (delta+w).exp();
-    LieGroup state_lin  = state_out + (J_sout_s*w);
+    LieGroup state_lin  = state_out + (J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     ///////
 
     delta.setZero();
-    state_out = delta.exp(J_sout_s);
+    state_out = delta.exp(J_out_lhs);
 
     state_pert = (delta+w).exp();
-    state_lin  = state_out + (J_sout_s*w);
+    state_lin  = state_out + (J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalComposeJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_so;
-    LieGroup state_out = state.compose(state_other, J_sout_s, J_sout_so);
+    LieGroup state_out = state.compose(state_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     LieGroup state_pert = (state+w).compose(state_other);
-    LieGroup state_lin  = state_out + J_sout_s*w;
+    LieGroup state_lin  = state_out + J_out_lhs*w;
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.compose(state_other+w);
-    state_lin  = state_out + J_sout_so*w;
+    state_lin  = state_out + J_out_rhs*w;
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalBetweenJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_so;
-    LieGroup state_out = state.between(state_other, J_sout_s, J_sout_so);
+    LieGroup state_out = state.between(state_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     LieGroup state_pert = (state + w).between(state_other);
-    LieGroup state_lin  = state_out + (J_sout_s * w);
+    LieGroup state_lin  = state_out + (J_out_lhs * w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.between(state_other + w);
-    state_lin  = state_out + (J_sout_so * w);
+    state_lin  = state_out + (J_out_rhs * w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalRplusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_t;
-    LieGroup state_out = state.rplus(delta, J_sout_s, J_sout_t);
+    LieGroup state_out = state.rplus(delta, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     LieGroup state_pert = (state+w).rplus(delta);
-    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_lin  = state_out.rplus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.rplus(delta+w);
-    state_lin  = state_out.rplus(J_sout_t*w);
+    state_lin  = state_out.rplus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalLplusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_sout_t;
-    LieGroup state_out = state.lplus(delta, J_sout_s, J_sout_t);
+    LieGroup state_out = state.lplus(delta, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     LieGroup state_pert = (state+w).lplus(delta);
-    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_lin  = state_out.rplus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.lplus(delta+w);
-    state_lin  = state_out.rplus(J_sout_t*w);
+    state_lin  = state_out.rplus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalPlusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_t;
-    LieGroup state_out = state.plus(delta, J_sout_s, J_mout_t);
+    LieGroup state_out = state.plus(delta, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     LieGroup state_pert = (state+w).plus(delta);
-    LieGroup state_lin  = state_out.rplus(J_sout_s*w);
+    LieGroup state_lin  = state_out.rplus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.plus(delta+w);
-    state_lin  = state_out.rplus(J_mout_t*w);
+    state_lin  = state_out.rplus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalRminusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
-    Tangent state_out = state.rminus(state_other, J_sout_s, J_mout_so);
+    Tangent state_out = state.rminus(state_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     Tangent state_pert = (state+w).rminus(state_other);
-    Tangent state_lin  = state_out.plus(J_sout_s*w);
+    Tangent state_lin  = state_out.plus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.rminus(state_other+w);
-    state_lin  = state_out.plus(J_mout_so*w);
+    state_lin  = state_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalLminusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
-    Tangent state_out = state.lminus(state_other, J_sout_s, J_mout_so);
+    Tangent state_out = state.lminus(state_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     Tangent state_pert = (state+w).lminus(state_other);
-    Tangent state_lin  = state_out.plus(J_sout_s*w);
+    Tangent state_lin  = state_out.plus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.lminus(state_other+w);
-    state_lin  = state_out.plus(J_mout_so*w);
+    state_lin  = state_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
 
   void evalMinusJac()
   {
-    typename LieGroup::Jacobian J_sout_s, J_mout_so;
-    Tangent state_out = state.minus(state_other, J_sout_s, J_mout_so);
+    Tangent state_out = state.minus(state_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     Tangent state_pert = (state+w).minus(state_other);
-    Tangent state_lin  = state_out.plus(J_sout_s*w);
+    Tangent state_lin  = state_out.plus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
 
     // Jac wrt second element
 
     state_pert = state.minus(state_other+w);
-    state_lin  = state_out.plus(J_mout_so*w);
+    state_lin  = state_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(state_pert, state_lin, tol_);
   }
@@ -981,46 +971,42 @@ public:
 
   void evalTanPlusTanJac()
   {
-    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
-
     const Tangent delta_other = Tangent::Random();
 
-    const Tangent delta_out = delta.plus(delta_other, J_tout_t0, J_tout_t1);
+    const Tangent delta_out = delta.plus(delta_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     Tangent delta_pert = (delta+w).plus(delta_other);
-    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+    Tangent delta_lin  = delta_out.plus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
 
     // Jac wrt second element
 
     delta_pert = delta.plus(delta_other+w);
-    delta_lin  = delta_out.plus(J_tout_t1*w);
+    delta_lin  = delta_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
   }
 
   void evalTanMinusTanJac()
   {
-    typename LieGroup::Jacobian J_tout_t0, J_tout_t1;
-
     const Tangent delta_other = Tangent::Random();
 
-    const Tangent delta_out = delta.minus(delta_other, J_tout_t0, J_tout_t1);
+    const Tangent delta_out = delta.minus(delta_other, J_out_lhs, J_out_rhs);
 
     // Jac wrt first element
 
     Tangent delta_pert = (delta+w).minus(delta_other);
-    Tangent delta_lin  = delta_out.plus(J_tout_t0*w);
+    Tangent delta_lin  = delta_out.plus(J_out_lhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
 
     // Jac wrt second element
 
     delta_pert = delta.minus(delta_other+w);
-    delta_lin  = delta_out.plus(J_tout_t1*w);
+    delta_lin  = delta_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
   }
@@ -1041,7 +1027,9 @@ protected:
   LieGroup state;
   LieGroup state_other;
   Tangent  delta;
-  Tangent  w; //
+  Tangent  w;
+
+  Jacobian J_out_lhs, J_out_rhs;
 };
 
 template <typename _LieGroup>
