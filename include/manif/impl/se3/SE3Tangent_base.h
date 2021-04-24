@@ -256,7 +256,7 @@ void SE3TangentBase<_Derived>::fillQ(
     Scalar A(0.5), B, C, D;
 
     // Small angle approximation
-    if (theta_sq <= Constants<Scalar>::eps_s)
+    if (theta_sq <= Constants<Scalar>::eps)
     {
       B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
       C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;

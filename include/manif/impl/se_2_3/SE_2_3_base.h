@@ -439,7 +439,7 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.template segment<4>(3).norm()-typename SE_2_3Base<Derived>::Scalar(1)) <
-      Constants<typename SE_2_3Base<Derived>::Scalar>::eps_s,
+      Constants<typename SE_2_3Base<Derived>::Scalar>::eps,
       "SE_2_3 assigned data not normalized !",
       manif::invalid_argument
     );

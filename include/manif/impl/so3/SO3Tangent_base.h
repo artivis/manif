@@ -126,7 +126,7 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   const Scalar theta_sq = theta_vec.squaredNorm();
   const Scalar theta    = sqrt(theta_sq);
 
-  if (theta_sq > Constants<Scalar>::eps_s)
+  if (theta_sq > Constants<Scalar>::eps)
   {
     if (J_m_t)
     {
@@ -180,8 +180,8 @@ SO3TangentBase<_Derived>::ljac() const
   const LieAlg W = hat();
 
   // Small angle approximation
-  if (theta_sq <= Constants<Scalar>::eps_s)
-    return Jacobian::Identity() - Scalar(0.5) * W;
+  if (theta_sq <= Constants<Scalar>::eps)
+    return Jacobian::Identity() + Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
   Jacobian M1, M2;
@@ -210,8 +210,8 @@ SO3TangentBase<_Derived>::ljacinv() const
 
   const LieAlg W = hat();
 
-  if (theta_sq <= Constants<Scalar>::eps_s)
-    return Jacobian::Identity() + Scalar(0.5) * W;
+  if (theta_sq <= Constants<Scalar>::eps)
+    return Jacobian::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
   Jacobian M;
