@@ -1,6 +1,8 @@
 #include "manif/SE2.h"
 #include "manif/algorithms/average.h"
 
+#include<Eigen/StdVector>
+
 #include <vector>
 #include <iostream>
 
@@ -12,7 +14,7 @@ int main(int /*argc*/, char** /*argv*/)
 {
   // Generate 4 'close' points
 
-  std::vector<manif::SE2d> points;
+  std::vector<manif::SE2d, Eigen::aligned_allocator<manif::SE2d>> points;
 
 //  points.emplace_back(1, 1, 3.*MANIF_PI/4.);
 //  points.emplace_back(1, 3, 5.*MANIF_PI/8.);
