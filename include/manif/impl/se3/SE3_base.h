@@ -457,6 +457,7 @@ struct AssignmentEvaluatorImpl<SE3Base<Derived>>
       "SE3 assigned data not normalized !",
       manif::invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

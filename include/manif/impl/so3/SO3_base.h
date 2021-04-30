@@ -417,6 +417,7 @@ struct AssignmentEvaluatorImpl<SO3Base<Derived>>
       "SO3 assigned data not normalized !",
       manif::invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

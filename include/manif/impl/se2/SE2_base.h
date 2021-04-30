@@ -420,6 +420,7 @@ struct AssignmentEvaluatorImpl<SE2Base<Derived>>
       "SE2 assigned data not normalized !",
       invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

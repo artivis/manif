@@ -336,6 +336,7 @@ struct AssignmentEvaluatorImpl<SO2Base<Derived>>
       "SO2 assigned data not normalized !",
       invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 
