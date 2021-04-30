@@ -182,11 +182,10 @@ SO3TangentBase<_Derived>::ljac() const
     return Jacobian::Identity() + Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M1, M2;
-  M1.noalias() = (Scalar(1) - cos(theta)) / theta_sq * W;
-  M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);
 
-  return Jacobian::Identity() + M1 + M2;
+  return Jacobian::Identity() +
+    (Scalar(1) - cos(theta)) / theta_sq * W +
+    (theta - sin(theta)) / (theta_sq * theta) * W * W;
 }
 
 template <typename _Derived>
@@ -212,12 +211,11 @@ SO3TangentBase<_Derived>::ljacinv() const
     return Jacobian::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M;
-  M.noalias() = (Scalar(1) / theta_sq -
-                 (Scalar(1) + cos(theta)) /
-                 (Scalar(2) * theta * sin(theta))) * (W * W);
 
-  return Jacobian::Identity() - Scalar(0.5) * W + M;
+  return Jacobian::Identity() -
+    Scalar(0.5) * W +
+    (Scalar(1) / theta_sq - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) *
+    W * W;
 }
 
 template <typename _Derived>
