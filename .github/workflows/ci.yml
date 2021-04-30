@@ -166,6 +166,8 @@ jobs:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
+      - name: Env
+        run: env
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup
