@@ -23,10 +23,6 @@ function(manif_add_benchmark target)
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
-      -Wno-unknown-pragmas
-      -Wno-sign-compare
-      -Wno-unused-parameter
-      -Wno-missing-field-initializers
       # When the library is built using GCC it is necessary to link
       # with the pthread library due to how GCC implements std::thread.
       # See https://github.com/google/benchmark#platform-specific-build-instructions

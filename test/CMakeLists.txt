@@ -42,10 +42,6 @@ function(manif_add_gtest target)
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
-      -Wno-unknown-pragmas
-      -Wno-sign-compare
-      -Wno-unused-parameter
-      -Wno-missing-field-initializers
       )
   endif()
 
