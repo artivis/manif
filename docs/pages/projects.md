@@ -11,6 +11,8 @@ You may find on Google Scholar publications citing either:
 
 - [`lie-group-controllers`][lie-group-controllers-repo], header-only C++ libraries containing controllers designed for Lie Groups.
 - [`bipedal-locomotion-framework`][bipedal-locomotion-framework], The BipedalLocomotionFramework project is a suite of libraries for achieving bipedal locomotion on humanoid robots.
+- [`kalmanif`][kalmanif], A small collection of Kalman Filters on Lie groups.
+- [`cpp_filter`][cpp_filter], Kalman filter using C++ and Manif.
 
 Your project is not listed here? Let us know about it!
 
@@ -23,3 +25,5 @@ Your project is not listed here? Let us know about it!
 
 [lie-group-controllers-repo]: https://github.com/dic-iit/lie-group-controllers
 [bipedal-locomotion-framework]: https://github.com/dic-iit/bipedal-locomotion-framework
+[kalmanif]: https://github.com/artivis/kalmanif
+[cpp_filter]: https://github.com/aalbaali/cpp_filter
