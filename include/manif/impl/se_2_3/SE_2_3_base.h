@@ -198,10 +198,12 @@ template <typename _Derived>
 typename SE_2_3Base<_Derived>::Isometry
 SE_2_3Base<_Derived>::isometry() const
 {
-  Eigen::Matrix<Scalar, 5, 5> T = Eigen::Matrix<Scalar, 5, 5>::Identity();
+  Eigen::Matrix<Scalar, 5, 5> T;
   T.template topLeftCorner<3,3>() = rotation();
   T.template block<3, 1>(0, 3) = translation();
   T.template topRightCorner<3,1>() = linearVelocity();
+  T.template bottomLeftCorner<2,3>().setZero();
+  T.template bottomRightCorner<2,2>().setIdentity();
   return T;
 }
 
@@ -318,8 +320,8 @@ SE_2_3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    J_vout_m->template topLeftCorner<3,3>()  =  R;
-    J_vout_m->template block<3,3>(0, 3) = -R * skew(v);
+    J_vout_m->template topLeftCorner<3,3>() = R;
+    J_vout_m->template block<3,3>(0, 3).noalias() = -R * skew(v);
     J_vout_m->template topRightCorner<3,3>().setZero();
   }
 
@@ -346,17 +348,20 @@ SE_2_3Base<_Derived>::adj() const
   /// with T = [t]_x
   /// with V = [v]_x
 
-  Jacobian Adj = Jacobian::Zero();
+  Jacobian Adj;
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
   Adj.template block<3,3>(3,3) =
       Adj.template topLeftCorner<3,3>();
 
-  Adj.template block<3,3>(0, 3) =
+  Adj.template block<3,3>(0, 3).noalias() =
     skew(translation()) * Adj.template topLeftCorner<3,3>();
-  Adj.template block<3,3>(6, 3) =
+  Adj.template block<3,3>(6, 3).noalias() =
     skew(linearVelocity()) * Adj.template topLeftCorner<3,3>();
+
+  Adj.template bottomLeftCorner<6,3>().setZero();
+  Adj.template topRightCorner<6,3>().setZero();
 
   return Adj;
 }
@@ -443,6 +448,7 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
       "SE_2_3 assigned data not normalized !",
       manif::invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

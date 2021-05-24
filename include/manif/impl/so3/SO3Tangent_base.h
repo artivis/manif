@@ -124,20 +124,17 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
   const DataType& theta_vec = coeffs();
   const Scalar theta_sq = theta_vec.squaredNorm();
-  const Scalar theta    = sqrt(theta_sq);
 
   if (theta_sq > Constants<Scalar>::eps)
   {
+    const Scalar theta = sqrt(theta_sq);
     if (J_m_t)
     {
-      Jacobian M1, M2;
-
       const LieAlg W = hat();
 
-      M1.noalias() = (Scalar(1.0) - cos(theta)) / theta_sq * W;
-      M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);;
-
-      *J_m_t = Jacobian::Identity() - M1 + M2;
+      J_m_t->setIdentity();
+      J_m_t->noalias() -= (Scalar(1.0) - cos(theta)) / theta_sq * W;
+      J_m_t->noalias() += (theta - sin(theta)) / (theta_sq * theta) * W * W;
     }
 
     return LieGroup( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
@@ -146,7 +143,8 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   {
     if (J_m_t)
     {
-      *J_m_t = Jacobian::Identity() - Scalar(0.5) * hat();
+      J_m_t->setIdentity();
+      J_m_t->noalias() -= Scalar(0.5) * hat();
     }
 
     return LieGroup(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
@@ -184,11 +182,10 @@ SO3TangentBase<_Derived>::ljac() const
     return Jacobian::Identity() + Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M1, M2;
-  M1.noalias() = (Scalar(1) - cos(theta)) / theta_sq * W;
-  M2.noalias() = (theta - sin(theta)) / (theta_sq * theta) * (W * W);
 
-  return Jacobian::Identity() + M1 + M2;
+  return Jacobian::Identity() +
+    (Scalar(1) - cos(theta)) / theta_sq * W +
+    (theta - sin(theta)) / (theta_sq * theta) * W * W;
 }
 
 template <typename _Derived>
@@ -214,12 +211,11 @@ SO3TangentBase<_Derived>::ljacinv() const
     return Jacobian::Identity() - Scalar(0.5) * W;
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
-  Jacobian M;
-  M.noalias() = (Scalar(1) / theta_sq -
-                 (Scalar(1) + cos(theta)) /
-                 (Scalar(2) * theta * sin(theta))) * (W * W);
 
-  return Jacobian::Identity() - Scalar(0.5) * W + M;
+  return Jacobian::Identity() -
+    Scalar(0.5) * W +
+    (Scalar(1) / theta_sq - (Scalar(1) + cos(theta)) / (Scalar(2) * theta * sin(theta))) *
+    W * W;
 }
 
 template <typename _Derived>

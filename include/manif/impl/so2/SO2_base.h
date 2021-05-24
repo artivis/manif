@@ -154,7 +154,7 @@ typename SO2Base<_Derived>::Transformation
 SO2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
-  T.template block<2,2>(0,0) = rotation();
+  T.template topLeftCorner<2, 2>() = rotation();
   return T;
 }
 
@@ -245,7 +245,7 @@ SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    (*J_vout_m) = R * skew(Scalar(1)) * v;
+    J_vout_m->noalias() = R * skew(Scalar(1)) * v;
   }
 
   if (J_vout_v)
@@ -336,6 +336,7 @@ struct AssignmentEvaluatorImpl<SO2Base<Derived>>
       "SO2 assigned data not normalized !",
       invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

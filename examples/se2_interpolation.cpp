@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 
   // Intermediate points
 
-  for (int n=1; n<points.size()-1; ++n)
+  for (std::size_t n=1; n<points.size()-1; ++n)
   {
     const manif::SE2d& s0 = points[ n ];
     const manif::SE2d& s1 = points[n+1];

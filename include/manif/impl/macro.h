@@ -41,6 +41,8 @@ raise(Args&&... args)
 } /* namespace detail */
 } /* namespace manif */
 
+#define MANIF_UNUSED_VARIABLE(x) EIGEN_UNUSED_VARIABLE(x)
+
 // gcc expands __VA_ARGS___ before passing it into the macro.
 // Visual Studio expands __VA_ARGS__ after passing it.
 // This macro is a workaround to support both

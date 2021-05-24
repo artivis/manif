@@ -6,6 +6,8 @@
 #include "manif/algorithms/interpolation.h"
 #include "manif/algorithms/average.h"
 
+#include <Eigen/StdVector>
+
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
   INSTANTIATE_TEST_CASE_P(                                                \
@@ -80,7 +82,7 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_INTERP)              \
   { evalInterp(); }                                                       \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_AVG_BIINVARIANT)     \
-  { /*evalAvgBiInvariant();*/ }                                               \
+  { evalAvgBiInvariant(); }                                               \
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_IS_APPROX)           \
   { evalIsApprox(); }                                                     \
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_UNARY_MINUS)         \
@@ -463,19 +465,19 @@ public:
   {
     // Note : average works over points that are 'close'.
 
-    EXPECT_THROW(average_biinvariant(std::vector<LieGroup>{}),
+    EXPECT_THROW(average_biinvariant(std::vector<LieGroup, Eigen::aligned_allocator<LieGroup>>{}),
                  std::runtime_error);
 
     {
       const auto dummy = LieGroup::Random();
-      std::vector<LieGroup> tmp;
+      std::vector<LieGroup, Eigen::aligned_allocator<LieGroup>> tmp;
       tmp.push_back(dummy);
       EXPECT_MANIF_NEAR(dummy, average_biinvariant(tmp), tol_);
     }
 
     const LieGroup centroid = LieGroup::Random();
 
-    std::vector<LieGroup> mans;
+    std::vector<LieGroup, Eigen::aligned_allocator<LieGroup>> mans;
 
     // Generate N points arround the centroid
     const int N = 15;

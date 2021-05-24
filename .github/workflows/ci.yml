@@ -20,6 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        build_type: [Release, Debug]
         compiler: [{
           "cc": "gcc",
           "cxx": "g++"
@@ -45,7 +46,7 @@ jobs:
           echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
       - name: Configure
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2

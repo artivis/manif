@@ -78,9 +78,19 @@ public:
   Jacobian rjac() const;
 
   /**
+   * @brief Get the inverse right Jacobian of SE_2_3.
+   */
+  Jacobian rjacinv() const;
+
+  /**
    * @brief Get the left Jacobian of SE_2_3.
    */
   Jacobian ljac() const;
+
+  /**
+   * @brief Get the inverse left Jacobian of SE_2_3.
+   */
+  Jacobian ljacinv() const;
 
   /**
    * @brief Get the small adjoint matrix ad() of SE_2_3
@@ -165,20 +175,53 @@ SE_2_3TangentBase<_Derived>::rjac() const
   Jr.template bottomRightCorner<3, 3>() = Jr.template topLeftCorner<3,3>();
 
   // fill Qv
-  Eigen::Matrix<Scalar, 6, 1> vw;
-  vw << Scalar(-coeffs()(0)), Scalar(-coeffs()(1)), Scalar(-coeffs()(2)),
-        Scalar(-coeffs()(3)), Scalar(-coeffs()(4)), Scalar(-coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qv = Jr.template block<3,3>(0, 3);
-  SE3Tangent<Scalar>::fillQ(Qv, vw);
+  SE3Tangent<Scalar>::fillQ(
+    Jr.template block<3,3>(0, 3), -coeffs().template head<6>()
+  );
 
   // fill Qa
   Eigen::Matrix<Scalar, 6, 1> aw;
-  aw << Scalar(-coeffs()(6)), Scalar(-coeffs()(7)), Scalar(-coeffs()(8)),
-        Scalar(-coeffs()(3)), Scalar(-coeffs()(4)), Scalar(-coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qa = Jr.template block<3,3>(6, 3);
-  SE3Tangent<Scalar>::fillQ(Qa, aw);
+  aw << -coeffs()(6), -coeffs()(7), -coeffs()(8),
+        -coeffs()(3), -coeffs()(4), -coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jr.template block<3,3>(6, 3), aw);
 
   return Jr;
+}
+
+template <typename _Derived>
+typename SE_2_3TangentBase<_Derived>::Jacobian
+SE_2_3TangentBase<_Derived>::rjacinv() const
+{
+  Jacobian Jr_inv;
+  Jr_inv.template block<3, 3>(3, 0).setZero();
+  // Jr_inv.template block<3, 3>(6, 0).setZero(); // Serves as temp Q
+  Jr_inv.template block<6, 3>(0, 6).setZero();
+  Jr_inv.template topLeftCorner<3, 3>() = asSO3().rjacinv();
+  Jr_inv.template block<3, 3>(3,3) = Jr_inv.template topLeftCorner<3,3>();
+  Jr_inv.template bottomRightCorner<3, 3>() = Jr_inv.template topLeftCorner<3,3>();
+
+  // fill Qv
+  SE3Tangent<Scalar>::fillQ(
+    Jr_inv.template block<3, 3>(6, 0), -coeffs().template head<6>()
+  );
+  Jr_inv.template block<3, 3>(0, 3).noalias() =
+    -Jr_inv.template topLeftCorner<3,3>() *
+     Jr_inv.template block<3, 3>(6, 0) *
+     Jr_inv.template topLeftCorner<3,3>();
+
+  // fill Qa
+  Eigen::Matrix<Scalar, 6, 1> aw;
+  aw << -coeffs()(6), -coeffs()(7), -coeffs()(8),
+        -coeffs()(3), -coeffs()(4), -coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jr_inv.template block<3, 3>(6, 0), aw);
+  Jr_inv.template block<3, 3>(6, 3).noalias() =
+    -Jr_inv.template topLeftCorner<3,3>() *
+     Jr_inv.template block<3, 3>(6, 0) *
+     Jr_inv.template topLeftCorner<3,3>();
+
+  Jr_inv.template block<3, 3>(6, 0).setZero();
+
+  return Jr_inv;
 }
 
 template <typename _Derived>
@@ -193,20 +236,53 @@ SE_2_3TangentBase<_Derived>::ljac() const
   Jl.template bottomRightCorner<3, 3>() = Jl.template topLeftCorner<3,3>();
 
   // fill Qv
-  Eigen::Matrix<Scalar, 6, 1> vw;
-  vw << Scalar(coeffs()(0)), Scalar(coeffs()(1)), Scalar(coeffs()(2)),
-        Scalar(coeffs()(3)), Scalar(coeffs()(4)), Scalar(coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qv = Jl.template block<3,3>(0, 3);
-  SE3Tangent<Scalar>::fillQ(Qv, vw);
+  SE3Tangent<Scalar>::fillQ(
+    Jl.template block<3,3>(0, 3), coeffs().template head<6>()
+  );
 
   // fill Qa
   Eigen::Matrix<Scalar, 6, 1> aw;
-  aw << Scalar(coeffs()(6)), Scalar(coeffs()(7)), Scalar(coeffs()(8)),
-        Scalar(coeffs()(3)), Scalar(coeffs()(4)), Scalar(coeffs()(5));
-  Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>> Qa = Jl.template block<3,3>(6, 3);
-  SE3Tangent<Scalar>::fillQ(Qa, aw);
+  aw << coeffs()(6), coeffs()(7), coeffs()(8),
+        coeffs()(3), coeffs()(4), coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jl.template block<3,3>(6, 3), aw);
 
   return Jl;
+}
+
+template <typename _Derived>
+typename SE_2_3TangentBase<_Derived>::Jacobian
+SE_2_3TangentBase<_Derived>::ljacinv() const
+{
+  Jacobian Jlinv;
+  Jlinv.template block<3, 3>(3, 0).setZero();
+  // Jlinv.template block<3, 3>(6, 0).setZero(); // Serves as temp Q
+  Jlinv.template block<6, 3>(0, 6).setZero();
+  Jlinv.template topLeftCorner<3, 3>() = asSO3().ljacinv();
+  Jlinv.template block<3, 3>(3, 3) = Jlinv.template topLeftCorner<3,3>();
+  Jlinv.template bottomRightCorner<3, 3>() = Jlinv.template topLeftCorner<3,3>();
+
+  // fill Qv
+  SE3Tangent<Scalar>::fillQ(
+    Jlinv.template block<3, 3>(6, 0), coeffs().template head<6>()
+  );
+  Jlinv.template block<3, 3>(0, 3).noalias() =
+    -Jlinv.template topLeftCorner<3, 3>() *
+     Jlinv.template block<3, 3>(6, 0) *
+     Jlinv.template topLeftCorner<3, 3>();
+
+  // fill Qa
+  Eigen::Matrix<Scalar, 6, 1> aw;
+  aw << coeffs()(6), coeffs()(7), coeffs()(8),
+        coeffs()(3), coeffs()(4), coeffs()(5);
+  SE3Tangent<Scalar>::fillQ(Jlinv.template block<3, 3>(6, 0), aw);
+  Jlinv.template block<3, 3>(6, 3).noalias() =
+    -Jlinv.template topLeftCorner<3, 3>() *
+     Jlinv.template block<3, 3>(6, 0) *
+     Jlinv.template topLeftCorner<3, 3>();
+
+  Jlinv.template block<3, 3>(6, 0).setZero();
+
+  return Jlinv;
 }
 
 template <typename _Derived>

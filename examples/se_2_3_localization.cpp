@@ -341,7 +341,7 @@ int main()
         alpha = alpha_const - X_simulation.rotation().transpose()*g; // update expected IMU measurement after moving
 
         /// then we measure all landmarks - - - - - - - - - - - - - - - - - - - -
-        for (int i = 0; i < landmarks.size(); i++)
+        for (std::size_t i = 0; i < landmarks.size(); i++)
         {
             b = landmarks[i];                               // lmk coordinates in world frame
 
