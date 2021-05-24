@@ -20,6 +20,8 @@
 <para><itemizedlist>
 <listitem><para><ulink url="https://github.com/dic-iit/lie-group-controllers"><computeroutput>lie-group-controllers</computeroutput></ulink>, header-only C++ libraries containing controllers designed for Lie Groups.</para>
 </listitem><listitem><para><ulink url="https://github.com/dic-iit/bipedal-locomotion-framework"><computeroutput>bipedal-locomotion-framework</computeroutput></ulink>, The BipedalLocomotionFramework project is a suite of libraries for achieving bipedal locomotion on humanoid robots.</para>
+</listitem><listitem><para><ulink url="https://github.com/artivis/kalmanif"><computeroutput>kalmanif</computeroutput></ulink>, A small collection of Kalman Filters on Lie groups.</para>
+</listitem><listitem><para><ulink url="https://github.com/aalbaali/cpp_filter"><computeroutput>cpp_filter</computeroutput></ulink>, Kalman filter using C++ and Manif.</para>
 </listitem></itemizedlist>
 </para>
 <para>Your project is not listed here? Let us know about it! </para>

@@ -214,8 +214,8 @@
       <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Dim</name></member>
       <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>DoF</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a82f2a6247e29d5448263fcc08279bd64" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>exp</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>generator</name></member>
       <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>generator</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1adc9baa1061d4722fa26842eae2e07729" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>inner</name></member>
       <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>innerWeights</name></member>
@@ -227,8 +227,7 @@
       <member refid="structmanif_1_1_tangent_base_1a8baef49ae68f130cda30e49f6f402999" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>LieAlg</name></member>
       <member refid="structmanif_1_1_tangent_base_1a2662a9b7a2dc0d5b1d34e1517e258300" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>LieGroup</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a41211983cd6b079d52bd5e23c2f044df" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljac</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a78c6848ad03d27864eb9633da29b27e1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljacinv</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a2a7e0e996eef0cb4bd537d172f04cdb2" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljacinv</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1aca0c3158a336270f9afc479c785051f6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>ljacinv</name></member>
       <member refid="structmanif_1_1_tangent_base_1a375b870e90fabfce45b5a74c46c54b62" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>lplus</name></member>
       <member refid="structmanif_1_1_tangent_base_1acc8d41b513681114f8091f53d81626a1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>minus</name></member>
       <member refid="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator*=</name></member>
@@ -250,8 +249,7 @@
       <member refid="structmanif_1_1_tangent_base_1abc26abf20f27e8ba2353557c565c04fd" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>RepSize</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a09deb968ba7b4df4a4c04e1a7431936d" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>retract</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a343dc5b0fc4d3b98296c8a885193d1e6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjac</name></member>
-      <member refid="structmanif_1_1_tangent_base_1ad06291edca01f9a97aaf338b414d2897" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjacinv</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a87ed7fdbe3f5cf3a8f9e27f58f4e8743" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjacinv</name></member>
+      <member refid="structmanif_1_1_s_e2_tangent_base_1a6eb9ddc1e73e22e8296871e5633eb2bc" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rjacinv</name></member>
       <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>rplus</name></member>
       <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_1aefc084ce4990e59ca52411394cebda2b" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>SE2Tangent</name></member>

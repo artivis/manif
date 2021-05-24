@@ -547,7 +547,9 @@
     <member refid="structmanif_1_1_s_e2_tangent_base_1a82f2a6247e29d5448263fcc08279bd64" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a09deb968ba7b4df4a4c04e1a7431936d" kind="function"><name>retract</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a343dc5b0fc4d3b98296c8a885193d1e6" kind="function"><name>rjac</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1a6eb9ddc1e73e22e8296871e5633eb2bc" kind="function"><name>rjacinv</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a41211983cd6b079d52bd5e23c2f044df" kind="function"><name>ljac</name></member>
+    <member refid="structmanif_1_1_s_e2_tangent_base_1aca0c3158a336270f9afc479c785051f6" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a6327d3fae0b79844d7a8076212003ac0" kind="function"><name>smallAdj</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a47763b4785b21aab469c308223bbc9cc" kind="function"><name>x</name></member>
     <member refid="structmanif_1_1_s_e2_tangent_base_1a2a0d4789c4c98ca38cd888e900e0a795" kind="function"><name>y</name></member>
@@ -723,7 +725,9 @@
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1afb04b180007af7452a9a9c2d43dbeeb2" kind="function"><name>exp</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a42b4dd820700280dc83093e16f281759" kind="function"><name>retract</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a888c7c2cf058a9585d2a752dfd47a175" kind="function"><name>rjac</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a80126dc28dbfae1210051b904b41a8d8" kind="function"><name>rjacinv</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a81455b0a5ffd68e9b22789f70a6f6b0c" kind="function"><name>ljac</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a39c2678e6fb4bde4fac3a4519e2650bb" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a985dd3e5043972ffa3a9e4f4cc5f9e0b" kind="function"><name>smallAdj</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a121cc1a16405baa4cbffce0237bfefa2" kind="function"><name>lin</name></member>
     <member refid="structmanif_1_1_s_e__2__3_tangent_base_1a54baf1c0a41a315cb011ccfd50eb3f30" kind="function"><name>lin</name></member>
@@ -1383,6 +1387,7 @@
   <compound refid="local__parametrization_8h" kind="file"><name>local_parametrization.h</name>
   </compound>
   <compound refid="macro_8h" kind="file"><name>macro.h</name>
+    <member refid="macro_8h_1a1f76fa22f06c931f74418984c095db7e" kind="define"><name>MANIF_UNUSED_VARIABLE</name></member>
     <member refid="macro_8h_1a7ba3690529e60792b6e5051d0596142c" kind="define"><name>__MANIF_EXPAND</name></member>
     <member refid="macro_8h_1ac2adf0ecddab949b2a1e6f1a1adb41af" kind="define"><name>__MANIF_HAVE_CPP_ATTRIBUTE</name></member>
     <member refid="macro_8h_1a0c84cdbf515886bb294fe8acc72e7894" kind="define"><name>__MANIF_THROW_EXCEPT</name></member>

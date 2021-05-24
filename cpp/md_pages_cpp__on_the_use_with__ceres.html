@@ -68,7 +68,7 @@
 <span class="p">};</span></pre><p>It produces the Jacobian,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;J}_{{\bf&space;x}\oplus\omega}^{e}=\frac{\delta{\bf&space;e}}{\delta({\bf&space;x}\oplus\omega)}=\lim_{\mathbf&space;h\to0}\frac{&space;f({\bf&space;x}+\mathbf&space;h)-f({\bf&space;x})}{\mathbf&space;h}.&space;(2)" alt="Image" /><p>In Ceres, a <a href="http://ceres-solver.org/nnls_modeling.html#localparameterization"><code>LocalParameterization</code></a> can be associated to a state.</p><pre class="m-code"><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="n">my_state</span><span class="p">;</span>
 
 <span class="n">ceres</span><span class="o">::</span><span class="n">Problem</span><span class="o">::</span><span class="n">Options</span> <span class="n">problem_options</span><span class="p">;</span>
-<span class="n">ceres</span><span class="o">::</span><span class="n">Problem</span> <span class="n">problem</span><span class="p">(</span><span class="n">problem_options</span><span class="p">);</span>
+<span class="n">ceres</span><span class="o">::</span><span class="n">Problem</span> <span class="nf">problem</span><span class="p">(</span><span class="n">problem_options</span><span class="p">);</span>
 
 <span class="c1">// Add the state to Ceres problem</span>
 <span class="n">problem</span><span class="o">-&gt;</span><span class="n">AddParameterBlock</span><span class="p">(</span><span class="n">my_state</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span>
@@ -118,7 +118,7 @@
 <span class="n">problem_options</span><span class="p">.</span><span class="n">cost_function_ownership</span> <span class="o">=</span> <span class="n">ceres</span><span class="o">::</span><span class="n">DO_NOT_TAKE_OWNERSHIP</span><span class="p">;</span>
 <span class="n">problem_options</span><span class="p">.</span><span class="n">local_parameterization_ownership</span> <span class="o">=</span> <span class="n">ceres</span><span class="o">::</span><span class="n">DO_NOT_TAKE_OWNERSHIP</span><span class="p">;</span>
 
-<span class="n">ceres</span><span class="o">::</span><span class="n">Problem</span> <span class="n">problem</span><span class="p">(</span><span class="n">problem_options</span><span class="p">);</span>
+<span class="n">ceres</span><span class="o">::</span><span class="n">Problem</span> <span class="nf">problem</span><span class="p">(</span><span class="n">problem_options</span><span class="p">);</span>
 
 <span class="c1">// We use a first manif helper that creates a ceres cost-function.</span>
 <span class="c1">// The cost function computes the distance between</span>

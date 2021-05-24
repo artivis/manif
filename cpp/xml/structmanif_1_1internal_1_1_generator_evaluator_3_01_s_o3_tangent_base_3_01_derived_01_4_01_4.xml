@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="283" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="283" bodyend="320"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="279" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="279" bodyend="316"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,7 +32,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="280" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="281" bodyend="321"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="276" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="277" bodyend="317"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4_1ae7521098a2a6d9806b817d33b81447e4" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; SO3TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
     </listofallmembers>

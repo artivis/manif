@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="52" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="234" bodyend="237"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="52" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="230" bodyend="233"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a3a0112d1572e1610ee5d521cd60e0715" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="61" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="119" bodyend="154"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="61" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="119" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ad3fae9c95cf2ca0c94a13d46a0c56f6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED LieGroup</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="69" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="158" bodyend="161"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="69" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="156" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aa1c549ab4ad326b7bd269ce2bf54196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="75" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="165" bodyend="168"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="75" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="163" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a4f569dbdb67563527d27a4f765f794de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="81" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="172" bodyend="192"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="81" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="170" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ab6e0056209e4c0eb429a503a3ce674c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="88" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="196" bodyend="199"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="88" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="193" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a898daa10bb62f58971553ec3e9f30cf1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="95" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="203" bodyend="223"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="95" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="200" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1aedda2b323400ba39f6d403c2c25f3df1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="101" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="227" bodyend="230"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="101" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="223" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ab94eec26f7d0841bba2e2f66e6cd8881" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="106" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="243" bodyend="246"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="106" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="239" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ae747a642593f8bd903363ce007851566" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="108" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="250" bodyend="253"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="108" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="246" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1af49907f7b2fe5d03cd6334c64e9260a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar</type>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="110" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="257" bodyend="260"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="110" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="253" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ac6cf668ba31b449e42f719bde7285c1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>AngBlock</type>
@@ -274,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="113" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="264" bodyend="267"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="113" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="260" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1ad419f605dc0c342e1764a36cb4d7e1f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const ConstAngBlock</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="114" column="23" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="271" bodyend="274"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" line="114" column="23" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3Tangent_base.h" bodystart="267" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
