@@ -8,32 +8,33 @@ namespace manif {
 
 // Forward declare for type traits specialization
 
-template<typename _Scalar, template<typename> class ... _T> struct Bundle;
-template<typename _Scalar, template<typename> class ... _T> struct BundleTangent;
+template <typename _Scalar, template<typename> class ... _T> struct Bundle;
+template <typename _Scalar, template<typename> class ... _T> struct BundleTangent;
 
 namespace internal {
 
 //! Traits specialization
-template<typename _Scalar, template<typename> class ... _T>
+template <typename _Scalar, template<typename> class ... _T>
 struct traits<Bundle<_Scalar, _T ...>>
 {
   // Bundle-specific traits
-  using IdxList = typename make_intseq<sizeof...(_T)>::type;
+  static constexpr std::size_t BundleSize = sizeof...(_T);
 
-  using LenDim = intseq<_T<_Scalar>::Dim ...>;
-  using BegDim = intseq_psum_t<LenDim>;
+  using Elements = std::tuple<_T<_Scalar>...>;
 
-  using LenDoF = intseq<_T<_Scalar>::DoF ...>;
-  using BegDoF = intseq_psum_t<LenDoF>;
+  template <int _N>
+  using Element = typename std::tuple_element<_N, Elements>::type;
 
-  using LenTra = intseq<_T<_Scalar>::Transformation::RowsAtCompileTime ...>;
-  using BegTra = intseq_psum_t<LenTra>;
+  template <int _N>
+  using MapElement = Eigen::Map<Element<_N>>;
 
-  using LenRep = intseq<_T<_Scalar>::RepSize ...>;
-  using BegRep = intseq_psum_t<LenRep>;
+  template <int _N>
+  using MapConstElement = Eigen::Map<const Element<_N>>;
 
-  template<std::size_t _Idx>
-  using ElementType = typename bundle_element<_Idx, _T<_Scalar>...>::type;
+  static constexpr std::array<int, sizeof...(_T)> DimIdx = compute_indices<_T<_Scalar>::Dim ...>();
+  static constexpr std::array<int, sizeof...(_T)> DoFIdx = compute_indices<_T<_Scalar>::DoF ...>();
+  static constexpr std::array<int, sizeof...(_T)> RepSizeIdx = compute_indices<_T<_Scalar>::RepSize ...>();
+  static constexpr std::array<int, sizeof...(_T)> TraIdx = compute_indices<_T<_Scalar>::Transformation::RowsAtCompileTime ...>();
 
   // Regular traits
   using Scalar = _Scalar;
@@ -43,17 +44,33 @@ struct traits<Bundle<_Scalar, _T ...>>
 
   using Base = BundleBase<Bundle<_Scalar, _T ...>>;
 
-  static constexpr int Dim = intseq_sum<LenDim>::value;
-  static constexpr int DoF = intseq_sum<LenDoF>::value;
-  static constexpr int RepSize = intseq_sum<LenRep>::value;
+  static constexpr int Dim = accumulate(int(_T<_Scalar>::Dim) ...);
+  static constexpr int DoF = accumulate(int(_T<_Scalar>::DoF) ...);
+  static constexpr int RepSize = accumulate(int(_T<_Scalar>::RepSize) ...);
 
   using DataType = Eigen::Matrix<_Scalar, RepSize, 1>;
   using Jacobian = Eigen::Matrix<_Scalar, DoF, DoF>;
-  using Transformation = Eigen::Matrix<
-    _Scalar, intseq_sum<LenTra>::value, intseq_sum<LenTra>::value
+  using Transformation = SquareMatrix<
+    _Scalar,
+    accumulate(int(_T<_Scalar>::Transformation::RowsAtCompileTime) ...)
   >;
   using Vector = Eigen::Matrix<_Scalar, Dim, 1>;
 };
+
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<Bundle<_Scalar, _T ...>>::DimIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<Bundle<_Scalar, _T ...>>::DoFIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<Bundle<_Scalar, _T ...>>::RepSizeIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<Bundle<_Scalar, _T ...>>::TraIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<Bundle<_Scalar, _T ...>>::Dim;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<Bundle<_Scalar, _T ...>>::DoF;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<Bundle<_Scalar, _T ...>>::RepSize;
 
 }  // namespace internal
 
@@ -87,21 +104,19 @@ private:
   using Base = BundleBase<Bundle<_Scalar, _T...>>;
   using Type = Bundle<_Scalar, _T...>;
 
-  using BegRep = typename internal::traits<Bundle>::BegRep;
-  using LenRep = typename internal::traits<Bundle>::LenRep;
-
 protected:
 
   using Base::derived;
 
 public:
 
+  template <int Idx> using Element = typename Base::template Element<Idx>;
+  using Base::BundleSize;
+
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_COMPLETE_GROUP_TYPEDEF
   MANIF_INHERIT_GROUP_API
-
-  using Base::BundleSize;
 
   Bundle()  = default;
   ~Bundle() = default;
@@ -140,8 +155,8 @@ public:
 protected:
 
   // Helper for the elements constructor
-  template<int ... _BegRep, int ... _LenRep>
-  Bundle(internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... elements);
+  template <int ... _Idx>
+  Bundle(internal::intseq<_Idx...>, const _T<_Scalar> & ... elements);
 
 protected:
 
@@ -158,16 +173,19 @@ Bundle<_Scalar, _T...>::Bundle(const LieGroupBase<_DerivedOther> & o)
 
 template<typename _Scalar, template<typename> class ... _T>
 Bundle<_Scalar, _T...>::Bundle(const _T<_Scalar> & ... elements)
-: Bundle(BegRep{}, LenRep{}, elements ...)
+: Bundle(internal::make_intseq_t<BundleSize>{}, elements ...)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
-template<int ... _BegRep, int ... _LenRep>
+template<int ... _Idx>
 Bundle<_Scalar, _T...>::Bundle(
-  internal::intseq<_BegRep...>, internal::intseq<_LenRep...>, const _T<_Scalar> & ... elements)
+  internal::intseq<_Idx...>, const _T<_Scalar> & ... elements
+)
 {
   // c++11 "fold expression"
-  auto l = {((data_.template segment<_LenRep>(_BegRep) = elements.coeffs()), 0) ...};
+  auto l = {((data_.template segment<Element<_Idx>::RepSize>(
+    std::get<_Idx>(internal::traits<Type>::RepSizeIdx)
+  ) = elements.coeffs()), 0) ...};
   static_cast<void>(l);  // compiler warning
 }
 

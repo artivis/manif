@@ -18,22 +18,22 @@ template<typename _Scalar, template<typename> class ... _T>
 struct traits<BundleTangent<_Scalar, _T...>>
 {
   // BundleTangent-specific traits
-  using IdxList = typename make_intseq<sizeof...(_T)>::type;
+  static constexpr std::size_t BundleSize = sizeof...(_T);
 
-  using LenDim = intseq<_T<_Scalar>::Tangent::Dim ...>;
-  using BegDim = intseq_psum_t<LenDim>;
+  using Elements = std::tuple<typename _T<_Scalar>::Tangent...>;
 
-  using LenDoF = intseq<_T<_Scalar>::Tangent::DoF ...>;
-  using BegDoF = intseq_psum_t<LenDoF>;
+  template <int _N>
+  using Element = typename std::tuple_element<_N, Elements>::type;
 
-  using LenRep = intseq<_T<_Scalar>::Tangent::RepSize ...>;
-  using BegRep = intseq_psum_t<LenRep>;
+  template <int _N>
+  using MapElement = Eigen::Map<Element<_N>>;
 
-  using LenAlg = intseq<_T<_Scalar>::Tangent::LieAlg::RowsAtCompileTime ...>;
-  using BegAlg = intseq_psum_t<LenAlg>;
+  template <int _N>
+  using MapConstElement = Eigen::Map<const Element<_N>>;
 
-  template<std::size_t _Idx>
-  using ElementType = typename bundle_element<_Idx, _T<_Scalar>...>::type::Tangent;
+  static constexpr std::array<int, sizeof...(_T)> DoFIdx = compute_indices<_T<_Scalar>::Tangent::DoF ...>();
+  static constexpr std::array<int, sizeof...(_T)> RepSizeIdx = compute_indices<_T<_Scalar>::Tangent::RepSize ...>();
+  static constexpr std::array<int, sizeof...(_T)> AlgIdx = compute_indices<_T<_Scalar>::Tangent::LieAlg::RowsAtCompileTime ...>();
 
   // Regular traits
   using Scalar = _Scalar;
@@ -43,15 +43,30 @@ struct traits<BundleTangent<_Scalar, _T...>>
 
   using Base = BundleTangentBase<Tangent>;
 
-  static constexpr int Dim = intseq_sum<LenDim>::value;
-  static constexpr int DoF = intseq_sum<LenDoF>::value;
-  static constexpr int RepSize = intseq_sum<LenRep>::value;
+  static constexpr int Dim = accumulate(int(_T<_Scalar>::Tangent::Dim) ...);
+  static constexpr int DoF = accumulate(int(_T<_Scalar>::Tangent::DoF) ...);
+  static constexpr int RepSize = accumulate(int(_T<_Scalar>::Tangent::RepSize) ...);
 
   using DataType = Eigen::Matrix<Scalar, RepSize, 1>;
   using Jacobian = Eigen::Matrix<Scalar, DoF, DoF>;
-  using LieAlg = Eigen::Matrix<Scalar, intseq_sum<LenAlg>::value,
-      intseq_sum<LenAlg>::value>;
+  using LieAlg = SquareMatrix<
+    Scalar,
+    accumulate(int(_T<_Scalar>::Tangent::LieAlg::RowsAtCompileTime) ...)
+  >;
 };
+
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<BundleTangent<_Scalar, _T ...>>::DoFIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<BundleTangent<_Scalar, _T ...>>::RepSizeIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr std::array<int, sizeof...(_T)> traits<BundleTangent<_Scalar, _T ...>>::AlgIdx;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<BundleTangent<_Scalar, _T ...>>::Dim;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<BundleTangent<_Scalar, _T ...>>::DoF;
+template <typename _Scalar, template<typename> class ... _T>
+const constexpr int traits<BundleTangent<_Scalar, _T ...>>::RepSize;
 
 }  // namespace internal
 
@@ -72,22 +87,20 @@ private:
   using Base = BundleTangentBase<BundleTangent<_Scalar, _T...>>;
   using Type = BundleTangent<_Scalar, _T...>;
 
-  using BegRep = typename internal::traits<BundleTangent>::BegRep;
-  using LenRep = typename internal::traits<BundleTangent>::LenRep;
-
 protected:
 
   using Base::derived;
 
 public:
 
+  template <int Idx> using Element = typename Base::template Element<Idx>;
+  using Base::BundleSize;
+
   MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND
 
   MANIF_TANGENT_TYPEDEF
   MANIF_INHERIT_TANGENT_API
   MANIF_INHERIT_TANGENT_OPERATOR
-
-  using Base::BundleSize;
 
   BundleTangent()  = default;
   ~BundleTangent() = default;
@@ -124,16 +137,16 @@ public:
 protected:
 
   // Helper for the elements constructor
-  template<int ... _BegRep, int ... _LenRep>
+  template <int ... _Idx>
   BundleTangent(
-    internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
-    const typename _T<_Scalar>::Tangent & ... elements);
+    internal::intseq<_Idx...>,
+    const typename _T<_Scalar>::Tangent & ... elements
+  );
 
 protected:
 
   DataType data_;
 };
-
 
 template<typename _Scalar, template<typename> class ... _T>
 template<typename _DerivedOther>
@@ -143,17 +156,19 @@ BundleTangent<_Scalar, _T...>::BundleTangent(const TangentBase<_DerivedOther> & 
 
 template<typename _Scalar, template<typename> class ... _T>
 BundleTangent<_Scalar, _T...>::BundleTangent(const typename _T<_Scalar>::Tangent & ... elements)
-: BundleTangent(BegRep{}, LenRep{}, elements ...)
+: BundleTangent(internal::make_intseq_t<BundleSize>{}, elements ...)
 {}
 
 template<typename _Scalar, template<typename> class ... _T>
-template<int ... _BegRep, int ... _LenRep>
+template<int ... _Idx>
 BundleTangent<_Scalar, _T...>::BundleTangent(
-  internal::intseq<_BegRep...>, internal::intseq<_LenRep...>,
-  const typename _T<_Scalar>::Tangent & ... elements)
-{
+  internal::intseq<_Idx...>,
+  const typename _T<_Scalar>::Tangent & ... elements
+) {
   // c++11 "fold expression"
-  auto l = {((data_.template segment<_LenRep>(_BegRep) = elements.coeffs()), 0) ...};
+  auto l = {((data_.template segment<Element<_Idx>::RepSize>(
+    std::get<_Idx>(internal::traits<Type>::RepSizeIdx)
+  ) = elements.coeffs()), 0) ...};
   static_cast<void>(l);  // compiler warning
 }
 

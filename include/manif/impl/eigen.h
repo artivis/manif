@@ -108,6 +108,10 @@
   assert_cols_dim(x, dim);
 
 namespace manif {
+
+template <typename Scalar, int S>
+using SquareMatrix = Eigen::Matrix<Scalar, S, S>;
+
 namespace internal {
 
 template< class Base, class Derived >

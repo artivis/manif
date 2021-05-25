@@ -50,7 +50,7 @@ foreach(target ${CXX_11_EXAMPLE_TARGETS})
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
-      )
+    )
   endif()
 
 endforeach()

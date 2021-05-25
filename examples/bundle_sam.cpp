@@ -83,10 +83,10 @@ void add_pose_factor(
     Eigen::Ref<Eigen::Matrix<double, 3, BundleT::DoF>> J)
 {
     // index start position and length in the DoF of BundleT
-    constexpr int BegI = manif::internal::intseq_element<XI, BundleT::BegDoF>::value;
-    constexpr int LenI = manif::internal::intseq_element<XI, BundleT::LenDoF>::value;
-    constexpr int BegJ = manif::internal::intseq_element<XJ, BundleT::BegDoF>::value;
-    constexpr int LenJ = manif::internal::intseq_element<XJ, BundleT::LenDoF>::value;
+    constexpr int BegI = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
+    constexpr int LenI = BundleT::Element<XI>::DoF;
+    constexpr int BegJ = std::get<XJ>(manif::internal::traits<BundleT>::DoFIdx);
+    constexpr int LenJ = BundleT::Element<XJ>::DoF;
 
     MatrixT         J_d_xi, J_d_xj; // Jacobian of motion wrt poses i and j
 
@@ -109,10 +109,10 @@ void add_beacon_factor(
     Eigen::Ref<Eigen::Matrix<double, 2, BundleT::DoF>> J)
 {
     // index start position and length in the DoF of BundleT
-    constexpr int BegX = manif::internal::intseq_element<XI, BundleT::BegDoF>::value;
-    constexpr int LenX = manif::internal::intseq_element<XI, BundleT::LenDoF>::value;
-    constexpr int BegLMK = manif::internal::intseq_element<NUM_POSES + LK, BundleT::BegDoF>::value;
-    constexpr int LenLMK = manif::internal::intseq_element<NUM_POSES + LK, BundleT::LenDoF>::value;
+    constexpr int BegX = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
+    constexpr int LenX = BundleT::Element<XI>::DoF;
+    constexpr int BegLMK = std::get<NUM_POSES + LK>(manif::internal::traits<BundleT>::DoFIdx);
+    constexpr int LenLMK = BundleT::Element<NUM_POSES + LK>::DoF;
 
     MatrixT         J_ix_x;         // Jacobian of inverse pose wrt pose
     MatrixYT        J_e_ix;         // Jacobian of measurement expectation wrt inverse pose
@@ -157,13 +157,13 @@ int main()
     SE2Tangentd         u_nom;      // nominal control signal
     ArrayT              u_sigmas;   // control noise std specification
     VectorT             u_noise;    // control noise
-    MatrixT             Q;          // Covariance
+    // MatrixT             Q;          // Covariance
     MatrixT             W;          // sqrt Info
     vector<SE2Tangentd> controls;   // robot controls
 
     u_nom     << 0.1, 0.0, 0.05;
     u_sigmas  << 0.01, 0.01, 0.01;
-    Q         = (u_sigmas * u_sigmas).matrix().asDiagonal();
+    // Q         = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W         =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
 
     // Landmarks in R^2 and map
@@ -187,12 +187,12 @@ int main()
     // Define the beacon's measurements in R^2
     VectorY             y, y_noise;
     ArrayY              y_sigmas;
-    MatrixY             R; // Covariance
+    // MatrixY             R; // Covariance
     MatrixY             S; // sqrt Info
     vector<map<int,VectorY>> measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
     y_sigmas << 0.001, 0.001;
-    R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
+    // R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
     S        =  y_sigmas.inverse()  .matrix().asDiagonal(); // this is R^(-T/2)
 
     // Problem-size variables
@@ -376,10 +376,10 @@ int main()
 
     // ground truth
     cout << "ground truth" << std::showpos << endl;
-    for (const auto& X : poses_simu)
-        cout << "pose  : " << X.translation().transpose() << " " << X.angle() << endl;
-    for (const auto& b : landmarks_simu)
-        cout << "lmk : " << b.transpose() << endl;
+    for (const auto& ps : poses_simu)
+        cout << "pose  : " << ps.translation().transpose() << " " << ps.angle() << endl;
+    for (const auto& ls : landmarks_simu)
+        cout << "lmk : " << ls.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     return 0;

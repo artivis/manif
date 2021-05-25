@@ -1,6 +1,7 @@
 #ifndef _MANIF_MANIF_TRAITS_H_
 #define _MANIF_MANIF_TRAITS_H_
 
+#include <array>
 #include <type_traits>
 
 namespace manif {
@@ -109,7 +110,9 @@ struct intseq_join<_IntSeq<_I1...>, _IntSeq<_I2...>>
 template<std::size_t _N>
 struct make_intseq
 {
-  using type = typename intseq_join<typename make_intseq<_N - 1>::type, intseq<_N - 1>>::type;
+  using type = typename intseq_join<
+    typename make_intseq<_N - 1>::type, intseq<_N - 1>
+  >::type;
 };
 
 template<>
@@ -118,81 +121,33 @@ struct make_intseq<0>
   using type = intseq<>;
 };
 
-/**
- * @brief extract intseq element
- */
-template<std::size_t _Idx, typename _Seq>
-struct intseq_element;
+template <std::size_t _N>
+using make_intseq_t = typename make_intseq<_N>::type;
 
-template<std::size_t _Idx, template<int ...> class _IntSeq, int Head, int ... Tail>
-struct intseq_element<_Idx, _IntSeq<Head, Tail...>>
-  : public intseq_element<_Idx - 1, _IntSeq<Tail...>>
-{};
+template <typename T>
+constexpr T accumulate(T t) {
+  return t;
+}
 
-template<template<int ...> class _IntSeq, int Head, int ... Tail>
-struct intseq_element<0, _IntSeq<Head, Tail ...>>
-{
-  static constexpr int value = Head;
+template <typename T, typename... Rest>
+constexpr T accumulate(T t, Rest... rest) {
+  return t + accumulate(rest...);
+}
+
+template <int N, int i, int j, int ...Args> struct compute_indices_gen {
+  static constexpr std::array<int, sizeof...(Args)+1> get() {
+    return compute_indices_gen<N-1, i+j, Args..., i+j>::get();
+  }
 };
-
-/**
- * @brief sum an intseq
- */
-template<typename _Seq>
-struct intseq_sum;
-
-template<template<int ...> class _IntSeq, int I, int ... Is>
-struct intseq_sum<_IntSeq<I, Is...>>
-{
-  static constexpr int value = I + intseq_sum<_IntSeq<Is...>>::value;
+template <int i, int j, int ...Args> struct compute_indices_gen<1, i, j, Args...> {
+  static constexpr std::array<int, sizeof...(Args)+1> get() {
+    return { { 0, Args... } };
+  }
 };
-
-template<template<int ...> class _IntSeq>
-struct intseq_sum<_IntSeq<>>
-{
-  static constexpr int value = 0;
-};
-
-/**
- * @brief prefix-sum an intseq
- */
-template<typename _Collected, typename _Remaining, int Sum>
-struct intseq_psum;
-
-template<template<int ...> class _IntSeq, int... _Cur, int _Sum>
-struct intseq_psum<_IntSeq<_Cur...>, _IntSeq<>, _Sum>
-{
-  using type = _IntSeq<_Cur...>;
-};
-
-template<template<int ...> class _IntSeq, int _First, int _Sum, int... _Cur, int... _Rem>
-struct intseq_psum<_IntSeq<_Cur...>, _IntSeq<_First, _Rem...>, _Sum>
-  : intseq_psum<_IntSeq<_Cur..., _Sum>, _IntSeq<_Rem...>, _Sum + _First>
-{};
-
-/**
- * @brief prefix-sum an intseq
- */
-template<class _Seq>
-using intseq_psum_t = typename intseq_psum<intseq<>, _Seq, 0>::type;
-
-/**
- * @brief extract element of typelist
- */
-template<std::size_t Idx, class ... T>
-struct bundle_element;
-
-// recursive case
-template<std::size_t Idx, class Head, class... Tail>
-struct bundle_element<Idx, Head, Tail...>
-    : public bundle_element<Idx-1, Tail...> { };
-
-// base case
-template<class Head, class... Tail>
-struct bundle_element<0, Head, Tail...>
-{
-  using type = Head;
-};
+//! @brief Compute indices given block-sizes
+template <int... Args> constexpr std::array<int, sizeof...(Args)> compute_indices() {
+  return compute_indices_gen<sizeof...(Args), 0, Args...>::get();
+}
 
 } /* namespace internal */
 } /* namespace manif */
