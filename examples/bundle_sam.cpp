@@ -83,9 +83,9 @@ void add_pose_factor(
     Eigen::Ref<Eigen::Matrix<double, 3, BundleT::DoF>> J)
 {
     // index start position and length in the DoF of BundleT
-    constexpr int BegI = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
+    const int BegI = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
     constexpr int LenI = BundleT::Element<XI>::DoF;
-    constexpr int BegJ = std::get<XJ>(manif::internal::traits<BundleT>::DoFIdx);
+    const int BegJ = std::get<XJ>(manif::internal::traits<BundleT>::DoFIdx);
     constexpr int LenJ = BundleT::Element<XJ>::DoF;
 
     MatrixT         J_d_xi, J_d_xj; // Jacobian of motion wrt poses i and j
@@ -109,9 +109,9 @@ void add_beacon_factor(
     Eigen::Ref<Eigen::Matrix<double, 2, BundleT::DoF>> J)
 {
     // index start position and length in the DoF of BundleT
-    constexpr int BegX = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
+    const int BegX = std::get<XI>(manif::internal::traits<BundleT>::DoFIdx);
     constexpr int LenX = BundleT::Element<XI>::DoF;
-    constexpr int BegLMK = std::get<NUM_POSES + LK>(manif::internal::traits<BundleT>::DoFIdx);
+    const int BegLMK = std::get<NUM_POSES + LK>(manif::internal::traits<BundleT>::DoFIdx);
     constexpr int LenLMK = BundleT::Element<NUM_POSES + LK>::DoF;
 
     MatrixT         J_ix_x;         // Jacobian of inverse pose wrt pose

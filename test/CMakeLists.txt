@@ -51,27 +51,27 @@ endfunction()
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # # R^n tests
-# add_subdirectory(rn)
+add_subdirectory(rn)
 
 # # SO2 tests
-# add_subdirectory(so2)
+add_subdirectory(so2)
 
 # # SO3 tests
-# add_subdirectory(so3)
+add_subdirectory(so3)
 
 # # SE2 tests
-# add_subdirectory(se2)
+add_subdirectory(se2)
 
 # # SE3 tests
-# add_subdirectory(se3)
+add_subdirectory(se3)
 
 # # SE_2_3 tests
-# add_subdirectory(se_2_3)
+add_subdirectory(se_2_3)
 
 # Bundle tests
 add_subdirectory(bundle)
 
-# find_package(Ceres QUIET)
+find_package(Ceres QUIET)
 
 if(CERES_FOUND)
 

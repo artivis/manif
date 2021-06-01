@@ -1,11 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "manif/Bundle.h"
-#include "manif/Rn.h"
-#include "manif/SO2.h"
-#include "manif/SO3.h"
-#include "manif/SE2.h"
-#include "manif/SE3.h"
+#include "manif/manif.h"
 
 #include "../common_tester.h"
 
@@ -207,40 +202,6 @@ TEST(BundleTangent, Jacobians)
 MANIF_TEST(GroupA);
 MANIF_TEST_MAP(GroupA);
 MANIF_TEST_JACOBIANS(GroupA);
-
-using GroupB1 = Bundle<double, R3>;
-using GroupB2 = Bundle<double, SO2>;
-using GroupB3 = Bundle<double, SE2>;
-using GroupB4 = Bundle<double, SO3>;
-using GroupB5 = Bundle<double, SE3>;
-
-using GroupC = Bundle<double, R2, SO2, SE2, SO3, SE3>;
-using GroupD = Bundle<double, SE2, R7, SO3, R2, R2>;
-
-MANIF_TEST(GroupB1);
-MANIF_TEST(GroupB2);
-MANIF_TEST(GroupB3);
-MANIF_TEST(GroupB4);
-MANIF_TEST(GroupB5);
-MANIF_TEST(GroupC);
-MANIF_TEST(GroupD);
-
-MANIF_TEST_MAP(GroupB1);
-MANIF_TEST_MAP(GroupB2);
-MANIF_TEST_MAP(GroupB3);
-MANIF_TEST_MAP(GroupB4);
-MANIF_TEST_MAP(GroupB5);
-MANIF_TEST_MAP(GroupC);
-MANIF_TEST_MAP(GroupD);
-
-MANIF_TEST_JACOBIANS(GroupB1);
-MANIF_TEST_JACOBIANS(GroupB2);
-MANIF_TEST_JACOBIANS(GroupB3);
-MANIF_TEST_JACOBIANS(GroupB4);
-MANIF_TEST_JACOBIANS(GroupB5);
-MANIF_TEST_JACOBIANS(GroupC);
-MANIF_TEST_JACOBIANS(GroupD);
-
 
 int main(int argc, char ** argv)
 {
