@@ -518,6 +518,9 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="18">
+        <label>tl/optional.hpp</label>
+      </node>
       <node id="52">
         <label>manif/impl/se3/SE3Tangent_map.h</label>
         <link refid="_s_e3_tangent__map_8h_source"/>
@@ -614,9 +617,6 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>lt/optional.hpp</label>
       </node>
       <node id="25">
         <label>manif/impl/so2/SO2.h</label>

@@ -179,6 +179,9 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="18">
+        <label>tl/optional.hpp</label>
+      </node>
       <node id="10">
         <label>type_traits</label>
       </node>
@@ -187,9 +190,6 @@
         <link refid="traits_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>lt/optional.hpp</label>
       </node>
       <node id="23">
         <label>manif/impl/so2/SO2.h</label>

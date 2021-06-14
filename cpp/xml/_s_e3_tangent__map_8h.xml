@@ -108,6 +108,9 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="19">
+        <label>tl/optional.hpp</label>
+      </node>
       <node id="1">
         <label>SE3Tangent_map.h</label>
         <link refid="_s_e3_tangent__map_8h"/>
@@ -138,9 +141,6 @@
         <link refid="_s_o3_tangent__map_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-      </node>
-      <node id="19">
-        <label>lt/optional.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>

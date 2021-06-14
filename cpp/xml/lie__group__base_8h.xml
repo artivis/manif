@@ -8,7 +8,7 @@
     <includes refid="tangent__base_8h" local="yes">manif/impl/tangent_base.h</includes>
     <includes refid="assignment__assert_8h" local="yes">manif/impl/assignment_assert.h</includes>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
-    <includes local="yes">lt/optional.hpp</includes>
+    <includes local="no">tl/optional.hpp</includes>
     <includedby refid="average_8h" local="yes">average.h</includedby>
     <includedby refid="bezier_8h" local="yes">bezier.h</includedby>
     <includedby refid="decasteljau_8h" local="yes">decasteljau.h</includedby>
@@ -119,6 +119,9 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="16">
+        <label>tl/optional.hpp</label>
+      </node>
       <node id="5">
         <label>type_traits</label>
       </node>
@@ -127,9 +130,6 @@
         <link refid="traits_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="16">
-        <label>lt/optional.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
