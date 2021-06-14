@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.1)
 cmake_policy(SET CMP0048 NEW)
 
-project(manif VERSION 0.0.3 LANGUAGES CXX)
+project(manif VERSION 0.0.4 LANGUAGES CXX)
 
 # Get the project name in capital letters
 # for the lib namespace

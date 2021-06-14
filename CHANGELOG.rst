@@ -2,8 +2,8 @@
 Changelog for package manif
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2021-06-14)
+------------------
 * Merge pull request `#231 <https://github.com/artivis/manif/issues/231>`_ from artivis/devel
   [sync] Prepare release 0.0.4
 * Add the possibility to use a system wide installation of tl-optional (`#207 <https://github.com/artivis/manif/issues/207>`_)
