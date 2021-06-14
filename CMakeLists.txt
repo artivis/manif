@@ -80,10 +80,18 @@ add_library(${PROJECT_NAME} INTERFACE)
 #  INTERFACE_COMPILE_FEATURES cxx_std_11
 #)
 
+option(USE_SYSTEM_WIDE_TL_OPTIONAL "Use a system wide installation of tl-optional" OFF)
+
+find_package(tl-optional 1.0.0 QUIET)
+if(USE_SYSTEM_WIDE_TL_OPTIONAL AND NOT tl-optional_FOUND)
+  message(FATAL_ERROR "Could not find required package tl-optional")
+endif()
+
 target_include_directories(${PROJECT_NAME} INTERFACE
-  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}/external/lt>"
+  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include$<$<NOT:$<BOOL:${tl-optional_FOUND}>>:;${PROJECT_SOURCE_DIR}/external/tl>>"
   "$<INSTALL_INTERFACE:include>"
 )
+target_link_libraries(${PROJECT_NAME} INTERFACE "$<$<BOOL:${tl-optional_FOUND}>:tl::optional>")
 
 # Add Eigen interface dependency, depending on available cmake info
 if(TARGET Eigen3::Eigen)
@@ -155,10 +163,14 @@ install(
 )
 
 # Headers:
-install(
-  FILES "${PROJECT_SOURCE_DIR}/external/lt/lt/optional.hpp"
-  DESTINATION include/lt
-)
+
+# if tl-optional is not found manif will install its own version
+if(NOT tl-optional_FOUND)
+  install(
+    FILES "${PROJECT_SOURCE_DIR}/external/tl/tl/optional.hpp"
+    DESTINATION include/tl
+  )
+endif()
 
 install(
   DIRECTORY "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}"
