@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(manif CXX)
+cmake_minimum_required(VERSION 3.5.1)
+cmake_policy(SET CMP0048 NEW)
+
+project(manif VERSION 0.0.3 LANGUAGES CXX)
 
 # Get the project name in capital letters
 # for the lib namespace
@@ -26,7 +28,7 @@ endif()
 find_package(Eigen3 QUIET)
 
 if(NOT EIGEN3_FOUND)
-  LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
   find_package(Eigen3 REQUIRED)
 endif()
 
@@ -54,6 +56,14 @@ endif()
 option(BUILD_TESTING "Build all tests." OFF)
 option(ENABLE_CPPCHECK "Enable cppcheck." OFF)
 option(BUILD_EXAMPLES "Build all examples." OFF)
+option(BUILD_BENCHMARKING "Build all benchmarks." OFF)
+option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
+option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
+
+if (BUILD_PYTHON_BINDINGS)
+  find_package(pybind11 REQUIRED)
+  add_subdirectory(python)
+endif()
 
 ###########
 ## Build ##
@@ -70,10 +80,18 @@ add_library(${PROJECT_NAME} INTERFACE)
 #  INTERFACE_COMPILE_FEATURES cxx_std_11
 #)
 
+option(USE_SYSTEM_WIDE_TL_OPTIONAL "Use a system wide installation of tl-optional" OFF)
+
+find_package(tl-optional 1.0.0 QUIET)
+if(USE_SYSTEM_WIDE_TL_OPTIONAL AND NOT tl-optional_FOUND)
+  message(FATAL_ERROR "Could not find required package tl-optional")
+endif()
+
 target_include_directories(${PROJECT_NAME} INTERFACE
-  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}/external/lt>"
+  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include$<$<NOT:$<BOOL:${tl-optional_FOUND}>>:;${PROJECT_SOURCE_DIR}/external/tl>>"
   "$<INSTALL_INTERFACE:include>"
 )
+target_link_libraries(${PROJECT_NAME} INTERFACE "$<$<BOOL:${tl-optional_FOUND}>:tl::optional>")
 
 # Add Eigen interface dependency, depending on available cmake info
 if(TARGET Eigen3::Eigen)
@@ -132,28 +150,40 @@ configure_package_config_file(
 # Configure '<PROJECT-NAME>ConfigVersion.cmake'
 write_basic_package_version_file(
   "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
-  VERSION 0.0.0
+  VERSION ${PROJECT_VERSION}
   COMPATIBILITY AnyNewerVersion
 )
 
 # Config
 install(
-  FILES       "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
-              "${generated_dir}/${PROJECT_NAME}Config.cmake"
+  FILES
+    "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
+    "${generated_dir}/${PROJECT_NAME}Config.cmake"
   DESTINATION "${config_install_dir}"
 )
 
 # Headers:
-install(
-  FILES "${PROJECT_SOURCE_DIR}/external/lt/lt/optional.hpp"
-  DESTINATION include/lt
-)
+
+# if tl-optional is not found manif will install its own version
+if(NOT tl-optional_FOUND)
+  install(
+    FILES "${PROJECT_SOURCE_DIR}/external/tl/tl/optional.hpp"
+    DESTINATION include/tl
+  )
+endif()
 
 install(
   DIRECTORY "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}"
   DESTINATION include
 )
 
+# Test utils
+install(
+  FILES
+    "${PROJECT_SOURCE_DIR}/test/gtest_eigen_utils.h"
+    "${PROJECT_SOURCE_DIR}/test/gtest_manif_utils.h"
+  DESTINATION "include/${PROJECT_NAME}/gtest"
+)
 
 ##############
 ## Examples ##
@@ -211,6 +241,10 @@ if(ENABLE_CPPCHECK)
         --suppress=missingInclude
         --suppress=unmatchedSuppression:*
         --suppress=syntaxError:*tangent_base.h:370
+        --suppress=unknownMacro:*test/common_tester.h
+        --suppress=unknownMacro:*test/ceres/ceres_test_utils.h
+        --suppress=constStatement:*examples*
+        --suppress=unreadVariable:*gtest_se2_autodiff.cpp:101
         # Uncomment the line below to run cppcheck-html
         # --output-file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
         ${CMAKE_SOURCE_DIR}/include
@@ -263,3 +297,20 @@ if(BUILD_TESTING)
   add_subdirectory(test)
 
 endif(BUILD_TESTING)
+
+if(BUILD_PYTHON_BINDINGS AND (BUILD_TESTING OR BUILD_TESTING_PYTHON))
+
+  enable_testing()
+  add_subdirectory(test/python)
+
+endif()
+
+# ------------------------------------------------------------------------------
+# Benchmark
+# ------------------------------------------------------------------------------
+
+if(BUILD_BENCHMARKING)
+
+  add_subdirectory(benchmark)
+
+endif(BUILD_BENCHMARKING)

@@ -154,7 +154,7 @@ typename SO2Base<_Derived>::Transformation
 SO2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
-  T.template block<2,2>(0,0) = rotation();
+  T.template topLeftCorner<2, 2>() = rotation();
   return T;
 }
 
@@ -223,7 +223,7 @@ SO2Base<_Derived>::compose(
 
   const Scalar ret_sqnorm = ret_real*ret_real+ret_imag*ret_imag;
 
-  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps)
   {
     const Scalar scale = approxSqrtInv(ret_sqnorm);
     ret_real *= scale;
@@ -245,7 +245,7 @@ SO2Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    (*J_vout_m) = R * skew(Scalar(1)) * v;
+    J_vout_m->noalias() = R * skew(Scalar(1)) * v;
   }
 
   if (J_vout_v)
@@ -332,10 +332,11 @@ struct AssignmentEvaluatorImpl<SO2Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.norm()-typename SO2Base<Derived>::Scalar(1)) <
-      Constants<typename SO2Base<Derived>::Scalar>::eps_s,
+      Constants<typename SO2Base<Derived>::Scalar>::eps,
       "SO2 assigned data not normalized !",
       invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

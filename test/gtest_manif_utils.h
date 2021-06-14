@@ -1,10 +1,10 @@
-#ifndef _MANIF_MANIF_TEST_UTILS_H_
-#define _MANIF_MANIF_TEST_UTILS_H_
+#ifndef _MANIF_MANIF_GTEST_GTEST_MANIF_UTILS_H_
+#define _MANIF_MANIF_GTEST_GTEST_MANIF_UTILS_H_
 
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/utils.h"
 
-#include "eigen_gtest.h"
+#include "gtest_eigen_utils.h"
 
 #include <random>
 #include <chrono>
@@ -123,4 +123,4 @@ protected:
 
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_TEST_UTILS_H_ */
+#endif /* _MANIF_MANIF_GTEST_GTEST_MANIF_UTILS_H_ */

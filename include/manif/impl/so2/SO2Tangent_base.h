@@ -117,7 +117,7 @@ SO2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
     (*J_m_t) = rjac();
   }
 
-  return LieGroup(cos(coeffs()(0)), sin(coeffs()(0)));
+  return LieGroup(cos(angle()), sin(angle()));
 }
 
 template <typename _Derived>
@@ -132,8 +132,8 @@ typename SO2TangentBase<_Derived>::LieAlg
 SO2TangentBase<_Derived>::hat() const
 {
   return (LieAlg() <<
-    Scalar(0)          , Scalar(-coeffs()(0)),
-    Scalar(coeffs()(0)), Scalar(0)            ).finished();
+    Scalar(0)      , Scalar(-angle()),
+    Scalar(angle()), Scalar(0)        ).finished();
 }
 
 template <typename _Derived>

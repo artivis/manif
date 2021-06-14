@@ -198,10 +198,12 @@ template <typename _Derived>
 typename SE_2_3Base<_Derived>::Isometry
 SE_2_3Base<_Derived>::isometry() const
 {
-  Eigen::Matrix<Scalar, 5, 5> T = Eigen::Matrix<Scalar, 5, 5>::Identity();
+  Eigen::Matrix<Scalar, 5, 5> T;
   T.template topLeftCorner<3,3>() = rotation();
   T.template block<3, 1>(0, 3) = translation();
   T.template topRightCorner<3,1>() = linearVelocity();
+  T.template bottomLeftCorner<2,3>().setZero();
+  T.template bottomRightCorner<2,2>().setIdentity();
   return T;
 }
 
@@ -318,8 +320,8 @@ SE_2_3Base<_Derived>::act(const Eigen::MatrixBase<_EigenDerived> &v,
 
   if (J_vout_m)
   {
-    J_vout_m->template topLeftCorner<3,3>()  =  R;
-    J_vout_m->template block<3,3>(0, 3) = -R * skew(v);
+    J_vout_m->template topLeftCorner<3,3>() = R;
+    J_vout_m->template block<3,3>(0, 3).noalias() = -R * skew(v);
     J_vout_m->template topRightCorner<3,3>().setZero();
   }
 
@@ -346,17 +348,20 @@ SE_2_3Base<_Derived>::adj() const
   /// with T = [t]_x
   /// with V = [v]_x
 
-  Jacobian Adj = Jacobian::Zero();
+  Jacobian Adj;
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
   Adj.template block<3,3>(3,3) =
       Adj.template topLeftCorner<3,3>();
 
-  Adj.template block<3,3>(0, 3) =
+  Adj.template block<3,3>(0, 3).noalias() =
     skew(translation()) * Adj.template topLeftCorner<3,3>();
-  Adj.template block<3,3>(6, 3) =
+  Adj.template block<3,3>(6, 3).noalias() =
     skew(linearVelocity()) * Adj.template topLeftCorner<3,3>();
+
+  Adj.template bottomLeftCorner<6,3>().setZero();
+  Adj.template topRightCorner<6,3>().setZero();
 
   return Adj;
 }
@@ -420,30 +425,12 @@ struct RandomEvaluatorImpl<SE_2_3Base<Derived>>
   template <typename T>
   static void run(T& m)
   {
-    // @note:
-    // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
-    // which is the default version in Ubuntu 16.04
-    // So we copy its implementation here.
-
-    using std::sqrt;
-    using std::sin;
-    using std::cos;
-
     using Scalar      = typename SE_2_3Base<Derived>::Scalar;
     using Translation = typename SE_2_3Base<Derived>::Translation;
-    using Quaternion  = typename SE_2_3Base<Derived>::QuaternionDataType;
     using LinearVelocity = typename SE_2_3Base<Derived>::LinearVelocity;
     using LieGroup    = typename SE_2_3Base<Derived>::LieGroup;
 
-    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
-                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
-                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
-    const Scalar a = sqrt(1. - u1),
-                 b = sqrt(u1);
-
-    m = LieGroup(Translation::Random(),
-                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)),
-                 LinearVelocity::Random());
+    m = LieGroup(Translation::Random(), randQuat<Scalar>(), LinearVelocity::Random());
   }
 };
 
@@ -457,10 +444,11 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.template segment<4>(3).norm()-typename SE_2_3Base<Derived>::Scalar(1)) <
-      Constants<typename SE_2_3Base<Derived>::Scalar>::eps_s,
+      Constants<typename SE_2_3Base<Derived>::Scalar>::eps,
       "SE_2_3 assigned data not normalized !",
       manif::invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

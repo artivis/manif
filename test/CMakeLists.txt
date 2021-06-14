@@ -29,13 +29,6 @@ if(NOT GTEST_FOUND)
   add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
                    ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
                    EXCLUDE_FROM_ALL)
-
-  # The gtest/gtest_main targets carry header search path
-  # dependencies automatically when using CMake 2.8.11 or
-  # later. Otherwise we have to add them here ourselves.
-  if (CMAKE_VERSION VERSION_LESS 2.8.11)
-    include_directories("${gtest_SOURCE_DIR}/include")
-  endif()
 endif()
 
 # small helper function
@@ -49,10 +42,6 @@ function(manif_add_gtest target)
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
-      -Wno-unknown-pragmas
-      -Wno-sign-compare
-      -Wno-unused-parameter
-      -Wno-missing-field-initializers
       )
   endif()
 
@@ -91,10 +80,6 @@ else()
 endif()
 
 # Set required C++11 flag
-if(CMAKE_VERSION VERSION_LESS "3.1")
-  set_target_properties(${CXX_11_TEST_TARGETS} PROPERTIES COMPILE_FLAGS "-std=c++11")
-else()
-  set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD 11)
-  set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
-  set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_EXTENSIONS OFF)
-endif()
+set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_EXTENSIONS OFF)

@@ -8,7 +8,7 @@
  * @brief An example of the use of the average biinvariant algorithm.
  */
 
-int main(int argc, char** argv)
+int main(int argc, char**)
 {
   if (argc > 1)
   {

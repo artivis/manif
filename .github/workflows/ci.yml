@@ -9,6 +9,9 @@ on:
       - devel
   workflow_dispatch:
 
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
 jobs:
 
   build-ubuntu:
@@ -17,6 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        build_type: [Release, Debug]
         compiler: [{
           "cc": "gcc",
           "cxx": "g++"
@@ -42,7 +46,7 @@ jobs:
           echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
       - name: Configure
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -55,7 +59,9 @@ jobs:
     strategy:
       matrix:
         # Xcode 10.3 & Xcode 12.2
-        os: [macos-10.15, macos-11.0]
+        # removing macos-11.0 for now, see
+        #https://github.com/actions/virtual-environments/issues/841
+        os: [macos-10.15]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -80,6 +86,41 @@ jobs:
       - name: Test
         working-directory: ${{runner.workspace}}/build
         run: make test
+
+  build-win:
+    runs-on: ${{ matrix.combinations.os }}
+    strategy:
+      matrix:
+        combinations: [{
+          "os": "windows-2016",
+          "cmake_generator": "Visual Studio 15 2017"
+         }, {
+          "os": "windows-2019",
+          "cmake_generator": "Visual Studio 16 2019"
+        }]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          vcpkg install eigen3:x64-windows
+          cd ${{runner.workspace}}
+          mkdir build
+      - name: Display config
+        shell: bash
+        run: |
+          echo "OS:" && $RUNNER_OS && echo ""
+          echo "Eigen:" && vcpkg list
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -G"${{ matrix.combinations.cmake_generator }}" -A x64 -DCMAKE_TOOLCHAIN_FILE=${VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: cmake --build . --config Release
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: ctest . -C Release
 
   cppcheck:
     needs: [build-ubuntu]
@@ -166,6 +207,40 @@ jobs:
       - name: Test
         working-directory: ${{runner.workspace}}/build
         run: make test
+
+  pybind11:
+    needs: [build-ubuntu, build-mac]
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-latest] #windows-latest,
+        # python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.6]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup apt
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev
+      - name: Setup brew
+        if: runner.os == 'macOS'
+        run: brew install eigen
+      - name: Setup
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest "pybind11[global]"
+          pip install -r requirements.txt
+      - name: Build
+        run: pip install .
+      - name: Test
+        run: pytest
 
   # arm64:
   #   needs: [build-ubuntu]

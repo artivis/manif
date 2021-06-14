@@ -252,7 +252,7 @@ void SE3Base<_Derived>::quat(const Eigen::MatrixBase<_EigenDerived>& quaternion)
   using std::abs;
   assert_vector_dim(quaternion, 4);
   MANIF_ASSERT(abs(quaternion.norm()-Scalar(1)) <
-               Constants<Scalar>::eps_s,
+               Constants<Scalar>::eps,
                "The quaternion is not normalized !",
                invalid_argument);
 
@@ -386,12 +386,13 @@ SE3Base<_Derived>::adj() const
   ///
   /// considering vee(log(g)) = (v;w)
 
-  Jacobian Adj = Jacobian::Zero();
+  Jacobian Adj;
   Adj.template topLeftCorner<3,3>() = rotation();
   Adj.template bottomRightCorner<3,3>() =
       Adj.template topLeftCorner<3,3>();
-  Adj.template topRightCorner<3,3>() =
+  Adj.template topRightCorner<3,3>().noalias() =
     skew(translation()) * Adj.template topLeftCorner<3,3>();
+  Adj.template bottomLeftCorner<3,3>().setZero();
 
   return Adj;
 }
@@ -434,30 +435,11 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
   template <typename T>
   static void run(T& m)
   {
-    // @note:
-    // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
-    // which is the default version in Ubuntu 16.04
-    // So we copy its implementation here.
-
-    using std::sqrt;
-    using std::sin;
-    using std::cos;
-
     using Scalar      = typename SE3Base<Derived>::Scalar;
     using Translation = typename SE3Base<Derived>::Translation;
-    using Quaternion  = typename SE3Base<Derived>::QuaternionDataType;
     using LieGroup    = typename SE3Base<Derived>::LieGroup;
 
-    const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
-                 u2 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI),
-                 u3 = Eigen::internal::random<Scalar>(0, 2*EIGEN_PI);
-    const Scalar a = sqrt(1. - u1),
-                 b = sqrt(u1);
-
-    m = LieGroup(Translation::Random(),
-                 Quaternion(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3)));
-
-    //m = Derived(Translation::Random(), Quaternion::UnitRandom());
+    m = LieGroup(Translation::Random(), randQuat<Scalar>());
   }
 };
 
@@ -471,10 +453,11 @@ struct AssignmentEvaluatorImpl<SE3Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.template tail<4>().norm()-typename SE3Base<Derived>::Scalar(1)) <
-      Constants<typename SE3Base<Derived>::Scalar>::eps_s,
+      Constants<typename SE3Base<Derived>::Scalar>::eps,
       "SE3 assigned data not normalized !",
       manif::invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

@@ -120,6 +120,8 @@ typedef Matrix<double, 6, 6> Matrix6d;
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // START CONFIGURATION
     //
     //
@@ -219,7 +221,7 @@ int main()
         X_simulation = X_simulation + u_simu;               // overloaded X.rplus(u) = X * exp(u)
 
         /// then we measure all landmarks - - - - - - - - - - - - - - - - - - - -
-        for (int i = 0; i < landmarks.size(); i++)
+        for (std::size_t i = 0; i < landmarks.size(); i++)
         {
             b = landmarks[i];                               // lmk coordinates in world frame
 

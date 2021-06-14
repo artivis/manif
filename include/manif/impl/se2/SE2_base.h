@@ -166,7 +166,7 @@ typename SE2Base<_Derived>::Transformation
 SE2Base<_Derived>::transform() const
 {
   Transformation T(Transformation::Identity());
-  T.template block<2,2>(0,0) = rotation();
+  T.template topLeftCorner<2,2>() = rotation();
   T(0,2) = x();
   T(1,2) = y();
   return T;
@@ -227,7 +227,7 @@ SE2Base<_Derived>::log(OptJacobianRef J_t_m) const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (abs(theta) < Constants<Scalar>::eps)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -301,7 +301,7 @@ SE2Base<_Derived>::compose(
 
   const Scalar ret_sqnorm = ret_real*ret_real+ret_imag*ret_imag;
 
-  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps_s)
+  if (abs(ret_sqnorm-Scalar(1)) > Constants<Scalar>::eps)
   {
     const Scalar scale = approxSqrtInv(ret_sqnorm);
     ret_real *= scale;
@@ -416,10 +416,11 @@ struct AssignmentEvaluatorImpl<SE2Base<Derived>>
     using std::abs;
     MANIF_ASSERT(
       abs(data.template tail<2>().norm()-typename SE2Base<Derived>::Scalar(1)) <
-      Constants<typename SE2Base<Derived>::Scalar>::eps_s,
+      Constants<typename SE2Base<Derived>::Scalar>::eps,
       "SE2 assigned data not normalized !",
       invalid_argument
     );
+    MANIF_UNUSED_VARIABLE(data);
   }
 };
 

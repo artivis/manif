@@ -78,6 +78,30 @@ TEST(TEST_SO3, TEST_SO3_IDENTITY2)
   EXPECT_DOUBLE_EQ(1, so3.w());
 }
 
+TEST(TEST_SO3, TEST_SO3_SET_QUATERNION)
+{
+  SO3d::DataType values; values << 0,0,0,1;
+  SO3d so3(values);
+
+  Eigen::AngleAxis<double> axisAngle(0.23, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond quat(axisAngle);
+
+  so3.quat(quat);
+
+  EXPECT_DOUBLE_EQ(quat.coeffs()(0), so3.coeffs()(0));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(1), so3.coeffs()(1));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(2), so3.coeffs()(2));
+  EXPECT_DOUBLE_EQ(quat.coeffs()(3), so3.coeffs()(3));
+}
+
+TEST(TEST_SO3, TEST_SO3TAN_ANGVEL)
+{
+  SO3Tangentd so3tan(SO3Tangentd::DataType(1,2,3));
+
+  EXPECT_EIGEN_NEAR(SO3Tangentd::DataType(1,2,3),
+                    so3tan.ang());
+}
+
 TEST(TEST_SO3, TEST_SO3_RANDOM)
 {
   SO3d so3;
@@ -594,6 +618,12 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
 }
 
 #endif
+
+MANIF_TEST(SO3f);
+
+MANIF_TEST_MAP(SO3f);
+
+MANIF_TEST_JACOBIANS(SO3f);
 
 MANIF_TEST(SO3d);
 

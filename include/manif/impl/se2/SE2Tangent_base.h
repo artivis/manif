@@ -74,10 +74,20 @@ public:
   Jacobian rjac() const;
 
   /**
+   * @brief Get the inverse right Jacobian of SE2.
+   */
+  Jacobian rjacinv() const;
+
+  /**
    * @brief Get the left Jacobian of SE2.
    * @note See Eq. (164).
    */
   Jacobian ljac() const;
+
+  /**
+   * @brief Get the inverse left Jacobian of SE2.
+   */
+  Jacobian ljacinv() const;
 
   /**
    * @brief
@@ -121,7 +131,7 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -143,7 +153,7 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
     (*J_m_t)(1,0) = -B;
     (*J_m_t)(1,1) =  A;
 
-    if (theta_sq < Constants<Scalar>::eps_s)
+    if (theta_sq < Constants<Scalar>::eps)
     {
       (*J_m_t)(0,2) = -y() / Scalar(2) + theta * x() / Scalar(6);
       (*J_m_t)(1,2) =  x() / Scalar(2) + theta * y() / Scalar(6);
@@ -211,8 +221,60 @@ SE2TangentBase<_Derived>::rjac() const
 
 template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
+SE2TangentBase<_Derived>::rjacinv() const
+{
+  using std::abs;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta = angle();
+  const Scalar cos_theta = cos(theta);
+  const Scalar sin_theta = sin(theta);
+  const Scalar theta_sq = theta * theta;
+
+  Scalar A,  // theta_sin_theta
+         B;  // theta_cos_theta
+
+  A = theta*sin_theta;
+  B = theta*cos_theta;
+
+  Jacobian Jrinv;
+
+  Jrinv(0,1) = -theta*Scalar(0.5);
+  Jrinv(1,0) = -Jrinv(0,1);
+
+  if (theta_sq > Constants<Scalar>::eps)
+  {
+    Jrinv(0,0) = -A/(Scalar(2)*cos_theta-Scalar(2));
+    Jrinv(1,1) =  Jrinv(0,0);
+
+    Scalar den = Scalar(2)*theta*(cos_theta-Scalar(1));
+    Jrinv(0,2) = (A*x() + B*y() - theta*y() + Scalar(2)*x()*cos_theta - Scalar(2)*x()) / den;
+    Jrinv(1,2) = (-B*x() + A*y() + theta*x() + Scalar(2)*y()*cos_theta - Scalar(2)*y()) / den;
+  }
+  else
+  {
+    Jrinv(0,0) = Scalar(1)-theta_sq/Scalar(12);
+    Jrinv(1,1) =  Jrinv(0,0);
+
+    Jrinv(0,2) =  y()/Scalar(2) + theta*x()/Scalar(12);
+    Jrinv(1,2) = -x()/Scalar(2) + theta*y()/Scalar(12);
+  }
+
+  Jrinv(2,0) = Scalar(0);
+  Jrinv(2,1) = Scalar(0);
+  Jrinv(2,2) = Scalar(1);
+
+  return Jrinv;
+}
+
+template <typename _Derived>
+typename SE2TangentBase<_Derived>::Jacobian
 SE2TangentBase<_Derived>::ljac() const
 {
+  using std::cos;
+  using std::sin;
+
   const Scalar theta = angle();
   const Scalar cos_theta = cos(theta);
   const Scalar sin_theta = sin(theta);
@@ -221,7 +283,7 @@ SE2TangentBase<_Derived>::ljac() const
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     // Taylor approximation
     A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
@@ -240,7 +302,7 @@ SE2TangentBase<_Derived>::ljac() const
   Jl(1,0) =  B;
   Jl(1,1) =  A;
 
-  if (theta_sq < Constants<Scalar>::eps_s)
+  if (theta_sq < Constants<Scalar>::eps)
   {
     Jl(0,2) =  y() / Scalar(2) + theta * x() / Scalar(6);
     Jl(1,2) = -x() / Scalar(2) + theta * y() / Scalar(6);
@@ -252,6 +314,55 @@ SE2TangentBase<_Derived>::ljac() const
   }
 
   return Jl;
+}
+
+template <typename _Derived>
+typename SE2TangentBase<_Derived>::Jacobian
+SE2TangentBase<_Derived>::ljacinv() const
+{
+  using std::abs;
+  using std::cos;
+  using std::sin;
+
+  const Scalar theta = angle();
+  const Scalar cos_theta = cos(theta);
+  const Scalar sin_theta = sin(theta);
+  const Scalar theta_sq = theta * theta;
+
+  Scalar A,  // theta_sin_theta
+         B;  // theta_cos_theta
+
+  A = theta*sin_theta;
+  B = theta*cos_theta;
+
+  Jacobian Jlinv;
+
+  Jlinv(0,1) =  theta*Scalar(0.5);
+  Jlinv(1,0) = -Jlinv(0,1);
+
+  if (theta_sq > Constants<Scalar>::eps)
+  {
+    Jlinv(0,0) = -A/(Scalar(2)*cos_theta-Scalar(2));
+    Jlinv(1,1) =  Jlinv(0,0);
+
+    Scalar den = Scalar(2)*theta*(cos_theta-Scalar(1));
+    Jlinv(0,2) = (A*x() - B*y() + theta*y() + Scalar(2)*x()*cos_theta - Scalar(2)*x()) / den;
+    Jlinv(1,2) = (B*x() + A*y() - theta*x() + Scalar(2)*y()*cos_theta - Scalar(2)*y()) / den;
+  }
+  else
+  {
+    Jlinv(0,0) = Scalar(1)-theta_sq/Scalar(12);
+    Jlinv(1,1) = Jlinv(0,0);
+
+    Jlinv(0,2) = -y()/Scalar(2) + theta*x()/Scalar(12);
+    Jlinv(1,2) =  x()/Scalar(2) + theta*y()/Scalar(12);
+  }
+
+  Jlinv(2,0) = Scalar(0);
+  Jlinv(2,1) = Scalar(0);
+  Jlinv(2,2) = Scalar(1);
+
+  return Jlinv;
 }
 
 template <typename _Derived>
@@ -340,18 +451,19 @@ struct GeneratorEvaluator<SE2TangentBase<Derived>>
 
 //! @brief Inner weight matrix specialization for SE2TangentBase objects.
 template <typename Derived>
-struct WEvaluator<SE2TangentBase<Derived>>
+struct InnerWeightsEvaluator<SE2TangentBase<Derived>>
 {
-  static typename Derived::Jacobian
+  static typename Derived::InnerWeightsMatrix
   run()
   {
-    using Jacobian = typename SE2TangentBase<Derived>::Jacobian;
-    using Scalar   = typename SE2TangentBase<Derived>::Scalar;
+    using InnerWeightsMatrix = typename SE2TangentBase<Derived>::InnerWeightsMatrix;
+    using Scalar = typename SE2TangentBase<Derived>::Scalar;
 
-    const static Jacobian W(
-            (Jacobian() << Scalar(1), Scalar(0), Scalar(0),
-                           Scalar(0), Scalar(1), Scalar(0),
-                           Scalar(0), Scalar(0), Scalar(2) ).finished());
+    const static InnerWeightsMatrix W(
+      (InnerWeightsMatrix() << Scalar(1), Scalar(0), Scalar(0),
+                               Scalar(0), Scalar(1), Scalar(0),
+                               Scalar(0), Scalar(0), Scalar(2) ).finished()
+    );
 
     return W;
   }

@@ -68,19 +68,19 @@ int main(int argc, char** argv)
 
   // Intermediate points
 
-  for (int i=1; i<points.size()-1; ++i)
+  for (std::size_t n=1; n<points.size()-1; ++n)
   {
-    const manif::SE2d& s0 = points[ i ];
-    const manif::SE2d& s1 = points[i+1];
+    const manif::SE2d& s0 = points[ n ];
+    const manif::SE2d& s1 = points[n+1];
 
-    t0 = points[ i ] - points[i-1];
-    t1 = points[i+1] - points[ i ];
+    t0 = points[ n ] - points[n-1];
+    t1 = points[n+1] - points[ n ];
 
-    for (int j=1; j<=p; ++j)
+    for (int m=1; m<=p; ++m)
     {
       interpolated.push_back(
         interpolate(s0, s1,
-                    static_cast<double>(j)/(p+1),
+                    static_cast<double>(m)/(p+1),
                     interp_method,
                     t0, t1
         )

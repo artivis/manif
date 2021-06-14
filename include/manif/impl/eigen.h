@@ -61,13 +61,13 @@
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::RowsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::RowsAtCompileTime == Eigen::Dynamic, \
                 "x.rows != "#dim" ."); \
-  assert(x.rows() == dim && "x.cols != "#dim" .");
+  assert(x.rows() == dim && "x.rows != "#dim" .");
 
 #define assert_cols_dim(x, dim) \
   static_assert(static_cast<int>(std::decay<decltype(x)>::type::ColsAtCompileTime) == dim || \
                 std::decay<decltype(x)>::type::ColsAtCompileTime == Eigen::Dynamic, \
                 "x.cols != "#dim" ."); \
-  assert(x.cols() == dim && "x.rows != "#dim" .");
+  assert(x.cols() == dim && "x.cols != "#dim" .");
 
 #define assert_dim(x, rows, cols) \
   assert_rows_dim(x, rows); \
@@ -191,6 +191,34 @@ Eigen::Matrix<Scalar, 3, 1> randPointInBall(Scalar radius)
     rsintheta * sin(phi),
     r * costheta
   );
+}
+
+template <typename Scalar>
+Eigen::Quaternion<Scalar> randQuat()
+{
+#if EIGEN_VERSION_AT_LEAST(3,3,0)
+
+  return Eigen::Quaternion<Scalar>::UnitRandom();
+
+#else
+
+  // @note:
+  // Quaternion::UnitRandom is not available in Eigen 3.3-beta1
+  // which is the default version in Ubuntu 16.04
+  // So we copy its implementation here.
+
+  using std::sqrt;
+  using std::sin;
+  using std::cos;
+
+  const Scalar u1 = Eigen::internal::random<Scalar>(0, 1),
+               u2 = Eigen::internal::random<Scalar>(0, 2.*EIGEN_PI),
+               u3 = Eigen::internal::random<Scalar>(0, 2.*EIGEN_PI);
+  const Scalar a = sqrt(1. - u1),
+               b = sqrt(u1);
+  return Eigen::Quaternion<Scalar>(a * sin(u2), a * cos(u2), b * sin(u3), b * cos(u3));
+
+#endif
 }
 
 } /* namespace manif */

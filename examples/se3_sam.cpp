@@ -229,6 +229,8 @@ static const int MAX_ITER       = 20;           // for the solver
 
 int main()
 {
+    std::srand((unsigned int) time(0));
+
     // DEBUG INFO
     cout << endl;
     cout << "3D Smoothing and Mapping. 3 poses, 5 landmarks." << endl;
@@ -260,7 +262,7 @@ int main()
 
     u_nom    << 0.1, 0.0, 0.0, 0.0, 0.0, 0.05;
     u_sigmas << 0.01, 0.01, 0.01, 0.01, 0.01, 0.01;
-    Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
+    // Q        = (u_sigmas * u_sigmas).matrix().asDiagonal();
     W        =  u_sigmas.inverse()  .matrix().asDiagonal(); // this is Q^(-T/2)
 
     // Landmarks in R^3 and map
@@ -289,7 +291,7 @@ int main()
     vector<map<int,VectorY>>    measurements(NUM_POSES); // y = measurements[pose_id][lmk_id]
 
     y_sigmas << 0.001, 0.001, 0.001; y_sigmas /= 1.0;
-    R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
+    // R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
     S        =  y_sigmas.inverse()  .matrix().asDiagonal(); // this is R^(-T/2)
 
     // Declare some temporaries
@@ -349,7 +351,7 @@ int main()
 
     //// Simulator ###################################################################
     poses_simu. push_back(X_simu);
-    poses.      push_back(Xi + SE3Tangentd::Random());  // use very noisy priors
+    poses.      push_back(Xi + (SE3Tangentd::Random()*0.1));  // use noisy priors
 
     // temporal loop
     for (int i = 0; i < NUM_POSES; ++i)
@@ -358,7 +360,7 @@ int main()
         for (const auto& k : pairs[i])
         {
             // simulate measurement
-            b       = landmarks_simu[k];              // lmk coordinates in world frame
+            b       = landmarks_simu[k];                // lmk coordinates in world frame
             y_noise = y_sigmas * ArrayY::Random();      // measurement noise
             y       = X_simu.inverse().act(b);          // landmark measurement, before adding noise
 
@@ -380,7 +382,7 @@ int main()
 
             // store
             poses_simu. push_back(X_simu);
-            poses.      push_back(Xi + SE3Tangentd::Random()); // use very noisy priors
+            poses.      push_back(Xi + (SE3Tangentd::Random()*0.1)); // use noisy priors
             controls.   push_back(u_nom + u_noise);
         }
     }
@@ -391,8 +393,8 @@ int main()
     cout << "prior" << std::showpos << endl;
     for (const auto& X : poses)
         cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
-    for (const auto& b : landmarks)
-        cout << "lmk : " << b.transpose() << endl;
+    for (const auto& landmark : landmarks)
+        cout << "lmk : " << landmark.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
 
@@ -528,7 +530,6 @@ int main()
                 // advance rows
                 row += Dim;
             }
-
         }
 
         // 4. Solve -----------------------------------------------------------------
@@ -542,9 +543,9 @@ int main()
         for (int i = 0; i < NUM_POSES; ++i)
         {
             // we go very verbose here
-            int row             = i * DoF;
+            int dx_row          = i * DoF;
             constexpr int size  = DoF;
-            dx                  = dX.segment<size>(row);
+            dx                  = dX.segment<size>(dx_row);
             poses[i]            = poses[i] + dx;
         }
 
@@ -552,9 +553,9 @@ int main()
         for (int k = 0; k < NUM_LMKS; ++k)
         {
             // we go very verbose here
-            int row             = NUM_POSES * DoF + k * Dim;
+            int dx_row          = NUM_POSES * DoF + k * Dim;
             constexpr int size  = Dim;
-            db                  = dX.segment<size>(row);
+            db                  = dX.segment<size>(dx_row);
             landmarks[k]        = landmarks[k] + db;
         }
 
@@ -576,16 +577,16 @@ int main()
     cout << "posterior" << std::showpos << endl;
     for (const auto& X : poses)
         cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
-    for (const auto& b : landmarks)
-        cout << "lmk : " << b.transpose() << endl;
+    for (const auto& landmark : landmarks)
+        cout << "lmk : " << landmark.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     // ground truth
     cout << "ground truth" << std::showpos << endl;
     for (const auto& X : poses_simu)
         cout << "pose  : " << X.translation().transpose() << " " << X.asSO3().log() << endl;
-    for (const auto& b : landmarks_simu)
-        cout << "lmk : " << b.transpose() << endl;
+    for (const auto& landmark : landmarks_simu)
+        cout << "lmk : " << landmark.transpose() << endl;
     cout << "-----------------------------------------------" << endl;
 
     return 0;

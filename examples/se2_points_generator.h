@@ -24,13 +24,13 @@ generateSE2PointsOnHeightShape(const unsigned int k)
   {
     t += MANIF_PI*2. / double(k);
 
-    const double x = std::cos(t);
-    const double y = std::sin(2.*t) / 2.;
+    const double xi = std::cos(t);
+    const double yi = std::sin(2.*t) / 2.;
 
-    const double t = std::atan2(y-states.back().y(),
-                                x-states.back().x());
+    const double thi = std::atan2(yi-states.back().y(),
+                                  xi-states.back().x());
 
-    states.emplace_back(x,y,t);
+    states.emplace_back(xi,yi,thi);
   }
 
   return states;

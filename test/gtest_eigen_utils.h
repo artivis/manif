@@ -1,5 +1,5 @@
-#ifndef _MANIF_TEST_EIGEN_GTEST_H_
-#define _MANIF_TEST_EIGEN_GTEST_H_
+#ifndef _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_
+#define _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_
 
 #include <gtest/gtest.h>
 
@@ -193,11 +193,13 @@ isEigenMatrixSameSize(const Eigen::MatrixBase<Derived>& m0,
  * https://eigen.tuxfamily.org/dox/classEigen_1_1DenseBase.html#ae8443357b808cd393be1b51974213f9c
  */
 template <class _DerivedA, class _DerivedB>
-inline ::testing::AssertionResult isEigenMatrixNear(const Eigen::MatrixBase<_DerivedA>& matrix_a,
-                                                    const Eigen::MatrixBase<_DerivedB>& matrix_b,
-                                                    const std::string& matrix_a_name = "matrix_a",
-                                                    const std::string& matrix_b_name = "matrix_b",
-                                                    double tolerance = 1e-8)
+inline ::testing::AssertionResult isEigenMatrixNear(
+  const Eigen::MatrixBase<_DerivedA>& matrix_a,
+  const Eigen::MatrixBase<_DerivedB>& matrix_b,
+  const std::string& matrix_a_name = "matrix_a",
+  const std::string& matrix_b_name = "matrix_b",
+  typename _DerivedA::Scalar tolerance = (std::is_same<typename _DerivedA::Scalar, float>::value)? 1e-6 : 1e-8
+)
 {
   const ::testing::AssertionResult size_check =
       isEigenMatrixSameSize(matrix_a, matrix_b);
@@ -293,4 +295,4 @@ EXPECT_TRUE(isEigenMatrixSameSize(Eigen::Vector2d::Zero(),
                                   Eigen::Vector4d::Zero()));
 */
 
-#endif /* _MANIF_TEST_EIGEN_GTEST_H_ */
+#endif /* _MANIF_MANIF_GTEST_GTEST_EIGEN_UTILS_H_ */

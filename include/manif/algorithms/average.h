@@ -53,7 +53,7 @@ template <template <typename LieGroup, typename...Args> class Container,
 LieGroup
 average_biinvariant(const Container<LieGroup, Args...>& points,
                     typename LieGroup::Scalar eps =
-                      Constants<typename LieGroup::Scalar>::eps_s,
+                      Constants<typename LieGroup::Scalar>::eps,
                     int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
@@ -112,7 +112,7 @@ template <template <typename LieGroup, typename...Args> class Container,
 LieGroup
 average(const Container<LieGroup, Args...>& points,
         typename LieGroup::Scalar eps =
-          Constants<typename LieGroup::Scalar>::eps_s,
+          Constants<typename LieGroup::Scalar>::eps,
         int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
@@ -150,7 +150,7 @@ average(const Container<LieGroup, Args...>& points,
     typename LieGroup::Jacobian G = ts.rjac().transpose() * ts.rjac();
     const Scalar n = ts.coeffs().transpose() * G * ts.coeffs();
 
-    if (n < Constants<Scalar>::eps_s)
+    if (n < Constants<Scalar>::eps)
       break;
 
     avg += ts;
@@ -168,7 +168,7 @@ template <template <typename LieGroup, typename...Args> class Container,
 LieGroup
 average_frechet_left(const Container<LieGroup, Args...>& points,
                      typename LieGroup::Scalar eps =
-                       Constants<typename LieGroup::Scalar>::eps_s,
+                       Constants<typename LieGroup::Scalar>::eps,
                      int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
@@ -221,7 +221,7 @@ template <template <typename LieGroup, typename...Args> class Container,
 LieGroup
 average_frechet_right(const Container<LieGroup, Args...>& points,
                       typename LieGroup::Scalar eps =
-                        Constants<typename LieGroup::Scalar>::eps_s,
+                        Constants<typename LieGroup::Scalar>::eps,
                       int max_iterations = 20)
 {
   using Scalar  = typename LieGroup::Scalar;
