@@ -61,6 +61,7 @@ option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
 option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
 
 if (BUILD_PYTHON_BINDINGS)
+  set(PYBIND11_FINDPYTHON ON)
   find_package(pybind11 REQUIRED)
   add_subdirectory(python)
 endif()
