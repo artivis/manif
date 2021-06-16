@@ -219,6 +219,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -232,11 +234,24 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install eigen
       - name: Setup
-        run: python3 -m pip install --upgrade pip
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install build
       - name: Build
         run: pip3 install -v .[testing]
       - name: Test
         run: pytest
+
+      - name: Build sdist
+        if: contains(matrix.platform, 'ubuntu') && matrix.python-version == '3.6'
+        run: python3 -m build --sdist -o dist/
+      - name: Build wheel
+        run: python3 -m build --wheel -o dist/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: dist/*
+          name: dist
 
   # arm64:
   #   needs: [build-ubuntu]
