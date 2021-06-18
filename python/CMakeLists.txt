@@ -26,7 +26,7 @@ option(
 
 # Installation in the active site-packages folder (could be a system folder)
 if(DETECT_ACTIVE_PYTHON_SITEPACKAGES)
-  set(PYTHON_INSTDIR "${Python_SITELIB}/manifpy")
+  set(PYTHON_INSTDIR "${Python3_SITELIB}/manifpy")
 # Installation from the build extension of setup.py
 elseif(CALL_FROM_SETUP_PY)
   set(PYTHON_INSTDIR "${CMAKE_INSTALL_PREFIX}")
@@ -34,7 +34,7 @@ elseif(CALL_FROM_SETUP_PY)
 else()
   execute_process(
     COMMAND
-    ${Python_EXECUTABLE} -c
+    ${Python3_EXECUTABLE} -c
     "import distutils.sysconfig; print(distutils.sysconfig.get_python_lib(plat_specific=True, standard_lib=False, prefix=''))"
     OUTPUT_VARIABLE _PYTHON_INSTDIR)
   string(STRIP ${_PYTHON_INSTDIR} _PYTHON_INSTDIR_CLEAN)
