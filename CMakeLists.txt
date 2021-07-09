@@ -61,15 +61,8 @@ option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
 option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
 
 if (BUILD_PYTHON_BINDINGS)
-
-  # Include the vendored FindPython3 resources
-  list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
-
-  find_package(Python3 REQUIRED COMPONENTS Interpreter Development.Module)
   find_package(pybind11 REQUIRED)
-
   add_subdirectory(python)
-
 endif()
 
 ###########

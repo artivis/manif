@@ -18,46 +18,50 @@ set_property(TARGET manifpy PROPERTY CXX_STANDARD 11)
 set_property(TARGET manifpy PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET manifpy PROPERTY CXX_EXTENSIONS OFF)
 
-# Detect the active site-packages folder instead of using CMAKE_INSTALL_PREFIX
-option(
-  DETECT_ACTIVE_PYTHON_SITEPACKAGES
-  "Do you want manif to detect and use the active site-package directory? (it could be a system dir)"
-  FALSE)
-
-# Installation in the active site-packages folder (could be a system folder)
-if(DETECT_ACTIVE_PYTHON_SITEPACKAGES)
-  set(PYTHON_INSTDIR "${Python3_SITELIB}/manifpy")
-# Installation from the build extension of setup.py
-elseif(CALL_FROM_SETUP_PY)
-  set(PYTHON_INSTDIR "${CMAKE_INSTALL_PREFIX}")
-# Installation in the CMAKE_INSTALL_PREFIX
+if (CALL_FROM_SETUP_PY)
+  # cmake-build-extension sets the full absolute path as CMAKE_INSTALL_PREFIX.
+  set(MANIFPY_INSTDIR "${CMAKE_INSTALL_PREFIX}")
 else()
+  # 'distutils.sysconfig.get_python_lib' returns the absolute path of Python
+  # by default a global location managed by the distro e.g. /usr/lib/python.
+  #
+  # pybind11 and FindPython3 set respectively PYTHON_SITE_PACKAGES/Python3_SITELIB
+  # from 'distutils.sysconfig.get_python_lib'
+  #
+  # Those are especially annoying on Ubuntu since it has
+  # some hardcoded paths in python3.x/site.py
+  #
+  # `sysconfig.get_path` may return paths that does not even exists.
+  #
+  # So below we retrieve the first site-package path from 'site.getsitepackages()'.
+
   execute_process(
     COMMAND
-    ${Python3_EXECUTABLE} -c
-    "import distutils.sysconfig; print(distutils.sysconfig.get_python_lib(plat_specific=True, standard_lib=False, prefix=''))"
-    OUTPUT_VARIABLE _PYTHON_INSTDIR)
-  string(STRIP ${_PYTHON_INSTDIR} _PYTHON_INSTDIR_CLEAN)
-  set(PYTHON_INSTDIR "${_PYTHON_INSTDIR_CLEAN}/manifpy")
+    ${PYTHON_EXECUTABLE} -c "import site; print(site.getsitepackages()[0])"
+    OUTPUT_VARIABLE _PYTHON_SITE_PACKAGE OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+  set(MANIFPY_INSTDIR "${_PYTHON_SITE_PACKAGE}/manifpy")
 endif()
 
+message(STATUS "Installing manifpy in ${MANIFPY_INSTDIR}")
+
 # Setup installation path
-install(TARGETS manifpy DESTINATION "${PYTHON_INSTDIR}")
+install(TARGETS manifpy COMPONENT python DESTINATION "${MANIFPY_INSTDIR}")
 
 # Create the Python package in the build tree for testing purposes
-set(BUILD_TREE_PYTHON_PACKAGE "${CMAKE_BINARY_DIR}/manifpy")
+set(MANIFPY_BUILDDIR "${CMAKE_BINARY_DIR}/manifpy")
 set_target_properties(
   manifpy PROPERTIES
   OUTPUT_NAME _bindings
-  LIBRARY_OUTPUT_DIRECTORY "${BUILD_TREE_PYTHON_PACKAGE}")
+  LIBRARY_OUTPUT_DIRECTORY "${MANIFPY_BUILDDIR}")
 
 # Create the __init__.py file
 file(
   GENERATE
-  OUTPUT "${BUILD_TREE_PYTHON_PACKAGE}/__init__.py"
+  OUTPUT "${MANIFPY_BUILDDIR}/__init__.py"
   CONTENT "from manifpy._bindings import *\n")
 
 # Install the __init__.py file
 install(
-  FILES "${BUILD_TREE_PYTHON_PACKAGE}/__init__.py"
-  DESTINATION ${PYTHON_INSTDIR})
+  FILES "${MANIFPY_BUILDDIR}/__init__.py"
+  DESTINATION ${MANIFPY_INSTDIR})
