@@ -13,8 +13,6 @@ add_executable(se3_sam_selfcalib se3_sam_selfcalib.cpp)
 
 add_executable(se_2_3_localization se_2_3_localization.cpp)
 
-add_executable(bundle_sam bundle_sam.cpp)
-
 set(CXX_11_EXAMPLE_TARGETS
 
   # SO2
@@ -36,10 +34,19 @@ set(CXX_11_EXAMPLE_TARGETS
 
   # SE_2_3
   se_2_3_localization
-
-  # Bundle
-  bundle_sam
 )
+
+if(NOT MSVC)
+  add_executable(bundle_sam bundle_sam.cpp)
+
+  set(CXX_11_EXAMPLE_TARGETS
+
+    ${CXX_11_EXAMPLE_TARGETS}
+
+    # Bundle
+    bundle_sam
+  )
+endif()
 
 # Link to manif
 foreach(target ${CXX_11_EXAMPLE_TARGETS})

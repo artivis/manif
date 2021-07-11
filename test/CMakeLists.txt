@@ -68,8 +68,10 @@ add_subdirectory(se3)
 # # SE_2_3 tests
 add_subdirectory(se_2_3)
 
-# Bundle tests
-add_subdirectory(bundle)
+if(NOT MSVC)
+  # Bundle tests
+  add_subdirectory(bundle)
+endif()
 
 find_package(Ceres QUIET)
 
