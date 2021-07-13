@@ -51,34 +51,19 @@
 <aside class="contents" id="table-of-contents">
 <h3>Table of Contents</h3>
 <ul>
-<li><a href="#getting-pybind11" id="id1">Getting Pybind11</a></li>
-<li><a href="#installation" id="id2">Installation</a><ul>
-<li><a href="#dependencies" id="id3">Dependencies</a></li>
-<li><a href="#from-source" id="id4">From source</a></li>
+<li><a href="#installation" id="id1">Installation</a><ul>
+<li><a href="#dependencies" id="id2">Dependencies</a></li>
+<li><a href="#from-source" id="id3">From source</a></li>
 </ul>
 </li>
-<li><a href="#use-manifpy-in-your-project" id="id5">Use manifpy in your project</a></li>
-<li><a href="#tutorials-and-application-demos" id="id6">Tutorials and application demos</a></li>
+<li><a href="#use-manifpy-in-your-project" id="id4">Use manifpy in your project</a></li>
+<li><a href="#tutorials-and-application-demos" id="id5">Tutorials and application demos</a></li>
 </ul>
 </aside>
-<section id="getting-pybind11">
-<h2><a href="#id1">Getting Pybind11</a></h2>
-<p>The Python wrappers are generated using <a href="https://pybind11.readthedocs.io/en/stable/index.html">pybind11</a>. So first we need to install it,
-but we want it available directly in our environment root so that <code>CMake</code> can find it.
-To do so we can use,</p>
-<pre class="code bash">python3 -m pip install <span class="s2">&quot;pybind11[global]&quot;</span></pre>
-<p>Note that this is not recommended when using one's system Python,
-as it will add files to <code>/usr/local/include/pybind11</code> and <code>/usr/local/share/cmake/pybind11</code>.</p>
-<p>Another way is to use <code>CMake</code> to install it,</p>
-<pre class="code bash">git clone https://github.com/pybind/pybind11.git
-<span class="nb">cd</span> pybind11 <span class="o">&amp;&amp;</span> mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-cmake ..
-make install</pre>
-</section>
 <section id="installation">
-<h2><a href="#id2">Installation</a></h2>
+<h2><a href="#id1">Installation</a></h2>
 <section id="dependencies">
-<h3><a href="#id3">Dependencies</a></h3>
+<h3><a href="#id2">Dependencies</a></h3>
 <ul>
 <li><p>Eigen 3 :</p>
 <ul>
@@ -93,11 +78,9 @@ make install</pre>
 <li><p><a href="https://github.com/TartanLlama/optional">lt::optional</a> : included in the <code>external</code> folder</p>
 </li>
 </ul>
-<p>Python bindings also depends on <code>numpy</code>.</p>
-<pre class="code bash">python3 -m pip install -r requirements</pre>
 </section>
 <section id="from-source">
-<h3><a href="#id4">From source</a></h3>
+<h3><a href="#id3">From source</a></h3>
 <p>To generate <code>manif</code> Python bindings run,</p>
 <pre class="code bash">git clone https://github.com/artivis/manif.git
 <span class="nb">cd</span> manif
@@ -105,7 +88,7 @@ python3 -m pip install .</pre>
 </section>
 </section>
 <section id="use-manifpy-in-your-project">
-<h2><a href="#id5">Use manifpy in your project</a></h2>
+<h2><a href="#id4">Use manifpy in your project</a></h2>
 <pre class="code python"><span class="kn">from</span> <span class="nn">manifpy</span> <span class="kn">import</span> <span class="n">SE3</span>
 
 <span class="o">...</span>
@@ -115,7 +98,7 @@ python3 -m pip install .</pre>
 <span class="o">...</span></pre>
 </section>
 <section id="tutorials-and-application-demos">
-<h2><a href="#id6">Tutorials and application demos</a></h2>
+<h2><a href="#id5">Tutorials and application demos</a></h2>
 <p>We provide some self-contained and self-explained executables implementing some real problems.
 Their source code is located in <code>manif/examples/</code>.
 These demos are:</p>

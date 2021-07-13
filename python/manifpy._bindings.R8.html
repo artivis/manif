@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>manifpy.R2 | manif Python API</title>
+  <title>manifpy._bindings.R8 | manif Python API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -46,7 +46,7 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span>R2 <span class="m-thin">class</span>
+          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span><span class="m-breadcrumb"><a href="manifpy._bindings.html">_bindings</a>.<wbr/></span>R8 <span class="m-thin">class</span>
         </h1>
         <div class="m-block m-default">
           <h3>Contents</h3>
@@ -66,11 +66,11 @@
           <h2><a href="#staticmethods">Static methods</a></h2>
           <dl class="m-doc">
             <dt id="Identity">
-              <span class="m-doc-wrap-bumper">def <a href="#Identity" class="m-doc-self">Identity</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#Identity" class="m-doc-self">Identity</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Static helper to create an object set at the Lie group Identity.</dd>
             <dt id="Random">
-              <span class="m-doc-wrap-bumper">def <a href="#Random" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#Random" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Static helper to create a random object of the Lie group.</dd>
           </dl>
@@ -80,101 +80,101 @@
           <dl class="m-doc">
             <dt id="act">
               <span class="m-doc-wrap-bumper">def <a href="#act" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">self,
-              p: numpy.ndarray[numpy.float64[2, 1]],
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_p: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; numpy.ndarray[numpy.float64[2, 1]]</span>
+              p: numpy.ndarray[numpy.float64[8, 1]],
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_p: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; numpy.ndarray[numpy.float64[8, 1]]</span>
             </dt>
             <dd>Get the action of the Lie group object on a point.</dd>
             <dt id="adj">
-              <span class="m-doc-wrap-bumper">def <a href="#adj" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[2, 2]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#adj" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[8, 8]]</span>
             </dt>
             <dd>Return the Adjoint of the Lie group object self.</dd>
             <dt id="between">
               <span class="m-doc-wrap-bumper">def <a href="#between" class="m-doc-self">between</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              other: manifpy._bindings._R8Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Return the between of self and another object of the same Lie group.</dd>
             <dt id="coeffs">
-              <span class="m-doc-wrap-bumper">def <a href="#coeffs" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[2, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[8, 1]]</span>
             </dt>
             <dd>Get a reference to underlying data.</dd>
             <dt id="coeffs_copy">
-              <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[2, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[8, 1]]</span>
             </dt>
             <dd>Return a copy of underlying data.</dd>
             <dt id="compose">
               <span class="m-doc-wrap-bumper">def <a href="#compose" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              other: manifpy._bindings._R8Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Return the composition of self and another object of the same Lie group.</dd>
             <dt id="inverse">
               <span class="m-doc-wrap-bumper">def <a href="#inverse" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">self,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Return the inverse of the Lie group object.</dd>
             <dt id="isApprox">
               <span class="m-doc-wrap-bumper">def <a href="#isApprox" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
+              other: manifpy._bindings._R8Base,
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
             <dt id="lminus">
               <span class="m-doc-wrap-bumper">def <a href="#lminus" class="m-doc-self">lminus</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a></span>
+              other: manifpy._bindings._R8Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></span>
             </dt>
             <dd>Left ominus operation of the Lie group.</dd>
             <dt id="log">
               <span class="m-doc-wrap-bumper">def <a href="#log" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">self,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a></span>
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></span>
             </dt>
             <dd>Return the corresponding Lie algebra element in vector form.</dd>
             <dt id="lplus">
               <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
-              tau: manifpy._R2TangentBase,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              tau: manifpy._bindings._R8TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Left oplus operation of the Lie group.</dd>
             <dt id="minus">
               <span class="m-doc-wrap-bumper">def <a href="#minus" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a></span>
+              other: manifpy._bindings._R8Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></span>
             </dt>
             <dd>An alias for the &#x27;rminus&#x27; function.</dd>
             <dt id="plus">
               <span class="m-doc-wrap-bumper">def <a href="#plus" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
-              tau: manifpy._R2TangentBase,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              tau: manifpy._bindings._R8TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>An alias for the &#x27;rplus&#x27; function.</dd>
             <dt id="rminus">
               <span class="m-doc-wrap-bumper">def <a href="#rminus" class="m-doc-self">rminus</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._R2Base,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a></span>
+              other: manifpy._bindings._R8Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></span>
             </dt>
             <dd>Right ominus operation of the Lie group.</dd>
             <dt id="rplus">
               <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
-              tau: manifpy._R2TangentBase,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None,
-              J_out_tau: typing.Optional[numpy.ndarray[numpy.float64[2, 2], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              tau: manifpy._bindings._R8TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None,
+              J_out_tau: typing.Optional[numpy.ndarray[numpy.float64[8, 8], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Right oplus operation of the Lie group.</dd>
             <dt id="setIdentity">
-              <span class="m-doc-wrap-bumper">def <a href="#setIdentity" class="m-doc-self">setIdentity</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#setIdentity" class="m-doc-self">setIdentity</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Set self to the Lie group Identity.</dd>
             <dt id="setRandom">
-              <span class="m-doc-wrap-bumper">def <a href="#setRandom" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#setRandom" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Set self to a random value.</dd>
           </dl>
@@ -184,26 +184,26 @@
           <dl class="m-doc">
             <dt id="__add__">
               <span class="m-doc-wrap-bumper">def <a href="#__add__" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              arg0: <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Operator overload for the &#x27;plus&#x27; function.</dd>
             <dt id="__eq__">
               <span class="m-doc-wrap-bumper">def <a href="#__eq__" class="m-doc-self">__eq__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.R2.html" class="m-doc">R2</a><span class="m-text m-dim">, /</span>) -&gt; bool</span>
+              arg0: <a href="manifpy._bindings.R8.html" class="m-doc">R8</a><span class="m-text m-dim">, /</span>) -&gt; bool</span>
             </dt>
             <dd>Operator overload for the &#x27;isApprox&#x27; function.</dd>
             <dt id="__init__-6eef6">
               <span class="m-doc-wrap-bumper">def <a href="#__init__-6eef6" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; None</span>
             </dt>
             <dd>Default constructor, uninitialized data.</dd>
-            <dt id="__init__-79a2d">
-              <span class="m-doc-wrap-bumper">def <a href="#__init__-79a2d" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
-              arg0: numpy.ndarray[numpy.float64[2, 1]]<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            <dt id="__init__-2987c">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-2987c" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
+              arg0: numpy.ndarray[numpy.float64[8, 1]]<span class="m-text m-dim">, /</span>) -&gt; None</span>
             </dt>
             <dd>Constructor given data vector.</dd>
             <dt id="__mul__">
               <span class="m-doc-wrap-bumper">def <a href="#__mul__" class="m-doc-self">__mul__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.R2.html" class="m-doc">R2</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.R2.html" class="m-doc">R2</a></span>
+              arg0: <a href="manifpy._bindings.R8.html" class="m-doc">R8</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></span>
             </dt>
             <dd>Operator overload for the &#x27;compose&#x27; function.</dd>
             <dt id="__str__">
@@ -212,7 +212,7 @@
             <dd></dd>
             <dt id="__sub__">
               <span class="m-doc-wrap-bumper">def <a href="#__sub__" class="m-doc-self">__sub__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.R2.html" class="m-doc">R2</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.R2Tangent.html" class="m-doc">R2Tangent</a></span>
+              arg0: <a href="manifpy._bindings.R8.html" class="m-doc">R8</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></span>
             </dt>
             <dd>Operator overload for the &#x27;minus&#x27; function.</dd>
           </dl>
@@ -221,15 +221,15 @@
           <h2><a href="#data">Data</a></h2>
           <dl class="m-doc">
             <dt id="Dim">
-              <a href="#Dim" class="m-doc-self">Dim</a> = 2
+              <a href="#Dim" class="m-doc-self">Dim</a> = 8
             </dt>
             <dd></dd>
             <dt id="DoF">
-              <a href="#DoF" class="m-doc-self">DoF</a> = 2
+              <a href="#DoF" class="m-doc-self">DoF</a> = 8
             </dt>
             <dd></dd>
             <dt id="RepSize">
-              <a href="#RepSize" class="m-doc-self">RepSize</a> = 2
+              <a href="#RepSize" class="m-doc-self">RepSize</a> = 8
             </dt>
             <dd></dd>
           </dl>

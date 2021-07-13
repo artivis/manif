@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>manifpy.SO2Tangent | manif Python API</title>
+  <title>manifpy._bindings.R6Tangent | manif Python API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -46,7 +46,7 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span>SO2Tangent <span class="m-thin">class</span>
+          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span><span class="m-breadcrumb"><a href="manifpy._bindings.html">_bindings</a>.<wbr/></span>R6Tangent <span class="m-thin">class</span>
         </h1>
         <div class="m-block m-default">
           <h3>Contents</h3>
@@ -66,19 +66,19 @@
           <h2><a href="#staticmethods">Static methods</a></h2>
           <dl class="m-doc">
             <dt id="Generator">
-              <span class="m-doc-wrap-bumper">def <a href="#Generator" class="m-doc-self">Generator</a>(</span><span class="m-doc-wrap">i: int) -&gt; numpy.ndarray[numpy.float64[2, 2]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#Generator" class="m-doc-self">Generator</a>(</span><span class="m-doc-wrap">i: int) -&gt; numpy.ndarray[numpy.float64[7, 7]]</span>
             </dt>
             <dd>Static helper to get the ith basis element of the Lie Algebra.</dd>
             <dt id="InnerWeights">
-              <span class="m-doc-wrap-bumper">def <a href="#InnerWeights" class="m-doc-self">InnerWeights</a>(</span><span class="m-doc-wrap">) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#InnerWeights" class="m-doc-self">InnerWeights</a>(</span><span class="m-doc-wrap">) -&gt; numpy.ndarray[numpy.float64[6, 6]]</span>
             </dt>
             <dd>Static helper to get the weight matrix of the Weighted Euclidean inner product, relative to the space basis.</dd>
             <dt id="Random">
-              <span class="m-doc-wrap-bumper">def <a href="#Random" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#Random" class="m-doc-self">Random</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Static helper to create a random object of the Lie group.</dd>
             <dt id="Zero">
-              <span class="m-doc-wrap-bumper">def <a href="#Zero" class="m-doc-self">Zero</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#Zero" class="m-doc-self">Zero</a>(</span><span class="m-doc-wrap">) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Static helper to create an object of the Lie group tangent set to zero.</dd>
           </dl>
@@ -86,106 +86,102 @@
         <section id="methods">
           <h2><a href="#methods">Methods</a></h2>
           <dl class="m-doc">
-            <dt id="angle">
-              <span class="m-doc-wrap-bumper">def <a href="#angle" class="m-doc-self">angle</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; float</span>
-            </dt>
-            <dd></dd>
             <dt id="coeffs">
-              <span class="m-doc-wrap-bumper">def <a href="#coeffs" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 1]]</span>
             </dt>
             <dd>Get a reference to underlying data.</dd>
             <dt id="coeffs_copy">
-              <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 1]]</span>
             </dt>
             <dd>Return a copy of underlying data.</dd>
             <dt id="exp">
               <span class="m-doc-wrap-bumper">def <a href="#exp" class="m-doc-self">exp</a>(</span><span class="m-doc-wrap">self,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2.html" class="m-doc">SO2</a></span>
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></span>
             </dt>
             <dd>Get the corresponding Lie group element.</dd>
             <dt id="generator">
               <span class="m-doc-wrap-bumper">def <a href="#generator" class="m-doc-self">generator</a>(</span><span class="m-doc-wrap">self,
-              i: int) -&gt; numpy.ndarray[numpy.float64[2, 2]]</span>
+              i: int) -&gt; numpy.ndarray[numpy.float64[7, 7]]</span>
             </dt>
             <dd>Get the ith basis element of the Lie Algebra.</dd>
             <dt id="hat">
-              <span class="m-doc-wrap-bumper">def <a href="#hat" class="m-doc-self">hat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[2, 2]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#hat" class="m-doc-self">hat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[7, 7]]</span>
             </dt>
             <dd>Get the isomorphic element in the Lie algebra.</dd>
             <dt id="inner">
               <span class="m-doc-wrap-bumper">def <a href="#inner" class="m-doc-self">inner</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._SO2TangentBase) -&gt; float</span>
+              other: manifpy._bindings._R6TangentBase) -&gt; float</span>
             </dt>
             <dd>Get inner product of this and another Tangent weighted by W.</dd>
             <dt id="innerWeights">
-              <span class="m-doc-wrap-bumper">def <a href="#innerWeights" class="m-doc-self">innerWeights</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#innerWeights" class="m-doc-self">innerWeights</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 6]]</span>
             </dt>
             <dd>Get the weight matrix of the Weighted Euclidean inner product, relative to the space basis.</dd>
-            <dt id="isApprox-b81e2">
-              <span class="m-doc-wrap-bumper">def <a href="#isApprox-b81e2" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
-              other: <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a>,
+            <dt id="isApprox-a1776">
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox-a1776" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a>,
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
-            <dt id="isApprox-86ec5">
-              <span class="m-doc-wrap-bumper">def <a href="#isApprox-86ec5" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
-              other: numpy.ndarray[numpy.float64[1, 1]],
+            <dt id="isApprox-a7b37">
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox-a7b37" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: numpy.ndarray[numpy.float64[6, 1]],
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
             <dt id="ljac">
-              <span class="m-doc-wrap-bumper">def <a href="#ljac" class="m-doc-self">ljac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#ljac" class="m-doc-self">ljac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 6]]</span>
             </dt>
             <dd>Get the left Jacobian.</dd>
             <dt id="lplus">
               <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
-              state: <a href="manifpy.SO2.html" class="m-doc">SO2</a>,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None,
-              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2.html" class="m-doc">SO2</a></span>
+              state: <a href="manifpy._bindings.R6.html" class="m-doc">R6</a>,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None,
+              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></span>
             </dt>
             <dd>Left oplus operation of the Lie group.</dd>
             <dt id="minus">
               <span class="m-doc-wrap-bumper">def <a href="#minus" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._SO2TangentBase,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              other: manifpy._bindings._R6TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Minus operation in the vector space.</dd>
-            <dt id="plus-5b2c8">
-              <span class="m-doc-wrap-bumper">def <a href="#plus-5b2c8" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
-              state: <a href="manifpy.SO2.html" class="m-doc">SO2</a>,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None,
-              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2.html" class="m-doc">SO2</a></span>
+            <dt id="plus-d28ad">
+              <span class="m-doc-wrap-bumper">def <a href="#plus-d28ad" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
+              state: <a href="manifpy._bindings.R6.html" class="m-doc">R6</a>,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None,
+              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></span>
             </dt>
             <dd>An alias for the &#x27;rplus&#x27; function.</dd>
-            <dt id="plus-edea8">
-              <span class="m-doc-wrap-bumper">def <a href="#plus-edea8" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
-              other: manifpy._SO2TangentBase,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None,
-              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+            <dt id="plus-50471">
+              <span class="m-doc-wrap-bumper">def <a href="#plus-50471" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._R6TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Plus operation in the vector space.</dd>
             <dt id="rjac">
-              <span class="m-doc-wrap-bumper">def <a href="#rjac" class="m-doc-self">rjac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#rjac" class="m-doc-self">rjac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 6]]</span>
             </dt>
             <dd>Get the right Jacobian.</dd>
             <dt id="rplus">
               <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
-              state: <a href="manifpy.SO2.html" class="m-doc">SO2</a>,
-              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None,
-              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[1, 1], flags.writeable]] = None) -&gt; <a href="manifpy.SO2.html" class="m-doc">SO2</a></span>
+              state: <a href="manifpy._bindings.R6.html" class="m-doc">R6</a>,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None,
+              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[6, 6], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></span>
             </dt>
             <dd>Right oplus operation of the Lie group.</dd>
             <dt id="setRandom">
-              <span class="m-doc-wrap-bumper">def <a href="#setRandom" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#setRandom" class="m-doc-self">setRandom</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Set self to a random value.</dd>
             <dt id="setZero">
-              <span class="m-doc-wrap-bumper">def <a href="#setZero" class="m-doc-self">setZero</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#setZero" class="m-doc-self">setZero</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Set self to zero.</dd>
             <dt id="smallAdj">
-              <span class="m-doc-wrap-bumper">def <a href="#smallAdj" class="m-doc-self">smallAdj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[1, 1]]</span>
+              <span class="m-doc-wrap-bumper">def <a href="#smallAdj" class="m-doc-self">smallAdj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[6, 6]]</span>
             </dt>
             <dd></dd>
             <dt id="squaredWeightedNorm">
@@ -201,57 +197,52 @@
         <section id="dunder-methods">
           <h2><a href="#dunder-methods">Special methods</a></h2>
           <dl class="m-doc">
-            <dt id="__add__-ee8c0">
-              <span class="m-doc-wrap-bumper">def <a href="#__add__-ee8c0" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.SO2.html" class="m-doc">SO2</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2.html" class="m-doc">SO2</a></span>
+            <dt id="__add__-a876d">
+              <span class="m-doc-wrap-bumper">def <a href="#__add__-a876d" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy._bindings.R6.html" class="m-doc">R6</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></span>
             </dt>
             <dd>Operator overload for the &#x27;plus&#x27; function.</dd>
-            <dt id="__add__-4030d">
-              <span class="m-doc-wrap-bumper">def <a href="#__add__-4030d" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+            <dt id="__add__-f10e9">
+              <span class="m-doc-wrap-bumper">def <a href="#__add__-f10e9" class="m-doc-self">__add__</a>(</span><span class="m-doc-wrap">self,
+              arg0: <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Operator overload for the &#x27;plus&#x27; function.</dd>
             <dt id="__eq__">
               <span class="m-doc-wrap-bumper">def <a href="#__eq__" class="m-doc-self">__eq__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a><span class="m-text m-dim">, /</span>) -&gt; bool</span>
+              arg0: <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a><span class="m-text m-dim">, /</span>) -&gt; bool</span>
             </dt>
             <dd>Operator overload for the &#x27;isApprox&#x27; function.</dd>
             <dt id="__init__-6eef6">
               <span class="m-doc-wrap-bumper">def <a href="#__init__-6eef6" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; None</span>
             </dt>
             <dd>Default constructor, uninitialized data.</dd>
-            <dt id="__init__-d1c53">
-              <span class="m-doc-wrap-bumper">def <a href="#__init__-d1c53" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
-              arg0: numpy.ndarray[numpy.float64[1, 1]]<span class="m-text m-dim">, /</span>) -&gt; None</span>
+            <dt id="__init__-b8722">
+              <span class="m-doc-wrap-bumper">def <a href="#__init__-b8722" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
+              arg0: numpy.ndarray[numpy.float64[6, 1]]<span class="m-text m-dim">, /</span>) -&gt; None</span>
             </dt>
             <dd>Constructor given data vector.</dd>
-            <dt id="__init__-92d68">
-              <span class="m-doc-wrap-bumper">def <a href="#__init__-92d68" class="m-doc-self">__init__</a>(</span><span class="m-doc-wrap">self,
-              arg0: float<span class="m-text m-dim">, /</span>) -&gt; None</span>
-            </dt>
-            <dd></dd>
             <dt id="__mul__">
               <span class="m-doc-wrap-bumper">def <a href="#__mul__" class="m-doc-self">__mul__</a>(</span><span class="m-doc-wrap">self,
-              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Multiply the vector by a scalar.</dd>
             <dt id="__neg__">
-              <span class="m-doc-wrap-bumper">def <a href="#__neg__" class="m-doc-self">__neg__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              <span class="m-doc-wrap-bumper">def <a href="#__neg__" class="m-doc-self">__neg__</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd></dd>
             <dt id="__rmatmul__">
               <span class="m-doc-wrap-bumper">def <a href="#__rmatmul__" class="m-doc-self">__rmatmul__</a>(</span><span class="m-doc-wrap">self,
-              arg0: numpy.ndarray[numpy.float64]<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: numpy.ndarray[numpy.float64]<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd></dd>
             <dt id="__rmul__-92d68">
               <span class="m-doc-wrap-bumper">def <a href="#__rmul__-92d68" class="m-doc-self">__rmul__</a>(</span><span class="m-doc-wrap">self,
-              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Multiply the vector by a scalar.</dd>
             <dt id="__rmul__-1e224">
               <span class="m-doc-wrap-bumper">def <a href="#__rmul__-1e224" class="m-doc-self">__rmul__</a>(</span><span class="m-doc-wrap">self,
-              arg0: numpy.ndarray[numpy.float64]<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: numpy.ndarray[numpy.float64]<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd></dd>
             <dt id="__str__">
@@ -260,12 +251,12 @@
             <dd></dd>
             <dt id="__sub__">
               <span class="m-doc-wrap-bumper">def <a href="#__sub__" class="m-doc-self">__sub__</a>(</span><span class="m-doc-wrap">self,
-              arg0: <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a><span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Operator overload for the &#x27;minus&#x27; function.</dd>
             <dt id="__truediv__">
               <span class="m-doc-wrap-bumper">def <a href="#__truediv__" class="m-doc-self">__truediv__</a>(</span><span class="m-doc-wrap">self,
-              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy.SO2Tangent.html" class="m-doc">SO2Tangent</a></span>
+              arg0: float<span class="m-text m-dim">, /</span>) -&gt; <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></span>
             </dt>
             <dd>Divide the vector by a scalar.</dd>
           </dl>
@@ -274,15 +265,15 @@
           <h2><a href="#data">Data</a></h2>
           <dl class="m-doc">
             <dt id="Dim">
-              <a href="#Dim" class="m-doc-self">Dim</a> = 2
+              <a href="#Dim" class="m-doc-self">Dim</a> = 6
             </dt>
             <dd></dd>
             <dt id="DoF">
-              <a href="#DoF" class="m-doc-self">DoF</a> = 1
+              <a href="#DoF" class="m-doc-self">DoF</a> = 6
             </dt>
             <dd></dd>
             <dt id="RepSize">
-              <a href="#RepSize" class="m-doc-self">RepSize</a> = 1
+              <a href="#RepSize" class="m-doc-self">RepSize</a> = 6
             </dt>
             <dd></dd>
           </dl>

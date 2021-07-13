@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>manif Python API</title>
+  <title>manifpy._bindings | manif Python API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -26,7 +26,7 @@
       <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
         <div class="m-row">
           <ol class="m-col-t-12 m-col-m-none">
-            <li><a href="modules.html" id="m-navbar-current">Modules</a></li>
+            <li><a href="modules.html">Modules</a></li>
             <li><a href="classes.html">Classes</a></li>
           </ol>
           <ol class="m-col-t-6 m-col-m-none" start="3">
@@ -45,31 +45,82 @@
   <div class="m-container m-container-inflatable">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <h1>Modules</h1>
-        <ul class="m-doc">
-          <li class="m-doc-collapsible">
-            <a href="#" onclick="return toggle(this)">module</a> <a href="manifpy.html" class="m-doc">manifpy</a> <span class="m-doc"></span>
-            <ul class="m-doc">
-              <li>module <a href="manifpy._bindings.html" class="m-doc">_bindings</a> <span class="m-doc">Python bindings for the manif library, a small library for Lie theory.</span></li>
-            </ul>
-          </li>
-        </ul>
-        <script>
-        function toggle(e) {
-            e.parentElement.className = e.parentElement.className == 'm-doc-collapsible' ?
-                'm-doc-expansible' : 'm-doc-collapsible';
-            return false;
-        }
-        /* Collapse all nodes marked as such. Doing it via JS instead of
-           directly in markup so disabling it doesn't harm usability. The list
-           is somehow regenerated on every iteration and shrinks as I change
-           the classes. It's not documented anywhere and I'm not sure if this
-           is the same across browsers, so I am going backwards in that list to
-           be sure. */
-        var collapsed = document.getElementsByClassName("collapsed");
-        for(var i = collapsed.length - 1; i >= 0; --i)
-            collapsed[i].className = 'm-doc-expansible';
-        </script>
+        <h1>
+          <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span>_bindings <span class="m-thin">module</span>
+        </h1>
+        <p>Python bindings for the manif library, a small library for Lie theory.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#classes">Classes</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="classes">
+          <h2><a href="#classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>class <a href="manifpy._bindings.R1.html" class="m-doc">R1</a></dt>
+            <dd>The R^1 group.</dd>
+            <dt>class <a href="manifpy._bindings.R1Tangent.html" class="m-doc">R1Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R2.html" class="m-doc">R2</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R2Tangent.html" class="m-doc">R2Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R3.html" class="m-doc">R3</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R3Tangent.html" class="m-doc">R3Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R4.html" class="m-doc">R4</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R4Tangent.html" class="m-doc">R4Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R5.html" class="m-doc">R5</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R5Tangent.html" class="m-doc">R5Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R6.html" class="m-doc">R6</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R6Tangent.html" class="m-doc">R6Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R7.html" class="m-doc">R7</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R7Tangent.html" class="m-doc">R7Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R8.html" class="m-doc">R8</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R8Tangent.html" class="m-doc">R8Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R9.html" class="m-doc">R9</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.R9Tangent.html" class="m-doc">R9Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE2.html" class="m-doc">SE2</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE2Tangent.html" class="m-doc">SE2Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE3.html" class="m-doc">SE3</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE3Tangent.html" class="m-doc">SE3Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE_2_3.html" class="m-doc">SE_2_3</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SE_2_3Tangent.html" class="m-doc">SE_2_3Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SO2.html" class="m-doc">SO2</a></dt>
+            <dd>The SO2 class</dd>
+            <dt>class <a href="manifpy._bindings.SO2Tangent.html" class="m-doc">SO2Tangent</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></dt>
+            <dd></dd>
+            <dt>class <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></dt>
+            <dd></dd>
+          </dl>
+        </section>
       </div>
     </div>
   </div>
