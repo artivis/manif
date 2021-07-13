@@ -1,0 +1,72 @@
+name: release
+on:
+  push:
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - devel # master only when ready
+      - master
+  workflow_dispatch:
+
+jobs:
+
+  build-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+
+      - name: Setup apt
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev
+
+      - name: Setup
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install build
+
+      - name: Build sdist
+        run: python3 -m build --sdist -o dist/
+
+      - name: Build wheel
+        run: python3 -m build --wheel -o dist/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/*
+          # path: |
+          #   path/*.whl
+          #   path/*.tar.gz
+
+  upload_pypi:
+    needs: build-sdist
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: artifact
+          path: dist
+
+      - name: Inspect dist folder
+        run: ls -lah dist/
+
+      # @todo: see https://github.com/diegoferigo/manif/pull/1#discussion_r668531581
+      # - uses: pypa/gh-action-pypi-publish@master
+      #   if: |
+      #     github.repository == 'artivis/manif' &&
+      #     ((github.event_name == 'release' && github.event.action == 'published') ||
+      #      (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+      #   with:
+      #     user: __token__
+      #     password: ${{ secrets.PYPI_TOKEN }}

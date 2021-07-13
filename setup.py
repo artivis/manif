@@ -13,7 +13,6 @@ setup(
             cmake_configure_options=[
                 "-DCALL_FROM_SETUP_PY:BOOL=ON",
                 "-DBUILD_PYTHON_BINDINGS:BOOL=ON",
-                f"-DPython3_EXECUTABLE:PATH={sys.executable}",
             ],
         )
     ],
