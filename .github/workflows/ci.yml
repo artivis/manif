@@ -208,18 +208,18 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
 
-  pybind11:
+  pybind11-pip:
     needs: [build-ubuntu, build-mac]
     strategy:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest] #windows-latest,
-        # python-version: [3.5, 3.6, 3.7, 3.8]
-        python-version: [3.6]
+        python-version: [3.6, 3.7, 3.8, 3.9]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -235,12 +235,46 @@ jobs:
       - name: Setup
         run: |
           python -m pip install --upgrade pip
-          pip install pytest "pybind11[global]"
-          pip install -r requirements.txt
+          python -m pip install build
       - name: Build
-        run: pip install .
+        run: python -m pip install -v .[testing]
       - name: Test
-        run: pytest
+        run: python -m pytest
+
+  pybind11-cmake:
+    needs: [build-ubuntu, build-mac]
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     python-version: [3.9]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+      # - name: Set up Python ${{ matrix.python-version }}
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+      - name: Setup apt
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest python3-numpy
+          mkdir ${{runner.workspace}}/build
+      - name: Configure
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON -DBUILD_PYTHON_BINDINGS=ON -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: make test
+      - name: Install
+        working-directory: ${{runner.workspace}}/build
+        run: sudo make install
+      - name: Test Import
+        run: python3 -c 'import manifpy'
 
   # arm64:
   #   needs: [build-ubuntu]

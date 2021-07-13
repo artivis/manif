@@ -42,8 +42,7 @@ Let's install all dependencies for development and testing,
 
 ```terminal
 apt install libeigen3-dev
-python3 -m pip install "pybind11[global]" pytest
-python3 -m pip install -r requirements
+python3 -m pip install "pybind11[global]" pytest numpy
 ```
 
 We can now build **manif**, its Python wrappers and all tests,
