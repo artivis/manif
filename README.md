@@ -19,9 +19,10 @@ At the moment, it provides the groups:
 
 - ℝ(n): Euclidean space with addition.
 - SO(2): rotations in the plane.
+- RxSO(2): scaling and rotations in the plane.
 - SE(2): rigid motion (rotation and translation) in the plane.
 - SO(3): rotations in 3D space.
-- RxSO(3): scaling+rotations in 3D space.
+- RxSO(3): scaling and rotations in 3D space.
 - SE(3): rigid motion (rotation and translation) in 3D space.
 - SE_2(3): extended pose (rotation, translation and velocity) in 3D space,
   introduced (to the best of knowledge) in this [paper][barrau15].

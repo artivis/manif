@@ -56,6 +56,9 @@ add_subdirectory(rn)
 # SO2 tests
 add_subdirectory(so2)
 
+# RxSO2 tests
+add_subdirectory(rxso2)
+
 # SO3 tests
 add_subdirectory(so3)
 
