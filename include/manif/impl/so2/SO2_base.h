@@ -162,11 +162,8 @@ template <typename _Derived>
 typename SO2Base<_Derived>::Rotation
 SO2Base<_Derived>::rotation() const
 {
-  using std::sin;
-  using std::cos;
-  const Scalar theta = angle();
-  return (Rotation() << cos(theta), -sin(theta),
-                        sin(theta),  cos(theta)).finished();
+  return (Rotation() << real(), -imag(),
+                        imag(),  real()).finished();
 }
 
 template <typename _Derived>
@@ -208,7 +205,7 @@ SO2Base<_Derived>::compose(
 
   static_assert(
     std::is_base_of<SO2Base<_DerivedOther>, _DerivedOther>::value,
-    "Argument does not inherit from SE2Base !");
+    "Argument does not inherit from SO2Base !");
 
   if (J_mc_ma)
     J_mc_ma->setConstant(Scalar(1));

@@ -131,9 +131,7 @@ template <typename _Derived>
 typename SO2TangentBase<_Derived>::LieAlg
 SO2TangentBase<_Derived>::hat() const
 {
-  return (LieAlg() <<
-    Scalar(0)      , Scalar(-angle()),
-    Scalar(angle()), Scalar(0)        ).finished();
+  return skew(angle());
 }
 
 template <typename _Derived>
