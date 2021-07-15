@@ -9,6 +9,8 @@ manif_add_gtest(gtest_se2_ceres gtest_se2_ceres.cpp)
 
 manif_add_gtest(gtest_so3_ceres gtest_so3_ceres.cpp)
 
+manif_add_gtest(gtest_rxso3_ceres gtest_rxso3_ceres.cpp)
+
 manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
 manif_add_gtest(gtest_se23_ceres gtest_se23_ceres.cpp)
@@ -22,6 +24,9 @@ set(CXX_11_TEST_TARGETS_CERES
 
   # SO3
   gtest_so3_ceres
+
+  # RxSO3
+  gtest_rxso3_ceres
 
   # SE2
   gtest_se2_autodiff
