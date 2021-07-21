@@ -101,6 +101,13 @@ else(TARGET Eigen3::Eigen)
   target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${EIGEN3_INCLUDE_DIRS})
 endif(TARGET Eigen3::Eigen)
 
+# Add tl-optional interface dependency if enabled
+if(tl-optional_FOUND)
+  set(tl-optional_DEPENDENCY "find_dependency(tl-optional)")
+else()
+  set(tl-optional_DEPENDENCY "")
+endif()
+
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   target_compile_options(${PROJECT_NAME} INTERFACE -ftemplate-depth=512)
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")

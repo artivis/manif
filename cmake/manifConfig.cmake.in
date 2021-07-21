@@ -2,6 +2,7 @@
 
 include(CMakeFindDependencyMacro)
 @Eigen3_DEPENDENCY@
+@tl-optional_DEPENDENCY@
 
 if(NOT TARGET @PROJECT_NAME@)
   include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
