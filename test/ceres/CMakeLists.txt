@@ -13,6 +13,8 @@ manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
 manif_add_gtest(gtest_se23_ceres gtest_se23_ceres.cpp)
 
+manif_add_gtest(gtest_bundle_ceres gtest_bundle_ceres.cpp)
+
 set(CXX_11_TEST_TARGETS_CERES
   # Rn
   gtest_rn_ceres
@@ -32,6 +34,9 @@ set(CXX_11_TEST_TARGETS_CERES
 
   # SE23
   gtest_se23_ceres
+
+  # Bundle
+  gtest_bundle_ceres
 )
 
 foreach(target ${CXX_11_TEST_TARGETS_CERES})

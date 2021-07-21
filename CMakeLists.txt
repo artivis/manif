@@ -252,6 +252,8 @@ if(ENABLE_CPPCHECK)
         --suppress=unknownMacro:*test/ceres/ceres_test_utils.h
         --suppress=constStatement:*examples*
         --suppress=unreadVariable:*gtest_se2_autodiff.cpp:101
+        --suppress=unreadVariable:*bundle_sam.cpp:94
+        --suppress=unreadVariable:*bundle_sam.cpp:124
         # Uncomment the line below to run cppcheck-html
         # --output-file=${CMAKE_BINARY_DIR}/cppcheck_results.xml
         ${CMAKE_SOURCE_DIR}/include

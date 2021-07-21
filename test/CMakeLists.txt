@@ -50,23 +50,28 @@ endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# R^n tests
+# # R^n tests
 add_subdirectory(rn)
 
-# SO2 tests
+# # SO2 tests
 add_subdirectory(so2)
 
-# SO3 tests
+# # SO3 tests
 add_subdirectory(so3)
 
-# SE2 tests
+# # SE2 tests
 add_subdirectory(se2)
 
-# SE3 tests
+# # SE3 tests
 add_subdirectory(se3)
 
-# SE_2_3 tests
+# # SE_2_3 tests
 add_subdirectory(se_2_3)
+
+if(NOT MSVC)
+  # Bundle tests
+  add_subdirectory(bundle)
+endif()
 
 find_package(Ceres QUIET)
 

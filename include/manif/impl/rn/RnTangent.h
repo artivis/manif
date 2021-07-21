@@ -93,15 +93,15 @@ template <typename _Scalar> using R7Tangent = RnTangent<_Scalar, 7>;
 template <typename _Scalar> using R8Tangent = RnTangent<_Scalar, 8>;
 template <typename _Scalar> using R9Tangent = RnTangent<_Scalar, 9>;
 
-MANIF_EXTRA_GROUP_TYPEDEF(R1Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R2Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R3Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R4Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R5Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R6Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R7Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R8Tangent)
-MANIF_EXTRA_GROUP_TYPEDEF(R9Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R1Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R2Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R3Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R4Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R5Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R6Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R7Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R8Tangent)
+MANIF_EXTRA_TANGENT_TYPEDEF(R9Tangent)
 
 template <typename _Scalar, unsigned int _N>
 template <typename _DerivedOther>

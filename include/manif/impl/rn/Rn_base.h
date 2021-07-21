@@ -156,8 +156,6 @@ RnBase<_Derived>::compose(
     OptJacobianRef J_mc_ma,
     OptJacobianRef J_mc_mb) const
 {
-  using std::abs;
-
   static_assert(
     std::is_base_of<RnBase<_DerivedOther>, _DerivedOther>::value,
     "Argument does not inherit from RnBase !");

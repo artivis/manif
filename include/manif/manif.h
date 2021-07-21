@@ -11,6 +11,8 @@
 #include "manif/Rn.h"
 #include "manif/SE_2_3.h"
 
+#include "manif/Bundle.h"
+
 #include "manif/algorithms/average.h"
 #include "manif/algorithms/decasteljau.h"
 #include "manif/algorithms/interpolation.h"
