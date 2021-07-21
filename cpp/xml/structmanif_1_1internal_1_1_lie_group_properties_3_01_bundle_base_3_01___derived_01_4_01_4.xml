@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</compoundname>
+    <includes refid="_bundle__properties_8h" local="no">Bundle_properties.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1a4b74a3152613c4cd43561928e488a8ef" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">traits</ref>&lt;_Derived&gt;::Dim</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" line="18" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1ac08a38637739df693a0c4ca0d5188d8c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= <ref refid="structmanif_1_1internal_1_1traits" kindref="compound">traits</ref>&lt;_Derived&gt;::DoF</initializer>
+        <briefdescription>
+<para>Space dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" line="19" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traits specialization </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" line="16" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h" bodystart="17" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1a4b74a3152613c4cd43561928e488a8ef" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1ac08a38637739df693a0c4ca0d5188d8c" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</scope><name>DoF</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

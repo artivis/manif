@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="81" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="154" bodyend="175"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="81" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="154" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a776b6ae57250eaf88780ad548cd42e96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -264,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="181" bodyend="199"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="179" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1a4c1c062df31c29088989e305305dc263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -281,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="103" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="203" bodyend="207"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" line="103" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_base.h" bodystart="201" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_rn_base_1ad1e2a07b6e078e74c957e8a469adb0fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Transformation</type>

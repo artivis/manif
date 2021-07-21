@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1intseq" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::intseq</compoundname>
+    <includes refid="traits_8h" local="no">traits.h</includes>
+    <templateparamlist>
+      <param>
+        <type>int ...</type>
+        <declname>_I</declname>
+        <defname>_I</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1intseq_1aa262086cf577053b9d66cfdd24af8b71" prot="public" static="no">
+        <type>int</type>
+        <definition>using manif::internal::intseq&lt; _I &gt;::value_type =  int</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="91" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1intseq_1aaa156b0bfe49153a3c73d3dcddb78ef9" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::size_t</type>
+        <definition>static constexpr std::size_t manif::internal::intseq&lt; _I &gt;::size</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="92" column="32" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>intseq: std::integer_sequence-equivalent </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="89" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="90" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1intseq_1aaa156b0bfe49153a3c73d3dcddb78ef9" prot="public" virt="non-virtual"><scope>manif::internal::intseq</scope><name>size</name></member>
+      <member refid="structmanif_1_1internal_1_1intseq_1aa262086cf577053b9d66cfdd24af8b71" prot="public" virt="non-virtual"><scope>manif::internal::intseq</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

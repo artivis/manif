@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="_bundle_tangent__map_8h" kind="file" language="C++">
+    <compoundname>BundleTangent_map.h</compoundname>
+    <includes refid="_bundle_tangent_8h" local="yes">manif/impl/bundle/BundleTangent.h</includes>
+    <includedby refid="_bundle_8h" local="yes">Bundle.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>manif/impl/bundle/BundleTangent.h</label>
+        <link refid="_bundle_tangent_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>limits</label>
+      </node>
+      <node id="10">
+        <label>manif/impl/generator.h</label>
+        <link refid="generator_8h_source"/>
+      </node>
+      <node id="14">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="15">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="12">
+        <label>manif/impl/eigen.h</label>
+        <link refid="eigen_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>stdexcept</label>
+      </node>
+      <node id="13">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="11">
+        <label>manif/impl/random.h</label>
+        <link refid="random_8h_source"/>
+      </node>
+      <node id="1">
+        <label>BundleTangent_map.h</label>
+        <link refid="_bundle_tangent__map_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>manif/impl/tangent_base.h</label>
+        <link refid="tangent__base_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>array</label>
+      </node>
+      <node id="16">
+        <label>manif/constants.h</label>
+        <link refid="constants_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>manif/impl/macro.h</label>
+        <link refid="macro_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>tl/optional.hpp</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+      <node id="7">
+        <label>manif/impl/traits.h</label>
+        <link refid="traits_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif/impl/bundle/BundleTangent_base.h</label>
+        <link refid="_bundle_tangent__base_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>Bundle.h</label>
+        <link refid="_bundle_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>BundleTangent_map.h</label>
+        <link refid="_bundle_tangent__map_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif.h</label>
+        <link refid="manif_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
+    <innernamespace refid="namespace_eigen">Eigen</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_map.h"/>
+  </compounddef>
+</doxygen>

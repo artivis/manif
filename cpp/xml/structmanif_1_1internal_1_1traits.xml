@@ -24,7 +24,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="17" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="17" bodyend="-1"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="18" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="18" bodyend="-1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

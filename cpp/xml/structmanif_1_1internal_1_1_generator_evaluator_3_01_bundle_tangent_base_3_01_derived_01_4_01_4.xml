@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_bundle_tangent__base_8h" local="no">BundleTangent_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1a1ef2c945001cc7e51ede0e9038644633" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structmanif_1_1_bundle_tangent_base" kindref="compound">BundleTangentBase</ref>&lt; Derived &gt;::LieAlg</type>
+        <definition>static BundleTangentBase&lt;Derived&gt;::LieAlg manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(const unsigned int i)</argsstring>
+        <name>run</name>
+        <param>
+          <type>const unsigned int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="353" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" bodystart="353" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1ada036f44f96d3a512eadbdded49d85a7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int ...</type>
+            <declname>_Idx</declname>
+            <defname>_Idx</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structmanif_1_1_bundle_tangent_base" kindref="compound">BundleTangentBase</ref>&lt; Derived &gt;::LieAlg</type>
+        <definition>static BundleTangentBase&lt;Derived&gt;::LieAlg manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(const unsigned int i, intseq&lt; _Idx... &gt;)</argsstring>
+        <name>run</name>
+        <param>
+          <type>const unsigned int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="structmanif_1_1internal_1_1intseq" kindref="compound">intseq</ref>&lt; _Idx... &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="366" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" bodystart="366" bodyend="388"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generator specialization for <ref refid="structmanif_1_1_bundle_tangent_base" kindref="compound">BundleTangentBase</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="350" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" bodystart="351" bodyend="389"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1a1ef2c945001cc7e51ede0e9038644633" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+      <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1ada036f44f96d3a512eadbdded49d85a7" prot="public" virt="non-virtual"><scope>manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

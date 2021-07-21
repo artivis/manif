@@ -170,7 +170,7 @@
         <argsstring>() const</argsstring>
         <name>ljacinv</name>
         <briefdescription>
-<para>Get the inverse of the right Jacobian of <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>. </para>
+<para>Get the inverse of the left Jacobian of <ref refid="structmanif_1_1_rn" kindref="compound">Rn</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>See Eq. (191). </para>

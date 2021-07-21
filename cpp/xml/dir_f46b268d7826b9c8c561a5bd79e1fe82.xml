@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_f46b268d7826b9c8c561a5bd79e1fe82" kind="dir">
+    <compoundname>bundle</compoundname>
+    <innerfile refid="impl_2bundle_2_bundle_8h">impl/bundle/Bundle.h</innerfile>
+    <innerfile refid="_bundle__base_8h">Bundle_base.h</innerfile>
+    <innerfile refid="_bundle__map_8h">Bundle_map.h</innerfile>
+    <innerfile refid="_bundle__properties_8h">Bundle_properties.h</innerfile>
+    <innerfile refid="_bundle_tangent_8h">BundleTangent.h</innerfile>
+    <innerfile refid="_bundle_tangent__base_8h">BundleTangent_base.h</innerfile>
+    <innerfile refid="_bundle_tangent__map_8h">BundleTangent_map.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/"/>
+  </compounddef>
+</doxygen>

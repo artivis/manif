@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="_bundle__properties_8h" kind="file" language="C++">
+    <compoundname>Bundle_properties.h</compoundname>
+    <includes refid="traits_8h" local="yes">manif/impl/traits.h</includes>
+    <includedby refid="_bundle_8h" local="yes">Bundle.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Bundle_properties.h</label>
+        <link refid="_bundle__properties_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="4">
+        <label>type_traits</label>
+      </node>
+      <node id="2">
+        <label>manif/impl/traits.h</label>
+        <link refid="traits_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>Bundle.h</label>
+        <link refid="_bundle_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Bundle_properties.h</label>
+        <link refid="_bundle__properties_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif.h</label>
+        <link refid="manif_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_tangent_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; BundleTangentBase&lt; _Derived &gt; &gt;</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_properties.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_bundle__base_8h" local="no">Bundle_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1abbd463665efd73c6f8e696419c7701ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(BundleBase&lt; Derived &gt; &amp;m)</argsstring>
+        <name>run</name>
+        <param>
+          <type><ref refid="structmanif_1_1_bundle_base" kindref="compound">BundleBase</ref>&lt; Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" line="425" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" bodystart="425" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1af6646ee581fd3b16189801fdc3e33ade" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int ...</type>
+            <declname>_Idx</declname>
+            <defname>_Idx</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(BundleBase&lt; Derived &gt; &amp;m, internal::intseq&lt; _Idx... &gt;)</argsstring>
+        <name>run</name>
+        <param>
+          <type><ref refid="structmanif_1_1_bundle_base" kindref="compound">BundleBase</ref>&lt; Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type><ref refid="structmanif_1_1internal_1_1intseq" kindref="compound">internal::intseq</ref>&lt; _Idx... &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" line="431" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" bodystart="431" bodyend="436"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Random specialization for <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" line="423" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" bodystart="424" bodyend="437"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1abbd463665efd73c6f8e696419c7701ab" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1af6646ee581fd3b16189801fdc3e33ade" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

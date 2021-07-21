@@ -92,6 +92,10 @@ observer&quot;. However, note that the serialization used in that paper is diffe
               using <a href="#a2186a21f6b286465d518fa0d9e25fa65" class="m-doc-self">LinearVelocity</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::LinearVelocity
             </dt>
             <dd><span></span></dd>
+            <dt id="acfa38050437d73e41177f08e5d81aa65">
+              using <a href="#acfa38050437d73e41177f08e5d81aa65" class="m-doc-self">Transformation</a> = Eigen::Matrix&lt;Scalar, 5, 5&gt;
+            </dt>
+            <dd><span></span></dd>
             <dt>
               using <a href="#a6ef1fdc6feb9eabcec03edef81a891a6" class="m-doc">Isometry</a> = Eigen::Matrix&lt;Scalar, 5, 5&gt;
             </dt>
@@ -135,6 +139,10 @@ observer&quot;. However, note that the serialization used in that paper is diffe
               <span class="m-doc-wrap-bumper">auto <a href="#ad89d0fda81288e2c3f7dc00271237872" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
             </dt>
             <dd>Get the adjoint matrix of <a href="structmanif_1_1_s_e__2__3.html" class="m-doc">SE_<wbr />2_<wbr />3</a> at this.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a75e1b9865b39a4abd34c92be1e448c34" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
+            </dt>
+            <dd></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a2c6f7ea1399c48c3b890cb642b2cddaa" class="m-doc">isometry</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="structmanif_1_1_s_e__2__3_base.html#a6ef1fdc6feb9eabcec03edef81a891a6" class="m-doc">Isometry</a></span>
             </dt>
@@ -321,6 +329,15 @@ observer&quot;. However, note that the serialization used in that paper is diffe
               </tbody>
             </table>
 <aside class="m-note m-info"><h4>Note</h4><p>this method by default returns a rigid motion action on 3d points and does not take into account the embedded linear velocity of total SE_2(3) element</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a75e1b9865b39a4abd34c92be1e448c34"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />SE_2_3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a75e1b9865b39a4abd34c92be1e448c34" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<p>Get the isometry object (double direct isometry).</p><aside class="m-note m-info"><h4>Note</h4><p>T = | R t v| | 1 | | 1|</p></aside>
           </div></section>
           <section class="m-doc-details" id="a2c6f7ea1399c48c3b890cb642b2cddaa"><div>
             <h3>

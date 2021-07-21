@@ -3,6 +3,7 @@
   <compounddef id="macro_8h" kind="file" language="C++">
     <compoundname>macro.h</compoundname>
     <includes local="no">stdexcept</includes>
+    <includedby refid="_bundle_8h" local="yes">Bundle.h</includedby>
     <includedby refid="lie__group__base_8h" local="yes">lie_group_base.h</includedby>
     <includedby refid="tangent__base_8h" local="yes">tangent_base.h</includedby>
     <includedby refid="_rn_8h" local="yes">Rn.h</includedby>
@@ -23,95 +24,107 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="38">
+      <node id="45">
         <label>SE2Tangent.h</label>
         <link refid="_s_e2_tangent_8h_source"/>
-        <childnode refid="39" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="50">
-        <label>SO3Tangent.h</label>
-        <link refid="_s_o3_tangent_8h_source"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>SO2_map.h</label>
-        <link refid="_s_o2__map_8h_source"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>SO3_base.h</label>
-        <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>SE3Tangent.h</label>
-        <link refid="_s_e3_tangent_8h_source"/>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>Rn_map.h</label>
-        <link refid="_rn__map_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>SE_2_3_base.h</label>
-        <link refid="_s_e__2__3__base_8h_source"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>bezier.h</label>
-        <link refid="bezier_8h_source"/>
-      </node>
-      <node id="22">
-        <label>SE_2_3_map.h</label>
-        <link refid="_s_e__2__3__map_8h_source"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>SE_2_3Tangent.h</label>
-        <link refid="_s_e__2__3_tangent_8h_source"/>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>SE2.h</label>
-        <link refid="_s_e2_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>SE3_base.h</label>
-        <link refid="_s_e3__base_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="2">
-        <label>lie_group_base.h</label>
-        <link refid="lie__group__base_8h_source"/>
+        <label>Bundle.h</label>
+        <link refid="_bundle_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="57">
+        <label>SO3Tangent.h</label>
+        <link refid="_s_o3_tangent_8h_source"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>SO2_map.h</label>
+        <link refid="_s_o2__map_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>SE3Tangent.h</label>
+        <link refid="_s_e3_tangent_8h_source"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Rn_map.h</label>
+        <link refid="_rn__map_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>BundleTangent.h</label>
+        <link refid="_bundle_tangent_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>SE_2_3_base.h</label>
+        <link refid="_s_e__2__3__base_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>bezier.h</label>
+        <link refid="bezier_8h_source"/>
+      </node>
+      <node id="26">
+        <label>SE_2_3_map.h</label>
+        <link refid="_s_e__2__3__map_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>SE_2_3Tangent.h</label>
+        <link refid="_s_e__2__3_tangent_8h_source"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>SE2.h</label>
+        <link refid="_s_e2_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>SE3_base.h</label>
+        <link refid="_s_e3__base_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>lie_group_base.h</label>
+        <link refid="lie__group__base_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -120,237 +133,269 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="56">
         <label>SO3Tangent_base.h</label>
         <link refid="_s_o3_tangent__base_8h_source"/>
-        <childnode refid="50" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>SE2.h</label>
+        <link refid="impl_2se2_2_s_e2_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="14">
-        <label>SE2.h</label>
-        <link refid="impl_2se2_2_s_e2_8h_source"/>
+        <label>Rn.h</label>
+        <link refid="impl_2rn_2_rn_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>Rn.h</label>
-        <link refid="impl_2rn_2_rn_8h_source"/>
-        <childnode refid="11" relation="include">
+      <node id="40">
+        <label>BundleTangent_map.h</label>
+        <link refid="_bundle_tangent__map_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>SE2_map.h</label>
+        <link refid="_s_e2__map_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>SO3.h</label>
+        <link refid="_s_o3_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>SO3_map.h</label>
+        <link refid="_s_o3__map_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>SE_2_3Tangent_map.h</label>
+        <link refid="_s_e__2__3_tangent__map_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>average.h</label>
+        <link refid="average_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>SO2Tangent_map.h</label>
+        <link refid="_s_o2_tangent__map_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Bundle.h</label>
+        <link refid="impl_2bundle_2_bundle_8h_source"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>SE2_map.h</label>
-        <link refid="_s_e2__map_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>SO3.h</label>
-        <link refid="_s_o3_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>SO3_map.h</label>
-        <link refid="_s_o3__map_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+      <node id="53">
+        <label>SO2Tangent_base.h</label>
+        <link refid="_s_o2_tangent__base_8h_source"/>
+        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="45">
-        <label>SE_2_3Tangent_map.h</label>
-        <link refid="_s_e__2__3_tangent__map_8h_source"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>average.h</label>
-        <link refid="average_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="48">
-        <label>SO2Tangent_map.h</label>
-        <link refid="_s_o2_tangent__map_8h_source"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
       <node id="46">
-        <label>SO2Tangent_base.h</label>
-        <link refid="_s_o2_tangent__base_8h_source"/>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
         <label>SE2Tangent_map.h</label>
         <link refid="_s_e2_tangent__map_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>SE2Tangent_base.h</label>
+        <link refid="_s_e2_tangent__base_8h_source"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Bundle_base.h</label>
+        <link refid="_bundle__base_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="37">
-        <label>SE2Tangent_base.h</label>
-        <link refid="_s_e2_tangent__base_8h_source"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="33">
         <label>tangent_base.h</label>
         <link refid="tangent__base_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>Rn.h</label>
+        <link refid="_rn_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>SO2Tangent.h</label>
+        <link refid="_s_o2_tangent_8h_source"/>
+        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>Rn.h</label>
-        <link refid="_rn_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="47">
-        <label>SO2Tangent.h</label>
-        <link refid="_s_o2_tangent_8h_source"/>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
+      <node id="25">
         <label>SE_2_3.h</label>
         <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="41">
         <label>RnTangent_base.h</label>
         <link refid="_rn_tangent__base_8h_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>functions.h</label>
         <link refid="functions_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="22">
         <label>SE3.h</label>
         <link refid="impl_2se3_2_s_e3_8h_source"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>SO2.h</label>
-        <link refid="_s_o2_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>decasteljau.h</label>
-        <link refid="decasteljau_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>SE3_map.h</label>
-        <link refid="_s_e3__map_8h_source"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="43">
-        <label>SE_2_3Tangent_base.h</label>
-        <link refid="_s_e__2__3_tangent__base_8h_source"/>
-        <childnode refid="44" relation="include">
-        </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>SO2_base.h</label>
-        <link refid="_s_o2__base_8h_source"/>
-        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="36">
-        <label>RnTangent_map.h</label>
-        <link refid="_rn_tangent__map_8h_source"/>
-        <childnode refid="12" relation="include">
+      <node id="32">
+        <label>SO2.h</label>
+        <link refid="_s_o2_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>decasteljau.h</label>
+        <link refid="decasteljau_8h_source"/>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="23">
+        <label>SE3_map.h</label>
+        <link refid="_s_e3__map_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>SE_2_3Tangent_base.h</label>
+        <link refid="_s_e__2__3_tangent__base_8h_source"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>SO2_base.h</label>
+        <link refid="_s_o2__base_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>RnTangent_map.h</label>
+        <link refid="_rn_tangent__map_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
         <label>SE_2_3.h</label>
         <link refid="_s_e__2__3_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -358,103 +403,119 @@
         <link refid="macro_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>SO3.h</label>
-        <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>interpolation.h</label>
-        <link refid="interpolation_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>Rn_base.h</label>
-        <link refid="_rn__base_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="42">
-        <label>SE3Tangent_map.h</label>
-        <link refid="_s_e3_tangent__map_8h_source"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>SE3.h</label>
-        <link refid="_s_e3_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>SE3Tangent_base.h</label>
-        <link refid="_s_e3_tangent__base_8h_source"/>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="51">
-        <label>SO3Tangent_map.h</label>
-        <link refid="_s_o3_tangent__map_8h_source"/>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>manif.h</label>
-        <link refid="manif_8h_source"/>
-      </node>
-      <node id="35">
-        <label>RnTangent.h</label>
-        <link refid="_rn_tangent_8h_source"/>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+      </node>
+      <node id="34">
+        <label>SO3.h</label>
+        <link refid="impl_2so3_2_s_o3_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>interpolation.h</label>
+        <link refid="interpolation_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="13">
-        <label>SE2_base.h</label>
-        <link refid="_s_e2__base_8h_source"/>
+        <label>Rn_base.h</label>
+        <link refid="_rn__base_8h_source"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="26">
-        <label>SO2.h</label>
-        <link refid="impl_2so2_2_s_o2_8h_source"/>
-        <childnode refid="27" relation="include">
+      <node id="49">
+        <label>SE3Tangent_map.h</label>
+        <link refid="_s_e3_tangent__map_8h_source"/>
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>SE3.h</label>
+        <link refid="_s_e3_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>SE3Tangent_base.h</label>
+        <link refid="_s_e3_tangent__base_8h_source"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>SO3Tangent_map.h</label>
+        <link refid="_s_o3_tangent__map_8h_source"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif.h</label>
+        <link refid="manif_8h_source"/>
+      </node>
+      <node id="12">
+        <label>Bundle_map.h</label>
+        <link refid="_bundle__map_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>RnTangent.h</label>
+        <link refid="_rn_tangent_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>SE2_base.h</label>
+        <link refid="_s_e2__base_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>SO2.h</label>
+        <link refid="impl_2so2_2_s_o2_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>BundleTangent_base.h</label>
+        <link refid="_bundle_tangent__base_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -760,7 +821,8 @@
       <memberdef kind="define" id="macro_8h_1a77a67c058b1e8585632ac1c9fc913731" prot="public" static="no">
         <name>MANIF_GROUP_MAP_ASSIGN_OP</name>
         <param><defname>X</defname></param>
-        <initializer>  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
+        <initializer>  Map(const Map &amp; o) : Base(), data_(o.coeffs()) { }\
+  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
   template &lt;typename _DerivedOther&gt;\
   Map&amp; operator =(const manif::X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
   template &lt;typename _DerivedOther&gt;\
@@ -801,7 +863,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="174" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="174" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="175" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a6bd111ba0073f92cc6cbaf0827b8e31a" prot="public" static="no">
         <name>MANIF_TANGENT_ASSIGN_OP</name>
@@ -826,12 +888,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="186" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="186" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="187" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1aa152db6b3a394171b3b825ce74aa8de6" prot="public" static="no">
         <name>MANIF_TANGENT_MAP_ASSIGN_OP</name>
         <param><defname>X</defname></param>
-        <initializer>  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
+        <initializer>  Map(const Map &amp; o) : Base(), data_(o.coeffs()) { }\
+  Map&amp; operator=(const Map&amp; o) { coeffs() = o.coeffs(); return *this; }\
   template &lt;typename _DerivedOther&gt;\
   Map&amp; operator =(const manif::X##Base&lt;_DerivedOther&gt;&amp; o) { coeffs() = o.coeffs(); return *this; }\
   template &lt;typename _DerivedOther&gt;\
@@ -851,7 +914,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="202" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="202" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="203" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="203" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a37aae07114eeffc7566acfebd3e4e834" prot="public" static="no">
         <name>MANIF_COPY_CONSTRUCTOR</name>
@@ -873,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="224" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="224" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="226" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ab982705d209e066a28e4754ba4d5cfd4" prot="public" static="no">
         <name>MANIF_MOVE_CONSTRUCTOR</name>
@@ -888,7 +951,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="230" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="230" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="232" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a15113aaed87f3abf49a58c29ea1f694f" prot="public" static="no">
         <name>MANIF_COEFFS_FUNCTIONS</name>
@@ -901,7 +964,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="236" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="236" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="238" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ad9001a7115235d7523d44923769227dc" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_AUTO_API</name>
@@ -917,7 +980,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="242" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="242" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="244" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="244" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a0da630a4fca3f274c46bbd1e1e27bbfe" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_API</name>
@@ -933,7 +996,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="250" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="250" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="252" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a35d019cc4a3b4f286479e07a82fc23e2" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_OPERATOR</name>
@@ -949,7 +1012,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="258" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="258" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="260" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a1daa9ca2fc7bf6ec215acb841be883ea" prot="public" static="no">
         <name>MANIF_GROUP_PROPERTIES</name>
@@ -961,7 +1024,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="266" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="266" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="268" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ad3f28bdabc1b2a573341b4fcee67ae29" prot="public" static="no">
         <name>MANIF_GROUP_TYPEDEF</name>
@@ -979,7 +1042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="270" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="270" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="272" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a5f3004407317e69592f24b373a5d5ef9" prot="public" static="no">
         <name>MANIF_COMPLETE_GROUP_TYPEDEF</name>
@@ -991,7 +1054,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="280" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="280" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="282" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="282" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a85fe53652a0e03f85cf5e416a835f5cd" prot="public" static="no">
         <name>MANIF_EXTRA_GROUP_TYPEDEF</name>
@@ -1004,7 +1067,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="284" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="284" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="286" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="286" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a922628c7329776df7642635475ced8e3" prot="public" static="no">
         <name>MANIF_INHERIT_TANGENT_API</name>
@@ -1022,7 +1085,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="290" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="290" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="292" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="292" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a2527d575c49f874467a52c3188e7e81f" prot="public" static="no">
         <name>MANIF_INHERIT_TANGENT_OPERATOR</name>
@@ -1038,7 +1101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="300" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="300" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="302" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="302" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a4a3138c40460a69a79c3100d38860192" prot="public" static="no">
         <name>MANIF_TANGENT_PROPERTIES</name>
@@ -1050,7 +1113,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="308" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="308" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="310" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1af5b9d7df86687bfaf5c8d3f12b28a3bc" prot="public" static="no">
         <name>MANIF_TANGENT_TYPEDEF</name>
@@ -1068,7 +1131,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="312" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="312" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="314" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="314" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a452d7c4972f7f593fd70e3042d5eb00a" prot="public" static="no">
         <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
@@ -1081,7 +1144,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="322" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="322" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="324" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="324" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

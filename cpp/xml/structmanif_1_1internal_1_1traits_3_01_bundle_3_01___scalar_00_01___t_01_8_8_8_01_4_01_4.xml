@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</compoundname>
+    <includes refid="impl_2bundle_2_bundle_8h" local="no">Bundle.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>template&lt; typename &gt; class ...</type>
+        <declname>_T</declname>
+        <defname>_T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a2f8be11fe415653b1d152c6c2d7deb55" prot="public" static="no">
+        <type>std::tuple&lt; _T&lt; _Scalar &gt;... &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Elements =  std::tuple&lt;_T&lt;_Scalar&gt;...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="23" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac36b21c85273ac95b28fb89924f758aa" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>typename std::tuple_element&lt; _N, Elements &gt;::type</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Element =  typename std::tuple_element&lt;_N, Elements&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>Element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="26" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a06f3011c592cd0947da9371fd771abe6" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Map&lt; Element&lt; _N &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::MapElement =  Eigen::Map&lt;Element&lt;_N&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>MapElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="29" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ab14538b8569ffea8da1e44f59e5cbaf3" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Map&lt; const Element&lt; _N &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::MapConstElement =  Eigen::Map&lt;const Element&lt;_N&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>MapConstElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac7f1d2e77f336c193a99c1793403c848" prot="public" static="no">
+        <type>_Scalar</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Scalar =  _Scalar</definition>
+        <argsstring></argsstring>
+        <name>Scalar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1afee79961ea337905c7a3fd3d955940bf" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref>&lt; _Scalar, _T ... &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::LieGroup =  Bundle&lt;_Scalar, _T ...&gt;</definition>
+        <argsstring></argsstring>
+        <name>LieGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a92e81e77fa339035040f4227e9aaf31b" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle_tangent" kindref="compound">BundleTangent</ref>&lt; _Scalar, _T ... &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Tangent =  BundleTangent&lt;_Scalar, _T ...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a964550c6f957623fda45506673a97312" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle_base" kindref="compound">BundleBase</ref>&lt; <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref>&lt; _Scalar, _T ... &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Base =  BundleBase&lt;Bundle&lt;_Scalar, _T ...&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1acb9ef8078ff53c6ad480fe07c7821e36" prot="public" static="no">
+        <type>Eigen::Matrix&lt; _Scalar, RepSize, 1 &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::DataType =  Eigen::Matrix&lt;_Scalar, RepSize, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>DataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="51" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8a0e4e967a283f041ae994e19bfc0bdb" prot="public" static="no">
+        <type>Eigen::Matrix&lt; _Scalar, DoF, DoF &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Jacobian =  Eigen::Matrix&lt;_Scalar, DoF, DoF&gt;</definition>
+        <argsstring></argsstring>
+        <name>Jacobian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="52" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8d771e4d5c6fa1d15e5865251538d48b" prot="public" static="no">
+        <type>SquareMatrix&lt; _Scalar, accumulate(int(_T&lt; _Scalar &gt;::Transformation::RowsAtCompileTime) ...) &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Transformation =  SquareMatrix&lt; _Scalar, accumulate(int(_T&lt;_Scalar&gt;::Transformation::RowsAtCompileTime) ...) &gt;</definition>
+        <argsstring></argsstring>
+        <name>Transformation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="53" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae803a8c00469745fd541989de77d825c" prot="public" static="no">
+        <type>Eigen::Matrix&lt; _Scalar, Dim, 1 &gt;</type>
+        <definition>using manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Vector =  Eigen::Matrix&lt;_Scalar, Dim, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="57" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a64800a56908657ca2272fd5e6a82ab8b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::size_t</type>
+        <definition>constexpr std::size_t manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::BundleSize</definition>
+        <argsstring></argsstring>
+        <name>BundleSize</name>
+        <initializer>= sizeof...(_T)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="21" column="32" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a270b33c33eb4036037a340de970fc590" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr const std::array&lt; int, sizeof...(_T)&gt; manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::DimIdx</definition>
+        <argsstring></argsstring>
+        <name>DimIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::Dim ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="34" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a6e56c81f0bc4f750ce8af2faf4d3ea67" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr const std::array&lt; int, sizeof...(_T)&gt; manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::DoFIdx</definition>
+        <argsstring></argsstring>
+        <name>DoFIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::DoF ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="35" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a3fd4d9c7040204a27d5b91c0f25ad99f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr const std::array&lt; int, sizeof...(_T)&gt; manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::RepSizeIdx</definition>
+        <argsstring></argsstring>
+        <name>RepSizeIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::RepSize ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="36" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a5ffa5f472233990126014fc3004211fb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr const std::array&lt; int, sizeof...(_T)&gt; manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::TraIdx</definition>
+        <argsstring></argsstring>
+        <name>TraIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::Transformation::RowsAtCompileTime ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="37" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a10cbf5d4233a0c1a5849110cbd698bcf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr const int manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::Dim) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="47" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a35188b737054556a83c37bec30c57d44" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr const int manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::DoF) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="48" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae6097d207af8b5623fbf684607a48691" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr const int manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;::RepSize</definition>
+        <argsstring></argsstring>
+        <name>RepSize</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::RepSize) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="49" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Traits specialization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="18" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="19" bodyend="58"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a964550c6f957623fda45506673a97312" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a64800a56908657ca2272fd5e6a82ab8b" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>BundleSize</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1acb9ef8078ff53c6ad480fe07c7821e36" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a10cbf5d4233a0c1a5849110cbd698bcf" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a270b33c33eb4036037a340de970fc590" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>DimIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a35188b737054556a83c37bec30c57d44" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a6e56c81f0bc4f750ce8af2faf4d3ea67" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>DoFIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac36b21c85273ac95b28fb89924f758aa" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Element</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a2f8be11fe415653b1d152c6c2d7deb55" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Elements</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8a0e4e967a283f041ae994e19bfc0bdb" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1afee79961ea337905c7a3fd3d955940bf" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ab14538b8569ffea8da1e44f59e5cbaf3" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>MapConstElement</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a06f3011c592cd0947da9371fd771abe6" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>MapElement</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae6097d207af8b5623fbf684607a48691" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a3fd4d9c7040204a27d5b91c0f25ad99f" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>RepSizeIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac7f1d2e77f336c193a99c1793403c848" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a92e81e77fa339035040f4227e9aaf31b" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a5ffa5f472233990126014fc3004211fb" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>TraIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8d771e4d5c6fa1d15e5865251538d48b" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Transformation</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae803a8c00469745fd541989de77d825c" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</scope><name>Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

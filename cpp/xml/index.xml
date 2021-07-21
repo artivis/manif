@@ -22,6 +22,102 @@
   <compound refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4_1a9cd4576d20c3ae7cd2b27cd192828f03" kind="function"><name>run_impl</name></member>
   </compound>
+  <compound refid="structmanif_1_1_bundle" kind="struct"><name>manif::Bundle</name>
+    <member refid="structmanif_1_1_bundle_1a1f8360ff4be448c7838dbb9375c59960" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1_bundle_1a53ad62fa6a11af332143ebd745d2320d" kind="typedef"><name>Type</name></member>
+    <member refid="structmanif_1_1_bundle_1aff2eec7cfefbdfbd6c35cee1e0dfc45c" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1_bundle_1a2d54c4aae5a7b208762b3a7d64492faa" kind="variable"><name>data_</name></member>
+    <member refid="structmanif_1_1_bundle_1a66d1452f9540436def8e6384e06eb554" kind="function"><name>Bundle</name></member>
+    <member refid="structmanif_1_1_bundle_1a7a9ef05df9f9912ddeb06bf6ffccb067" kind="function"><name>~Bundle</name></member>
+    <member refid="structmanif_1_1_bundle_1a18f4ef0e68bf7cf3474745306b125d93" kind="function"><name>MANIF_COPY_CONSTRUCTOR</name></member>
+    <member refid="structmanif_1_1_bundle_1abe0fdb796a033413ebd2cf756f8978d2" kind="function"><name>MANIF_MOVE_CONSTRUCTOR</name></member>
+    <member refid="structmanif_1_1_bundle_1aadca13aa5771f44c2ac8f57c767b11b6" kind="function"><name>Bundle</name></member>
+    <member refid="structmanif_1_1_bundle_1a15d06aa1de9d43503f8c9dca4f395a25" kind="function"><name>MANIF_GROUP_ASSIGN_OP</name></member>
+    <member refid="structmanif_1_1_bundle_1ac8c70137e95574d8ad0a73804d7073ee" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_1a3a4b5369923db63ed7d4f259f176e578" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_1a97fcde5d70c389c92c3df4fadb30ac6a" kind="function"><name>Bundle</name></member>
+    <member refid="structmanif_1_1_bundle_1a95c9c6e94e24b22b5892bafbd4c56df8" kind="function"><name>Bundle</name></member>
+    <member refid="structmanif_1_1_bundle_1ac189bec928567bf86eb83a2f05e9341e" kind="variable"><name>BundleSize</name></member>
+  </compound>
+  <compound refid="structmanif_1_1_bundle_base" kind="struct"><name>manif::BundleBase</name>
+    <member refid="structmanif_1_1_bundle_base_1a396407d710680af5027d2020aaa47cf1" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a762909e72151405c3ed4f80f4d3d3feb" kind="typedef"><name>Type</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a41679b666399979a2e2eb2e309742fd0" kind="typedef"><name>Elements</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a0f1b3301fcdd9f619c8ce0711f279eb7" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1_bundle_base_1abb2fa7d93e068d390767aacccd213591" kind="typedef"><name>MapElement</name></member>
+    <member refid="structmanif_1_1_bundle_base_1aeac25d8627b2b73205d5cc365cb3ebf6" kind="typedef"><name>MapConstElement</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a8a84237087f300ccbe9ae79118f1eb65" kind="typedef"><name>Transformation</name></member>
+    <member refid="structmanif_1_1_bundle_base_1ac189bec928567bf86eb83a2f05e9341e" kind="variable"><name>BundleSize</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a8475edee4bdc7f4f4e2f21d2ec3ba31d" kind="function"><name>inverse</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a47c1741f0ab1ca52430a7a73289c120b" kind="function"><name>log</name></member>
+    <member refid="structmanif_1_1_bundle_base_1ae5c84d85c0c57a58c043be4773dbcd2e" kind="function"><name>lift</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a9263dbb22c4a6ef9906ec656624dbb8d" kind="function"><name>compose</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a9bd53241144cb3b48c11c401ee0d3d83" kind="function"><name>act</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a1837554a8cd97811fac528abf0b538da" kind="function"><name>adj</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a3deff81df5de215b87e8a78f94731217" kind="function"><name>transform</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a2a199ef0d59e48fee2b54e298fb0ad46" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_base_1ad0e66bf0f8267313948a106cf1d4cc63" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a2e18883af9d533e457d1414a4dae27b9" kind="function"><name>act_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a4428e1da3b83aeeda9f0ac45affc53dd" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a2eda243fd390a36cb13d391f0bca19a1" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a1ac9dd89b140080b8b0284c8bdfb5270" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_base_1acee62f2ce8024b20db04c304031af85e" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a8645c8da6a58d8dd9fb946470f12623a" kind="function"><name>inverse_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a10320689917967479bbd17321778a7a9" kind="function"><name>log_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a7cc6d449ce8965be63ee012fced00dc9" kind="function"><name>compose_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1af45417ca14ef9419393e230c42003119" kind="function"><name>act_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1ab9821928a94cb2200cdaede69c422977" kind="function"><name>adj_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a048d58d2653a980983572d255a0c55ca" kind="function"><name>transform_impl</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a7ce9db9ccb753dbe014d050fad09c385" kind="function"><name>derived</name></member>
+    <member refid="structmanif_1_1_bundle_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" kind="function"><name>derived</name></member>
+  </compound>
+  <compound refid="structmanif_1_1_bundle_tangent" kind="struct"><name>manif::BundleTangent</name>
+    <member refid="structmanif_1_1_bundle_tangent_1accd742ed5f54aca360a7b426f12934e8" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a1409ec9a9f4c0303c3c65af88c908c7f" kind="typedef"><name>Type</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a17ef45ed90a824db9576f8f2e8796be8" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a6fc9de3945f5a62cfe24cd998fef856f" kind="variable"><name>data_</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a37c8bed58f43de4cf0261607cf1331eb" kind="function"><name>BundleTangent</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a88e2848b8b0e35ddc3113885c0fa912f" kind="function"><name>~BundleTangent</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1ad5d2a4ee46d03db7d6b246a0a7518581" kind="function"><name>BundleTangent</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1aae78d8437748d8bb1c3472bdf669b0c0" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1ad60ea56aebd61883da8e67a0bf13ed71" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1a02d80b8cba663ae1e040ec58b7048c9d" kind="function"><name>BundleTangent</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_1aaf7fcfc75504aac4da0951a1edd9134a" kind="function"><name>BundleTangent</name></member>
+  </compound>
+  <compound refid="structmanif_1_1_bundle_tangent_base" kind="struct"><name>manif::BundleTangentBase</name>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a48dd943c49b6133a993374a2caa197c7" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1afce62b8b640841d442e2247063ee24c7" kind="typedef"><name>Type</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a49da65e82aa5ec7a9cbcb408c4e85bd5" kind="typedef"><name>Elements</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a59c382b02a0d0dd9caa86617802239af" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1ac39e42682540f9d4bad7869b668addd7" kind="typedef"><name>MapElement</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a4fe752468a61e89aa7488a1fb80691ea" kind="typedef"><name>MapConstElement</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1af83be7f0f38ef8237055e5d74598ae95" kind="variable"><name>BundleSize</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1af02ece5c5786a54ed76000e15485d8b9" kind="function"><name>hat</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a50c8a8e4babb10fbfbb3841ffec05ad4" kind="function"><name>exp</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a93ef414941fdf3bb956810a892427698" kind="function"><name>retract</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a354ad519f3b1c04a7bd3b3dd03813c56" kind="function"><name>rjac</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a2dc86098f19f067e324bd9b52b42b5bd" kind="function"><name>ljac</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1ace0075a13d42b5dc8f4a9e410314a94f" kind="function"><name>rjacinv</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a87722355d7504ab7c56038a56e965f7b" kind="function"><name>ljacinv</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1aea300564692738165bb99118de4361b0" kind="function"><name>smallAdj</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a780f434e9278e8a5a4b9453db2a44170" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a7db584bdb7f0c6e99c7196d3e2ffc0b0" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1ab416f85612c6a549719eaf0e70c11b7b" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a205678b068afc5abcf45a3d4c34df9a0" kind="function"><name>element</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a6004be883d35b1e2a1ac04efd63c7443" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" kind="function"><name>data</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" kind="function"><name>coeffs</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a804abcb3463bca9ee64093f439d80240" kind="function"><name>hat_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1aa0376c90c367b7c5a484542b7be00d68" kind="function"><name>exp_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1adc6809d6e55d3e749d3d067885f4a1fd" kind="function"><name>rjac_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1aaec561be476c349989c7c4380ca93522" kind="function"><name>ljac_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a625193d72dc3a1372a15ef91c320cbc1" kind="function"><name>rjacinv_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1ac6668807058cb168b86d22b704c4d56f" kind="function"><name>ljacinv_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1af16d447d4eb83c9042e9444c13258f4f" kind="function"><name>smallAdj_impl</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
+    <member refid="structmanif_1_1_bundle_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
+  </compound>
   <compound refid="classmanif_1_1_ceres_constraint_functor" kind="class"><name>manif::CeresConstraintFunctor</name>
     <member refid="classmanif_1_1_ceres_constraint_functor_1ac54dbec0bd38f3996f17f09d6440c807" kind="typedef"><name>LieGroup</name></member>
     <member refid="classmanif_1_1_ceres_constraint_functor_1ae922ccf7fd4cdd676d10ed898d343fdd" kind="typedef"><name>Tangent</name></member>
@@ -66,6 +162,12 @@
     <member refid="classmanif_1_1_ceres_objective_functor_1a5fe16912e28bc528aa017ff5c900400f" kind="function"><name>weight</name></member>
     <member refid="classmanif_1_1_ceres_objective_functor_1a9d5d83eff4e4367a7edd9eb51165758e" kind="function"><name>weight</name></member>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1compute__indices__gen" kind="struct"><name>manif::internal::compute_indices_gen</name>
+    <member refid="structmanif_1_1internal_1_1compute__indices__gen_1ab0c41eb175b10cbc1242aa343fb08209" kind="function"><name>get</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4" kind="struct"><name>manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</name>
+    <member refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4_1aa99cb98b2617ad64221539dbb798473d" kind="function"><name>get</name></member>
+  </compound>
   <compound refid="structmanif_1_1_constants" kind="struct"><name>manif::Constants</name>
     <member refid="structmanif_1_1_constants_1a359b064d1701ae93d75b812d2cd6903b" kind="variable"><name>eps</name></member>
     <member refid="structmanif_1_1_constants_1ac23324a00c93bbd7b8fb2dd149d9125e" kind="variable"><name>eps_sqrt</name></member>
@@ -85,6 +187,10 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1_generator_evaluator" kind="struct"><name>manif::internal::GeneratorEvaluator</name>
     <member refid="structmanif_1_1internal_1_1_generator_evaluator_1a65a1a0a1d7bc82e25ff5b496e1c5b3d9" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1a1ef2c945001cc7e51ede0e9038644633" kind="function"><name>run</name></member>
+    <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1ada036f44f96d3a512eadbdded49d85a7" kind="function"><name>run</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1a8cb8e7944a7092c257cd5d2999079751" kind="function"><name>run</name></member>
@@ -121,6 +227,15 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::InnerWeightsEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4_1ac9294744aca59c6153fb9d3df333aa60" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1intseq" kind="struct"><name>manif::internal::intseq</name>
+    <member refid="structmanif_1_1internal_1_1intseq_1aa262086cf577053b9d66cfdd24af8b71" kind="typedef"><name>value_type</name></member>
+    <member refid="structmanif_1_1internal_1_1intseq_1aaa156b0bfe49153a3c73d3dcddb78ef9" kind="function"><name>size</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1intseq__join" kind="struct"><name>manif::internal::intseq_join</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4" kind="struct"><name>manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4_1abfa9e05a1e784876803d01178346a83e" kind="typedef"><name>type</name></member>
   </compound>
   <compound refid="structmanif_1_1invalid__argument" kind="struct"><name>manif::invalid_argument</name>
   </compound>
@@ -179,6 +294,14 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1_lie_group_properties" kind="struct"><name>manif::internal::LieGroupProperties</name>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4" kind="struct"><name>manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1a4b74a3152613c4cd43561928e488a8ef" kind="variable"><name>Dim</name></member>
+    <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4_1ac08a38637739df693a0c4ca0d5188d8c" kind="variable"><name>DoF</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_tangent_base_3_01___derived_01_4_01_4" kind="struct"><name>manif::internal::LieGroupProperties&lt; BundleTangentBase&lt; _Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_tangent_base_3_01___derived_01_4_01_4_1acda2af8587a7fd604dfa159c0edfd445" kind="variable"><name>Dim</name></member>
+    <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_tangent_base_3_01___derived_01_4_01_4_1ab66460bbb17dba5eb964719bc1203dd3" kind="variable"><name>DoF</name></member>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_rn_base_3_01___derived_01_4_01_4" kind="struct"><name>manif::internal::LieGroupProperties&lt; RnBase&lt; _Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_rn_base_3_01___derived_01_4_01_4_1a2519db22cf5a8cfad16273866b86b677" kind="variable"><name>Dim</name></member>
     <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_rn_base_3_01___derived_01_4_01_4_1a8f2649e10ceaaffd04b670c7a7e56835" kind="variable"><name>DoF</name></member>
@@ -226,6 +349,24 @@
   <compound refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o3_tangent_base_3_01___derived_01_4_01_4" kind="struct"><name>manif::internal::LieGroupProperties&lt; SO3TangentBase&lt; _Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o3_tangent_base_3_01___derived_01_4_01_4_1ad88c42d9b965e932761db7003f577431" kind="variable"><name>Dim</name></member>
     <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o3_tangent_base_3_01___derived_01_4_01_4_1a4bc34028ff8f6e7b23729ca1c63d40ce" kind="variable"><name>DoF</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1make__intseq" kind="struct"><name>manif::internal::make_intseq</name>
+    <member refid="structmanif_1_1internal_1_1make__intseq_1a88639bc29d8d45099afbc56cfbb400d5" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4" kind="struct"><name>manif::internal::make_intseq&lt; 0 &gt;</name>
+    <member refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4_1aeb1a8af669f1ad9d1718a24b07be14b6" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; const manif::Bundle&lt; _Scalar, T... &gt;, 0 &gt;</name>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a9d2a5fd2536440756ff792d576fc6909" kind="typedef"><name>Base</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1abefdb0ccb7fcf010e8ee67c31d272433" kind="variable"><name>data_</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a8beabddb30e795b0247ddc04ae59dc0f" kind="function"><name>Map</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a4a182f6c560e51c49b5354e5b4b300f3" kind="function"><name>coeffs</name></member>
+  </compound>
+  <compound refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; const manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</name>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a52940fdfeb36c4d1f4ffa06febcff137" kind="typedef"><name>Base</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1aa236ad7ea738d27b3aaa521a870a07f2" kind="variable"><name>data_</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a4a69b0f8932b7150fbeeaef88c9f8803" kind="function"><name>Map</name></member>
+    <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a4191afe4d10b647cbc3609c4bfdd3639" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</name>
     <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ac4305a3f1f55589925751403f4485229" kind="typedef"><name>Base</name></member>
@@ -299,6 +440,20 @@
     <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1ae717de0669ebaad7d5cc724c6b21fd62" kind="variable"><name>data_</name></member>
     <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1a30993352999b9bc78a7888a7eee689a2" kind="function"><name>Map</name></member>
     <member refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_1ae740fa2554990c05e28f8c5dc14677f0" kind="function"><name>coeffs</name></member>
+  </compound>
+  <compound refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; manif::Bundle&lt; _Scalar, T... &gt;, 0 &gt;</name>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a216d3176fe92a8ad7fdbfc6bf296e0d8" kind="typedef"><name>Base</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a43fa29fb17bc6857e4ed393ff999b6fb" kind="variable"><name>data_</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a541b7681b8e6b3a44eec4f7d76927921" kind="function"><name>Map</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1afed042aca123535729e40b8e04e48a48" kind="function"><name>coeffs</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a9f82525a9a77e98ebfe5927d4781144b" kind="function"><name>coeffs</name></member>
+  </compound>
+  <compound refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</name>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1aefc528d1a54bbb3f81d9e806a055c11d" kind="typedef"><name>Base</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1ac5f1c97e58195cbd874caca9b11809d8" kind="variable"><name>data_</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a60760d2aa089a09205cb2e621dbda2e4" kind="function"><name>Map</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1a8b4ae03c58f23f046be5b167ea269d03" kind="function"><name>coeffs</name></member>
+    <member refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_1ac19db1a0f3ad6ae33ce363989b4d4357" kind="function"><name>coeffs</name></member>
   </compound>
   <compound refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" kind="class"><name>Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</name>
     <member refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_1ae3d0ff9d33e79e2c8b2d78849326b2e4" kind="typedef"><name>Base</name></member>
@@ -393,6 +548,14 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1_random_evaluator_impl" kind="struct"><name>manif::internal::RandomEvaluatorImpl</name>
     <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_1a67102cf3448632e1393493c716e6e290" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1abbd463665efd73c6f8e696419c7701ab" kind="function"><name>run</name></member>
+    <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4_1af6646ee581fd3b16189801fdc3e33ade" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::RandomEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1a1be1c2a2905811815b1e6a7b244bb1df" kind="function"><name>run</name></member>
+    <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1a6981d22d39bcff19e52cf09bcf05f6a1" kind="function"><name>run</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_rn_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::RandomEvaluatorImpl&lt; RnBase&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_rn_base_3_01_derived_01_4_01_4_1a31e7e0dc6305a10940166a2a24774b8d" kind="function"><name>run</name></member>
@@ -676,6 +839,7 @@
     <member refid="structmanif_1_1_s_e__2__3_base_1aee1f9d8fa81ddd6a053310d73851a49b" kind="typedef"><name>Rotation</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1add05d0a0cddf0b80fa8957ad9f8b5a39" kind="typedef"><name>Translation</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a2186a21f6b286465d518fa0d9e25fa65" kind="typedef"><name>LinearVelocity</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_base_1acfa38050437d73e41177f08e5d81aa65" kind="typedef"><name>Transformation</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" kind="typedef"><name>Isometry</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1acb461324505843bd082d92c4b03fe604" kind="typedef"><name>QuaternionDataType</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1ae246d31fa937c887846ce535e4bdfb46" kind="function"><name>inverse</name></member>
@@ -684,6 +848,7 @@
     <member refid="structmanif_1_1_s_e__2__3_base_1a0e91c798caaa5c8d17256af46b16b21a" kind="function"><name>compose</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a4d16515e33ebfa6926caab5f87b75f5e" kind="function"><name>act</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1ad89d0fda81288e2c3f7dc00271237872" kind="function"><name>adj</name></member>
+    <member refid="structmanif_1_1_s_e__2__3_base_1a75e1b9865b39a4abd34c92be1e448c34" kind="function"><name>transform</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a2c6f7ea1399c48c3b890cb642b2cddaa" kind="function"><name>isometry</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a80f7dabb87f07212a7b7787358b098fa" kind="function"><name>rotation</name></member>
     <member refid="structmanif_1_1_s_e__2__3_base_1a612122be3b06e060ca3ce3ff274033dd" kind="function"><name>quat</name></member>
@@ -947,7 +1112,65 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1traits" kind="struct"><name>manif::internal::traits</name>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a2f8be11fe415653b1d152c6c2d7deb55" kind="typedef"><name>Elements</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac36b21c85273ac95b28fb89924f758aa" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a06f3011c592cd0947da9371fd771abe6" kind="typedef"><name>MapElement</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ab14538b8569ffea8da1e44f59e5cbaf3" kind="typedef"><name>MapConstElement</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ac7f1d2e77f336c193a99c1793403c848" kind="typedef"><name>Scalar</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1afee79961ea337905c7a3fd3d955940bf" kind="typedef"><name>LieGroup</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a92e81e77fa339035040f4227e9aaf31b" kind="typedef"><name>Tangent</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a964550c6f957623fda45506673a97312" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1acb9ef8078ff53c6ad480fe07c7821e36" kind="typedef"><name>DataType</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8a0e4e967a283f041ae994e19bfc0bdb" kind="typedef"><name>Jacobian</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a8d771e4d5c6fa1d15e5865251538d48b" kind="typedef"><name>Transformation</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae803a8c00469745fd541989de77d825c" kind="typedef"><name>Vector</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a64800a56908657ca2272fd5e6a82ab8b" kind="variable"><name>BundleSize</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a270b33c33eb4036037a340de970fc590" kind="variable"><name>DimIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a6e56c81f0bc4f750ce8af2faf4d3ea67" kind="variable"><name>DoFIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a3fd4d9c7040204a27d5b91c0f25ad99f" kind="variable"><name>RepSizeIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a5ffa5f472233990126014fc3004211fb" kind="variable"><name>TraIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a10cbf5d4233a0c1a5849110cbd698bcf" kind="variable"><name>Dim</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1a35188b737054556a83c37bec30c57d44" kind="variable"><name>DoF</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4_1ae6097d207af8b5623fbf684607a48691" kind="variable"><name>RepSize</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1adc1c36eb397685b39f7859db77a873c1" kind="typedef"><name>Elements</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af197eeac5c01934490b80217e1e9a7fe" kind="typedef"><name>Element</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a5e0071f2e53a52115b9a4a249dd2d2bb" kind="typedef"><name>MapElement</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ac898b9c7443d9daab3829a4d86eeca88" kind="typedef"><name>MapConstElement</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0275811ff31f05d53a3e5d26bcae7760" kind="typedef"><name>Scalar</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa9b13ce57b942faf5414b47d53e3f3d9" kind="typedef"><name>LieGroup</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a47e8d7cbf020a14814c67227661e4993" kind="typedef"><name>Tangent</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab8a8ee8dffabd8acea4b3d0f6cd9cd8d" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aeb4ababa70556ec5272a263f8d5451c3" kind="typedef"><name>DataType</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ace7da21c2886341c7e01abef678a5168" kind="typedef"><name>Jacobian</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a21981114f849b68afc6ec2f25496320c" kind="typedef"><name>LieAlg</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab3384f53f8c77df867d168f1ead701e9" kind="variable"><name>BundleSize</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0775fa5e70c287d1bf446bfa30bb6826" kind="variable"><name>DoFIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ad1d5c51f80edc3b1a217468d6a4fd369" kind="variable"><name>RepSizeIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa652ea65556281ad77773e8a2a1a7e03" kind="variable"><name>AlgIdx</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa658b316ba9823c471caf5c11e12c22c" kind="variable"><name>Dim</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aecaf7c0fb16c99ceed5024e83afce62b" kind="variable"><name>DoF</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af455182ae459cb44778868b26b4fa26c" kind="variable"><name>RepSize</name></member>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4" kind="struct"><name>manif::internal::traits&lt; const T &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; Eigen::Map&lt; Bundle&lt; _Scalar, T... &gt;, 0 &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a97e9c216c39e64cb6d95b092035b9a18" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a2ca613615a07e2cabe3543713658912f" kind="typedef"><name>DataType</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; Eigen::Map&lt; BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a3903d26762d3d919ae84b47c057db25a" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a7b0a0f821b73bbf74b8cf7937e44081b" kind="typedef"><name>DataType</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; Eigen::Map&lt; const Bundle&lt; _Scalar, T... &gt;, 0 &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a9ec87a8d965e6aaacdc663f9cb7452fc" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4_1a30b9e142ec1ca928b1fd9674f84cfaf0" kind="typedef"><name>DataType</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777" kind="struct"><name>manif::internal::traits&lt; Eigen::Map&lt; const BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777_1a81e17444726812348f7cb00c313500cd" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777_1a2014e6e26f26a111d70e5f624de7ceb8" kind="typedef"><name>DataType</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" kind="struct"><name>manif::internal::traits&lt; Eigen::Map&lt; const Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4_1aea5c6c60b87cf7076a57e5f83289b7de" kind="typedef"><name>Base</name></member>
@@ -1205,11 +1428,11 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast" kind="struct"><name>manif::internal::traitscast</name>
   </compound>
-  <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</name>
-    <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4_1a2a9847dcd93b402d4f2b2f5ce7c8321f" kind="typedef"><name>cast</name></member>
-  </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4_1ac251582bf6a22698133b00d2e82a276c" kind="typedef"><name>cast</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4" kind="struct"><name>manif::internal::traitscast&lt; _Class&lt; _Scalar, Ts... &gt;, _NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4_1a7c893cdfe04537179b04041af3883f5d" kind="typedef"><name>cast</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" kind="struct"><name>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" kind="typedef"><name>cast</name></member>
@@ -1235,6 +1458,7 @@
     <member refid="ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d" kind="typedef"><name>CeresConstraintSE3</name></member>
     <member refid="ceres_8h_1a32997ad0b092395eb2530d1c86354b7c" kind="typedef"><name>CeresLocalParameterizationSE3</name></member>
     <member refid="ceres_8h_1a40da5c261df2138cd2f6df516ce22120" kind="typedef"><name>CeresObjectiveSE3</name></member>
+    <member refid="eigen_8h_1a081919d2085b3ee3fb49035ca3ea425c" kind="typedef"><name>SquareMatrix</name></member>
     <member refid="impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8" kind="typedef"><name>R1</name></member>
     <member refid="impl_2rn_2_rn_8h_1a477fdb281fd6b72f55dd2b63012a7054" kind="typedef"><name>R2</name></member>
     <member refid="impl_2rn_2_rn_8h_1a6dffbe7afe32b8136b0572869c6b601c" kind="typedef"><name>R3</name></member>
@@ -1329,9 +1553,13 @@
     <member refid="macro_8h_1a2958fb7a3a1cc382cf24a408f9777cbb" kind="function"><name>raise</name></member>
   </compound>
   <compound refid="namespacemanif_1_1internal" kind="namespace"><name>manif::internal</name>
+    <member refid="traits_8h_1a0033e0e0177d2c7e6fdf47ec0f19f8c4" kind="typedef"><name>make_intseq_t</name></member>
     <member refid="constants_8h_1add9d0de466af3750f594cd047644ce86" kind="function"><name>sqrtNewtonRaphson</name></member>
     <member refid="constants_8h_1a993aa01c37352be19230c645402cf75c" kind="function"><name>csqrt</name></member>
     <member refid="eigen_8h_1ad5b99f2fd8f15a517290323ab856b6f7" kind="function"><name>is_base_of_v</name></member>
+    <member refid="traits_8h_1ae8e775a3f897e8deb715c17426fda198" kind="function"><name>accumulate</name></member>
+    <member refid="traits_8h_1a4b15ed028826bae0079813f367ebd0fc" kind="function"><name>accumulate</name></member>
+    <member refid="traits_8h_1a2b08be98eb3cd6e236d57f424610c39a" kind="function"><name>compute_indices</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
@@ -1340,6 +1568,22 @@
   <compound refid="average_8h" kind="file"><name>average.h</name>
   </compound>
   <compound refid="bezier_8h" kind="file"><name>bezier.h</name>
+  </compound>
+  <compound refid="_bundle_8h" kind="file"><name>Bundle.h</name>
+  </compound>
+  <compound refid="impl_2bundle_2_bundle_8h" kind="file"><name>impl/bundle/Bundle.h</name>
+  </compound>
+  <compound refid="_bundle__base_8h" kind="file"><name>Bundle_base.h</name>
+  </compound>
+  <compound refid="_bundle__map_8h" kind="file"><name>Bundle_map.h</name>
+  </compound>
+  <compound refid="_bundle__properties_8h" kind="file"><name>Bundle_properties.h</name>
+  </compound>
+  <compound refid="_bundle_tangent_8h" kind="file"><name>BundleTangent.h</name>
+  </compound>
+  <compound refid="_bundle_tangent__base_8h" kind="file"><name>BundleTangent_base.h</name>
+  </compound>
+  <compound refid="_bundle_tangent__map_8h" kind="file"><name>BundleTangent_map.h</name>
   </compound>
   <compound refid="ceres_8h" kind="file"><name>ceres.h</name>
   </compound>
@@ -1549,6 +1793,8 @@
   <compound refid="md_pages_cpp__writing_generic_code" kind="page"><name>md_pages_cpp_Writing_generic_code</name>
   </compound>
   <compound refid="dir_80ae130e730b0c846acfaa988d7ac321" kind="dir"><name>algorithms</name>
+  </compound>
+  <compound refid="dir_f46b268d7826b9c8c561a5bd79e1fe82" kind="dir"><name>bundle</name>
   </compound>
   <compound refid="dir_78a8501af6f3f64c000105fea8c40973" kind="dir"><name>ceres</name>
   </compound>

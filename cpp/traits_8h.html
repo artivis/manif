@@ -85,8 +85,8 @@
             </dt>
             <dd></dd>
             <dt>
-              <div class="m-doc-template">template&lt;template&lt;typename&gt; class _Class, typename _NewScalar, typename _Scalar&gt;</div>
-              struct <a href="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4.html" class="m-doc">manif::internal::traitscast&lt;_Class&lt;_Scalar&gt;, _NewScalar&gt;</a>
+              <div class="m-doc-template">template&lt;template&lt;typename, template&lt;typename&gt; class...&gt; class _Class, typename _Scalar, typename _NewScalar, template&lt;typename&gt; class ... Ts&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4.html" class="m-doc">manif::internal::traitscast&lt;_Class&lt;_Scalar, Ts...&gt;, _NewScalar&gt;</a>
             </dt>
             <dd>Traits to change the scalar type of a template class.</dd>
             <dt>
@@ -127,6 +127,36 @@
             <dt>
               <div class="m-doc-template">template&lt;typename T&gt;</div>
               struct <a href="structmanif_1_1internal_1_1has__ljacinv.html" class="m-doc">manif::internal::has_ljacinv</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int ... _I&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">manif::internal::intseq</a>
+            </dt>
+            <dd>intseq: std::integer_sequence-equivalent</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;template&lt;int ...&gt; class _IntSeq, int ... _I1, int ... _I2&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4.html" class="m-doc">manif::internal::intseq_join&lt;_IntSeq&lt;_I1...&gt;, _IntSeq&lt;_I2...&gt;&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;std::size_t _N&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1make__intseq.html" class="m-doc">manif::internal::make_intseq</a>
+            </dt>
+            <dd>generate intseq 0, 1, ..., N-1</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1make__intseq_3_010_01_4.html" class="m-doc">manif::internal::make_intseq&lt;0&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int N, int i, int j, int ... Args&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1compute__indices__gen.html" class="m-doc">manif::internal::compute_indices_gen</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int i, int j, int ... Args&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4.html" class="m-doc">manif::internal::compute_indices_gen&lt;1, i, j, Args...&gt;</a>
             </dt>
             <dd><span></span></dd>
           </dl>

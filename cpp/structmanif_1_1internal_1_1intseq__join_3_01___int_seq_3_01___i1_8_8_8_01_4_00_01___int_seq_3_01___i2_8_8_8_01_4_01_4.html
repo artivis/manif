@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>manif::internal::traitscast&lt;_Class&lt;_Scalar&gt;, _NewScalar&gt; struct | manif C++ API</title>
+  <title>manif::internal::intseq_join&lt;_IntSeq&lt;_I1...&gt;, _IntSeq&lt;_I2...&gt;&gt; struct | manif C++ API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -47,10 +47,10 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-template">template&lt;template&lt;typename&gt; class _Class, typename _NewScalar, typename _Scalar&gt;</div>
-          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>traitscast&lt;_Class&lt;_Scalar&gt;, _NewScalar&gt; <span class="m-thin">struct</span>
+          <div class="m-doc-template">template&lt;template&lt;int ...&gt; class _IntSeq, int ... _I1, int ... _I2&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>intseq_join&lt;_IntSeq&lt;_I1...&gt;, _IntSeq&lt;_I2...&gt;&gt; <span class="m-thin">struct</span>
         </h1>
-        <p>Traits to change the scalar type of a template class.</p>
+        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -62,12 +62,11 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-info"><h4>Note</h4><p>given using FooDouble = Foo&lt;double&gt; using FooFloat = typename traitscast&lt;FooDouble, float&gt;::cast;</p></aside>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt id="a2a9847dcd93b402d4f2b2f5ce7c8321f">
-              using <a href="#a2a9847dcd93b402d4f2b2f5ce7c8321f" class="m-doc-self">cast</a> = _Class&lt;_NewScalar&gt;
+            <dt id="abfa9e05a1e784876803d01178346a83e">
+              using <a href="#abfa9e05a1e784876803d01178346a83e" class="m-doc-self">type</a> = _IntSeq&lt;_I1..., _I2...&gt;
             </dt>
             <dd><span></span></dd>
           </dl>

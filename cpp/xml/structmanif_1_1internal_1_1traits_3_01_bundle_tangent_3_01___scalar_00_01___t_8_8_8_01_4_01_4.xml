@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</compoundname>
+    <includes refid="_bundle_tangent_8h" local="no">BundleTangent.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>template&lt; typename &gt; class ...</type>
+        <declname>_T</declname>
+        <defname>_T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1adc1c36eb397685b39f7859db77a873c1" prot="public" static="no">
+        <type>std::tuple&lt; typename _T&lt; _Scalar &gt;::Tangent... &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Elements =  std::tuple&lt;typename _T&lt;_Scalar&gt;::Tangent...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="23" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af197eeac5c01934490b80217e1e9a7fe" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>typename std::tuple_element&lt; _N, Elements &gt;::type</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Element =  typename std::tuple_element&lt;_N, Elements&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>Element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="26" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a5e0071f2e53a52115b9a4a249dd2d2bb" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Map&lt; Element&lt; _N &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::MapElement =  Eigen::Map&lt;Element&lt;_N&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>MapElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="29" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ac898b9c7443d9daab3829a4d86eeca88" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Map&lt; const Element&lt; _N &gt; &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::MapConstElement =  Eigen::Map&lt;const Element&lt;_N&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>MapConstElement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0275811ff31f05d53a3e5d26bcae7760" prot="public" static="no">
+        <type>_Scalar</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Scalar =  _Scalar</definition>
+        <argsstring></argsstring>
+        <name>Scalar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="39" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa9b13ce57b942faf5414b47d53e3f3d9" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref>&lt; _Scalar, _T... &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::LieGroup =  Bundle&lt;_Scalar, _T...&gt;</definition>
+        <argsstring></argsstring>
+        <name>LieGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="41" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a47e8d7cbf020a14814c67227661e4993" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle_tangent" kindref="compound">BundleTangent</ref>&lt; _Scalar, _T... &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Tangent =  BundleTangent&lt;_Scalar, _T...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab8a8ee8dffabd8acea4b3d0f6cd9cd8d" prot="public" static="no">
+        <type><ref refid="structmanif_1_1_bundle_tangent_base" kindref="compound">BundleTangentBase</ref>&lt; <ref refid="structmanif_1_1_bundle_tangent" kindref="compound">Tangent</ref> &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Base =  BundleTangentBase&lt;Tangent&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="44" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aeb4ababa70556ec5272a263f8d5451c3" prot="public" static="no">
+        <type>Eigen::Matrix&lt; Scalar, RepSize, 1 &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::DataType =  Eigen::Matrix&lt;Scalar, RepSize, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>DataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="50" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ace7da21c2886341c7e01abef678a5168" prot="public" static="no">
+        <type>Eigen::Matrix&lt; Scalar, DoF, DoF &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Jacobian =  Eigen::Matrix&lt;Scalar, DoF, DoF&gt;</definition>
+        <argsstring></argsstring>
+        <name>Jacobian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="51" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a21981114f849b68afc6ec2f25496320c" prot="public" static="no">
+        <type>SquareMatrix&lt; Scalar, accumulate(int(_T&lt; _Scalar &gt;::Tangent::LieAlg::RowsAtCompileTime) ...) &gt;</type>
+        <definition>using manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::LieAlg =  SquareMatrix&lt; Scalar, accumulate(int(_T&lt;_Scalar&gt;::Tangent::LieAlg::RowsAtCompileTime) ...) &gt;</definition>
+        <argsstring></argsstring>
+        <name>LieAlg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="52" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab3384f53f8c77df867d168f1ead701e9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::size_t</type>
+        <definition>constexpr std::size_t manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::BundleSize</definition>
+        <argsstring></argsstring>
+        <name>BundleSize</name>
+        <initializer>= sizeof...(_T)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="21" column="32" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0775fa5e70c287d1bf446bfa30bb6826" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr std::array&lt;int, sizeof...(_T)&gt; manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::DoFIdx</definition>
+        <argsstring></argsstring>
+        <name>DoFIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::Tangent::DoF ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="34" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ad1d5c51f80edc3b1a217468d6a4fd369" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr std::array&lt;int, sizeof...(_T)&gt; manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::RepSizeIdx</definition>
+        <argsstring></argsstring>
+        <name>RepSizeIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::Tangent::RepSize ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="35" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa652ea65556281ad77773e8a2a1a7e03" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::array&lt; int, sizeof...(_T)&gt;</type>
+        <definition>constexpr std::array&lt;int, sizeof...(_T)&gt; manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::AlgIdx</definition>
+        <argsstring></argsstring>
+        <name>AlgIdx</name>
+        <initializer>= compute_indices&lt;_T&lt;_Scalar&gt;::Tangent::LieAlg::RowsAtCompileTime ...&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="36" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa658b316ba9823c471caf5c11e12c22c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::Tangent::Dim) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="46" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aecaf7c0fb16c99ceed5024e83afce62b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::Tangent::DoF) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="47" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af455182ae459cb44778868b26b4fa26c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;::RepSize</definition>
+        <argsstring></argsstring>
+        <name>RepSize</name>
+        <initializer>= accumulate(int(_T&lt;_Scalar&gt;::Tangent::RepSize) ...)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="48" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Traits specialization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="18" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="19" bodyend="56"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa652ea65556281ad77773e8a2a1a7e03" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>AlgIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab8a8ee8dffabd8acea4b3d0f6cd9cd8d" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ab3384f53f8c77df867d168f1ead701e9" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>BundleSize</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aeb4ababa70556ec5272a263f8d5451c3" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa658b316ba9823c471caf5c11e12c22c" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aecaf7c0fb16c99ceed5024e83afce62b" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0775fa5e70c287d1bf446bfa30bb6826" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>DoFIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af197eeac5c01934490b80217e1e9a7fe" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Element</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1adc1c36eb397685b39f7859db77a873c1" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Elements</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ace7da21c2886341c7e01abef678a5168" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a21981114f849b68afc6ec2f25496320c" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>LieAlg</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1aa9b13ce57b942faf5414b47d53e3f3d9" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ac898b9c7443d9daab3829a4d86eeca88" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>MapConstElement</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a5e0071f2e53a52115b9a4a249dd2d2bb" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>MapElement</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1af455182ae459cb44778868b26b4fa26c" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1ad1d5c51f80edc3b1a217468d6a4fd369" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>RepSizeIdx</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a0275811ff31f05d53a3e5d26bcae7760" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4_1a47e8d7cbf020a14814c67227661e4993" prot="public" virt="non-virtual"><scope>manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</scope><name>Tangent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

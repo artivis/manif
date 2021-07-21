@@ -8,6 +8,10 @@
     <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
     <innerclass refid="structmanif_1_1_constants_3_01float_01_4" prot="public">manif::Constants&lt; float &gt;</innerclass>
+    <innerclass refid="structmanif_1_1_bundle" prot="public">manif::Bundle</innerclass>
+    <innerclass refid="structmanif_1_1_bundle_tangent" prot="public">manif::BundleTangent</innerclass>
+    <innerclass refid="structmanif_1_1_bundle_base" prot="public">manif::BundleBase</innerclass>
+    <innerclass refid="structmanif_1_1_bundle_tangent_base" prot="public">manif::BundleTangentBase</innerclass>
     <innerclass refid="structmanif_1_1_lie_group_base" prot="public">manif::LieGroupBase</innerclass>
     <innerclass refid="structmanif_1_1runtime__error" prot="public">manif::runtime_error</innerclass>
     <innerclass refid="structmanif_1_1invalid__argument" prot="public">manif::invalid_argument</innerclass>
@@ -228,6 +232,29 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="56" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="eigen_8h_1a081919d2085b3ee3fb49035ca3ea425c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename Scalar</type>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>S</declname>
+            <defname>S</defname>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Matrix&lt; Scalar, S, S &gt;</type>
+        <definition>using manif::SquareMatrix = typedef Eigen::Matrix&lt;Scalar, S, S&gt;</definition>
+        <argsstring></argsstring>
+        <name>SquareMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="113" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8" prot="public" static="no">
         <templateparamlist>
@@ -2231,7 +2258,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="139" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="139" bodyend="144"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="143" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="143" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a19dd1467c1dfb4e720587c16e1ebce78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2257,7 +2284,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="156" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="156" bodyend="166"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="160" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="160" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2279,7 +2306,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="169" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="169" bodyend="194"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="173" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="173" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a0603576759173c5e8968e987b41e5f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2297,7 +2324,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="197" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="197" bodyend="222"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="201" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="201" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

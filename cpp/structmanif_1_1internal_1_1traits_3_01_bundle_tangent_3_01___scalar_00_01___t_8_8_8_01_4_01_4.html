@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::internal::traits&lt;BundleTangent&lt;_Scalar, _T...&gt;&gt; struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;typename _Scalar, template&lt;typename&gt; class ... _T&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>traits&lt;BundleTangent&lt;_Scalar, _T...&gt;&gt; <span class="m-thin">struct</span>
+        </h1>
+        <p>Traits specialization.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="adc1c36eb397685b39f7859db77a873c1">
+              using <a href="#adc1c36eb397685b39f7859db77a873c1" class="m-doc-self">Elements</a> = std::tuple&lt;typename _T&lt;_Scalar&gt;::Tangent...&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af197eeac5c01934490b80217e1e9a7fe">
+              <div class="m-doc-template">template&lt;int _N&gt;</div>
+              using <a href="#af197eeac5c01934490b80217e1e9a7fe" class="m-doc-self">Element</a> = typename std::tuple_element&lt;_N, Elements&gt;::type
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5e0071f2e53a52115b9a4a249dd2d2bb">
+              <div class="m-doc-template">template&lt;int _N&gt;</div>
+              using <a href="#a5e0071f2e53a52115b9a4a249dd2d2bb" class="m-doc-self">MapElement</a> = Eigen::Map&lt;Element&lt;_N&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac898b9c7443d9daab3829a4d86eeca88">
+              <div class="m-doc-template">template&lt;int _N&gt;</div>
+              using <a href="#ac898b9c7443d9daab3829a4d86eeca88" class="m-doc-self">MapConstElement</a> = Eigen::Map&lt;const Element&lt;_N&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0275811ff31f05d53a3e5d26bcae7760">
+              using <a href="#a0275811ff31f05d53a3e5d26bcae7760" class="m-doc-self">Scalar</a> = _Scalar
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa9b13ce57b942faf5414b47d53e3f3d9">
+              using <a href="#aa9b13ce57b942faf5414b47d53e3f3d9" class="m-doc-self">LieGroup</a> = <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a>&lt;_Scalar, _T...&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a47e8d7cbf020a14814c67227661e4993">
+              using <a href="#a47e8d7cbf020a14814c67227661e4993" class="m-doc-self">Tangent</a> = <a href="structmanif_1_1_bundle_tangent.html" class="m-doc">BundleTangent</a>&lt;_Scalar, _T...&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab8a8ee8dffabd8acea4b3d0f6cd9cd8d">
+              using <a href="#ab8a8ee8dffabd8acea4b3d0f6cd9cd8d" class="m-doc-self">Base</a> = <a href="structmanif_1_1_bundle_tangent_base.html" class="m-doc">BundleTangentBase</a>&lt;<a href="structmanif_1_1_bundle_tangent.html" class="m-doc">Tangent</a>&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aeb4ababa70556ec5272a263f8d5451c3">
+              using <a href="#aeb4ababa70556ec5272a263f8d5451c3" class="m-doc-self">DataType</a> = Eigen::Matrix&lt;Scalar, RepSize, 1&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ace7da21c2886341c7e01abef678a5168">
+              using <a href="#ace7da21c2886341c7e01abef678a5168" class="m-doc-self">Jacobian</a> = Eigen::Matrix&lt;Scalar, DoF, DoF&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a21981114f849b68afc6ec2f25496320c">
+              using <a href="#a21981114f849b68afc6ec2f25496320c" class="m-doc-self">LieAlg</a> = SquareMatrix&lt;Scalar, accumulate(int(_T&lt;_Scalar&gt;::Tangent::LieAlg::RowsAtCompileTime) ...)&gt;
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt id="ab3384f53f8c77df867d168f1ead701e9">
+              static std::size_t <a href="#ab3384f53f8c77df867d168f1ead701e9" class="m-doc-self">BundleSize</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0775fa5e70c287d1bf446bfa30bb6826">
+              static std::array&lt;int, sizeof...(_T)&gt; <a href="#a0775fa5e70c287d1bf446bfa30bb6826" class="m-doc-self">DoFIdx</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad1d5c51f80edc3b1a217468d6a4fd369">
+              static std::array&lt;int, sizeof...(_T)&gt; <a href="#ad1d5c51f80edc3b1a217468d6a4fd369" class="m-doc-self">RepSizeIdx</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa652ea65556281ad77773e8a2a1a7e03">
+              static std::array&lt;int, sizeof...(_T)&gt; <a href="#aa652ea65556281ad77773e8a2a1a7e03" class="m-doc-self">AlgIdx</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa658b316ba9823c471caf5c11e12c22c">
+              static int <a href="#aa658b316ba9823c471caf5c11e12c22c" class="m-doc-self">Dim</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aecaf7c0fb16c99ceed5024e83afce62b">
+              static int <a href="#aecaf7c0fb16c99ceed5024e83afce62b" class="m-doc-self">DoF</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af455182ae459cb44778868b26b4fa26c">
+              static int <a href="#af455182ae459cb44778868b26b4fa26c" class="m-doc-self">RepSize</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

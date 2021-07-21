@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1compute__indices__gen" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::compute_indices_gen</compoundname>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>i</declname>
+        <defname>i</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>j</declname>
+        <defname>j</defname>
+      </param>
+      <param>
+        <type>int ...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1compute__indices__gen_1ab0c41eb175b10cbc1242aa343fb08209" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr std::array&lt; int, sizeof...(Args)+1 &gt;</type>
+        <definition>static constexpr std::array&lt;int, sizeof...(Args)+1&gt; manif::internal::compute_indices_gen&lt; N, i, j, Args &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="138" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="137" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="137" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1compute__indices__gen_1ab0c41eb175b10cbc1242aa343fb08209" prot="public" virt="non-virtual"><scope>manif::internal::compute_indices_gen</scope><name>get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

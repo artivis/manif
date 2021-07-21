@@ -7,19 +7,24 @@
     <includedby refid="_s_e3_tangent__base_8h" local="yes">SE3Tangent_base.h</includedby>
     <includedby refid="_s_e3_8h" local="yes">SE3.h</includedby>
     <incdepgraph>
+      <node id="3">
+        <label>array</label>
+      </node>
       <node id="1">
         <label>SE3_properties.h</label>
         <link refid="_s_e3__properties_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>type_traits</label>
       </node>
       <node id="2">
         <label>manif/impl/traits.h</label>
         <link refid="traits_8h_source"/>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </incdepgraph>

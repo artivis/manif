@@ -6,6 +6,17 @@
     <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01ceres_1_1_jet_3_01___scalar_00_01___n_01_4_01_4" prot="public">manif::internal::is_ad&lt; ceres::Jet&lt; _Scalar, _N &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl" prot="public">manif::internal::AssignmentEvaluatorImpl</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator" prot="public">manif::internal::AssignmentEvaluator</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4" prot="public">manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; Bundle&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const Bundle&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; BundleBase&lt; _Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_bundle_tangent_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; BundleTangentBase&lt; _Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4" prot="public">manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" prot="public">manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator" prot="public">manif::internal::GeneratorEvaluator</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_inner_weights_evaluator" prot="public">manif::internal::InnerWeightsEvaluator</innerclass>
@@ -88,7 +99,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4" prot="public">manif::internal::traits&lt; const T &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties" prot="public">manif::internal::LieGroupProperties</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traitscast" prot="public">manif::internal::traitscast</innerclass>
-    <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar, Ts... &gt;, _NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1is__ad" prot="public">manif::internal::is_ad</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__rjacinv__impl" prot="public">manif::internal::has_rjacinv_impl</innerclass>
@@ -97,6 +108,35 @@
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv__impl" prot="public">manif::internal::has_ljacinv_impl</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv__impl_3_01decltype_07void_07std_1_1declval_3_01_t_01_4_096205e7c54bf5a420429cb428d6b1078" prot="public">manif::internal::has_ljacinv_impl&lt; decltype(void(std::declval&lt; T &gt;().ljacinv())), T &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv" prot="public">manif::internal::has_ljacinv</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1intseq" prot="public">manif::internal::intseq</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1intseq__join" prot="public">manif::internal::intseq_join</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4" prot="public">manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1make__intseq" prot="public">manif::internal::make_intseq</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4" prot="public">manif::internal::make_intseq&lt; 0 &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen" prot="public">manif::internal::compute_indices_gen</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4" prot="public">manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="traits_8h_1a0033e0e0177d2c7e6fdf47ec0f19f8c4" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>std::size_t</type>
+            <declname>_N</declname>
+            <defname>_N</defname>
+          </param>
+        </templateparamlist>
+        <type>typename <ref refid="structmanif_1_1internal_1_1make__intseq" kindref="compound">make_intseq</ref>&lt; _N &gt;::type</type>
+        <definition>using manif::internal::make_intseq_t = typedef typename make_intseq&lt;_N&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>make_intseq_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="125" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="constants_8h_1add9d0de466af3750f594cd047644ce86" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -176,7 +216,81 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="114" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="114" bodyend="117"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="118" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="118" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="traits_8h_1ae8e775a3f897e8deb715c17426fda198" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::internal::accumulate</definition>
+        <argsstring>(T t)</argsstring>
+        <name>accumulate</name>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="128" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="traits_8h_1a4b15ed028826bae0079813f367ebd0fc" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Rest</declname>
+            <defname>Rest</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T manif::internal::accumulate</definition>
+        <argsstring>(T t, Rest... rest)</argsstring>
+        <name>accumulate</name>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>Rest...</type>
+          <declname>rest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="133" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="traits_8h_1a2b08be98eb3cd6e236d57f424610c39a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::array&lt; int, sizeof...(Args)&gt;</type>
+        <definition>constexpr std::array&lt;int, sizeof...(Args)&gt; manif::internal::compute_indices</definition>
+        <argsstring>()</argsstring>
+        <name>compute_indices</name>
+        <briefdescription>
+<para>Compute indices given block-sizes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="148" column="34" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="148" bodyend="150"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

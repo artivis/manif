@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_bundle" kind="struct" language="C++" prot="public">
+    <compoundname>manif::Bundle</compoundname>
+    <basecompoundref refid="structmanif_1_1_bundle_base" prot="public" virt="non-virtual">manif::BundleBase&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</basecompoundref>
+    <includes refid="impl_2bundle_2_bundle_8h" local="no">Bundle.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Scalar</type>
+      </param>
+      <param>
+        <type>template&lt; typename &gt; class ...</type>
+        <declname>_T</declname>
+        <defname>_T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structmanif_1_1_bundle_1a1f8360ff4be448c7838dbb9375c59960" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_bundle_base" kindref="compound">BundleBase</ref>&lt; <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref>&lt; _Scalar, _T... &gt; &gt;</type>
+        <definition>using manif::Bundle&lt; _Scalar, _T &gt;::Base =  BundleBase&lt;Bundle&lt;_Scalar, _T...&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="104" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structmanif_1_1_bundle_1a53ad62fa6a11af332143ebd745d2320d" prot="private" static="no">
+        <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref>&lt; _Scalar, _T... &gt;</type>
+        <definition>using manif::Bundle&lt; _Scalar, _T &gt;::Type =  Bundle&lt;_Scalar, _T...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="105" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1_bundle_1aff2eec7cfefbdfbd6c35cee1e0dfc45c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Idx</declname>
+            <defname>Idx</defname>
+          </param>
+        </templateparamlist>
+        <type>typename Base::template Element&lt; Idx &gt;</type>
+        <definition>using manif::Bundle&lt; _Scalar, _T &gt;::Element =  typename Base::template Element&lt;Idx&gt;</definition>
+        <argsstring></argsstring>
+        <name>Element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="113" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_bundle_1a2d54c4aae5a7b208762b3a7d64492faa" prot="protected" static="no" mutable="no">
+        <type>DataType</type>
+        <definition>DataType manif::Bundle&lt; _Scalar, _T &gt;::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+<para>Underlying data (Eigen) vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="164" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a66d1452f9540436def8e6384e06eb554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_COMPLETE_GROUP_TYPEDEF MANIF_INHERIT_GROUP_API</type>
+        <definition>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND MANIF_COMPLETE_GROUP_TYPEDEF MANIF_INHERIT_GROUP_API manif::Bundle&lt; _Scalar, _T &gt;::Bundle</definition>
+        <argsstring>()=default</argsstring>
+        <name>Bundle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="121" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a7a9ef05df9f9912ddeb06bf6ffccb067" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::~Bundle</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Bundle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="122" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a18f4ef0e68bf7cf3474745306b125d93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::MANIF_COPY_CONSTRUCTOR</definition>
+        <argsstring>(Bundle)</argsstring>
+        <name>MANIF_COPY_CONSTRUCTOR</name>
+        <param>
+          <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="124" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1abe0fdb796a033413ebd2cf756f8978d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::MANIF_MOVE_CONSTRUCTOR</definition>
+        <argsstring>(Bundle)</argsstring>
+        <name>MANIF_MOVE_CONSTRUCTOR</name>
+        <param>
+          <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="125" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1aadca13aa5771f44c2ac8f57c767b11b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _DerivedOther</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::Bundle</definition>
+        <argsstring>(const LieGroupBase&lt; _DerivedOther &gt; &amp;o)</argsstring>
+        <name>Bundle</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; _DerivedOther &gt; &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="129" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="170" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a15d06aa1de9d43503f8c9dca4f395a25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::MANIF_GROUP_ASSIGN_OP</definition>
+        <argsstring>(Bundle)</argsstring>
+        <name>MANIF_GROUP_ASSIGN_OP</name>
+        <param>
+          <type><ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="131" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1ac8c70137e95574d8ad0a73804d7073ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DataType &amp;</type>
+        <definition>Bundle&lt; _Scalar, _T... &gt;::DataType &amp; manif::Bundle&lt; _Scalar, _T &gt;::coeffs</definition>
+        <argsstring>()</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Get a reference to the underlying DataType. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the underlying Eigen vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="139" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="194" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a3a4b5369923db63ed7d4f259f176e578" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const DataType &amp;</type>
+        <definition>const Bundle&lt; _Scalar, _T... &gt;::DataType &amp; manif::Bundle&lt; _Scalar, _T &gt;::coeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>coeffs</name>
+        <briefdescription>
+<para>Get a const reference to the underlying DataType. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>const reference to the underlying Eigen vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="145" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="201" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a97fcde5d70c389c92c3df4fadb30ac6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::Bundle</definition>
+        <argsstring>(const _T&lt; _Scalar &gt; &amp;... elements)</argsstring>
+        <name>Bundle</name>
+        <param>
+          <type>const _T&lt; _Scalar &gt; &amp;...</type>
+          <declname>elements</declname>
+        </param>
+        <briefdescription>
+<para>Construct from <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref> elements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="153" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="175" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="structmanif_1_1_bundle_1a95c9c6e94e24b22b5892bafbd4c56df8" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int ...</type>
+            <declname>_Idx</declname>
+            <defname>_Idx</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>manif::Bundle&lt; _Scalar, _T &gt;::Bundle</definition>
+        <argsstring>(internal::intseq&lt; _Idx... &gt;, const _T&lt; _Scalar &gt; &amp;... elements)</argsstring>
+        <name>Bundle</name>
+        <param>
+          <type><ref refid="structmanif_1_1internal_1_1intseq" kindref="compound">internal::intseq</ref>&lt; _Idx... &gt;</type>
+        </param>
+        <param>
+          <type>const _T&lt; _Scalar &gt; &amp;...</type>
+          <declname>elements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="159" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="181" bodyend="190"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_bundle_1ac189bec928567bf86eb83a2f05e9341e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::size_t</type>
+        <definition>constexpr std::size_t manif::BundleBase&lt; _Derived &gt;::BundleSize</definition>
+        <argsstring></argsstring>
+        <name>BundleSize</name>
+        <briefdescription>
+<para>Number of elements in bundle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="114" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_base.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref> (or Composite) element as described in Section IV of the reference paper (see also Example 7). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="structmanif_1_1_bundle" kindref="compound">Bundle</ref> &lt;G1, ..., Gn&gt; of Lie groups can be utilized as a single group with element-wise operations. This can be convenient when working with aggregate states that consist of multiple Lie group sub-states, like the example in Section VIIb of the reference paper.</para>
+<para>Example: create an element of the composite &lt;<ref refid="structmanif_1_1_s_o3" kindref="compound">SO3</ref>, E3, E3&gt; using double as the scalar type.</para>
+<para><blockquote><para>Bundle&lt;double, SO3, R3, R3&gt; element; </para>
+</blockquote></para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::Bundle&lt; _Scalar, _T &gt;</label>
+        <link refid="structmanif_1_1_bundle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::BundleBase&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</label>
+        <link refid="structmanif_1_1_bundle_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::Bundle&lt; _Scalar, _T &gt;</label>
+        <link refid="structmanif_1_1_bundle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>manif::BundleBase&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</label>
+        <link refid="structmanif_1_1_bundle_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>manif::LieGroupBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_lie_group_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" line="98" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle.h" bodystart="99" bodyend="165"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>_</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a9bd53241144cb3b48c11c401ee0d3d83" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>act</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::Bundle</scope><name>act</name></member>
+      <member refid="structmanif_1_1_bundle_base_1af45417ca14ef9419393e230c42003119" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>act_impl</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a2e18883af9d533e457d1414a4dae27b9" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>act_impl</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a1837554a8cd97811fac528abf0b538da" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>adj</name></member>
+      <member refid="structmanif_1_1_bundle_base_1ab9821928a94cb2200cdaede69c422977" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>adj_impl</name></member>
+      <member refid="structmanif_1_1_bundle_1a1f8360ff4be448c7838dbb9375c59960" prot="private" virt="non-virtual"><scope>manif::Bundle</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>between</name></member>
+      <member refid="structmanif_1_1_bundle_1a66d1452f9540436def8e6384e06eb554" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Bundle</name></member>
+      <member refid="structmanif_1_1_bundle_1aadca13aa5771f44c2ac8f57c767b11b6" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Bundle</name></member>
+      <member refid="structmanif_1_1_bundle_1a97fcde5d70c389c92c3df4fadb30ac6a" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Bundle</name></member>
+      <member refid="structmanif_1_1_bundle_1a95c9c6e94e24b22b5892bafbd4c56df8" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>Bundle</name></member>
+      <member refid="structmanif_1_1_bundle_1ac189bec928567bf86eb83a2f05e9341e" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>BundleSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>cast</name></member>
+      <member refid="structmanif_1_1_bundle_1ac8c70137e95574d8ad0a73804d7073ee" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_bundle_1a3a4b5369923db63ed7d4f259f176e578" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>coeffs</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a9263dbb22c4a6ef9906ec656624dbb8d" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>compose</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a7cc6d449ce8965be63ee012fced00dc9" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>compose_impl</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>data</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>data</name></member>
+      <member refid="structmanif_1_1_bundle_1a2d54c4aae5a7b208762b3a7d64492faa" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>data_</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>DataType</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7ce9db9ccb753dbe014d050fad09c385" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::Bundle</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" virt="non-virtual" ambiguityscope="manif::LieGroupBase::"><scope>manif::Bundle</scope><name>derived</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_bundle_1aff2eec7cfefbdfbd6c35cee1e0dfc45c" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Element</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a2a199ef0d59e48fee2b54e298fb0ad46" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>element</name></member>
+      <member refid="structmanif_1_1_bundle_base_1ad0e66bf0f8267313948a106cf1d4cc63" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>element</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a4428e1da3b83aeeda9f0ac45affc53dd" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>element</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a2eda243fd390a36cb13d391f0bca19a1" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>element</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a41679b666399979a2e2eb2e309742fd0" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Elements</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Identity</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a8475edee4bdc7f4f4e2f21d2ec3ba31d" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>inverse</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a8645c8da6a58d8dd9fb946470f12623a" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>inverse_impl</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>isApprox</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Jacobian</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>LieGroup</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>LieGroupTemplate</name></member>
+      <member refid="structmanif_1_1_bundle_base_1ae5c84d85c0c57a58c043be4773dbcd2e" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>lift</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>lminus</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a47c1741f0ab1ca52430a7a73289c120b" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>log</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a10320689917967479bbd17321778a7a9" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>log_impl</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>lplus</name></member>
+      <member refid="structmanif_1_1_bundle_1a18f4ef0e68bf7cf3474745306b125d93" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>MANIF_COPY_CONSTRUCTOR</name></member>
+      <member refid="structmanif_1_1_bundle_1a15d06aa1de9d43503f8c9dca4f395a25" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>MANIF_GROUP_ASSIGN_OP</name></member>
+      <member refid="structmanif_1_1_bundle_1abe0fdb796a033413ebd2cf756f8978d2" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>MANIF_MOVE_CONSTRUCTOR</name></member>
+      <member refid="structmanif_1_1_bundle_base_1aeac25d8627b2b73205d5cc365cb3ebf6" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>MapConstElement</name></member>
+      <member refid="structmanif_1_1_bundle_base_1abb2fa7d93e068d390767aacccd213591" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>MapElement</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>minus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator*</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator*=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator+</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator+=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator-</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ac411dc1b8a4456a3bae4afd152abddaa" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>OptJacobianRef</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>plus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Random</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>RepSize</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>rminus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>rplus</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Scalar</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>setIdentity</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Tangent</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a3deff81df5de215b87e8a78f94731217" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>transform</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a048d58d2653a980983572d255a0c55ca" prot="protected" virt="non-virtual"><scope>manif::Bundle</scope><name>transform_impl</name></member>
+      <member refid="structmanif_1_1_bundle_base_1a8a84237087f300ccbe9ae79118f1eb65" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Transformation</name></member>
+      <member refid="structmanif_1_1_bundle_1a53ad62fa6a11af332143ebd745d2320d" prot="private" virt="non-virtual"><scope>manif::Bundle</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>Vector</name></member>
+      <member refid="structmanif_1_1_bundle_1a7a9ef05df9f9912ddeb06bf6ffccb067" prot="public" virt="non-virtual"><scope>manif::Bundle</scope><name>~Bundle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

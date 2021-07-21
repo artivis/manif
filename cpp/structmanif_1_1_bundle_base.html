@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::BundleBase struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>BundleBase <span class="m-thin">struct</span>
+        </h1>
+        <p>The base class of the <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> group.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+              struct <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase&lt;_Derived&gt;</a>
+            </dt>
+            <dd>Base class for Lie groups. Defines the minimum common API.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a41679b666399979a2e2eb2e309742fd0">
+              using <a href="#a41679b666399979a2e2eb2e309742fd0" class="m-doc-self">Elements</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Elements
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0f1b3301fcdd9f619c8ce0711f279eb7">
+              <div class="m-doc-template">template&lt;int Idx&gt;</div>
+              using <a href="#a0f1b3301fcdd9f619c8ce0711f279eb7" class="m-doc-self">Element</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::template Element&lt;Idx&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abb2fa7d93e068d390767aacccd213591">
+              <div class="m-doc-template">template&lt;int Idx&gt;</div>
+              using <a href="#abb2fa7d93e068d390767aacccd213591" class="m-doc-self">MapElement</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::template MapElement&lt;Idx&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aeac25d8627b2b73205d5cc365cb3ebf6">
+              <div class="m-doc-template">template&lt;int Idx&gt;</div>
+              using <a href="#aeac25d8627b2b73205d5cc365cb3ebf6" class="m-doc-self">MapConstElement</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::template MapConstElement&lt;Idx&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a8a84237087f300ccbe9ae79118f1eb65">
+              using <a href="#a8a84237087f300ccbe9ae79118f1eb65" class="m-doc-self">Transformation</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Transformation
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt id="ac189bec928567bf86eb83a2f05e9341e">
+              static std::size_t <a href="#ac189bec928567bf86eb83a2f05e9341e" class="m-doc-self">BundleSize</a> <span class="m-label m-flat m-primary">constexpr</span>
+            </dt>
+            <dd>Number of elements in bundle.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a8475edee4bdc7f4f4e2f21d2ec3ba31d">
+              <span class="m-doc-wrap-bumper">auto <a href="#a8475edee4bdc7f4f4e2f21d2ec3ba31d" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">OptJacobianRef J_minv_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Get the inverse of this.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a47c1741f0ab1ca52430a7a73289c120b" class="m-doc">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; Tangent</span>
+            </dt>
+            <dd>Get the corresponding Lie algebra element.</dd>
+            <dt id="ae5c84d85c0c57a58c043be4773dbcd2e">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae5c84d85c0c57a58c043be4773dbcd2e" class="m-doc-self">lift</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; MANIF_DEPRECATED Tangent</span>
+            </dt>
+            <dd>This function is deprecated. Please consider using <a href="structmanif_1_1_bundle_base.html#a47c1741f0ab1ca52430a7a73289c120b" class="m-doc">log</a> instead.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9263dbb22c4a6ef9906ec656624dbb8d" class="m-doc">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Composition of this and another <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9bd53241144cb3b48c11c401ee0d3d83" class="m-doc">act</a>(</span><span class="m-doc-wrap">const Vector&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v = {}) const -&gt; Vector</span>
+            </dt>
+            <dd><a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> group action.</dd>
+            <dt id="a1837554a8cd97811fac528abf0b538da">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1837554a8cd97811fac528abf0b538da" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd>Get the adjoint matrix at this.</dd>
+            <dt id="a3deff81df5de215b87e8a78f94731217">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3deff81df5de215b87e8a78f94731217" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
+            </dt>
+            <dd>Get the element-diagonal transformation matrix.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2a199ef0d59e48fee2b54e298fb0ad46" class="m-doc">element</a>(</span><span class="m-doc-wrap">) -&gt; MapElement&lt;_Idx&gt;</span>
+            </dt>
+            <dd>Access <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element as Map.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0e66bf0f8267313948a106cf1d4cc63" class="m-doc">element</a>(</span><span class="m-doc-wrap">) const -&gt; MapConstElement&lt;_Idx&gt;</span>
+            </dt>
+            <dd>Access <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element as Map to const.</dd>
+            <dt id="a2e18883af9d533e457d1414a4dae27b9">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e18883af9d533e457d1414a4dae27b9" class="m-doc-self">act_impl</a>(</span><span class="m-doc-wrap">const typename <a href="structmanif_1_1_bundle_base.html" class="m-doc">BundleBase</a>&lt;_Derived&gt;::Vector&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v,
+              <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; <a href="structmanif_1_1_bundle_base.html" class="m-doc">BundleBase</a>&lt;_Derived&gt;::Vector</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4428e1da3b83aeeda9f0ac45affc53dd">
+              <div class="m-doc-template">template&lt;int _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4428e1da3b83aeeda9f0ac45affc53dd" class="m-doc-self">element</a>(</span><span class="m-doc-wrap">) -&gt; MapElement&lt; _Idx &gt; -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2eda243fd390a36cb13d391f0bca19a1">
+              <div class="m-doc-template">template&lt;int _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2eda243fd390a36cb13d391f0bca19a1" class="m-doc-self">element</a>(</span><span class="m-doc-wrap">) const -&gt; MapConstElement&lt; _Idx &gt; -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1ac9dd89b140080b8b0284c8bdfb5270">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ac9dd89b140080b8b0284c8bdfb5270" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+            <dt id="acee62f2ce8024b20db04c304031af85e">
+              <span class="m-doc-wrap-bumper">auto <a href="#acee62f2ce8024b20db04c304031af85e" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a8645c8da6a58d8dd9fb946470f12623a">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8645c8da6a58d8dd9fb946470f12623a" class="m-doc-self">inverse_impl</a>(</span><span class="m-doc-wrap">OptJacobianRef,
+              <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; LieGroup</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a10320689917967479bbd17321778a7a9">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a10320689917967479bbd17321778a7a9" class="m-doc-self">log_impl</a>(</span><span class="m-doc-wrap">OptJacobianRef,
+              <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; Tangent</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7cc6d449ce8965be63ee012fced00dc9">
+              <div class="m-doc-template">template&lt;typename _DerivedOther, int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7cc6d449ce8965be63ee012fced00dc9" class="m-doc-self">compose_impl</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma,
+              OptJacobianRef J_mc_mb,
+              <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; LieGroup</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af45417ca14ef9419393e230c42003119">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#af45417ca14ef9419393e230c42003119" class="m-doc-self">act_impl</a>(</span><span class="m-doc-wrap">const Vector&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v,
+              <a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; Vector</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab9821928a94cb2200cdaede69c422977">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab9821928a94cb2200cdaede69c422977" class="m-doc-self">adj_impl</a>(</span><span class="m-doc-wrap"><a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; Jacobian</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a048d58d2653a980983572d255a0c55ca">
+              <div class="m-doc-template">template&lt;int ... _Idx&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a048d58d2653a980983572d255a0c55ca" class="m-doc-self">transform_impl</a>(</span><span class="m-doc-wrap"><a href="structmanif_1_1internal_1_1intseq.html" class="m-doc">internal::<wbr />intseq</a>&lt;_Idx...&gt;) const -&gt; Transformation</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7ce9db9ccb753dbe014d050fad09c385">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ce9db9ccb753dbe014d050fad09c385" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) &amp; -&gt; _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9380b9ee1ed9bbdcf3dcf284571f6901">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9380b9ee1ed9bbdcf3dcf284571f6901" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) const &amp; -&gt; const _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a47c1741f0ab1ca52430a7a73289c120b"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Tangent manif::<wbr />BundleBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a47c1741f0ab1ca52430a7a73289c120b" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const</span></span>
+            </h3>
+            <p>Get the corresponding Lie algebra element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The tangent of this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a9263dbb22c4a6ef9906ec656624dbb8d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />BundleBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9263dbb22c4a6ef9906ec656624dbb8d" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const</span></span>
+            </h3>
+            <p>Composition of this and another <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">m&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Another <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element.</td>
+                </tr>
+                <tr>
+                  <td>J_mc_ma</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_mc_mb</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The composition of &#x27;this . m&#x27;.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a9bd53241144cb3b48c11c401ee0d3d83"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Vector manif::<wbr />BundleBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9bd53241144cb3b48c11c401ee0d3d83" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">const Vector&amp; v,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, DoF&gt;&gt;&gt; J_vout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, Dim, Dim&gt;&gt;&gt; J_vout_v = {}) const</span></span>
+            </h3>
+            <p><a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> group action.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">v</td>
+                  <td>vector.</td>
+                </tr>
+                <tr>
+                  <td>J_vout_m</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_vout_v</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The translated vector.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2a199ef0d59e48fee2b54e298fb0ad46"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;int _Idx&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">MapElement&lt;_Idx&gt; manif::<wbr />BundleBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2a199ef0d59e48fee2b54e298fb0ad46" class="m-doc-self">element</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Access <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element as Map.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_Idx</td>
+                  <td>element index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ad0e66bf0f8267313948a106cf1d4cc63"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;int _Idx&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">MapConstElement&lt;_Idx&gt; manif::<wbr />BundleBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0e66bf0f8267313948a106cf1d4cc63" class="m-doc-self">element</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Access <a href="structmanif_1_1_bundle.html" class="m-doc">Bundle</a> element as Map to const.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_Idx</td>
+                  <td>element index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -5,6 +5,7 @@
     <innerdir refid="dir_80ae130e730b0c846acfaa988d7ac321">algorithms</innerdir>
     <innerdir refid="dir_78a8501af6f3f64c000105fea8c40973">ceres</innerdir>
     <innerdir refid="dir_098c4581aaa0d1c7f86d001315ab1814">impl</innerdir>
+    <innerfile refid="_bundle_8h">Bundle.h</innerfile>
     <innerfile refid="constants_8h">constants.h</innerfile>
     <innerfile refid="functions_8h">functions.h</innerfile>
     <innerfile refid="manif_8h">manif.h</innerfile>

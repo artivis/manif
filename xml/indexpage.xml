@@ -28,6 +28,7 @@
 </listitem><listitem><para>SO(3): rotations in 3D space.</para>
 </listitem><listitem><para>SE(3): rigid motion (rotation and translation) in 3D space.</para>
 </listitem><listitem><para>SE_2(3): extended pose (rotation, translation and velocity) in 3D space, introduced (to the best of knowledge) in this <ulink url="https://arxiv.org/pdf/1410.1465.pdf">paper</ulink>. NOTE: The implementation here differs slightly from the developments in the <ulink url="https://arxiv.org/pdf/1410.1465.pdf">paper</ulink>.</para>
+</listitem><listitem><para>Bundle&lt;&gt;: allows manipulating a manifold bundle as a single Lie group. Referred to as a <emphasis>composite manifold</emphasis> in Section IV of the <ulink url="http://arxiv.org/abs/1812.01537">reference paper</ulink>.</para>
 </listitem></itemizedlist>
 </para>
 <para>Other Lie groups can and will be added, contributions are welcome.</para>

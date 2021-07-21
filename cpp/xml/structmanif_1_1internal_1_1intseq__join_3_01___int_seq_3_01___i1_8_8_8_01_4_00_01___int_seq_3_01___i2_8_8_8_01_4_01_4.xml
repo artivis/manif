@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>template&lt; int ... &gt; class</type>
+        <declname>_IntSeq</declname>
+        <defname>_IntSeq</defname>
+      </param>
+      <param>
+        <type>int ...</type>
+        <declname>_I1</declname>
+        <defname>_I1</defname>
+      </param>
+      <param>
+        <type>int ...</type>
+        <declname>_I2</declname>
+        <defname>_I2</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4_1abfa9e05a1e784876803d01178346a83e" prot="public" static="no">
+        <type>_IntSeq&lt; _I1..., _I2... &gt;</type>
+        <definition>using manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;::type =  _IntSeq&lt;_I1..., _I2...&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="104" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="102" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="103" bodyend="105"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4_1abfa9e05a1e784876803d01178346a83e" prot="public" virt="non-virtual"><scope>manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

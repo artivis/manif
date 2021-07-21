@@ -2,6 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespace_eigen" kind="namespace" language="C++">
     <compoundname>Eigen</compoundname>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::Bundle&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::Bundle&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::BundleTangent&lt; _Scalar, T... &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</innerclass>
@@ -30,6 +34,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/Rn_map.h" line="34" column="1"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/Bundle_map.h" line="39" column="1"/>
   </compounddef>
 </doxygen>

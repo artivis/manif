@@ -2,7 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="traits_8h" kind="file" language="C++">
     <compoundname>traits.h</compoundname>
+    <includes local="no">array</includes>
     <includes local="no">type_traits</includes>
+    <includedby refid="impl_2bundle_2_bundle_8h" local="yes">Bundle.h</includedby>
+    <includedby refid="_bundle__base_8h" local="yes">Bundle_base.h</includedby>
+    <includedby refid="_bundle__properties_8h" local="yes">Bundle_properties.h</includedby>
+    <includedby refid="_bundle_tangent_8h" local="yes">BundleTangent.h</includedby>
+    <includedby refid="_bundle_tangent__base_8h" local="yes">BundleTangent_base.h</includedby>
     <includedby refid="lie__group__base_8h" local="yes">lie_group_base.h</includedby>
     <includedby refid="_rn__properties_8h" local="yes">Rn_properties.h</includedby>
     <includedby refid="_s_e2__properties_8h" local="yes">SE2_properties.h</includedby>
@@ -13,6 +19,9 @@
     <includedby refid="tangent__base_8h" local="yes">tangent_base.h</includedby>
     <incdepgraph>
       <node id="2">
+        <label>array</label>
+      </node>
+      <node id="3">
         <label>type_traits</label>
       </node>
       <node id="1">
@@ -20,443 +29,495 @@
         <link refid="traits_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="39">
+      <node id="47">
         <label>SE2Tangent.h</label>
         <link refid="_s_e2_tangent_8h_source"/>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="55">
-        <label>SO3Tangent.h</label>
-        <link refid="_s_o3_tangent_8h_source"/>
-        <childnode refid="56" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>SO2_map.h</label>
-        <link refid="_s_o2__map_8h_source"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>SO3_base.h</label>
-        <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="43">
-        <label>SE3Tangent.h</label>
-        <link refid="_s_e3_tangent_8h_source"/>
-        <childnode refid="44" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>Rn_map.h</label>
-        <link refid="_rn__map_8h_source"/>
-        <childnode refid="12" relation="include">
+      <node id="3">
+        <label>Bundle.h</label>
+        <link refid="_bundle_8h_source"/>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>SE_2_3_base.h</label>
-        <link refid="_s_e__2__3__base_8h_source"/>
-        <childnode refid="21" relation="include">
+      <node id="63">
+        <label>SO3Tangent.h</label>
+        <link refid="_s_o3_tangent_8h_source"/>
+        <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>bezier.h</label>
-        <link refid="bezier_8h_source"/>
-      </node>
-      <node id="22">
-        <label>SE_2_3_map.h</label>
-        <link refid="_s_e__2__3__map_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="46">
-        <label>SE_2_3Tangent.h</label>
-        <link refid="_s_e__2__3_tangent_8h_source"/>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+      <node id="35">
+        <label>SO2_map.h</label>
+        <link refid="_s_o2__map_8h_source"/>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="53">
-        <label>SO3_properties.h</label>
-        <link refid="_s_o3__properties_8h_source"/>
-        <childnode refid="29" relation="include">
+      <node id="37">
+        <label>SO3_base.h</label>
+        <link refid="_s_o3__base_8h_source"/>
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>SE3Tangent.h</label>
+        <link refid="_s_e3_tangent_8h_source"/>
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="19">
+        <label>Rn_map.h</label>
+        <link refid="_rn__map_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>BundleTangent.h</label>
+        <link refid="_bundle_tangent_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>SE_2_3_base.h</label>
+        <link refid="_s_e__2__3__base_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>bezier.h</label>
+        <link refid="bezier_8h_source"/>
+      </node>
+      <node id="30">
+        <label>SE_2_3_map.h</label>
+        <link refid="_s_e__2__3__map_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Bundle_properties.h</label>
+        <link refid="_bundle__properties_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>SE_2_3Tangent.h</label>
+        <link refid="_s_e__2__3_tangent_8h_source"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>SO3_properties.h</label>
+        <link refid="_s_o3__properties_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
         <label>SE2.h</label>
         <link refid="_s_e2_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="56">
         <label>SE_2_3_properties.h</label>
         <link refid="_s_e__2__3__properties_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="25">
         <label>SE3_base.h</label>
         <link refid="_s_e3__base_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>SE2_properties.h</label>
+        <link refid="_s_e2__properties_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="37">
-        <label>SE2_properties.h</label>
-        <link refid="_s_e2__properties_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
+      <node id="11">
         <label>lie_group_base.h</label>
         <link refid="lie__group__base_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
-      <node id="54">
+      <node id="62">
         <label>SO3Tangent_base.h</label>
         <link refid="_s_o3_tangent__base_8h_source"/>
-        <childnode refid="55" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="22">
         <label>SE2.h</label>
         <link refid="impl_2se2_2_s_e2_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="18">
         <label>Rn.h</label>
         <link refid="impl_2rn_2_rn_8h_source"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="23">
         <label>SE2_map.h</label>
         <link refid="_s_e2__map_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="9">
+        <label>BundleTangent_map.h</label>
+        <link refid="_bundle_tangent__map_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
         <label>SO3.h</label>
         <link refid="_s_o3_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="39">
         <label>SO3_map.h</label>
         <link refid="_s_o3__map_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="55">
         <label>SE_2_3Tangent_map.h</label>
         <link refid="_s_e__2__3_tangent__map_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="12">
         <label>average.h</label>
         <link refid="average_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="60">
         <label>SO2Tangent_map.h</label>
         <link refid="_s_o2_tangent__map_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="2">
+        <label>Bundle.h</label>
+        <link refid="impl_2bundle_2_bundle_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
         <label>SO2Tangent_base.h</label>
         <link refid="_s_o2_tangent__base_8h_source"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="49">
-        <label>SO2_properties.h</label>
-        <link refid="_s_o2__properties_8h_source"/>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>SE2Tangent_map.h</label>
-        <link refid="_s_e2_tangent__map_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="38">
-        <label>SE2Tangent_base.h</label>
-        <link refid="_s_e2_tangent__base_8h_source"/>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="57">
-        <label>tangent_base.h</label>
-        <link refid="tangent__base_8h_source"/>
-        <childnode refid="2" relation="include">
+        <label>SO2_properties.h</label>
+        <link refid="_s_o2__properties_8h_source"/>
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+      </node>
+      <node id="48">
+        <label>SE2Tangent_map.h</label>
+        <link refid="_s_e2_tangent__map_8h_source"/>
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+      </node>
+      <node id="46">
+        <label>SE2Tangent_base.h</label>
+        <link refid="_s_e2_tangent__base_8h_source"/>
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+      </node>
+      <node id="6">
+        <label>Bundle_base.h</label>
+        <link refid="_bundle__base_8h_source"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>tangent_base.h</label>
+        <link refid="tangent__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
-      <node id="12">
+      <node id="20">
         <label>Rn.h</label>
         <link refid="_rn_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="59">
         <label>SO2Tangent.h</label>
         <link refid="_s_o2_tangent_8h_source"/>
-        <childnode refid="52" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="29">
         <label>SE_2_3.h</label>
         <link refid="impl_2se__2__3_2_s_e__2__3_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="42">
         <label>RnTangent_base.h</label>
         <link refid="_rn_tangent__base_8h_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="16">
         <label>functions.h</label>
         <link refid="functions_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="26">
         <label>SE3.h</label>
         <link refid="impl_2se3_2_s_e3_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="36">
         <label>SO2.h</label>
         <link refid="_s_o2_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="14">
         <label>decasteljau.h</label>
         <link refid="decasteljau_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="27">
         <label>SE3_map.h</label>
         <link refid="_s_e3__map_8h_source"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="45">
-        <label>SE_2_3Tangent_base.h</label>
-        <link refid="_s_e__2__3_tangent__base_8h_source"/>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>SO2_base.h</label>
-        <link refid="_s_o2__base_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-      </node>
-      <node id="36">
-        <label>RnTangent_map.h</label>
-        <link refid="_rn_tangent__map_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="53">
+        <label>SE_2_3Tangent_base.h</label>
+        <link refid="_s_e__2__3_tangent__base_8h_source"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>SO2_base.h</label>
+        <link refid="_s_o2__base_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>RnTangent_map.h</label>
+        <link refid="_rn_tangent__map_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
         <label>SE_2_3.h</label>
         <link refid="_s_e__2__3_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="38">
         <label>SO3.h</label>
         <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="15">
         <label>interpolation.h</label>
         <link refid="interpolation_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="49">
         <label>SE3_properties.h</label>
         <link refid="_s_e3__properties_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Rn_base.h</label>
+        <link refid="_rn__base_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>Rn_properties.h</label>
+        <link refid="_rn__properties_8h_source"/>
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>Rn_base.h</label>
-        <link refid="_rn__base_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>Rn_properties.h</label>
-        <link refid="_rn__properties_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
+      <node id="52">
         <label>SE3Tangent_map.h</label>
         <link refid="_s_e3_tangent__map_8h_source"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="32">
         <label>SE3.h</label>
         <link refid="_s_e3_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="50">
         <label>SE3Tangent_base.h</label>
         <link refid="_s_e3_tangent__base_8h_source"/>
-        <childnode refid="43" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -464,63 +525,87 @@
         <link refid="traits_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
       </node>
-      <node id="56">
+      <node id="64">
         <label>SO3Tangent_map.h</label>
         <link refid="_s_o3_tangent__map_8h_source"/>
-        <childnode refid="42" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>manif.h</label>
         <link refid="manif_8h_source"/>
       </node>
-      <node id="35">
+      <node id="5">
+        <label>Bundle_map.h</label>
+        <link refid="_bundle__map_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
         <label>RnTangent.h</label>
         <link refid="_rn_tangent_8h_source"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="21">
         <label>SE2_base.h</label>
         <link refid="_s_e2__base_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="34">
         <label>SO2.h</label>
         <link refid="impl_2so2_2_s_o2_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>BundleTangent_base.h</label>
+        <link refid="_bundle_tangent__base_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structmanif_1_1internal_1_1constexpr__false" prot="public">manif::internal::constexpr_false</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01const_01_t_01_4" prot="public">manif::internal::traits&lt; const T &gt;</innerclass>
-    <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar &gt;, _NewScalar &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar, Ts... &gt;, _NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01___dim_01_4_00_01___new_scalar_01_4" prot="public">manif::internal::traitscast&lt; _Class&lt; _Scalar, _Dim &gt;, _NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1is__ad" prot="public">manif::internal::is_ad</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__rjacinv__impl" prot="public">manif::internal::has_rjacinv_impl</innerclass>
@@ -529,6 +614,12 @@
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv__impl" prot="public">manif::internal::has_ljacinv_impl</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv__impl_3_01decltype_07void_07std_1_1declval_3_01_t_01_4_096205e7c54bf5a420429cb428d6b1078" prot="public">manif::internal::has_ljacinv_impl&lt; decltype(void(std::declval&lt; T &gt;().ljacinv())), T &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1has__ljacinv" prot="public">manif::internal::has_ljacinv</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1intseq" prot="public">manif::internal::intseq</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4" prot="public">manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1make__intseq" prot="public">manif::internal::make_intseq</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4" prot="public">manif::internal::make_intseq&lt; 0 &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen" prot="public">manif::internal::compute_indices_gen</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4" prot="public">manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</innerclass>
     <innernamespace refid="namespacemanif">manif</innernamespace>
     <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
     <briefdescription>
