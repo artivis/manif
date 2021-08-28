@@ -3,6 +3,7 @@ add_executable(so2_average so2_average.cpp)
 add_executable(se2_average se2_average.cpp)
 add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
+add_executable(se2_bezier se2_Bezier.cpp)
 add_executable(se2_localization se2_localization.cpp)
 add_executable(se2_localization_ukfm se2_localization_ukfm.cpp)
 add_executable(se2_sam se2_sam.cpp)
@@ -21,6 +22,7 @@ set(CXX_11_EXAMPLE_TARGETS
   # SE2
   se2_interpolation
   se2_decasteljau
+  se2_bezier
   se2_average
   se2_localization
   se2_sam

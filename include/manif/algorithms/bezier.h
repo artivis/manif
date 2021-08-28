@@ -5,6 +5,7 @@
 #include "manif/algorithms/interpolation.h"
 
 #include <vector>
+#include <iostream>
 
 namespace manif {
 
@@ -30,53 +31,86 @@ namespace manif {
 
 template <typename LieGroup>
 std::vector<typename LieGroup::LieGroup>
-computeBezierCurve(const std::vector<LieGroup>& control_points,
-                   const unsigned int degree,
-                   const unsigned int k_interp)
+bezier(
+  const std::vector<LieGroup>& control_points,
+  const unsigned int degree,
+  const unsigned int k_interp
+)
 {
-  MANIF_CHECK(control_points.size() > 2, "Oups0");
-  MANIF_CHECK(degree <= control_points.size(), "Oups1");
-  MANIF_CHECK(k_interp > 0, "Oups2");
+  MANIF_CHECK(
+    control_points.size() > 2,
+    "Input trajectory must have more than two points!"
+  );
+  MANIF_CHECK(
+    degree <= control_points.size(),
+    "Degree must be less or equal to the number of input points!"
+  );
+  MANIF_CHECK(
+    k_interp > 0,
+    "k_interp must be greater than zero!"
+  );
 
-  const unsigned int n_segments =
-       std::floor(double(control_points.size()-degree)/(degree-1)+1);
+  // std::cout << "trajectory.size: " << control_points.size() << std::endl;
+  // std::cout << "degree: " << degree << std::endl;
+  // std::cout << "k_interp: " << k_interp << std::endl;
 
-  std::vector<std::vector<const LieGroup*>> segments_control_points;
+  unsigned int n_segments = static_cast<unsigned int>(
+    std::floor(double(control_points.size()-degree)/double((degree-1)+1))
+  );
+
+  if (!n_segments) n_segments = 1;
+
+  // std::cout << "n_segments: " << n_segments << std::endl;
+
+  std::vector<std::vector<const LieGroup*>> segments_control_points(
+    n_segments,
+    std::vector<const LieGroup*>(degree)
+  );
   for (unsigned int t=0; t<n_segments; ++t)
   {
-    segments_control_points.emplace_back(std::vector<const LieGroup*>());
-
     // Retrieve control points of the current segment
     for (int n=0; n<degree; ++n)
     {
-      if (verbose)
-      std::cout << (t*degree+n) << ", ";
-      segments_control_points.back().push_back( &control_points[t*(degree-1)+n] );
+      segments_control_points[t][n] = &control_points[t*(degree-1)+n];
     }
-    if (verbose)
-    std::cout << "\n";
   }
 
-  const int segment_k_interp = (degree == 2) ?
-         k_interp : k_interp * degree;
+  const unsigned int segment_k_interp = (degree == 2) ? k_interp : k_interp * degree;
+
+  // std::cout << "segment_k_interp: " << segment_k_interp << std::endl;
 
   // Actual curve fitting
+  // std::vector<LieGroup> curve(
+  //   segments_control_points.size()*segment_k_interp,
+  //   LieGroup::Identity()
+  // );
   std::vector<LieGroup> curve;
+  curve.reserve(segments_control_points.size()*segment_k_interp);
+  LieGroup Qc;
   for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
-    for (int t=1; t<=segment_k_interp; ++t)
+    // std::cout << "s: " << s << std::endl;
+
+    LieGroup Qc = *segments_control_points[s][0];
+
+    for (unsigned int t=1; t<=segment_k_interp; ++t)
     {
-      // t in [0,1]
-      const double t_01 = static_cast<double>(t)/(segment_k_interp);
+      // std::cout << "t: " << t << std::endl;
 
-      LieGroup Qc = LieGroup::Identity();
-
-      // recursive chunk of the algo,
-      // compute tmp control points.
-      for (int i=0; i<degree-1; ++i)
+      // recursive chunk of the algo, compute tmp control points.
+      for (unsigned int i=0; i<degree-1; ++i)
       {
-        Qc = Qc.lplus(segments_control_points[s][i]->log() *
-                      polynomialBernstein((double)degree, (double)i, (double)t_01));
+        // std::cout << "i: " << i << std::endl;
+
+        Qc = Qc.rplus(
+          // segments_control_points[s][i]->log() *
+          segments_control_points[s][i+1]->rminus(*segments_control_points[s][i]) *
+          polynomialBernstein(
+            (double)degree,
+            (double)i,
+            static_cast<double>(t)/(segment_k_interp) // t in [0,1]
+          )
+        );
       }
 
       curve.push_back(Qc);
