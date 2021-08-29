@@ -33,6 +33,8 @@
   { evalInverseJac(); }                                                                         \
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LOG_JACOBIAN)        \
   { evalLogJac(); }                                                                             \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_EXP_JACOBIAN)        \
+  { evalExpJac(); }                                                                             \
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_RPLUS_JACOBIANS)     \
   { evalRplusJacs(); }                                                                          \
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_LPLUS_JACOBIANS)     \
@@ -44,8 +46,8 @@
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_COMPOSE_JACOBIANS)   \
   { evalComposeJacs(); }                                                                        \
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_BETWEEN_JACOBIANS)   \
-  { evalBetweenJacs(); } \
-  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS) \
+  { evalBetweenJacs(); }                                                                        \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS)       \
   { evalActJacs(); }
 
 #define __MANIF_FUNCTOR_COMMON_TYPEDEF                                            \
@@ -268,6 +270,32 @@ struct CeresLogFunctor : MakeUnaryCostFuncHelper<
 };
 
 template <typename _LieGroup>
+struct CeresExpFunctor : MakeUnaryCostFuncHelper<
+  CeresExpFunctor, _LieGroup::RepSize, _LieGroup::DoF, _LieGroup
+>
+{
+  __MANIF_FUNCTOR_COMMON_TYPEDEF;
+
+  using Jac =
+    Eigen::Matrix<typename LieGroup::Scalar,
+                  LieGroup::RepSize,
+                  LieGroup::DoF,
+                  Eigen::RowMajor>;
+
+  template <typename T>
+  bool operator()(const T* const tangent_raw,
+                  T* residuals_raw) const
+  {
+    const Eigen::Map<const TangentTemplate<T>> tangent(tangent_raw);
+    Eigen::Map<LieGroupTemplate<T>> residuals(residuals_raw);
+
+    residuals = tangent.exp();
+
+    return true;
+  }
+};
+
+template <typename _LieGroup>
 struct CeresComposeFunctor : MakeBinaryCostFuncHelper<
   CeresComposeFunctor, _LieGroup::RepSize, _LieGroup::RepSize, _LieGroup::RepSize, _LieGroup
 >
@@ -396,6 +424,7 @@ class JacobianCeresTester
   using Rminus = CeresRminusFunctor<LieGroup>;
   using Lminus = CeresLminusFunctor<LieGroup>;
   using Log = CeresLogFunctor<LieGroup>;
+  using Exp = CeresExpFunctor<LieGroup>;
   using Compose = CeresComposeFunctor<LieGroup>;
   using Between = CeresBetweenFunctor<LieGroup>;
   using Act = CeresActFunctor<LieGroup>;
@@ -491,6 +520,35 @@ public:
     local_parameterization->ComputeJacobian(state_raw, adJ_locpar.data());
 
     adJ_out_s = ad_r_J_out_spd * adJ_locpar;
+
+    EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
+  }
+
+  void evalExpJac()
+  {
+    parameters = &delta_raw;
+
+    typename Exp::Jac ad_r_J_out_spd;
+    double*  ad_r_J_out_s_raw = ad_r_J_out_spd.data();
+    jacobians = &ad_r_J_out_s_raw;
+
+    Exp::make_costfunc()->Evaluate(parameters, state_out_raw, jacobians);
+
+    // std::cout << "ad_r_J_out_spd:\n" << ad_r_J_out_spd << std::endl;
+
+    EXPECT_MANIF_NEAR(getDelta().exp(J_out_s), state_out);
+
+    // Compute the local_de-parameterization (?) Jac
+    parameters[0] = state_out_raw;
+    parameters[1] = state_out_raw;
+
+    typename Rminus::Jacobian adJ_locdepar, adJ_unused;
+    jacobians[0] = adJ_locdepar.data();
+    jacobians[1] = adJ_unused.data();
+
+    Rminus::make_costfunc()->Evaluate(parameters, delta_out_raw, jacobians);
+
+    adJ_out_s = adJ_locdepar * ad_r_J_out_spd;
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
   }
