@@ -17,6 +17,8 @@ manif_add_gtest(gtest_rxso3_ceres gtest_rxso3_ceres.cpp)
 
 manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
+manif_add_gtest(gtest_sim3_ceres gtest_sim3_ceres.cpp)
+
 manif_add_gtest(gtest_se23_ceres gtest_se23_ceres.cpp)
 
 set(CXX_11_TEST_TARGETS_CERES
@@ -44,6 +46,9 @@ set(CXX_11_TEST_TARGETS_CERES
 
   # SE3
   gtest_se3_ceres
+
+  # Sim3
+  gtest_sim3_ceres
 
   # SE23
   gtest_se23_ceres

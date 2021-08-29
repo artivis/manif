@@ -11,6 +11,7 @@
 #include "manif/SO3.h"
 #include "manif/RxSO3.h"
 #include "manif/SE3.h"
+#include "manif/Sim3.h"
 #include "manif/Rn.h"
 #include "manif/SE_2_3.h"
 
