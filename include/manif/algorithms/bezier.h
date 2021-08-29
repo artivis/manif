@@ -5,30 +5,23 @@
 #include "manif/algorithms/interpolation.h"
 
 #include <vector>
-#include <iostream>
 
 namespace manif {
 
 /**
- * @brief Curve fitting using the DeCasteljau algorithm
- * on Lie groups.
+ * @brief Piece-wise Bezier curve fitting using Bernstein polynomials on Lie groups.
+ * Each piece is defined by a polynomial of degree 'degree'
+ * thus by 'degree+1' control points.
  *
- * @param trajectory, a discretized trajectory.
- * @param degree, the degree of smoothness of the fitted curve.
- * @param k_interp, the number of points to interpolate
- * between two consecutive points of the trajectory.
- * interpolate k_interp for t in ]0,1].
- * @param closed_curve Whether the input trajectory is closed or not.
- * If true, the first and the last points of the input trajectory are used
- * to interpolate points inbetween. Default false.
- * @return The interpolated smooth trajectory
+ * @note The knots are not smoothed in any ways!
  *
- * @note A naive implementation of the DeCasteljau algorithm
- * on Lie groups.
+ * @param control_points, a set of control points.
+ * @param degree, the smoothness degree of the fitted curve's pieces.
+ * @param k_interp, the number of points to interpolate per pieces.
+ * @return The fitted Piece-wise Bezier curve.
  *
- * @link https://www.wikiwand.com/en/De_Casteljau%27s_algorithm
+ * @see decasteljau
  */
-
 template <typename LieGroup>
 std::vector<typename LieGroup::LieGroup>
 bezier(
@@ -50,69 +43,52 @@ bezier(
     "k_interp must be greater than zero!"
   );
 
-  // std::cout << "trajectory.size: " << control_points.size() << std::endl;
-  // std::cout << "degree: " << degree << std::endl;
-  // std::cout << "k_interp: " << k_interp << std::endl;
+  const unsigned int num_ctrl_pts = degree + 1;
 
-  unsigned int n_segments = static_cast<unsigned int>(
-    std::floor(double(control_points.size()-degree)/double((degree-1)+1))
+  const unsigned int n_segments = static_cast<unsigned int>(
+    std::floor(
+      double(num_ctrl_pts * control_points.size() + control_points.size()) /
+      double(num_ctrl_pts * num_ctrl_pts)
+    )
   );
-
-  if (!n_segments) n_segments = 1;
-
-  // std::cout << "n_segments: " << n_segments << std::endl;
 
   std::vector<std::vector<const LieGroup*>> segments_control_points(
     n_segments,
-    std::vector<const LieGroup*>(degree)
+    std::vector<const LieGroup*>(num_ctrl_pts)
   );
-  for (unsigned int t=0; t<n_segments; ++t)
+  for (unsigned int t = 0; t < n_segments; ++t)
   {
     // Retrieve control points of the current segment
-    for (int n=0; n<degree; ++n)
+    for (int n = 0; n < num_ctrl_pts; ++n)
     {
-      segments_control_points[t][n] = &control_points[t*(degree-1)+n];
+      segments_control_points[t][n] = &control_points[t * (num_ctrl_pts - 1) + n];
     }
   }
 
-  const unsigned int segment_k_interp = (degree == 2) ? k_interp : k_interp * degree;
-
-  // std::cout << "segment_k_interp: " << segment_k_interp << std::endl;
-
-  // Actual curve fitting
-  // std::vector<LieGroup> curve(
-  //   segments_control_points.size()*segment_k_interp,
-  //   LieGroup::Identity()
-  // );
   std::vector<LieGroup> curve;
-  curve.reserve(segments_control_points.size()*segment_k_interp);
+  curve.reserve(segments_control_points.size()*k_interp);
+  curve.push_back(control_points[0]);
   LieGroup Qc;
   for (unsigned int s=0; s<segments_control_points.size(); ++s)
   {
-    // std::cout << "s: " << s << std::endl;
-
-    LieGroup Qc = *segments_control_points[s][0];
-
-    for (unsigned int t=1; t<=segment_k_interp; ++t)
+    for (unsigned int t=1; t<=k_interp; ++t)
     {
-      // std::cout << "t: " << t << std::endl;
+      LieGroup Qc = *segments_control_points[s][0];
 
       // recursive chunk of the algo, compute tmp control points.
-      for (unsigned int i=0; i<degree-1; ++i)
+      for (unsigned int i=1; i<num_ctrl_pts; ++i)
       {
-        // std::cout << "i: " << i << std::endl;
-
-        Qc = Qc.rplus(
-          // segments_control_points[s][i]->log() *
-          segments_control_points[s][i+1]->rminus(*segments_control_points[s][i]) *
+        Qc += (
           polynomialBernstein(
-            (double)degree,
-            (double)i,
-            static_cast<double>(t)/(segment_k_interp) // t in [0,1]
+            double(degree),
+            double(i),
+            double(t)/k_interp // t in ]0,1]
+          ) * (
+            *segments_control_points[s][i] - *segments_control_points[s][0]
           )
+
         );
       }
-
       curve.push_back(Qc);
     }
   }
@@ -120,6 +96,6 @@ bezier(
   return curve;
 }
 
-} /* namespace manif */
+} // namespace manif
 
-#endif /* _MANIF_MANIF_BEZIER_H_ */
+#endif // _MANIF_MANIF_BEZIER_H_

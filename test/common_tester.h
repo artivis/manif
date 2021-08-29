@@ -429,20 +429,13 @@ public:
 
   void evalInterp()
   {
-    EXPECT_THROW(smoothing_phi(0, 0), std::logic_error);
-    EXPECT_THROW(smoothing_phi(0, 5), std::logic_error);
-
-    for (int i=1;i<5; ++i)
-    {
-      EXPECT_NEAR(0, smoothing_phi(0., i), 1e-10);
-      EXPECT_NEAR(1, smoothing_phi(1., i), 1e-10);
-    }
-
     EXPECT_THROW(interpolate(state, state_other, 0.-1e-3), std::runtime_error);
     EXPECT_THROW(interpolate(state, state_other, 1.+1e-3), std::runtime_error);
 
-    EXPECT_THROW(interpolate_smooth(state, state_other, 1.+1e-3, 0),
-                 std::runtime_error);
+    EXPECT_THROW(
+      interpolateSmooth(state, state_other, 1.+1e-3, 0),
+      std::runtime_error
+    );
 
     for (int i=0; i<3; ++i)
     {

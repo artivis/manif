@@ -1,20 +1,16 @@
 #include "se2_points_generator.h"
-#include "manif/algorithms/decasteljau.h"
+#include "manif/algorithms/bezier.h"
 
 #include <iostream>
-#include <functional>
 
 /**
  * @brief An example of the use of the decasteljau algorithm.
  */
-
 int main(int argc, char** argv)
 {
-  using namespace std::placeholders;
-
   if (argc < 4)
   {
-    std::cout << "Usage: .se2_decateljau <k> <d> <p>\n";
+    std::cout << "Usage: .se2_bezier <k> <d> <p>\n";
     std::cout << "\t with k: number of initial points on the 8-shaped curve.\n";
     std::cout << "\t with d: degree of smoothness of the generated curve.\n";
     std::cout << "\t with p: number of points to generate between consecutive points of the initial curve.\n";
@@ -37,9 +33,8 @@ int main(int argc, char** argv)
               << point.y() << ","
               << point.angle() << "\n";
 
-  const auto curve = manif::decasteljau(
-    points, d, p //, manif::INTERP_METHOD::CNSMOOTH
-  );
+  // std::cout << "Generated points:\n";
+  const auto curve = manif::bezier(points, d, p);
 
   for (const auto& point : curve)
     std::cout << point.x() << ","

@@ -1,4 +1,5 @@
 #include "manif/SE2.h"
+#include "manif/Rn.h"
 #include <vector>
 
 namespace manif {
@@ -17,7 +18,7 @@ generateSE2PointsOnHeightShape(const unsigned int k)
 
   const double x = std::cos(0);
   const double y = std::sin(0)/2;
-  states.emplace_back(x,y,MANIF_PI/2);
+  states.emplace_back(x, y, MANIF_PI/2);
 
   double t = 0;
   for (unsigned int i=1; i<k; ++i)
@@ -30,7 +31,32 @@ generateSE2PointsOnHeightShape(const unsigned int k)
     const double thi = std::atan2(yi-states.back().y(),
                                   xi-states.back().x());
 
-    states.emplace_back(xi,yi,thi);
+    states.emplace_back(xi, yi, thi);
+  }
+
+  return states;
+}
+
+std::vector<manif::R2d>
+generateR2PointsOnHeightShape(const unsigned int k)
+{
+  // Generate some k points on 8-shaped curve
+  std::vector<manif::R2d> states;
+  states.reserve(k);
+
+  const double x = std::cos(0);
+  const double y = std::sin(0)/2;
+  states.emplace_back(manif::R2d::DataType(x, y));
+
+  double t = 0;
+  for (unsigned int i=1; i<k; ++i)
+  {
+    t += MANIF_PI*2. / double(k);
+
+    const double xi = std::cos(t);
+    const double yi = std::sin(2.*t) / 2.;
+
+    states.emplace_back(manif::R2d::DataType(xi, yi));
   }
 
   return states;

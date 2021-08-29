@@ -9,38 +9,40 @@ namespace manif {
  * @brief Constexpr function to compute binomial coefficient.
  */
 template <typename T>
-constexpr T binomial_coefficient(const T n, const T k)
-{
-  return (n >= k) ? (k >= 0) ?
-  (k*2 > n) ? binomial_coefficient(n, n-k) :
-                     k ? binomial_coefficient(n, k - 1) * (n - k + 1) / k : 1
-  // assert n ≥ k ≥ 0
-  : (throw std::logic_error("k >= 0 !")) : (throw std::logic_error("n >= k !"));
+constexpr T binomialCoeff(const T n, const T k) {
+  return (n >= k) ?
+    (k >= 0) ?
+      (k*2 > n) ?
+        binomialCoeff(n, n-k) :
+        k ?
+          binomialCoeff(n, k - 1) * (n - k + 1) / k :
+          1
+            // assert n ≥ k ≥ 0
+      : (detail::raise<invalid_argument>("k >= 0 !"), T(0))
+    : (detail::raise<invalid_argument>("n >= k !"), T(0));
 }
 
 /**
  * @brief Constexpr function to compute power.
  */
 template <typename T>
-constexpr T ipow(const T base, const int exp, T carry = 1) {
-  return exp < 1 ? carry : ipow(base*base, exp/2, (exp % 2) ? carry*base : carry);
+constexpr T cpow(const T base, const int exp, T carry = 1) {
+  return exp < 1 ? carry : cpow(base*base, exp/2, (exp % 2) ? carry*base : carry);
 }
 
 /**
  * @brief Constexpr function to compute the Bernstein polynomial
  */
 template <typename T>
-constexpr T polynomialBernstein(const T n, const T i, const T t)
-{
-  return binomial_coefficient(n, i) * ipow(T(1)-t, n-i) * ipow(t,i);
+constexpr T polynomialBernstein(const T n, const T i, const T t) {
+  return binomialCoeff(n, i) * cpow(T(1)-t, n-i) * cpow(t, i);
 }
 
 /**
  * @brief
  */
 template <typename T>
-T smoothing_phi(const T t, const std::size_t degree)
-{
+T sphi(const T t, const std::size_t degree) {
 //  if (degree < 5)
 //  {
 
@@ -87,25 +89,29 @@ T smoothing_phi(const T t, const std::size_t degree)
  * @param[in] -optional- J_mc_ma Jacobian of the interpolated point wrt ma.
  * @param[in] -optional- J_mc_mb Jacobian of the interpolated point wrt mb.
  */
-template <typename _Derived, typename _Scalar>
+template <typename _Derived>
 static typename LieGroupBase<_Derived>::LieGroup
-interpolate_slerp(const LieGroupBase<_Derived>& ma,
-                  const LieGroupBase<_Derived>& mb,
-                  const _Scalar t/*,
-                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
-                    LieGroupBase<_Derived>::_,
-                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-                    LieGroupBase<_Derived>::_*/)
+interpolateSlerp(
+  const LieGroupBase<_Derived>& ma,
+  const LieGroupBase<_Derived>& mb,
+  const typename _Derived::Scalar t
+  /*,
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = {},
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = {}
+  */
+)
 {
-  MANIF_CHECK(t >= _Scalar(0) && t <= _Scalar(1),
-              "s must be be in [0, 1].");
+  using Scalar = typename _Derived::Scalar;
+  MANIF_CHECK(t >= Scalar(0) && t <= Scalar(1), "s must be be in [0, 1].");
 
-  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
+  return ma + (t * (mb - ma));
+
+  // using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
 //  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
-  LieGroup mc;
+  // LieGroup mc;
 
-  const auto _ = LieGroupBase<_Derived>::_;
+  // const auto _ = LieGroupBase<_Derived>::_;
 
   /// @todo optimize this
 //  if (J_mc_ma && J_mc_mb)
@@ -137,11 +143,11 @@ interpolate_slerp(const LieGroupBase<_Derived>& ma,
 //    (*J_mc_mb) = J_mc_rmin * (J_rmin_mb * t);
 //  }
 //  else
-  {
-    mc = ma.rplus( mb.rminus(ma) * t );
-  }
+  // {
+  //   mc = ma.rplus( mb.rminus(ma) * t );
+  // }
 
-  return mc;
+  // return mc;
 }
 
 /**
@@ -159,18 +165,19 @@ interpolate_slerp(const LieGroupBase<_Derived>& ma,
  */
 template <typename _Derived, typename _Scalar>
 static typename LieGroupBase<_Derived>::LieGroup
-interpolate_cubic(const LieGroupBase<_Derived>& ma,
-                  const LieGroupBase<_Derived>& mb,
-                  const _Scalar t,
-                  const typename LieGroupBase<_Derived>::Tangent& ta =
-                    LieGroupBase<_Derived>::Tangent::Zero(),
-                  const typename LieGroupBase<_Derived>::Tangent& tb =
-                    LieGroupBase<_Derived>::Tangent::Zero()/*,
-                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
-                    LieGroupBase<_Derived>::_,
-                  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-                    LieGroupBase<_Derived>::_*/)
-{
+interpolateCubic(
+  const LieGroupBase<_Derived>& ma,
+  const LieGroupBase<_Derived>& mb,
+  const _Scalar t,
+  const typename LieGroupBase<_Derived>::Tangent& ta =
+    LieGroupBase<_Derived>::Tangent::Zero(),
+  const typename LieGroupBase<_Derived>::Tangent& tb =
+    LieGroupBase<_Derived>::Tangent::Zero()
+  /*,
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = {},
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = {}
+  */
+) {
   using Scalar   = typename LieGroupBase<_Derived>::Scalar;
   using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
   //    using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
@@ -234,29 +241,28 @@ interpolate_cubic(const LieGroupBase<_Derived>& ma,
  * generation on Riemannian manifolds",
  * Janusz Jakubiak and Fátima Silva Leite and Rui C. Rodrigues.
  */
-template <typename _Derived, typename _Scalar>
-static typename LieGroupBase<_Derived>::LieGroup
-interpolate_smooth(const LieGroupBase<_Derived>& ma,
-                   const LieGroupBase<_Derived>& mb,
-                   const _Scalar t,
-                   const unsigned int m,
-                   const typename LieGroupBase<_Derived>::Tangent& ta =
-                     LieGroupBase<_Derived>::Tangent::Zero(),
-                   const typename LieGroupBase<_Derived>::Tangent& tb =
-                     LieGroupBase<_Derived>::Tangent::Zero()/*,
-                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = LieGroupBase<_Derived>::_,
-                   typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = LieGroupBase<_Derived>::_*/)
-{
-  using Scalar   = typename LieGroupBase<_Derived>::Scalar;
+template <typename _Derived>
+typename LieGroupBase<_Derived>::LieGroup
+interpolateSmooth(
+  const LieGroupBase<_Derived>& ma,
+  const LieGroupBase<_Derived>& mb,
+  const typename _Derived::Scalar t,
+  const unsigned int m,
+  const typename LieGroupBase<_Derived>::Tangent& ta =
+    LieGroupBase<_Derived>::Tangent::Zero(),
+  const typename LieGroupBase<_Derived>::Tangent& tb =
+    LieGroupBase<_Derived>::Tangent::Zero()
+  /*,
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = {},
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = {}
+  */
+) {
+  using Scalar = typename LieGroupBase<_Derived>::Scalar;
 //  using LieGroup = typename LieGroupBase<_Derived>::LieGroup;
 //  using Jacobian = typename LieGroupBase<_Derived>::Jacobian;
 
   MANIF_CHECK(m >= Scalar(1), "m >= 1 !");
-  Scalar interp_factor(t);
-  MANIF_CHECK(interp_factor >= Scalar(0) && interp_factor <= Scalar(1),
-              "s must be be in [0, 1].");
-
-  const auto phi = smoothing_phi(t, m);
+  MANIF_CHECK(t >= Scalar(0) && t <= Scalar(1), "t must be in [0, 1].");
 
   // with lplus
 
@@ -265,12 +271,12 @@ interpolate_smooth(const LieGroupBase<_Derived>& ma,
 
   // with rplus
 
-  const auto r = mb.rplus(tb*(t-Scalar(1)));
-  const auto l = ma.rplus(ta*t);
+  const auto r = mb.rplus(tb * (t - Scalar(1)));
+  const auto l = ma.rplus(ta * t);
 
   const auto B = r.lminus(l);
 
-  return l.lplus(B*phi);
+  return l.lplus(B * sphi(t, m));
 }
 
 enum class INTERP_METHOD
@@ -282,36 +288,33 @@ enum class INTERP_METHOD
 
 /**
  * @brief A helper function for interpolation.
- * @see interpolate_slerp.
- * @see interpolate_cubic.
- * @see interpolate_smooth.
+ * @see interpolateSlerp.
+ * @see interpolateCubic.
+ * @see interpolateSmooth.
  */
 template <typename _Derived, typename _Scalar>
 typename LieGroupBase<_Derived>::LieGroup
-interpolate(const LieGroupBase<_Derived>& ma,
-            const LieGroupBase<_Derived>& mb,
-            const _Scalar t,
-            const INTERP_METHOD method = INTERP_METHOD::SLERP,
-            const typename LieGroupBase<_Derived>::Tangent& ta =
-              LieGroupBase<_Derived>::Tangent::Zero(),
-            const typename LieGroupBase<_Derived>::Tangent& tb =
-              LieGroupBase<_Derived>::Tangent::Zero()/*,
-            typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma =
-              LieGroupBase<_Derived>::_,
-            typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb =
-              LieGroupBase<_Derived>::_*/)
-{
+interpolate(
+  const LieGroupBase<_Derived>& ma,
+  const LieGroupBase<_Derived>& mb,
+  const _Scalar t,
+  const INTERP_METHOD method = INTERP_METHOD::SLERP,
+  const typename LieGroupBase<_Derived>::Tangent& ta =
+    LieGroupBase<_Derived>::Tangent::Zero(),
+  const typename LieGroupBase<_Derived>::Tangent& tb =
+    LieGroupBase<_Derived>::Tangent::Zero()
+  /*,
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_ma = {},
+  typename LieGroupBase<_Derived>::OptJacobianRef J_mc_mb = {}
+  */
+) {
   switch (method) {
   case INTERP_METHOD::SLERP:
-    return interpolate_slerp(ma, mb, t/*, J_mc_ma, J_mc_mb*/);
+    return interpolateSlerp(ma, mb, t/*, J_mc_ma, J_mc_mb*/);
   case INTERP_METHOD::CUBIC:
-    return interpolate_cubic(ma, mb, t,
-                             ta, tb/*,
-                             J_mc_ma, J_mc_mb*/);
+    return interpolateCubic(ma, mb, t, ta, tb/*, J_mc_ma, J_mc_mb*/);
   case INTERP_METHOD::CNSMOOTH:
-    return interpolate_smooth(ma, mb, t, 3,
-                              ta, tb/*,
-                              J_mc_ma, J_mc_mb*/);
+    return interpolateSmooth(ma, mb, t, 3, ta, tb/*, J_mc_ma, J_mc_mb*/);
   default:
     MANIF_THROW("Unknown interpolation method!");
     break;
@@ -320,6 +323,6 @@ interpolate(const LieGroupBase<_Derived>& ma,
   return typename LieGroupBase<_Derived>::LieGroup();
 }
 
-} /* namespace manif */
+} // namespace manif
 
-#endif /* _MANIF_MANIF_INTERPOLATION_H_ */
+#endif // _MANIF_MANIF_INTERPOLATION_H_
