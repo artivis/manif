@@ -96,7 +96,7 @@ public:
    * and an angle.
    * @param[in] x The x-components of the translational part.
    * @param[in] y The y-components of the translational part.
-   * @param[in] c An angle.
+   * @param[in] theta The rotation angle.
    */
   SE2(const Scalar x, const Scalar y, const Scalar theta);
 

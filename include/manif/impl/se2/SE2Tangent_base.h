@@ -155,8 +155,8 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
     if (theta_sq < Constants<Scalar>::eps)
     {
-      (*J_m_t)(0,2) = -y() / Scalar(2) + theta * x() / Scalar(6);
-      (*J_m_t)(1,2) =  x() / Scalar(2) + theta * y() / Scalar(6);
+      (*J_m_t)(0,2) = -y() * Scalar(0.5) + theta * x() / Scalar(6);
+      (*J_m_t)(1,2) =  x() * Scalar(0.5) + theta * y() / Scalar(6);
     }
     else
     {
@@ -369,12 +369,14 @@ template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
 SE2TangentBase<_Derived>::smallAdj() const
 {
-  Jacobian smallAdj = Jacobian::Zero();
+  Jacobian smallAdj;
 
-  smallAdj(0,1) = -angle();
   smallAdj(1,0) =  angle();
+  smallAdj(0,1) = -smallAdj(1,0);
   smallAdj(0,2) =  y();
   smallAdj(1,2) = -x();
+
+  smallAdj.template bottomRows<1>().setZero();
 
   return smallAdj;
 }
