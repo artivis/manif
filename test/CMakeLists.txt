@@ -71,6 +71,12 @@ add_subdirectory(se2)
 # SE3 tests
 add_subdirectory(se3)
 
+# Sim2 tests
+add_subdirectory(sim2)
+
+# Sim3 tests
+add_subdirectory(sim3)
+
 # SE_2_3 tests
 add_subdirectory(se_2_3)
 
