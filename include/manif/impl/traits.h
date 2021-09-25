@@ -5,6 +5,10 @@
 #include <type_traits>
 
 namespace manif {
+
+template <typename Derived> struct LieGroupBase;
+template <typename Derived> struct TangentBase;
+
 namespace internal {
 
 //template <typename T>
@@ -148,6 +152,28 @@ template <int i, int j, int ...Args> struct compute_indices_gen<1, i, j, Args...
 template <int... Args> constexpr std::array<int, sizeof...(Args)> compute_indices() {
   return compute_indices_gen<sizeof...(Args), 0, Args...>::get();
 }
+
+// traits to check if a template parameter has a LieGroupBase base.
+template <typename Derived>
+void test_lie_group_base(LieGroupBase<Derived>&& s) {}
+
+template <class, typename T> struct is_manif_group_impl : std::false_type {};
+template <typename T> struct
+is_manif_group_impl<decltype(test_lie_group_base(std::declval<T>())), T>
+  : std::true_type {};
+template <typename T> struct is_manif_group
+  : is_manif_group_impl<void, T> {};
+
+// traits to check if a template parameter has a TangentBase base.
+template <typename Derived>
+void test_tangent_base(TangentBase<Derived>&& s) {}
+
+template <class, typename T> struct is_manif_tangent_impl : std::false_type {};
+template <typename T> struct
+is_manif_tangent_impl<decltype(test_tangent_base(std::declval<T>())), T>
+  : std::true_type {};
+template <typename T> struct is_manif_tangent
+  : is_manif_tangent_impl<void, T> {};
 
 } /* namespace internal */
 } /* namespace manif */
