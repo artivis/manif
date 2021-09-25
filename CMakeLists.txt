@@ -251,7 +251,7 @@ if(ENABLE_CPPCHECK)
         --suppress=unknownMacro:*test/common_tester.h
         --suppress=unknownMacro:*test/ceres/ceres_test_utils.h
         --suppress=constStatement:*examples*
-        --suppress=unreadVariable:*gtest_se2_autodiff.cpp:101
+        --suppress=unreadVariable:*gtest_se2_ceres_autodiff.cpp:101
         --suppress=unreadVariable:*bundle_sam.cpp:94
         --suppress=unreadVariable:*bundle_sam.cpp:124
         # Uncomment the line below to run cppcheck-html
