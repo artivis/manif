@@ -320,6 +320,21 @@ public:
   //! @brief Divide the underlying vector with a scalar.
   Tangent operator /=(const Scalar scalar);
 
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) const -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! @brief The size of the underlying vector
+  constexpr unsigned int size() const {
+    return RepSize;
+  }
+
   // static helpers
 
   //! Static helper the create a Tangent object set to Zero.
