@@ -84,6 +84,17 @@ else()
   message(STATUS "Could not find ceres_solver, ceres tests will not be built.")
 endif()
 
+find_package(autodiff QUIET)
+
+if(autodiff_FOUND)
+
+  message(STATUS "Found autodiff, building autodiff tests.")
+  add_subdirectory(autodiff)
+
+else()
+  message(STATUS "Could not find autodiff, autodiff tests will not be built.")
+endif()
+
 # Set required C++11 flag
 set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD 11)
 set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
