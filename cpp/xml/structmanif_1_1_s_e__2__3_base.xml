@@ -592,7 +592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="387" bodyend="390"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -606,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="45" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="394" bodyend="397"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -621,7 +621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="58" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="58" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="339" bodyend="339"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e__2__3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -634,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="58" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3_base.h" line="58" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="340" bodyend="340"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -699,8 +699,8 @@ observer&quot;. However, note that the serialization used in that paper is diffe
       <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Identity</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1ae246d31fa937c887846ce535e4bdfb46" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>inverse</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>isApprox</name></member>
-      <member refid="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Isometry</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1a2c6f7ea1399c48c3b890cb642b2cddaa" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>isometry</name></member>
+      <member refid="structmanif_1_1_s_e__2__3_base_1a6ef1fdc6feb9eabcec03edef81a891a6" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Isometry</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Jacobian</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>LieGroup</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>LieGroupTemplate</name></member>
@@ -721,6 +721,8 @@ observer&quot;. However, note that the serialization used in that paper is diffe
       <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>operator[]</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>operator[]</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>OptJacobianRef</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>plus</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1a612122be3b06e060ca3ce3ff274033dd" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>quat</name></member>
@@ -734,6 +736,7 @@ observer&quot;. However, note that the serialization used in that paper is diffe
       <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>setIdentity</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>size</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Tangent</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1a75e1b9865b39a4abd34c92be1e448c34" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>transform</name></member>
       <member refid="structmanif_1_1_s_e__2__3_base_1acfa38050437d73e41177f08e5d81aa65" prot="public" virt="non-virtual"><scope>manif::SE_2_3Base</scope><name>Transformation</name></member>

@@ -207,28 +207,33 @@
 <codeline></codeline>
 <codeline><highlight class="normal">X_plus_w<sp/>=<sp/>X.plus(w,<sp/>J_o_x,<sp/>J_o_w)</highlight></codeline>
 </programlisting></para>
+<sect3 id="index_1autotoc_md8">
+<title>Note</title>
+<para>While Jacobians in <bold>manif</bold> are differentiated with respect to a local perturbation on the tangent space, many non-linear solvers (e.g. <ulink url="http://ceres-solver.org/">Ceres</ulink>) expect functions to be differentiated with respect to the underlying representation vector of the group element (e.g. with respect to quaternion vector for <computeroutput>SO3</computeroutput>).</para>
+<para>For this reason, <bold>manif</bold> is compliant with the auto-differentiation libraries <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> and <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::Dual</computeroutput></ulink>.</para>
+</sect3>
 </sect2>
 </sect1>
-<sect1 id="index_1autotoc_md8">
+<sect1 id="index_1autotoc_md9">
 <title>Documentation</title>
 <para>The documentation is available online at the accompanying <ulink url="https://artivis.github.io/manif/">website</ulink>. Both the <ulink url="https://artivis.github.io/manif/cpp/index.html">C++</ulink> and the <ulink url="https://artivis.github.io/manif/python/index.html">Python</ulink> APIs are documented.</para>
 <para>Do you want to build it locally? Find out how on the <ref refid="md_pages_documentation" kindref="compound">dedicated page</ref>.</para>
 <para>Note: throughout the code documentation we refer to &apos;the paper&apos; which you can find on <ref refid="md_pages_publication" kindref="compound">the dedicated page</ref>.</para>
 </sect1>
-<sect1 id="index_1autotoc_md9">
+<sect1 id="index_1autotoc_md10">
 <title>Tutorials and application demos</title>
 <para>We provide some self-contained and self-explained <ulink url="docs/pages/cpp/Quick-start.md#tutorials-and-application-demos">C++ examples</ulink> to help you get started.</para>
 <para>You prefer Python? The same examples are also <ulink url="docs/pages/python/Quick-start.md#tutorials-and-application-demos">available in Python</ulink>.</para>
 </sect1>
-<sect1 id="index_1autotoc_md10">
+<sect1 id="index_1autotoc_md11">
 <title>Publications</title>
 <para>Check out our related <ref refid="md_pages_publication" kindref="compound">publications</ref> and how to cite them.</para>
 </sect1>
-<sect1 id="index_1autotoc_md11">
+<sect1 id="index_1autotoc_md12">
 <title>They use manif</title>
 <para>Find out <ref refid="md_pages_projects" kindref="compound">who&apos;s already using manif</ref>.</para>
 </sect1>
-<sect1 id="index_1autotoc_md12">
+<sect1 id="index_1autotoc_md13">
 <title>Contributing</title>
 <para>Want to contribute? Great! Check out our contribution guidelines. </para>
 </sect1>

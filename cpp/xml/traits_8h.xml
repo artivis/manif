@@ -620,6 +620,12 @@
     <innerclass refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4" prot="public">manif::internal::make_intseq&lt; 0 &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen" prot="public">manif::internal::compute_indices_gen</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4" prot="public">manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group__impl" prot="public">manif::internal::is_manif_group_impl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a" prot="public">manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group" prot="public">manif::internal::is_manif_group</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl" prot="public">manif::internal::is_manif_tangent_impl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl_3_01decltype_07test__tangent__base_07std_1_1acf371df7e577828bfd807fb299e3ea2" prot="public">manif::internal::is_manif_tangent_impl&lt; decltype(test_tangent_base(std::declval&lt; T &gt;())), T &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent" prot="public">manif::internal::is_manif_tangent</innerclass>
     <innernamespace refid="namespacemanif">manif</innernamespace>
     <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
     <briefdescription>

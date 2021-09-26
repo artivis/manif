@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="91" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="91" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="95" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="92" column="32" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="92" bodyend="92"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="96" column="32" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="96" bodyend="96"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,7 +45,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="89" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="90" bodyend="93"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="93" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="94" bodyend="97"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1intseq_1aaa156b0bfe49153a3c73d3dcddb78ef9" prot="public" virt="non-virtual"><scope>manif::internal::intseq</scope><name>size</name></member>
       <member refid="structmanif_1_1internal_1_1intseq_1aa262086cf577053b9d66cfdd24af8b71" prot="public" virt="non-virtual"><scope>manif::internal::intseq</scope><name>value_type</name></member>

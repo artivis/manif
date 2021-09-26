@@ -218,8 +218,8 @@
       <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>generator</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1adc9baa1061d4722fa26842eae2e07729" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>isApprox</name></member>
@@ -242,6 +242,8 @@
       <member refid="structmanif_1_1_tangent_base_1a414b302f5e268f819a0e992f18dd682d" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_tangent_base_1a2703d13faf7a912f8078129b2a4e66c6" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_tangent_base_1ab8fc7edb0d20e2ecda82fd6d536cb425" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator=</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a833073611c3ee66cfd57bfb3910f98a9" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator[]</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acd41e485fbedddc6f5e958cc5c61fa45" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>operator[]</name></member>
       <member refid="structmanif_1_1_tangent_base_1ab26fdad01bd80b6c628465f4b82a0411" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>OptJacobianRef</name></member>
       <member refid="structmanif_1_1_tangent_base_1a08bbcf10f4f7ed8210566e3a12556c8a" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>plus</name></member>
       <member refid="structmanif_1_1_tangent_base_1a606e1b9c212b8320f65378437d302c0b" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>plus</name></member>
@@ -257,6 +259,7 @@
       <member refid="structmanif_1_1_s_e2_tangent_1a5c047836865535cbdbc19b02b25dc65e" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>SE2Tangent</name></member>
       <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>setRandom</name></member>
       <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>setZero</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a41858edd33970d567b149324f2972cae" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>size</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a6327d3fae0b79844d7a8076212003ac0" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>smallAdj</name></member>
       <member refid="structmanif_1_1_tangent_base_1a7439ba89e703a34202391e2a6a9aeda1" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>squaredWeightedNorm</name></member>
       <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>manif::SE2Tangent</scope><name>Tangent</name></member>

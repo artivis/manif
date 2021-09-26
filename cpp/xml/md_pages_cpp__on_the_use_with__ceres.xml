@@ -34,7 +34,7 @@
 </listitem><listitem><para>SE_2(3): size 10</para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md2">
+<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md4">
 <title>Jacobians</title>
 <para>Considering,</para>
 <para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\bf&amp;space;x" alt="x" inline="yes"></image>
@@ -100,7 +100,7 @@
 <para>However, one still wants to use <computeroutput>manif</computeroutput> with his <computeroutput>Ceres</computeroutput>-based project. For this reason, <computeroutput>manif</computeroutput> is compliant with <computeroutput>Ceres</computeroutput> auto-differentiation and the <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> type to compute (2-3).</para>
 <para>Below are presented two small examples illustrating how <computeroutput>manif</computeroutput> can be used with <computeroutput>Ceres</computeroutput>.</para>
 </sect1>
-<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md3">
+<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md5">
 <title>Example : A group-abstract LocalParameterization</title>
 <para>Is shown here how one can implement a <computeroutput>ceres::LocalParameterization</computeroutput>-derived class using <computeroutput>manif</computeroutput>, that does the <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
  for any group implemented in <computeroutput>manif</computeroutput> passed as a template parameter.</para>
@@ -145,7 +145,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>CeresLocalParameterizationSE3<sp/>=<sp/>CeresLocalParameterizationFunctor&lt;SE3d&gt;;</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md4">
+<sect1 id="md_pages_cpp__on_the_use_with__ceres_1autotoc_md6">
 <title>Example : A small Ceres problem</title>
 <para>This example highlights the use of the predefined <computeroutput>Ceres</computeroutput> helper classes available with <computeroutput>manif</computeroutput>. In this example, we compute an average point from 4 points in <computeroutput>SE2</computeroutput>.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Tell<sp/>ceres<sp/>not<sp/>to<sp/>take<sp/>ownership<sp/>of<sp/>the<sp/>raw<sp/>pointers</highlight><highlight class="normal"></highlight></codeline>

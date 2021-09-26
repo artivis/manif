@@ -2,6 +2,17 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacemanif_1_1internal" kind="namespace" language="C++">
     <compoundname>manif::internal</compoundname>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual0th_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual0th &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual1st &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual2nd_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual2nd &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual3rd_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual3rd &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual4th_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual4th &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual0thf_01_4" prot="public">manif::internal::is_ad&lt; dual0thf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual1stf_01_4" prot="public">manif::internal::is_ad&lt; dual1stf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual2ndf_01_4" prot="public">manif::internal::is_ad&lt; dual2ndf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual3rdf_01_4" prot="public">manif::internal::is_ad&lt; dual3rdf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual4thf_01_4" prot="public">manif::internal::is_ad&lt; dual4thf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1_real_3_01_n_00_01_t_01_4_01_4" prot="public">manif::internal::is_ad&lt; autodiff::Real&lt; N, T &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" prot="public">manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01ceres_1_1_jet_3_01___scalar_00_01___n_01_4_01_4" prot="public">manif::internal::is_ad&lt; ceres::Jet&lt; _Scalar, _N &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl" prot="public">manif::internal::AssignmentEvaluatorImpl</innerclass>
@@ -115,7 +126,78 @@
     <innerclass refid="structmanif_1_1internal_1_1make__intseq_3_010_01_4" prot="public">manif::internal::make_intseq&lt; 0 &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen" prot="public">manif::internal::compute_indices_gen</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4" prot="public">manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group__impl" prot="public">manif::internal::is_manif_group_impl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a" prot="public">manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__group" prot="public">manif::internal::is_manif_group</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl" prot="public">manif::internal::is_manif_tangent_impl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl_3_01decltype_07test__tangent__base_07std_1_1acf371df7e577828bfd807fb299e3ea2" prot="public">manif::internal::is_manif_tangent_impl&lt; decltype(test_tangent_base(std::declval&lt; T &gt;())), T &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent" prot="public">manif::internal::is_manif_tangent</innerclass>
       <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="autodiff_8h_1a366b4f6f478fb1c6f04a792d5159fe38" prot="public" static="no">
+        <type>autodiff::HigherOrderDual&lt; 0, float &gt;</type>
+        <definition>using manif::internal::dual0thf = typedef autodiff::HigherOrderDual&lt;0, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>dual0thf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="12" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="autodiff_8h_1a31620a03943f646a4e87cd30b8b3c41a" prot="public" static="no">
+        <type>autodiff::HigherOrderDual&lt; 1, float &gt;</type>
+        <definition>using manif::internal::dual1stf = typedef autodiff::HigherOrderDual&lt;1, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>dual1stf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="autodiff_8h_1a9734ac1add5265fe5eca2e422f049585" prot="public" static="no">
+        <type>autodiff::HigherOrderDual&lt; 2, float &gt;</type>
+        <definition>using manif::internal::dual2ndf = typedef autodiff::HigherOrderDual&lt;2, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>dual2ndf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="14" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="autodiff_8h_1afcc77dee9ea8c11641d83f35194531a0" prot="public" static="no">
+        <type>autodiff::HigherOrderDual&lt; 3, float &gt;</type>
+        <definition>using manif::internal::dual3rdf = typedef autodiff::HigherOrderDual&lt;3, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>dual3rdf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="15" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="autodiff_8h_1a168ece9e614bfa0fb605439eb3c756fc" prot="public" static="no">
+        <type>autodiff::HigherOrderDual&lt; 4, float &gt;</type>
+        <definition>using manif::internal::dual4thf = typedef autodiff::HigherOrderDual&lt;4, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>dual4thf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="16" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="traits_8h_1a0033e0e0177d2c7e6fdf47ec0f19f8c4" prot="public" static="no">
         <templateparamlist>
           <param>
@@ -134,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="125" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="125" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="129" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="129" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -238,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="128" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="128" bodyend="130"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="132" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="traits_8h_1a4b15ed028826bae0079813f367ebd0fc" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -269,7 +351,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="133" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="133" bodyend="135"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="137" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="137" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="traits_8h_1a2b08be98eb3cd6e236d57f424610c39a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -290,13 +372,57 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="148" column="34" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="148" bodyend="150"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="152" column="34" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="traits_8h_1ac5f46be696df150ae5283bb3fd0a93fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::internal::test_lie_group_base</definition>
+        <argsstring>(LieGroupBase&lt; Derived &gt; &amp;&amp;s)</argsstring>
+        <name>test_lie_group_base</name>
+        <param>
+          <type><ref refid="structmanif_1_1_lie_group_base" kindref="compound">LieGroupBase</ref>&lt; Derived &gt; &amp;&amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="158" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="traits_8h_1a73631119b790af4ddc50dab678beef0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Derived</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::internal::test_tangent_base</definition>
+        <argsstring>(TangentBase&lt; Derived &gt; &amp;&amp;s)</argsstring>
+        <name>test_tangent_base</name>
+        <param>
+          <type><ref refid="structmanif_1_1_tangent_base" kindref="compound">TangentBase</ref>&lt; Derived &gt; &amp;&amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="169" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="169" bodyend="169"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="11" column="1"/>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="7" column="1"/>
   </compounddef>
 </doxygen>

@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="58" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="343" bodyend="347"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="58" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="358" bodyend="362"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="66" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="352" bodyend="356"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="66" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="367" bodyend="371"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -307,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="74" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="361" bodyend="368"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="74" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="376" bodyend="383"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a1ac9dd89b140080b8b0284c8bdfb5270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="77" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="372" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="77" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="387" bodyend="390"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -335,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="80" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="379" bodyend="382"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="80" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="394" bodyend="397"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Scalar *</type>
@@ -349,7 +349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="83" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="386" bodyend="389"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="83" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="401" bodyend="404"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Scalar *</type>
@@ -363,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="85" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="393" bodyend="396"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="85" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="408" bodyend="411"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad0db8fc1317d2ea0f6f210a6b274ec88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -401,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="102" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="408" bodyend="413"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="102" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="423" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Derived &amp;</type>
@@ -420,7 +420,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="110" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="417" bodyend="424"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="110" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="432" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a5b9c88987e97efb4ded4e1ceca236b46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="122" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="428" bodyend="431"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="122" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="443" bodyend="446"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a27c13e0e833debe4c1b28a1dee828032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Tangent</type>
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="131" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="543" bodyend="546"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="131" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="558" bodyend="561"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ae6ff30b30fc54178a527e1190a38ce3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>MANIF_DEPRECATED Tangent</type>
@@ -509,7 +509,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="139" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="550" bodyend="553"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="139" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="565" bodyend="568"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1aeb8cc8385a9e89c815c749ebfd3c7f14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -572,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="150" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="558" bodyend="564"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="150" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="573" bodyend="579"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -633,7 +633,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="162" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="607" bodyend="614"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="162" column="10" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="622" bodyend="629"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7eee19e807f43489efd4601a8727e9a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Jacobian</type>
@@ -650,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="170" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="599" bodyend="602"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="170" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="614" bodyend="617"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -713,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="183" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="436" bodyend="447"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="183" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="451" bodyend="462"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -776,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="196" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="452" bodyend="468"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="196" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="467" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -812,7 +812,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="205" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="473" bodyend="479"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="205" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="488" bodyend="494"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -875,7 +875,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="218" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="484" bodyend="501"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="218" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="499" bodyend="516"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -938,7 +938,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="231" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="506" bodyend="528"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="231" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="521" bodyend="543"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -974,7 +974,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="240" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="533" bodyend="539"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="240" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="548" bodyend="554"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1034,7 +1034,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="252" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="569" bodyend="587"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="252" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="584" bodyend="602"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1084,7 +1084,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="265" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="591" bodyend="595"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="265" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="606" bodyend="610"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1121,7 +1121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="278" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="620" bodyend="624"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="278" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="635" bodyend="639"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1147,7 +1147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="285" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="629" bodyend="633"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="285" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="644" bodyend="648"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1173,7 +1173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="292" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="638" bodyend="643"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="292" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="653" bodyend="658"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1199,7 +1199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="299" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="648" bodyend="652"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="299" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="663" bodyend="667"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1225,7 +1225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="306" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="657" bodyend="661"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="306" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="672" bodyend="676"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1251,7 +1251,57 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="313" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="666" bodyend="671"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="313" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="681" bodyend="686"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto manif::LieGroupBase&lt; _Derived &gt;::operator[]</definition>
+        <argsstring>(const unsigned int i) const -&gt; decltype(coeffs()[i])</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const unsigned int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Access the ith coeffs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="316" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="316" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto manif::LieGroupBase&lt; _Derived &gt;::operator[]</definition>
+        <argsstring>(const unsigned int i) -&gt; decltype(coeffs()[i])</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const unsigned int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Access the ith coeffs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="321" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="321" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int manif::LieGroupBase&lt; _Derived &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>The size of the underlying vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="326" column="26" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="326" bodyend="328"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1269,7 +1319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="401" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="401" bodyend="404"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="416" column="14" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="416" bodyend="419"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1285,7 +1335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="318" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="677" bodyend="681"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="333" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="692" bodyend="696"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>LieGroup</type>
@@ -1299,7 +1349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="320" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="685" bodyend="688"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="335" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="700" bodyend="703"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -1314,7 +1364,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="324" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="324" bodyend="324"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="339" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="339" bodyend="339"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_lie_group_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -1327,7 +1377,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="325" column="25" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="325" bodyend="325"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="340" column="25" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="340" bodyend="340"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1638,7 +1688,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="22" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="23" bodyend="326"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="22" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="23" bodyend="341"/>
     <listofallmembers>
       <member refid="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>_</name></member>
       <member refid="structmanif_1_1_lie_group_base_1adc60eaf39fd497125f94e7b437f5d86f" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>act</name></member>
@@ -1676,6 +1726,8 @@
       <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>operator[]</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>operator[]</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>OptJacobianRef</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>plus</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>Random</name></member>
@@ -1685,6 +1737,7 @@
       <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>setIdentity</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>size</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>Tangent</name></member>
       <member refid="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb" prot="public" virt="non-virtual"><scope>manif::LieGroupBase</scope><name>Vector</name></member>
     </listofallmembers>

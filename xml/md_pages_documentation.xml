@@ -8,14 +8,14 @@
     <detaileddescription>
 <para>We detail here how to build the documentation locally. The overall documentation relies on two tools, namely <ulink url="https://www.doxygen.nl/index.html">Doxygen</ulink> and <ulink url="https://mcss.mosra.cz/">m.css</ulink>. The former is mainly used to build the C++ API documentation while the former is used to generate the Python API documentation and the overall documentation website.</para>
 <para>See how to build each below.</para>
-<sect1 id="md_pages_documentation_1autotoc_md17">
+<sect1 id="md_pages_documentation_1autotoc_md18">
 <title>mcss</title>
 <para><programlisting filename=".terminal"><codeline><highlight class="normal">python3<sp/>-m<sp/>pip<sp/>install<sp/>jinja2<sp/>Pygments</highlight></codeline>
 <codeline><highlight class="normal">sudo<sp/>apt<sp/>install<sp/>-y<sp/>doxygen<sp/>graphicsmagick-imagemagick-compat</highlight></codeline>
 <codeline><highlight class="normal">git<sp/>clone<sp/>git://github.com/mosra/m.css</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_pages_documentation_1autotoc_md18">
+<sect1 id="md_pages_documentation_1autotoc_md19">
 <title>C++ API</title>
 <para>The C++ API documentation relies only on Doxygen. If you are fine with the antiquated look of a Doxygen-based website, here is how to build it.</para>
 <para>First let&apos;s make sure doxygen is installed,</para>
@@ -27,13 +27,13 @@
 </programlisting></para>
 <para>You can now explore the website by opening the file <computeroutput>manif/docs/html/index.html</computeroutput> in your web browser.</para>
 </sect1>
-<sect1 id="md_pages_documentation_1autotoc_md19">
+<sect1 id="md_pages_documentation_1autotoc_md20">
 <title>Python API</title>
 <para><programlisting filename=".terminal"><codeline><highlight class="normal">cd<sp/>manif/docs</highlight></codeline>
 <codeline><highlight class="normal">python3<sp/>~/path/to/m.css/documentation/doxygen.py<sp/>conf_cpp.py</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_pages_documentation_1autotoc_md20">
+<sect1 id="md_pages_documentation_1autotoc_md21">
 <title>Building the website</title>
 <para><programlisting filename=".terminal"><codeline><highlight class="normal">cd<sp/>manif/docs</highlight></codeline>
 <codeline><highlight class="normal">mkdir<sp/>-p<sp/>site/cpp</highlight></codeline>

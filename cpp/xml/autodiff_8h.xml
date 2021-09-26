@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="autodiff_8h" kind="file" language="C++">
+    <compoundname>autodiff.h</compoundname>
+    <includes refid="autodiff_2constants_8h" local="yes">manif/autodiff/constants.h</includes>
+    <includes refid="local__parameterization_8h" local="yes">manif/autodiff/local_parameterization.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>manif/autodiff/local_parameterization.h</label>
+        <link refid="local__parameterization_8h_source"/>
+      </node>
+      <node id="2">
+        <label>manif/autodiff/constants.h</label>
+        <link refid="autodiff_2constants_8h_source"/>
+      </node>
+      <node id="1">
+        <label>autodiff.h</label>
+        <link refid="autodiff_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual0th_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual0th &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual1st &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual2nd_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual2nd &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual3rd_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual3rd &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual4th_01_4" prot="public">manif::internal::is_ad&lt; autodiff::dual4th &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual0thf_01_4" prot="public">manif::internal::is_ad&lt; dual0thf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual1stf_01_4" prot="public">manif::internal::is_ad&lt; dual1stf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual2ndf_01_4" prot="public">manif::internal::is_ad&lt; dual2ndf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual3rdf_01_4" prot="public">manif::internal::is_ad&lt; dual3rdf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01dual4thf_01_4" prot="public">manif::internal::is_ad&lt; dual4thf &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1_real_3_01_n_00_01_t_01_4_01_4" prot="public">manif::internal::is_ad&lt; autodiff::Real&lt; N, T &gt; &gt;</innerclass>
+    <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</innerclass>
+    <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_tangent&lt; T &gt;::value &gt; &gt;</innerclass>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
+    <innernamespace refid="namespaceautodiff">autodiff</innernamespace>
+    <innernamespace refid="namespaceautodiff_1_1detail">autodiff::detail</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h"/>
+  </compounddef>
+</doxygen>

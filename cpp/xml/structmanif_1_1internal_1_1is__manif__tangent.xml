@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1is__manif__tangent" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::is_manif_tangent</compoundname>
+    <basecompoundref refid="structmanif_1_1internal_1_1is__manif__tangent__impl" prot="public" virt="non-virtual">manif::internal::is_manif_tangent_impl&lt; void, T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::is_manif_tangent_impl&lt; void, T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent__impl"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::false_type</label>
+      </node>
+      <node id="1">
+        <label>manif::internal::is_manif_tangent&lt; T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>manif::internal::is_manif_tangent_impl&lt; void, T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent__impl"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::false_type</label>
+      </node>
+      <node id="1">
+        <label>manif::internal::is_manif_tangent&lt; T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="175" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="176" bodyend="176"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

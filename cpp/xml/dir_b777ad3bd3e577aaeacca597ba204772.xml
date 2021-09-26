@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_b777ad3bd3e577aaeacca597ba204772" kind="dir">
+    <compoundname>autodiff</compoundname>
+    <innerfile refid="autodiff_8h">autodiff.h</innerfile>
+    <innerfile refid="autodiff_2constants_8h">autodiff/constants.h</innerfile>
+    <innerfile refid="local__parameterization_8h">local_parameterization.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/"/>
+  </compounddef>
+</doxygen>

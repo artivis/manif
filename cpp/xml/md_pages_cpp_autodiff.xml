@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="md_pages_cpp_autodiff" kind="page">
+    <compoundname>md_pages_cpp_autodiff</compoundname>
+    <title>Autodiff</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para><ulink url="#autodiff">Autodiff</ulink><itemizedlist>
+<listitem><para><ulink url="#jacobians">Jacobians</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>The <bold>manif</bold> package differentiates Jacobians with respect to a local perturbation on the tangent space. These Jacobians map tangent spaces, as described in <ulink url="http://arxiv.org/abs/1812.01537">this paper</ulink>.</para>
+<para>However, many non-linear solvers (e.g. <ulink url="http://ceres-solver.org/">Ceres</ulink>) expect functions to be differentiated with respect to the underlying representation vector of the group element (e.g. with respect to quaternion vector for <computeroutput>SO3</computeroutput>).</para>
+<para>For this reason <bold>manif</bold> is compliant with the <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::dual</computeroutput></ulink> auto-differentiation type.</para>
+<para>For reference of the size of the Jacobians returned when using <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::dual</computeroutput></ulink>, <bold>manif</bold> implements rotations in the following way:</para>
+<para><itemizedlist>
+<listitem><para>SO(2) and SE(2): as a complex number with <computeroutput>real = cos(theta)</computeroutput> and <computeroutput>imag = sin(theta)</computeroutput> values.</para>
+</listitem><listitem><para>SO(3), SE(3) and SE_2(3): as a unit quaternion, using the underlying <computeroutput>Eigen::Quaternion</computeroutput> type.</para>
+</listitem></itemizedlist>
+</para>
+<para>Therefore, the respective Jacobian sizes using <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::dual</computeroutput></ulink> are as follows:</para>
+<para><itemizedlist>
+<listitem><para>ℝ(n) : size n</para>
+</listitem><listitem><para>SO(2) : size 2</para>
+</listitem><listitem><para>SO(3) : size 4</para>
+</listitem><listitem><para>SE(2) : size 4</para>
+</listitem><listitem><para>SE(3) : size 7</para>
+</listitem><listitem><para>SE_2(3): size 10</para>
+</listitem></itemizedlist>
+</para>
+<sect1 id="md_pages_cpp_autodiff_1autotoc_md1">
+<title>Jacobians</title>
+<para>Considering,</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\bf&amp;space;x" alt="x" inline="yes"></image>
+ a group element (e.g. S3), <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\omega" alt="omega" inline="yes"></image>
+ the vector tangent to the group at <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\bf&amp;space;x" alt="x" inline="yes"></image>
+, <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;e}=f({\bf&amp;space;x})" alt="f(x)" inline="yes"></image>
+ an error function,</para>
+<para>one is interested in expressing the Taylor series of the error function,</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}f({\bf&amp;space;x\oplus\omega})\approx{\bf&amp;space;e}+{\bf&amp;space;J}_{\omega}^{e}~\omega&amp;space;." alt="f(x(+)omega)" inline="yes"></image>
+</para>
+<para>Therefore we have to compute the Jacobian</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta{\bf&amp;space;x}}=\frac{\delta&amp;space;f({\bf&amp;space;x})}{\delta{\bf&amp;space;x}}=\lim_{\omega\to0}\frac{f({\bf&amp;space;x}\oplus\omega)\ominus&amp;space;f({\bf&amp;space;x})}{\omega},&amp;space;(1)" alt="J_e_omega" inline="yes"></image>
+</para>
+<para>the <bold>Jacobian of</bold> <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}f({\bf&amp;space;x})" alt="f(x)" inline="yes"></image>
+ <bold>with respect to a perturbation on the tangent space</bold>, so that the state update happens on the manifold tangent space.</para>
+<para>In some optimization frameworks, the computation of this Jacobian is decoupled in two folds as explained hereafter.</para>
+<para>Using the <bold>autodiff</bold> library, a cost function can very easily designed as follows,</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>functor<sp/>to<sp/>be<sp/>evaluated</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fun<sp/>=<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>measurement,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>state_i,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>state_j){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>measurement<sp/>-<sp/>(state_j<sp/>-<sp/>state_i);</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+<para>where <computeroutput>state_i</computeroutput> &amp; <computeroutput>state_j</computeroutput> belong to a group and <computeroutput>measurement</computeroutput> belongs to the group&apos;s tangent.</para>
+<para>Evaluating the function and its Jacobians is then,</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">autodiff;</highlight></codeline>
+<codeline><highlight class="normal">Eigen::MatrixXd<sp/>J_e_xi<sp/>=<sp/>jacobian(fun,<sp/>wrt(xi),<sp/>at(meas_ij,<sp/>xi,<sp/>xj),<sp/>e);</highlight></codeline>
+<codeline><highlight class="normal">Eigen::MatrixXd<sp/>J_e_xj<sp/>=<sp/>jacobian(fun,<sp/>wrt(xj),<sp/>at(meas_ij,<sp/>xi,<sp/>xj),<sp/>e);</highlight></codeline>
+</programlisting></para>
+<para>It produces Jacobians of the form,</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}=\frac{\delta{\bf&amp;space;e}}{\delta({\bf&amp;space;x}\oplus\omega)}=\lim_{\mathbf&amp;space;h\to0}\frac{&amp;space;f({\bf&amp;space;x}+\mathbf&amp;space;h)-f({\bf&amp;space;x})}{\mathbf&amp;space;h}.&amp;space;(2)" alt="J_e_x(+)omega" inline="yes"></image>
+</para>
+<para>We thus then need to compute the Jacobian that will map to the tangent space - often called local-parameterization. A convenience function is provided in <bold>manif</bold> to do so as follow:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Eigen::MatrixXd<sp/>J_xi_lp<sp/>=<sp/>autodiffLocalParameterizationJacobian&lt;dual&gt;(xi);</highlight></codeline>
+<codeline><highlight class="normal">Eigen::MatrixXd<sp/>J_xj_lp<sp/>=<sp/>autodiffLocalParameterizationJacobian&lt;dual&gt;(xj);</highlight></codeline>
+</programlisting></para>
+<para>This function computes the <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
+ operation&apos;s Jacobian evaluated for <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\omega=0" alt="omega=0" inline="yes"></image>
+ thus providing the Jacobian,</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}=\frac{\delta({\bf&amp;space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus(\omega+\delta\omega)-{\bf&amp;space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&amp;space;x}\oplus\delta\omega-{\bf&amp;space;x}}{\delta\omega}.&amp;space;(3)" alt="J_x(+)w_w" inline="yes"></image>
+</para>
+<para>Once both the cost function and local-parameterization&apos;s Jacobians are evaluated, they can be compose as,</para>
+<para><image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;J}_{\omega}^{e}={\bf&amp;space;J}_{{\bf&amp;space;x}\oplus\omega}^{e}\times{\bf&amp;space;J}_{\omega}^{{\bf&amp;space;x}\oplus\omega}.&amp;space;(4)" alt="J_e_w = J_e_x(+)omega * J_x(+)w_w" inline="yes"></image>
+</para>
+<para>Voila.</para>
+<para>The intermediate Jacobians (2-3) that some solver requires are <bold>not</bold> available in <computeroutput>manif</computeroutput> since the library provides directly the final Jacobian <computeroutput>(1)</computeroutput>.</para>
+<para>However, <bold>manif</bold> is compliant with <computeroutput>autodiff::dual</computeroutput> auto-differentiation type to compute (2-3). </para>
+</sect1>
+    </detaileddescription>
+    <location file="pages/cpp/autodiff.md"/>
+  </compounddef>
+</doxygen>

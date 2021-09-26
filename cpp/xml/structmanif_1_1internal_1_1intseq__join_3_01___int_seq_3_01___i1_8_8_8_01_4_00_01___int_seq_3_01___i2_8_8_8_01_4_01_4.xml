@@ -31,14 +31,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="104" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="104" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="108" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="102" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="103" bodyend="105"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="106" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="107" bodyend="109"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1intseq__join_3_01___int_seq_3_01___i1_8_8_8_01_4_00_01___int_seq_3_01___i2_8_8_8_01_4_01_4_1abfa9e05a1e784876803d01178346a83e" prot="public" virt="non-virtual"><scope>manif::internal::intseq_join&lt; _IntSeq&lt; _I1... &gt;, _IntSeq&lt; _I2... &gt; &gt;</scope><name>type</name></member>
     </listofallmembers>

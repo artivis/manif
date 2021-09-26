@@ -519,14 +519,16 @@ Isometry is a typedef from Eigen::Transform, in which the linear part is assumed
       <member refid="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>operator=</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>operator==</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>operator[]</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>operator[]</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>OptJacobianRef</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>plus</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>Random</name></member>
       <member refid="structmanif_1_1_s_e2_base_1aa0f3397fc51c0ec9e9216a0f61e7647b" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>real</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>RepSize</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>rminus</name></member>
-      <member refid="structmanif_1_1_s_e2_base_1a2a4c07bb3559cf744d7fe08d55f174e7" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>rotation</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a149f54a7047c39e533ad7dddd6fa3d0a" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>Rotation</name></member>
+      <member refid="structmanif_1_1_s_e2_base_1a2a4c07bb3559cf744d7fe08d55f174e7" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>rotation</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>rplus</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_s_e2_1afcae5986c54dd55c6277f5ab4697c3ea" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>SE2</name></member>
@@ -538,6 +540,7 @@ Isometry is a typedef from Eigen::Transform, in which the linear part is assumed
       <member refid="structmanif_1_1_s_e2_1abf406b849fcfb11f67bbdbf15b74c0cc" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>SE2</name></member>
       <member refid="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>setIdentity</name></member>
       <member refid="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>size</name></member>
       <member refid="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>Tangent</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a57077d9e099ebadedb7453dfb6430ba6" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>transform</name></member>
       <member refid="structmanif_1_1_s_e2_base_1a5e9903214f592acaa597a11a0102cfae" prot="public" virt="non-virtual"><scope>manif::SE2</scope><name>Transformation</name></member>

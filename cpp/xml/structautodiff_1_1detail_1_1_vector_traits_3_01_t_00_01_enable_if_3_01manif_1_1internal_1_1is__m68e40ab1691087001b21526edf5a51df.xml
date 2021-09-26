@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df" kind="struct" language="C++" prot="public">
+    <compoundname>autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</compoundname>
+    <includes refid="autodiff_8h" local="no">autodiff.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1a49daf11505e63539d65bfa682c6924d1" prot="public" static="no">
+        <type>typename T::Scalar</type>
+        <definition>using autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;::ValueType =  typename T::Scalar</definition>
+        <argsstring></argsstring>
+        <name>ValueType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="38" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1aeec1fed19fecc231c349dfa3565f69c8" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename NewValueType</type>
+          </param>
+        </templateparamlist>
+        <type>typename T::template LieGroupTemplate&lt; NewValueType &gt;</type>
+        <definition>using autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;::ReplaceValueType =  typename T::template LieGroupTemplate&lt;NewValueType&gt;</definition>
+        <argsstring></argsstring>
+        <name>ReplaceValueType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="41" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>VectorTraits specialization for Derived of LieGroupBase. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="37" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="37" bodyend="42"/>
+    <listofallmembers>
+      <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1aeec1fed19fecc231c349dfa3565f69c8" prot="public" virt="non-virtual"><scope>autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</scope><name>ReplaceValueType</name></member>
+      <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1a49daf11505e63539d65bfa682c6924d1" prot="public" virt="non-virtual"><scope>autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</scope><name>ValueType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

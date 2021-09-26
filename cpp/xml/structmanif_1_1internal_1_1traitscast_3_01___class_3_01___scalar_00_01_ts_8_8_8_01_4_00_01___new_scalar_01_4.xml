@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="53" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="53" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="57" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -44,7 +44,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="51" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="52" bodyend="54"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="55" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="56" bodyend="58"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1traitscast_3_01___class_3_01___scalar_00_01_ts_8_8_8_01_4_00_01___new_scalar_01_4_1a7c893cdfe04537179b04041af3883f5d" prot="public" virt="non-virtual"><scope>manif::internal::traitscast&lt; _Class&lt; _Scalar, Ts... &gt;, _NewScalar &gt;</scope><name>cast</name></member>
     </listofallmembers>

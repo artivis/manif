@@ -6,7 +6,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_pages_projects_1autotoc_md14">
+<sect1 id="md_pages_projects_1autotoc_md15">
 <title>They cite us</title>
 <para>You may find on Google Scholar publications citing either:</para>
 <para><itemizedlist>
@@ -15,7 +15,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_pages_projects_1autotoc_md15">
+<sect1 id="md_pages_projects_1autotoc_md16">
 <title>They use manif</title>
 <para><itemizedlist>
 <listitem><para><ulink url="https://github.com/dic-iit/lie-group-controllers"><computeroutput>lie-group-controllers</computeroutput></ulink>, header-only C++ libraries containing controllers designed for Lie Groups.</para>

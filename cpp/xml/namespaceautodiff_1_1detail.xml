@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceautodiff_1_1detail" kind="namespace" language="C++">
+    <compoundname>autodiff::detail</compoundname>
+    <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</innerclass>
+    <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_tangent&lt; T &gt;::value &gt; &gt;</innerclass>
+    <innerclass refid="structautodiff_1_1detail_1_1_dual" prot="public">autodiff::detail::Dual</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="34" column="1"/>
+  </compounddef>
+</doxygen>

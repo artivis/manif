@@ -36,7 +36,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="70" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="70" bodyend="70"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="74" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="74" bodyend="74"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

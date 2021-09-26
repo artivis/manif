@@ -174,6 +174,12 @@
     <member refid="structmanif_1_1_constants_1a1a93e23545c006cedf04ebfcb61a2c67" kind="variable"><name>to_rad</name></member>
     <member refid="structmanif_1_1_constants_1a4a6fcba990d563cc71be67900c7865b3" kind="variable"><name>to_deg</name></member>
   </compound>
+  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</name>
+    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4_1ae785546e0904737dcfc59a2ac6b2a21a" kind="variable"><name>eps</name></member>
+  </compound>
+  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; float, G &gt; &gt;</name>
+    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4_1a5b3847d2c90277dd34bafd8461eecd6d" kind="variable"><name>eps</name></member>
+  </compound>
   <compound refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" kind="struct"><name>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</name>
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" kind="variable"><name>eps</name></member>
   </compound>
@@ -184,6 +190,8 @@
     <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" kind="variable"><name>to_deg</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1constexpr__false" kind="struct"><name>manif::internal::constexpr_false</name>
+  </compound>
+  <compound refid="structautodiff_1_1detail_1_1_dual" kind="struct"><name>autodiff::detail::Dual</name>
   </compound>
   <compound refid="structmanif_1_1internal_1_1_generator_evaluator" kind="struct"><name>manif::internal::GeneratorEvaluator</name>
     <member refid="structmanif_1_1internal_1_1_generator_evaluator_1a65a1a0a1d7bc82e25ff5b496e1c5b3d9" kind="function"><name>run</name></member>
@@ -241,7 +249,41 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1is__ad" kind="struct"><name>manif::internal::is_ad</name>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual0th_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::dual0th &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::dual1st &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual2nd_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::dual2nd &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual3rd_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::dual3rd &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual4th_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::dual4th &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1_real_3_01_n_00_01_t_01_4_01_4" kind="struct"><name>manif::internal::is_ad&lt; autodiff::Real&lt; N, T &gt; &gt;</name>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1is__ad_3_01ceres_1_1_jet_3_01___scalar_00_01___n_01_4_01_4" kind="struct"><name>manif::internal::is_ad&lt; ceres::Jet&lt; _Scalar, _N &gt; &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01dual0thf_01_4" kind="struct"><name>manif::internal::is_ad&lt; dual0thf &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01dual1stf_01_4" kind="struct"><name>manif::internal::is_ad&lt; dual1stf &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01dual2ndf_01_4" kind="struct"><name>manif::internal::is_ad&lt; dual2ndf &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01dual3rdf_01_4" kind="struct"><name>manif::internal::is_ad&lt; dual3rdf &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__ad_3_01dual4thf_01_4" kind="struct"><name>manif::internal::is_ad&lt; dual4thf &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__group" kind="struct"><name>manif::internal::is_manif_group</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__group__impl" kind="struct"><name>manif::internal::is_manif_group_impl</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a" kind="struct"><name>manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__tangent" kind="struct"><name>manif::internal::is_manif_tangent</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__tangent__impl" kind="struct"><name>manif::internal::is_manif_tangent_impl</name>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1is__manif__tangent__impl_3_01decltype_07test__tangent__base_07std_1_1acf371df7e577828bfd807fb299e3ea2" kind="struct"><name>manif::internal::is_manif_tangent_impl&lt; decltype(test_tangent_base(std::declval&lt; T &gt;())), T &gt;</name>
   </compound>
   <compound refid="structmanif_1_1_lie_group_base" kind="struct"><name>manif::LieGroupBase</name>
     <member refid="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3" kind="typedef"><name>Scalar</name></member>
@@ -286,6 +328,9 @@
     <member refid="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd" kind="function"><name>operator-</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc" kind="function"><name>operator*</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d" kind="function"><name>operator*=</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81" kind="function"><name>operator[]</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92" kind="function"><name>operator[]</name></member>
+    <member refid="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1" kind="function"><name>size</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a0ef0052589be75ef70ca7770cf73def7" kind="function"><name>cast</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a" kind="function"><name>Identity</name></member>
     <member refid="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05" kind="function"><name>Random</name></member>
@@ -1102,6 +1147,9 @@
     <member refid="structmanif_1_1_tangent_base_1a3fa85584b927625ddeb8f482008623c6" kind="function"><name>operator-=</name></member>
     <member refid="structmanif_1_1_tangent_base_1aeec01529723a9090073be80e6e3983a2" kind="function"><name>operator*=</name></member>
     <member refid="structmanif_1_1_tangent_base_1ab59f8be2812f60af208fcbb2e3683699" kind="function"><name>operator/=</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a833073611c3ee66cfd57bfb3910f98a9" kind="function"><name>operator[]</name></member>
+    <member refid="structmanif_1_1_tangent_base_1acd41e485fbedddc6f5e958cc5c61fa45" kind="function"><name>operator[]</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a41858edd33970d567b149324f2972cae" kind="function"><name>size</name></member>
     <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" kind="function"><name>cast</name></member>
     <member refid="structmanif_1_1_tangent_base_1a69d9ad80a547f43f038ee3f60df21ba8" kind="function"><name>Zero</name></member>
     <member refid="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" kind="function"><name>Random</name></member>
@@ -1437,7 +1485,19 @@
   <compound refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" kind="struct"><name>manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</name>
     <member refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab_1a58ba010e41a4e2ffe7baa4b596c656f0" kind="typedef"><name>cast</name></member>
   </compound>
+  <compound refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df" kind="struct"><name>autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</name>
+    <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1a49daf11505e63539d65bfa682c6924d1" kind="typedef"><name>ValueType</name></member>
+    <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df_1aeec1fed19fecc231c349dfa3565f69c8" kind="typedef"><name>ReplaceValueType</name></member>
+  </compound>
+  <compound refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3" kind="struct"><name>autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_tangent&lt; T &gt;::value &gt; &gt;</name>
+    <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3_1a6928f396f1f0745738311e5ece04bd72" kind="typedef"><name>ValueType</name></member>
+    <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3_1aae0a11049defe6b73bbb5c38700f8ff8" kind="typedef"><name>ReplaceValueType</name></member>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kind="struct"><name>manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</name>
+  </compound>
+  <compound refid="namespaceautodiff" kind="namespace"><name>autodiff</name>
+  </compound>
+  <compound refid="namespaceautodiff_1_1detail" kind="namespace"><name>autodiff::detail</name>
   </compound>
   <compound refid="namespace_eigen" kind="namespace"><name>Eigen</name>
   </compound>
@@ -1491,6 +1551,7 @@
     <member refid="interpolation_8h_1aaf694703bb0cc2672cd72be078299907" kind="function"><name>interpolate_cubic</name></member>
     <member refid="interpolation_8h_1a834c3c1151581f818aaba705030d8590" kind="function"><name>interpolate_smooth</name></member>
     <member refid="interpolation_8h_1aef456041f95ce4198f8488e22e177f38" kind="function"><name>interpolate</name></member>
+    <member refid="local__parameterization_8h_1a8b22b71153f1456464f33cc5e7509239" kind="function"><name>autodiffLocalParameterizationJacobian</name></member>
     <member refid="ceres__utils_8h_1adb02ae0e31e731f19dff21982f8170a9" kind="function"><name>make_local_parameterization_autodiff</name></member>
     <member refid="ceres__utils_8h_1aa83ef037aa43ad8fe1dccdbe8c1eb1eb" kind="function"><name>make_objective_autodiff</name></member>
     <member refid="ceres__utils_8h_1a84514b43e5738e0aba8495bdbc58eaca" kind="function"><name>make_constraint_autodiff</name></member>
@@ -1553,6 +1614,11 @@
     <member refid="macro_8h_1a2958fb7a3a1cc382cf24a408f9777cbb" kind="function"><name>raise</name></member>
   </compound>
   <compound refid="namespacemanif_1_1internal" kind="namespace"><name>manif::internal</name>
+    <member refid="autodiff_8h_1a366b4f6f478fb1c6f04a792d5159fe38" kind="typedef"><name>dual0thf</name></member>
+    <member refid="autodiff_8h_1a31620a03943f646a4e87cd30b8b3c41a" kind="typedef"><name>dual1stf</name></member>
+    <member refid="autodiff_8h_1a9734ac1add5265fe5eca2e422f049585" kind="typedef"><name>dual2ndf</name></member>
+    <member refid="autodiff_8h_1afcc77dee9ea8c11641d83f35194531a0" kind="typedef"><name>dual3rdf</name></member>
+    <member refid="autodiff_8h_1a168ece9e614bfa0fb605439eb3c756fc" kind="typedef"><name>dual4thf</name></member>
     <member refid="traits_8h_1a0033e0e0177d2c7e6fdf47ec0f19f8c4" kind="typedef"><name>make_intseq_t</name></member>
     <member refid="constants_8h_1add9d0de466af3750f594cd047644ce86" kind="function"><name>sqrtNewtonRaphson</name></member>
     <member refid="constants_8h_1a993aa01c37352be19230c645402cf75c" kind="function"><name>csqrt</name></member>
@@ -1560,10 +1626,16 @@
     <member refid="traits_8h_1ae8e775a3f897e8deb715c17426fda198" kind="function"><name>accumulate</name></member>
     <member refid="traits_8h_1a4b15ed028826bae0079813f367ebd0fc" kind="function"><name>accumulate</name></member>
     <member refid="traits_8h_1a2b08be98eb3cd6e236d57f424610c39a" kind="function"><name>compute_indices</name></member>
+    <member refid="traits_8h_1ac5f46be696df150ae5283bb3fd0a93fe" kind="function"><name>test_lie_group_base</name></member>
+    <member refid="traits_8h_1a73631119b790af4ddc50dab678beef0e" kind="function"><name>test_tangent_base</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="assignment__assert_8h" kind="file"><name>assignment_assert.h</name>
+  </compound>
+  <compound refid="autodiff_8h" kind="file"><name>autodiff.h</name>
+  </compound>
+  <compound refid="autodiff_8md" kind="file"><name>autodiff.md</name>
   </compound>
   <compound refid="average_8h" kind="file"><name>average.h</name>
   </compound>
@@ -1588,6 +1660,8 @@
   <compound refid="ceres_8h" kind="file"><name>ceres.h</name>
   </compound>
   <compound refid="ceres__utils_8h" kind="file"><name>ceres_utils.h</name>
+  </compound>
+  <compound refid="autodiff_2constants_8h" kind="file"><name>autodiff/constants.h</name>
   </compound>
   <compound refid="ceres_2constants_8h" kind="file"><name>ceres/constants.h</name>
   </compound>
@@ -1627,6 +1701,8 @@
   <compound refid="_interpolation_8md" kind="file"><name>Interpolation.md</name>
   </compound>
   <compound refid="lie__group__base_8h" kind="file"><name>lie_group_base.h</name>
+  </compound>
+  <compound refid="local__parameterization_8h" kind="file"><name>local_parameterization.h</name>
   </compound>
   <compound refid="local__parametrization_8h" kind="file"><name>local_parametrization.h</name>
   </compound>
@@ -1786,6 +1862,8 @@
   </compound>
   <compound refid="_writing-generic-code_8md" kind="file"><name>Writing-generic-code.md</name>
   </compound>
+  <compound refid="md_pages_cpp_autodiff" kind="page"><name>md_pages_cpp_autodiff</name>
+  </compound>
   <compound refid="md_pages_cpp__interpolation" kind="page"><name>md_pages_cpp_Interpolation</name>
   </compound>
   <compound refid="md_pages_cpp__on_the_use_with__ceres" kind="page"><name>md_pages_cpp_On_the_use_with_Ceres</name>
@@ -1793,6 +1871,8 @@
   <compound refid="md_pages_cpp__writing_generic_code" kind="page"><name>md_pages_cpp_Writing_generic_code</name>
   </compound>
   <compound refid="dir_80ae130e730b0c846acfaa988d7ac321" kind="dir"><name>algorithms</name>
+  </compound>
+  <compound refid="dir_b777ad3bd3e577aaeacca597ba204772" kind="dir"><name>autodiff</name>
   </compound>
   <compound refid="dir_f46b268d7826b9c8c561a5bd79e1fe82" kind="dir"><name>bundle</name>
   </compound>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Autodiff | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          Autodiff
+        </h1>
+<ul><li><a href="#autodiff">Autodiff</a><ul><li><a href="#jacobians">Jacobians</a></li></ul></li></ul><p>The <strong>manif</strong> package differentiates Jacobians with respect to a local perturbation on the tangent space. These Jacobians map tangent spaces, as described in <a href="http://arxiv.org/abs/1812.01537">this paper</a>.</p><p>However, many non-linear solvers (e.g. <a href="http://ceres-solver.org/">Ceres</a>) expect functions to be differentiated with respect to the underlying representation vector of the group element (e.g. with respect to quaternion vector for <code>SO3</code>).</p><p>For this reason <strong>manif</strong> is compliant with the <a href="https://autodiff.github.io/"><code>autodiff::dual</code></a> auto-differentiation type.</p><p>For reference of the size of the Jacobians returned when using <a href="https://autodiff.github.io/"><code>autodiff::dual</code></a>, <strong>manif</strong> implements rotations in the following way:</p><ul><li>SO(2) and SE(2): as a complex number with <code>real = cos(theta)</code> and <code>imag = sin(theta)</code> values.</li><li>SO(3), SE(3) and SE_2(3): as a unit quaternion, using the underlying <code>Eigen::Quaternion</code> type.</li></ul><p>Therefore, the respective Jacobian sizes using <a href="https://autodiff.github.io/"><code>autodiff::dual</code></a> are as follows:</p><ul><li>ℝ(n) : size n</li><li>SO(2) : size 2</li><li>SO(3) : size 4</li><li>SE(2) : size 4</li><li>SE(3) : size 7</li><li>SE_2(3): size 10</li></ul><section id="autotoc_md1"><h2><a href="#autotoc_md1">Jacobians</a></h2><p>Considering,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}\bf&space;x" alt="Image" /><p>a group element (e.g. S3),</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}\omega" alt="Image" /><p>the vector tangent to the group at</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}\bf&space;x" alt="Image" /><p>,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;e}=f({\bf&space;x})" alt="Image" /><p>an error function,</p><p>one is interested in expressing the Taylor series of the error function,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}f({\bf&space;x\oplus\omega})\approx{\bf&space;e}+{\bf&space;J}_{\omega}^{e}~\omega&space;." alt="Image" /><p>Therefore we have to compute the Jacobian</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;J}_{\omega}^{e}=\frac{\delta{\bf&space;e}}{\delta{\bf&space;x}}=\frac{\delta&space;f({\bf&space;x})}{\delta{\bf&space;x}}=\lim_{\omega\to0}\frac{f({\bf&space;x}\oplus\omega)\ominus&space;f({\bf&space;x})}{\omega},&space;(1)" alt="Image" /><p>the <strong>Jacobian of</strong></p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}f({\bf&space;x})" alt="Image" />
+ <p><strong>with respect to a perturbation on the tangent space</strong>, so that the state update happens on the manifold tangent space.</p><p>In some optimization frameworks, the computation of this Jacobian is decoupled in two folds as explained hereafter.</p><p>Using the <strong>autodiff</strong> library, a cost function can very easily designed as follows,</p><pre class="m-code"><span class="c1">// functor to be evaluated</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">measurement</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">state_i</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">state_j</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">measurement</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">state_j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">state_i</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span></pre><p>where <code>state_i</code> &amp; <code>state_j</code> belong to a group and <code>measurement</code> belongs to the group&#x27;s tangent.</p><p>Evaluating the function and its Jacobians is then,</p><pre class="m-code"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">autodiff</span><span class="p">;</span><span class="w"></span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">J_e_xi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">wrt</span><span class="p">(</span><span class="n">xi</span><span class="p">),</span><span class="w"> </span><span class="n">at</span><span class="p">(</span><span class="n">meas_ij</span><span class="p">,</span><span class="w"> </span><span class="n">xi</span><span class="p">,</span><span class="w"> </span><span class="n">xj</span><span class="p">),</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"></span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">J_e_xj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">wrt</span><span class="p">(</span><span class="n">xj</span><span class="p">),</span><span class="w"> </span><span class="n">at</span><span class="p">(</span><span class="n">meas_ij</span><span class="p">,</span><span class="w"> </span><span class="n">xi</span><span class="p">,</span><span class="w"> </span><span class="n">xj</span><span class="p">),</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"></span></pre><p>It produces Jacobians of the form,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;J}_{{\bf&space;x}\oplus\omega}^{e}=\frac{\delta{\bf&space;e}}{\delta({\bf&space;x}\oplus\omega)}=\lim_{\mathbf&space;h\to0}\frac{&space;f({\bf&space;x}+\mathbf&space;h)-f({\bf&space;x})}{\mathbf&space;h}.&space;(2)" alt="Image" /><p>We thus then need to compute the Jacobian that will map to the tangent space - often called local-parameterization. A convenience function is provided in <strong>manif</strong> to do so as follow:</p><pre class="m-code"><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">J_xi_lp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autodiffLocalParameterizationJacobian</span><span class="o">&lt;</span><span class="n">dual</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xi</span><span class="p">);</span><span class="w"></span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">J_xj_lp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autodiffLocalParameterizationJacobian</span><span class="o">&lt;</span><span class="n">dual</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xj</span><span class="p">);</span><span class="w"></span></pre><p>This function computes the</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;x}\oplus\mathbf\omega" alt="Image" /><p>operation&#x27;s Jacobian evaluated for</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}\omega=0" alt="Image" /><p>thus providing the Jacobian,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;J}_{\omega}^{{\bf&space;x}\oplus\omega}=\frac{\delta({\bf&space;x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&space;x}\oplus(\omega+\delta\omega)-{\bf&space;x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf&space;x}\oplus\delta\omega-{\bf&space;x}}{\delta\omega}.&space;(3)" alt="Image" /><p>Once both the cost function and local-parameterization&#x27;s Jacobians are evaluated, they can be compose as,</p><img class="m-image" src="https://latex.codecogs.com/svg.latex?\color{white}{\bf&space;J}_{\omega}^{e}={\bf&space;J}_{{\bf&space;x}\oplus\omega}^{e}\times{\bf&space;J}_{\omega}^{{\bf&space;x}\oplus\omega}.&space;(4)" alt="Image" /><p>Voila.</p><p>The intermediate Jacobians (2-3) that some solver requires are <strong>not</strong> available in <code>manif</code> since the library provides directly the final Jacobian <code>(1)</code>.</p><p>However, <strong>manif</strong> is compliant with <code>autodiff::dual</code> auto-differentiation type to compute (2-3).</p></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

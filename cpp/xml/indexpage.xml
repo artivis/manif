@@ -29,9 +29,9 @@
 </para>
 <para>All Lie group classes defined in <bold>manif</bold> have in common that they inherit from a templated base class (<ulink url="https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern">CRTP</ulink>). It allows one to write generic code abstracting the Lie group details. Please find more information in the related [documentation page](Writing-generic-code).</para>
 <para>The library supports template scalar types. In particular, it can work with the <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> type, allowing for automatic Jacobian computation <ndash/> <ulink url="#jacobians">see related paragraph on Jacobians below</ulink>.</para>
-<sect1 id="index_1autotoc_md6">
+<sect1 id="index_1autotoc_md8">
 <title>Installation</title>
-<sect2 id="index_1autotoc_md7">
+<sect2 id="index_1autotoc_md9">
 <title>Dependencies</title>
 <para><itemizedlist>
 <listitem><para>Eigen 3 :<itemizedlist>
@@ -45,7 +45,7 @@
 </listitem></itemizedlist>
 </para>
 </sect2>
-<sect2 id="index_1autotoc_md8">
+<sect2 id="index_1autotoc_md10">
 <title>From source</title>
 <para><programlisting filename=".terminal"><codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/artivis/manif.git</highlight></codeline>
 <codeline><highlight class="normal">cd<sp/>manif<sp/>&amp;&amp;<sp/>mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
@@ -54,7 +54,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="index_1autotoc_md9">
+<sect1 id="index_1autotoc_md11">
 <title>Use manif in your project</title>
 <para>In your project <computeroutput>CMakeLists.txt</computeroutput> :</para>
 <para><programlisting filename=".cmake"><codeline><highlight class="normal">project(foo)</highlight></codeline>
@@ -77,7 +77,7 @@
 <codeline><highlight class="normal">...</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="index_1autotoc_md10">
+<sect1 id="index_1autotoc_md12">
 <title>Tutorials and application demos</title>
 <para>We provide some self-contained and self-explained executables implementing some real problems. Their source code is located in <computeroutput>manif/examples/</computeroutput>. These demos are:</para>
 <para><itemizedlist>

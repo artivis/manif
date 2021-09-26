@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1is__manif__tangent__impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::is_manif_tangent_impl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::is_manif_tangent_impl&lt; class, T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::internal::is_manif_tangent_impl&lt; class, T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__tangent__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="171" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="171" bodyend="171"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

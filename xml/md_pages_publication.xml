@@ -6,7 +6,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_pages_publication_1autotoc_md22">
+<sect1 id="md_pages_publication_1autotoc_md23">
 <title>Citing manif</title>
 <para>If you use this software, please consider citing <ulink url="https://joss.theoj.org/papers/10.21105/joss.01371">this paper</ulink> as follows:</para>
 <para><programlisting filename=".latex"><codeline><highlight class="normal">@article{Deray-20-JOSS,</highlight></codeline>
@@ -35,7 +35,7 @@
 </programlisting></para>
 <para>Note that this reference is the one referred to throughout the code documentation. Since this is a versioned work, please refer to <ulink url="http://arxiv.org/abs/1812.01537v4">version 4, available here</ulink>, of the paper when cross-referencing with the <bold>manif</bold> documentation. This will give the appropriate equation numbers.</para>
 </sect1>
-<sect1 id="md_pages_publication_1autotoc_md23">
+<sect1 id="md_pages_publication_1autotoc_md24">
 <title>Lie group cheat sheets</title>
 <para>In a rush? Check out our Lie group theory take away, the <ulink url="https://github.com/artivis/manif/blob/devel/paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</ulink> (or hit <ulink url="https://github.com/artivis/manif/raw/devel/paper/Lie_theory_cheat_sheet.pdf">dowload</ulink>). </para>
 </sect1>

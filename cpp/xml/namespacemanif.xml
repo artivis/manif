@@ -2,6 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacemanif" kind="namespace" language="C++">
     <compoundname>manif</compoundname>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; float, G &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
     <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
@@ -1393,6 +1395,31 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" line="291" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/algorithms/interpolation.h" bodystart="291" bodyend="321"/>
       </memberdef>
+      <memberdef kind="function" id="local__parameterization_8h_1a8b22b71153f1456464f33cc5e7509239" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Ad</type>
+          </param>
+          <param>
+            <type>typename Derived</type>
+          </param>
+        </templateparamlist>
+        <type>Eigen::Matrix&lt; typename Derived::Scalar, Derived::RepSize, Derived::DoF &gt;</type>
+        <definition>Eigen::Matrix&lt;typename Derived::Scalar, Derived::RepSize, Derived::DoF&gt; manif::autodiffLocalParameterizationJacobian</definition>
+        <argsstring>(const manif::LieGroupBase&lt; Derived &gt; &amp;_state)</argsstring>
+        <name>autodiffLocalParameterizationJacobian</name>
+        <param>
+          <type>const <ref refid="structmanif_1_1_lie_group_base" kindref="compound">manif::LieGroupBase</ref>&lt; Derived &gt; &amp;</type>
+          <declname>_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/local_parameterization.h" line="8" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/local_parameterization.h" bodystart="8" bodyend="34"/>
+      </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1adb02ae0e31e731f19dff21982f8170a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -2353,7 +2380,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="693" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="693" bodyend="699"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="708" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="708" bodyend="714"/>
       </memberdef>
       <memberdef kind="function" id="_s_e2_tangent_8h_1a728e852117939343122920bdf7e76783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2462,7 +2489,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="719" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="719" bodyend="724"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="734" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="734" bodyend="739"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a1ff2bbb013fb8ffb73c82afceda6131b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2491,7 +2518,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="728" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="728" bodyend="733"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="743" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="743" bodyend="748"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a61a0ddf27c7a0ad2e2bfc0a1b0e1fb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2520,7 +2547,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="755" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="755" bodyend="760"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="770" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="770" bodyend="775"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a2cdb3f0147ec5b11a72545ef5fddb6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2549,7 +2576,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="764" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="764" bodyend="769"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="779" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="779" bodyend="784"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aa42ef5cd0fabd1f45a7ad1822f2ebe51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2578,7 +2605,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="773" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="773" bodyend="778"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="788" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="788" bodyend="793"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1ab952d0f1ec392a23cafb8920fd8821ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2607,7 +2634,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="782" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="782" bodyend="787"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="797" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="797" bodyend="802"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a05b955ac883e34528df3de4cb17dc6b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2633,7 +2660,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="807" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="807" bodyend="812"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="822" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="822" bodyend="827"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a1b530e2c328e3c2b31095d26a4f5f02b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2659,7 +2686,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="816" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="816" bodyend="820"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="831" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="831" bodyend="835"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a71fefaa810e45ad464813862ae80e75a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2685,7 +2712,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="824" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="824" bodyend="829"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="839" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="839" bodyend="844"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1a63bf1a9645754b8e4f5ce5ab0c8e5cc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2711,7 +2738,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="833" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="833" bodyend="838"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="848" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="848" bodyend="853"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aeb6a053cf7d4578c97d0aa9eb9d69ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2740,7 +2767,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="841" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="841" bodyend="846"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="856" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="856" bodyend="861"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1aaae84429b756548d52a2be9680db1378" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2769,7 +2796,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="849" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="849" bodyend="854"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="864" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="864" bodyend="869"/>
       </memberdef>
       <memberdef kind="function" id="tangent__base_8h_1af50b5e49aec75ae950fdcde247071e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2798,7 +2825,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="859" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="859" bodyend="865"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" line="874" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="874" bodyend="880"/>
       </memberdef>
       <memberdef kind="function" id="utils_8h_1a18b90a86a6200162b35cb7d811f60e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

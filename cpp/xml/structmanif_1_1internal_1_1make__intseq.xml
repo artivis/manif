@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="113" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="115" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="117" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -30,7 +30,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="111" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="112" bodyend="116"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="115" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="116" bodyend="120"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1make__intseq_1a88639bc29d8d45099afbc56cfbb400d5" prot="public" virt="non-virtual"><scope>manif::internal::make_intseq</scope><name>type</name></member>
     </listofallmembers>

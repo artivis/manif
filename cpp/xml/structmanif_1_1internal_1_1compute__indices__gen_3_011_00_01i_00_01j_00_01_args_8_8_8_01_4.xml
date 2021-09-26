@@ -31,14 +31,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="143" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="143" bodyend="145"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="147" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="147" bodyend="149"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="142" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="142" bodyend="146"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="146" column="16" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="146" bodyend="150"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1compute__indices__gen_3_011_00_01i_00_01j_00_01_args_8_8_8_01_4_1aa99cb98b2617ad64221539dbb798473d" prot="public" virt="non-virtual"><scope>manif::internal::compute_indices_gen&lt; 1, i, j, Args... &gt;</scope><name>get</name></member>
     </listofallmembers>

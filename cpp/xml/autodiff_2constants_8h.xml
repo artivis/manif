@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="autodiff_2constants_8h" kind="file" language="C++">
+    <compoundname>autodiff/constants.h</compoundname>
+    <includedby refid="autodiff_8h" local="yes">autodiff.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>constants.h</label>
+        <link refid="autodiff_2constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>autodiff.h</label>
+        <link refid="autodiff_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; float, G &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</innerclass>
+    <innernamespace refid="namespaceautodiff">autodiff</innernamespace>
+    <innernamespace refid="namespaceautodiff_1_1detail">autodiff::detail</innernamespace>
+    <innernamespace refid="namespacemanif">manif</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h"/>
+  </compounddef>
+</doxygen>

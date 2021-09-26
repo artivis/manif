@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+      <node id="1">
+        <label>manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+      <node id="1">
+        <label>manif::internal::is_manif_group_impl&lt; decltype(test_lie_group_base(std::declval&lt; T &gt;())), T &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__manif__group__impl_3_01decltype_07test__lie__group__base_07std_1_2a7e31b6a0009b271f2e8913ab55b44a"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="161" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="163" bodyend="163"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

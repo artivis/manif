@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::is_ad&lt; autodiff::dual1st &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, true &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::is_ad&lt; autodiff::dual1st &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, true &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>manif::internal::is_ad&lt; autodiff::dual1st &gt;</label>
+        <link refid="structmanif_1_1internal_1_1is__ad_3_01autodiff_1_1dual1st_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, true &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" line="19" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/autodiff.h" bodystart="19" bodyend="19"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -39,7 +39,7 @@
         <label>std::false_type</label>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="79" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="79" bodyend="79"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="83" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="83" bodyend="83"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</compoundname>
+    <includes refid="autodiff_2constants_8h" local="no">constants.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename G</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4_1ae785546e0904737dcfc59a2ac6b2a21a" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structautodiff_1_1detail_1_1_dual" kindref="compound">autodiff::detail::Dual</ref>&lt; double, G &gt;</type>
+        <definition>const autodiff::detail::Dual&lt; double, G &gt; manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;::eps</definition>
+        <argsstring></argsstring>
+        <name>eps</name>
+        <initializer>= <ref refid="structautodiff_1_1detail_1_1_dual" kindref="compound">autodiff::detail::Dual</ref>&lt;double, G&gt;(1e-14)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="25" column="39" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Specialize <ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref> traits for the double-based autodiff::dual type. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>autodiff::detail::Dual&lt; double, G &gt;</label>
+        <link refid="structautodiff_1_1detail_1_1_dual"/>
+      </node>
+      <node id="1">
+        <label>manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</label>
+        <link refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>eps</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="24" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="24" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4_1ae785546e0904737dcfc59a2ac6b2a21a" prot="public" virt="non-virtual"><scope>manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</scope><name>eps</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

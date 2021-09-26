@@ -36,14 +36,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="138" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="138" bodyend="140"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="142" column="31" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="142" bodyend="144"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="137" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="137" bodyend="141"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/traits.h" line="141" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/traits.h" bodystart="141" bodyend="145"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1compute__indices__gen_1ab0c41eb175b10cbc1242aa343fb08209" prot="public" virt="non-virtual"><scope>manif::internal::compute_indices_gen</scope><name>get</name></member>
     </listofallmembers>

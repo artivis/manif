@@ -3,6 +3,7 @@
   <compounddef id="dir_5f2e99f1578ffe2bd1b246fbc95ce1e6" kind="dir">
     <compoundname>manif</compoundname>
     <innerdir refid="dir_80ae130e730b0c846acfaa988d7ac321">algorithms</innerdir>
+    <innerdir refid="dir_b777ad3bd3e577aaeacca597ba204772">autodiff</innerdir>
     <innerdir refid="dir_78a8501af6f3f64c000105fea8c40973">ceres</innerdir>
     <innerdir refid="dir_098c4581aaa0d1c7f86d001315ab1814">impl</innerdir>
     <innerfile refid="_bundle_8h">Bundle.h</innerfile>

@@ -78,6 +78,16 @@
           <h2><a href="#nested-classes">Classes</a></h2>
           <dl class="m-doc">
             <dt>
+              <div class="m-doc-template">template&lt;typename G&gt;</div>
+              struct <a href="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4.html" class="m-doc">Constants&lt;autodiff::detail::Dual&lt;float, G&gt;&gt;</a>
+            </dt>
+            <dd>Specialize <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a> traits for the float-based autodiff::dual type.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename G&gt;</div>
+              struct <a href="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4.html" class="m-doc">Constants&lt;autodiff::detail::Dual&lt;double, G&gt;&gt;</a>
+            </dt>
+            <dd>Specialize <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a> traits for the double-based autodiff::dual type.</dd>
+            <dt>
               <div class="m-doc-template">template&lt;typename _Scalar, int N&gt;</div>
               struct <a href="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4.html" class="m-doc">Constants&lt;ceres::Jet&lt;_Scalar, N&gt;&gt;</a>
             </dt>
@@ -534,6 +544,11 @@
               const typename <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_Derived&gt;::Tangent&amp; tb = <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_Derived&gt;::Tangent::Zero()) -&gt; <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_Derived&gt;::LieGroup</span>
             </dt>
             <dd>A helper function for interpolation.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Ad, typename Derived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="local__parameterization_8h.html#a8b22b71153f1456464f33cc5e7509239" class="m-doc">autodiffLocalParameterizationJacobian</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">manif::<wbr />LieGroupBase</a>&lt;Derived&gt;&amp; _state) -&gt; Eigen::Matrix&lt;typename Derived::Scalar, Derived::RepSize, Derived::DoF&gt;</span>
+            </dt>
+            <dd><span></span></dd>
             <dt>
               <div class="m-doc-template">template&lt;typename _LieGroup&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="ceres__utils_8h.html#adb02ae0e31e731f19dff21982f8170a9" class="m-doc">make_local_parameterization_autodiff</a>(</span><span class="m-doc-wrap">) -&gt; std::shared_ptr&lt;ceres::AutoDiffLocalParameterization&lt;<a href="classmanif_1_1_ceres_local_parameterization_functor.html" class="m-doc">CeresLocalParameterizationFunctor</a>&lt;_LieGroup&gt;, _LieGroup::RepSize, _LieGroup::DoF&gt;&gt;</span>

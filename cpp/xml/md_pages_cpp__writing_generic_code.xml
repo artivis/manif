@@ -18,9 +18,9 @@
 </listitem></itemizedlist>
 </para>
 <para>All Lie group classes defined in <computeroutput>manif</computeroutput> have in common that they inherit from a templated base class. Therefore, template-based generic code can be written - similarly to Eigen.</para>
-<sect1 id="md_pages_cpp__writing_generic_code_1autotoc_md12">
+<sect1 id="md_pages_cpp__writing_generic_code_1autotoc_md14">
 <title>Examples</title>
-<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md13">
+<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md15">
 <title>Small example</title>
 <para>Let us write a simple function that take any group object and prints some information about it,</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -46,7 +46,7 @@
 <codeline><highlight class="stringliteral">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md14">
+<sect2 id="md_pages_cpp__writing_generic_code_1autotoc_md16">
 <title>Multiple templated arguments</title>
 <para>Let us write a function that takes two group objects and performs some computation,</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;manif/manif.h&gt;</highlight><highlight class="normal"></highlight></codeline>

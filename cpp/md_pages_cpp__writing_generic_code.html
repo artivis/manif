@@ -49,52 +49,52 @@
         <h1>
           Writing generic code
         </h1>
-<ul><li><a href="#writing-generic-code">Writing generic code</a><ul><li><a href="#examples">Examples</a><ul><li><a href="#small-example">Small example</a></li><li><a href="#multiple-templated-arguments">Multiple templated arguments</a></li></ul></li></ul></li></ul><p>All Lie group classes defined in <code>manif</code> have in common that they inherit from a templated base class. Therefore, template-based generic code can be written - similarly to Eigen.</p><section id="autotoc_md12"><h2><a href="#autotoc_md12">Examples</a></h2><section id="autotoc_md13"><h3><a href="#autotoc_md13">Small example</a></h3><p>Let us write a simple function that take any group object and prints some information about it,</p><pre class="m-code"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
+<ul><li><a href="#writing-generic-code">Writing generic code</a><ul><li><a href="#examples">Examples</a><ul><li><a href="#small-example">Small example</a></li><li><a href="#multiple-templated-arguments">Multiple templated arguments</a></li></ul></li></ul></li></ul><p>All Lie group classes defined in <code>manif</code> have in common that they inherit from a templated base class. Therefore, template-based generic code can be written - similarly to Eigen.</p><section id="autotoc_md14"><h2><a href="#autotoc_md14">Examples</a></h2><section id="autotoc_md15"><h3><a href="#autotoc_md15">Small example</a></h3><p>Let us write a simple function that take any group object and prints some information about it,</p><pre class="m-code"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="nn">manif</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">manif</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Derived</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;&amp;</span> <span class="n">g</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Degrees of freedom: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">g</span><span class="o">::</span><span class="n">DoF</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-            <span class="o">&lt;&lt;</span> <span class="s">&quot;Underlying representation vector size: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">g</span><span class="o">::</span><span class="n">RepSize</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-            <span class="o">&lt;&lt;</span> <span class="s">&quot;Current values: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">g</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">;</span>
-<span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Derived</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Degrees of freedom: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">::</span><span class="n">DoF</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Underlying representation vector size: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">::</span><span class="n">RepSize</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Current values: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">;</span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">SE2d</span> <span class="n">p_2d</span><span class="p">;</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">p_2d</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">SE2d</span><span class="w"> </span><span class="n">p_2d</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">p_2d</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">SE3d</span> <span class="n">p_3d</span><span class="p">;</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">p_3d</span><span class="p">);</span>
-<span class="p">}</span></pre></section><section id="autotoc_md14"><h3><a href="#autotoc_md14">Multiple templated arguments</a></h3><p>Let us write a function that takes two group objects and performs some computation,</p><pre class="m-code"><span class="cp">#include</span> <span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
+<span class="w">  </span><span class="n">SE3d</span><span class="w"> </span><span class="n">p_3d</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">p_3d</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre></section><section id="autotoc_md16"><h3><a href="#autotoc_md16">Multiple templated arguments</a></h3><p>Let us write a function that takes two group objects and performs some computation,</p><pre class="m-code"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="nn">manif</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">manif</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">DerivedA</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">DerivedB</span><span class="o">&gt;</span>
-<span class="k">typename</span> <span class="nc">DerivedA</span><span class="o">::</span><span class="n">Scalar</span>
-<span class="n">ominusSquaredWeightedNorm</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">DerivedA</span><span class="o">&gt;&amp;</span> <span class="n">state</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">DerivedB</span><span class="o">&gt;&amp;</span> <span class="n">state_other</span>
-<span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="n">state</span><span class="o">-</span><span class="n">state_other</span><span class="p">).</span><span class="n">squaredWeightedNorm</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">DerivedA</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">DerivedB</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">DerivedA</span><span class="o">::</span><span class="n">Scalar</span><span class="w"></span>
+<span class="n">ominusSquaredWeightedNorm</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">DerivedA</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">LieGroupBase</span><span class="o">&lt;</span><span class="n">DerivedB</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">state_other</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="o">-</span><span class="n">state_other</span><span class="p">).</span><span class="n">squaredWeightedNorm</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">SE2d</span> <span class="n">state</span> <span class="o">=</span> <span class="n">SE2d</span><span class="o">::</span><span class="n">Random</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">SE2d</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SE2d</span><span class="o">::</span><span class="n">Random</span><span class="p">();</span><span class="w"></span>
 
-  <span class="n">SE2d</span><span class="o">::</span><span class="n">DataType</span> <span class="n">state_other_data</span> <span class="o">=</span> <span class="n">SE2d</span><span class="o">::</span><span class="n">DataType</span><span class="o">::</span><span class="n">Random</span><span class="p">();</span>
+<span class="w">  </span><span class="n">SE2d</span><span class="o">::</span><span class="n">DataType</span><span class="w"> </span><span class="n">state_other_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SE2d</span><span class="o">::</span><span class="n">DataType</span><span class="o">::</span><span class="n">Random</span><span class="p">();</span><span class="w"></span>
 
-  <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">SE2d</span><span class="o">&gt;</span> <span class="n">state_other_map</span><span class="p">(</span><span class="n">state_other_data</span><span class="p">.</span><span class="n">data</span><span class="p">());</span>
+<span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">SE2d</span><span class="o">&gt;</span><span class="w"> </span><span class="n">state_other_map</span><span class="p">(</span><span class="n">state_other_data</span><span class="p">.</span><span class="n">data</span><span class="p">());</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="n">osn</span> <span class="o">=</span> <span class="n">ominusSquaredWeightedNorm</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_other_map</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">osn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ominusSquaredWeightedNorm</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">state_other_map</span><span class="p">);</span><span class="w"></span>
 
-  <span class="p">...</span>
-<span class="p">}</span></pre></section></section>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre></section></section>
       </div>
     </div>
   </div>
