@@ -128,21 +128,21 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   const Scalar sin_theta = sin(theta);
   const Scalar theta_sq = theta * theta;
 
-  Scalar A,  // sin_theta_by_theta
-         B;  // one_minus_cos_theta_by_theta
+  // sin_theta_by_theta
+  const Scalar A = if_lt(
+    theta_sq,
+    Constants<Scalar>::eps,
+    Scalar(1) - Scalar(1. / 6.) * theta_sq, // Taylor approximation
+    sin_theta / theta // Euler
+  );
 
-  if (theta_sq < Constants<Scalar>::eps)
-  {
-    // Taylor approximation
-    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+  // one_minus_cos_theta_by_theta
+  const Scalar B = if_lt(
+    theta_sq,
+    Constants<Scalar>::eps,
+    Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq, // Taylor approximation
+    (Scalar(1) - cos_theta) / theta // Euler
+  );
 
   if (J_m_t)
   {
