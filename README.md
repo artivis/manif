@@ -133,8 +133,9 @@ local perturbation on the tangent space, many non-linear solvers
 (e.g. [Ceres][ceres]) expect functions to be differentiated with respect to the underlying representation vector of the group element
 (e.g. with respect to quaternion vector for `SO3`).
 
-For this reason, **manif** is compliant with the auto-differentiation libraries
-[`ceres::Jet`][ceres-jet] and [`autodiff::Dual`][autodiff].
+For this reason, **manif** is compliant with the common auto-differentiation types
+[`ceres::Jet`][ceres-jet],
+[`autodiff::Dual`][autodiff] and [`CppAD::AD<Scalar>`][cppad] (forward/reverse).
 
 ## Documentation
 
@@ -180,6 +181,8 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [ceres]: http://ceres-solver.org/
 [ceres-jet]: http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets
 [autodiff]: https://autodiff.github.io/
+[cppad]: https://coin-or.github.io/CppAD/doc/cppad.htm
+
 [crtp]: https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 
 [manif-repo]: https://github.com/artivis/manif.git
