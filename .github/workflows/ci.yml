@@ -245,6 +245,46 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
 
+  cppad:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev
+          mkdir ${{runner.workspace}}/build
+      # Install cppad
+      # Get cppad from source
+      # as we need
+      # github.com/coin-or/CppAD/commit/a1d19b7fd484637b7352f3d0369bc50242f8e267
+      - name: Checkout cppad
+        uses: actions/checkout@v2
+        with:
+          repository: coin-or/CppAD
+          ref: master
+          path: 'cppad'
+      - name: Setup cppad
+        run: mkdir ${{runner.workspace}}/build_cppad
+      - name: Configure CMake cppad
+        working-directory: ${{runner.workspace}}/build_cppad
+        run: cmake $GITHUB_WORKSPACE/cppad -Dinclude_adolc=OFF -Dinclude_eigen=OFF -Dinclude_ipopt=OFF -Dinclude_cppadcg=OFF
+      - name: Install cppad
+        working-directory: ${{runner.workspace}}/build_cppad
+        run: sudo cmake --build . --target install
+      # Build/test manif cppad
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: make test
+
   pybind11-pip:
     needs: [build-ubuntu, build-mac]
     strategy:
