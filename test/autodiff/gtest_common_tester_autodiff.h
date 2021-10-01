@@ -19,7 +19,7 @@
 
 #define MANIF_TEST_AUTODIFF(manifold, ad)                                                               \
   using TEST_##manifold##_JACOBIANS_AUTODIFF_##ad##_TESTER = manif::CommonTesterAutodiff<manifold, ad>; \
-  INSTANTIATE_TEST_CASE_P(                                                                              \
+  INSTANTIATE_TEST_SUITE_P(                                                                             \
     TEST_##manifold##_JACOBIANS_AUTODIFF_##ad##_TESTS,                                                  \
     TEST_##manifold##_JACOBIANS_AUTODIFF_##ad##_TESTER,                                                 \
     ::testing::Values(                                                                                  \

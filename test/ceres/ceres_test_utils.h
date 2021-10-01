@@ -6,7 +6,7 @@
 
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \
   using TEST_##manifold##_JACOBIANS_CERES_TESTER = JacobianCeresTester<manifold>;               \
-  INSTANTIATE_TEST_CASE_P(                                                                      \
+  INSTANTIATE_TEST_SUITE_P(                                                                     \
     TEST_##manifold##_JACOBIANS_CERES_TESTS,                                                    \
     TEST_##manifold##_JACOBIANS_CERES_TESTER,                                                   \
     ::testing::Values(                                                                          \
