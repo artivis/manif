@@ -30,8 +30,4 @@ MANIF_TEST_JACOBIANS(GroupB3);
 MANIF_TEST_JACOBIANS(GroupB4);
 MANIF_TEST_JACOBIANS(GroupB5);
 
-int main(int argc, char ** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

@@ -18,8 +18,4 @@ MANIF_TEST_MAP(GroupD);
 MANIF_TEST_JACOBIANS(GroupC);
 MANIF_TEST_JACOBIANS(GroupD);
 
-int main(int argc, char ** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

@@ -660,11 +660,4 @@ TEST(TEST_SE2, TEST_SE2_MAP_BETWEEN_JAC)
 }
 */
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-
-//  ::testing::GTEST_FLAG(filter) = "TEST_SE2.TEST_SE2_MAP_INVERSE";
-
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;
