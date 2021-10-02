@@ -498,7 +498,7 @@ public:
 
       const auto avg_shu = average_biinvariant(mans);
 
-      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-3 : 1e-5);
+      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-2 : 1e-4);
     }
   }
 

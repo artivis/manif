@@ -445,7 +445,7 @@ public:
 
 protected:
   // relax eps for float type
-  Scalar tol_ = (std::is_same<Scalar, float>::value)? 1e-5 : 1e-10;
+  Scalar tol_ = (std::is_same<Scalar, float>::value)? 1e-4 : 1e-8;
 };
 
 } // namespace manif

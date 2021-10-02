@@ -817,7 +817,7 @@ public:
 
 protected:
 
-  double tol = 1e-12;
+  double tol = 1e-8;
 
   // @todo: Only SE2 Jr_inv fails at this tol...
   // double tol = 1e-14;
