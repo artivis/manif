@@ -48,7 +48,7 @@
         <h1>
           <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span><span class="m-breadcrumb"><a href="manifpy._bindings.html">_bindings</a>.<wbr/></span>SO3Tangent <span class="m-thin">class</span>
         </h1>
-        <div class="m-block m-default">
+        <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
@@ -61,7 +61,7 @@
               </ul>
             </li>
           </ul>
-        </div>
+        </nav>
         <section id="staticmethods">
           <h2><a href="#staticmethods">Static methods</a></h2>
           <dl class="m-doc">
@@ -94,8 +94,8 @@
               <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
             </dt>
             <dd>Return a copy of underlying data.</dd>
-            <dt id="exp">
-              <span class="m-doc-wrap-bumper">def <a href="#exp" class="m-doc-self">exp</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#exp" class="m-doc">exp</a>(</span><span class="m-doc-wrap">self,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
             </dt>
             <dd>Get the corresponding Lie group element.</dd>
@@ -104,12 +104,12 @@
               i: int) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Get the ith basis element of the Lie Algebra.</dd>
-            <dt id="hat">
-              <span class="m-doc-wrap-bumper">def <a href="#hat" class="m-doc-self">hat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#hat" class="m-doc">hat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Get the isomorphic element in the Lie algebra.</dd>
-            <dt id="inner">
-              <span class="m-doc-wrap-bumper">def <a href="#inner" class="m-doc-self">inner</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#inner" class="m-doc">inner</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3TangentBase) -&gt; float</span>
             </dt>
             <dd>Get inner product of this and another Tangent weighted by W.</dd>
@@ -117,31 +117,31 @@
               <span class="m-doc-wrap-bumper">def <a href="#innerWeights" class="m-doc-self">innerWeights</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Get the weight matrix of the Weighted Euclidean inner product, relative to the space basis.</dd>
-            <dt id="isApprox-b6237">
-              <span class="m-doc-wrap-bumper">def <a href="#isApprox-b6237" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox-b6237" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">self,
               other: <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a>,
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
-            <dt id="isApprox-8a596">
-              <span class="m-doc-wrap-bumper">def <a href="#isApprox-8a596" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox-8a596" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">self,
               other: numpy.ndarray[numpy.float64[3, 1]],
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
-            <dt id="ljac">
-              <span class="m-doc-wrap-bumper">def <a href="#ljac" class="m-doc-self">ljac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#ljac" class="m-doc">ljac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Get the left Jacobian.</dd>
-            <dt id="lplus">
-              <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc">lplus</a>(</span><span class="m-doc-wrap">self,
               state: <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a>,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_state: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
             </dt>
             <dd>Left oplus operation of the Lie group.</dd>
-            <dt id="minus">
-              <span class="m-doc-wrap-bumper">def <a href="#minus" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#minus" class="m-doc">minus</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3TangentBase,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span>
@@ -154,19 +154,19 @@
               J_out_state: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
             </dt>
             <dd>An alias for the &#x27;rplus&#x27; function.</dd>
-            <dt id="plus-0e220">
-              <span class="m-doc-wrap-bumper">def <a href="#plus-0e220" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#plus-0e220" class="m-doc">plus</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3TangentBase,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span>
             </dt>
             <dd>Plus operation in the vector space.</dd>
-            <dt id="rjac">
-              <span class="m-doc-wrap-bumper">def <a href="#rjac" class="m-doc-self">rjac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#rjac" class="m-doc">rjac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Get the right Jacobian.</dd>
-            <dt id="rplus">
-              <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc">rplus</a>(</span><span class="m-doc-wrap">self,
               state: <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a>,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_state: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
@@ -290,6 +290,156 @@
             <dd></dd>
           </dl>
         </section>
+        <section>
+          <h2>Method documentation</h2>
+          <section class="m-doc-details" id="exp"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#exp" class="m-doc-self">exp</a>(</span><span class="m-doc-wrap">self,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Get the corresponding Lie group element.</p>
+<p>Eq. (23).</p>
+<p>Parameters
+----------
+J_out_self [out] : numpy.ndarray
+  Jacobian of the log wrt self.</p>
+          </div></section>
+          <section class="m-doc-details" id="hat"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#hat" class="m-doc-self">hat</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span></span>
+            </h3>
+            <p>Get the isomorphic element in the Lie algebra.</p>
+<p>See Eq. (10).</p>
+          </div></section>
+          <section class="m-doc-details" id="inner"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#inner" class="m-doc-self">inner</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3TangentBase) -&gt; float</span></span>
+            </h3>
+            <p>Get inner product of this and another Tangent weighted by W.</p>
+<p>ret = self^T x W x other</p>
+          </div></section>
+          <section class="m-doc-details" id="isApprox-b6237"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#isApprox-b6237" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a>,
+              eps: float = 1e-10) -&gt; bool</span></span>
+            </h3>
+            <p>Evaluate whether self and other are &#x27;close&#x27;.</p>
+<p>Parameters
+----------
+other : Lie group tangent
+  Another object of the same Lie group tangent.
+eps : double
+  Threshold for equality comparison. Default: 1e-10.</p>
+          </div></section>
+          <section class="m-doc-details" id="isApprox-8a596"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#isApprox-8a596" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: numpy.ndarray[numpy.float64[3, 1]],
+              eps: float = 1e-10) -&gt; bool</span></span>
+            </h3>
+            <p>Evaluate whether self and other are &#x27;close&#x27;.</p>
+<p>Parameters
+----------
+other : numpy.array
+  Another object of the same Lie group tangent.
+eps : double
+  Threshold for equality comparison. Default: 1e-10.</p>
+          </div></section>
+          <section class="m-doc-details" id="ljac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ljac" class="m-doc-self">ljac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span></span>
+            </h3>
+            <p>Get the left Jacobian.</p>
+<p>This is the left Jacobian of &#x27;exp&#x27;,
+what is commonly known as &quot;the left Jacobian&quot;.</p>
+<p>See Eq. (44) for the left Jacobian of general functions.
+See Eqs. (126,145,164,179,191) for implementations of the
+left Jacobian of exp.</p>
+          </div></section>
+          <section class="m-doc-details" id="lplus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
+              state: <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a>,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Left oplus operation of the Lie group.</p>
+<p>See Eqs. (27).</p>
+<p>Parameters
+----------
+other : Lie group
+  Another object of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_state [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt state.</p>
+          </div></section>
+          <section class="m-doc-details" id="minus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#minus" class="m-doc-self">minus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span></span>
+            </h3>
+            <p>Minus operation in the vector space.</p>
+<p>Parameters
+----------
+other : Lie group tangent
+  Another object of the same Lie group tangent.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="plus-0e220"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#plus-0e220" class="m-doc-self">plus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span></span>
+            </h3>
+            <p>Plus operation in the vector space.</p>
+<p>Parameters
+----------
+other : Lie group tangent
+  Another object of the same Lie group tangent.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="rjac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#rjac" class="m-doc-self">rjac</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span></span>
+            </h3>
+            <p>Get the right Jacobian.</p>
+<p>This is the right Jacobian of &#x27;exp&#x27;,
+what is commonly known as &quot;the right Jacobian&quot;.</p>
+<p>See Eq. (41) for the right Jacobian of general functions.
+See Eqs. (126,143,163,179,191) for implementations of the
+right Jacobian of exp.</p>
+          </div></section>
+          <section class="m-doc-details" id="rplus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3Tangent.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
+              state: <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a>,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_state: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Right oplus operation of the Lie group.</p>
+<p>See Eqs. (25).</p>
+<p>Parameters
+----------
+other : Lie group
+  Another object of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_state [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt state.</p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
@@ -327,8 +477,8 @@
     </div>
   </div>
 </div>
-<script src="search-v1.js"></script>
-<script src="searchdata-v1.js" async="async"></script>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
 <footer><nav>
   <div class="m-container">
     <div class="m-row">

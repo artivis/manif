@@ -48,7 +48,7 @@
         <h1>
           <span class="m-breadcrumb"><a href="manifpy.html">manifpy</a>.<wbr/></span><span class="m-breadcrumb"><a href="manifpy._bindings.html">_bindings</a>.<wbr/></span>SO3 <span class="m-thin">class</span>
         </h1>
-        <div class="m-block m-default">
+        <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
@@ -61,7 +61,7 @@
               </ul>
             </li>
           </ul>
-        </div>
+        </nav>
         <section id="staticmethods">
           <h2><a href="#staticmethods">Static methods</a></h2>
           <dl class="m-doc">
@@ -78,19 +78,19 @@
         <section id="methods">
           <h2><a href="#methods">Methods</a></h2>
           <dl class="m-doc">
-            <dt id="act">
-              <span class="m-doc-wrap-bumper">def <a href="#act" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#act" class="m-doc">act</a>(</span><span class="m-doc-wrap">self,
               p: numpy.ndarray[numpy.float64[3, 1]],
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_p: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span>
             </dt>
             <dd>Get the action of the Lie group object on a point.</dd>
-            <dt id="adj">
-              <span class="m-doc-wrap-bumper">def <a href="#adj" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#adj" class="m-doc">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd>Return the Adjoint of the Lie group object self.</dd>
-            <dt id="between">
-              <span class="m-doc-wrap-bumper">def <a href="#between" class="m-doc-self">between</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#between" class="m-doc">between</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3Base,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
@@ -104,38 +104,38 @@
               <span class="m-doc-wrap-bumper">def <a href="#coeffs_copy" class="m-doc-self">coeffs_copy</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[4, 1]]</span>
             </dt>
             <dd>Return a copy of underlying data.</dd>
-            <dt id="compose">
-              <span class="m-doc-wrap-bumper">def <a href="#compose" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#compose" class="m-doc">compose</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3Base,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
             </dt>
             <dd>Return the composition of self and another object of the same Lie group.</dd>
-            <dt id="inverse">
-              <span class="m-doc-wrap-bumper">def <a href="#inverse" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#inverse" class="m-doc">inverse</a>(</span><span class="m-doc-wrap">self,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
             </dt>
             <dd>Return the inverse of the Lie group object.</dd>
-            <dt id="isApprox">
-              <span class="m-doc-wrap-bumper">def <a href="#isApprox" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#isApprox" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3Base,
               eps: float = 1e-10) -&gt; bool</span>
             </dt>
             <dd>Evaluate whether self and other are &#x27;close&#x27;.</dd>
-            <dt id="lminus">
-              <span class="m-doc-wrap-bumper">def <a href="#lminus" class="m-doc-self">lminus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#lminus" class="m-doc">lminus</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3Base,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span>
             </dt>
             <dd>Left ominus operation of the Lie group.</dd>
-            <dt id="log">
-              <span class="m-doc-wrap-bumper">def <a href="#log" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#log" class="m-doc">log</a>(</span><span class="m-doc-wrap">self,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span>
             </dt>
             <dd>Return the corresponding Lie algebra element in vector form.</dd>
-            <dt id="lplus">
-              <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#lplus" class="m-doc">lplus</a>(</span><span class="m-doc-wrap">self,
               tau: manifpy._bindings._SO3TangentBase,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
@@ -168,8 +168,8 @@
               quaternion: numpy.ndarray[numpy.float64[4, 1]]) -&gt; None</span>
             </dt>
             <dd></dd>
-            <dt id="rminus">
-              <span class="m-doc-wrap-bumper">def <a href="#rminus" class="m-doc-self">rminus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#rminus" class="m-doc">rminus</a>(</span><span class="m-doc-wrap">self,
               other: manifpy._bindings._SO3Base,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span>
@@ -179,8 +179,8 @@
               <span class="m-doc-wrap-bumper">def <a href="#rotation" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span>
             </dt>
             <dd></dd>
-            <dt id="rplus">
-              <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
+            <dt>
+              <span class="m-doc-wrap-bumper">def <a href="#rplus" class="m-doc">rplus</a>(</span><span class="m-doc-wrap">self,
               tau: manifpy._bindings._SO3TangentBase,
               J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
               J_out_tau: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span>
@@ -291,6 +291,178 @@
             <dd></dd>
           </dl>
         </section>
+        <section>
+          <h2>Method documentation</h2>
+          <section class="m-doc-details" id="act"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#act" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">self,
+              p: numpy.ndarray[numpy.float64[3, 1]],
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_p: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; numpy.ndarray[numpy.float64[3, 1]]</span></span>
+            </h3>
+            <p>Get the action of the Lie group object on a point.</p>
+<p>Parameters
+----------
+p : numpy.array
+  A point.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the new object wrt self.
+J_out_p [out] : numpy.ndarray
+  Jacobian of the new object wrt input point.</p>
+          </div></section>
+          <section class="m-doc-details" id="adj"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adj" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">self<span class="m-text m-dim">, /</span>) -&gt; numpy.ndarray[numpy.float64[3, 3]]</span></span>
+            </h3>
+            <p>Return the Adjoint of the Lie group object self.</p>
+<p>See Eq. (29).</p>
+          </div></section>
+          <section class="m-doc-details" id="between"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#between" class="m-doc-self">between</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Return the between of self and another object of the same Lie group.</p>
+<p>Parameters
+----------
+other : Lie group
+  Another object of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the composition wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the composition wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="compose"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#compose" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Return the composition of self and another object of the same Lie group.</p>
+<p>See Eqs. (1,2,3,4).</p>
+<p>Parameters
+----------
+other : Lie group
+  Another object of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the composition wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the composition wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="inverse"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#inverse" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">self,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Return the inverse of the Lie group object.</p>
+<p>See Eq. (3).</p>
+<p>Parameters
+----------
+J_out_self [out] : numpy.ndarray
+  Jacobian of the inverse wrt self.</p>
+          </div></section>
+          <section class="m-doc-details" id="isApprox"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#isApprox" class="m-doc-self">isApprox</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3Base,
+              eps: float = 1e-10) -&gt; bool</span></span>
+            </h3>
+            <p>Evaluate whether self and other are &#x27;close&#x27;.</p>
+<p>Parameters
+----------
+other : Lie group
+  Another object of the same Lie group.
+eps : double
+  Threshold for equality comparison. Default: 1e-10.</p>
+          </div></section>
+          <section class="m-doc-details" id="lminus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#lminus" class="m-doc-self">lminus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span></span>
+            </h3>
+            <p>Left ominus operation of the Lie group.</p>
+<p>See Eq. (28).</p>
+<p>Parameters
+----------
+other : Lie group
+  Another element of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the ominus operation wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the ominus operation wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="log"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#log" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">self,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span></span>
+            </h3>
+            <p>Return the corresponding Lie algebra element in vector form.</p>
+<p>Eq. (24).</p>
+<p>Parameters
+----------
+J_out_self [out] : numpy.ndarray
+  Jacobian of the log wrt self.</p>
+          </div></section>
+          <section class="m-doc-details" id="lplus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#lplus" class="m-doc-self">lplus</a>(</span><span class="m-doc-wrap">self,
+              tau: manifpy._bindings._SO3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_mout_tau: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Left oplus operation of the Lie group.</p>
+<p>See Eq. (27).</p>
+<p>Parameters
+----------
+tau : Lie group tangent
+  An element of the tangent of the Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_tau [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt tau.</p>
+          </div></section>
+          <section class="m-doc-details" id="rminus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#rminus" class="m-doc-self">rminus</a>(</span><span class="m-doc-wrap">self,
+              other: manifpy._bindings._SO3Base,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_other: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3Tangent.html" class="m-doc">SO3Tangent</a></span></span>
+            </h3>
+            <p>Right ominus operation of the Lie group.</p>
+<p>See Eq. (26).</p>
+<p>Parameters
+----------
+other : Lie group
+  Another element of the same Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the ominus operation wrt self.
+J_out_other [out] : numpy.ndarray
+  Jacobian of the ominus operation wrt other.</p>
+          </div></section>
+          <section class="m-doc-details" id="rplus"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">def manifpy.<wbr />_bindings.<wbr />SO3.<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#rplus" class="m-doc-self">rplus</a>(</span><span class="m-doc-wrap">self,
+              tau: manifpy._bindings._SO3TangentBase,
+              J_out_self: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None,
+              J_out_tau: typing.Optional[numpy.ndarray[numpy.float64[3, 3], flags.writeable, flags.c_contiguous]] = None) -&gt; <a href="manifpy._bindings.SO3.html" class="m-doc">SO3</a></span></span>
+            </h3>
+            <p>Right oplus operation of the Lie group.</p>
+<p>See Eq. (25).</p>
+<p>Parameters
+----------
+tau : Lie group tangent
+  An element of the tangent of the Lie group.
+J_out_self [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt self.
+J_out_tau [out] : numpy.ndarray
+  Jacobian of the oplus operation wrt tau.</p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
@@ -328,8 +500,8 @@
     </div>
   </div>
 </div>
-<script src="search-v1.js"></script>
-<script src="searchdata-v1.js" async="async"></script>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
 <footer><nav>
   <div class="m-container">
     <div class="m-row">

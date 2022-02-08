@@ -54,13 +54,13 @@ cd manif &amp;&amp; mkdir build &amp;&amp; cd build
 cmake ..
 make install</pre></section></section><section id="autotoc_md11"><h2><a href="#autotoc_md11">Use manif in your project</a></h2><p>In your project <code>CMakeLists.txt</code> :</p><pre class="m-code"><span class="nb">project</span><span class="p">(</span><span class="s">foo</span><span class="p">)</span>
 <span class="c"># Find the Eigen library</span>
-<span class="nb">find_package</span><span class="p">(</span><span class="s">Eigen3</span> <span class="s">REQUIRED</span><span class="p">)</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">SYSTEM</span> <span class="s">PUBLIC</span> <span class="o">${</span><span class="nv">EIGEN3_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">Eigen3</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">SYSTEM</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="o">${</span><span class="nv">EIGEN3_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
 <span class="c"># Find the manif library</span>
-<span class="nb">find_package</span><span class="p">(</span><span class="s">manif</span> <span class="s">REQUIRED</span><span class="p">)</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">src/foo.cpp</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">manif</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">src/foo.cpp</span><span class="p">)</span>
 <span class="c"># Add manif include directories to the target</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">SYSTEM</span> <span class="s">PUBLIC</span> <span class="o">${</span><span class="nv">manif_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span></pre><p>In your code:</p><pre class="m-code"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">SYSTEM</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="o">${</span><span class="nv">manif_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span></pre><p>In your code:</p><pre class="m-code"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;manif/manif.h&gt;</span><span class="cp"></span>
 
 <span class="p">...</span><span class="w"></span>
 
@@ -108,8 +108,8 @@ cd examples
     </div>
   </div>
 </div>
-<script src="search-v1.js"></script>
-<script src="searchdata-v1.js" async="async"></script>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
 <footer><nav>
   <div class="m-container">
     <div class="m-row">
