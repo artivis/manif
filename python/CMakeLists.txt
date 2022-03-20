@@ -70,16 +70,11 @@ install(
 # See https://packaging.python.org/specifications/recording-installed-packages/
 # and https://packaging.python.org/en/latest/specifications/core-metadata/#core-metadata
 if (NOT CALL_FROM_SETUP_PY)
-  if (WIN32)
-    set(NEW_LINE "\n\r")
-  else()
-    set(NEW_LINE "\n")
-  endif()
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/METADATA "")
-  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Metadata-Version: 2.1${NEW_LINE}")
-  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Name: manifpy${NEW_LINE}")
-  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Version: ${PROJECT_VERSION}${NEW_LINE}")
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/INSTALLER "cmake${NEW_LINE}")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Metadata-Version: 2.1\n")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Name: manifpy\n")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/METADATA "Version: ${PROJECT_VERSION}\n")
+  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/INSTALLER "cmake\n")
   install(
     FILES "${CMAKE_CURRENT_BINARY_DIR}/METADATA" "${CMAKE_CURRENT_BINARY_DIR}/INSTALLER"
     DESTINATION ${PYTHON_PREFIX}/manifpy-${PROJECT_VERSION}.dist-info)
