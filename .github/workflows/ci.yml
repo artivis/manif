@@ -225,6 +225,7 @@ jobs:
         with:
           repository: autodiff/autodiff
           # ref: main
+          # @todo: see https://github.com/autodiff/autodiff/issues/233
           ref: refs/tags/v0.6.7
           path: 'autodiff'
       - name: Setup autodiff
