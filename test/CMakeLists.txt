@@ -50,6 +50,8 @@ endfunction()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
+manif_add_gtest(gtest_misc gtest_misc.cpp)
+
 # # R^n tests
 add_subdirectory(rn)
 

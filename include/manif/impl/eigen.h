@@ -169,6 +169,26 @@ skew(const Eigen::MatrixBase<_Derived>& v)
             -v(1),   +v(0),    T(0.) ).finished();
 }
 
+/**
+ * @brief Return either a 2x2 or a 3x3 skew matrix given a scalar or a 3-vector.
+ */
+template <typename _Derived>
+typename std::enable_if<(internal::is_base_of_v<Eigen::MatrixBase<_Derived>, _Derived>()
+                         && _Derived::RowsAtCompileTime == Eigen::Dynamic),
+                        Eigen::Matrix<typename _Derived::Scalar, Eigen::Dynamic, Eigen::Dynamic>>::type
+skew(const Eigen::MatrixBase<_Derived>& v)
+{
+  using T = typename _Derived::Scalar;
+
+  if (v.rows() == 1) {
+    return skew(v(0));
+  } else if (v.rows() == 3) {
+    return skew(Eigen::Ref<const Eigen::Matrix<T, 3, 1>>(v));
+  } else {
+    MANIF_THROW("Unexpected vector size in function skew.");
+  }
+}
+
 template <typename Scalar>
 Eigen::Matrix<Scalar, 3, 1> randPointInBall(Scalar radius)
 {
