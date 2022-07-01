@@ -2,6 +2,7 @@
 #define _MANIF_MANIF_FWD_H_
 
 #include <stdexcept> // for std::runtime_error
+#include <utility> // for std::forward
 
 #ifdef NDEBUG
 # ifndef MANIF_NO_DEBUG
