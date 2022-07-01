@@ -52,6 +52,13 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 manif_add_gtest(gtest_misc gtest_misc.cpp)
 
+set(CXX_11_TEST_TARGETS
+
+  ${CXX_11_TEST_TARGETS}
+
+  gtest_misc
+)
+
 # # R^n tests
 add_subdirectory(rn)
 
