@@ -252,6 +252,7 @@ if(ENABLE_CPPCHECK)
         --suppress=unknownMacro:*test/ceres/ceres_test_utils.h
         --suppress=constStatement:*examples*
         --suppress=constStatement:*gtest_misc.cpp:34
+        --suppress=constStatement:*gtest_misc.cpp:42
         --suppress=unreadVariable:*gtest_se2_ceres_autodiff.cpp:101
         --suppress=unreadVariable:*bundle_sam.cpp:94
         --suppress=unreadVariable:*bundle_sam.cpp:124
