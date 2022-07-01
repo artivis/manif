@@ -225,7 +225,7 @@ jobs:
         with:
           repository: autodiff/autodiff
           # ref: main
-          ref: refs/tags/0.6.7
+          ref: refs/tags/v0.6.7
           path: 'autodiff'
       - name: Setup autodiff
         run: mkdir ${{runner.workspace}}/build_autodiff
