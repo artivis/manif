@@ -213,7 +213,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           sudo apt update
@@ -221,10 +221,12 @@ jobs:
           mkdir ${{runner.workspace}}/build
       # Install autodiff
       - name: Checkout autodiff
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: autodiff/autodiff
-          ref: master
+          # ref: main
+          # @todo: see https://github.com/autodiff/autodiff/issues/233
+          ref: refs/tags/v0.6.7
           path: 'autodiff'
       - name: Setup autodiff
         run: mkdir ${{runner.workspace}}/build_autodiff
