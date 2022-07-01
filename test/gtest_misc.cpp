@@ -37,6 +37,11 @@ TEST(TEST_MISC, TEST_SKEWd)
             0.,  -3.7,   +2.6,
             +3.7,   0.,  -1.5,
             -2.6,   +1.5,   0.).finished(), skew(s));
+
+  s.resize(5, 1);
+  s << 1.5, 2.6, 3.7, 1., 1.;
+
+  EXPECT_THROW(skew(s), manif::runtime_error);
 }
 
 int main(int argc, char** argv)
