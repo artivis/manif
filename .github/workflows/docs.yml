@@ -60,8 +60,10 @@ jobs:
       - name: Fetch Python deps
         run: python -m pip install jinja2 Pygments docutils
       - name: Fetch m.css
-        working-directory: ${{runner.workspace}}/manif/docs
-        run: git clone git://github.com/mosra/m.css
+        uses: actions/checkout@v3
+        with:
+          repository: mosra/m.css
+          path: docs/m.css
 
       - name: Build Python docs
         working-directory: ${{runner.workspace}}/manif/docs
