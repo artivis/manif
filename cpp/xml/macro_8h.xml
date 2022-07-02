@@ -3,6 +3,7 @@
   <compounddef id="macro_8h" kind="file" language="C++">
     <compoundname>macro.h</compoundname>
     <includes local="no">stdexcept</includes>
+    <includes local="no">utility</includes>
     <includedby refid="_bundle_8h" local="yes">Bundle.h</includedby>
     <includedby refid="lie__group__base_8h" local="yes">lie_group_base.h</includedby>
     <includedby refid="tangent__base_8h" local="yes">tangent_base.h</includedby>
@@ -16,10 +17,15 @@
       <node id="2">
         <label>stdexcept</label>
       </node>
+      <node id="3">
+        <label>utility</label>
+      </node>
       <node id="1">
         <label>macro.h</label>
         <link refid="macro_8h"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -534,7 +540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="44" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="45" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a7ba3690529e60792b6e5051d0596142c" prot="public" static="no">
         <name>__MANIF_EXPAND</name>
@@ -546,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="49" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="50" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ac2adf0ecddab949b2a1e6f1a1adb41af" prot="public" static="no">
         <name>__MANIF_HAVE_CPP_ATTRIBUTE</name>
@@ -558,7 +564,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="54" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="54" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="55" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a0c84cdbf515886bb294fe8acc72e7894" prot="public" static="no">
         <name>__MANIF_THROW_EXCEPT</name>
@@ -571,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="57" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="57" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="58" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a299b1cb10e93f8438a6087a0cab36726" prot="public" static="no">
         <name>__MANIF_THROW</name>
@@ -583,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="58" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="58" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="59" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1af9a172d695d81181f8407c8677488f99" prot="public" static="no">
         <name>__MANIF_GET_MACRO_2</name>
@@ -598,7 +604,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="60" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="60" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="61" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a0a83eda522051f356b048acdee250edf" prot="public" static="no">
         <name>MANIF_THROW</name>
@@ -613,7 +619,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="62" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="62" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="63" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a7d3ebe26bad02d08a8a5655924d46e7e" prot="public" static="no">
         <name>__MANIF_CHECK_MSG_EXCEPT</name>
@@ -627,7 +633,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="68" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="68" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="69" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a3c940a7e06b493a70e5f8a0fc7d01c22" prot="public" static="no">
         <name>__MANIF_CHECK_MSG</name>
@@ -640,7 +646,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="70" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="70" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="71" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1adbdc34718a74467ba51947e047de10bf" prot="public" static="no">
         <name>__MANIF_CHECK</name>
@@ -652,7 +658,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="72" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="72" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="73" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a7f953a84c497b2a05b4be79b43ced539" prot="public" static="no">
         <name>__MANIF_GET_MACRO_3</name>
@@ -668,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="75" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="75" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="76" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1aa0ecd8b0f8c80a03f59c20142f4e3daf" prot="public" static="no">
         <name>MANIF_CHECK</name>
@@ -684,7 +690,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="77" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="77" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="78" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a028bc235b52cfb90da3f16eedcd70bef" prot="public" static="no">
         <name>MANIF_ASSERT</name>
@@ -700,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="89" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="89" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="90" column="11" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1aa5bd632f69359b049ffcfb143cbfd099" prot="public" static="no">
         <name>MANIF_NOT_IMPLEMENTED_YET</name>
@@ -711,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="99" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="99" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="100" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ab040f4e2476e5d25a400d5f053b1854a" prot="public" static="no">
         <name>MANIF_DEPRECATED</name>
@@ -721,7 +727,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="111" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="111" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="112" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1adeb82a19a1ebf6ef601135225264c137" prot="public" static="no">
         <name>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND</name>
@@ -732,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="116" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="116" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="117" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a8087f6452059e17342adf7d57aa33694" prot="public" static="no">
         <name>MANIF_MAKE_ALIGNED_OPERATOR_NEW_COND_TYPE</name>
@@ -744,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="118" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="118" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="119" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a5307405c954ca8f0bf38e12e9ac0cd63" prot="public" static="no">
         <name>MANIF_MOVE_NOEXCEPT</name>
@@ -755,7 +761,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="121" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="121" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="122" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a7bcbb8c8120f048846ec793ac31a38e4" prot="public" static="no">
         <name>MANIF_DEFAULT_CONSTRUCTOR</name>
@@ -770,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="124" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="124" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="125" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a1294ab77d3819e67dff4057a5446464f" prot="public" static="no">
         <name>MANIF_GROUP_ML_ASSIGN_OP</name>
@@ -791,7 +797,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="130" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="130" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="131" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a6ba4876b4df35a0c46f31325d0037a5b" prot="public" static="no">
         <name>MANIF_GROUP_ASSIGN_OP</name>
@@ -816,7 +822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="142" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="142" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="143" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a77a67c058b1e8585632ac1c9fc913731" prot="public" static="no">
         <name>MANIF_GROUP_MAP_ASSIGN_OP</name>
@@ -842,7 +848,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="158" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="158" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="159" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ad3818c2d9ae1ded5883dde2b4be10b7e" prot="public" static="no">
         <name>MANIF_TANGENT_ML_ASSIGN_OP</name>
@@ -863,7 +869,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="175" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="175" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="176" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a6bd111ba0073f92cc6cbaf0827b8e31a" prot="public" static="no">
         <name>MANIF_TANGENT_ASSIGN_OP</name>
@@ -888,7 +894,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="187" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="187" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="188" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1aa152db6b3a394171b3b825ce74aa8de6" prot="public" static="no">
         <name>MANIF_TANGENT_MAP_ASSIGN_OP</name>
@@ -914,7 +920,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="203" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="203" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="204" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a37aae07114eeffc7566acfebd3e4e834" prot="public" static="no">
         <name>MANIF_COPY_CONSTRUCTOR</name>
@@ -936,7 +942,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="226" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="226" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="227" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ab982705d209e066a28e4754ba4d5cfd4" prot="public" static="no">
         <name>MANIF_MOVE_CONSTRUCTOR</name>
@@ -951,7 +957,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="232" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="232" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="233" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a15113aaed87f3abf49a58c29ea1f694f" prot="public" static="no">
         <name>MANIF_COEFFS_FUNCTIONS</name>
@@ -964,7 +970,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="238" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="238" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="239" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="239" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ad9001a7115235d7523d44923769227dc" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_AUTO_API</name>
@@ -980,7 +986,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="244" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="244" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="245" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a0da630a4fca3f274c46bbd1e1e27bbfe" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_API</name>
@@ -996,7 +1002,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="252" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="252" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="253" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a35d019cc4a3b4f286479e07a82fc23e2" prot="public" static="no">
         <name>MANIF_INHERIT_GROUP_OPERATOR</name>
@@ -1012,7 +1018,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="260" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="260" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="261" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a1daa9ca2fc7bf6ec215acb841be883ea" prot="public" static="no">
         <name>MANIF_GROUP_PROPERTIES</name>
@@ -1024,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="268" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="268" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="269" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1ad3f28bdabc1b2a573341b4fcee67ae29" prot="public" static="no">
         <name>MANIF_GROUP_TYPEDEF</name>
@@ -1042,7 +1048,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="272" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="272" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="273" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a5f3004407317e69592f24b373a5d5ef9" prot="public" static="no">
         <name>MANIF_COMPLETE_GROUP_TYPEDEF</name>
@@ -1054,7 +1060,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="282" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="282" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="283" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="283" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a85fe53652a0e03f85cf5e416a835f5cd" prot="public" static="no">
         <name>MANIF_EXTRA_GROUP_TYPEDEF</name>
@@ -1067,7 +1073,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="286" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="286" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="287" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="287" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a922628c7329776df7642635475ced8e3" prot="public" static="no">
         <name>MANIF_INHERIT_TANGENT_API</name>
@@ -1085,7 +1091,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="292" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="292" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="293" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="293" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a2527d575c49f874467a52c3188e7e81f" prot="public" static="no">
         <name>MANIF_INHERIT_TANGENT_OPERATOR</name>
@@ -1101,7 +1107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="302" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="302" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="303" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="303" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a4a3138c40460a69a79c3100d38860192" prot="public" static="no">
         <name>MANIF_TANGENT_PROPERTIES</name>
@@ -1113,7 +1119,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="310" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="310" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="311" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1af5b9d7df86687bfaf5c8d3f12b28a3bc" prot="public" static="no">
         <name>MANIF_TANGENT_TYPEDEF</name>
@@ -1131,7 +1137,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="314" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="314" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="315" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="315" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="macro_8h_1a452d7c4972f7f593fd70e3042d5eb00a" prot="public" static="no">
         <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
@@ -1144,7 +1150,7 @@ using Base::DoF;</initializer>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="324" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="324" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="325" column="9" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="325" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -1584,6 +1584,7 @@
     <member refid="functions_8h_1a60b95930002126191ea31ccf40485fb5" kind="function"><name>act</name></member>
     <member refid="eigen_8h_1a58f911f257dddfa789c94d90510b5b51" kind="function"><name>skew</name></member>
     <member refid="eigen_8h_1a19dd1467c1dfb4e720587c16e1ebce78" kind="function"><name>skew</name></member>
+    <member refid="eigen_8h_1a6116d75cb49010ed5256d1a12ba2419d" kind="function"><name>skew</name></member>
     <member refid="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" kind="function"><name>randPointInBall</name></member>
     <member refid="eigen_8h_1a0603576759173c5e8968e987b41e5f55" kind="function"><name>randQuat</name></member>
     <member refid="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" kind="function"><name>operator&lt;&lt;</name></member>

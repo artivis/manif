@@ -29,7 +29,7 @@
         <label>std::runtime_error</label>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="14" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="15" bodyend="18"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="15" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="16" bodyend="19"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

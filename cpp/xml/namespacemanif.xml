@@ -2313,6 +2313,29 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="160" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="160" bodyend="170"/>
       </memberdef>
+      <memberdef kind="function" id="eigen_8h_1a6116d75cb49010ed5256d1a12ba2419d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _Derived</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;(internal::is_base_of_v&lt; Eigen::MatrixBase&lt; _Derived &gt;, _Derived &gt;) &amp;&amp;_Derived::RowsAtCompileTime==Eigen::Dynamic), Eigen::Matrix&lt; typename _Derived::Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &gt;::type</type>
+        <definition>std::enable_if&lt;(internal::is_base_of_v&lt;Eigen::MatrixBase&lt;_Derived&gt;, _Derived&gt;) &amp;&amp; _Derived::RowsAtCompileTime == Eigen::Dynamic), Eigen::Matrix&lt;typename _Derived::Scalar, Eigen::Dynamic, Eigen::Dynamic&gt; &gt;::type manif::skew</definition>
+        <argsstring>(const Eigen::MatrixBase&lt; _Derived &gt; &amp;v)</argsstring>
+        <name>skew</name>
+        <param>
+          <type>const Eigen::MatrixBase&lt; _Derived &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Return either a 2x2 or a 3x3 skew matrix given a scalar or a 3-vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="179" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="179" bodyend="190"/>
+      </memberdef>
       <memberdef kind="function" id="eigen_8h_1a045ce6110eb5794f045dfadc2a09378f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -2333,7 +2356,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="173" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="173" bodyend="198"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="193" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="193" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1a0603576759173c5e8968e987b41e5f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2351,7 +2374,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="201" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="201" bodyend="226"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/eigen.h" line="221" column="19" bodyfile="/home/runner/work/manif/manif/include/manif/impl/eigen.h" bodystart="221" bodyend="246"/>
       </memberdef>
       <memberdef kind="function" id="lie__group__base_8h_1a2cd8e060d8acfadff7fe8ce841ec2f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

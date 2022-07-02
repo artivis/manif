@@ -28,13 +28,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="37" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="37" bodyend="40"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="38" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="38" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="26" column="1"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="27" column="1"/>
   </compounddef>
 </doxygen>

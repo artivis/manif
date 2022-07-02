@@ -29,7 +29,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="20" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="21" bodyend="24"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/macro.h" line="21" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/macro.h" bodystart="22" bodyend="25"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>
