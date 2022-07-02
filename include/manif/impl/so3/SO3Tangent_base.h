@@ -124,31 +124,31 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
 
   const DataType& theta_vec = coeffs();
   const Scalar theta_sq = theta_vec.squaredNorm();
+  const Scalar theta = sqrt(theta_sq);
 
-  if (theta_sq > Constants<Scalar>::eps)
+  if (J_m_t)
   {
-    const Scalar theta = sqrt(theta_sq);
-    if (J_m_t)
-    {
-      const LieAlg W = hat();
+    const LieAlg W = hat();
 
-      J_m_t->setIdentity();
+    J_m_t->setIdentity();
+
+    if (theta_sq > Constants<Scalar>::eps)
+    {
       J_m_t->noalias() -= (Scalar(1.0) - cos(theta)) / theta_sq * W;
       J_m_t->noalias() += (theta - sin(theta)) / (theta_sq * theta) * W * W;
     }
-
-    return LieGroup( Eigen::AngleAxis<Scalar>(theta, theta_vec.normalized()) );
-  }
-  else
-  {
-    if (J_m_t)
+    else
     {
-      J_m_t->setIdentity();
-      J_m_t->noalias() -= Scalar(0.5) * hat();
+      J_m_t->noalias() -= Scalar(0.5) * W;
     }
-
-    return LieGroup(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1));
   }
+
+  return LieGroup(if_gt(
+    theta_sq,
+    Constants<Scalar>::eps,
+    typename LieGroup::DataType(Eigen::Quaternion<Scalar>(Eigen::AngleAxis<Scalar>(theta, theta_vec/theta)).coeffs()),
+    typename LieGroup::DataType(x()/Scalar(2), y()/Scalar(2), z()/Scalar(2), Scalar(1))
+  ));
 }
 
 template <typename _Derived>

@@ -187,52 +187,38 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
   using std::sqrt;
   using std::atan2;
 
-  Tangent tan;
-  Scalar log_coeff;
-
   const Scalar sin_angle_squared = coeffs().template head<3>().squaredNorm();
-  if (sin_angle_squared > Constants<Scalar>::eps)
-  {
-    const Scalar sin_angle = sqrt(sin_angle_squared);
-    const Scalar cos_angle = w();
 
-    /** @note If (cos_angle < 0) then angle >= pi/2 ,
-     *  means : angle for angle_axis vector >= pi (== 2*angle)
-     *   |-> results in correct rotation but not a normalized angle_axis vector
-     *
-     * In that case we observe that 2 * angle ~ 2 * angle - 2 * pi,
-     * which is equivalent saying
-     *
-     * angle - pi = atan(sin(angle - pi), cos(angle - pi))
-     *            = atan(-sin(angle), -cos(angle))
-     */
-    const Scalar two_angle = Scalar(2.0) * ((cos_angle < Scalar(0.0)) ?
-                                 Scalar(atan2(-sin_angle, -cos_angle)) :
-                                 Scalar(atan2( sin_angle,  cos_angle)));
+  Scalar log_coeff = if_gt(
+    sin_angle_squared,
+    Constants<Scalar>::eps,
+    [=]() -> Scalar { // specify ret type to force autodiff to eval expr
+      const Scalar sin_angle = sqrt(sin_angle_squared);
+      const Scalar cos_angle = w();
 
-    log_coeff = two_angle / sin_angle;
-  }
-  else
-  {
-    // small-angle approximation
-    log_coeff = Scalar(2.0);
-  }
+      /** @note If (cos_angle < 0) then angle >= pi/2 ,
+       *  means : angle for angle_axis vector >= pi (== 2*angle)
+       *   |-> results in correct rotation but not a normalized angle_axis vector
+       *
+       * In that case we observe that 2 * angle ~ 2 * angle - 2 * pi,
+       * which is equivalent saying
+       *
+       * angle - pi = atan(sin(angle - pi), cos(angle - pi))
+       *            = atan(-sin(angle), -cos(angle))
+       */
+      const Scalar two_angle = Scalar(2.0) * if_lt(
+        cos_angle,
+        Scalar(0),
+        Scalar(atan2(-sin_angle, -cos_angle)),
+        Scalar(atan2( sin_angle,  cos_angle))
+      );
 
-  tan = Tangent(coeffs().template head<3>() * log_coeff);
+      return two_angle / sin_angle;
+    }(),
+    Scalar(2.0)
+  );
 
-//  using std::atan2;
-//  Scalar n = coeffs().template head<3>().norm();
-//  Scalar angle(0);
-//  typename Tangent::DataType axis(1,0,0);
-//  if (n<Constants<Scalar>::eps)
-//    n = coeffs().template head<3>().stableNorm();
-//  if (n > Scalar(0))
-//  {
-//    angle = Scalar(2)*atan2(n, w());
-//    axis  = coeffs().template head<3>() / n;
-//  }
-
-//  tan = Tangent(axis*angle);
+  Tangent tan(coeffs().template head<3>() * log_coeff);
 
   if (J_t_m)
   {

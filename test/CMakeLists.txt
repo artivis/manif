@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.8)
+cmake_minimum_required(VERSION 3.5.1)
 
 find_package(GTest QUIET)
 
@@ -102,6 +102,22 @@ if(autodiff_FOUND)
 
 else()
   message(STATUS "Could not find autodiff, autodiff tests will not be built.")
+endif()
+
+find_package(CppAD QUIET)
+
+if(NOT CPPAD_FOUND)
+  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+  find_package(CppAD QUIET)
+endif()
+
+if(CPPAD_FOUND)
+
+  message(STATUS "Found CppAD, building CppAD tests.")
+  add_subdirectory(cppad)
+
+else()
+  message(STATUS "Could not find CppAD, CppAD tests will not be built.")
 endif()
 
 # Set required C++11 flag

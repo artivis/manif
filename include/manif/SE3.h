@@ -4,6 +4,7 @@
 #include "manif/impl/macro.h"
 #include "manif/impl/lie_group_base.h"
 #include "manif/impl/tangent_base.h"
+#include "manif/impl/conditional_op.h"
 
 #include "manif/impl/se3/SE3_properties.h"
 #include "manif/impl/se3/SE3_base.h"

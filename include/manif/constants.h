@@ -73,6 +73,11 @@ struct Constants<float>
   static constexpr float to_deg = float(180.0 / MANIF_PI);
 };
 
+constexpr float Constants<float>::eps;
+constexpr float Constants<float>::eps_sqrt;
+constexpr float Constants<float>::to_rad;
+constexpr float Constants<float>::to_deg;
+
 } /* namespace manif  */
 
 #endif /* _MANIF_MANIF_CONSTANTS_H_ */
