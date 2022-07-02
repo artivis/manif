@@ -62,7 +62,7 @@
 
 namespace manif{
   template <typename T> using ddual = autodiff::HigherOrderDual<1, T>;
-  // template <typename T> using rreal = autodiff::Real<1, T>;
+  template <typename T> using rreal = autodiff::Real<1, T>;
   // template <typename T> using vvar = autodiff::Variable<T>;
 }
 
@@ -73,9 +73,8 @@ namespace manif{
 
 #define __MANIF_MAKE_TEST_AUTODIFF_ALL_AD(manifold, type)   \
   __MANIF_MAKE_TEST_AUTODIFF(manifold, type, ddual)         \
+  __MANIF_MAKE_TEST_AUTODIFF(manifold, type, rreal)
 
-  // @todo real seem to have a few issues
-  //__MANIF_MAKE_TEST_AUTODIFF(manifold, type, rreal)
   // @note reverse does not support jacobians atm.
   //__MANIF_MAKE_TEST_AUTODIFF(manifold, type, vvar)
 
