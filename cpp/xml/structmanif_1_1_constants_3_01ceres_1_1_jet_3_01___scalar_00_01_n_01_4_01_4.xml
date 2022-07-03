@@ -19,7 +19,8 @@
         <definition>const ceres::Jet&lt; _Scalar, N &gt; manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;::eps</definition>
         <argsstring></argsstring>
         <name>eps</name>
-        <initializer>= ceres::Jet&lt;_Scalar, N&gt;(1e-14)</initializer>
+        <initializer>=
+  ceres::Jet&lt;_Scalar, N&gt;(<ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt;_Scalar&gt;::eps)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

@@ -14,7 +14,7 @@
         <definition>constexpr _Scalar manif::Constants&lt; _Scalar &gt;::eps</definition>
         <argsstring></argsstring>
         <name>eps</name>
-        <initializer>= _Scalar(1e-14)</initializer>
+        <initializer>= std::numeric_limits&lt;_Scalar&gt;::epsilon()*_Scalar(100)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

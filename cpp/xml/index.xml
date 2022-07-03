@@ -174,20 +174,11 @@
     <member refid="structmanif_1_1_constants_1a1a93e23545c006cedf04ebfcb61a2c67" kind="variable"><name>to_rad</name></member>
     <member refid="structmanif_1_1_constants_1a4a6fcba990d563cc71be67900c7865b3" kind="variable"><name>to_deg</name></member>
   </compound>
-  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</name>
-    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4_1ae785546e0904737dcfc59a2ac6b2a21a" kind="variable"><name>eps</name></member>
-  </compound>
-  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; float, G &gt; &gt;</name>
-    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4_1a5b3847d2c90277dd34bafd8461eecd6d" kind="variable"><name>eps</name></member>
+  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</name>
+    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4_1a75fe2adacf840507581039887bffc91c" kind="variable"><name>eps</name></member>
   </compound>
   <compound refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" kind="struct"><name>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</name>
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" kind="variable"><name>eps</name></member>
-  </compound>
-  <compound refid="structmanif_1_1_constants_3_01float_01_4" kind="struct"><name>manif::Constants&lt; float &gt;</name>
-    <member refid="structmanif_1_1_constants_3_01float_01_4_1a271ff46cd7ff436887dfa42e5ba66a2e" kind="variable"><name>eps</name></member>
-    <member refid="structmanif_1_1_constants_3_01float_01_4_1a07c2a73b8bfbd2ffaaa8106afe051178" kind="variable"><name>eps_sqrt</name></member>
-    <member refid="structmanif_1_1_constants_3_01float_01_4_1a09b1b4ecaf4f6e4a6416da13fef3389a" kind="variable"><name>to_rad</name></member>
-    <member refid="structmanif_1_1_constants_3_01float_01_4_1ad19bfd1d08237200f1b3880995f72112" kind="variable"><name>to_deg</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1constexpr__false" kind="struct"><name>manif::internal::constexpr_false</name>
   </compound>

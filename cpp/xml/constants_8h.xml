@@ -549,7 +549,6 @@
       </node>
     </invincdepgraph>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
-    <innerclass refid="structmanif_1_1_constants_3_01float_01_4" prot="public">manif::Constants&lt; float &gt;</innerclass>
     <innernamespace refid="namespacemanif">manif</innernamespace>
     <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
       <sectiondef kind="define">

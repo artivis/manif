@@ -2,14 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacemanif" kind="namespace" language="C++">
     <compoundname>manif</compoundname>
-    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01float_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; float, G &gt; &gt;</innerclass>
-    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01double_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; double, G &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
     <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
-    <innerclass refid="structmanif_1_1_constants_3_01float_01_4" prot="public">manif::Constants&lt; float &gt;</innerclass>
     <innerclass refid="structmanif_1_1_bundle" prot="public">manif::Bundle</innerclass>
     <innerclass refid="structmanif_1_1_bundle_tangent" prot="public">manif::BundleTangent</innerclass>
     <innerclass refid="structmanif_1_1_bundle_base" prot="public">manif::BundleBase</innerclass>
