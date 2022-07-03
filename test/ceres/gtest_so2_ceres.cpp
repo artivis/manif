@@ -325,8 +325,4 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT_AUTODIFF)
 
 MANIF_TEST_JACOBIANS_CERES(SO2d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

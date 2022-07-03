@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "manif/manif.h"
+#include "gtest_manif_utils.h"
 #include "gtest_eigen_utils.h"
 
 using namespace manif;
@@ -44,9 +45,4 @@ TEST(TEST_MISC, TEST_SKEWd)
   EXPECT_THROW(skew(s), manif::runtime_error);
 }
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

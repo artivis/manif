@@ -6,7 +6,7 @@
 
 #define MANIF_TEST_JACOBIANS_CERES(manifold)                                                    \
   using TEST_##manifold##_JACOBIANS_CERES_TESTER = JacobianCeresTester<manifold>;               \
-  INSTANTIATE_TEST_CASE_P(                                                                      \
+  INSTANTIATE_TEST_SUITE_P(                                                                     \
     TEST_##manifold##_JACOBIANS_CERES_TESTS,                                                    \
     TEST_##manifold##_JACOBIANS_CERES_TESTER,                                                   \
     ::testing::Values(                                                                          \
@@ -817,7 +817,7 @@ public:
 
 protected:
 
-  double tol = 1e-12;
+  double tol = 1e-8;
 
   // @todo: Only SE2 Jr_inv fails at this tol...
   // double tol = 1e-14;

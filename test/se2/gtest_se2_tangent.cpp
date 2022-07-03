@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "manif/SE2.h"
+
+#include "../gtest_manif_utils.h"
 
 using namespace manif;
 
@@ -127,8 +127,4 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_INSTREAM)
   EXPECT_DOUBLE_EQ(3, se2.angle());
 }
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

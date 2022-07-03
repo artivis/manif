@@ -631,8 +631,4 @@ MANIF_TEST_MAP(SO3d);
 
 MANIF_TEST_JACOBIANS(SO3d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

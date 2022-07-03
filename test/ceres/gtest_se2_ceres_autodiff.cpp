@@ -408,8 +408,4 @@ TEST(TEST_LOCAL_PARAMETRIZATION, TEST_SE2_CONSTRAINT_AUTODIFF)
   EXPECT_ANGLE_NEAR(-MANIF_PI_2,      state_7.angle(),  ceres_eps);
 }
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

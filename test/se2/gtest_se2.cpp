@@ -558,9 +558,4 @@ MANIF_TEST_MAP(SE2d);
 
 MANIF_TEST_JACOBIANS(SE2d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

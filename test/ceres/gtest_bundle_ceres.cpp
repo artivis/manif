@@ -13,8 +13,4 @@ using Group = Bundle<double, SO3, R3, SO2, R2>;
 
 MANIF_TEST_JACOBIANS_CERES(Group);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

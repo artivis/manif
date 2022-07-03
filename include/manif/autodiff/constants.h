@@ -10,24 +10,15 @@ namespace detail {
 namespace manif {
 
 /// @brief Specialize Constants traits for the float-based autodiff::dual type
-template <typename G>
-struct Constants<autodiff::detail::Dual<float, G>> {
-  static const autodiff::detail::Dual<float, G> eps;
+template <typename Scalar, typename G>
+struct Constants<autodiff::detail::Dual<Scalar, G>> {
+  static const autodiff::detail::Dual<Scalar, G> eps;
 };
 
-template <typename G>
-const autodiff::detail::Dual<float, G>
-Constants<autodiff::detail::Dual<float, G>>::eps = autodiff::detail::Dual<float, G>(1e-6);
-
-/// @brief Specialize Constants traits for the double-based autodiff::dual type
-template <typename G>
-struct Constants<autodiff::detail::Dual<double, G>> {
-  static const autodiff::detail::Dual<double, G> eps;
-};
-
-template <typename G>
-const autodiff::detail::Dual<double, G>
-Constants<autodiff::detail::Dual<double, G>>::eps = autodiff::detail::Dual<double, G>(1e-14);
+template <typename Scalar, typename G>
+const autodiff::detail::Dual<Scalar, G>
+Constants<autodiff::detail::Dual<Scalar, G>>::eps =
+  autodiff::detail::Dual<Scalar, G>(Constants<Scalar>::eps);
 
 } // namespace manif
 

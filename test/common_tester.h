@@ -10,7 +10,7 @@
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
-  INSTANTIATE_TEST_CASE_P(                                                \
+  INSTANTIATE_TEST_SUITE_P(                                               \
     TEST_##manifold##_TESTS,                                              \
     TEST_##manifold##_TESTER,                                             \
     ::testing::Values(                                                    \
@@ -108,7 +108,7 @@
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
-  INSTANTIATE_TEST_CASE_P(                                                                                                \
+  INSTANTIATE_TEST_SUITE_P(                                                                                               \
     manifold##JacobiansTests,                                                                                             \
     manifold##JacobiansTester,                                                                                            \
     ::testing::Values(                                                                                                    \
@@ -498,7 +498,7 @@ public:
 
       const auto avg_shu = average_biinvariant(mans);
 
-      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-3 : 1e-5);
+      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-2 : 1e-4);
     }
   }
 

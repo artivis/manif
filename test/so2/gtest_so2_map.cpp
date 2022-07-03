@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "manif/SO2.h"
+
+#include "../gtest_manif_utils.h"
 
 using namespace manif;
 
@@ -618,8 +618,5 @@ TEST(TEST_SO2, TEST_SO2_MAP_MINUS_JAC)
   EXPECT_DOUBLE_EQ(-1, J_minus_b(0));
 }
 */
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+
+MANIF_RUN_ALL_TEST;
