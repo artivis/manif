@@ -92,9 +92,6 @@ jobs:
     strategy:
       matrix:
         combinations: [{
-          "os": "windows-2016",
-          "cmake_generator": "Visual Studio 15 2017"
-         }, {
           "os": "windows-2019",
           "cmake_generator": "Visual Studio 16 2019"
         }, {
