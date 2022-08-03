@@ -134,7 +134,7 @@ local perturbation on the tangent space, many non-linear solvers
 (e.g. with respect to quaternion vector for `SO3`).
 
 For this reason, **manif** is compliant with the auto-differentiation libraries
-[`ceres::Jet`][ceres-jet] and [`autodiff::Dual`][autodiff].
+[`ceres::Jet`][ceres-jet], [`autodiff::Dual`][autodiff] & [`autodiff::Real`][autodiff].
 
 ## Documentation
 

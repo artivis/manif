@@ -221,9 +221,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: autodiff/autodiff
-          # ref: main
-          # @todo: see https://github.com/autodiff/autodiff/issues/233
-          ref: refs/tags/v0.6.7
+          ref: main
           path: 'autodiff'
       - name: Setup autodiff
         run: mkdir ${{runner.workspace}}/build_autodiff
