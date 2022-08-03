@@ -16,6 +16,7 @@
       </node>
     </invincdepgraph>
     <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4" prot="public">manif::Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;</innerclass>
     <innernamespace refid="namespaceautodiff">autodiff</innernamespace>
     <innernamespace refid="namespaceautodiff_1_1detail">autodiff::detail</innernamespace>
     <innernamespace refid="namespacemanif">manif</innernamespace>

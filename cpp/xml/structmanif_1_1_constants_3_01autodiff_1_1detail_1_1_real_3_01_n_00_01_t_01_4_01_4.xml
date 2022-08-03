@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;</compoundname>
+    <includes refid="autodiff_2constants_8h" local="no">constants.h</includes>
+    <templateparamlist>
+      <param>
+        <type>size_type</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4_1a81098fa3cfdb4f60722201b890b079ce" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classautodiff_1_1detail_1_1_real" kindref="compound">autodiff::detail::Real</ref>&lt; N, T &gt;</type>
+        <definition>const autodiff::detail::Real&lt; N, T &gt; manif::Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;::eps</definition>
+        <argsstring></argsstring>
+        <name>eps</name>
+        <initializer>=
+  <ref refid="classautodiff_1_1detail_1_1_real" kindref="compound">autodiff::detail::Real</ref>&lt;N, T&gt;(<ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref>&lt;T&gt;::eps)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="32" column="39" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Specialize <ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref> traits for autodiff::Real type. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="31" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="31" bodyend="33"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4_1a81098fa3cfdb4f60722201b890b079ce" prot="public" virt="non-virtual"><scope>manif::Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;</scope><name>eps</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

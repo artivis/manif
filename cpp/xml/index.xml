@@ -177,6 +177,9 @@
   <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</name>
     <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4_1a75fe2adacf840507581039887bffc91c" kind="variable"><name>eps</name></member>
   </compound>
+  <compound refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4" kind="struct"><name>manif::Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;</name>
+    <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4_1a81098fa3cfdb4f60722201b890b079ce" kind="variable"><name>eps</name></member>
+  </compound>
   <compound refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" kind="struct"><name>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</name>
     <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" kind="variable"><name>eps</name></member>
   </compound>
@@ -628,6 +631,8 @@
   </compound>
   <compound refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::RandomEvaluatorImpl&lt; SO3TangentBase&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4_1ac3cfade4b1b3c66e67871a1a8010dab2" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="classautodiff_1_1detail_1_1_real" kind="class"><name>autodiff::detail::Real</name>
   </compound>
   <compound refid="structmanif_1_1_rn" kind="struct"><name>manif::Rn</name>
     <member refid="structmanif_1_1_rn_1a5e8750f2e1f514614bdc69fc27b794e0" kind="typedef"><name>Base</name></member>
@@ -1485,6 +1490,8 @@
     <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3_1aae0a11049defe6b73bbb5c38700f8ff8" kind="typedef"><name>ReplaceValueType</name></member>
   </compound>
   <compound refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kind="struct"><name>manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</name>
+  </compound>
+  <compound refid="namespace_0d5" kind="namespace"><name>@5</name>
   </compound>
   <compound refid="namespaceautodiff" kind="namespace"><name>autodiff</name>
   </compound>

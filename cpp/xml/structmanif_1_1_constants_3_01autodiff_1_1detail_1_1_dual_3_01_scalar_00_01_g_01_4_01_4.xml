@@ -25,11 +25,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="15" column="39" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="15" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="21" column="39" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Specialize <ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref> traits for the float-based autodiff::dual type. </para>
+<para>Specialize <ref refid="structmanif_1_1_constants" kindref="compound">Constants</ref> traits for autodiff::Dual type. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -46,7 +46,7 @@
         <link refid="structautodiff_1_1detail_1_1_dual"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="14" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="14" bodyend="16"/>
+    <location file="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" line="20" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/autodiff/constants.h" bodystart="20" bodyend="22"/>
     <listofallmembers>
       <member refid="structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4_1a75fe2adacf840507581039887bffc91c" prot="public" virt="non-virtual"><scope>manif::Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</scope><name>eps</name></member>
     </listofallmembers>

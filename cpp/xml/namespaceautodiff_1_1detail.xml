@@ -5,6 +5,7 @@
     <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m68e40ab1691087001b21526edf5a51df" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_group&lt; T &gt;::value &gt; &gt;</innerclass>
     <innerclass refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3" prot="public">autodiff::detail::VectorTraits&lt; T, EnableIf&lt; manif::internal::is_manif_tangent&lt; T &gt;::value &gt; &gt;</innerclass>
     <innerclass refid="structautodiff_1_1detail_1_1_dual" prot="public">autodiff::detail::Dual</innerclass>
+    <innerclass refid="classautodiff_1_1detail_1_1_real" prot="public">autodiff::detail::Real</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -210,7 +210,7 @@
 <sect3 id="index_1autotoc_md8">
 <title>Note</title>
 <para>While Jacobians in <bold>manif</bold> are differentiated with respect to a local perturbation on the tangent space, many non-linear solvers (e.g. <ulink url="http://ceres-solver.org/">Ceres</ulink>) expect functions to be differentiated with respect to the underlying representation vector of the group element (e.g. with respect to quaternion vector for <computeroutput>SO3</computeroutput>).</para>
-<para>For this reason, <bold>manif</bold> is compliant with the auto-differentiation libraries <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink> and <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::Dual</computeroutput></ulink>.</para>
+<para>For this reason, <bold>manif</bold> is compliant with the auto-differentiation libraries <ulink url="http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets"><computeroutput>ceres::Jet</computeroutput></ulink>, <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::Dual</computeroutput></ulink> &amp; <ulink url="https://autodiff.github.io/"><computeroutput>autodiff::Real</computeroutput></ulink>.</para>
 </sect3>
 </sect2>
 </sect1>
