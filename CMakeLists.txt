@@ -159,6 +159,7 @@ write_basic_package_version_file(
   "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake"
   VERSION ${PROJECT_VERSION}
   COMPATIBILITY AnyNewerVersion
+  ARCH_INDEPENDENT
 )
 
 # Config
