@@ -61,13 +61,10 @@ jobs:
         # Xcode 10.3 & Xcode 12.2
         # removing macos-11.0 for now, see
         #https://github.com/actions/virtual-environments/issues/841
-        os: [macos-10.15]
+        os: [macos-11, macos-12]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Xcode
-        if: matrix.os == 'macOS-10.15'
-        run: sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
       - name: Setup
         run: |
           brew install eigen
@@ -79,7 +76,7 @@ jobs:
           echo "Eigen:" && brew info eigen
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
