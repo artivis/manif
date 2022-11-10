@@ -20,8 +20,10 @@ set_property(TARGET manifpy PROPERTY CXX_EXTENSIONS OFF)
 
 if (CALL_FROM_SETUP_PY)
   # cmake-build-extension sets the full absolute path as CMAKE_INSTALL_PREFIX.
+  set(MANIFPY_PKGDIR "${CMAKE_INSTALL_PREFIX}")
   set(MANIFPY_INSTDIR "${CMAKE_INSTALL_PREFIX}")
-else()
+# Permit to specify MANIFPY_INSTDIR as an option
+elseif(NOT DEFINED MANIFPY_PKGDIR)
   # 'distutils.sysconfig.get_python_lib' returns the absolute path of Python
   # by default a global location managed by the distro e.g. /usr/lib/python.
   #
@@ -40,7 +42,10 @@ else()
     ${PYTHON_EXECUTABLE} -c "import site; print(site.getsitepackages()[0])"
     OUTPUT_VARIABLE _PYTHON_SITE_PACKAGE OUTPUT_STRIP_TRAILING_WHITESPACE
   )
-  set(MANIFPY_INSTDIR "${_PYTHON_SITE_PACKAGE}/manifpy")
+  set(MANIFPY_PKGDIR "${_PYTHON_SITE_PACKAGE}")
+  set(MANIFPY_INSTDIR "${MANIFPY_PKGDIR}/manifpy")
+else()
+  set(MANIFPY_INSTDIR "${MANIFPY_PKGDIR}/manifpy")
 endif()
 
 message(STATUS "Installing manifpy in ${MANIFPY_INSTDIR}")
