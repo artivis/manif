@@ -1506,16 +1506,16 @@ figure.m-figure.m-primary figcaption .m-figure-description { color: #dcdcdc; }
 figure.m-figure.m-success::before { border-color: #2a703f; }
 figure.m-figure.m-success figcaption { color: #3bd267; }
 figure.m-figure.m-success figcaption .m-figure-description { color: #dcdcdc; }
-figure.m-figure.m-warning:::before { border-color: #6d702a; }
+figure.m-figure.m-warning::before { border-color: #6d702a; }
 figure.m-figure.m-warning figcaption { color: #c7cf2f; }
 figure.m-figure.m-warning figcaption .m-figure-description { color: #dcdcdc; }
-figure.m-figure.m-danger:::before { border-color: #702b2a; }
+figure.m-figure.m-danger::before { border-color: #702b2a; }
 figure.m-figure.m-danger figcaption { color: #cd3431; }
 figure.m-figure.m-danger figcaption .m-figure-description { color: #dcdcdc; }
-figure.m-figure.m-info:::before { border-color: #2a4f70; }
+figure.m-figure.m-info::before { border-color: #2a4f70; }
 figure.m-figure.m-info figcaption { color: #2f83cc; }
 figure.m-figure.m-info figcaption .m-figure-description { color: #dcdcdc; }
-figure.m-figure.m-dim:::before { border-color: #2d3236; }
+figure.m-figure.m-dim::before { border-color: #2d3236; }
 figure.m-figure.m-dim { color: #747474; }
 figure.m-figure.m-dim a { color: #acacac; }
 figure.m-figure.m-dim a:hover, figure.m-figure.m-dim a:focus, figure.m-figure.m-dim a:active {
@@ -2180,11 +2180,11 @@ article#m-jumbo > header #m-jumbo-cover {
   padding-bottom: 5rem;
 }
 article#m-jumbo > header #m-jumbo-image {
-  font-size: 2.5vmin;
+  font-size: 2vmin;
   margin-bottom: -3rem;
 }
 article#m-jumbo > header h1 {
-  font-size: 10vmin;
+  font-size: 8vmin;
 }
 article#m-jumbo > header h2 {
   font-size: 3vmin;
@@ -2619,12 +2619,14 @@ article:last-child, article section:last-child { margin-bottom: 0; }
 .m-console .g-AnsiBrightCyan { color: #16a085; font-weight: bold }
 .m-console .g-AnsiBrightDefault { color: #ffffff; font-weight: bold }
 .m-console .g-AnsiBrightGreen { color: #1cdc9a; font-weight: bold }
+.m-console .g-AnsiBrightInvertedDefault { color: #1a1c1d; font-weight: bold }
 .m-console .g-AnsiBrightMagenta { color: #8e44ad; font-weight: bold }
 .m-console .g-AnsiBrightRed { color: #c0392b; font-weight: bold }
 .m-console .g-AnsiBrightWhite { color: #ffffff; font-weight: bold }
 .m-console .g-AnsiBrightYellow { color: #fdbc4b; font-weight: bold }
 .m-console .g-AnsiCyan { color: #1abc9c }
 .m-console .g-AnsiGreen { color: #11d116 }
+.m-console .g-AnsiInvertedDefault { color: #1a1c1d }
 .m-console .g-AnsiMagenta { color: #9b59b6 }
 .m-console .g-AnsiRed { color: #ed1515 }
 .m-console .g-AnsiWhite { color: #fcfcfc }

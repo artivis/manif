@@ -68,10 +68,10 @@
 <li><p>Eigen 3 :</p>
 <ul>
 <li><p>Linux ( Ubuntu and similar )</p>
-<pre class="code bash">apt-get install libeigen3-dev</pre>
+<pre class="code bash">apt-get<span class="w"> </span>install<span class="w"> </span>libeigen3-dev</pre>
 </li>
 <li><p>OS X</p>
-<pre class="code bash">brew install eigen</pre>
+<pre class="code bash">brew<span class="w"> </span>install<span class="w"> </span>eigen</pre>
 </li>
 </ul>
 </li>
@@ -82,20 +82,20 @@
 <section id="from-source">
 <h3><a href="#toc-entry-3">From source</a></h3>
 <p>To generate <code>manif</code> Python bindings run,</p>
-<pre class="code bash">git clone https://github.com/artivis/manif.git
-<span class="nb">cd</span> manif
-python3 -m pip install .</pre>
+<pre class="code bash">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/artivis/manif.git<span class="w">
+</span><span class="nb">cd</span><span class="w"> </span>manif<span class="w">
+</span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.</pre>
 </section>
 </section>
 <section id="use-manifpy-in-your-project">
 <h2><a href="#toc-entry-4">Use manifpy in your project</a></h2>
-<pre class="code python"><span class="kn">from</span> <span class="nn">manifpy</span> <span class="kn">import</span> <span class="n">SE3</span>
+<pre class="code python"><span class="kn">from</span> <span class="nn">manifpy</span> <span class="kn">import</span> <span class="n">SE3</span><span class="w">
 
-<span class="o">...</span>
+</span><span class="o">...</span><span class="w">
 
-<span class="n">state</span> <span class="o">=</span> <span class="n">SE3</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
+</span><span class="n">state</span> <span class="o">=</span> <span class="n">SE3</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span><span class="w">
 
-<span class="o">...</span></pre>
+</span><span class="o">...</span></pre>
 </section>
 <section id="tutorials-and-application-demos">
 <h2><a href="#toc-entry-5">Tutorials and application demos</a></h2>
@@ -111,8 +111,8 @@ These demos are:</p>
 <li><a href="https://github.com/artivis/manif/tree/devel/examples/se_2_3_localization.py">se_2_3_localization.py</a> : A strap down IMU model based 3D robot localization, with measurements of fixed landmarks, using SE_2_3 as extended robot poses (translation, rotation and linear velocity).</li>
 </ul>
 <p>To run a demo, simply go to the <code>manif/examples/</code> folder and run,</p>
-<pre class="code bash"><span class="nb">cd</span> manif/examples
-python3 se2_localization.py</pre>
+<pre class="code bash"><span class="nb">cd</span><span class="w"> </span>manif/examples<span class="w">
+</span>python3<span class="w"> </span>se2_localization.py</pre>
 </section>
       </div>
     </div>
