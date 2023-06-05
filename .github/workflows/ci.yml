@@ -127,6 +127,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev cppcheck
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -148,6 +149,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev valgrind
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -169,6 +171,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -193,6 +196,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
