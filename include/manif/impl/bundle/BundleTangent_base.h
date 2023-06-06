@@ -366,7 +366,7 @@ struct GeneratorEvaluator<BundleTangentBase<Derived>>
   run(const unsigned int i, intseq<_Idx...>)
   {
     using LieAlg = typename BundleTangentBase<Derived>::LieAlg;
-    LieAlg Ei = LieAlg::Constant(0);
+    LieAlg Ei = LieAlg::Zero();
     // c++11 "fold expression"
     auto l = {((Ei.template block<
       Derived::template Element<_Idx>::LieAlg::RowsAtCompileTime,

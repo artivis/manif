@@ -122,7 +122,7 @@ template <typename _Derived>
 typename RnTangentBase<_Derived>::LieAlg
 RnTangentBase<_Derived>::hat() const
 {
-  LieAlg t_hat = LieAlg::Constant(0);
+  LieAlg t_hat = LieAlg::Zero();
   t_hat.template topRightCorner<Dim, 1>() = coeffs();
   return t_hat;
 }
@@ -161,7 +161,7 @@ template <typename _Derived>
 typename RnTangentBase<_Derived>::Jacobian
 RnTangentBase<_Derived>::smallAdj() const
 {
-  static const Jacobian smallAdj = Jacobian::Constant(0);
+  static const Jacobian smallAdj = Jacobian::Zero();
   return smallAdj;
 }
 
@@ -184,7 +184,7 @@ struct GeneratorEvaluator<RnTangentBase<Derived>>
 
     using LieAlg = typename RnTangentBase<Derived>::LieAlg;
 
-    LieAlg Ei = LieAlg::Constant(0);
+    LieAlg Ei = LieAlg::Zero();
 
     Ei(i, RnTangentBase<Derived>::DoF) = 1;
 
