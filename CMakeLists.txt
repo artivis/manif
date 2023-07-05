@@ -61,6 +61,15 @@ option(BUILD_PYTHON_BINDINGS "Build Python bindings with pybind11." OFF)
 option(BUILD_TESTING_PYTHON "Build Python tests only." OFF)
 
 if (BUILD_PYTHON_BINDINGS)
+  # In theory this is not required, as CMake selects the appropriate C++ standard
+  # However, as long as we support pybind11 < 2.6 we need to make sure that CMAKE_CXX_STANDARD
+  # is defined before   find_package(pybind11 REQUIRED)  to avoid that the CMake standard
+  # command line option is set by pybind11 via the PYBIND11_CPP_STANDARD variable, in a way that could
+  # interfere with CMake, see https://github.com/pybind/pybind11/blob/v2.4.3/tools/pybind11Tools.cmake#L21
+  if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 11)
+  endif()
+
   find_package(pybind11 REQUIRED)
   add_subdirectory(python)
 endif()
