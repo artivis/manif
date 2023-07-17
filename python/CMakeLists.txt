@@ -1,4 +1,3 @@
-set(PYBIND11_CPP_STANDARD -std=c++11)
 pybind11_add_module(manifpy MODULE
   bindings_rn.cpp
   bindings_so2.cpp
@@ -13,8 +12,8 @@ target_link_libraries(manifpy PRIVATE ${PROJECT_NAME})
 # See e.g. https://pybind11.readthedocs.io/en/stable/advanced/cast/eigen.html#storage-orders
 target_compile_definitions(manifpy PRIVATE EIGEN_DEFAULT_TO_ROW_MAJOR)
 
-# Set required C++11 flag
-set_property(TARGET manifpy PROPERTY CXX_STANDARD 11)
+# Specify that C++11 features are required
+target_compile_features(manifpy PRIVATE cxx_nullptr)
 set_property(TARGET manifpy PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET manifpy PROPERTY CXX_EXTENSIONS OFF)
 

@@ -281,11 +281,10 @@ jobs:
 
   pybind11-cmake:
     needs: [build-ubuntu, build-mac]
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     python-version: [3.9]
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-20.04, ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
