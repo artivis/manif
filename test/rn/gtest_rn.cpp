@@ -14,7 +14,7 @@ using namespace manif;
 // especially, SO3 wasn't an issue despite being Eigen::Vector4d too...
 EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(R4d)
 
-#ifdef MANIF_COVERAGE_ENABLED
+#if defined(MANIF_COVERAGE_ENABLED) || defined(MANIF_ARCH_32)
 
 MANIF_TEST(R4d);
 MANIF_TEST_JACOBIANS(R4d);
@@ -109,6 +109,7 @@ TEST(TEST_RN, TEST_RN_VEC_ASSIGN_OP)
 }
 
 // This is a little too heavy for coverage and not relevant...
+// The same applies to 32-bit platforms.
 
 MANIF_TEST(R1f);
 MANIF_TEST(R2f);
