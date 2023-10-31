@@ -52,9 +52,9 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 manif_add_gtest(gtest_misc gtest_misc.cpp)
 
-set(CXX_11_TEST_TARGETS
+set(CXX_TEST_TARGETS
 
-  ${CXX_11_TEST_TARGETS}
+  ${CXX_TEST_TARGETS}
 
   gtest_misc
 )
@@ -104,7 +104,9 @@ else()
   message(STATUS "Could not find autodiff, autodiff tests will not be built.")
 endif()
 
-# Set required C++11 flag
-set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD 11)
-set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
-set_property(TARGET ${CXX_11_TEST_TARGETS} PROPERTY CXX_EXTENSIONS OFF)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  # Set required C++11 flag
+  set_property(TARGET ${CXX_TEST_TARGETS} PROPERTY CXX_STANDARD 11)
+endif()
+set_property(TARGET ${CXX_TEST_TARGETS} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET ${CXX_TEST_TARGETS} PROPERTY CXX_EXTENSIONS OFF)
