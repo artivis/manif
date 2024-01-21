@@ -340,6 +340,15 @@ struct AssignmentEvaluatorImpl<SO2Base<Derived>>
   }
 };
 
+//! @brief Cast specialization for SO2Base objects.
+template <typename Derived, typename NewScalar>
+struct CastEvaluatorImpl<SO2Base<Derived>, NewScalar> {
+  template <typename T>
+  static auto run(const T& o) -> typename Derived::template LieGroupTemplate<NewScalar> {
+    return typename Derived::template LieGroupTemplate<NewScalar>(NewScalar(o.angle()));
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 

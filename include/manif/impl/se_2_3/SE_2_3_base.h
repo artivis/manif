@@ -468,6 +468,23 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
   }
 };
 
+//! @brief Cast specialization for SE_2_3Base objects.
+template <typename Derived, typename NewScalar>
+struct CastEvaluatorImpl<SE_2_3Base<Derived>, NewScalar> {
+  template <typename T>
+  static auto run(const T& o) -> typename Derived::template LieGroupTemplate<NewScalar> {
+    const typename SE_2_3Base<Derived>::QuaternionDataType q = o.quat();
+    const typename SE_2_3Base<Derived>::Translation t = o.translation();
+    const typename SE_2_3Base<Derived>::LinearVelocity v = o.linearVelocity();
+
+    return typename Derived::template LieGroupTemplate<NewScalar>(
+      t.template cast<NewScalar>(),
+      q.template cast<NewScalar>().normalized(),
+      v.template cast<NewScalar>()
+    );
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 
