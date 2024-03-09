@@ -7,6 +7,7 @@
     <includes refid="eigen_8h" local="yes">manif/impl/eigen.h</includes>
     <includes refid="tangent__base_8h" local="yes">manif/impl/tangent_base.h</includes>
     <includes refid="assignment__assert_8h" local="yes">manif/impl/assignment_assert.h</includes>
+    <includes refid="cast_8h" local="yes">manif/impl/cast.h</includes>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
     <includes local="no">tl/optional.hpp</includes>
     <includedby refid="average_8h" local="yes">average.h</includedby>
@@ -76,6 +77,8 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
@@ -120,6 +123,10 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+      </node>
+      <node id="20">
+        <label>manif/impl/cast.h</label>
+        <link refid="cast_8h_source"/>
       </node>
       <node id="2">
         <label>manif/impl/macro.h</label>

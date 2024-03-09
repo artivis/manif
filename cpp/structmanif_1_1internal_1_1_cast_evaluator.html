@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>manif::internal::AssignmentEvaluatorImpl&lt;SE3Base&lt;Derived&gt;&gt; struct | manif C++ API</title>
+  <title>manif::internal::CastEvaluator struct | manif C++ API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -47,27 +47,67 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-template">template&lt;typename Derived&gt;</div>
-          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>AssignmentEvaluatorImpl&lt;SE3Base&lt;Derived&gt;&gt; <span class="m-thin">struct</span>
+          <div class="m-doc-template">template&lt;typename Derived, typename NewScalar&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>CastEvaluator <span class="m-thin">struct</span>
         </h1>
-        <p>Assignment assert specialization for <a href="structmanif_1_1_s_e3_base.html" class="m-doc">SE3Base</a> objects.</p>
+        <p><span></span></p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-        <section id="pub-static-methods">
-          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
-            <dt id="a24889fb701c768ce8a17df129ef9b217">
-              <div class="m-doc-template">template&lt;typename T&gt;</div>
-              <span class="m-doc-wrap-bumper">static void <a href="#a24889fb701c768ce8a17df129ef9b217" class="m-doc-self">run_impl</a>(</span><span class="m-doc-wrap">const T&amp; data)</span>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Derived, typename NewScalar&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1_cast_evaluator_impl.html" class="m-doc">CastEvaluatorImpl&lt;Derived, NewScalar&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="adfef8e3ad6ba8e001fc8637acd3d2786">
+              using <a href="#adfef8e3ad6ba8e001fc8637acd3d2786" class="m-doc-self">Base</a> = <a href="structmanif_1_1internal_1_1_cast_evaluator_impl.html" class="m-doc">CastEvaluatorImpl</a>&lt;Derived, NewScalar&gt;
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a2ca7d7329160210bbb42f3c628422994">
+              <span class="m-doc-wrap-bumper"><a href="#a2ca7d7329160210bbb42f3c628422994" class="m-doc-self">CastEvaluator</a>(</span><span class="m-doc-wrap">const Derived&amp; xptr)</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="ad1df7d9129fbd050f1cf205d85cc9051">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1df7d9129fbd050f1cf205d85cc9051" class="m-doc-self">run</a>(</span><span class="m-doc-wrap">) const -&gt; typename Derived::template LieGroupTemplate&lt; NewScalar &gt; -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a1b642c650c40a41566d0aa311d4ebf89">
+              const Derived&amp; <a href="#a1b642c650c40a41566d0aa311d4ebf89" class="m-doc-self">xptr_</a>
             </dt>
             <dd><span></span></dd>
           </dl>

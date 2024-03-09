@@ -10,6 +10,7 @@
     <innerdir refid="dir_eb8bd41501b9014d56ec9b114587795e">so2</innerdir>
     <innerdir refid="dir_7b12d306e2d7ee7d082163a21d47eaeb">so3</innerdir>
     <innerfile refid="assignment__assert_8h">assignment_assert.h</innerfile>
+    <innerfile refid="cast_8h">cast.h</innerfile>
     <innerfile refid="eigen_8h">eigen.h</innerfile>
     <innerfile refid="generator_8h">generator.h</innerfile>
     <innerfile refid="lie__group__base_8h">lie_group_base.h</innerfile>

@@ -118,6 +118,30 @@
     <member refid="structmanif_1_1_bundle_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_bundle_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator" kind="struct"><name>manif::internal::CastEvaluator</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_1adfef8e3ad6ba8e001fc8637acd3d2786" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_1a1b642c650c40a41566d0aa311d4ebf89" kind="variable"><name>xptr_</name></member>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_1a2ca7d7329160210bbb42f3c628422994" kind="function"><name>CastEvaluator</name></member>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_1ad1df7d9129fbd050f1cf205d85cc9051" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl" kind="struct"><name>manif::internal::CastEvaluatorImpl</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_1a74dc0d8eae39b8f6854b5c2185b798fd" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e2_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct"><name>manif::internal::CastEvaluatorImpl&lt; SE2Base&lt; Derived &gt;, NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e2_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a789bfd771c3cb37842bb40393fcac297" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e3_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct"><name>manif::internal::CastEvaluatorImpl&lt; SE3Base&lt; Derived &gt;, NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e3_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a2965aa2b717c7f879b058cf9aac6703c" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e__2__3_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct"><name>manif::internal::CastEvaluatorImpl&lt; SE_2_3Base&lt; Derived &gt;, NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e__2__3_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a37141ea8790bd708c87fac3ac68ac31f" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct"><name>manif::internal::CastEvaluatorImpl&lt; SO2Base&lt; Derived &gt;, NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a520f683f92ba4bd5604163d097588b41" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct"><name>manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a07fbef799cf301246c822c87486ebf1b" kind="function"><name>run</name></member>
+  </compound>
   <compound refid="classmanif_1_1_ceres_constraint_functor" kind="class"><name>manif::CeresConstraintFunctor</name>
     <member refid="classmanif_1_1_ceres_constraint_functor_1ac54dbec0bd38f3996f17f09d6440c807" kind="typedef"><name>LieGroup</name></member>
     <member refid="classmanif_1_1_ceres_constraint_functor_1ae922ccf7fd4cdd676d10ed898d343fdd" kind="typedef"><name>Tangent</name></member>
@@ -1655,6 +1679,8 @@
   <compound refid="_bundle_tangent__base_8h" kind="file"><name>BundleTangent_base.h</name>
   </compound>
   <compound refid="_bundle_tangent__map_8h" kind="file"><name>BundleTangent_map.h</name>
+  </compound>
+  <compound refid="cast_8h" kind="file"><name>cast.h</name>
   </compound>
   <compound refid="ceres_8h" kind="file"><name>ceres.h</name>
   </compound>

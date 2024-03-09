@@ -28,6 +28,8 @@
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl" prot="public">manif::internal::CastEvaluatorImpl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator" prot="public">manif::internal::CastEvaluator</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traitscast_3_01_eigen_1_1_matrix_3_01___scalar_00_01___rows_00_01___cee5f1353401c8402b9837960bbce21ab" prot="public">manif::internal::traitscast&lt; Eigen::Matrix&lt; _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator" prot="public">manif::internal::GeneratorEvaluator</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_inner_weights_evaluator" prot="public">manif::internal::InnerWeightsEvaluator</innerclass>
@@ -47,6 +49,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e2_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE2&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e2_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE2Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_e2_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SE2Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e2_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SE2Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e2_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE2&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e2_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE2&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e2_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; SE2Base&lt; _Derived &gt; &gt;</innerclass>
@@ -60,6 +63,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE3&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE3Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_e3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SE3Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e3_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SE3Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e3_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; SE3Base&lt; _Derived &gt; &gt;</innerclass>
@@ -72,6 +76,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e__2__3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE_2_3&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e__2__3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE_2_3Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_e__2__3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SE_2_3Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_e__2__3_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SE_2_3Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e__2__3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e__2__3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_e__2__3_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; SE_2_3Base&lt; _Derived &gt; &gt;</innerclass>
@@ -84,6 +89,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o2_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO2&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SO2Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o2_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SO2Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_o2_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SO2&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_o2_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SO2&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o2_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; SO2Base&lt; _Derived &gt; &gt;</innerclass>
@@ -96,6 +102,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO3&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_o3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SO3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_o3_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SO3&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_o3_base_3_01___derived_01_4_01_4" prot="public">manif::internal::LieGroupProperties&lt; SO3Base&lt; _Derived &gt; &gt;</innerclass>

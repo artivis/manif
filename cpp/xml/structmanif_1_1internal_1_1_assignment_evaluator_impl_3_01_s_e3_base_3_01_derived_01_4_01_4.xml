@@ -33,7 +33,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Assignment assert specialization for <ref refid="structmanif_1_1_s_e2_base" kindref="compound">SE2Base</ref> objects. </para>
+<para>Assignment assert specialization for <ref refid="structmanif_1_1_s_e3_base" kindref="compound">SE3Base</ref> objects. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

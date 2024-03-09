@@ -15,7 +15,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -34,7 +34,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>manif/impl/utils.h</label>
         <link refid="utils_8h_source"/>
         <childnode refid="14" relation="include">
@@ -76,6 +76,8 @@
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -121,6 +123,10 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+      </node>
+      <node id="22">
+        <label>manif/impl/cast.h</label>
+        <link refid="cast_8h_source"/>
       </node>
       <node id="7">
         <label>manif/impl/macro.h</label>
@@ -244,6 +250,7 @@
     <innerclass refid="structmanif_1_1_s_o3_base" prot="public">manif::SO3Base</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" prot="public">manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4" prot="public">manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;</innerclass>
     <innernamespace refid="namespacemanif">manif</innernamespace>
     <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
     <briefdescription>

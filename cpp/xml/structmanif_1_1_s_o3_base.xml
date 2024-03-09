@@ -529,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="387" bodyend="390"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="388" bodyend="391"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_base_1acee62f2ce8024b20db04c304031af85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -543,7 +543,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="394" bodyend="397"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="395" bodyend="398"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="339" bodyend="339"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="340" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_o3_base_1a9380b9ee1ed9bbdcf3dcf284571f6901" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -571,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="340" bodyend="340"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="40" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="341" bodyend="341"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

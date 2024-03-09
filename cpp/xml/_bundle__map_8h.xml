@@ -52,6 +52,8 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
@@ -112,6 +114,10 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+      </node>
+      <node id="23">
+        <label>manif/impl/cast.h</label>
+        <link refid="cast_8h_source"/>
       </node>
       <node id="5">
         <label>manif/impl/macro.h</label>

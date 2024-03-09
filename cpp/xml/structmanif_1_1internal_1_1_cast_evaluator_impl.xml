@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_cast_evaluator_impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::CastEvaluatorImpl</compoundname>
+    <derivedcompoundref refid="structmanif_1_1internal_1_1_cast_evaluator" prot="public" virt="non-virtual">manif::internal::CastEvaluator&lt; Derived, NewScalar &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+      <param>
+        <type>typename NewScalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_cast_evaluator_impl_1a74dc0d8eae39b8f6854b5c2185b798fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto manif::internal::CastEvaluatorImpl&lt; Derived, NewScalar &gt;::run</definition>
+        <argsstring>(const T &amp;o) -&gt; typename T::template LieGroupTemplate&lt; NewScalar &gt;</argsstring>
+        <name>run</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/cast.h" line="10" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/cast.h" bodystart="10" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>manif::internal::CastEvaluatorImpl&lt; Derived, NewScalar &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_cast_evaluator_impl"/>
+      </node>
+      <node id="2">
+        <label>manif::internal::CastEvaluator&lt; Derived, NewScalar &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_cast_evaluator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/cast.h" line="8" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/cast.h" bodystart="8" bodyend="15"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_1a74dc0d8eae39b8f6854b5c2185b798fd" prot="public" virt="non-virtual"><scope>manif::internal::CastEvaluatorImpl</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

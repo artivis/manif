@@ -14,9 +14,9 @@
         <link refid="bezier_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -63,6 +63,8 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
@@ -94,7 +96,7 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>vector</label>
       </node>
       <node id="5">
@@ -111,6 +113,10 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="21">
+        <label>manif/impl/cast.h</label>
+        <link refid="cast_8h_source"/>
+      </node>
       <node id="3">
         <label>manif/impl/macro.h</label>
         <link refid="macro_8h_source"/>
@@ -119,7 +125,7 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>manif/algorithms/interpolation.h</label>
         <link refid="interpolation_8h_source"/>
         <childnode refid="2" relation="include">

@@ -2402,7 +2402,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="708" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="708" bodyend="714"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" line="711" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/lie_group_base.h" bodystart="711" bodyend="717"/>
       </memberdef>
       <memberdef kind="function" id="_s_e2_tangent_8h_1a728e852117939343122920bdf7e76783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

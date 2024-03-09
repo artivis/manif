@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;</compoundname>
+    <includes refid="_s_o3__base_8h" local="no">SO3_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+      <param>
+        <type>typename NewScalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a07fbef799cf301246c822c87486ebf1b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;::run</definition>
+        <argsstring>(const T &amp;o) -&gt; typename Derived::template LieGroupTemplate&lt; NewScalar &gt;</argsstring>
+        <name>run</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="428" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="428" bodyend="434"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Cast specialization for <ref refid="structmanif_1_1_s_o3_base" kindref="compound">SO3Base</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" line="426" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/so3/SO3_base.h" bodystart="426" bodyend="435"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_cast_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_00_01_new_scalar_01_4_1a07fbef799cf301246c822c87486ebf1b" prot="public" virt="non-virtual"><scope>manif::internal::CastEvaluatorImpl&lt; SO3Base&lt; Derived &gt;, NewScalar &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
