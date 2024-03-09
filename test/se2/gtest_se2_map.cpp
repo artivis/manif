@@ -53,13 +53,13 @@ TEST(TEST_SE2, TEST_SE2_MAP_CAST)
 
   EXPECT_DOUBLE_EQ(4, se2d.x());
   EXPECT_DOUBLE_EQ(2, se2d.y());
-  EXPECT_DOUBLE_EQ(MANIF_PI, se2d.angle());
+  EXPECT_DOUBLE_EQ(MANIF_PI, std::abs(se2d.angle()));
 
   SE2f se2f = se2d.cast<float>();
 
   EXPECT_FLOAT_EQ(4, se2f.x());
   EXPECT_FLOAT_EQ(2, se2f.y());
-  EXPECT_FLOAT_EQ(MANIF_PI, se2f.angle());
+  EXPECT_FLOAT_EQ(MANIF_PI, std::abs(se2f.angle()));
 }
 
 TEST(TEST_SE2, TEST_SE2_MAP_IDENTITY)

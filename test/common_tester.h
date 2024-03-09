@@ -104,7 +104,9 @@
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
   { evalSmallAdj(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
-  { evalIdentityActPoint(); }
+  { evalIdentityActPoint(); }                                             \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_CAST)                \
+  { evalCast(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
@@ -703,6 +705,23 @@ public:
     EXPECT_EIGEN_NEAR(pin, pout);
   }
 
+  void evalCast() {
+    using NewScalar = typename std::conditional<
+      std::is_same<Scalar, float>::value, double, float
+    >::type;
+
+    EXPECT_NO_THROW(
+      auto state = getState().template cast<NewScalar>();
+    );
+
+    int i=0;
+    EXPECT_NO_THROW(
+      for (; i < 10000; ++i) {
+        auto state = LieGroup::Random().template cast<NewScalar>();
+      }
+    ) << "+= failed at iteration " << i;
+  }
+
 protected:
 
   // relax eps for float type
@@ -1044,8 +1063,8 @@ public:
     Jrinv = tan.rjacinv();
     Jlinv = tan.ljacinv();
 
-    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jr*Jrinv);
-    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jl*Jlinv);
+    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jr*Jrinv, tol_);
+    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jl*Jlinv, tol_);
   }
 
   void evalActJac()

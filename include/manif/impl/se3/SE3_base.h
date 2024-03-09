@@ -443,7 +443,7 @@ struct RandomEvaluatorImpl<SE3Base<Derived>>
   }
 };
 
-//! @brief Assignment assert specialization for SE2Base objects
+//! @brief Assignment assert specialization for SE3Base objects
 template <typename Derived>
 struct AssignmentEvaluatorImpl<SE3Base<Derived>>
 {
@@ -458,6 +458,20 @@ struct AssignmentEvaluatorImpl<SE3Base<Derived>>
       manif::invalid_argument
     );
     MANIF_UNUSED_VARIABLE(data);
+  }
+};
+
+//! @brief Cast specialization for SE3Base objects.
+template <typename Derived, typename NewScalar>
+struct CastEvaluatorImpl<SE3Base<Derived>, NewScalar> {
+  template <typename T>
+  static auto run(const T& o) -> typename Derived::template LieGroupTemplate<NewScalar> {
+    const typename SE3Base<Derived>::QuaternionDataType q = o.quat();
+    const typename SE3Base<Derived>::Translation t = o.translation();
+
+    return typename Derived::template LieGroupTemplate<NewScalar>(
+      t.template cast<NewScalar>(), q.template cast<NewScalar>().normalized()
+    );
   }
 };
 
