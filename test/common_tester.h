@@ -1083,11 +1083,11 @@ public:
   void evalActJac()
   {
     using Scalar = typename LieGroup::Scalar;
-    using Point = Eigen::Matrix<Scalar, LieGroup::Dim, 1>;
+    using Point = typename LieGroup::Vector;
     Point point = Point::Random();
 
-    Eigen::Matrix<Scalar, LieGroup::Dim, LieGroup::DoF> J_pout_s;
-    Eigen::Matrix<Scalar, LieGroup::Dim, LieGroup::Dim> J_pout_p;
+    Eigen::Matrix<Scalar, Point::SizeAtCompileTime, LieGroup::DoF> J_pout_s;
+    Eigen::Matrix<Scalar, Point::SizeAtCompileTime, Point::SizeAtCompileTime> J_pout_p;
 
     const LieGroup& state = getState();
 
