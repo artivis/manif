@@ -106,7 +106,9 @@
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
   { evalIdentityActPoint(); }                                             \
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_CAST)                \
-  { evalCast(); }
+  { evalCast(); }                                                         \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_INVERSE)             \
+  { evalInverse(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
@@ -720,6 +722,17 @@ public:
         auto state = LieGroup::Random().template cast<NewScalar>();
       }
     ) << "+= failed at iteration " << i;
+  }
+
+  void evalInverse() {
+    EXPECT_MANIF_NEAR(
+      LieGroup::Identity(), LieGroup::Identity()*LieGroup::Identity().inverse()
+    );
+    EXPECT_MANIF_NEAR(
+      LieGroup::Identity(), LieGroup::Identity().inverse()*LieGroup::Identity()
+    );
+    EXPECT_MANIF_NEAR(LieGroup::Identity(), getState()*getState().inverse());
+    EXPECT_MANIF_NEAR(LieGroup::Identity(), getState().inverse()*getState());
   }
 
 protected:
