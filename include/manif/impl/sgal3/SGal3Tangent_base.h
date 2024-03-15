@@ -336,25 +336,25 @@ SGal3TangentBase<_Derived>::lin() const {
 }
 
 template <typename _Derived>
-typename SGal3TangentBase<_Derived>::AngBlock
+typename SGal3TangentBase<_Derived>::LinBlock
 SGal3TangentBase<_Derived>::lin2() {
   return coeffs().template segment<3>(3);
 }
 
 template <typename _Derived>
-const typename SGal3TangentBase<_Derived>::ConstAngBlock
+const typename SGal3TangentBase<_Derived>::ConstLinBlock
 SGal3TangentBase<_Derived>::lin2() const {
   return coeffs().template segment<3>(3);
 }
 
 template <typename _Derived>
-typename SGal3TangentBase<_Derived>::LinBlock
+typename SGal3TangentBase<_Derived>::AngBlock
 SGal3TangentBase<_Derived>::ang() {
   return coeffs().template segment<3>(6);
 }
 
 template <typename _Derived>
-const typename SGal3TangentBase<_Derived>::ConstLinBlock
+const typename SGal3TangentBase<_Derived>::ConstAngBlock
 SGal3TangentBase<_Derived>::ang() const {
   return coeffs().template segment<3>(6);
 }
