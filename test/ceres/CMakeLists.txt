@@ -13,6 +13,8 @@ manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
 manif_add_gtest(gtest_se23_ceres gtest_se23_ceres.cpp)
 
+manif_add_gtest(gtest_sgal3_ceres gtest_sgal3_ceres.cpp)
+
 manif_add_gtest(gtest_bundle_ceres gtest_bundle_ceres.cpp)
 
 set(CXX_TEST_TARGETS_CERES
@@ -34,6 +36,9 @@ set(CXX_TEST_TARGETS_CERES
 
   # SE23
   gtest_se23_ceres
+
+  # SGal3
+  gtest_sgal3_ceres
 
   # Bundle
   gtest_bundle_ceres
