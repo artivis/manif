@@ -179,7 +179,7 @@ template <typename _Derived>
 typename SGal3TangentBase<_Derived>::Jacobian
 SGal3TangentBase<_Derived>::rjac() const {
 
-  return exp().inverse().adj() * ljac();
+  return (-*this).ljac();
 
   // Those were verified against auto diff
 
