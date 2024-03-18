@@ -230,7 +230,15 @@ SGal3TangentBase<_Derived>::ljac() const {
    * 
    * Tangent space is tau = [rho ; nu ; theta ; t] in R^10
    * 
-   * Matrix blocks D, E, L, M, N, N1, N2 are called different here. We specify the correspondences in the comments.
+   * Matrix blocks D, E, L, M, N, N1, N2 are referred to in the comments and correspond to eqs. in Kelly's paper:
+   * 
+   *    D:  (18) = Jl_SO3(theta)
+   *    E:  (19)
+   *    L:  (32)
+   *    M:  (33) = Q(nu,theta)
+   *    N:  (34) = N1 - N2
+   *    N1: (35) = Q(rho,theta)
+   *    N2: (36)
    */
 
 
@@ -245,53 +253,48 @@ SGal3TangentBase<_Derived>::ljac() const {
   Jl.template block<3, 3>(3, 3)     = D;                                  // Block D
   Jl.template block<3, 3>(6, 6)     = D;                                  // Block D
 
-  // Compute block E
+  // Block E
   Eigen::Matrix<Scalar,3,3> E;
   fillE(E, so3);                                                          // Block E
   Jl.template block<3,1>(0,9) = E * lin2();                               // Block E * nu
-  // fillE(Jl.template block<3, 3>(6, 6), so3);                              // Block E
-  // Jl.template block<3, 1>(0, 9) = Jl.template block<3, 3>(6, 6) * lin2(); // Block E * nu
 
+  // Skew matrix W = theta^
+  Eigen::Matrix<Scalar,3,3> W = so3.hat();
+  // Skew matrix V = nu^
+  Eigen::Matrix<Scalar,3,3> V = skew(lin2());
+
+  // Angles and trigonometry
   const Scalar theta_sq = so3.coeffs().squaredNorm();
-  const Scalar theta = sqrt(theta_sq); // rotation angle
+  const Scalar theta    = sqrt(theta_sq); // rotation angle
+  const Scalar theta_cu = theta * theta_sq;
 
   const Scalar sin_t = sin(theta);
   const Scalar cos_t = cos(theta);
-  const Scalar theta_cu = theta * theta_sq;
 
-  // Compute skew matrix W = theta^
-  // Jl.template block<3, 3>(6, 6) = so3.hat(); // Use as temporary storage with simpler ref
-  // ConstRef33 W = Jl.template block<3, 3>(6, 6);
-  Eigen::Matrix<Scalar,3,3> W = so3.hat();
-  // Compute skew matrix V = nu^
-  // Jl.template bottomRightCorner<3, 3>() = skew(lin2()); // Use as temporary storage with simpler ref
-  // ConstRef33 V = Jl.template bottomRightCorner<3, 3>();
-  Eigen::Matrix<Scalar,3,3> V = skew(lin2());
-
-  // Compute block L
+  // Block L
   Scalar cA, cB;
   // small angle approx.
-  if (theta_sq > Constants<Scalar>::eps) {
+  if (theta_cu > Constants<Scalar>::eps) {
     cA = (sin_t - theta * cos_t) / theta_sq;
     cB = (theta_sq + Scalar(2) * (Scalar(1) - theta * sin_t - cos_t)) / (Scalar(2) * theta_sq);
   } else {
     cA = Scalar(1./3.) * theta - Scalar(1./30.) * theta_cu;
     cB = Scalar(1./8.) * theta_sq;
   }
-  Jl.template block<3, 3>(0, 3).noalias() = -t() * (                      // Block L * t
+  Jl.template block<3, 3>(0, 3).noalias() = -t() * (                      // Block - L * t
     I33(Scalar(0.5)) + cA * W + cB * W * W                                // Block L
   );
 
-  // Compute block M = Q(nu,theta)
+  // Block M = Q(nu,theta)
   SE3Tangent<Scalar>::fillQ(Jl.template block<3, 3>(3, 6), coeffs().template segment<6>(3)); // Block M = Q(nu,theta)
 
 
-  // Compute block N1, part of N
+  // Block N1, part of N. N1 = Q(rho,theta)
   Eigen::Matrix<Scalar, 6, 1> rho_theta;
-  rho_theta << coeffs().template head<3>(), coeffs().template segment<3>(6);
+  rho_theta << lin(), ang();
   SE3Tangent<Scalar>::fillQ(Jl.template block<3, 3>(0, 6), rho_theta);    // block N1 = Q(rho,theta)
 
-  // Compute block N2, part of N
+  // Block N2, part of N
   Scalar cC, cD, cE, cF;
   if (theta_cu > Constants<Scalar>::eps) {
     std::cout << "large" << std::endl;
@@ -325,7 +328,7 @@ SGal3TangentBase<_Derived>::ljac() const {
   // Block 1
   Jl(9, 9) = Scalar(1);
 
-  // Complete with blocks of zeros 
+  // Blocks of zeros 
   Jl.template bottomLeftCorner<7, 3>().setZero();
   Jl.template block<4, 3>(6, 3).setZero();
   Jl.template block<1, 3>(9, 6).setZero();
