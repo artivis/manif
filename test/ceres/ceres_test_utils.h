@@ -44,9 +44,9 @@
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_COMPOSE_JACOBIANS)   \
   { evalComposeJacs(); }                                                                        \
   TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_BETWEEN_JACOBIANS)   \
-  { evalBetweenJacs(); }
-  // TEST_F(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS)
-  // { evalActJacs(); }
+  { evalBetweenJacs(); }                                                                        \
+  TEST_P(TEST_##manifold##_JACOBIANS_CERES_TESTER, TEST_##manifold##_CERES_ACT_JACOBIANS)       \
+  { evalActJacs(); }
 
 #define __MANIF_FUNCTOR_COMMON_TYPEDEF                                            \
   using LieGroup = _LieGroup;                                                     \
