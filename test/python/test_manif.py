@@ -1,22 +1,37 @@
-from manifpy import \
-    R1, R1Tangent, \
-    R2, R2Tangent, \
-    R3, R3Tangent, \
-    R4, R4Tangent, \
-    R5, R5Tangent, \
-    R6, R6Tangent, \
-    R7, R7Tangent, \
-    R8, R8Tangent, \
-    R9, R9Tangent, \
-    SE2, SE2Tangent, \
-    SE3, SE3Tangent, \
-    SE_2_3, SE_2_3Tangent, \
-    SO2, SO2Tangent, \
-    SO3, SO3Tangent
-
 import numpy as np
-
 import pytest
+from manifpy import (
+    R1,
+    R2,
+    R3,
+    R4,
+    R5,
+    R6,
+    R7,
+    R8,
+    R9,
+    SE2,
+    SE3,
+    SE_2_3,
+    SO2,
+    SO3,
+    R1Tangent,
+    R2Tangent,
+    R3Tangent,
+    R4Tangent,
+    R5Tangent,
+    R6Tangent,
+    R7Tangent,
+    R8Tangent,
+    R9Tangent,
+    SE2Tangent,
+    SE3Tangent,
+    SE_2_3Tangent,
+    SGal3,
+    SGal3Tangent,
+    SO2Tangent,
+    SO3Tangent,
+)
 
 
 @pytest.mark.parametrize(
@@ -36,6 +51,7 @@ import pytest
      (SE_2_3, SE_2_3Tangent),
      (SO2, SO2Tangent),
      (SO3, SO3Tangent),
+     (SGal3, SGal3Tangent),
     ]
 )
 class TestCommon:
