@@ -168,7 +168,12 @@
   TEST_P(manifold##JacobiansTester, TEST_##manifold##_PLUS_T_JACOBIANS)                                                   \
   { evalTanPlusTanJac(); }                                                                                                \
   TEST_P(manifold##JacobiansTester, TEST_##manifold##_MINUS_T_JACOBIANS)                                                  \
-  { evalTanMinusTanJac(); }
+  { evalTanMinusTanJac(); }                                                                                               \
+  TEST_P(manifold##JacobiansTester, TEST_##manifold##_JL_MJLINV_ADJ_JACOBIANS)                                            \
+  { evalJlmJlinvAjd(); }                                                                                                  \
+  TEST_P(manifold##JacobiansTester, TEST_##manifold##_JR_JR_COMP_JL_JACOBIANS)                                            \
+  { evalJrJrcompJl(); }
+
 
 
 #define MANIF_TEST_MAP(manifold)                                          \
@@ -1153,6 +1158,19 @@ public:
     delta_lin  = delta_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+  }
+
+  void evalJlmJlinvAjd() {
+    const Tangent& delta = getDelta();
+    const Tangent mdelta = -delta;
+
+    EXPECT_EIGEN_NEAR(delta.exp().adj(), delta.ljac()*mdelta.ljacinv());
+  }
+
+  void evalJrJrcompJl() {
+    const Tangent& delta = getDelta();
+
+    EXPECT_EIGEN_NEAR(delta.exp().inverse().adj() * delta.ljac(), (-delta).ljac());
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }
