@@ -212,8 +212,6 @@ typename SGal3TangentBase<_Derived>::Jacobian
 SGal3TangentBase<_Derived>::ljac() const {
   using Diag = typename Eigen::DiagonalMatrix<Scalar, 3>;
   auto I33 = [](const Scalar d){ return Diag(d, d, d).toDenseMatrix(); };
-  using Ref33 = Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>;
-  using ConstRef33 = const Eigen::Ref<const Eigen::Matrix<Scalar, 3, 3>>;
 
   using std::sqrt;
   using std::cos;
