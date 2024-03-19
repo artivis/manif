@@ -218,18 +218,18 @@ SGal3TangentBase<_Derived>::ljac() const {
   using std::sin;
 
   /** Structure of the left Jacobian according to J. Kelly
-   * 
+   *
    * Jl = [ D -L*t  N   E*nu
    *        0   D   M   0
    *        0   0   D   0
    *        0   0   0   1 ]
-   * 
+   *
    * with N = N1 - N2.
-   * 
+   *
    * Tangent space is tau = [rho ; nu ; theta ; t] in R^10
-   * 
+   *
    * Matrix blocks D, E, L, M, N, N1, N2 are referred to in the comments and correspond to eqs. in Kelly's paper:
-   * 
+   *
    *    D:  (18) = Jl_SO3(theta)
    *    E:  (19)
    *    L:  (32)
@@ -246,7 +246,7 @@ SGal3TangentBase<_Derived>::ljac() const {
   const Eigen::Map<const SO3Tangent<Scalar>> so3 = asSO3();               // theta vector
 
   // Blocks D
-  Eigen::Matrix<Scalar,3,3> D = so3.ljac(); 
+  Eigen::Matrix<Scalar,3,3> D = so3.ljac();
   Jl.template topLeftCorner<3, 3>() = D;                                  // Block D
   Jl.template block<3, 3>(3, 3)     = D;                                  // Block D
   Jl.template block<3, 3>(6, 6)     = D;                                  // Block D
@@ -324,7 +324,7 @@ SGal3TangentBase<_Derived>::ljac() const {
   // Block 1
   Jl(9, 9) = Scalar(1);
 
-  // Blocks of zeros 
+  // Blocks of zeros
   Jl.template bottomLeftCorner<7, 3>().setZero();
   Jl.template block<4, 3>(6, 3).setZero();
   Jl.template block<1, 3>(9, 6).setZero();
