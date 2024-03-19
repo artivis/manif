@@ -1170,7 +1170,7 @@ public:
   void evalJrJrcompJl() {
     const Tangent& delta = getDelta();
 
-    EXPECT_EIGEN_NEAR(delta.exp().inverse().adj() * delta.ljac(), (-delta).ljac());
+    EXPECT_EIGEN_NEAR(delta.exp().adj() * (-delta).ljac(), delta.ljac());
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }
