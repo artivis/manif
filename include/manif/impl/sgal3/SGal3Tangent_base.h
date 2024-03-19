@@ -275,11 +275,11 @@ SGal3TangentBase<_Derived>::ljac() const {
   Scalar cA, cB;
   // small angle approx.
   if (theta_cu > Constants<Scalar>::eps) {
-    cA = (sin_t - theta * cos_t) / theta_sq;
-    cB = (theta_sq + Scalar(2) * (Scalar(1) - theta * sin_t - cos_t)) / (Scalar(2) * theta_sq);
+    cA = (sin_t - theta * cos_t) / theta_cu;
+    cB = (theta_sq + Scalar(2) * (Scalar(1) - theta * sin_t - cos_t)) / (Scalar(2) * theta_sq * theta_sq);
   } else {
-    cA = Scalar(1./3.) * theta - Scalar(1./30.) * theta_cu;
-    cB = Scalar(1./8.) * theta_sq;
+    cA = Scalar(1./3.)  - Scalar(1./30.) * theta_sq;
+    cB = Scalar(1./8.);
   }
   Jl.template block<3, 3>(0, 3).noalias() = -t() * (                      // Block - L * t
     I33(Scalar(0.5)) + cA * W + cB * W * W                                // Block L
@@ -297,21 +297,19 @@ SGal3TangentBase<_Derived>::ljac() const {
   // Block N2, part of N
   Scalar cC, cD, cE, cF;
   if (theta_cu > Constants<Scalar>::eps) {
-    std::cout << "large" << std::endl;
-    cA = (Scalar(2) - theta * sin_t - Scalar(2) * cos_t) / theta_cu;
-    cB = (theta_cu + Scalar(6) * theta + Scalar(6) * theta * cos_t - Scalar(12) * sin_t) / (Scalar(6) * theta_cu);
-    cC = (Scalar(12) * sin_t - theta_cu - Scalar(3) * theta_sq * sin_t - Scalar(12) * theta * cos_t) / (Scalar(6) * theta_cu);
-    cD = (Scalar(4) + theta_sq * (Scalar(1) + cos_t) - Scalar(4) * (theta * sin_t + cos_t) ) / (Scalar(2) * theta_cu);
-    cE = (theta_sq + Scalar(2) * (cos_t - Scalar(1))) / (Scalar(2) * theta_cu);
-    cF = (theta_cu + Scalar(6) * (sin_t - theta)) / (Scalar(6) * theta_cu);
+    cA = (Scalar(2) - theta * sin_t - Scalar(2) * cos_t) / theta_cu / theta;
+    cB = (theta_cu + Scalar(6) * theta + Scalar(6) * theta * cos_t - Scalar(12) * sin_t) / (Scalar(6) * theta_cu * theta_sq);
+    cC = (Scalar(12) * sin_t - theta_cu - Scalar(3) * theta_sq * sin_t - Scalar(12) * theta * cos_t) / (Scalar(6) * theta_cu * theta_sq);
+    cD = (Scalar(4) + theta_sq * (Scalar(1) + cos_t) - Scalar(4) * (theta * sin_t + cos_t) ) / (Scalar(2) * theta_cu * theta_cu);
+    cE = (theta_sq + Scalar(2) * (cos_t - Scalar(1))) / (Scalar(2) * theta_cu * theta);
+    cF = (theta_cu + Scalar(6) * (sin_t - theta)) / (Scalar(6) * theta_cu * theta_sq);
   }else{
-    std::cout << "small" << std::endl;
-    cA = theta    / Scalar(12.);
-    cB = theta_sq / Scalar(24.);
-    cC = theta_sq / Scalar(10.);
-    cD = theta_cu / Scalar(240.);
-    cE = theta    / Scalar(24.);
-    cF = theta_sq / Scalar(120.);
+    cA = Scalar(1./12.);
+    cB = Scalar(1./24.);
+    cC = Scalar(1./10.);
+    cD = Scalar(1./240.);
+    cE = Scalar(1./24.);
+    cF = Scalar(1./120.);
   }
 
   Eigen::Matrix<Scalar,3,3> N2 = t() / Scalar(6) * V                      // Block N2, part of N
@@ -423,8 +421,8 @@ void SGal3TangentBase<_Derived>::fillE(
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
 
-  const Scalar A = (theta - sin(theta)) / theta_sq;
-  const Scalar B = (theta_sq + Scalar(2) * cos(theta) - Scalar(2)) / (Scalar(2) * theta_sq);
+  const Scalar A = (theta - sin(theta)) / theta_sq / theta;
+  const Scalar B = (theta_sq + Scalar(2) * cos(theta) - Scalar(2)) / (Scalar(2) * theta_sq * theta_sq);
 
   const typename SO3Tangent<Scalar>::LieAlg W = so3.hat();
 

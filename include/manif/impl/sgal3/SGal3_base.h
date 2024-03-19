@@ -276,8 +276,8 @@ SGal3Base<_Derived>::log(OptJacobianRef J_t_m) const {
   // @todo move 'fillE' to separate utils file and use it here.
   Eigen::Matrix<Scalar, 3, 3> E = I(Scalar(0.5), Scalar(0.5), Scalar(0.5)).toDenseMatrix();
   if (theta_sq > Constants<Scalar>::eps) {
-    const Scalar A = (theta - sin(theta)) / theta_sq;
-    const Scalar B = (theta_sq + Scalar(2) * cos(theta) - Scalar(2)) / (Scalar(2) * theta_sq);
+    const Scalar A = (theta - sin(theta)) / theta_sq / theta;
+    const Scalar B = (theta_sq + Scalar(2) * cos(theta) - Scalar(2)) / (Scalar(2) * theta_sq * theta_sq);
 
     const typename SO3Tangent<Scalar>::LieAlg W = so3tan.hat();
     E.noalias() += (A * W + B * W * W);
