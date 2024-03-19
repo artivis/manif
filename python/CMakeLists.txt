@@ -5,6 +5,7 @@ pybind11_add_module(manifpy MODULE
   bindings_se2.cpp
   bindings_se3.cpp
   bindings_se_2_3.cpp
+  bindings_sgal3.cpp
   bindings_manif.cpp
 )
 target_link_libraries(manifpy PRIVATE ${PROJECT_NAME})
