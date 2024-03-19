@@ -14,14 +14,14 @@ namespace internal {
 //! traits specialization
 template <typename _Derived>
 struct LieGroupProperties<SGal3Base<_Derived>> {
-  static constexpr int Dim = 4; /// @brief Space dimension
+  static constexpr int Dim = 3; /// @brief Space dimension
   static constexpr int DoF = 10; /// @brief Degrees of freedom
 };
 
 //! traits specialization
 template <typename _Derived>
 struct LieGroupProperties<SGal3TangentBase<_Derived>> {
-  static constexpr int Dim = 4; /// @brief Space dimension
+  static constexpr int Dim = 3; /// @brief Space dimension
   static constexpr int DoF = 10; /// @brief Degrees of freedom
 };
 

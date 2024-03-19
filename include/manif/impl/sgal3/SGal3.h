@@ -32,7 +32,7 @@ struct traits<SGal3<_Scalar>> {
   using Rotation       = Eigen::Matrix<Scalar, 3, 3>;
   using Translation    = Eigen::Matrix<Scalar, 3, 1>;
   using LinearVelocity = Eigen::Matrix<Scalar, 3, 1>;
-  using Vector         = Eigen::Matrix<Scalar, 4, 1>;
+  using Vector         = Eigen::Matrix<Scalar, 3, 1>;
 };
 
 } // namespace internal

@@ -92,16 +92,16 @@ public:
 
   /**
    * @brief Get the action
-   * @param[in] v A 4D point (3D + time).
+   * @param[in] v A 3D point.
    * @param[out] -optional- J_vout_m The Jacobian of the new object wrt this.
    * @param[out] -optional- J_vout_v The Jacobian of the new object wrt input object.
    */
   template <typename _EigenDerived>
-  Eigen::Matrix<Scalar, 4, 1>
+  Eigen::Matrix<Scalar, 3, 1>
   act(
     const Eigen::MatrixBase<_EigenDerived> &v,
-    tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 4, 10>>> J_vout_m = {},
-    tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 4, 4>>> J_vout_v = {}
+    tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 10>>> J_vout_m = {},
+    tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v = {}
   ) const;
 
   /**
@@ -339,30 +339,28 @@ SGal3Base<_Derived>::compose(
 
 template <typename _Derived>
 template <typename _EigenDerived>
-Eigen::Matrix<typename SGal3Base<_Derived>::Scalar, 4, 1>
+Eigen::Matrix<typename SGal3Base<_Derived>::Scalar, 3, 1>
 SGal3Base<_Derived>::act(
   const Eigen::MatrixBase<_EigenDerived> &v,
-  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 4, 10>>> J_vout_m,
-  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 4, 4>>> J_vout_v
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 10>>> J_vout_m,
+  tl::optional<Eigen::Ref<Eigen::Matrix<Scalar, 3, 3>>> J_vout_v
 ) const {
-  assert_vector_dim(v, 4);
+  assert_vector_dim(v, 3);
 
   const Rotation R(rotation());
 
   if (J_vout_m) {
-    MANIF_NOT_IMPLEMENTED_YET;
+    J_vout_m->template topLeftCorner<3, 3>() = R;
+    J_vout_m->template block<3, 3>(0, 3).setZero();
+    J_vout_m->template block<3, 3>(0, 6).noalias() = -R * skew(v);
+    J_vout_m->template topRightCorner<3, 1>().setZero();
   }
 
   if (J_vout_v) {
-    J_vout_v->setIdentity();
-    J_vout_v->template topLeftCorner<3, 3>() = R;
+    (*J_vout_v) = R;
   }
 
-  Eigen::Matrix<Scalar, 4, 1> p;
-  p << linearVelocity(), t() + v(3);
-  p.template head<3>() += R * v.template head<3>() + v(3) * translation();
-
-  return p;
+  return translation() + R * v;
 }
 
 
