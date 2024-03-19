@@ -353,7 +353,7 @@ SGal3Base<_Derived>::act(
     J_vout_m->template topLeftCorner<3, 3>() = R;
     J_vout_m->template block<3, 3>(0, 3).setZero();
     J_vout_m->template block<3, 3>(0, 6).noalias() = -R * skew(v);
-    J_vout_m->template topRightCorner<3, 1>().setZero();
+    J_vout_m->template topRightCorner<3, 1>() = linearVelocity();
   }
 
   if (J_vout_v) {
