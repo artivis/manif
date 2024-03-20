@@ -261,27 +261,10 @@ SGal3Base<_Derived>::inverse(OptJacobianRef J_minv_m) const {
 template <typename _Derived>
 typename SGal3Base<_Derived>::Tangent
 SGal3Base<_Derived>::log(OptJacobianRef J_t_m) const {
-  using I = typename Eigen::DiagonalMatrix<Scalar, 3>;
-
-  using std::sqrt;
-  using std::cos;
-  using std::sin;
-
   const SO3Tangent<Scalar> so3tan = asSO3().log();
 
-  const Scalar theta_sq = so3tan.coeffs().squaredNorm();
-  const Scalar theta = sqrt(theta_sq); // rotation angle
-
-  // small angle approx.
-  // @todo move 'fillE' to separate utils file and use it here.
-  Eigen::Matrix<Scalar, 3, 3> E = I(Scalar(0.5), Scalar(0.5), Scalar(0.5)).toDenseMatrix();
-  if (theta_sq > Constants<Scalar>::eps) {
-    const Scalar A = (theta - sin(theta)) / theta_sq / theta;
-    const Scalar B = (theta_sq + Scalar(2) * cos(theta) - Scalar(2)) / (Scalar(2) * theta_sq * theta_sq);
-
-    const typename SO3Tangent<Scalar>::LieAlg W = so3tan.hat();
-    E.noalias() += (A * W + B * W * W);
-  }
+  Eigen::Matrix<Scalar, 3, 3> E;
+  Tangent::fillE(E, Eigen::Map<const SO3Tangent<Scalar>>(so3tan.data()));
 
   const LinearVelocity nu = so3tan.ljacinv() * linearVelocity();
 
@@ -383,11 +366,11 @@ SGal3Base<_Derived>::adj() const {
     skew(translation() - t() * linearVelocity()) * Adj.template topLeftCorner<3, 3>();
   Adj.template topRightCorner<3, 1>() = linearVelocity();
 
-  Adj.template block<3, 3>(3, 3).noalias() = Adj.template topLeftCorner<3, 3>();
+  Adj.template block<3, 3>(3, 3) = Adj.template topLeftCorner<3, 3>();
   Adj.template block<3, 3>(3, 6).noalias() =
     skew(linearVelocity()) * Adj.template topLeftCorner<3, 3>();
 
-  Adj.template block<3,  3>(6, 6).noalias() = Adj.template topLeftCorner<3, 3>();
+  Adj.template block<3,  3>(6, 6) = Adj.template topLeftCorner<3, 3>();
 
   Adj.template bottomLeftCorner<7, 3>().setZero();
   Adj.template block<4, 3>(6, 3).setZero();

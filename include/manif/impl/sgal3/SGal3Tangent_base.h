@@ -210,6 +210,8 @@ SGal3TangentBase<_Derived>::rjac() const {
 template <typename _Derived>
 typename SGal3TangentBase<_Derived>::Jacobian
 SGal3TangentBase<_Derived>::ljac() const {
+  using ConstRef33 = const Eigen::Ref<const Eigen::Matrix<Scalar, 3, 3>>;
+  using Ref61 = Eigen::Ref<Eigen::Matrix<Scalar, 6, 1>>;
   using Diag = typename Eigen::DiagonalMatrix<Scalar, 3>;
   auto I33 = [](const Scalar d){ return Diag(d, d, d).toDenseMatrix(); };
 
@@ -228,7 +230,8 @@ SGal3TangentBase<_Derived>::ljac() const {
    *
    * Tangent space is tau = [rho ; nu ; theta ; t] in R^10
    *
-   * Matrix blocks D, E, L, M, N, N1, N2 are referred to in the comments and correspond to eqs. in Kelly's paper:
+   * Matrix blocks D, E, L, M, N, N1, N2 are referred to in the comments and
+   * correspond to eqs. in Kelly's paper:
    *
    *    D:  (18) = Jl_SO3(theta)
    *    E:  (19)
@@ -237,89 +240,125 @@ SGal3TangentBase<_Derived>::ljac() const {
    *    N:  (34) = N1 - N2
    *    N1: (35) = Q(rho,theta)
    *    N2: (36)
+   *
+   * Note that we use the following temporary blocks for computation
+   *
+   * Jl = [ .  .  E   .
+   *        V  .  .  rho
+   *        W W^2 . theta
+   *        .  .  .   .   ]
+   *
    */
-
-
 
   Jacobian Jl;
 
-  const Eigen::Map<const SO3Tangent<Scalar>> so3 = asSO3();               // theta vector
-
-  // Blocks D
-  Eigen::Matrix<Scalar,3,3> D = so3.ljac();
-  Jl.template topLeftCorner<3, 3>() = D;                                  // Block D
-  Jl.template block<3, 3>(3, 3)     = D;                                  // Block D
-  Jl.template block<3, 3>(6, 6)     = D;                                  // Block D
-
-  // Block E
-  Eigen::Matrix<Scalar,3,3> E;
-  fillE(E, so3);                                                          // Block E
-  Jl.template block<3,1>(0,9) = E * lin2();                               // Block E * nu
+  // theta vector
+  const Eigen::Map<const SO3Tangent<Scalar>> so3 = asSO3();
 
   // Skew matrix W = theta^
-  Eigen::Matrix<Scalar,3,3> W = so3.hat();
+  Jl.template block<3, 3>(3, 0) = so3.hat();
+  ConstRef33 W = Jl.template block<3, 3>(3, 0);
+
+  // Skew matrix W^2
+  Jl.template block<3, 3>(6, 3) = W * W;
+  ConstRef33 WW = Jl.template block<3, 3>(6, 3);
+
   // Skew matrix V = nu^
-  Eigen::Matrix<Scalar,3,3> V = skew(lin2());
+  Jl.template block<3, 3>(6, 0) = skew(lin2());
+  ConstRef33 V = Jl.template block<3, 3>(6, 0);
 
   // Angles and trigonometry
   const Scalar theta_sq = so3.coeffs().squaredNorm();
-  const Scalar theta    = sqrt(theta_sq); // rotation angle
+  // rotation angle
+  const Scalar theta = sqrt(theta_sq);
   const Scalar theta_cu = theta * theta_sq;
 
   const Scalar sin_t = sin(theta);
   const Scalar cos_t = cos(theta);
+
+  // Blocks D
+  Jl.template topLeftCorner<3, 3>() = so3.ljac();
+  Jl.template block<3, 3>(3, 3) = Jl.template topLeftCorner<3, 3>();
+  Jl.template block<3, 3>(6, 6) = Jl.template topLeftCorner<3, 3>();
+
+  // Block E
+  // Note - we use here a temporary block to hold E
+  Jl.template block<3, 3>(0, 6) = I33(Scalar(0.5));
+  if (theta_sq > Constants<Scalar>::eps) {
+    const Scalar A = (theta - sin_t) / theta_sq / theta;
+    const Scalar B = (
+      theta_sq + Scalar(2) * cos_t - Scalar(2)
+    ) / (Scalar(2) * theta_sq * theta_sq);
+
+    Jl.template block<3, 3>(0, 6).noalias() += A * W + B * WW;
+  }
+
+  // Block E * nu
+  Jl.template block<3, 1>(0, 9) = Jl.template block<3, 3>(0, 6) * lin2();
 
   // Block L
   Scalar cA, cB;
   // small angle approx.
   if (theta_cu > Constants<Scalar>::eps) {
     cA = (sin_t - theta * cos_t) / theta_cu;
-    cB = (theta_sq + Scalar(2) * (Scalar(1) - theta * sin_t - cos_t)) / (Scalar(2) * theta_sq * theta_sq);
+    cB = (
+      theta_sq + Scalar(2) * (Scalar(1) - theta * sin_t - cos_t)
+    ) / (Scalar(2) * theta_sq * theta_sq);
   } else {
     cA = Scalar(1./3.)  - Scalar(1./30.) * theta_sq;
     cB = Scalar(1./8.);
   }
-  Jl.template block<3, 3>(0, 3).noalias() = -t() * (                      // Block - L * t
-    I33(Scalar(0.5)) + cA * W + cB * W * W                                // Block L
+
+  // Block - L * t
+  Jl.template block<3, 3>(0, 3).noalias() = -t() * (
+    // Block L
+    I33(Scalar(0.5)) + cA * W + cB * WW
   );
 
-  // Block M = Q(nu,theta)
-  SE3Tangent<Scalar>::fillQ(Jl.template block<3, 3>(3, 6), coeffs().template segment<6>(3)); // Block M = Q(nu,theta)
+  // Block M = Q(nu, theta)
+  SE3Tangent<Scalar>::fillQ(
+    Jl.template block<3, 3>(3, 6), coeffs().template segment<6>(3)
+  );
 
-
-  // Block N1, part of N. N1 = Q(rho,theta)
-  Eigen::Matrix<Scalar, 6, 1> rho_theta;
+  // Block N1, part of N. N1 = Q(rho, theta)
+  Ref61 rho_theta = Jl.template block<6, 1>(3, 9);
   rho_theta << lin(), ang();
-  SE3Tangent<Scalar>::fillQ(Jl.template block<3, 3>(0, 6), rho_theta);    // block N1 = Q(rho,theta)
+  // block N1 = Q(rho,theta)
+  SE3Tangent<Scalar>::fillQ(Jl.template block<3, 3>(0, 6), rho_theta);
 
   // Block N2, part of N
   Scalar cC, cD, cE, cF;
   if (theta_cu > Constants<Scalar>::eps) {
     cA = (Scalar(2) - theta * sin_t - Scalar(2) * cos_t) / theta_cu / theta;
-    cB = (theta_cu + Scalar(6) * theta + Scalar(6) * theta * cos_t - Scalar(12) * sin_t) / (Scalar(6) * theta_cu * theta_sq);
-    cC = (Scalar(12) * sin_t - theta_cu - Scalar(3) * theta_sq * sin_t - Scalar(12) * theta * cos_t) / (Scalar(6) * theta_cu * theta_sq);
-    cD = (Scalar(4) + theta_sq * (Scalar(1) + cos_t) - Scalar(4) * (theta * sin_t + cos_t) ) / (Scalar(2) * theta_cu * theta_cu);
+    cB = (
+      theta_cu + Scalar(6) * theta + Scalar(6) * theta * cos_t - Scalar(12) * sin_t
+    ) / (Scalar(6) * theta_cu * theta_sq);
+    cC = (
+      Scalar(12) * sin_t - theta_cu - Scalar(3) * theta_sq * sin_t - Scalar(12) * theta * cos_t
+    ) / (Scalar(6) * theta_cu * theta_sq);
+    cD = (
+      Scalar(4) + theta_sq * (Scalar(1) + cos_t) - Scalar(4) * (theta * sin_t + cos_t)
+    ) / (Scalar(2) * theta_cu * theta_cu);
     cE = (theta_sq + Scalar(2) * (cos_t - Scalar(1))) / (Scalar(2) * theta_cu * theta);
     cF = (theta_cu + Scalar(6) * (sin_t - theta)) / (Scalar(6) * theta_cu * theta_sq);
-  }else{
-    cA = Scalar(1./12.);
-    cB = Scalar(1./24.);
-    cC = Scalar(1./10.);
-    cD = Scalar(1./240.);
-    cE = Scalar(1./24.);
-    cF = Scalar(1./120.);
+  } else {
+    cA = Scalar(1. / 12.);
+    cB = Scalar(1. / 24.);
+    cC = Scalar(1. / 10.);
+    cD = Scalar(1. / 240.);
+    cE = Scalar(1. / 24.);
+    cF = Scalar(1. / 120.);
   }
 
-  Eigen::Matrix<Scalar,3,3> N2 = t() / Scalar(6) * V                      // Block N2, part of N
-    + (cA * W + cB * W * W) * (t() * V)
-    // + cC * t() * (W * V * W)
+  // Block N = N1 - N2
+  Jl.template block<3, 3>(0, 6) -= (
+    // Block N2
+    t() / Scalar(6) * V
+    + (cA * W + cB * WW) * (t() * V)
     + cC * (W * V * (t() * W))
-    // + cD * t() * (W * W * V * W)
-    + cD * (W * W * V * (t() * W))
-    + t() * V * (cE * W + cF * W * W)
-    ;
-
-  Jl.template block<3, 3>(0, 6) -= N2;                                    // Block N = N1 - N2
+    + cD * (WW * V * (t() * W))
+    + t() * V * (cE * W + cF * WW)
+  );
 
   // Block 1
   Jl(9, 9) = Scalar(1);
