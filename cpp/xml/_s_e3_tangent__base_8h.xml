@@ -149,6 +149,8 @@
         <link refid="_s_e3_tangent_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
@@ -158,6 +160,18 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SGal3.h</label>
+        <link refid="_s_gal3_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>SGal3Tangent_map.h</label>
+        <link refid="_s_gal3_tangent__map_8h_source"/>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -178,6 +192,22 @@
         <label>SE_2_3.h</label>
         <link refid="_s_e__2__3_8h_source"/>
         <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>SGal3Tangent.h</label>
+        <link refid="_s_gal3_tangent_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SGal3Tangent_base.h</label>
+        <link refid="_s_gal3_tangent__base_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="3">

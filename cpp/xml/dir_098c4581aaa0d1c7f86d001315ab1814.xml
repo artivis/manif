@@ -7,6 +7,7 @@
     <innerdir refid="dir_06b430863ab2111e423628285ed898f1">se2</innerdir>
     <innerdir refid="dir_7449c1c0042ef6ac660434b1ddf567b0">se3</innerdir>
     <innerdir refid="dir_2b84527ec924f8623774721117896c95">se_2_3</innerdir>
+    <innerdir refid="dir_d5ea7431b16784d882d1c237e916634e">sgal3</innerdir>
     <innerdir refid="dir_eb8bd41501b9014d56ec9b114587795e">so2</innerdir>
     <innerdir refid="dir_7b12d306e2d7ee7d082163a21d47eaeb">so3</innerdir>
     <innerfile refid="assignment__assert_8h">assignment_assert.h</innerfile>

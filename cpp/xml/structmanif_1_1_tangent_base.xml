@@ -17,6 +17,9 @@
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; SE_2_3Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_tangent_base" prot="public" virt="non-virtual">manif::SGal3TangentBase&lt; SGal3Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_tangent_base" prot="public" virt="non-virtual">manif::SGal3TangentBase&lt; Map&lt; const manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_tangent_base" prot="public" virt="non-virtual">manif::SGal3TangentBase&lt; Map&lt; manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; SO2Tangent&lt; _Scalar &gt; &gt;</derivedcompoundref>
@@ -28,6 +31,7 @@
     <derivedcompoundref refid="structmanif_1_1_s_e2_tangent_base" prot="public" virt="non-virtual">manif::SE2TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_tangent_base" prot="public" virt="non-virtual">manif::SE3TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public" virt="non-virtual">manif::SE_2_3TangentBase&lt; _Derived &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_tangent_base" prot="public" virt="non-virtual">manif::SGal3TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_tangent_base" prot="public" virt="non-virtual">manif::SO2TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o3_tangent_base" prot="public" virt="non-virtual">manif::SO3TangentBase&lt; _Derived &gt;</derivedcompoundref>
     <includes refid="tangent__base_8h" local="no">tangent_base.h</includes>
@@ -1413,13 +1417,19 @@
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="32">
+        <label>manif::SGal3TangentBase&lt; SGal3Tangent&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_tangent_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="11">
         <label>Eigen::Map&lt; const manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
         <childnode refid="10" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="38">
+      <node id="44">
         <label>manif::SO3TangentBase&lt; SO3Tangent&lt; _Scalar &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1449,19 +1459,19 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="39">
         <label>Eigen::Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="32" relation="public-inheritance">
+        <childnode refid="38" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="34">
+      <node id="40">
         <label>manif::SO2TangentBase&lt; Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="42">
         <label>manif::SO2TangentBase&lt; SO2Tangent&lt; _Scalar &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1473,10 +1483,10 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="35">
+      <node id="41">
         <label>Eigen::Map&lt; const manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="34" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="27">
@@ -1491,13 +1501,13 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="49">
+      <node id="56">
         <label>manif::SO2TangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o2_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="50">
+      <node id="57">
         <label>manif::SO3TangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1509,10 +1519,22 @@
         <childnode refid="18" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="35">
+        <label>Eigen::Map&lt; const manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="47">
         <label>Eigen::Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="40" relation="public-inheritance">
+        <childnode refid="46" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>manif::SGal3TangentBase&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_tangent_base"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="14">
@@ -1521,7 +1543,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="46">
         <label>manif::SO3TangentBase&lt; Map&lt; const manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1539,7 +1561,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="44">
+      <node id="50">
         <label>manif::BundleTangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_bundle_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1551,13 +1573,13 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="46">
+      <node id="52">
         <label>manif::SE2TangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e2_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="47">
+      <node id="53">
         <label>manif::SE3TangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1569,7 +1591,13 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="42">
+      <node id="37">
+        <label>Eigen::Map&lt; manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
         <label>manif::SO3TangentBase&lt; Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1579,6 +1607,12 @@
         <label>manif::BundleTangentBase&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</label>
         <link refid="structmanif_1_1_bundle_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>manif::SGal3Tangent&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_tangent"/>
+        <childnode refid="32" relation="public-inheritance">
         </childnode>
       </node>
       <node id="31">
@@ -1593,13 +1627,13 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="45">
         <label>manif::SO3Tangent&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o3_tangent"/>
-        <childnode refid="38" relation="public-inheritance">
+        <childnode refid="44" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="38">
         <label>manif::SO2TangentBase&lt; Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1611,16 +1645,16 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
+      <node id="43">
         <label>manif::SO2Tangent&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o2_tangent"/>
-        <childnode refid="36" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="43">
+      <node id="49">
         <label>Eigen::Map&lt; manif::SO3Tangent&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_tangent_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="42" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
       <node id="9">
@@ -1629,7 +1663,7 @@
         <childnode refid="8" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="45">
+      <node id="51">
         <label>manif::RnTangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_rn_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1653,7 +1687,7 @@
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="54">
         <label>manif::SE_2_3TangentBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e__2__3_tangent_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1663,6 +1697,18 @@
         <label>Eigen::Map&lt; manif::RnTangent&lt; _Scalar, _N &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4"/>
         <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>manif::SGal3TangentBase&lt; Map&lt; const manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_tangent_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>manif::SGal3TangentBase&lt; Map&lt; manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_tangent_base"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="15">

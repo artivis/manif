@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_d5ea7431b16784d882d1c237e916634e" kind="dir">
+    <compoundname>sgal3</compoundname>
+    <innerfile refid="impl_2sgal3_2_s_gal3_8h">impl/sgal3/SGal3.h</innerfile>
+    <innerfile refid="_s_gal3__base_8h">SGal3_base.h</innerfile>
+    <innerfile refid="_s_gal3__map_8h">SGal3_map.h</innerfile>
+    <innerfile refid="_s_gal3__properties_8h">SGal3_properties.h</innerfile>
+    <innerfile refid="_s_gal3_tangent_8h">SGal3Tangent.h</innerfile>
+    <innerfile refid="_s_gal3_tangent__base_8h">SGal3Tangent_base.h</innerfile>
+    <innerfile refid="_s_gal3_tangent__map_8h">SGal3Tangent_map.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/"/>
+  </compounddef>
+</doxygen>

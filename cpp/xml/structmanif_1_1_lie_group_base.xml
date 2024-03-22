@@ -17,6 +17,9 @@
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; SE_2_3&lt; _Scalar &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_base" prot="public" virt="non-virtual">manif::SGal3Base&lt; Map&lt; const manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_base" prot="public" virt="non-virtual">manif::SGal3Base&lt; SGal3&lt; _Scalar &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_base" prot="public" virt="non-virtual">manif::SGal3Base&lt; Map&lt; manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</derivedcompoundref>
@@ -28,6 +31,7 @@
     <derivedcompoundref refid="structmanif_1_1_s_e2_base" prot="public" virt="non-virtual">manif::SE2Base&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e3_base" prot="public" virt="non-virtual">manif::SE3Base&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_e__2__3_base" prot="public" virt="non-virtual">manif::SE_2_3Base&lt; _Derived &gt;</derivedcompoundref>
+    <derivedcompoundref refid="structmanif_1_1_s_gal3_base" prot="public" virt="non-virtual">manif::SGal3Base&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o2_base" prot="public" virt="non-virtual">manif::SO2Base&lt; _Derived &gt;</derivedcompoundref>
     <derivedcompoundref refid="structmanif_1_1_s_o3_base" prot="public" virt="non-virtual">manif::SO3Base&lt; _Derived &gt;</derivedcompoundref>
     <includes refid="lie__group__base_8h" local="no">lie_group_base.h</includes>
@@ -1401,7 +1405,7 @@
         <childnode refid="20" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="54">
         <label>manif::SE_2_3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e__2__3_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1425,10 +1429,10 @@
         <childnode refid="14" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="39">
         <label>manif::SO2&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o2"/>
-        <childnode refid="32" relation="public-inheritance">
+        <childnode refid="38" relation="public-inheritance">
         </childnode>
       </node>
       <node id="27">
@@ -1437,28 +1441,40 @@
         <childnode refid="26" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="33">
+        <label>Eigen::Map&lt; const manif::SGal3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_gal3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>Eigen::Map&lt; const manif::Bundle&lt; _Scalar, T... &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="38">
+      <node id="44">
         <label>manif::SO3Base&lt; Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="46">
         <label>manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="43">
+      <node id="32">
+        <label>manif::SGal3Base&lt; Map&lt; const manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="49">
         <label>Eigen::Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="42" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
       <node id="8">
@@ -1467,22 +1483,22 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="38">
         <label>manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="34">
+      <node id="40">
         <label>manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="35">
+      <node id="41">
         <label>Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="34" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="24">
@@ -1509,10 +1525,10 @@
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="47">
         <label>manif::SO3&lt; _Scalar &gt;</label>
         <link refid="structmanif_1_1_s_o3"/>
-        <childnode refid="40" relation="public-inheritance">
+        <childnode refid="46" relation="public-inheritance">
         </childnode>
       </node>
       <node id="7">
@@ -1521,7 +1537,7 @@
         <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="42">
         <label>manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1545,6 +1561,12 @@
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="55">
+        <label>manif::SGal3Base&lt; _Derived &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="31">
         <label>Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4"/>
@@ -1563,7 +1585,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="50">
+      <node id="57">
         <label>manif::SO3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o3_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1587,13 +1609,13 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="49">
+      <node id="56">
         <label>manif::SO2Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_o2_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="47">
+      <node id="53">
         <label>manif::SE3Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e3_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1605,9 +1627,15 @@
         <childnode refid="8" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="46">
+      <node id="52">
         <label>manif::SE2Base&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_s_e2_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>manif::SGal3Base&lt; SGal3&lt; _Scalar &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_base"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
@@ -1617,10 +1645,16 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="37">
+        <label>Eigen::Map&lt; manif::SGal3&lt; _Scalar &gt;, 0 &gt;</label>
+        <link refid="class_eigen_1_1_map_3_01manif_1_1_s_gal3_3_01___scalar_01_4_00_010_01_4"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="45">
         <label>Eigen::Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o3_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="38" relation="public-inheritance">
+        <childnode refid="44" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -1629,7 +1663,13 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="45">
+      <node id="35">
+        <label>manif::SGal3&lt; _Scalar &gt;</label>
+        <link refid="structmanif_1_1_s_gal3"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="51">
         <label>manif::RnBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_rn_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1653,7 +1693,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="42">
+      <node id="48">
         <label>manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
         <link refid="structmanif_1_1_s_o3_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1669,7 +1709,7 @@
         <label>manif::LieGroupBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_lie_group_base"/>
       </node>
-      <node id="44">
+      <node id="50">
         <label>manif::BundleBase&lt; _Derived &gt;</label>
         <link refid="structmanif_1_1_bundle_base"/>
         <childnode refid="1" relation="public-inheritance">
@@ -1681,10 +1721,16 @@
         <childnode refid="28" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
+      <node id="36">
+        <label>manif::SGal3Base&lt; Map&lt; manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</label>
+        <link refid="structmanif_1_1_s_gal3_base"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="43">
         <label>Eigen::Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt;</label>
         <link refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4"/>
-        <childnode refid="36" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

@@ -5,6 +5,7 @@
     <includes refid="_s_o3_tangent_8h" local="yes">manif/impl/so3/SO3Tangent.h</includes>
     <includedby refid="_s_e3_tangent__base_8h" local="yes">SE3Tangent_base.h</includedby>
     <includedby refid="_s_e__2__3_tangent__base_8h" local="yes">SE_2_3Tangent_base.h</includedby>
+    <includedby refid="_s_gal3_tangent__base_8h" local="yes">SGal3Tangent_base.h</includedby>
     <includedby refid="_s_o3_8h" local="yes">SO3.h</includedby>
     <incdepgraph>
       <node id="2">
@@ -132,6 +133,8 @@
         <link refid="_s_e3_tangent_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
@@ -143,7 +146,19 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="14">
+        <label>SGal3.h</label>
+        <link refid="_s_gal3_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SGal3Tangent_map.h</label>
+        <link refid="_s_gal3_tangent__map_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
         <label>SO3.h</label>
         <link refid="_s_o3_8h_source"/>
         <childnode refid="9" relation="include">
@@ -167,6 +182,22 @@
         <label>SE_2_3.h</label>
         <link refid="_s_e__2__3_8h_source"/>
         <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>SGal3Tangent.h</label>
+        <link refid="_s_gal3_tangent_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>SGal3Tangent_base.h</label>
+        <link refid="_s_gal3_tangent__base_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -199,6 +230,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="9">

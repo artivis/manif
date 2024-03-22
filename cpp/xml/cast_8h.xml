@@ -10,18 +10,18 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="35">
         <label>SO2_map.h</label>
         <link refid="_s_o2__map_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="37">
         <label>SO3_base.h</label>
         <link refid="_s_o3__base_8h_source"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -54,12 +54,24 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="31">
+        <label>SGal3.h</label>
+        <link refid="_s_gal3_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>SGal3_map.h</label>
+        <link refid="_s_gal3__map_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
       <node id="21">
         <label>SE3_base.h</label>
         <link refid="_s_e3__base_8h_source"/>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -87,21 +99,25 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -126,20 +142,22 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="40">
         <label>SO3.h</label>
         <link refid="_s_o3_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="39">
         <label>SO3_map.h</label>
         <link refid="_s_o3__map_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -154,6 +172,14 @@
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>SGal3_base.h</label>
+        <link refid="_s_gal3__base_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -189,10 +215,10 @@
         <link refid="impl_2se3_2_s_e3_8h_source"/>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="36">
         <label>SO2.h</label>
         <link refid="_s_o2_8h_source"/>
         <childnode refid="4" relation="include">
@@ -211,13 +237,15 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
       </node>
-      <node id="29">
+      <node id="33">
         <label>SO2_base.h</label>
         <link refid="_s_o2__base_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -232,12 +260,12 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="38">
         <label>SO3.h</label>
         <link refid="impl_2so3_2_s_o3_8h_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -256,7 +284,7 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="32">
         <label>SE3.h</label>
         <link refid="_s_e3_8h_source"/>
         <childnode refid="4" relation="include">
@@ -272,6 +300,14 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="29">
+        <label>SGal3.h</label>
+        <link refid="impl_2sgal3_2_s_gal3_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
       <node id="17">
         <label>SE2_base.h</label>
         <link refid="_s_e2__base_8h_source"/>
@@ -280,12 +316,12 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="34">
         <label>SO2.h</label>
         <link refid="impl_2so2_2_s_o2_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

@@ -120,13 +120,15 @@
         <link refid="_s_o3_tangent_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="5">
         <label>SE3Tangent.h</label>
         <link refid="_s_e3_tangent_8h_source"/>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -139,15 +141,27 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
+      <node id="16">
+        <label>SGal3.h</label>
+        <link refid="_s_gal3_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>SO3Tangent_base.h</label>
         <link refid="_s_o3_tangent__base_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="15">
+        <label>SGal3Tangent_map.h</label>
+        <link refid="_s_gal3_tangent__map_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
         <label>SO3.h</label>
         <link refid="_s_o3_8h_source"/>
         <childnode refid="11" relation="include">
@@ -171,6 +185,22 @@
         <label>SE_2_3.h</label>
         <link refid="_s_e__2__3_8h_source"/>
         <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>SGal3Tangent.h</label>
+        <link refid="_s_gal3_tangent_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SGal3Tangent_base.h</label>
+        <link refid="_s_gal3_tangent__base_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -203,6 +233,8 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="11">

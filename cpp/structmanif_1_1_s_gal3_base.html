@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>manif::SGal3Base struct | manif C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <span id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">
+        <a href="../index.html">manif</a> <span class="m-breadcrumb">|</span> <a href="index.html" class="m-thin">C++ API</a>
+      </span>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="../python/index.html">Python</a></li>
+            <li><a href="https://github.com/artivis/manif">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-template">template&lt;typename _Derived&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>SGal3Base <span class="m-thin">struct</span>
+        </h1>
+        <p>The base class of the <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> group.</p>
+        <nav class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+<aside class="m-note m-info"><h4>Note</h4><p>See &quot;All About the Galilean Group SGal(3)&quot; J. Kelly. <a href="https://arxiv.org/abs/2312.07555">https:/<wbr />/<wbr />arxiv.org/<wbr />abs/<wbr />2312.07555</a></p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;class _Derived&gt;</div>
+              struct <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase&lt;_Derived&gt;</a>
+            </dt>
+            <dd>Base class for Lie groups. Defines the minimum common API.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a02329cee8e1bf4b785e85cc5eb04713b">
+              using <a href="#a02329cee8e1bf4b785e85cc5eb04713b" class="m-doc-self">Rotation</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Rotation
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a13d2a4fac8d447c386070d21b51bc53d">
+              using <a href="#a13d2a4fac8d447c386070d21b51bc53d" class="m-doc-self">Translation</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::Translation
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9c9651634b17699b464a9cbcde09b8d3">
+              using <a href="#a9c9651634b17699b464a9cbcde09b8d3" class="m-doc-self">LinearVelocity</a> = typename <a href="structmanif_1_1internal_1_1traits.html" class="m-doc">internal::<wbr />traits</a>&lt;_Derived&gt;::LinearVelocity
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2ead4808f2bd51271ff1a8f2701740ae">
+              using <a href="#a2ead4808f2bd51271ff1a8f2701740ae" class="m-doc-self">Time</a> = Scalar
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac6c3251eb90da408174b169fdcea726f">
+              using <a href="#ac6c3251eb90da408174b169fdcea726f" class="m-doc-self">Transformation</a> = Eigen::Matrix&lt;Scalar, 5, 5&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              using <a href="#ab8acf6f7de6380c3c9c27736a4a12a0a" class="m-doc">Isometry</a> = Eigen::Matrix&lt;Scalar, 5, 5&gt;
+            </dt>
+            <dd></dd>
+            <dt id="ada77b53a5541bdad5cd6af1d84b53b47">
+              using <a href="#ada77b53a5541bdad5cd6af1d84b53b47" class="m-doc-self">QuaternionDataType</a> = Eigen::Quaternion&lt;Scalar&gt;
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a45e50d670fc666cc2a21aa19810902c0">
+              <span class="m-doc-wrap-bumper">auto <a href="#a45e50d670fc666cc2a21aa19810902c0" class="m-doc-self">inverse</a>(</span><span class="m-doc-wrap">OptJacobianRef J_minv_m = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Get the inverse.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac2cc0992b6d20e977d7f03c1866773e1" class="m-doc">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; Tangent</span>
+            </dt>
+            <dd>Get the <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> corresponding Lie algebra element in vector form.</dd>
+            <dt id="a73d3fd6a810e1dff845c2ecc218bc13c">
+              <span class="m-doc-wrap-bumper">auto <a href="#a73d3fd6a810e1dff845c2ecc218bc13c" class="m-doc-self">lift</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const -&gt; MANIF_DEPRECATED Tangent</span>
+            </dt>
+            <dd>This function is deprecated. Please considere using <a href="structmanif_1_1_s_gal3_base.html#ac2cc0992b6d20e977d7f03c1866773e1" class="m-doc">log</a> instead.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a25bda459a0fa6986f7aa45b50af74a2b" class="m-doc">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const -&gt; LieGroup</span>
+            </dt>
+            <dd>Composition of this and another <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> element.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6c10caf6f8e70dcc3ecea3e3828333e2" class="m-doc">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; p,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 10&gt;&gt;&gt; J_pout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 3&gt;&gt;&gt; J_pout_p = {}) const -&gt; Eigen::Matrix&lt;Scalar, 3, 1&gt;</span>
+            </dt>
+            <dd>Get the action.</dd>
+            <dt id="a020d58bfad02ef653284ea9a2138c04c">
+              <span class="m-doc-wrap-bumper">auto <a href="#a020d58bfad02ef653284ea9a2138c04c" class="m-doc-self">adj</a>(</span><span class="m-doc-wrap">) const -&gt; Jacobian</span>
+            </dt>
+            <dd>Get the adjoint matrix of <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> at this.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adab790d905faf56435120be1285265b5" class="m-doc">transform</a>(</span><span class="m-doc-wrap">) const -&gt; Transformation</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aebb95eebb7b1c8acc204424b6d6accbc" class="m-doc">isometry</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="structmanif_1_1_s_gal3_base.html#ab8acf6f7de6380c3c9c27736a4a12a0a" class="m-doc">Isometry</a></span>
+            </dt>
+            <dd></dd>
+            <dt id="a3e14addb43064df49a50e385f81db28d">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3e14addb43064df49a50e385f81db28d" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; Rotation</span>
+            </dt>
+            <dd>Get the rotational part of this as a rotation matrix.</dd>
+            <dt id="a0c72671ad8375fda9a193f5002fa65e9">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0c72671ad8375fda9a193f5002fa65e9" class="m-doc-self">quat</a>(</span><span class="m-doc-wrap">) const -&gt; QuaternionDataType</span>
+            </dt>
+            <dd>Get the rotational part of this as a quaternion.</dd>
+            <dt id="a21ea39f7c50302edaaebee9688b20337">
+              <span class="m-doc-wrap-bumper">auto <a href="#a21ea39f7c50302edaaebee9688b20337" class="m-doc-self">translation</a>(</span><span class="m-doc-wrap">) const -&gt; Translation</span>
+            </dt>
+            <dd>Get the translational part in vector form.</dd>
+            <dt id="a0070c8798526b4f0805911dfdf10d75a">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0070c8798526b4f0805911dfdf10d75a" class="m-doc-self">x</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the x component of the translational part.</dd>
+            <dt id="a2c7392afa655d60fa6e558fe049168c4">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2c7392afa655d60fa6e558fe049168c4" class="m-doc-self">y</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the y component of translational part.</dd>
+            <dt id="ad16b38c519ab7172cbf5e16c0f487fad">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad16b38c519ab7172cbf5e16c0f487fad" class="m-doc-self">z</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the z component of translational part.</dd>
+            <dt id="ad66d6fdf2cb0fb95e4dd556de9d18f61">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad66d6fdf2cb0fb95e4dd556de9d18f61" class="m-doc-self">linearVelocity</a>(</span><span class="m-doc-wrap">) const -&gt; LinearVelocity</span>
+            </dt>
+            <dd>Get the linear velocity part in vector form.</dd>
+            <dt id="a9388d5ef5a7acfdfa14e1d5d7cddcbe6">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9388d5ef5a7acfdfa14e1d5d7cddcbe6" class="m-doc-self">vx</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the x component of the linear velocity part.</dd>
+            <dt id="a2037442a3e8af9a35ca86bba47b197d5">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2037442a3e8af9a35ca86bba47b197d5" class="m-doc-self">vy</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the y component of linear velocity part.</dd>
+            <dt id="a17382a4370d9cba83b1c4c842523d1c5">
+              <span class="m-doc-wrap-bumper">auto <a href="#a17382a4370d9cba83b1c4c842523d1c5" class="m-doc-self">vz</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the z component of linear velocity part.</dd>
+            <dt id="a8107b5df2bf76b5dee521ffbb0156366">
+              <span class="m-doc-wrap-bumper">auto <a href="#a8107b5df2bf76b5dee521ffbb0156366" class="m-doc-self">t</a>(</span><span class="m-doc-wrap">) const -&gt; Scalar</span>
+            </dt>
+            <dd>Get the time.</dd>
+            <dt id="a7efdfe3481251ad2744708f0deb7cd2c">
+              <span class="m-doc-wrap-bumper">void <a href="#a7efdfe3481251ad2744708f0deb7cd2c" class="m-doc-self">normalize</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Normalize the underlying quaternion.</dd>
+            <dt id="aa158555bb26ba03f1c58fb120e3d69b3">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa158555bb26ba03f1c58fb120e3d69b3" class="m-doc-self">asSO3</a>(</span><span class="m-doc-wrap">) const -&gt; Eigen::Map&lt;const <a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>&lt;Scalar&gt;&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa5bac621f65f556364780eaafafc257b">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa5bac621f65f556364780eaafafc257b" class="m-doc-self">asSO3</a>(</span><span class="m-doc-wrap">) -&gt; Eigen::Map&lt;<a href="structmanif_1_1_s_o3.html" class="m-doc">SO3</a>&lt;Scalar&gt;&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa0e22e12510c5d48176b3cd0c72b423b">
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa0e22e12510c5d48176b3cd0c72b423b" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; p,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 10&gt;&gt;&gt; J_pout_m,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 3&gt;&gt;&gt; J_pout_p) const -&gt; Eigen::Matrix&lt;typename <a href="structmanif_1_1_s_gal3_base.html" class="m-doc">SGal3Base</a>&lt;_Derived&gt;::Scalar, 3, 1&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1ac9dd89b140080b8b0284c8bdfb5270">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ac9dd89b140080b8b0284c8bdfb5270" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) -&gt; DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+            <dt id="acee62f2ce8024b20db04c304031af85e">
+              <span class="m-doc-wrap-bumper">auto <a href="#acee62f2ce8024b20db04c304031af85e" class="m-doc-self">coeffs</a>(</span><span class="m-doc-wrap">) const -&gt; const DataType&amp;</span>
+            </dt>
+            <dd>Access the underlying data by const reference.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a7ce9db9ccb753dbe014d050fad09c385">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ce9db9ccb753dbe014d050fad09c385" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) &amp; -&gt; _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9380b9ee1ed9bbdcf3dcf284571f6901">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9380b9ee1ed9bbdcf3dcf284571f6901" class="m-doc-self">derived</a>(</span><span class="m-doc-wrap">) const &amp; -&gt; const _Derived&amp; <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="ab8acf6f7de6380c3c9c27736a4a12a0a"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              using manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /><a href="#ab8acf6f7de6380c3c9c27736a4a12a0a" class="m-doc-self">Isometry</a> = Eigen::Matrix&lt;Scalar, 5, 5&gt;
+            </h3>
+<p>Double direct spatial isometry</p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ac2cc0992b6d20e977d7f03c1866773e1"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Tangent manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac2cc0992b6d20e977d7f03c1866773e1" class="m-doc-self">log</a>(</span><span class="m-doc-wrap">OptJacobianRef J_t_m = {}) const</span></span>
+            </h3>
+            <p>Get the <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> corresponding Lie algebra element in vector form.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> tangent of this.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This is the <a href="structmanif_1_1_s_gal3_base.html#ac2cc0992b6d20e977d7f03c1866773e1" class="m-doc">log()</a> map in vector form.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_s_gal3_tangent.html" class="m-doc">SGal3Tangent</a>.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a25bda459a0fa6986f7aa45b50af74a2b"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">LieGroup manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a25bda459a0fa6986f7aa45b50af74a2b" class="m-doc-self">compose</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_lie_group_base.html" class="m-doc">LieGroupBase</a>&lt;_DerivedOther&gt;&amp; m,
+              OptJacobianRef J_mc_ma = {},
+              OptJacobianRef J_mc_mb = {}) const</span></span>
+            </h3>
+            <p>Composition of this and another <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">m&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>Another <a href="structmanif_1_1_s_gal3.html" class="m-doc">SGal3</a> element.</td>
+                </tr>
+                <tr>
+                  <td>J_mc_ma</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_mc_mb</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The composition of &#x27;this . m&#x27;.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6c10caf6f8e70dcc3ecea3e3828333e2"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Eigen::Matrix&lt;Scalar, 3, 1&gt; manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c10caf6f8e70dcc3ecea3e3828333e2" class="m-doc-self">act</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; p,
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 10&gt;&gt;&gt; J_pout_m = {},
+              tl::optional&lt;Eigen::Ref&lt;Eigen::Matrix&lt;Scalar, 3, 3&gt;&gt;&gt; J_pout_p = {}) const</span></span>
+            </h3>
+            <p>Get the action.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">p&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>A 3D point.</td>
+                </tr>
+                <tr>
+                  <td>J_pout_m</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>J_pout_p</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adab790d905faf56435120be1285265b5"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Transformation manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adab790d905faf56435120be1285265b5" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<p>Get the isometry object (double direct isometry).</p><aside class="m-note m-info"><h4>Note</h4><p>T = | R v t| | 1 s| | 1|</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aebb95eebb7b1c8acc204424b6d6accbc"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename _Derived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="structmanif_1_1_s_gal3_base.html#ab8acf6f7de6380c3c9c27736a4a12a0a" class="m-doc">Isometry</a> manif::<wbr />SGal3Base&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aebb95eebb7b1c8acc204424b6d6accbc" class="m-doc-self">isometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<p>Get the isometry object (double direct isometry).</p><aside class="m-note m-info"><h4>Note</h4><p>T = | R v t| | 1 s| | 1|</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>manif C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

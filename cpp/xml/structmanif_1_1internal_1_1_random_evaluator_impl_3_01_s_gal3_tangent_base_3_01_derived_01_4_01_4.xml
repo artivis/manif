@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::RandomEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_s_gal3_tangent__base_8h" local="no">SGal3Tangent_base.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4_1a973abf1900b9be395c1c2c1bca2e5259" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void manif::internal::RandomEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;::run</definition>
+        <argsstring>(SGal3TangentBase&lt; Derived &gt; &amp;m)</argsstring>
+        <name>run</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_gal3_tangent_base" kindref="compound">SGal3TangentBase</ref>&lt; Derived &gt; &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent_base.h" line="612" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent_base.h" bodystart="612" bodyend="617"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Random specialization for <ref refid="structmanif_1_1_s_gal3_tangent_base" kindref="compound">SGal3TangentBase</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent_base.h" line="611" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent_base.h" bodystart="611" bodyend="618"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4_1a973abf1900b9be395c1c2c1bca2e5259" prot="public" virt="non-virtual"><scope>manif::internal::RandomEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

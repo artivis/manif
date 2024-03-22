@@ -10,6 +10,7 @@
     <includes refid="_s_e3_8h" local="yes">manif/SE3.h</includes>
     <includes refid="_rn_8h" local="yes">manif/Rn.h</includes>
     <includes refid="_s_e__2__3_8h" local="yes">manif/SE_2_3.h</includes>
+    <includes refid="_s_gal3_8h" local="yes">manif/SGal3.h</includes>
     <includes refid="_bundle_8h" local="yes">manif/Bundle.h</includes>
     <includes refid="average_8h" local="yes">manif/algorithms/average.h</includes>
     <includes refid="decasteljau_8h" local="yes">manif/algorithms/decasteljau.h</includes>
@@ -21,7 +22,7 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="80">
         <label>manif/Bundle.h</label>
         <link refid="_bundle_8h_source"/>
         <childnode refid="7" relation="include">
@@ -32,19 +33,19 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="87" relation="include">
         </childnode>
       </node>
       <node id="45">
@@ -81,10 +82,10 @@
         <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="78">
+      <node id="86">
         <label>manif/impl/bundle/BundleTangent.h</label>
         <link refid="_bundle_tangent_8h_source"/>
-        <childnode refid="77" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -114,7 +115,7 @@
         <label>manif/impl/generator.h</label>
         <link refid="generator_8h_source"/>
       </node>
-      <node id="73">
+      <node id="81">
         <label>manif/impl/bundle/Bundle_properties.h</label>
         <link refid="_bundle__properties_8h_source"/>
         <childnode refid="10" relation="include">
@@ -159,6 +160,30 @@
         <childnode refid="39" relation="include">
         </childnode>
       </node>
+      <node id="72">
+        <label>manif/SGal3.h</label>
+        <link refid="_s_gal3_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
       <node id="24">
         <label>manif/impl/utils.h</label>
         <link refid="utils_8h_source"/>
@@ -178,6 +203,12 @@
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>manif/impl/sgal3/SGal3_map.h</label>
+        <link refid="_s_gal3__map_8h_source"/>
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
       <node id="65">
@@ -255,10 +286,16 @@
         <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="79">
+      <node id="87">
         <label>manif/impl/bundle/BundleTangent_map.h</label>
         <link refid="_bundle_tangent__map_8h_source"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>manif/impl/sgal3/SGal3Tangent_map.h</label>
+        <link refid="_s_gal3_tangent__map_8h_source"/>
+        <childnode refid="77" relation="include">
         </childnode>
       </node>
       <node id="38">
@@ -297,12 +334,12 @@
         <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="88">
         <label>manif/algorithms/average.h</label>
         <link refid="average_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
       </node>
       <node id="71">
@@ -317,10 +354,10 @@
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="76">
+      <node id="84">
         <label>manif/impl/bundle/Bundle.h</label>
         <link refid="impl_2bundle_2_bundle_8h_source"/>
-        <childnode refid="74" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -354,6 +391,24 @@
         </childnode>
       </node>
       <node id="74">
+        <label>manif/impl/sgal3/SGal3_base.h</label>
+        <link refid="_s_gal3__base_8h_source"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>manif/impl/sgal3/SGal3_properties.h</label>
+        <link refid="_s_gal3__properties_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
         <label>manif/impl/bundle/Bundle_base.h</label>
         <link refid="_bundle__base_8h_source"/>
         <childnode refid="6" relation="include">
@@ -383,7 +438,7 @@
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="91">
         <label>vector</label>
       </node>
       <node id="56">
@@ -484,12 +539,12 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="90">
         <label>manif/algorithms/decasteljau.h</label>
         <link refid="decasteljau_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
       </node>
       <node id="54">
@@ -548,7 +603,7 @@
         <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="89">
         <label>iostream</label>
       </node>
       <node id="22">
@@ -569,10 +624,28 @@
         <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="92">
         <label>manif/algorithms/interpolation.h</label>
         <link refid="interpolation_8h_source"/>
         <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>manif/impl/sgal3/SGal3Tangent.h</label>
+        <link refid="_s_gal3_tangent_8h_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>manif/impl/sgal3/SGal3Tangent_base.h</label>
+        <link refid="_s_gal3_tangent__base_8h_source"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
         </childnode>
       </node>
       <node id="49">
@@ -678,21 +751,29 @@
         </childnode>
         <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="83">
         <label>manif/impl/bundle/Bundle_map.h</label>
         <link refid="_bundle__map_8h_source"/>
-        <childnode refid="76" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
       </node>
       <node id="61">
         <label>manif/impl/rn/RnTangent.h</label>
         <link refid="_rn_tangent_8h_source"/>
         <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>manif/impl/sgal3/SGal3.h</label>
+        <link refid="impl_2sgal3_2_s_gal3_8h_source"/>
+        <childnode refid="74" relation="include">
         </childnode>
       </node>
       <node id="34">
@@ -711,7 +792,7 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="85">
         <label>manif/impl/bundle/BundleTangent_base.h</label>
         <link refid="_bundle_tangent__base_8h_source"/>
         <childnode refid="17" relation="include">

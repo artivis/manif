@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_gal3_tangent_base_3_01___derived_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::LieGroupProperties&lt; SGal3TangentBase&lt; _Derived &gt; &gt;</compoundname>
+    <includes refid="_s_gal3__properties_8h" local="no">SGal3_properties.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_gal3_tangent_base_3_01___derived_01_4_01_4_1aecb9164227d8d471bc168382d4318247" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SGal3TangentBase&lt; _Derived &gt; &gt;::Dim</definition>
+        <argsstring></argsstring>
+        <name>Dim</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" line="24" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_gal3_tangent_base_3_01___derived_01_4_01_4_1a78fa0cba2695df3a91ab49cfecc4a0fd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int manif::internal::LieGroupProperties&lt; SGal3TangentBase&lt; _Derived &gt; &gt;::DoF</definition>
+        <argsstring></argsstring>
+        <name>DoF</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Space dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" line="25" column="24" bodyfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>traits specialization </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" line="23" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3_properties.h" bodystart="23" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_gal3_tangent_base_3_01___derived_01_4_01_4_1aecb9164227d8d471bc168382d4318247" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SGal3TangentBase&lt; _Derived &gt; &gt;</scope><name>Dim</name></member>
+      <member refid="structmanif_1_1internal_1_1_lie_group_properties_3_01_s_gal3_tangent_base_3_01___derived_01_4_01_4_1a78fa0cba2695df3a91ab49cfecc4a0fd" prot="public" virt="non-virtual"><scope>manif::internal::LieGroupProperties&lt; SGal3TangentBase&lt; _Derived &gt; &gt;</scope><name>DoF</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -22,6 +22,10 @@
     <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_gal3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SGal3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_gal3_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SGal3&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
+    <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SGal3Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01const_01manif_1_1_s_o2_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt;</innerclass>
     <innerclass refid="class_eigen_1_1_map_3_01manif_1_1_s_o2_tangent_3_01___scalar_01_4_00_010_01_4" prot="public">Eigen::Map&lt; manif::SO2Tangent&lt; _Scalar &gt;, 0 &gt;</innerclass>

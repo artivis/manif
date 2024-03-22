@@ -32,6 +32,10 @@
     <innerclass refid="structmanif_1_1_s_e__2__3_tangent" prot="public">manif::SE_2_3Tangent</innerclass>
     <innerclass refid="structmanif_1_1_s_e__2__3_base" prot="public">manif::SE_2_3Base</innerclass>
     <innerclass refid="structmanif_1_1_s_e__2__3_tangent_base" prot="public">manif::SE_2_3TangentBase</innerclass>
+    <innerclass refid="structmanif_1_1_s_gal3" prot="public">manif::SGal3</innerclass>
+    <innerclass refid="structmanif_1_1_s_gal3_tangent" prot="public">manif::SGal3Tangent</innerclass>
+    <innerclass refid="structmanif_1_1_s_gal3_base" prot="public">manif::SGal3Base</innerclass>
+    <innerclass refid="structmanif_1_1_s_gal3_tangent_base" prot="public">manif::SGal3TangentBase</innerclass>
     <innerclass refid="structmanif_1_1_s_o2" prot="public">manif::SO2</innerclass>
     <innerclass refid="structmanif_1_1_s_o2_tangent" prot="public">manif::SO2Tangent</innerclass>
     <innerclass refid="structmanif_1_1_s_o2_base" prot="public">manif::SO2Base</innerclass>
@@ -2451,6 +2455,22 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" line="85" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/se_2_3/SE_2_3Tangent.h" declline="85" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_s_gal3_tangent_8h_1a928ae40af6c1cdd637c1dfe3ada92a31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::MANIF_EXTRA_TANGENT_TYPEDEF</definition>
+        <argsstring>(SGal3Tangent)</argsstring>
+        <name>MANIF_EXTRA_TANGENT_TYPEDEF</name>
+        <param>
+          <type><ref refid="structmanif_1_1_s_gal3_tangent" kindref="compound">SGal3Tangent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent.h" line="83" column="1" declfile="/home/runner/work/manif/manif/include/manif/impl/sgal3/SGal3Tangent.h" declline="83" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_s_o2_tangent_8h_1a1b6499354c5bf1549a84650fb53855c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
