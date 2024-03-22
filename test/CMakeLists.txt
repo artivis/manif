@@ -77,6 +77,9 @@ add_subdirectory(se3)
 # # SE_2_3 tests
 add_subdirectory(se_2_3)
 
+# # SGal3 tests
+add_subdirectory(sgal3)
+
 if(NOT MSVC)
   # Bundle tests
   add_subdirectory(bundle)

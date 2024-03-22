@@ -10,6 +10,7 @@
 #include "manif/SE3.h"
 #include "manif/Rn.h"
 #include "manif/SE_2_3.h"
+#include "manif/SGal3.h"
 
 #include "manif/Bundle.h"
 

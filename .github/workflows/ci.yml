@@ -21,13 +21,15 @@ jobs:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
         build_type: [Release, Debug]
-        compiler: [{
-          "cc": "gcc",
-          "cxx": "g++"
-         }, {
-          "cc": "clang",
-          "cxx": "clang++"
-        }]
+        compiler: [
+          {
+            "cc": "gcc",
+            "cxx": "g++"
+          }, {
+            "cc": "clang",
+            "cxx": "clang++"
+          }
+        ]
     env:
       CC: ${{ matrix.compiler.cc }}
       CXX: ${{ matrix.compiler.cxx }}
@@ -88,13 +90,15 @@ jobs:
     runs-on: ${{ matrix.combinations.os }}
     strategy:
       matrix:
-        combinations: [{
-          "os": "windows-2019",
-          "cmake_generator": "Visual Studio 16 2019"
-        }, {
-          "os": "windows-2022",
-          "cmake_generator": "Visual Studio 17 2022"
-        }]
+        combinations: [
+          {
+            "os": "windows-2019",
+            "cmake_generator": "Visual Studio 16 2019"
+          }, {
+            "os": "windows-2022",
+            "cmake_generator": "Visual Studio 17 2022"
+          }
+        ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2

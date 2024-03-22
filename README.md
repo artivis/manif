@@ -26,6 +26,7 @@ At the moment, it provides the groups:
   introduced (to the best of knowledge) in this [paper][barrau15].
   NOTE: The implementation here differs slightly from
   the developments in the [paper][barrau15].
+- SGal(3): The Special Galilean group (rotation, translation, velocity and time) in 3D space, described in these papers [[1][fourmy19]] & [[2][kelly24]].
 - Bundle<>: allows manipulating a manifold bundle as a single Lie group.
   Referred to as a *composite manifold* in Section IV of the
   [reference paper](http://arxiv.org/abs/1812.01537).
@@ -170,6 +171,8 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [jsola18]: http://arxiv.org/abs/1812.01537
 [jsola18v]: http://arxiv.org/abs/1812.01537v4
 [barrau15]: https://arxiv.org/pdf/1410.1465.pdf
+[fourmy19]: https://hal.science/hal-02183498/document
+[kelly24]: https://arxiv.org/abs/2312.07555
 [deray20]: https://joss.theoj.org/papers/10.21105/joss.01371
 
 [jsola-iri-lecture]: https://www.youtube.com/watch?v=nHOcoIyJj2o
