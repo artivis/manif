@@ -5,6 +5,9 @@ add_executable(se2_interpolation se2_interpolation.cpp)
 add_executable(se2_decasteljau se2_DeCasteljau.cpp)
 add_executable(se2_localization se2_localization.cpp)
 add_executable(se2_localization_ukfm se2_localization_ukfm.cpp)
+add_executable(se2_localization_iekf se2_localization_iekf.cpp)
+add_executable(se2_localization_riekf se2_localization_riekf.cpp)
+add_executable(se2_localization_liekf se2_localization_liekf.cpp)
 add_executable(se2_sam se2_sam.cpp)
 
 add_executable(se3_localization se3_localization.cpp)
@@ -26,6 +29,9 @@ set(CXX_11_EXAMPLE_TARGETS
   se2_sam
 
   se2_localization_ukfm
+  se2_localization_iekf
+  se2_localization_riekf
+  se2_localization_liekf
 
   # SE3
   se3_localization
