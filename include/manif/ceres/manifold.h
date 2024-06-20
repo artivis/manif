@@ -1,5 +1,5 @@
-#ifndef _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_
-#define _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_
+#ifndef _MANIF_MANIF_CERES_MANIFOLD_H_
+#define _MANIF_MANIF_CERES_MANIFOLD_H_
 
 #include <Eigen/Core>
 
@@ -9,7 +9,7 @@ namespace manif {
  * @brief A wrapper for Ceres autodiff local parameterization.
  */
 template <typename _LieGroup>
-class CeresLocalParameterizationFunctor
+class CeresManifoldFunctor
 {
   using LieGroup = _LieGroup;
   using Tangent  = typename _LieGroup::Tangent;
@@ -22,8 +22,8 @@ class CeresLocalParameterizationFunctor
 
 public:
 
-  CeresLocalParameterizationFunctor() = default;
-  virtual ~CeresLocalParameterizationFunctor() = default;
+  CeresManifoldFunctor() = default;
+  virtual ~CeresManifoldFunctor() = default;
 
   template<typename T>
   bool operator()(const T* state_raw,
@@ -43,4 +43,4 @@ public:
 
 } /* namespace manif */
 
-#endif /* _MANIF_MANIF_CERES_LOCAL_PARAMETRIZATION_H_ */
+#endif /* _MANIF_MANIF_CERES_MANIFOLD_H_ */

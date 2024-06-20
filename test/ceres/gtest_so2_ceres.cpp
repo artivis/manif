@@ -50,9 +50,9 @@ TEST(TEST_SO2_CERES, TEST_SO2_OBJECTIVE_AUTODIFF)
 
 TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
 {
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parameterization_autodiff<SO2d>();
+  std::shared_ptr<ceres::Manifold>
+    auto_diff_manifold =
+      make_manifold_autodiff<SO2d>();
 
   // 0 + pi
 
@@ -60,7 +60,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   double delta[1] = {MANIF_PI};
   double x_plus_delta[2] = {0.0, 0.0};
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  auto_diff_manifold->Plus(x, delta, x_plus_delta);
 
   EXPECT_DOUBLE_EQ(-1.0, x_plus_delta[0]);
   EXPECT_NEAR(0.0, x_plus_delta[1], 1e-15);
@@ -76,7 +76,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   x_plus_delta[0] = 0;
   x_plus_delta[1] = 0;
 
-  auto_diff_local_parameterization->Plus(x, delta, x_plus_delta);
+  auto_diff_manifold->Plus(x, delta, x_plus_delta);
 
   EXPECT_DOUBLE_EQ(cos(-3.*MANIF_PI/4.), x_plus_delta[0]);
   EXPECT_DOUBLE_EQ(sin(-3.*MANIF_PI/4.), x_plus_delta[1]);
@@ -84,7 +84,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_LOCAL_PARAMETRIZATION_AUTODIFF)
   EXPECT_NEAR(-3.*MANIF_PI/4., Eigen::Map<const SO2d>(x_plus_delta).angle(), 1e-15);
 
   double J_rplus[2];
-  auto_diff_local_parameterization->ComputeJacobian(x, J_rplus);
+  auto_diff_manifold->ComputeJacobian(x, J_rplus);
 
   EXPECT_DOUBLE_EQ(-0.70710678118654746, J_rplus[0]);
   EXPECT_DOUBLE_EQ( 0.70710678118654757, J_rplus[1]);
@@ -95,7 +95,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
-  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.manifold_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
   ceres::Problem problem(problem_options);
 
@@ -137,12 +137,12 @@ TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
                             nullptr,
                             average_state.data() );
 
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parameterization_autodiff<SO2d>();
+  std::shared_ptr<ceres::Manifold>
+    auto_diff_manifold =
+      make_manifold_autodiff<SO2d>();
 
   problem.SetParameterization( average_state.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";
@@ -170,7 +170,7 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT_AUTODIFF)
   // Tell ceres not to take ownership of the raw pointers
   ceres::Problem::Options problem_options;
   problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
-  problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+  problem_options.manifold_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
   ceres::Problem problem(problem_options);
 
@@ -255,33 +255,33 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT_AUTODIFF)
                             nullptr,
                             state_0.data() );
 
-  std::shared_ptr<ceres::LocalParameterization>
-    auto_diff_local_parameterization =
-      make_local_parameterization_autodiff<SO2d>();
+  std::shared_ptr<ceres::Manifold>
+    auto_diff_manifold =
+      make_manifold_autodiff<SO2d>();
 
   problem.SetParameterization( state_0.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_1.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_2.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_3.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_4.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_5.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_6.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   problem.SetParameterization( state_7.data(),
-                               auto_diff_local_parameterization.get() );
+                               auto_diff_manifold.get() );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";

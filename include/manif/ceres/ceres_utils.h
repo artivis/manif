@@ -1,28 +1,28 @@
 #ifndef _MANIF_MANIF_CERES_UTILS_H_
 #define _MANIF_MANIF_CERES_UTILS_H_
 
-#include "manif/ceres/local_parametrization.h"
+#include "manif/ceres/manifold.h"
 #include "manif/ceres/objective.h"
 #include "manif/ceres/constraint.h"
 
-#include <ceres/autodiff_local_parameterization.h>
+#include <ceres/autodiff_manifold.h>
 #include <ceres/autodiff_cost_function.h>
 
 namespace manif {
 
 /**
  * @brief Helper function to create a Ceres autodiff local parameterization wrapper.
- * @see CeresLocalParameterizationFunctor
+ * @see CeresManifoldFunctor
  */
 template <typename _LieGroup>
 std::shared_ptr<
-  ceres::AutoDiffLocalParameterization<CeresLocalParameterizationFunctor<_LieGroup>,
+  ceres::AutoDiffManifold<CeresManifoldFunctor<_LieGroup>,
   _LieGroup::RepSize, _LieGroup::DoF>>
-make_local_parameterization_autodiff()
+make_manifold_autodiff()
 {
   return std::make_shared<
-      ceres::AutoDiffLocalParameterization<
-        CeresLocalParameterizationFunctor<_LieGroup>, _LieGroup::RepSize, _LieGroup::DoF>>();
+      ceres::AutoDiffManifold<
+        CeresManifoldFunctor<_LieGroup>, _LieGroup::RepSize, _LieGroup::DoF>>();
 }
 
 /**
