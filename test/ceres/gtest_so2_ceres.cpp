@@ -141,8 +141,8 @@ TEST(TEST_SO2_CERES, TEST_SO2_SMALL_PROBLEM_AUTODIFF)
     auto_diff_manifold =
       make_manifold_autodiff<SO2d>();
 
-  problem.SetParameterization( average_state.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( average_state.data(),
+                       auto_diff_manifold.get() );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";
@@ -259,29 +259,29 @@ TEST(TEST_SO2_CERES, TEST_SO2_CONSTRAINT_AUTODIFF)
     auto_diff_manifold =
       make_manifold_autodiff<SO2d>();
 
-  problem.SetParameterization( state_0.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_0.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_1.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_1.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_2.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_2.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_3.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_3.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_4.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_4.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_5.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_5.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_6.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_6.data(),
+                       auto_diff_manifold.get() );
 
-  problem.SetParameterization( state_7.data(),
-                               auto_diff_manifold.get() );
+  problem.SetManifold( state_7.data(),
+                       auto_diff_manifold.get() );
 
   std::cout << "-----------------------------\n";
   std::cout << "|       Calling Solve !     |\n";

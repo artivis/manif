@@ -94,8 +94,8 @@ ceres::Problem problem(problem_options);
 problem->AddParameterBlock(my_state.data(), 4);
 
 // Associate a LocalParameterization to the state vector
-problem_->SetParameterization(my_state.data(),
-                              new EigenQuaternionParameterization() );
+problem_->SetManifold(my_state.data(),
+                      new EigenQuaternionParameterization() );
 ```
 
 The `LocalParameterization` class (and derived) performs the state update step
@@ -221,8 +221,8 @@ std::shared_ptr<ceres::Manifold>
   auto_diff_manifold =
     manif::make_manifold_autodiff<SE2d>();
 
-problem.SetParameterization( average_state.data(),
-                             auto_diff_manifold.get() );
+problem.SetManifold( average_state.data(),
+                     auto_diff_manifold.get() );
 
 // Run the solver!
 ceres::Solver::Options options;
