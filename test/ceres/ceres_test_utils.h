@@ -450,7 +450,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().inverse(), state_out);
 
-    manifold->ComputeJacobian(state_raw, adJ_locpar.data());
+    manifold->PlusJacobian(state_raw, adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters = new double*[2];
@@ -488,7 +488,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().log(J_out_s), delta_out);
 
-    manifold->ComputeJacobian(state_raw, adJ_locpar.data());
+    manifold->PlusJacobian(state_raw, adJ_locpar.data());
 
     adJ_out_s = ad_r_J_out_spd * adJ_locpar;
 
@@ -513,7 +513,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().rplus(getDelta(), J_out_s, J_out_so), state_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
@@ -532,7 +532,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -562,7 +562,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().lplus(getDelta(), J_out_s, J_out_so), state_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
@@ -581,7 +581,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -614,13 +614,13 @@ public:
 
     EXPECT_MANIF_NEAR(getState().rminus(getStateOther()), delta_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
     adJ_out_s = adJ_out_R * lhs_adJ_locpar;
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -656,13 +656,13 @@ public:
 
     EXPECT_MANIF_NEAR(getState().lminus(getStateOther()), delta_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
     adJ_out_s = adJ_out_R * lhs_adJ_locpar;
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -694,7 +694,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().compose(getStateOther(), J_out_s, J_out_so), state_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
@@ -713,7 +713,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -742,7 +742,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().between(getStateOther(), J_out_s, J_out_so), state_out);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 
@@ -761,7 +761,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_other_raw, rhs_adJ_locpar.data()
     );
 
@@ -801,7 +801,7 @@ public:
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::Dim> J_vout_v;
     EXPECT_EIGEN_NEAR(getState().act(vin, J_vout_s, J_vout_v), vout, tol);
 
-    manifold->ComputeJacobian(
+    manifold->PlusJacobian(
       state_raw, lhs_adJ_locpar.data()
     );
 

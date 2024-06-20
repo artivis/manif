@@ -46,9 +46,9 @@ public:
              T* y_minus_x_raw) const
   {
     const Eigen::Map<const LieGroupTemplate<T>> y(y_raw);
-    const Eigen::Map<const TangentTemplate<T>>  x(x_raw);
+    const Eigen::Map<const LieGroupTemplate<T>>  x(x_raw);
 
-    Eigen::Map<LieGroupTemplate<T>> y_minus_x(y_minus_x_raw);
+    Eigen::Map<TangentTemplate<T>> y_minus_x(y_minus_x_raw);
 
     y_minus_x = y - x;
 
