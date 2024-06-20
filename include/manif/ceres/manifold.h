@@ -25,9 +25,10 @@ public:
   CeresManifoldFunctor() = default;
   virtual ~CeresManifoldFunctor() = default;
 
-  bool Plus(const double* state_raw,
-            const double* delta_raw,
-            double* state_plus_delta_raw) const
+  template <typename T>
+  bool Plus(const T* state_raw,
+            const T* delta_raw,
+            T* state_plus_delta_raw) const
   {
     const Eigen::Map<const LieGroupTemplate<T>> state(state_raw);
     const Eigen::Map<const TangentTemplate<T>>  delta(delta_raw);
@@ -39,9 +40,10 @@ public:
     return true;
   }
 
-  bool Minus(const double* y_raw,
-             const double* x_raw,
-             double* y_minus_x_raw) const
+  template <typename T>
+  bool Minus(const T* y_raw,
+             const T* x_raw,
+             T* y_minus_x_raw) const
   {
     const Eigen::Map<const LieGroupTemplate<T>> y(y_raw);
     const Eigen::Map<const TangentTemplate<T>>  x(x_raw);
