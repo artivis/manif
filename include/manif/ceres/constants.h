@@ -4,6 +4,7 @@
 #include "manif/constants.h"
 
 #include <ceres/jet.h>
+#include <ceres/version.h>
 
 namespace manif {
 
