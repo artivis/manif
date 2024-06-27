@@ -378,7 +378,11 @@ class JacobianCeresTester
   using Jacobian  = typename LieGroup::Jacobian;
 
   using ManifObjective = CeresObjectiveFunctor<LieGroup>;
+#if CERES_VERSION_MAJOR >= 2 && CERES_VERSION_MINOR >= 2
   using ManifManifold = CeresManifoldFunctor<LieGroup>;
+#else
+  using ManifManifold = CeresLocalParameterizationFunctor<LieGroup>;
+#endif
 
   using ManifoldJacobian =
     Eigen::Matrix<typename LieGroup::Scalar,
@@ -388,7 +392,11 @@ class JacobianCeresTester
                     Eigen::RowMajor:
                     Eigen::ColMajor>;
 
+#if CERES_VERSION_MAJOR >= 2 && CERES_VERSION_MINOR >= 2
   using ManifoldPtr = std::shared_ptr<ceres::Manifold>;
+#else
+  using ManifoldPtr = std::shared_ptr<ceres::LocalParameterization>;
+#endif
 
   using Inverse = CeresInverseFunctor<LieGroup>;
   using Rplus = CeresRplusFunctor<LieGroup>;
@@ -438,6 +446,15 @@ public:
     delta_out_raw = delta_out.data();
   }
 
+  template <typename... Ts>
+  void getPlusJac(Ts&&... ts) {
+#if CERES_VERSION_MAJOR >= 2 && CERES_VERSION_MINOR >= 2
+    manifold->PlusJacobian(std::forward<Ts>(ts)...);
+#else
+    manifold->ComputeJacobian(std::forward<Ts>(ts)...);
+#endif
+  }
+
   void evalInverseJac()
   {
     parameters = &state_raw;
@@ -450,7 +467,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().inverse(), state_out);
 
-    manifold->PlusJacobian(state_raw, adJ_locpar.data());
+    this->getPlusJac(state_raw, adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters = new double*[2];
@@ -488,7 +505,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().log(J_out_s), delta_out);
 
-    manifold->PlusJacobian(state_raw, adJ_locpar.data());
+    this->getPlusJac(state_raw, adJ_locpar.data());
 
     adJ_out_s = ad_r_J_out_spd * adJ_locpar;
 
@@ -513,9 +530,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().rplus(getDelta(), J_out_s, J_out_so), state_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters[0] = state_out_raw;
@@ -532,9 +547,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_locdepar * adJ_out_RO;
 
@@ -562,9 +575,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().lplus(getDelta(), J_out_s, J_out_so), state_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters[0] = state_out_raw;
@@ -581,9 +592,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_locdepar * adJ_out_RO;
 
@@ -614,15 +623,11 @@ public:
 
     EXPECT_MANIF_NEAR(getState().rminus(getStateOther()), delta_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     adJ_out_s = adJ_out_R * lhs_adJ_locpar;
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
 
@@ -656,15 +661,11 @@ public:
 
     EXPECT_MANIF_NEAR(getState().lminus(getStateOther()), delta_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     adJ_out_s = adJ_out_R * lhs_adJ_locpar;
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_out_RO * rhs_adJ_locpar;
 
@@ -694,9 +695,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().compose(getStateOther(), J_out_s, J_out_so), state_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters[0] = state_out_raw;
@@ -713,9 +712,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_locdepar * adJ_out_RO * rhs_adJ_locpar;
 
@@ -742,9 +739,7 @@ public:
 
     EXPECT_MANIF_NEAR(getState().between(getStateOther(), J_out_s, J_out_so), state_out);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     // Compute the local_de-parameterization (?) Jac
     parameters[0] = state_out_raw;
@@ -761,9 +756,7 @@ public:
 
     EXPECT_EIGEN_NEAR(J_out_s, adJ_out_s, tol);
 
-    manifold->PlusJacobian(
-      state_other_raw, rhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_other_raw, rhs_adJ_locpar.data());
 
     adJ_out_so = adJ_locdepar * adJ_out_RO * rhs_adJ_locpar;
 
@@ -801,9 +794,7 @@ public:
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::Dim> J_vout_v;
     EXPECT_EIGEN_NEAR(getState().act(vin, J_vout_s, J_vout_v), vout, tol);
 
-    manifold->PlusJacobian(
-      state_raw, lhs_adJ_locpar.data()
-    );
+    this->getPlusJac(state_raw, lhs_adJ_locpar.data());
 
     Eigen::Matrix<double, LieGroup::Dim, LieGroup::DoF>
       adJ_vout_s = adJ_vout_sr * lhs_adJ_locpar;
@@ -829,8 +820,11 @@ protected:
 
   double **jacobians;
 
-  ManifoldPtr manifold =
-    make_manifold_autodiff<LieGroup>();
+#if CERES_VERSION_MAJOR >= 2 && CERES_VERSION_MINOR >= 2
+  ManifoldPtr manifold = make_manifold_autodiff<LieGroup>();
+#else
+  ManifoldPtr manifold = make_local_parameterization_autodiff<LieGroup>();
+#endif
 
   LieGroup state_out;
 
