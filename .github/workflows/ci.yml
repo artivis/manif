@@ -262,7 +262,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest] #windows-latest,
-        python-version: ['3.7', '3.8', '3.9', '3.10']
+        python-version: ['3.8', '3.9', '3.10', '3.12']
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
@@ -293,7 +293,7 @@ jobs:
     needs: [build-ubuntu, build-mac]
     strategy:
       matrix:
-        platform: [ubuntu-20.04, ubuntu-latest]
+        platform: [ubuntu-20.04, ubuntu-22.04, ubuntu-latest]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
@@ -322,21 +322,3 @@ jobs:
         run: sudo make install
       - name: Test Import
         run: python3 -c 'import manifpy'
-
-  # arm64:
-  #   needs: [build-ubuntu]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Setup
-  #       run: mkdir ${{runner.workspace}}/build
-  #     - name: Configure CMake
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
-  #     - name: Build
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make
-  #     - name: Test
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make test
