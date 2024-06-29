@@ -177,6 +177,16 @@
     <member refid="classmanif_1_1_ceres_local_parameterization_functor_1a11a88fba5c9eeaf476fde08e285e2d65" kind="function"><name>~CeresLocalParameterizationFunctor</name></member>
     <member refid="classmanif_1_1_ceres_local_parameterization_functor_1aa8e95f3084f1aae6c71b9dfda2d832bb" kind="function"><name>operator()</name></member>
   </compound>
+  <compound refid="classmanif_1_1_ceres_manifold_functor" kind="class"><name>manif::CeresManifoldFunctor</name>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1abeae0efc349c2935cde37723b84aa39e" kind="typedef"><name>LieGroup</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1a2fd878b351a873e76ac5623d15371f34" kind="typedef"><name>Tangent</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1a2ed7bea09abe07d637df9fc241f0782b" kind="typedef"><name>LieGroupTemplate</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1af57cf254f709ba55b1f70b1ffb19f9b2" kind="typedef"><name>TangentTemplate</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1afb223ef93d2b9e38974080f26d79e825" kind="function"><name>CeresManifoldFunctor</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1aaf73916dd29aa23dc119972ce58457da" kind="function"><name>~CeresManifoldFunctor</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1a9ab8746383387b07182893e6d24f1688" kind="function"><name>Plus</name></member>
+    <member refid="classmanif_1_1_ceres_manifold_functor_1a8d4f632bb299f8947d81c2aff8b2cd57" kind="function"><name>Minus</name></member>
+  </compound>
   <compound refid="classmanif_1_1_ceres_objective_functor" kind="class"><name>manif::CeresObjectiveFunctor</name>
     <member refid="classmanif_1_1_ceres_objective_functor_1a3713e648d58ce283cd1a30d5b41473c7" kind="typedef"><name>LieGroup</name></member>
     <member refid="classmanif_1_1_ceres_objective_functor_1a69fce986d70458281f3f3030d0ac06dc" kind="typedef"><name>Tangent</name></member>
@@ -1717,16 +1727,16 @@
     <member refid="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9baccd681e34e5e40fbce74618c3ccffcff" kind="enumvalue"><name>CUBIC</name></member>
     <member refid="interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9ba9b2f119cf49c074cb6ad654e6ce86af7" kind="enumvalue"><name>CNSMOOTH</name></member>
     <member refid="ceres_8h_1ac6ddd9b278529245f92e46842fd29c63" kind="typedef"><name>CeresConstraintSO2</name></member>
-    <member refid="ceres_8h_1a2b5927ae30a820a6079a2b986d73d08c" kind="typedef"><name>CeresLocalParameterizationSO2</name></member>
+    <member refid="ceres_8h_1aa723a1d097a234f47ae3e56ea88f28c8" kind="typedef"><name>CeresManifoldSO2</name></member>
     <member refid="ceres_8h_1ad20159821fd04530436a69c8c3cd3423" kind="typedef"><name>CeresObjectiveSO2</name></member>
     <member refid="ceres_8h_1a3f7b2abd726b9f6eb42bf8f5ef70387a" kind="typedef"><name>CeresConstraintSO3</name></member>
-    <member refid="ceres_8h_1aee09e7904bdab5c5d0a2826f348d4154" kind="typedef"><name>CeresLocalParameterizationSO3</name></member>
+    <member refid="ceres_8h_1ab42ada164698e1cd8115c90f34e7fc8c" kind="typedef"><name>CeresManifoldSO3</name></member>
     <member refid="ceres_8h_1acaa0b20d837b7c4e512e043936f987dc" kind="typedef"><name>CeresObjectiveSO3</name></member>
     <member refid="ceres_8h_1a4324f19851d969ecec715fb89101309c" kind="typedef"><name>CeresConstraintSE2</name></member>
-    <member refid="ceres_8h_1a43d21464a06e1600765d7ba0cafefd68" kind="typedef"><name>CeresLocalParameterizationSE2</name></member>
+    <member refid="ceres_8h_1a9eb35bc1677ec6f0a8b5f64c6b70f8ed" kind="typedef"><name>CeresManifoldSE2</name></member>
     <member refid="ceres_8h_1a2570a7c7229594e3814b302ac334f111" kind="typedef"><name>CeresObjectiveSE2</name></member>
     <member refid="ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d" kind="typedef"><name>CeresConstraintSE3</name></member>
-    <member refid="ceres_8h_1a32997ad0b092395eb2530d1c86354b7c" kind="typedef"><name>CeresLocalParameterizationSE3</name></member>
+    <member refid="ceres_8h_1ae29659c12acd4ebd3c6d291784ed49d2" kind="typedef"><name>CeresManifoldSE3</name></member>
     <member refid="ceres_8h_1a40da5c261df2138cd2f6df516ce22120" kind="typedef"><name>CeresObjectiveSE3</name></member>
     <member refid="eigen_8h_1a081919d2085b3ee3fb49035ca3ea425c" kind="typedef"><name>SquareMatrix</name></member>
     <member refid="impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8" kind="typedef"><name>R1</name></member>
@@ -1963,6 +1973,8 @@
     <member refid="macro_8h_1a452d7c4972f7f593fd70e3042d5eb00a" kind="define"><name>MANIF_EXTRA_TANGENT_TYPEDEF</name></member>
   </compound>
   <compound refid="manif_8h" kind="file"><name>manif.h</name>
+  </compound>
+  <compound refid="manifold_8h" kind="file"><name>manifold.h</name>
   </compound>
   <compound refid="objective_8h" kind="file"><name>objective.h</name>
   </compound>

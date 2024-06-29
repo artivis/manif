@@ -83,8 +83,8 @@
 <codeline><highlight class="normal">problem-&gt;AddParameterBlock(my_state.data(),<sp/>4);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Associate<sp/>a<sp/>LocalParameterization<sp/>to<sp/>the<sp/>state<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">problem_-&gt;SetParameterization(my_state.data(),</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>EigenQuaternionParameterization()<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">problem_-&gt;SetManifold(my_state.data(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>EigenQuaternionParameterization()<sp/>);</highlight></codeline>
 </programlisting></para>
 <para>The <computeroutput>LocalParameterization</computeroutput> class (and derived) performs the state update step of the optimization - the <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}{\bf&amp;space;x}\oplus\mathbf\omega" alt="x(+)omega" inline="yes"></image>
  operation. While the function operates for any <image type="html" name="https://latex.codecogs.com/svg.latex?\color{white}\mathbf\omega" alt="omega" inline="yes"></image>
@@ -151,7 +151,7 @@
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Tell<sp/>ceres<sp/>not<sp/>to<sp/>take<sp/>ownership<sp/>of<sp/>the<sp/>raw<sp/>pointers</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">ceres::Problem::Options<sp/>problem_options;</highlight></codeline>
 <codeline><highlight class="normal">problem_options.cost_function_ownership<sp/>=<sp/>ceres::DO_NOT_TAKE_OWNERSHIP;</highlight></codeline>
-<codeline><highlight class="normal">problem_options.local_parameterization_ownership<sp/>=<sp/>ceres::DO_NOT_TAKE_OWNERSHIP;</highlight></codeline>
+<codeline><highlight class="normal">problem_options.manifold_ownership<sp/>=<sp/>ceres::DO_NOT_TAKE_OWNERSHIP;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">ceres::Problem<sp/>problem(problem_options);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -188,12 +188,12 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>use<sp/>a<sp/>second<sp/>manif<sp/>helper<sp/>that<sp/>creates<sp/>a<sp/>ceres<sp/>local<sp/>parameterization</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>our<sp/>optimized<sp/>state<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">std::shared_ptr&lt;ceres::LocalParameterization&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>auto_diff_local_parameterization<sp/>=</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>manif::make_local_parametrization_autodiff&lt;SE2d&gt;();</highlight></codeline>
+<codeline><highlight class="normal">std::shared_ptr&lt;ceres::Manifold&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>auto_diff_manifold<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>manif::make_manifold_autodiff&lt;SE2d&gt;();</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">problem.SetParameterization(<sp/>average_state.data(),</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto_diff_local_parameterization.get()<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">problem.SetManifold(<sp/>average_state.data(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto_diff_manifold.get()<sp/>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>solver!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">ceres::Solver::Options<sp/>options;</highlight></codeline>

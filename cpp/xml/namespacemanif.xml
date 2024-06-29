@@ -7,6 +7,7 @@
     <innerclass refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4" prot="public">manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</innerclass>
     <innerclass refid="classmanif_1_1_ceres_constraint_functor" prot="public">manif::CeresConstraintFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_local_parameterization_functor" prot="public">manif::CeresLocalParameterizationFunctor</innerclass>
+    <innerclass refid="classmanif_1_1_ceres_manifold_functor" prot="public">manif::CeresManifoldFunctor</innerclass>
     <innerclass refid="classmanif_1_1_ceres_objective_functor" prot="public">manif::CeresObjectiveFunctor</innerclass>
     <innerclass refid="structmanif_1_1_constants" prot="public">manif::Constants</innerclass>
     <innerclass refid="structmanif_1_1_bundle" prot="public">manif::Bundle</innerclass>
@@ -93,20 +94,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="24" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="24" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="32" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="32" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="ceres_8h_1a2b5927ae30a820a6079a2b986d73d08c" prot="public" static="no">
+      <memberdef kind="typedef" id="ceres_8h_1aa723a1d097a234f47ae3e56ea88f28c8" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
-        <definition>using manif::CeresLocalParameterizationSO2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <definition>using manif::CeresManifoldSO2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
         <argsstring></argsstring>
-        <name>CeresLocalParameterizationSO2</name>
+        <name>CeresManifoldSO2</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="25" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="33" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1ad20159821fd04530436a69c8c3cd3423" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -119,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="26" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="26" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="34" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a3f7b2abd726b9f6eb42bf8f5ef70387a" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -132,20 +133,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="34" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="46" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="ceres_8h_1aee09e7904bdab5c5d0a2826f348d4154" prot="public" static="no">
+      <memberdef kind="typedef" id="ceres_8h_1ab42ada164698e1cd8115c90f34e7fc8c" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
-        <definition>using manif::CeresLocalParameterizationSO3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <definition>using manif::CeresManifoldSO3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
         <argsstring></argsstring>
-        <name>CeresLocalParameterizationSO3</name>
+        <name>CeresManifoldSO3</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="35" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="47" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1acaa0b20d837b7c4e512e043936f987dc" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -158,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="36" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="48" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a4324f19851d969ecec715fb89101309c" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -171,20 +172,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="44" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="60" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="60" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="ceres_8h_1a43d21464a06e1600765d7ba0cafefd68" prot="public" static="no">
+      <memberdef kind="typedef" id="ceres_8h_1a9eb35bc1677ec6f0a8b5f64c6b70f8ed" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
-        <definition>using manif::CeresLocalParameterizationSE2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <definition>using manif::CeresManifoldSE2 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
         <argsstring></argsstring>
-        <name>CeresLocalParameterizationSE2</name>
+        <name>CeresManifoldSE2</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="45" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="61" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a2570a7c7229594e3814b302ac334f111" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -197,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="46" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="62" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -210,20 +211,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="54" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="54" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="74" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="74" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="ceres_8h_1a32997ad0b092395eb2530d1c86354b7c" prot="public" static="no">
+      <memberdef kind="typedef" id="ceres_8h_1ae29659c12acd4ebd3c6d291784ed49d2" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
-        <definition>using manif::CeresLocalParameterizationSE3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
+        <definition>using manif::CeresManifoldSE3 = typedef internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</definition>
         <argsstring></argsstring>
-        <name>CeresLocalParameterizationSE3</name>
+        <name>CeresManifoldSE3</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="55" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="75" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ceres_8h_1a40da5c261df2138cd2f6df516ce22120" prot="public" static="no">
         <type><ref refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kindref="compound">internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</ref></type>
@@ -236,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="56" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="56" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" line="76" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="eigen_8h_1a081919d2085b3ee3fb49035ca3ea425c" prot="public" static="no">
         <templateparamlist>
@@ -1443,7 +1444,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="21" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="21" bodyend="26"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="45" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="45" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1aa83ef037aa43ad8fe1dccdbe8c1eb1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1474,7 +1475,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="36" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="36" bodyend="42"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="61" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="61" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="ceres__utils_8h_1a84514b43e5738e0aba8495bdbc58eaca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1505,7 +1506,7 @@ generation on Riemannian manifolds&quot;, Janusz Jakubiak and Fátima Silva Leit
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="52" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="52" bodyend="61"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" line="77" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/ceres_utils.h" bodystart="77" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="functions_8h_1ae20663fb2bed30bfb785d8590f4f45a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

@@ -4,10 +4,14 @@
     <compoundname>ceres/constants.h</compoundname>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
     <includes local="no">ceres/jet.h</includes>
+    <includes local="no">ceres/version.h</includes>
     <includedby refid="ceres_8h" local="yes">ceres.h</includedby>
     <incdepgraph>
       <node id="4">
         <label>limits</label>
+      </node>
+      <node id="6">
+        <label>ceres/version.h</label>
       </node>
       <node id="3">
         <label>cmath</label>
@@ -26,6 +30,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="5">

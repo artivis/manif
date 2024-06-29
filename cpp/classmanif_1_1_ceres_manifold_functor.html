@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>include/manif/ceres/ directory | manif C++ API</title>
+  <title>manif::CeresManifoldFunctor class | manif C++ API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -47,36 +47,51 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a>/</span><span class="m-breadcrumb"><a href="dir_5f2e99f1578ffe2bd1b246fbc95ce1e6.html">manif</a>/</span>ceres<span class="m-breadcrumb">/</span> <span class="m-thin">directory</span>
+          <div class="m-doc-template">template&lt;typename _LieGroup&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span>CeresManifoldFunctor <span class="m-thin">class</span>
         </h1>
-        <p><span></span></p>
+        <p>A wrapper for Ceres autodiff local parameterization.</p>
         <nav class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#files">Files</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-        <section id="files">
-          <h2><a href="#files">Files</a></h2>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
-            <dt>file <a href="ceres_8h.html" class="m-doc">ceres.h</a></dt>
+            <dt id="afb223ef93d2b9e38974080f26d79e825">
+              <span class="m-doc-wrap-bumper"><a href="#afb223ef93d2b9e38974080f26d79e825" class="m-doc-self">CeresManifoldFunctor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="ceres__utils_8h.html" class="m-doc">ceres_utils.h</a></dt>
+            <dt id="aaf73916dd29aa23dc119972ce58457da">
+              <span class="m-doc-wrap-bumper"><a href="#aaf73916dd29aa23dc119972ce58457da" class="m-doc-self">~CeresManifoldFunctor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="ceres_2constants_8h.html" class="m-doc">ceres/constants.h</a></dt>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a9ab8746383387b07182893e6d24f1688">
+              <div class="m-doc-template">template&lt;typename T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ab8746383387b07182893e6d24f1688" class="m-doc-self">Plus</a>(</span><span class="m-doc-wrap">const T* state_raw,
+              const T* delta_raw,
+              T* state_plus_delta_raw) const -&gt; bool</span>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="constraint_8h.html" class="m-doc">constraint.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="local__parametrization_8h.html" class="m-doc">local_parametrization.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="manifold_8h.html" class="m-doc">manifold.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="objective_8h.html" class="m-doc">objective.h</a></dt>
+            <dt id="a8d4f632bb299f8947d81c2aff8b2cd57">
+              <div class="m-doc-template">template&lt;typename T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8d4f632bb299f8947d81c2aff8b2cd57" class="m-doc-self">Minus</a>(</span><span class="m-doc-wrap">const T* y_raw,
+              const T* x_raw,
+              T* y_minus_x_raw) const -&gt; bool</span>
+            </dt>
             <dd><span></span></dd>
           </dl>
         </section>

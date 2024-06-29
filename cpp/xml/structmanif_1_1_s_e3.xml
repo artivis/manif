@@ -176,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="158" bodyend="162"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="94" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="162" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1aa837486062d89c1629f2332c0f5e89fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -216,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="102" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="165" bodyend="169"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="102" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="170" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1aceca32f3c8bcbfbaf8802a873296f8d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="110" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="183" bodyend="187"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="110" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="188" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1a5d4c7b87daa82ccab7d409b490b0a0e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -344,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="123" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="172" bodyend="180"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="123" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="177" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1af463cee23b88a451f3d23caf560835b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -372,7 +372,7 @@ Isometry is a typedef from Eigen::Transform, in which the linear part is assumed
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="133" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="190" bodyend="194"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="133" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="195" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1aeba83f2a7ff383f74b203dbdea25e1ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -385,7 +385,7 @@ Isometry is a typedef from Eigen::Transform, in which the linear part is assumed
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="137" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="198" bodyend="201"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="137" column="12" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="203" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e3_1ad4b9fc82066b694ce22a415eac0188e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -398,7 +398,7 @@ Isometry is a typedef from Eigen::Transform, in which the linear part is assumed
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="138" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="205" bodyend="208"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" line="138" column="18" bodyfile="/home/runner/work/manif/manif/include/manif/impl/se3/SE3.h" bodystart="210" bodyend="213"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

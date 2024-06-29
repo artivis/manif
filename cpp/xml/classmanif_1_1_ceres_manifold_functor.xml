@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classmanif_1_1_ceres_manifold_functor" kind="class" language="C++" prot="public">
+    <compoundname>manif::CeresManifoldFunctor</compoundname>
+    <includes refid="manifold_8h" local="no">manifold.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename _LieGroup</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_manifold_functor_1abeae0efc349c2935cde37723b84aa39e" prot="private" static="no">
+        <type>_LieGroup</type>
+        <definition>using manif::CeresManifoldFunctor&lt; _LieGroup &gt;::LieGroup =  _LieGroup</definition>
+        <argsstring></argsstring>
+        <name>LieGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="14" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_manifold_functor_1a2fd878b351a873e76ac5623d15371f34" prot="private" static="no">
+        <type>typename _LieGroup::Tangent</type>
+        <definition>using manif::CeresManifoldFunctor&lt; _LieGroup &gt;::Tangent =  typename _LieGroup::Tangent</definition>
+        <argsstring></argsstring>
+        <name>Tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="15" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_manifold_functor_1a2ed7bea09abe07d637df9fc241f0782b" prot="private" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>typename LieGroup::template LieGroupTemplate&lt; _Scalar &gt;</type>
+        <definition>using manif::CeresManifoldFunctor&lt; _LieGroup &gt;::LieGroupTemplate =  typename LieGroup::template LieGroupTemplate&lt;_Scalar&gt;</definition>
+        <argsstring></argsstring>
+        <name>LieGroupTemplate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="18" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classmanif_1_1_ceres_manifold_functor_1af57cf254f709ba55b1f70b1ffb19f9b2" prot="private" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename _Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>typename Tangent::template TangentTemplate&lt; _Scalar &gt;</type>
+        <definition>using manif::CeresManifoldFunctor&lt; _LieGroup &gt;::TangentTemplate =  typename Tangent::template TangentTemplate&lt;_Scalar&gt;</definition>
+        <argsstring></argsstring>
+        <name>TangentTemplate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="21" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmanif_1_1_ceres_manifold_functor_1afb223ef93d2b9e38974080f26d79e825" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>manif::CeresManifoldFunctor&lt; _LieGroup &gt;::CeresManifoldFunctor</definition>
+        <argsstring>()=default</argsstring>
+        <name>CeresManifoldFunctor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="25" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_manifold_functor_1aaf73916dd29aa23dc119972ce58457da" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual manif::CeresManifoldFunctor&lt; _LieGroup &gt;::~CeresManifoldFunctor</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CeresManifoldFunctor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="26" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_manifold_functor_1a9ab8746383387b07182893e6d24f1688" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool manif::CeresManifoldFunctor&lt; _LieGroup &gt;::Plus</definition>
+        <argsstring>(const T *state_raw, const T *delta_raw, T *state_plus_delta_raw) const</argsstring>
+        <name>Plus</name>
+        <param>
+          <type>const T *</type>
+          <declname>state_raw</declname>
+        </param>
+        <param>
+          <type>const T *</type>
+          <declname>delta_raw</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>state_plus_delta_raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="29" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="29" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classmanif_1_1_ceres_manifold_functor_1a8d4f632bb299f8947d81c2aff8b2cd57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool manif::CeresManifoldFunctor&lt; _LieGroup &gt;::Minus</definition>
+        <argsstring>(const T *y_raw, const T *x_raw, T *y_minus_x_raw) const</argsstring>
+        <name>Minus</name>
+        <param>
+          <type>const T *</type>
+          <declname>y_raw</declname>
+        </param>
+        <param>
+          <type>const T *</type>
+          <declname>x_raw</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>y_minus_x_raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="44" column="8" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="44" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A wrapper for Ceres autodiff local parameterization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" line="12" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/manifold.h" bodystart="13" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1afb223ef93d2b9e38974080f26d79e825" prot="public" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>CeresManifoldFunctor</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1abeae0efc349c2935cde37723b84aa39e" prot="private" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>LieGroup</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1a2ed7bea09abe07d637df9fc241f0782b" prot="private" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>LieGroupTemplate</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1a8d4f632bb299f8947d81c2aff8b2cd57" prot="public" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>Minus</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1a9ab8746383387b07182893e6d24f1688" prot="public" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>Plus</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1a2fd878b351a873e76ac5623d15371f34" prot="private" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>Tangent</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1af57cf254f709ba55b1f70b1ffb19f9b2" prot="private" virt="non-virtual"><scope>manif::CeresManifoldFunctor</scope><name>TangentTemplate</name></member>
+      <member refid="classmanif_1_1_ceres_manifold_functor_1aaf73916dd29aa23dc119972ce58457da" prot="public" virt="virtual"><scope>manif::CeresManifoldFunctor</scope><name>~CeresManifoldFunctor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

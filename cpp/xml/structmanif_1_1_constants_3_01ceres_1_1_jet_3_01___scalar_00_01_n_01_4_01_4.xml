@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="15" column="27" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="15" bodyend="-1"/>
+        <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="16" column="27" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -35,7 +35,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="14" bodyend="16"/>
+    <location file="/home/runner/work/manif/manif/include/manif/ceres/constants.h" line="14" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/ceres/constants.h" bodystart="15" bodyend="17"/>
     <listofallmembers>
       <member refid="structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4_1a2904d82860f26f25c04e49d6e4394d2f" prot="public" virt="non-virtual"><scope>manif::Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</scope><name>eps</name></member>
     </listofallmembers>
