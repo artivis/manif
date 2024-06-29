@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
         build_type: [Release, Debug]
         compiler: [
           {
@@ -60,10 +60,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # Xcode 10.3 & Xcode 12.2
-        # removing macos-11.0 for now, see
-        #https://github.com/actions/virtual-environments/issues/841
-        os: [macos-11, macos-12]
+        os: [macos-12, macos-13, macos-14]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -193,7 +190,13 @@ jobs:
 
   ceres:
     needs: [build-ubuntu]
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      # Test for both Ceres pre/post 2.2
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -256,7 +259,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest] #windows-latest,
-        python-version: ['3.7', '3.8', '3.9', '3.10']
+        python-version: ['3.8', '3.9', '3.10', '3.12']
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
@@ -287,7 +290,7 @@ jobs:
     needs: [build-ubuntu, build-mac]
     strategy:
       matrix:
-        platform: [ubuntu-20.04, ubuntu-latest]
+        platform: [ubuntu-20.04, ubuntu-22.04, ubuntu-latest]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
@@ -316,21 +319,3 @@ jobs:
         run: sudo make install
       - name: Test Import
         run: python3 -c 'import manifpy'
-
-  # arm64:
-  #   needs: [build-ubuntu]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Setup
-  #       run: mkdir ${{runner.workspace}}/build
-  #     - name: Configure CMake
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
-  #     - name: Build
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make
-  #     - name: Test
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make test

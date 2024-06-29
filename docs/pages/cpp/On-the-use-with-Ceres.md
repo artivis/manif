@@ -94,8 +94,8 @@ ceres::Problem problem(problem_options);
 problem->AddParameterBlock(my_state.data(), 4);
 
 // Associate a LocalParameterization to the state vector
-problem_->SetParameterization(my_state.data(),
-                              new EigenQuaternionParameterization() );
+problem_->SetManifold(my_state.data(),
+                      new EigenQuaternionParameterization() );
 ```
 
 The `LocalParameterization` class (and derived) performs the state update step
@@ -179,7 +179,7 @@ In this example, we compute an average point from 4 points in `SE2`.
 // Tell ceres not to take ownership of the raw pointers
 ceres::Problem::Options problem_options;
 problem_options.cost_function_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
-problem_options.local_parameterization_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
+problem_options.manifold_ownership = ceres::DO_NOT_TAKE_OWNERSHIP;
 
 ceres::Problem problem(problem_options);
 
@@ -217,12 +217,12 @@ problem.AddResidualBlock( obj_3_pi_over_4.get(),
 // We use a second manif helper that creates a ceres local parameterization
 // for our optimized state block.
 
-std::shared_ptr<ceres::LocalParameterization>
-  auto_diff_local_parameterization =
-    manif::make_local_parametrization_autodiff<SE2d>();
+std::shared_ptr<ceres::Manifold>
+  auto_diff_manifold =
+    manif::make_manifold_autodiff<SE2d>();
 
-problem.SetParameterization( average_state.data(),
-                             auto_diff_local_parameterization.get() );
+problem.SetManifold( average_state.data(),
+                     auto_diff_manifold.get() );
 
 // Run the solver!
 ceres::Solver::Options options;
