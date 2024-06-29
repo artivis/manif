@@ -35,7 +35,7 @@ jobs:
       CXX: ${{ matrix.compiler.cxx }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -63,7 +63,7 @@ jobs:
         os: [macos-12, macos-13, macos-14]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           brew install eigen
@@ -98,7 +98,7 @@ jobs:
         ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           vcpkg install eigen3:x64-windows
@@ -124,7 +124,7 @@ jobs:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -146,7 +146,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -168,7 +168,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -199,7 +199,7 @@ jobs:
         os: [ubuntu-22.04, ubuntu-24.04]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -221,7 +221,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -263,7 +263,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: git fetch --prune --unshallow
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
@@ -294,7 +294,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: git fetch --prune --unshallow
       # - name: Set up Python ${{ matrix.python-version }}
       #   uses: actions/setup-python@v2
