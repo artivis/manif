@@ -108,7 +108,9 @@
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_CAST)                \
   { evalCast(); }                                                         \
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_INVERSE)             \
-  { evalInverse(); }
+  { evalInverse(); }                                                      \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_BRACKET)             \
+  { evalBracket(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
@@ -738,6 +740,35 @@ public:
     );
     EXPECT_MANIF_NEAR(LieGroup::Identity(), getState()*getState().inverse());
     EXPECT_MANIF_NEAR(LieGroup::Identity(), getState().inverse()*getState());
+  }
+
+  void evalBracket() {
+
+    // [a,b] = (a.smallAdj() * b)^ = a^b^-b^a^
+    EXPECT_EIGEN_NEAR(
+      Tangent::Bracket(getDelta(), getDeltaOther()).hat(),
+      getDelta().hat() * getDeltaOther().hat() - getDeltaOther().hat() * getDelta().hat()
+    );
+
+    // Jacobi identity [x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0
+    const Tangent& x = getDelta();
+    const Tangent& y = getDeltaOther();
+    const Tangent z = getState().log();
+    EXPECT_MANIF_NEAR(
+      Tangent::Bracket(x, Tangent::Bracket(y, z)) +
+      Tangent::Bracket(y, Tangent::Bracket(z, x)) +
+      Tangent::Bracket(z, Tangent::Bracket(x, y)),
+      Tangent::Zero()
+    );
+
+    // Anti-symmetry [x,y] = -[y,x]
+    EXPECT_MANIF_NEAR(
+      Tangent::Bracket(getDelta(), getDeltaOther()),
+      -Tangent::Bracket(getDeltaOther(), getDelta())
+    );
+
+    // [x,x] = 0
+    EXPECT_MANIF_NEAR(Tangent::Bracket(getDelta(), getDelta()), Tangent::Zero());
   }
 
 protected:

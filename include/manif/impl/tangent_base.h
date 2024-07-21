@@ -5,6 +5,7 @@
 #include "manif/impl/traits.h"
 #include "manif/impl/generator.h"
 #include "manif/impl/random.h"
+#include "manif/impl/bracket.h"
 #include "manif/impl/eigen.h"
 
 #include "manif/constants.h"
@@ -256,6 +257,16 @@ public:
   Jacobian smallAdj() const;
 
   /**
+   * @brief Compute the Lie bracket [this,b] in vector form.
+   *
+   * @tparam _DerivedOther
+   * @param b Another tangent object of the same group.
+   * @return The Lie bracket [this,b] in vector form.
+   */
+  template <typename _DerivedOther>
+  Tangent bracket(const TangentBase<_DerivedOther>& b) const;
+
+  /**
    * @brief Evaluate whether this and v are 'close'.
    * @details This evaluation is performed element-wise.
    * @param[in] v A vector.
@@ -345,6 +356,19 @@ public:
   static LieAlg Generator(const int i);
   //! Static helper to get a Basis of the Lie group.
   static InnerWeightsMatrix InnerWeights();
+
+  /**
+   * @brief Compute the Lie bracket [a,b] in vector form.
+   *
+   * @tparam _DerivedOther
+   * @param a A Tangent object.
+   * @param b A second Tangent object.
+   * @return @return LieAlg The Lie bracket [a,b] in vector form.
+   */
+  template <typename _DerivedOther>
+  static Tangent Bracket(
+    const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
+  );
 
 protected:
 
@@ -623,6 +647,17 @@ TangentBase<_Derived>::smallAdj() const
 }
 
 template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::bracket(
+  const TangentBase<_DerivedOther>& b
+) const {
+  return internal::BracketEvaluator<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base
+  >(derived(), b.derived()).run();
+}
+
+template <typename _Derived>
 template <typename _EigenDerived>
 bool TangentBase<_Derived>::isApprox(
     const Eigen::MatrixBase<_EigenDerived>& t,
@@ -693,6 +728,14 @@ TangentBase<_Derived>::InnerWeights()
 {
   return internal::InnerWeightsEvaluator<
       typename internal::traits<_Derived>::Base>::run();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::Bracket(
+  const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
+) {
+  return a.bracket(b);
 }
 
 // Math
