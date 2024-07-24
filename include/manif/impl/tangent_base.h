@@ -363,7 +363,7 @@ public:
    * @tparam _DerivedOther
    * @param a A Tangent object.
    * @param b A second Tangent object.
-   * @return @return LieAlg The Lie bracket [a,b] in vector form.
+   * @return The Lie bracket [a,b] in vector form.
    */
   template <typename _DerivedOther>
   static Tangent Bracket(
