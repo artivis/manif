@@ -202,6 +202,14 @@ struct RandomEvaluatorImpl<RnTangentBase<Derived>>
   }
 };
 
+template <typename Derived>
+struct BracketEvaluatorImpl<RnTangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static typename Derived::Tangent run(const TL&, const TR&) {
+    return Derived::Tangent::Zero();
+  }
+};
+
 } // namespace internal
 } // namespace manif
 
