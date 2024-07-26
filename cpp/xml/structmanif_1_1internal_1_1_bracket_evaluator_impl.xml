@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_bracket_evaluator_impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::BracketEvaluatorImpl</compoundname>
+    <derivedcompoundref refid="structmanif_1_1internal_1_1_bracket_evaluator" prot="public" virt="non-virtual">manif::internal::BracketEvaluator&lt; Derived, DerivedOther &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_bracket_evaluator_impl_1ad6c1c7f6c0dc015148080f4597b4096c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TL</type>
+          </param>
+          <param>
+            <type>typename TR</type>
+          </param>
+        </templateparamlist>
+        <type>Derived::Tangent</type>
+        <definition>static Derived::Tangent manif::internal::BracketEvaluatorImpl&lt; Derived &gt;::run</definition>
+        <argsstring>(const TL &amp;a, const TR &amp;b)</argsstring>
+        <name>run</name>
+        <param>
+          <type>const TL &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const TR &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bracket.h" line="10" column="36" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bracket.h" bodystart="10" bodyend="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::BracketEvaluator&lt; Derived, DerivedOther &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_bracket_evaluator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::internal::BracketEvaluatorImpl&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_bracket_evaluator_impl"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/bracket.h" line="8" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bracket.h" bodystart="8" bodyend="13"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_1ad6c1c7f6c0dc015148080f4597b4096c" prot="public" virt="non-virtual"><scope>manif::internal::BracketEvaluatorImpl</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -371,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="406" bodyend="409"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="430" bodyend="433"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_bundle_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const Scalar *</type>
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="413" bodyend="416"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="42" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="437" bodyend="440"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_bundle_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="392" bodyend="395"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="416" bodyend="419"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_bundle_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -413,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="399" bodyend="402"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="43" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="423" bodyend="426"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -593,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="351" bodyend="351"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="375" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_bundle_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -606,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="352" bodyend="352"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="47" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="376" bodyend="376"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -641,6 +641,8 @@
     <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="13" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" bodystart="14" bodyend="141"/>
     <listofallmembers>
       <member refid="structmanif_1_1_bundle_tangent_base_1a48dd943c49b6133a993374a2caa197c7" prot="private" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Bracket</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>bracket</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1af83be7f0f38ef8237055e5d74598ae95" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>BundleSize</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>cast</name></member>
@@ -657,16 +659,16 @@
       <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" virt="non-virtual" ambiguityscope="manif::TangentBase::"><scope>manif::BundleTangentBase</scope><name>derived</name></member>
       <member refid="structmanif_1_1_tangent_base_1a6c72f3d4af207ef853df0387a31a8334" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Dim</name></member>
       <member refid="structmanif_1_1_tangent_base_1a10a74cacca2371dfe8260727bd9bdf37" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>DoF</name></member>
+      <member refid="structmanif_1_1_bundle_tangent_base_1a59c382b02a0d0dd9caa86617802239af" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Element</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a780f434e9278e8a5a4b9453db2a44170" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>element</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a7db584bdb7f0c6e99c7196d3e2ffc0b0" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>element</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1ab416f85612c6a549719eaf0e70c11b7b" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>element</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a205678b068afc5abcf45a3d4c34df9a0" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>element</name></member>
-      <member refid="structmanif_1_1_bundle_tangent_base_1a59c382b02a0d0dd9caa86617802239af" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Element</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a49da65e82aa5ec7a9cbcb408c4e85bd5" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Elements</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a50c8a8e4babb10fbfbb3841ffec05ad4" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>exp</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1aa0376c90c367b7c5a484542b7be00d68" prot="protected" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>exp_impl</name></member>
-      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>generator</name></member>
+      <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1af02ece5c5786a54ed76000e15485d8b9" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>hat</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1a804abcb3463bca9ee64093f439d80240" prot="protected" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>hat_impl</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::BundleTangentBase</scope><name>inner</name></member>

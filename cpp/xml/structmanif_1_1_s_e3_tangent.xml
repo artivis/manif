@@ -177,6 +177,8 @@
       <member refid="structmanif_1_1_s_e3_tangent_base_1a11c0f99d7e7b4992743b5a8aa19133ae" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>asSO3</name></member>
       <member refid="structmanif_1_1_s_e3_tangent_base_1a53046daee9eadb30785805c18ecc76e9" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>asSO3</name></member>
       <member refid="structmanif_1_1_s_e3_tangent_1abe393248ed340117ebcff7933fcb387a" prot="private" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>Bracket</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>bracket</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>cast</name></member>
       <member refid="structmanif_1_1_s_e3_tangent_1a9e6376ca4caca55322c50f33f3079cb3" prot="public" virt="non-virtual"><scope>manif::SE3Tangent</scope><name>coeffs</name></member>

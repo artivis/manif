@@ -17,6 +17,8 @@
     <innerclass refid="structmanif_1_1internal_1_1is__ad_3_01ceres_1_1_jet_3_01___scalar_00_01___n_01_4_01_4" prot="public">manif::internal::is_ad&lt; ceres::Jet&lt; _Scalar, _N &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator_impl" prot="public">manif::internal::AssignmentEvaluatorImpl</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_assignment_evaluator" prot="public">manif::internal::AssignmentEvaluator</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_bracket_evaluator_impl" prot="public">manif::internal::BracketEvaluatorImpl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_bracket_evaluator" prot="public">manif::internal::BracketEvaluator</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_bundle_3_01___scalar_00_01___t_01_8_8_8_01_4_01_4" prot="public">manif::internal::traits&lt; Bundle&lt; _Scalar, _T ... &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; BundleBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; Bundle&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
@@ -44,6 +46,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_01_4" prot="public">manif::internal::traits&lt; RnTangent&lt; _Scalar, _N &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::BracketEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e2_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE2&lt; _Scalar &gt; &gt;</innerclass>

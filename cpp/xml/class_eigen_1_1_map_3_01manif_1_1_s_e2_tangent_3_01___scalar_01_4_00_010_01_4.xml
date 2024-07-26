@@ -129,6 +129,8 @@
     <listofallmembers>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>angle</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_1ad72e3d26fd9b8169d7a5754eb3aba96e" prot="private" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>Bracket</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>bracket</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>cast</name></member>
       <member refid="class_eigen_1_1_map_3_01manif_1_1_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_1aa688ae697018b7ec808711d73c7d6fe9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>coeffs</name></member>
@@ -149,8 +151,8 @@
       <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1adc9baa1061d4722fa26842eae2e07729" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>Eigen::Map&lt; manif::SE2Tangent&lt; _Scalar &gt;, 0 &gt;</scope><name>isApprox</name></member>

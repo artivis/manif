@@ -25,6 +25,19 @@
   <compound refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::AssignmentEvaluatorImpl&lt; SO3Base&lt; Derived &gt; &gt;</name>
     <member refid="structmanif_1_1internal_1_1_assignment_evaluator_impl_3_01_s_o3_base_3_01_derived_01_4_01_4_1a9cd4576d20c3ae7cd2b27cd192828f03" kind="function"><name>run_impl</name></member>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1_bracket_evaluator" kind="struct"><name>manif::internal::BracketEvaluator</name>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_1a2359d43e504ba207c94ac047260c6e28" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_1a7b0baf5bd4e7aca230a7ca94d40e3615" kind="variable"><name>xptr_</name></member>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_1adc0799d55a32955c9503b395c8d9cb43" kind="variable"><name>xptr_o_</name></member>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_1a0e23c44719819b65942dac96115c069e" kind="function"><name>BracketEvaluator</name></member>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_1a3398b4b1f0878bc0fb6468abbf5b7f8f" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_bracket_evaluator_impl" kind="struct"><name>manif::internal::BracketEvaluatorImpl</name>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_1ad6c1c7f6c0dc015148080f4597b4096c" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::BracketEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1a5b61abc68a354a2380660bee451b0e4e" kind="function"><name>run</name></member>
+  </compound>
   <compound refid="structmanif_1_1_bundle" kind="struct"><name>manif::Bundle</name>
     <member refid="structmanif_1_1_bundle_1a1f8360ff4be448c7838dbb9375c59960" kind="typedef"><name>Base</name></member>
     <member refid="structmanif_1_1_bundle_1a53ad62fa6a11af332143ebd745d2320d" kind="typedef"><name>Type</name></member>
@@ -1311,6 +1324,7 @@
     <member refid="structmanif_1_1_tangent_base_1a78c6848ad03d27864eb9633da29b27e1" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_tangent_base_1a2a7e0e996eef0cb4bd537d172f04cdb2" kind="function"><name>ljacinv</name></member>
     <member refid="structmanif_1_1_tangent_base_1acd95afc304c76ec8df6d8e8da676d90c" kind="function"><name>smallAdj</name></member>
+    <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" kind="function"><name>bracket</name></member>
     <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" kind="function"><name>isApprox</name></member>
     <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" kind="function"><name>isApprox</name></member>
     <member refid="structmanif_1_1_tangent_base_1a4d991baead4165a238e5a76fd7c57db8" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1330,6 +1344,7 @@
     <member refid="structmanif_1_1_tangent_base_1abdc6586b6f1bc615dc252df10a0e4f2a" kind="function"><name>Random</name></member>
     <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" kind="function"><name>Generator</name></member>
     <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" kind="function"><name>InnerWeights</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" kind="function"><name>Bracket</name></member>
     <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -1862,6 +1877,8 @@
   <compound refid="average_8h" kind="file"><name>average.h</name>
   </compound>
   <compound refid="bezier_8h" kind="file"><name>bezier.h</name>
+  </compound>
+  <compound refid="bracket_8h" kind="file"><name>bracket.h</name>
   </compound>
   <compound refid="_bundle_8h" kind="file"><name>Bundle.h</name>
   </compound>

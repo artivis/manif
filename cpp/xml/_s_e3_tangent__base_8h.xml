@@ -8,60 +8,60 @@
     <includedby refid="_s_e3_tangent_8h" local="yes">SE3Tangent.h</includedby>
     <includedby refid="_s_e3_8h" local="yes">SE3.h</includedby>
     <incdepgraph>
-      <node id="21">
+      <node id="22">
         <label>manif/impl/so3/SO3Tangent.h</label>
         <link refid="_s_o3_tangent_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>limits</label>
       </node>
       <node id="10">
         <label>manif/impl/generator.h</label>
         <link refid="generator_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>Eigen/LU</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>manif/impl/so3/SO3_properties.h</label>
         <link refid="_s_o3__properties_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>Eigen/Geometry</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>manif/impl/eigen.h</label>
         <link refid="eigen_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>cmath</label>
       </node>
       <node id="8">
         <label>stdexcept</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>Eigen/Core</label>
       </node>
       <node id="11">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>manif/impl/so3/SO3Tangent_base.h</label>
         <link refid="_s_o3_tangent__base_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -79,9 +79,11 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -90,13 +92,17 @@
       <node id="4">
         <label>array</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>manif/constants.h</label>
         <link refid="constants_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>manif/impl/bracket.h</label>
+        <link refid="bracket_8h_source"/>
       </node>
       <node id="7">
         <label>manif/impl/macro.h</label>
@@ -112,7 +118,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="20">
         <label>tl/optional.hpp</label>
       </node>
       <node id="5">
@@ -125,7 +131,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -136,10 +142,10 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>manif/impl/so3/SO3Tangent_map.h</label>
         <link refid="_s_o3_tangent__map_8h_source"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
     </incdepgraph>

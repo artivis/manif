@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>include/manif/impl/ directory | manif C++ API</title>
+  <title>manif::internal::BracketEvaluator struct | manif C++ API</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -47,7 +47,8 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a>/</span><span class="m-breadcrumb"><a href="dir_5f2e99f1578ffe2bd1b246fbc95ce1e6.html">manif</a>/</span>impl<span class="m-breadcrumb">/</span> <span class="m-thin">directory</span>
+          <div class="m-doc-template">template&lt;typename Derived, typename DerivedOther&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacemanif.html">manif</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespacemanif_1_1internal.html">internal</a>::<wbr/></span>BracketEvaluator <span class="m-thin">struct</span>
         </h1>
         <p><span></span></p>
         <nav class="m-block m-default">
@@ -56,57 +57,63 @@
             <li>
               Reference
               <ul>
-                <li><a href="#subdirs">Directories</a></li>
-                <li><a href="#files">Files</a></li>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
               </ul>
             </li>
           </ul>
         </nav>
-        <section id="subdirs">
-          <h2><a href="#subdirs">Directories</a></h2>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
-            <dt>directory <a href="dir_f46b268d7826b9c8c561a5bd79e1fe82.html" class="m-doc">bundle</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_2f0aa0d26578fbbbaac7fcfc1fa7f977.html" class="m-doc">rn</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_06b430863ab2111e423628285ed898f1.html" class="m-doc">se2</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_7449c1c0042ef6ac660434b1ddf567b0.html" class="m-doc">se3</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_2b84527ec924f8623774721117896c95.html" class="m-doc">se_2_3</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_d5ea7431b16784d882d1c237e916634e.html" class="m-doc">sgal3</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_eb8bd41501b9014d56ec9b114587795e.html" class="m-doc">so2</a>/</dt>
-            <dd><span></span></dd>
-            <dt>directory <a href="dir_7b12d306e2d7ee7d082163a21d47eaeb.html" class="m-doc">so3</a>/</dt>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Derived&gt;</div>
+              struct <a href="structmanif_1_1internal_1_1_bracket_evaluator_impl.html" class="m-doc">BracketEvaluatorImpl&lt;Derived&gt;</a>
+            </dt>
             <dd><span></span></dd>
           </dl>
         </section>
-        <section id="files">
-          <h2><a href="#files">Files</a></h2>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt>file <a href="assignment__assert_8h.html" class="m-doc">assignment_assert.h</a></dt>
+            <dt id="a2359d43e504ba207c94ac047260c6e28">
+              using <a href="#a2359d43e504ba207c94ac047260c6e28" class="m-doc-self">Base</a> = <a href="structmanif_1_1internal_1_1_bracket_evaluator_impl.html" class="m-doc">BracketEvaluatorImpl</a>&lt;Derived&gt;
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="bracket_8h.html" class="m-doc">bracket.h</a></dt>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a0e23c44719819b65942dac96115c069e">
+              <span class="m-doc-wrap-bumper"><a href="#a0e23c44719819b65942dac96115c069e" class="m-doc-self">BracketEvaluator</a>(</span><span class="m-doc-wrap">const Derived&amp; xptr,
+              const DerivedOther&amp; xptr_o)</span>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="cast_8h.html" class="m-doc">cast.h</a></dt>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a3398b4b1f0878bc0fb6468abbf5b7f8f">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3398b4b1f0878bc0fb6468abbf5b7f8f" class="m-doc-self">run</a>(</span><span class="m-doc-wrap">) -&gt; Derived::Tangent</span>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="eigen_8h.html" class="m-doc">eigen.h</a></dt>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a7b0baf5bd4e7aca230a7ca94d40e3615">
+              const Derived&amp; <a href="#a7b0baf5bd4e7aca230a7ca94d40e3615" class="m-doc-self">xptr_</a>
+            </dt>
             <dd><span></span></dd>
-            <dt>file <a href="generator_8h.html" class="m-doc">generator.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="lie__group__base_8h.html" class="m-doc">lie_group_base.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="macro_8h.html" class="m-doc">macro.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="random_8h.html" class="m-doc">random.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="tangent__base_8h.html" class="m-doc">tangent_base.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="traits_8h.html" class="m-doc">traits.h</a></dt>
-            <dd><span></span></dd>
-            <dt>file <a href="utils_8h.html" class="m-doc">utils.h</a></dt>
+            <dt id="adc0799d55a32955c9503b395c8d9cb43">
+              const DerivedOther&amp; <a href="#adc0799d55a32955c9503b395c8d9cb43" class="m-doc-self">xptr_o_</a>
+            </dt>
             <dd><span></span></dd>
           </dl>
         </section>

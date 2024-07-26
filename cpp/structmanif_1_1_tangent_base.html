@@ -311,6 +311,12 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#a0a29f4a104f11fd83823fcafa1e6b2c9" class="m-doc-self">InnerWeights</a>(</span><span class="m-doc-wrap">) -&gt; InnerWeightsMatrix</span>
             </dt>
             <dd>Static helper to get a Basis of the Lie group.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a99a3506adef114cbd1aad62a1d7d1726" class="m-doc">Bracket</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_Derived&gt;&amp; a,
+              const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; b) -&gt; Tangent</span>
+            </dt>
+            <dd>Compute the Lie bracket [a,b] in vector form.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -457,6 +463,11 @@
             </dt>
             <dd></dd>
             <dt>
+              <div class="m-doc-template">template&lt;typename _DerivedOther&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#aec5d6e8daa195817c8f30269f39e0a38" class="m-doc">bracket</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; b) const -&gt; Tangent</span>
+            </dt>
+            <dd>Compute the Lie bracket [this,b] in vector form.</dd>
+            <dt>
               <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#a09d1ca10487c6c7cc43ff456a1664b65" class="m-doc">isApprox</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; v,
               const Scalar eps = <a href="structmanif_1_1_constants.html" class="m-doc">Constants</a>&lt;Scalar&gt;::eps) const -&gt; bool</span>
@@ -543,6 +554,47 @@
         </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a99a3506adef114cbd1aad62a1d7d1726"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static Tangent manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a99a3506adef114cbd1aad62a1d7d1726" class="m-doc-self">Bracket</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_Derived&gt;&amp; a,
+              const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; b)</span></span>
+            </h3>
+            <p>Compute the Lie bracket [a,b] in vector form.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_DerivedOther</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>a</td>
+                  <td>A Tangent object.</td>
+                </tr>
+                <tr>
+                  <td>b</td>
+                  <td>A second Tangent object.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The Lie bracket [a,b] in vector form.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
           <section class="m-doc-details" id="a414b302f5e268f819a0e992f18dd682d"><div>
             <h3>
               <div class="m-doc-template">
@@ -899,6 +951,42 @@
                 <tr>
                   <th style="width: 1%">Returns</th>
                   <td>[description]</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aec5d6e8daa195817c8f30269f39e0a38"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _DerivedOther&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Tangent manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aec5d6e8daa195817c8f30269f39e0a38" class="m-doc-self">bracket</a>(</span><span class="m-doc-wrap">const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; b) const</span></span>
+            </h3>
+            <p>Compute the Lie bracket [this,b] in vector form.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_DerivedOther</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>b</td>
+                  <td>Another tangent object of the same group.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The Lie bracket [this,b] in vector form.</td>
                 </tr>
               </tfoot>
             </table>

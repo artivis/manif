@@ -248,6 +248,8 @@
     <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" line="81" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent.h" bodystart="82" bodyend="149"/>
     <listofallmembers>
       <member refid="structmanif_1_1_bundle_tangent_1accd742ed5f54aca360a7b426f12934e8" prot="private" virt="non-virtual"><scope>manif::BundleTangent</scope><name>Base</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>manif::BundleTangent</scope><name>Bracket</name></member>
+      <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" prot="public" virt="non-virtual"><scope>manif::BundleTangent</scope><name>bracket</name></member>
       <member refid="structmanif_1_1_bundle_tangent_base_1af83be7f0f38ef8237055e5d74598ae95" prot="public" virt="non-virtual"><scope>manif::BundleTangent</scope><name>BundleSize</name></member>
       <member refid="structmanif_1_1_bundle_tangent_1a37c8bed58f43de4cf0261607cf1331eb" prot="public" virt="non-virtual"><scope>manif::BundleTangent</scope><name>BundleTangent</name></member>
       <member refid="structmanif_1_1_bundle_tangent_1ad5d2a4ee46d03db7d6b246a0a7518581" prot="public" virt="non-virtual"><scope>manif::BundleTangent</scope><name>BundleTangent</name></member>

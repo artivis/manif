@@ -52,13 +52,13 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -81,7 +81,7 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>manif/impl/assignment_assert.h</label>
         <link refid="assignment__assert_8h_source"/>
       </node>
@@ -96,11 +96,13 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -117,7 +119,11 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="20">
+        <label>manif/impl/bracket.h</label>
+        <link refid="bracket_8h_source"/>
+      </node>
+      <node id="23">
         <label>manif/impl/cast.h</label>
         <link refid="cast_8h_source"/>
       </node>
@@ -129,7 +135,7 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>tl/optional.hpp</label>
       </node>
       <node id="9">
