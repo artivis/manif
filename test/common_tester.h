@@ -110,7 +110,9 @@
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_INVERSE)             \
   { evalInverse(); }                                                      \
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_BRACKET)             \
-  { evalBracket(); }
+  { evalBracket(); }                                                      \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_HAT_VEE)             \
+  { evalHatVee(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
@@ -769,6 +771,10 @@ public:
 
     // [x,x] = 0
     EXPECT_MANIF_NEAR(Tangent::Bracket(getDelta(), getDelta()), Tangent::Zero());
+  }
+
+  void evalHatVee() {
+    EXPECT_MANIF_NEAR(getDelta(), Tangent::Vee(getDelta().hat()));
   }
 
 protected:

@@ -202,11 +202,21 @@ struct RandomEvaluatorImpl<RnTangentBase<Derived>>
   }
 };
 
+//! @brief Bracket specialization for RnTangentBase objects.
 template <typename Derived>
 struct BracketEvaluatorImpl<RnTangentBase<Derived>> {
   template <typename TL, typename TR>
   static typename Derived::Tangent run(const TL&, const TR&) {
     return Derived::Tangent::Zero();
+  }
+};
+
+//! @brief Vee specialization for RnTangentBase objects.
+template <typename Derived>
+struct VeeEvaluatorImpl<RnTangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static void run(TL& t, const TR& v) {
+    t.coeffs() = v.template topRightCorner<Derived::Dim, 1>();
   }
 };
 

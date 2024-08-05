@@ -6,6 +6,7 @@
 #include "manif/impl/generator.h"
 #include "manif/impl/random.h"
 #include "manif/impl/bracket.h"
+#include "manif/impl/vee.h"
 #include "manif/impl/eigen.h"
 
 #include "manif/constants.h"
@@ -98,6 +99,14 @@ public:
    * @return A reference to this.
    */
   _Derived& setRandom();
+
+  /**
+   * @brief Set the Tangent object this from an object in the Lie algebra.
+   * @param[in] a An object in the Lie algebra.
+   * @return A reference to this.
+   */
+  template <typename _EigenDerived>
+  _Derived& setVee(const Eigen::MatrixBase<_EigenDerived>& a);
 
   // Minimum API
   // Those functions must be implemented in the Derived class !
@@ -370,6 +379,17 @@ public:
     const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
   );
 
+  /**
+   * @brief Instantiate a Tangent from a Lie algebra object.
+   *
+   * @tparam _EigenDerived
+   * @param alg A tangent object expressed in the Lie algebra.
+   * @return a Tangent object.
+   * @see hat
+   */
+  template <typename _EigenDerived>
+  static Tangent Vee(const Eigen::MatrixBase<_EigenDerived>& alg);
+
 protected:
 
   inline _Derived& derived() & noexcept { return *static_cast< _Derived* >(this); }
@@ -461,6 +481,13 @@ _Derived& TangentBase<_Derived>::setRandom()
       typename internal::traits<_Derived>::Base>(
         derived()).run();
 
+  return derived();
+}
+
+template <class _Derived>
+template <typename _EigenDerived>
+_Derived& TangentBase<_Derived>::setVee(const Eigen::MatrixBase<_EigenDerived>& a) {
+  internal::VeeEvaluator<typename internal::traits<_Derived>::Base>(derived()).run(a);
   return derived();
 }
 
@@ -736,6 +763,14 @@ typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::Bracket(
   const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
 ) {
   return a.bracket(b);
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::Vee(
+  const Eigen::MatrixBase<_EigenDerived>& alg
+) {
+  return Tangent().setVee(alg);
 }
 
 // Math
