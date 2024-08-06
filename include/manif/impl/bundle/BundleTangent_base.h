@@ -408,6 +408,31 @@ struct RandomEvaluatorImpl<BundleTangentBase<Derived>>
   }
 };
 
+//! @brief Vee specialization for BundleTangentBase objects.
+template <typename Derived>
+struct VeeEvaluatorImpl<BundleTangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static void run(TL& t, const TR& v) {
+    return vee_impl(
+      t, v, internal::make_intseq_t<BundleTangentBase<Derived>::BundleSize>{}
+    );
+  }
+};
+
+template <typename TL, typename TR, int ... _Idx>
+void vee_impl(TL& t, const TR& v, internal::intseq<_Idx...>) {
+  // c++11 "fold expression"
+  auto l = {((t.template element<_Idx>().setVee(
+    v.template block<
+      TL::template Element<_Idx>::LieAlg::RowsAtCompileTime,
+      TL::template Element<_Idx>::LieAlg::RowsAtCompileTime
+    >(
+      std::get<_Idx>(internal::traits<typename TL::Tangent>::AlgIdx),
+      std::get<_Idx>(internal::traits<typename TL::Tangent>::AlgIdx)
+  ))), 0) ...};
+  static_cast<void>(l); // compiler warning
+}
+
 }  // namespace internal
 }  // namespace manif
 
