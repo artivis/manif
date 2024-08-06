@@ -121,14 +121,14 @@ public:
   Bundle()  = default;
   ~Bundle() = default;
 
-  MANIF_COPY_CONSTRUCTOR(Bundle);
-  MANIF_MOVE_CONSTRUCTOR(Bundle);
+  MANIF_COPY_CONSTRUCTOR(Bundle)
+  MANIF_MOVE_CONSTRUCTOR(Bundle)
 
   // Copy constructor
   template<typename _DerivedOther>
   Bundle(const LieGroupBase<_DerivedOther> & o);
 
-  MANIF_GROUP_ASSIGN_OP(Bundle);
+  MANIF_GROUP_ASSIGN_OP(Bundle)
 
   // LieGroup common API
 
