@@ -7,6 +7,7 @@
     <includes refid="generator_8h" local="yes">manif/impl/generator.h</includes>
     <includes refid="random_8h" local="yes">manif/impl/random.h</includes>
     <includes refid="bracket_8h" local="yes">manif/impl/bracket.h</includes>
+    <includes refid="vee_8h" local="yes">manif/impl/vee.h</includes>
     <includes refid="eigen_8h" local="yes">manif/impl/eigen.h</includes>
     <includes refid="constants_8h" local="yes">manif/constants.h</includes>
     <includes local="no">tl/optional.hpp</includes>
@@ -28,38 +29,42 @@
     <includedby refid="_s_o2_8h" local="yes">SO2.h</includedby>
     <includedby refid="_s_o3_8h" local="yes">SO3.h</includedby>
     <incdepgraph>
-      <node id="17">
+      <node id="18">
         <label>limits</label>
       </node>
       <node id="8">
         <label>manif/impl/generator.h</label>
         <link refid="generator_8h_source"/>
       </node>
-      <node id="13">
-        <label>Eigen/LU</label>
+      <node id="11">
+        <label>manif/impl/vee.h</label>
+        <link refid="vee_8h_source"/>
       </node>
       <node id="14">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="15">
         <label>Eigen/Geometry</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>manif/impl/eigen.h</label>
         <link refid="eigen_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
-      <node id="16">
+      <node id="17">
         <label>cmath</label>
       </node>
       <node id="3">
         <label>stdexcept</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>Eigen/Core</label>
       </node>
       <node id="9">
@@ -81,9 +86,11 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -92,12 +99,12 @@
       <node id="6">
         <label>array</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>manif/constants.h</label>
         <link refid="constants_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -112,7 +119,7 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>tl/optional.hpp</label>
       </node>
       <node id="7">

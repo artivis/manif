@@ -7,38 +7,42 @@
     <includedby refid="_s_e2_tangent_8h" local="yes">SE2Tangent.h</includedby>
     <includedby refid="_s_e2_8h" local="yes">SE2.h</includedby>
     <incdepgraph>
-      <node id="19">
+      <node id="20">
         <label>limits</label>
       </node>
       <node id="10">
         <label>manif/impl/generator.h</label>
         <link refid="generator_8h_source"/>
       </node>
-      <node id="15">
-        <label>Eigen/LU</label>
+      <node id="13">
+        <label>manif/impl/vee.h</label>
+        <link refid="vee_8h_source"/>
       </node>
       <node id="16">
+        <label>Eigen/LU</label>
+      </node>
+      <node id="17">
         <label>Eigen/Geometry</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>manif/impl/eigen.h</label>
         <link refid="eigen_8h_source"/>
-        <childnode refid="14" relation="include">
-        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>cmath</label>
       </node>
       <node id="8">
         <label>stdexcept</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>Eigen/Core</label>
       </node>
       <node id="2">
@@ -74,9 +78,11 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -85,12 +91,12 @@
       <node id="4">
         <label>array</label>
       </node>
-      <node id="17">
+      <node id="18">
         <label>manif/constants.h</label>
         <link refid="constants_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -105,7 +111,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>tl/optional.hpp</label>
       </node>
       <node id="5">
@@ -158,6 +164,7 @@
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::InnerWeightsEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innernamespace refid="namespacemanif">manif</innernamespace>
     <innernamespace refid="namespacemanif_1_1internal">manif::internal</innernamespace>
     <briefdescription>

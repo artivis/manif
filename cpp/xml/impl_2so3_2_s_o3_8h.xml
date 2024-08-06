@@ -13,7 +13,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -22,6 +22,10 @@
       <node id="19">
         <label>manif/impl/generator.h</label>
         <link refid="generator_8h_source"/>
+      </node>
+      <node id="22">
+        <label>manif/impl/vee.h</label>
+        <link refid="vee_8h_source"/>
       </node>
       <node id="13">
         <label>Eigen/LU</label>
@@ -32,7 +36,7 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>manif/impl/utils.h</label>
         <link refid="utils_8h_source"/>
         <childnode refid="15" relation="include">
@@ -73,20 +77,20 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
         <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="20">
         <label>manif/impl/random.h</label>
         <link refid="random_8h_source"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>manif/impl/assignment_assert.h</label>
         <link refid="assignment__assert_8h_source"/>
       </node>
@@ -103,11 +107,13 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -128,7 +134,7 @@
         <label>manif/impl/bracket.h</label>
         <link refid="bracket_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>manif/impl/cast.h</label>
         <link refid="cast_8h_source"/>
       </node>
@@ -146,7 +152,7 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>tl/optional.hpp</label>
       </node>
       <node id="6">

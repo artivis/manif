@@ -21,6 +21,7 @@
     <innerfile refid="tangent__base_8h">tangent_base.h</innerfile>
     <innerfile refid="traits_8h">traits.h</innerfile>
     <innerfile refid="utils_8h">utils.h</innerfile>
+    <innerfile refid="vee_8h">vee.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

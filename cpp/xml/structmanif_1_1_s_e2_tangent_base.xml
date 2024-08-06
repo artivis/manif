@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="430" bodyend="433"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="450" bodyend="453"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a56bf87afd42cd3c795d1a2878ca99010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const Scalar *</type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="437" bodyend="440"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="31" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="457" bodyend="460"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>DataType &amp;</type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="416" bodyend="419"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="436" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1a2e28e350e07e2ec1d2a164bd39d3370a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const DataType &amp;</type>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="423" bodyend="426"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="32" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="443" bodyend="446"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="375" bodyend="375"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="395" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="structmanif_1_1_s_e2_tangent_base_1aa2305ee8102e265616aa35416179b377" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const _Derived &amp;</type>
@@ -313,7 +313,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="376" bodyend="376"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/se2/SE2Tangent_base.h" line="36" column="3" bodyfile="/home/runner/work/manif/manif/include/manif/impl/tangent_base.h" bodystart="396" bodyend="396"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -352,8 +352,8 @@
     <listofallmembers>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a9c89a30f03489149c0da6b8289f06b48" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>angle</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1adf98268b8c73aa924e983ae7c112e85f" prot="private" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Base</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Bracket</name></member>
       <member refid="structmanif_1_1_tangent_base_1aec5d6e8daa195817c8f30269f39e0a38" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>bracket</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Bracket</name></member>
       <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>cast</name></member>
       <member refid="structmanif_1_1_tangent_base_1aaef816e134cd084829636a27a71b7aae" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>cast</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a573f842dc25ee3125f8959ccdacb5240" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>coeffs</name></member>
@@ -374,8 +374,8 @@
       <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Generator</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1adc9baa1061d4722fa26842eae2e07729" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>InnerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>innerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>isApprox</name></member>
@@ -411,6 +411,7 @@
       <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>rplus</name></member>
       <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a8321eb4270c115dc16c5957207c83e83" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>setVee</name></member>
       <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>setZero</name></member>
       <member refid="structmanif_1_1_tangent_base_1a41858edd33970d567b149324f2972cae" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>size</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a6327d3fae0b79844d7a8076212003ac0" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>smallAdj</name></member>
@@ -418,6 +419,7 @@
       <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Tangent</name></member>
       <member refid="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>TangentTemplate</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a011e2f105dc8766b7d481c476cbd7d0e" prot="private" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2133063e8be4aef5c40c51e71b8bc8cb" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>Vee</name></member>
       <member refid="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>weightedNorm</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a47763b4785b21aab469c308223bbc9cc" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>x</name></member>
       <member refid="structmanif_1_1_s_e2_tangent_base_1a2a0d4789c4c98ca38cd888e900e0a795" prot="public" virt="non-virtual"><scope>manif::SE2TangentBase</scope><name>y</name></member>

@@ -202,8 +202,8 @@
       <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>generator</name></member>
       <member refid="structmanif_1_1_s_gal3_tangent_base_1a9ea5fa6d4af56a8d3508df6a7d51eff3" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>hat</name></member>
       <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>inner</name></member>
-      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>innerWeights</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>InnerWeights</name></member>
       <member refid="structmanif_1_1_tangent_base_1a151e1d9be260ac7bab172b950017a57c" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>InnerWeightsMatrix</name></member>
       <member refid="structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>isApprox</name></member>
       <member refid="structmanif_1_1_tangent_base_1a11263b30dc75dbdf769c86a26001c320" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>isApprox</name></member>
@@ -246,6 +246,7 @@
       <member refid="structmanif_1_1_tangent_base_1a4533ec7b13c30b5ec8fb1d5c84039502" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>rplus</name></member>
       <member refid="structmanif_1_1_tangent_base_1a5e950e12d3b90e86b9e8d1c88ae44d3c" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>Scalar</name></member>
       <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>setRandom</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a8321eb4270c115dc16c5957207c83e83" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>setVee</name></member>
       <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>setZero</name></member>
       <member refid="structmanif_1_1_s_gal3_tangent_1a77c9b6269d28c108f8f95dfcd2db8d6c" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>SGal3Tangent</name></member>
       <member refid="structmanif_1_1_s_gal3_tangent_1a7c3cbb7df3b688ead8ff4c89298b1f15" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>SGal3Tangent</name></member>
@@ -256,6 +257,7 @@
       <member refid="structmanif_1_1_tangent_base_1a28e3e53e1c1c91f29a8417e7e3a3a654" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>Tangent</name></member>
       <member refid="structmanif_1_1_tangent_base_1a0c8b928c0e5710577fe171046920411c" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>TangentTemplate</name></member>
       <member refid="structmanif_1_1_s_gal3_tangent_1aee7dbc9455b5b4eecdd7bc78b8784949" prot="private" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>Type</name></member>
+      <member refid="structmanif_1_1_tangent_base_1a2133063e8be4aef5c40c51e71b8bc8cb" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>Vee</name></member>
       <member refid="structmanif_1_1_tangent_base_1aebc062717b43ce0d4f623191b3a4e626" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>weightedNorm</name></member>
       <member refid="structmanif_1_1_tangent_base_1a69d9ad80a547f43f038ee3f60df21ba8" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>Zero</name></member>
       <member refid="structmanif_1_1_s_gal3_tangent_1a4e6445a4305f49c0e345751dacfdf095" prot="public" virt="non-virtual"><scope>manif::SGal3Tangent</scope><name>~SGal3Tangent</name></member>

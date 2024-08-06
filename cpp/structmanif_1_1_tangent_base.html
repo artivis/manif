@@ -317,6 +317,11 @@
               const <a href="structmanif_1_1_tangent_base.html" class="m-doc">TangentBase</a>&lt;_DerivedOther&gt;&amp; b) -&gt; Tangent</span>
             </dt>
             <dd>Compute the Lie bracket [a,b] in vector form.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a2133063e8be4aef5c40c51e71b8bc8cb" class="m-doc">Vee</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; alg) -&gt; Tangent</span>
+            </dt>
+            <dd>Instantiate a Tangent from a Lie algebra object.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -365,6 +370,11 @@
               <span class="m-doc-wrap-bumper">auto <a href="#af7bd211079a17ccc135877c1d96aaeed" class="m-doc">setRandom</a>(</span><span class="m-doc-wrap">) -&gt; _Derived&amp;</span>
             </dt>
             <dd>Set the LieGroup object this to a random value.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename _EigenDerived&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8321eb4270c115dc16c5957207c83e83" class="m-doc">setVee</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; a) -&gt; _Derived&amp;</span>
+            </dt>
+            <dd>Set the Tangent object this from an object in the Lie algebra.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a2dbd4f126e05b21b0adee045844579a4" class="m-doc">generator</a>(</span><span class="m-doc-wrap">const int i) const -&gt; LieAlg</span>
             </dt>
@@ -595,6 +605,43 @@
               </tfoot>
             </table>
           </div></section>
+          <section class="m-doc-details" id="a2133063e8be4aef5c40c51e71b8bc8cb"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static Tangent manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2133063e8be4aef5c40c51e71b8bc8cb" class="m-doc-self">Vee</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; alg)</span></span>
+            </h3>
+            <p>Instantiate a Tangent from a Lie algebra object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_EigenDerived</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>alg</td>
+                  <td>A tangent object expressed in the Lie algebra.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a Tangent object.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="structmanif_1_1_tangent_base.html#a8e9722a81dfde9006f26c1ff0d2a65fa" class="m-doc">hat</a></p></aside>
+          </div></section>
           <section class="m-doc-details" id="a414b302f5e268f819a0e992f18dd682d"><div>
             <h3>
               <div class="m-doc-template">
@@ -696,6 +743,33 @@
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
+                  <td>A reference to this.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8321eb4270c115dc16c5957207c83e83"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class _Derived&gt;
+                template&lt;typename _EigenDerived&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">_Derived&amp; manif::<wbr />TangentBase&lt;_Derived&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8321eb4270c115dc16c5957207c83e83" class="m-doc-self">setVee</a>(</span><span class="m-doc-wrap">const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp; a)</span></span>
+            </h3>
+            <p>Set the Tangent object this from an object in the Lie algebra.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">a&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>An object in the Lie algebra.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
                   <td>A reference to this.</td>
                 </tr>
               </tfoot>

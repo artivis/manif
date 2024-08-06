@@ -1304,6 +1304,7 @@
     <member refid="structmanif_1_1_tangent_base_1a9c4d27fc308816b507af1734a42c01c1" kind="function"><name>cast</name></member>
     <member refid="structmanif_1_1_tangent_base_1a04926ad935d5d3504cb69123128b5022" kind="function"><name>setZero</name></member>
     <member refid="structmanif_1_1_tangent_base_1af7bd211079a17ccc135877c1d96aaeed" kind="function"><name>setRandom</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a8321eb4270c115dc16c5957207c83e83" kind="function"><name>setVee</name></member>
     <member refid="structmanif_1_1_tangent_base_1a2dbd4f126e05b21b0adee045844579a4" kind="function"><name>generator</name></member>
     <member refid="structmanif_1_1_tangent_base_1a7f05a48c9ffd4d5f582f0062c8bf9f55" kind="function"><name>innerWeights</name></member>
     <member refid="structmanif_1_1_tangent_base_1a83d40f212a18ed4c9b28e56ca4f5704c" kind="function"><name>inner</name></member>
@@ -1345,6 +1346,7 @@
     <member refid="structmanif_1_1_tangent_base_1acce070bec9a040c8a3195168756f9b99" kind="function"><name>Generator</name></member>
     <member refid="structmanif_1_1_tangent_base_1a0a29f4a104f11fd83823fcafa1e6b2c9" kind="function"><name>InnerWeights</name></member>
     <member refid="structmanif_1_1_tangent_base_1a99a3506adef114cbd1aad62a1d7d1726" kind="function"><name>Bracket</name></member>
+    <member refid="structmanif_1_1_tangent_base_1a2133063e8be4aef5c40c51e71b8bc8cb" kind="function"><name>Vee</name></member>
     <member refid="structmanif_1_1_tangent_base_1a18e1a216f401f804a09047242bf987a7" kind="function"><name>derived</name></member>
     <member refid="structmanif_1_1_tangent_base_1aa2305ee8102e265616aa35416179b377" kind="function"><name>derived</name></member>
   </compound>
@@ -1726,6 +1728,39 @@
     <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3_1a6928f396f1f0745738311e5ece04bd72" kind="typedef"><name>ValueType</name></member>
     <member refid="structautodiff_1_1detail_1_1_vector_traits_3_01_t_00_01_enable_if_3_01manif_1_1internal_1_1is__m5e1054c5ff3ae35f82eb3b3d75b1eab3_1aae0a11049defe6b73bbb5c38700f8ff8" kind="typedef"><name>ReplaceValueType</name></member>
   </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator" kind="struct"><name>manif::internal::VeeEvaluator</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_1a4a0454aef1a3044507062ed04341f294" kind="typedef"><name>Base</name></member>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_1a2f5150ff2bd70dc37b03e8c4ea6541ac" kind="variable"><name>xptr_</name></member>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_1aae843f4d1d82a057909e6434a37c3250" kind="function"><name>VeeEvaluator</name></member>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_1a8b99c6ac113a9582e82ac2054b605bb9" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl" kind="struct"><name>manif::internal::VeeEvaluatorImpl</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_1abcd9211dd4229ede8e43461770fa3ef1" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4_1afe966cba9fd71c263cb10a132a630305" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1ad4f050d9643d4fb5917128ff0dc9a53a" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SE2TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4_1abb226c9c772b7e42b62f34a96eab1531" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4_1a4626575e65249d50e05f10e9509682ed" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e__2__3_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SE_2_3TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e__2__3_tangent_base_3_01_derived_01_4_01_4_1a1f9f2653fafbd8da884ab26a084fa21d" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4_1a79218c1ad6a7e4b7e80c66932b633d2e" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SO2TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4_1a848e8724c7f3694681a36b16dc3629e4" kind="function"><name>run</name></member>
+  </compound>
+  <compound refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4" kind="struct"><name>manif::internal::VeeEvaluatorImpl&lt; SO3TangentBase&lt; Derived &gt; &gt;</name>
+    <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4_1a74a2d58b4b70a1a6f488d1e8e0ef17f2" kind="function"><name>run</name></member>
+  </compound>
   <compound refid="structmanif_1_1internal_1_1_y_o_u___m_u_s_t___i_n_c_l_u_d_e___m_a_n_i_f___b_e_f_o_r_e___c_e_r_e_s___h_e_l_p_e_r___h_e_a_d_e_r_s" kind="struct"><name>manif::internal::YOU_MUST_INCLUDE_MANIF_BEFORE_CERES_HELPER_HEADERS</name>
   </compound>
   <compound refid="namespace_0d5" kind="namespace"><name>@5</name>
@@ -1859,6 +1894,7 @@
     <member refid="traits_8h_1a0033e0e0177d2c7e6fdf47ec0f19f8c4" kind="typedef"><name>make_intseq_t</name></member>
     <member refid="constants_8h_1add9d0de466af3750f594cd047644ce86" kind="function"><name>sqrtNewtonRaphson</name></member>
     <member refid="constants_8h_1a993aa01c37352be19230c645402cf75c" kind="function"><name>csqrt</name></member>
+    <member refid="_bundle_tangent__base_8h_1a4b296532bae1fee597eee758c96f8ae8" kind="function"><name>vee_impl</name></member>
     <member refid="eigen_8h_1ad5b99f2fd8f15a517290323ab856b6f7" kind="function"><name>is_base_of_v</name></member>
     <member refid="traits_8h_1ae8e775a3f897e8deb715c17426fda198" kind="function"><name>accumulate</name></member>
     <member refid="traits_8h_1a4b15ed028826bae0079813f367ebd0fc" kind="function"><name>accumulate</name></member>
@@ -2118,6 +2154,8 @@
   <compound refid="traits_8h" kind="file"><name>traits.h</name>
   </compound>
   <compound refid="utils_8h" kind="file"><name>utils.h</name>
+  </compound>
+  <compound refid="vee_8h" kind="file"><name>vee.h</name>
   </compound>
   <compound refid="_writing-generic-code_8md" kind="file"><name>Writing-generic-code.md</name>
   </compound>

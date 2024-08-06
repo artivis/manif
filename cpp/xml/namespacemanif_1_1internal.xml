@@ -28,6 +28,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_bundle_tangent_3_01___scalar_00_01___t_8_8_8_01_4_01_4" prot="public">manif::internal::traits&lt; BundleTangent&lt; _Scalar, _T... &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_bundle_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; BundleTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_bundle_tangent_3_01___scalar_00_01_t_8_8_8_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_bundle_tangent_3_01___scalar_0888eeb434039355e59d47ca57d22d777" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const BundleTangent&lt; _Scalar, T... &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_cast_evaluator_impl" prot="public">manif::internal::CastEvaluatorImpl</innerclass>
@@ -47,6 +48,7 @@
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::BracketEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_rn_tangent_3_01___scalar_00_01___n_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const RnTangent&lt; _Scalar, _N &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e2_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE2&lt; _Scalar &gt; &gt;</innerclass>
@@ -61,6 +63,7 @@
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_inner_weights_evaluator_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::InnerWeightsEvaluator&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SE2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e2_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE3&lt; _Scalar &gt; &gt;</innerclass>
@@ -74,6 +77,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e3_tangent_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE3Tangent&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SE3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SE3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e__2__3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE_2_3&lt; _Scalar &gt; &gt;</innerclass>
@@ -87,6 +91,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_e__2__3_tangent_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SE_2_3Tangent&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_e__2__3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SE_2_3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_e__2__3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SE_2_3TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_e__2__3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SE_2_3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_e__2__3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SE_2_3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_gal3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SGal3&lt; _Scalar &gt; &gt;</innerclass>
@@ -100,6 +105,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_gal3_tangent_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SGal3Tangent&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SGal3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_gal3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SGal3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_gal3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SGal3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o2_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO2&lt; _Scalar &gt; &gt;</innerclass>
@@ -113,6 +119,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o2_tangent_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO2Tangent&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SO2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SO2TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o2_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SO2TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_o2_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_o2_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SO2Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o3_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO3&lt; _Scalar &gt; &gt;</innerclass>
@@ -126,6 +133,7 @@
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_s_o3_tangent_3_01___scalar_01_4_01_4" prot="public">manif::internal::traits&lt; SO3Tangent&lt; _Scalar &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_generator_evaluator_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::GeneratorEvaluator&lt; SO3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1_random_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::RandomEvaluatorImpl&lt; SO3TangentBase&lt; Derived &gt; &gt;</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl_3_01_s_o3_tangent_base_3_01_derived_01_4_01_4" prot="public">manif::internal::VeeEvaluatorImpl&lt; SO3TangentBase&lt; Derived &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1traits_3_01_eigen_1_1_map_3_01const_01_s_o3_tangent_3_01___scalar_01_4_00_010_01_4_01_4" prot="public">manif::internal::traits&lt; Eigen::Map&lt; const SO3Tangent&lt; _Scalar &gt;, 0 &gt; &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1constexpr__false" prot="public">manif::internal::constexpr_false</innerclass>
@@ -155,6 +163,8 @@
     <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl" prot="public">manif::internal::is_manif_tangent_impl</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent__impl_3_01decltype_07test__tangent__base_07std_1_1acf371df7e577828bfd807fb299e3ea2" prot="public">manif::internal::is_manif_tangent_impl&lt; decltype(test_tangent_base(std::declval&lt; T &gt;())), T &gt;</innerclass>
     <innerclass refid="structmanif_1_1internal_1_1is__manif__tangent" prot="public">manif::internal::is_manif_tangent</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator_impl" prot="public">manif::internal::VeeEvaluatorImpl</innerclass>
+    <innerclass refid="structmanif_1_1internal_1_1_vee_evaluator" prot="public">manif::internal::VeeEvaluator</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="autodiff_8h_1a366b4f6f478fb1c6f04a792d5159fe38" prot="public" static="no">
         <type>autodiff::HigherOrderDual&lt; 0, float &gt;</type>
@@ -301,6 +311,43 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/manif/manif/include/manif/constants.h" line="35" column="13" bodyfile="/home/runner/work/manif/manif/include/manif/constants.h" bodystart="35" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="_bundle_tangent__base_8h_1a4b296532bae1fee597eee758c96f8ae8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TL</type>
+          </param>
+          <param>
+            <type>typename TR</type>
+          </param>
+          <param>
+            <type>int ...</type>
+            <declname>_Idx</declname>
+            <defname>_Idx</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void manif::internal::vee_impl</definition>
+        <argsstring>(TL &amp;t, const TR &amp;v, internal::intseq&lt; _Idx... &gt;)</argsstring>
+        <name>vee_impl</name>
+        <param>
+          <type>TL &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const TR &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="structmanif_1_1internal_1_1intseq" kindref="compound">internal::intseq</ref>&lt; _Idx... &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" line="423" column="6" bodyfile="/home/runner/work/manif/manif/include/manif/impl/bundle/BundleTangent_base.h" bodystart="423" bodyend="434"/>
       </memberdef>
       <memberdef kind="function" id="eigen_8h_1ad5b99f2fd8f15a517290323ab856b6f7" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>

@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4" kind="struct" language="C++" prot="public">
     <compoundname>manif::internal::BracketEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</compoundname>
+    <includes refid="_rn_tangent__base_8h" local="no">RnTangent_base.h</includes>
     <templateparamlist>
       <param>
         <type>typename Derived</type>
@@ -33,14 +34,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" line="208" column="36" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="208" bodyend="210"/>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" line="209" column="36" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="209" bodyend="211"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Bracket specialization for <ref refid="structmanif_1_1_rn_tangent_base" kindref="compound">RnTangentBase</ref> objects. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" line="206" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="206" bodyend="211"/>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" line="207" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/rn/RnTangent_base.h" bodystart="207" bodyend="212"/>
     <listofallmembers>
       <member refid="structmanif_1_1internal_1_1_bracket_evaluator_impl_3_01_rn_tangent_base_3_01_derived_01_4_01_4_1a5b61abc68a354a2380660bee451b0e4e" prot="public" virt="non-virtual"><scope>manif::internal::BracketEvaluatorImpl&lt; RnTangentBase&lt; Derived &gt; &gt;</scope><name>run</name></member>
     </listofallmembers>

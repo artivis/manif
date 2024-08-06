@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structmanif_1_1internal_1_1_vee_evaluator_impl" kind="struct" language="C++" prot="public">
+    <compoundname>manif::internal::VeeEvaluatorImpl</compoundname>
+    <derivedcompoundref refid="structmanif_1_1internal_1_1_vee_evaluator" prot="public" virt="non-virtual">manif::internal::VeeEvaluator&lt; Derived &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structmanif_1_1internal_1_1_vee_evaluator_impl_1abcd9211dd4229ede8e43461770fa3ef1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TL</type>
+          </param>
+          <param>
+            <type>typename TR</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void manif::internal::VeeEvaluatorImpl&lt; Derived &gt;::run</definition>
+        <argsstring>(TL &amp;t, const TR &amp;)</argsstring>
+        <name>run</name>
+        <param>
+          <type>TL &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const TR &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/manif/manif/include/manif/impl/vee.h" line="10" column="15" bodyfile="/home/runner/work/manif/manif/include/manif/impl/vee.h" bodystart="10" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>manif::internal::VeeEvaluator&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_vee_evaluator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>manif::internal::VeeEvaluatorImpl&lt; Derived &gt;</label>
+        <link refid="structmanif_1_1internal_1_1_vee_evaluator_impl"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/runner/work/manif/manif/include/manif/impl/vee.h" line="8" column="1" bodyfile="/home/runner/work/manif/manif/include/manif/impl/vee.h" bodystart="8" bodyend="16"/>
+    <listofallmembers>
+      <member refid="structmanif_1_1internal_1_1_vee_evaluator_impl_1abcd9211dd4229ede8e43461770fa3ef1" prot="public" virt="non-virtual"><scope>manif::internal::VeeEvaluatorImpl</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
