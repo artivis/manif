@@ -45,10 +45,7 @@
     <member refid="structmanif_1_1_bundle_1a2d54c4aae5a7b208762b3a7d64492faa" kind="variable"><name>data_</name></member>
     <member refid="structmanif_1_1_bundle_1a66d1452f9540436def8e6384e06eb554" kind="function"><name>Bundle</name></member>
     <member refid="structmanif_1_1_bundle_1a7a9ef05df9f9912ddeb06bf6ffccb067" kind="function"><name>~Bundle</name></member>
-    <member refid="structmanif_1_1_bundle_1a18f4ef0e68bf7cf3474745306b125d93" kind="function"><name>MANIF_COPY_CONSTRUCTOR</name></member>
-    <member refid="structmanif_1_1_bundle_1abe0fdb796a033413ebd2cf756f8978d2" kind="function"><name>MANIF_MOVE_CONSTRUCTOR</name></member>
     <member refid="structmanif_1_1_bundle_1aadca13aa5771f44c2ac8f57c767b11b6" kind="function"><name>Bundle</name></member>
-    <member refid="structmanif_1_1_bundle_1a15d06aa1de9d43503f8c9dca4f395a25" kind="function"><name>MANIF_GROUP_ASSIGN_OP</name></member>
     <member refid="structmanif_1_1_bundle_1ac8c70137e95574d8ad0a73804d7073ee" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_bundle_1a3a4b5369923db63ed7d4f259f176e578" kind="function"><name>coeffs</name></member>
     <member refid="structmanif_1_1_bundle_1a97fcde5d70c389c92c3df4fadb30ac6a" kind="function"><name>Bundle</name></member>
