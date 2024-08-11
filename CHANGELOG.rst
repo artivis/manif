@@ -2,6 +2,72 @@
 Changelog for package manif
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#304 <https://github.com/artivis/manif/issues/304>`_ from artivis/devel
+  Preparing release
+* Merge pull request `#303 <https://github.com/artivis/manif/issues/303>`_ from HenryLeC/devel
+  Remove extra semicolons after macros in Bundle.h
+* Merge pull request `#302 <https://github.com/artivis/manif/issues/302>`_ from artivis/feat/vee
+  Add vee
+* Merge pull request `#297 <https://github.com/artivis/manif/issues/297>`_ from artivis/fix/ci-checkout
+  Update CI checkout to v4
+* Merge pull request `#295 <https://github.com/artivis/manif/issues/295>`_ from mattalvarado/feature/update_to_ceres_manifold
+  Support Ceres 2.2+
+* Merge pull request `#1 <https://github.com/artivis/manif/issues/1>`_ from artivis/feature/ceres-2.2
+  Support Ceres both pre/post 2.2
+* Merge pull request `#289 <https://github.com/artivis/manif/issues/289>`_ from artivis/feat/sgal3
+  Add SGal(3)
+* Merge pull request `#284 <https://github.com/artivis/manif/issues/284>`_ from artivis/fix/cast
+  Fix casting float->double
+* Merge pull request `#286 <https://github.com/artivis/manif/issues/286>`_ from artivis/fix/typo
+  Fix typo in cheat sheet
+* Merge pull request `#280 <https://github.com/artivis/manif/issues/280>`_ from artivis/fix/test_cmake
+  Set test target default cxx standard iif no glob set
+* Merge pull request `#275 <https://github.com/artivis/manif/issues/275>`_ from traversaro/fix274
+  Support read C++ standard via CMAKE_CXX_STANDARD when compiling Python bindings
+* Merge pull request `#259 <https://github.com/artivis/manif/issues/259>`_ from traversaro/patch-6
+  Permit to specify Python package install dir with MANIFPY_PKGDIR
+* Merge pull request `#271 <https://github.com/artivis/manif/issues/271>`_ from willat343/devel
+  replaced ::Constant(0) with ::Zero() due to ceres::Jet compile error
+* Merge pull request `#272 <https://github.com/artivis/manif/issues/272>`_ from artivis/fix/ci
+  Fix/ci
+* Merge pull request `#250 <https://github.com/artivis/manif/issues/250>`_ from artivis/feature/autodiff
+  enable tests for autodiff real type
+* Merge pull request `#257 <https://github.com/artivis/manif/issues/257>`_ from artivis/ci/macos
+  Deprecate CI macos-10.15 & add macos-11/12
+* Merge pull request `#255 <https://github.com/artivis/manif/issues/255>`_ from artivis/fix/deprecate_ci
+  Deprecate windows-2016 ci
+* Merge pull request `#240 <https://github.com/artivis/manif/issues/240>`_ from artivis/fix/tests
+  Fix tests randomness
+* Merge pull request `#253 <https://github.com/artivis/manif/issues/253>`_ from artivis/fix/example_py
+  fix se2_localization.py
+* Merge pull request `#252 <https://github.com/artivis/manif/issues/252>`_ from artivis/ci/win22
+  add windows 2022 to ci
+* Merge pull request `#251 <https://github.com/artivis/manif/issues/251>`_ from artivis/feature/22.04-ci
+  Ubuntu 22.04 in CI
+* Merge pull request `#245 <https://github.com/artivis/manif/issues/245>`_ from artivis/fix/doc-ci
+  fix m.css checkout
+* Merge pull request `#248 <https://github.com/artivis/manif/issues/248>`_ from traversaro/patch-5
+  Add missing include in impl/macro.h header
+* Merge pull request `#244 <https://github.com/artivis/manif/issues/244>`_ from traversaro/patch-4
+  Always use \n as new line when generating files with CMake
+* Merge pull request `#243 <https://github.com/artivis/manif/issues/243>`_ from traversaro/patch-3
+  Add installation of pip metadata files for when manifpy python bindings are installed only via CMake
+* Merge pull request `#237 <https://github.com/artivis/manif/issues/237>`_ from artivis/feature/autodiff
+  Add support for autodiff
+* Merge pull request `#234 <https://github.com/artivis/manif/issues/234>`_ from artivis/pettni/devel
+  Add Bundle and BundleTangent types
+* Merge pull request `#236 <https://github.com/artivis/manif/issues/236>`_ from traversaro/patch-2
+  Fix find_package(manif) if tl-optional_FOUND is TRUE
+* Merge pull request `#235 <https://github.com/artivis/manif/issues/235>`_ from artivis/fix/doc_ci
+  Fix doc generation in CI
+* Merge pull request `#233 <https://github.com/artivis/manif/issues/233>`_ from diegoferigo/feature/setuptools
+  Update CMake and setuptools logic for the Python bindings
+* Merge pull request `#1 <https://github.com/artivis/manif/issues/1>`_ from artivis/feature/python_install
+  Python install fixes
+* Contributors: Diego Ferigo, Jeremie Deray, Matt Alvarado
+
 0.0.4 (2021-06-14)
 ------------------
 * Merge pull request `#231 <https://github.com/artivis/manif/issues/231>`_ from artivis/devel
