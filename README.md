@@ -26,6 +26,10 @@ At the moment, it provides the groups:
   introduced (to the best of knowledge) in this [paper][barrau15].
   NOTE: The implementation here differs slightly from
   the developments in the [paper][barrau15].
+- SGal(3): The Special Galilean group (rotation, translation, velocity and time) in 3D space, described in these papers [[1][fourmy19]] & [[2][kelly24]].
+- Bundle<>: allows manipulating a manifold bundle as a single Lie group.
+  Referred to as a *composite manifold* in Section IV of the
+  [reference paper](http://arxiv.org/abs/1812.01537).
 
 Other Lie groups can and will be added, contributions are welcome.
 
@@ -123,6 +127,16 @@ in Python,
   X_plus_w = X.plus(w, J_o_x, J_o_w)
 ```
 
+#### Note
+
+While Jacobians in **manif** are differentiated with respect to a
+local perturbation on the tangent space, many non-linear solvers
+(e.g. [Ceres][ceres]) expect functions to be differentiated with respect to the underlying representation vector of the group element
+(e.g. with respect to quaternion vector for `SO3`).
+
+For this reason, **manif** is compliant with the auto-differentiation libraries
+[`ceres::Jet`][ceres-jet], [`autodiff::Dual`][autodiff] & [`autodiff::Real`][autodiff].
+
 ## Documentation
 
 The documentation is available online at the accompanying [website][manif-doc].
@@ -157,6 +171,8 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [jsola18]: http://arxiv.org/abs/1812.01537
 [jsola18v]: http://arxiv.org/abs/1812.01537v4
 [barrau15]: https://arxiv.org/pdf/1410.1465.pdf
+[fourmy19]: https://hal.science/hal-02183498/document
+[kelly24]: https://arxiv.org/abs/2312.07555
 [deray20]: https://joss.theoj.org/papers/10.21105/joss.01371
 
 [jsola-iri-lecture]: https://www.youtube.com/watch?v=nHOcoIyJj2o
@@ -166,6 +182,7 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [eigen]: http://eigen.tuxfamily.org
 [ceres]: http://ceres-solver.org/
 [ceres-jet]: http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets
+[autodiff]: https://autodiff.github.io/
 [crtp]: https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 
 [manif-repo]: https://github.com/artivis/manif.git

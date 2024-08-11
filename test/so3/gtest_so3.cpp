@@ -619,20 +619,10 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
 
 #endif
 
-MANIF_TEST(SO3f);
-
-MANIF_TEST_MAP(SO3f);
-
-MANIF_TEST_JACOBIANS(SO3f);
-
 MANIF_TEST(SO3d);
 
 MANIF_TEST_MAP(SO3d);
 
 MANIF_TEST_JACOBIANS(SO3d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

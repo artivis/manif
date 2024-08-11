@@ -19,21 +19,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
         build_type: [Release, Debug]
-        compiler: [{
-          "cc": "gcc",
-          "cxx": "g++"
-         }, {
-          "cc": "clang",
-          "cxx": "clang++"
-        }]
+        compiler: [
+          {
+            "cc": "gcc",
+            "cxx": "g++"
+          }, {
+            "cc": "clang",
+            "cxx": "clang++"
+          }
+        ]
     env:
       CC: ${{ matrix.compiler.cc }}
       CXX: ${{ matrix.compiler.cxx }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
@@ -58,16 +60,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # Xcode 10.3 & Xcode 12.2
-        # removing macos-11.0 for now, see
-        #https://github.com/actions/virtual-environments/issues/841
-        os: [macos-10.15]
+        os: [macos-12, macos-13, macos-14]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Xcode
-        if: matrix.os == 'macOS-10.15'
-        run: sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           brew install eigen
@@ -79,7 +75,7 @@ jobs:
           echo "Eigen:" && brew info eigen
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build
         working-directory: ${{runner.workspace}}/build
         run: make -j2
@@ -91,16 +87,18 @@ jobs:
     runs-on: ${{ matrix.combinations.os }}
     strategy:
       matrix:
-        combinations: [{
-          "os": "windows-2016",
-          "cmake_generator": "Visual Studio 15 2017"
-         }, {
-          "os": "windows-2019",
-          "cmake_generator": "Visual Studio 16 2019"
-        }]
+        combinations: [
+          {
+            "os": "windows-2019",
+            "cmake_generator": "Visual Studio 16 2019"
+          }, {
+            "os": "windows-2022",
+            "cmake_generator": "Visual Studio 17 2022"
+          }
+        ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           vcpkg install eigen3:x64-windows
@@ -126,10 +124,11 @@ jobs:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev cppcheck
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -147,10 +146,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev valgrind
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -168,10 +168,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -189,13 +190,20 @@ jobs:
 
   ceres:
     needs: [build-ubuntu]
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      # Test for both Ceres pre/post 2.2
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           sudo apt update
+          sudo apt install -y libunwind-dev
           sudo apt install -y libceres-dev
           mkdir ${{runner.workspace}}/build
       - name: Configure CMake
@@ -208,18 +216,55 @@ jobs:
         working-directory: ${{runner.workspace}}/build
         run: make test
 
-  pybind11:
+  autodiff:
+    needs: [build-ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev
+          mkdir ${{runner.workspace}}/build
+      # Install autodiff
+      - name: Checkout autodiff
+        uses: actions/checkout@v3
+        with:
+          repository: autodiff/autodiff
+          ref: main
+          path: 'autodiff'
+      - name: Setup autodiff
+        run: mkdir ${{runner.workspace}}/build_autodiff
+      - name: Configure CMake autodiff
+        working-directory: ${{runner.workspace}}/build_autodiff
+        run: cmake $GITHUB_WORKSPACE/autodiff -DAUTODIFF_BUILD_TESTS=OFF -DAUTODIFF_BUILD_PYTHON=OFF -DAUTODIFF_BUILD_EXAMPLES=OFF -DAUTODIFF_BUILD_DOCS=OFF
+      - name: Install autodiff
+        working-directory: ${{runner.workspace}}/build_autodiff
+        run: sudo cmake --build . --target install
+      # Build/test manif autodiff
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: make test
+
+  pybind11-pip:
     needs: [build-ubuntu, build-mac]
     strategy:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest] #windows-latest,
-        # python-version: [3.5, 3.6, 3.7, 3.8]
-        python-version: [3.6]
+        python-version: ['3.8', '3.9', '3.10', '3.12']
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - run: git fetch --prune --unshallow
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -235,27 +280,42 @@ jobs:
       - name: Setup
         run: |
           python -m pip install --upgrade pip
-          pip install pytest "pybind11[global]"
-          pip install -r requirements.txt
+          python -m pip install build
       - name: Build
-        run: pip install .
+        run: python -m pip install -v .[testing]
       - name: Test
-        run: pytest
+        run: python -m pytest
 
-  # arm64:
-  #   needs: [build-ubuntu]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Setup
-  #       run: mkdir ${{runner.workspace}}/build
-  #     - name: Configure CMake
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
-  #     - name: Build
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make
-  #     - name: Test
-  #       working-directory: ${{runner.workspace}}/build
-  #       run: make test
+  pybind11-cmake:
+    needs: [build-ubuntu, build-mac]
+    strategy:
+      matrix:
+        platform: [ubuntu-20.04, ubuntu-22.04, ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - run: git fetch --prune --unshallow
+      # - name: Set up Python ${{ matrix.python-version }}
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+      - name: Setup apt
+        run: |
+          sudo apt update
+          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest python3-numpy
+          mkdir ${{runner.workspace}}/build
+      - name: Configure
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON -DBUILD_PYTHON_BINDINGS=ON -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        run: make -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        run: make test
+      - name: Install
+        working-directory: ${{runner.workspace}}/build
+        run: sudo make install
+      - name: Test Import
+        run: python3 -c 'import manifpy'

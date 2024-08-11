@@ -172,8 +172,4 @@ MANIF_TEST_JACOBIANS(R9d);
 
 #endif
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

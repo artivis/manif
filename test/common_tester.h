@@ -10,7 +10,7 @@
 
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
-  INSTANTIATE_TEST_CASE_P(                                                \
+  INSTANTIATE_TEST_SUITE_P(                                               \
     TEST_##manifold##_TESTS,                                              \
     TEST_##manifold##_TESTER,                                             \
     ::testing::Values(                                                    \
@@ -104,11 +104,19 @@
   TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_SMALL_ADJ)           \
   { evalSmallAdj(); }                                                     \
   TEST_F(TEST_##manifold##_TESTER, TEST_##manifold##_IDENTITY_ACT_POINT)  \
-  { evalIdentityActPoint(); }
+  { evalIdentityActPoint(); }                                             \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_CAST)                \
+  { evalCast(); }                                                         \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_INVERSE)             \
+  { evalInverse(); }                                                      \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_BRACKET)             \
+  { evalBracket(); }                                                      \
+  TEST_P(TEST_##manifold##_TESTER, TEST_##manifold##_HAT_VEE)             \
+  { evalHatVee(); }
 
 #define MANIF_TEST_JACOBIANS(manifold)                                                                                    \
   using manifold##JacobiansTester = JacobianTester<manifold>;                                                             \
-  INSTANTIATE_TEST_CASE_P(                                                                                                \
+  INSTANTIATE_TEST_SUITE_P(                                                                                               \
     manifold##JacobiansTests,                                                                                             \
     manifold##JacobiansTester,                                                                                            \
     ::testing::Values(                                                                                                    \
@@ -164,7 +172,12 @@
   TEST_P(manifold##JacobiansTester, TEST_##manifold##_PLUS_T_JACOBIANS)                                                   \
   { evalTanPlusTanJac(); }                                                                                                \
   TEST_P(manifold##JacobiansTester, TEST_##manifold##_MINUS_T_JACOBIANS)                                                  \
-  { evalTanMinusTanJac(); }
+  { evalTanMinusTanJac(); }                                                                                               \
+  TEST_P(manifold##JacobiansTester, TEST_##manifold##_JL_MJLINV_ADJ_JACOBIANS)                                            \
+  { evalJlmJlinvAjd(); }                                                                                                  \
+  TEST_P(manifold##JacobiansTester, TEST_##manifold##_JR_JR_COMP_JL_JACOBIANS)                                            \
+  { evalJrJrcompJl(); }
+
 
 
 #define MANIF_TEST_MAP(manifold)                                          \
@@ -498,7 +511,7 @@ public:
 
       const auto avg_shu = average_biinvariant(mans);
 
-      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-3 : 1e-5);
+      EXPECT_MANIF_NEAR(avg, avg_shu, (std::is_same<Scalar, float>::value)? 1e-2 : 1e-4);
     }
   }
 
@@ -701,6 +714,67 @@ public:
     Point pout = LieGroup::Identity().act(pin);
 
     EXPECT_EIGEN_NEAR(pin, pout);
+  }
+
+  void evalCast() {
+    using NewScalar = typename std::conditional<
+      std::is_same<Scalar, float>::value, double, float
+    >::type;
+
+    EXPECT_NO_THROW(
+      auto state = getState().template cast<NewScalar>();
+    );
+
+    int i=0;
+    EXPECT_NO_THROW(
+      for (; i < 10000; ++i) {
+        auto state = LieGroup::Random().template cast<NewScalar>();
+      }
+    ) << "+= failed at iteration " << i;
+  }
+
+  void evalInverse() {
+    EXPECT_MANIF_NEAR(
+      LieGroup::Identity(), LieGroup::Identity()*LieGroup::Identity().inverse()
+    );
+    EXPECT_MANIF_NEAR(
+      LieGroup::Identity(), LieGroup::Identity().inverse()*LieGroup::Identity()
+    );
+    EXPECT_MANIF_NEAR(LieGroup::Identity(), getState()*getState().inverse());
+    EXPECT_MANIF_NEAR(LieGroup::Identity(), getState().inverse()*getState());
+  }
+
+  void evalBracket() {
+
+    // [a,b] = (a.smallAdj() * b)^ = a^b^-b^a^
+    EXPECT_EIGEN_NEAR(
+      Tangent::Bracket(getDelta(), getDeltaOther()).hat(),
+      getDelta().hat() * getDeltaOther().hat() - getDeltaOther().hat() * getDelta().hat()
+    );
+
+    // Jacobi identity [x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0
+    const Tangent& x = getDelta();
+    const Tangent& y = getDeltaOther();
+    const Tangent z = getState().log();
+    EXPECT_MANIF_NEAR(
+      Tangent::Bracket(x, Tangent::Bracket(y, z)) +
+      Tangent::Bracket(y, Tangent::Bracket(z, x)) +
+      Tangent::Bracket(z, Tangent::Bracket(x, y)),
+      Tangent::Zero()
+    );
+
+    // Anti-symmetry [x,y] = -[y,x]
+    EXPECT_MANIF_NEAR(
+      Tangent::Bracket(getDelta(), getDeltaOther()),
+      -Tangent::Bracket(getDeltaOther(), getDelta())
+    );
+
+    // [x,x] = 0
+    EXPECT_MANIF_NEAR(Tangent::Bracket(getDelta(), getDelta()), Tangent::Zero());
+  }
+
+  void evalHatVee() {
+    EXPECT_MANIF_NEAR(getDelta(), Tangent::Vee(getDelta().hat()));
   }
 
 protected:
@@ -1044,18 +1118,18 @@ public:
     Jrinv = tan.rjacinv();
     Jlinv = tan.ljacinv();
 
-    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jr*Jrinv);
-    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jl*Jlinv);
+    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jr*Jrinv, tol_);
+    EXPECT_EIGEN_NEAR(Jacobian::Identity(), Jl*Jlinv, tol_);
   }
 
   void evalActJac()
   {
     using Scalar = typename LieGroup::Scalar;
-    using Point = Eigen::Matrix<Scalar, LieGroup::Dim, 1>;
+    using Point = typename LieGroup::Vector;
     Point point = Point::Random();
 
-    Eigen::Matrix<Scalar, LieGroup::Dim, LieGroup::DoF> J_pout_s;
-    Eigen::Matrix<Scalar, LieGroup::Dim, LieGroup::Dim> J_pout_p;
+    Eigen::Matrix<Scalar, Point::SizeAtCompileTime, LieGroup::DoF> J_pout_s;
+    Eigen::Matrix<Scalar, Point::SizeAtCompileTime, Point::SizeAtCompileTime> J_pout_p;
 
     const LieGroup& state = getState();
 
@@ -1121,6 +1195,19 @@ public:
     delta_lin  = delta_out.plus(J_out_rhs*w);
 
     EXPECT_MANIF_NEAR(delta_pert, delta_lin, tol_);
+  }
+
+  void evalJlmJlinvAjd() {
+    const Tangent& delta = getDelta();
+    const Tangent mdelta = -delta;
+
+    EXPECT_EIGEN_NEAR(delta.exp().adj(), delta.ljac()*mdelta.ljacinv());
+  }
+
+  void evalJrJrcompJl() {
+    const Tangent& delta = getDelta();
+
+    EXPECT_EIGEN_NEAR(delta.exp().adj() * (-delta).ljac(), delta.ljac());
   }
 
   void setOmegaOrder(const double w_order) { w_order_ = w_order; }

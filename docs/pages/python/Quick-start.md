@@ -1,14 +1,29 @@
 # Quick start
 
 - [Quick start](#quick-start)
-  - [Getting Pybind11](#getting-pybind11)
-  - [Installation](#installation)
-    - [Dependencies](#dependencies)
+  - [Installing manifpy](#installing-manifpy)
+    - [From conda](#from-conda)
     - [From source](#from-source)
+      - [Getting Pybind11](#getting-pybind11)
+      - [Getting the dependencies](#getting-the-dependencies)
+      - [Building](#building)
+      - [Testing](#testing)
   - [Use manifpy in your project](#use-manifpy-in-your-project)
   - [Tutorials and application demos](#tutorials-and-application-demos)
 
-## Getting Pybind11
+## Installing manifpy
+
+### From conda
+
+`manifpy` can be installed from the [conda-forge][conda-manifpy],
+
+```bash
+conda install -c conda-forge manifpy
+```
+
+### From source
+
+#### Getting Pybind11
 
 The Python wrappers are generated using [pybind11][pybind11-rtd]. So first we need to install it,
 but we want it available directly in our environment root so that `CMake` can find it.
@@ -30,9 +45,9 @@ cmake ..
 make install
 ```
 
-## Installation
+<!-- ## Installation -->
 
-### Dependencies
+#### Getting the dependencies
 
 - Eigen 3 :
   - Linux ( Ubuntu and similar )
@@ -49,13 +64,7 @@ make install
 
 - [lt::optional][optional-repo] : included in the `external` folder
 
-Python bindings also depends on `numpy`.
-
-```bash
-python3 -m pip install -r requirements
-```
-
-### From source
+#### Building
 
 To generate `manif` Python bindings run,
 
@@ -63,6 +72,20 @@ To generate `manif` Python bindings run,
 git clone https://github.com/artivis/manif.git
 cd manif
 python3 -m pip install .
+```
+
+#### Testing
+
+To run the tests you will also need `numpy`,
+
+```bash
+python3 -m pip install numpy
+```
+
+To run the tests, simply hits:
+
+```bash
+python3 -m pytest
 ```
 
 ## Use manifpy in your project
@@ -101,3 +124,4 @@ python3 se2_localization.py
 
 [pybind11-rtd]: https://pybind11.readthedocs.io/en/stable/index.html
 [optional-repo]: https://github.com/TartanLlama/optional
+[conda-manifpy]: https://anaconda.org/conda-forge/manifpy

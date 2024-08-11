@@ -47,6 +47,7 @@ public:
   using Rotation       = typename internal::traits<_Derived>::Rotation;
   using Translation    = typename internal::traits<_Derived>::Translation;
   using LinearVelocity = typename internal::traits<_Derived>::LinearVelocity;
+  using Transformation = Eigen::Matrix<Scalar, 5, 5>;
   using Isometry       = Eigen::Matrix<Scalar, 5, 5>; /**< Double direct spatial isometry*/
   using QuaternionDataType = Eigen::Quaternion<Scalar>;
 
@@ -117,6 +118,14 @@ public:
   Jacobian adj() const;
 
   // SE_2_3 specific functions
+
+  /**
+   * Get the isometry object (double direct isometry).
+   * @note T = | R t v|
+   *           |   1  |
+   *           |     1|
+   */
+  Transformation transform() const;
 
   /**
    * Get the isometry object (double direct isometry).
@@ -195,8 +204,8 @@ public: /// @todo make protected
 };
 
 template <typename _Derived>
-typename SE_2_3Base<_Derived>::Isometry
-SE_2_3Base<_Derived>::isometry() const
+typename SE_2_3Base<_Derived>::Transformation
+SE_2_3Base<_Derived>::transform() const
 {
   Eigen::Matrix<Scalar, 5, 5> T;
   T.template topLeftCorner<3,3>() = rotation();
@@ -205,6 +214,13 @@ SE_2_3Base<_Derived>::isometry() const
   T.template bottomLeftCorner<2,3>().setZero();
   T.template bottomRightCorner<2,2>().setIdentity();
   return T;
+}
+
+template <typename _Derived>
+typename SE_2_3Base<_Derived>::Isometry
+SE_2_3Base<_Derived>::isometry() const
+{
+  return Isometry(transform());
 }
 
 template <typename _Derived>
@@ -449,6 +465,23 @@ struct AssignmentEvaluatorImpl<SE_2_3Base<Derived>>
       manif::invalid_argument
     );
     MANIF_UNUSED_VARIABLE(data);
+  }
+};
+
+//! @brief Cast specialization for SE_2_3Base objects.
+template <typename Derived, typename NewScalar>
+struct CastEvaluatorImpl<SE_2_3Base<Derived>, NewScalar> {
+  template <typename T>
+  static auto run(const T& o) -> typename Derived::template LieGroupTemplate<NewScalar> {
+    const typename SE_2_3Base<Derived>::QuaternionDataType q = o.quat();
+    const typename SE_2_3Base<Derived>::Translation t = o.translation();
+    const typename SE_2_3Base<Derived>::LinearVelocity v = o.linearVelocity();
+
+    return typename Derived::template LieGroupTemplate<NewScalar>(
+      t.template cast<NewScalar>(),
+      q.template cast<NewScalar>().normalized(),
+      v.template cast<NewScalar>()
+    );
   }
 };
 

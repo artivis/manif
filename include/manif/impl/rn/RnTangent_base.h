@@ -84,7 +84,7 @@ public:
   Jacobian rjacinv() const;
 
   /**
-   * @brief Get the inverse of the right Jacobian of Rn.
+   * @brief Get the inverse of the left Jacobian of Rn.
    * @note See Eq. (191).
    * @see ljac.
    */
@@ -122,7 +122,7 @@ template <typename _Derived>
 typename RnTangentBase<_Derived>::LieAlg
 RnTangentBase<_Derived>::hat() const
 {
-  LieAlg t_hat = LieAlg::Constant(0);
+  LieAlg t_hat = LieAlg::Zero();
   t_hat.template topRightCorner<Dim, 1>() = coeffs();
   return t_hat;
 }
@@ -161,7 +161,7 @@ template <typename _Derived>
 typename RnTangentBase<_Derived>::Jacobian
 RnTangentBase<_Derived>::smallAdj() const
 {
-  static const Jacobian smallAdj = Jacobian::Constant(0);
+  static const Jacobian smallAdj = Jacobian::Zero();
   return smallAdj;
 }
 
@@ -184,7 +184,7 @@ struct GeneratorEvaluator<RnTangentBase<Derived>>
 
     using LieAlg = typename RnTangentBase<Derived>::LieAlg;
 
-    LieAlg Ei = LieAlg::Constant(0);
+    LieAlg Ei = LieAlg::Zero();
 
     Ei(i, RnTangentBase<Derived>::DoF) = 1;
 
@@ -199,6 +199,24 @@ struct RandomEvaluatorImpl<RnTangentBase<Derived>>
   static void run(RnTangentBase<Derived>& m)
   {
     m.coeffs().setRandom();
+  }
+};
+
+//! @brief Bracket specialization for RnTangentBase objects.
+template <typename Derived>
+struct BracketEvaluatorImpl<RnTangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static typename Derived::Tangent run(const TL&, const TR&) {
+    return Derived::Tangent::Zero();
+  }
+};
+
+//! @brief Vee specialization for RnTangentBase objects.
+template <typename Derived>
+struct VeeEvaluatorImpl<RnTangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static void run(TL& t, const TR& v) {
+    t.coeffs() = v.template topRightCorner<Derived::Dim, 1>();
   }
 };
 

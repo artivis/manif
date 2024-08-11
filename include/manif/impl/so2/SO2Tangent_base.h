@@ -225,6 +225,15 @@ struct RandomEvaluatorImpl<SO2TangentBase<Derived>>
   }
 };
 
+//! @brief Vee specialization for SO2TangentBase objects.
+template <typename Derived>
+struct VeeEvaluatorImpl<SO2TangentBase<Derived>> {
+  template <typename TL, typename TR>
+  static void run(TL& t, const TR& v) {
+    t.coeffs() << v(1, 0);
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 

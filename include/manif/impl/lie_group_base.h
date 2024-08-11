@@ -6,6 +6,7 @@
 #include "manif/impl/eigen.h"
 #include "manif/impl/tangent_base.h"
 #include "manif/impl/assignment_assert.h"
+#include "manif/impl/cast.h"
 
 #include "manif/constants.h"
 
@@ -312,6 +313,21 @@ public:
   template <typename _DerivedOther>
   _Derived& operator *=(const LieGroupBase<_DerivedOther>& m);
 
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) const -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! @brief The size of the underlying vector
+  constexpr unsigned int size() const {
+    return RepSize;
+  }
+
   // Some static helpers
 
   //! Static helper to create a Lie group object set at Identity.
@@ -400,7 +416,9 @@ template <class _NewScalar>
 typename LieGroupBase<_Derived>::template LieGroupTemplate<_NewScalar>
 LieGroupBase<_Derived>::cast() const
 {
-  return LieGroupTemplate<_NewScalar>(coeffs().template cast<_NewScalar>());
+  return internal::CastEvaluator<
+    typename internal::traits<_Derived>::Base, _NewScalar
+  >(derived()).run();
 }
 
 template <typename _Derived>

@@ -5,6 +5,8 @@
 #include "manif/impl/traits.h"
 #include "manif/impl/generator.h"
 #include "manif/impl/random.h"
+#include "manif/impl/bracket.h"
+#include "manif/impl/vee.h"
 #include "manif/impl/eigen.h"
 
 #include "manif/constants.h"
@@ -97,6 +99,14 @@ public:
    * @return A reference to this.
    */
   _Derived& setRandom();
+
+  /**
+   * @brief Set the Tangent object this from an object in the Lie algebra.
+   * @param[in] a An object in the Lie algebra.
+   * @return A reference to this.
+   */
+  template <typename _EigenDerived>
+  _Derived& setVee(const Eigen::MatrixBase<_EigenDerived>& a);
 
   // Minimum API
   // Those functions must be implemented in the Derived class !
@@ -256,6 +266,16 @@ public:
   Jacobian smallAdj() const;
 
   /**
+   * @brief Compute the Lie bracket [this,b] in vector form.
+   *
+   * @tparam _DerivedOther
+   * @param b Another tangent object of the same group.
+   * @return The Lie bracket [this,b] in vector form.
+   */
+  template <typename _DerivedOther>
+  Tangent bracket(const TangentBase<_DerivedOther>& b) const;
+
+  /**
    * @brief Evaluate whether this and v are 'close'.
    * @details This evaluation is performed element-wise.
    * @param[in] v A vector.
@@ -320,6 +340,21 @@ public:
   //! @brief Divide the underlying vector with a scalar.
   Tangent operator /=(const Scalar scalar);
 
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) const -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! Access the ith coeffs
+  auto operator [](const unsigned int i) -> decltype(coeffs()[i]){
+    return coeffs()[i];
+  }
+
+  //! @brief The size of the underlying vector
+  constexpr unsigned int size() const {
+    return RepSize;
+  }
+
   // static helpers
 
   //! Static helper the create a Tangent object set to Zero.
@@ -330,6 +365,30 @@ public:
   static LieAlg Generator(const int i);
   //! Static helper to get a Basis of the Lie group.
   static InnerWeightsMatrix InnerWeights();
+
+  /**
+   * @brief Compute the Lie bracket [a,b] in vector form.
+   *
+   * @tparam _DerivedOther
+   * @param a A Tangent object.
+   * @param b A second Tangent object.
+   * @return The Lie bracket [a,b] in vector form.
+   */
+  template <typename _DerivedOther>
+  static Tangent Bracket(
+    const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
+  );
+
+  /**
+   * @brief Instantiate a Tangent from a Lie algebra object.
+   *
+   * @tparam _EigenDerived
+   * @param alg A tangent object expressed in the Lie algebra.
+   * @return a Tangent object.
+   * @see hat
+   */
+  template <typename _EigenDerived>
+  static Tangent Vee(const Eigen::MatrixBase<_EigenDerived>& alg);
 
 protected:
 
@@ -422,6 +481,13 @@ _Derived& TangentBase<_Derived>::setRandom()
       typename internal::traits<_Derived>::Base>(
         derived()).run();
 
+  return derived();
+}
+
+template <class _Derived>
+template <typename _EigenDerived>
+_Derived& TangentBase<_Derived>::setVee(const Eigen::MatrixBase<_EigenDerived>& a) {
+  internal::VeeEvaluator<typename internal::traits<_Derived>::Base>(derived()).run(a);
   return derived();
 }
 
@@ -608,6 +674,17 @@ TangentBase<_Derived>::smallAdj() const
 }
 
 template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::bracket(
+  const TangentBase<_DerivedOther>& b
+) const {
+  return internal::BracketEvaluator<
+    typename internal::traits<_Derived>::Base,
+    typename internal::traits<_DerivedOther>::Base
+  >(derived(), b.derived()).run();
+}
+
+template <typename _Derived>
 template <typename _EigenDerived>
 bool TangentBase<_Derived>::isApprox(
     const Eigen::MatrixBase<_EigenDerived>& t,
@@ -678,6 +755,22 @@ TangentBase<_Derived>::InnerWeights()
 {
   return internal::InnerWeightsEvaluator<
       typename internal::traits<_Derived>::Base>::run();
+}
+
+template <typename _Derived>
+template <typename _DerivedOther>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::Bracket(
+  const TangentBase<_Derived>& a, const TangentBase<_DerivedOther>& b
+) {
+  return a.bracket(b);
+}
+
+template <typename _Derived>
+template <typename _EigenDerived>
+typename TangentBase<_Derived>::Tangent TangentBase<_Derived>::Vee(
+  const Eigen::MatrixBase<_EigenDerived>& alg
+) {
+  return Tangent().setVee(alg);
 }
 
 // Math

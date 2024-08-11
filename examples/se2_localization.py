@@ -202,7 +202,7 @@ if __name__ == '__main__':
 
         X = X.plus(u_est, J_x, J_u)                         # X * exp(u), with Jacobians
 
-        P = J_x * P * J_x.transpose() + J_u * U * J_u.transpose()
+        P = J_x @ P @ J_x.transpose() + J_u @ U @ J_u.transpose()
 
         # Then we correct using the measurements of each lmk
         for i in range(NUMBER_OF_LMKS_TO_MEASURE):

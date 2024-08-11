@@ -4,7 +4,7 @@ manif_add_gtest(gtest_rn_ceres gtest_rn_ceres.cpp)
 
 manif_add_gtest(gtest_so2_ceres gtest_so2_ceres.cpp)
 
-manif_add_gtest(gtest_se2_autodiff gtest_se2_autodiff.cpp)
+manif_add_gtest(gtest_se2_ceres_autodiff gtest_se2_ceres_autodiff.cpp)
 manif_add_gtest(gtest_se2_ceres gtest_se2_ceres.cpp)
 
 manif_add_gtest(gtest_so3_ceres gtest_so3_ceres.cpp)
@@ -13,7 +13,11 @@ manif_add_gtest(gtest_se3_ceres gtest_se3_ceres.cpp)
 
 manif_add_gtest(gtest_se23_ceres gtest_se23_ceres.cpp)
 
-set(CXX_11_TEST_TARGETS_CERES
+manif_add_gtest(gtest_sgal3_ceres gtest_sgal3_ceres.cpp)
+
+manif_add_gtest(gtest_bundle_ceres gtest_bundle_ceres.cpp)
+
+set(CXX_TEST_TARGETS_CERES
   # Rn
   gtest_rn_ceres
 
@@ -24,7 +28,7 @@ set(CXX_11_TEST_TARGETS_CERES
   gtest_so3_ceres
 
   # SE2
-  gtest_se2_autodiff
+  gtest_se2_ceres_autodiff
   gtest_se2_ceres
 
   # SE3
@@ -32,16 +36,22 @@ set(CXX_11_TEST_TARGETS_CERES
 
   # SE23
   gtest_se23_ceres
+
+  # SGal3
+  gtest_sgal3_ceres
+
+  # Bundle
+  gtest_bundle_ceres
 )
 
-foreach(target ${CXX_11_TEST_TARGETS_CERES})
+foreach(target ${CXX_TEST_TARGETS_CERES})
   target_link_libraries(${target} ${CERES_LIBRARIES})
   target_include_directories(${target} SYSTEM PRIVATE ${CERES_INCLUDE_DIRS})
 endforeach()
 
-set(CXX_11_TEST_TARGETS
-  ${CXX_11_TEST_TARGETS}
-  ${CXX_11_TEST_TARGETS_CERES}
+set(CXX_TEST_TARGETS
+  ${CXX_TEST_TARGETS}
+  ${CXX_TEST_TARGETS_CERES}
 
   PARENT_SCOPE
 )

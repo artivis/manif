@@ -36,6 +36,18 @@ set(CXX_11_EXAMPLE_TARGETS
   se_2_3_localization
 )
 
+if(NOT MSVC)
+  add_executable(bundle_sam bundle_sam.cpp)
+
+  set(CXX_11_EXAMPLE_TARGETS
+
+    ${CXX_11_EXAMPLE_TARGETS}
+
+    # Bundle
+    bundle_sam
+  )
+endif()
+
 # Link to manif
 foreach(target ${CXX_11_EXAMPLE_TARGETS})
   target_link_libraries(${target} ${PROJECT_NAME})
@@ -45,7 +57,7 @@ foreach(target ${CXX_11_EXAMPLE_TARGETS})
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
-      )
+    )
   endif()
 
 endforeach()

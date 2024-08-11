@@ -424,6 +424,17 @@ struct AssignmentEvaluatorImpl<SE2Base<Derived>>
   }
 };
 
+//! @brief Cast specialization for SE2Base objects.
+template <typename Derived, typename NewScalar>
+struct CastEvaluatorImpl<SE2Base<Derived>, NewScalar> {
+  template <typename T>
+  static auto run(const T& o) -> typename Derived::template LieGroupTemplate<NewScalar> {
+    return typename Derived::template LieGroupTemplate<NewScalar>(
+      NewScalar(o.x()), NewScalar(o.y()), NewScalar(o.angle())
+    );
+  }
+};
+
 } /* namespace internal */
 } /* namespace manif */
 

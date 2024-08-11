@@ -8,30 +8,6 @@ Quick start
 .. contents:: Table of Contents
     :depth: 3
 
-
-Getting Pybind11
-----------------
-
-The Python wrappers are generated using `pybind11 <https://pybind11.readthedocs.io/en/stable/index.html>`_. So first we need to install it,
-but we want it available directly in our environment root so that ``CMake`` can find it.
-To do so we can use,
-
-.. code-block:: bash
-
-   python3 -m pip install "pybind11[global]"
-
-Note that this is not recommended when using one's system Python,
-as it will add files to ``/usr/local/include/pybind11`` and ``/usr/local/share/cmake/pybind11``.
-
-Another way is to use ``CMake`` to install it,
-
-.. code-block:: bash
-
-   git clone https://github.com/pybind/pybind11.git
-   cd pybind11 && mkdir build && cd build
-   cmake ..
-   make install
-
 Installation
 ------------
 
@@ -60,11 +36,6 @@ Dependencies
 *
   `lt::optional <https://github.com/TartanLlama/optional>`_ : included in the ``external`` folder
 
-Python bindings also depends on ``numpy``.
-
-.. code-block:: bash
-
-   python3 -m pip install -r requirements
 
 From source
 ^^^^^^^^^^^

@@ -154,12 +154,17 @@ SE3<_Scalar>::SE3(const LieGroupBase<_DerivedOther>& o)
   //
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
+// Temporarily disable this warning which causes false positive with GCC 12
+// See e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106247
 template <typename _Scalar>
 SE3<_Scalar>::SE3(const Translation& t, const Eigen::Quaternion<Scalar>& q)
   : SE3((DataType() << t, q.coeffs() ).finished())
 {
   //
 }
+#pragma GCC diagnostic pop
 
 template <typename _Scalar>
 SE3<_Scalar>::SE3(const Translation& t, const Eigen::AngleAxis<Scalar>& a)

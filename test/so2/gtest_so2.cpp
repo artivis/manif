@@ -584,11 +584,4 @@ MANIF_TEST_MAP(SO2d);
 
 MANIF_TEST_JACOBIANS(SO2d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-
-//  ::testing::GTEST_FLAG(filter) = "TEST_SO2.TEST_SO2_LIFT_JAC";
-
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

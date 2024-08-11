@@ -9,6 +9,13 @@
 #include <random>
 #include <chrono>
 
+#define MANIF_RUN_ALL_TEST                \
+  int main(int argc, char** argv) {       \
+    std::srand((unsigned int) time(0));   \
+    testing::InitGoogleTest(&argc, argv); \
+    return RUN_ALL_TESTS();               \
+  }
+
 #define EXPECT_ANGLE_NEAR(e, a, eps) \
   EXPECT_LT(pi2pi(e-a), eps)
 

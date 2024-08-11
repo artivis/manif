@@ -1,6 +1,5 @@
-#include <gtest/gtest.h>
-
 #include "manif/SE3.h"
+
 #include "../common_tester.h"
 
 using namespace manif;
@@ -470,8 +469,4 @@ MANIF_TEST_MAP(SE3d);
 
 MANIF_TEST_JACOBIANS(SE3d);
 
-int main(int argc, char** argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+MANIF_RUN_ALL_TEST;

@@ -2,6 +2,7 @@
 #define _MANIF_MANIF_FWD_H_
 
 #include <stdexcept> // for std::runtime_error
+#include <utility> // for std::forward
 
 #ifdef NDEBUG
 # ifndef MANIF_NO_DEBUG
@@ -156,6 +157,7 @@ raise(Args&&... args)
   X& operator =(Eigen::MatrixBase<_EigenDerived>&& o) { coeffs() = std::move(o); return derived(); }
 
 #define MANIF_GROUP_MAP_ASSIGN_OP(X) \
+  Map(const Map & o) : Base(), data_(o.coeffs()) { }\
   Map& operator=(const Map& o) { coeffs() = o.coeffs(); return *this; }\
   template <typename _DerivedOther>\
   Map& operator =(const manif::X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\
@@ -200,6 +202,7 @@ raise(Args&&... args)
   X& operator =(Eigen::MatrixBase<_EigenDerived>&& o) MANIF_MOVE_NOEXCEPT { coeffs() = std::move(o); return derived(); }
 
 #define MANIF_TANGENT_MAP_ASSIGN_OP(X) \
+  Map(const Map & o) : Base(), data_(o.coeffs()) { }\
   Map& operator=(const Map& o) { coeffs() = o.coeffs(); return *this; }\
   template <typename _DerivedOther>\
   Map& operator =(const manif::X##Base<_DerivedOther>& o) { coeffs() = o.coeffs(); return *this; }\

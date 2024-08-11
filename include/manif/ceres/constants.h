@@ -4,6 +4,7 @@
 #include "manif/constants.h"
 
 #include <ceres/jet.h>
+#include <ceres/version.h>
 
 namespace manif {
 
@@ -17,7 +18,8 @@ struct Constants<ceres::Jet<_Scalar, N>>
 
 template <typename _Scalar, int N>
 const ceres::Jet<_Scalar, N>
-Constants<ceres::Jet<_Scalar, N>>::eps = ceres::Jet<_Scalar, N>(1e-14);
+Constants<ceres::Jet<_Scalar, N>>::eps =
+  ceres::Jet<_Scalar, N>(Constants<_Scalar>::eps);
 
 } /* namespace manif */
 
