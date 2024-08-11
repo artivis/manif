@@ -2,8 +2,8 @@
 Changelog for package manif
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2024-08-11)
+------------------
 * Merge pull request `#304 <https://github.com/artivis/manif/issues/304>`_ from artivis/devel
   Preparing release
 * Merge pull request `#303 <https://github.com/artivis/manif/issues/303>`_ from HenryLeC/devel

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>manif</name>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <description>The manif package</description>
 
   <author>Jeremie Deray</author>
@@ -9,7 +9,7 @@
 
   <maintainer email="deray.jeremie@gmail.com">Jeremie Deray</maintainer>
 
-<!--  <url type="website">http://ros.org/wiki/todo</url>-->
+  <url type="website">https://artivis.github.io/manif/</url>
   <url type="repository">https://github.com/artivis/manif.git</url>
   <url type="bugtracker">https://github.com/artivis/manif/issues</url>
 
