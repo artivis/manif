@@ -86,7 +86,7 @@
  *
  *  The motion and measurement models are
  *
- *    X_(t+1) = f(X_t, u) = X_t * Exp ( w )     // motion equation
+ *    X_(t+1) = f(X_t, u) = X_t * Exp ( u )     // motion equation
  *    y_k     = h(X, b_k) = X^-1 * b_k          // measurement equation
  *
  *  The algorithm below comprises first a simulator to
