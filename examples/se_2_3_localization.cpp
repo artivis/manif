@@ -60,7 +60,7 @@
  *
  * The kinematic equations (1) can be written as,
  * p <-- p + v dt + 0.5 a dt^2
- * R <-- R Exp_SO3(omega_b)
+ * R <-- R Exp_SO3(omega_b dt)
  * v <-- v + a dt
  *
  * However, we would like to express the kinematics equations in the form,
