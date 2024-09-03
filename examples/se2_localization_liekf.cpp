@@ -28,19 +28,18 @@
  *
  *  This demo corresponds to the application in chapter 4.3 (left invariant)
  *  in the thesis
- *  'Non-linear state error based extended Kalman filters with applications to navigation' A. Barrau.
+ *  'Non-linear state error based extended Kalman filters with applications to navigation' A. Barrau. [1]
  *
  *  It is adapted after the sample problem presented in chapter 4.1 (left invariant)
  *  in the thesis
- *  'Practical Considerations and Extensions of the Invariant Extended Kalman Filtering Framework' J. Arsenault
+ *  'Practical Considerations and Extensions of the Invariant Extended Kalman Filtering Framework' J. Arsenault [2]
  *
- *  Finally, it is ported from an example (a matlab code plus a problem
- *  formulation/explanation document) by Faraaz Ahmed and James Richard
- *  Forbes, McGill University.
+ *  For covariance transformation between global and local frame, and vice versa, please refer to
+ *  Equation (54) in the paper
+ *  'A Micro Lie Theory for State Estimation in Robotics' by J. Solà, J. Deray, and D. Atchuthan [3].
  *
- *  The following is an abstract of the content of the paper
- *  'A micro Lie theory for state estimation in robotics' J. Solà, J. Deray, D.Atchuthan.
- *  Please consult the paper for better reference.
+ *  The following is an abstract of the content of the papers.
+ *  Please consult papers [1] and [2] for the simulation setup, and [3] for the covariance transformation.
  *
  *
  *  We consider a robot in the plane.
