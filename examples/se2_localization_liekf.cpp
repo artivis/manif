@@ -38,7 +38,8 @@
  *  formulation/explanation document) by Faraaz Ahmed and James Richard
  *  Forbes, McGill University.
  *
- *  The following is an abstract of the content of the paper.
+ *  The following is an abstract of the content of the paper
+ *  'A micro Lie theory for state estimation in robotics' J. Solà, J. Deray, D.Atchuthan.
  *  Please consult the paper for better reference.
  *
  *
@@ -250,7 +251,10 @@ int main()
 
         // Update
         X = X.lplus(dx);
-        P = AdXinv * ((I - K * H) * P_L) * AdXinv.transpose();
+        P_L = (I - K * H) * P_L;
+
+        // transform covariance from left to right invariant
+        P = AdXinv * P_L * AdXinv.transpose();
 
 
 
