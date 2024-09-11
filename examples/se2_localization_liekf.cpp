@@ -91,7 +91,7 @@
  *
  *  The motion and measurement models are
  *
- *    X_(t+1) = f(X_t, u) = X_t * Exp ( w )     // motion equation
+ *    X_(t+1) = f(X_t, u) = X_t * Exp ( u )     // motion equation
  *    y_k     = h(X, b_k) = X * [0 0 1]^T       // measurement equation
  *
  *  The algorithm below comprises first a simulator to
@@ -146,8 +146,8 @@ int main()
     Array3d             u_sigmas;
     Matrix3d            U;
 
-    u_nom    << 0.1, 0.0, 0.05;
-    u_sigmas << 0.1, 0.1, 0.1;
+    u_nom    << 0.1, 0.0, 0.1;
+    u_sigmas << 0.1, 0.1, 0.05;
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
@@ -158,7 +158,7 @@ int main()
     Array2d     y_sigmas;
     Matrix2d    R;
 
-    y_sigmas << 0.1, 0.1;
+    y_sigmas << 0.01, 0.01;
     R        = (y_sigmas * y_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobian of the measurements wrt the robot pose
@@ -167,6 +167,7 @@ int main()
     // Declare some temporaries
     Vector2d                e, z;   // expectation, innovation
     Matrix2d                E, Z;   // covariances of the above
+    Matrix2d                M;
     Matrix<double, 3, 2>    K;      // Kalman gain
     manif::SE2Tangentd      dx;     // optimal update step, or error-state
 
@@ -192,7 +193,7 @@ int main()
     //
 
     // Make 10 steps. Measure one GPS position each time.
-    for (int t = 0; t < 10; t++)
+    for (int t = 0; t < 1000; t++)
     {
         //// I. Simulation ###############################################################################
 
@@ -230,17 +231,19 @@ int main()
         // transform covariance from right to left invariant
         AdX = X.adj();
         AdXinv = X.inverse().adj();
-        P_L = AdX * P * AdX.transpose();                    // from eq. (54) in the paper
+        P_L = AdXinv * P * AdXinv.transpose();
 
         // expectation
         e = X.translation();                                // e = t, for X = (R,t).
-        H.topLeftCorner<2, 2>() = Matrix2d::Identity();
-        H.topRightCorner<2, 1>() = manif::skew(1.0) * X.translation();
+        H.topLeftCorner<2, 2>() = -Matrix2d::Identity();
+        H.topRightCorner<2, 1>() = Vector2d::Zero();
         E = H * P_L * H.transpose();
 
         // innovation
-        z = y - e;
-        Z = E + R;
+        M = X.inverse().rotation();
+        z = M * (y - e);                                    // z = X.inv().act(y) - X.inv().act(e)
+                                                            //   = M * (y - e)
+        Z = E + M * R * M.transpose();
 
         // Kalman gain
         K = P_L * H.transpose() * Z.inverse();
@@ -249,11 +252,11 @@ int main()
         dx = K * z;
 
         // Update
-        X = X.lplus(dx);
+        X = X.plus(-dx);
         P_L = (I - K * H) * P_L;
 
         // transform covariance from left to right invariant
-        P = AdXinv * P_L * AdXinv.transpose();
+        P = AdX * P_L * AdX.transpose();
 
 
 
