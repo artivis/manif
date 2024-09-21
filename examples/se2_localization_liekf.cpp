@@ -133,7 +133,7 @@ int main()
 
     // Define the robot pose element and its covariance
     manif::SE2d X, X_simulation, X_unfiltered;
-    Matrix3d    P, P_L;
+    Matrix3d    P;
 
     X_simulation.setIdentity();
     X.setIdentity();
@@ -151,7 +151,7 @@ int main()
     U        = (u_sigmas * u_sigmas).matrix().asDiagonal();
 
     // Declare the Jacobians of the motion wrt robot and control
-    manif::SE2d::Jacobian J_x, J_u, AdX, AdXinv;
+    manif::SE2d::Jacobian J_x, J_u;
 
     // Define the gps measurements in R^2
     Vector2d    y, y_noise;
@@ -228,16 +228,11 @@ int main()
 
         /// Then we correct using the gps position - - - - - - - - - - - - - - -
 
-        // transform covariance from right to left invariant
-        AdX = X.adj();
-        AdXinv = X.inverse().adj();
-        P_L = AdXinv * P * AdXinv.transpose();
-
         // expectation
         e = X.translation();                                // e = t, for X = (R,t).
         H.topLeftCorner<2, 2>() = -Matrix2d::Identity();
         H.topRightCorner<2, 1>() = Vector2d::Zero();
-        E = H * P_L * H.transpose();
+        E = H * P * H.transpose();
 
         // innovation
         M = X.inverse().rotation();
@@ -246,17 +241,14 @@ int main()
         Z = E + M * R * M.transpose();
 
         // Kalman gain
-        K = P_L * H.transpose() * Z.inverse();
+        K = P * H.transpose() * Z.inverse();
 
         // Correction step
         dx = K * z;
 
         // Update
         X = X.plus(-dx);
-        P_L = (I - K * H) * P_L;
-
-        // transform covariance from left to right invariant
-        P = AdX * P_L * AdX.transpose();
+        P = (I - K * H) * P;
 
 
 
