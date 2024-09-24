@@ -230,7 +230,7 @@ int main()
 
         // expectation
         e = X.translation();                                // e = t, for X = (R,t).
-        H.topLeftCorner<2, 2>() = -Matrix2d::Identity();
+        H.topLeftCorner<2, 2>() = Matrix2d::Identity();
         H.topRightCorner<2, 1>() = Vector2d::Zero();
         E = H * P * H.transpose();
 
@@ -247,7 +247,7 @@ int main()
         dx = K * z;
 
         // Update
-        X = X.plus(-dx);
+        X = X.plus(dx);
         P = (I - K * H) * P;
 
 
