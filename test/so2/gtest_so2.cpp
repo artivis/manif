@@ -576,6 +576,14 @@ TEST(TEST_SO2, TEST_SO2_NORMALIZE)
   );
 }
 
+TEST(TEST_SO2, TEST_SO2_NEQ)
+{
+  SO2d one(0, 1);
+  SO2d two = SO2d::Identity();
+
+  EXPECT_NE(one, two);
+}
+
 #endif
 
 MANIF_TEST(SO2d);

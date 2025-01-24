@@ -617,6 +617,14 @@ TEST(TEST_SO3, TEST_SO3_NORMALIZE)
   );
 }
 
+TEST(TEST_SO3, TEST_SO3_NOTEQ)
+{
+  SO3d one(0,0,0,1);
+  SO3d two(1,0,0,0);
+
+  EXPECT_NE(one, two);
+}
+
 #endif
 
 MANIF_TEST(SO3d);

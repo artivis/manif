@@ -550,6 +550,14 @@ TEST(TEST_SE2, TEST_SE2_NORMALIZE)
   );
 }
 
+TEST(TEST_SE2, TEST_SE2_NEQ)
+{
+  SE2d one(SE2d::DataType(0,0,1,0));
+  SE2d two(4, 2, 1, 0);
+
+  EXPECT_NE(one, two);
+}
+
 #endif
 
 MANIF_TEST(SE2d);
