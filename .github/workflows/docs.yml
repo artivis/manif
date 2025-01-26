@@ -66,19 +66,19 @@ jobs:
           path: docs/m.css
 
       - name: Build Python docs
-        working-directory: ${{runner.workspace}}/manif/docs
+        working-directory: ${{ runner.workspace }}/manif/docs
         run: python m.css/documentation/python.py conf_python.py
       - name: Build C++ docs
-        working-directory: ${{runner.workspace}}/manif/docs
+        working-directory: ${{ runner.workspace }}/manif/docs
         run: |
           mkdir -p site/cpp
           python m.css/documentation/doxygen.py conf_cpp.py
       - name: Build site
-        working-directory: ${{runner.workspace}}/manif/docs
+        working-directory: ${{ runner.workspace }}/manif/docs
         run: python m.css/documentation/doxygen.py conf.py
 
       - name: Latex equation white color
-        working-directory: ${{runner.workspace}}/manif/docs
+        working-directory: ${{ runner.workspace }}/manif/docs
         run: ./fix_latex_color.sh
 
       - name: Archive artifacts
