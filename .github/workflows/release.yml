@@ -19,9 +19,9 @@ jobs:
       - run: git fetch --prune --unshallow
 
       - name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.7
+          python-version: 3.12
 
       - name: Setup apt
         run: |
