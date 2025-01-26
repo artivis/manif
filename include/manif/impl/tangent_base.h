@@ -946,6 +946,22 @@ bool operator ==(
   return t.isApprox(v);
 }
 
+template <typename _Derived, typename _DerivedOther>
+bool operator !=(
+    const TangentBase<_Derived>& ta,
+    const TangentBase<_DerivedOther>& tb)
+{
+  return !(ta == tb);
+}
+
+template <typename _Derived, typename _EigenDerived>
+bool operator !=(
+    const TangentBase<_Derived>& t,
+    const Eigen::MatrixBase<_EigenDerived>& v)
+{
+  return !(t == v);
+}
+
 // Utils
 
 template <typename _Stream, typename _Derived>
