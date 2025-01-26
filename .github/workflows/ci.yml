@@ -229,7 +229,7 @@ jobs:
           mkdir ${{ runner.workspace }}/build
       # Install autodiff
       - name: Checkout autodiff
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: autodiff/autodiff
           ref: main
