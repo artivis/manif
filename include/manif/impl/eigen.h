@@ -1,6 +1,8 @@
 #ifndef _MANIF_MANIF_EIGEN_H_
 #define _MANIF_MANIF_EIGEN_H_
 
+#include <cassert>
+
 #include <Eigen/Core>
 #include <Eigen/LU> // for mat.inverse()
 #include <Eigen/Geometry>
