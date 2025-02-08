@@ -142,10 +142,10 @@ struct Weights
     w0 = m / (ml) + Scalar(3) - alpha * alpha;
   }
 
-  Scalar sqrt_d_lambda;
-  Scalar wj;
-  Scalar wm;
-  Scalar w0;
+  Scalar sqrt_d_lambda = Scalar(0);
+  Scalar wj = Scalar(0);
+  Scalar wm = Scalar(0);
+  Scalar w0 = Scalar(0);
 };
 
 using Weightsd = Weights<double>;
