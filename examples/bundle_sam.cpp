@@ -335,7 +335,6 @@ int main()
         add_beacon_factor<2, 2>(X, measurements[2][2], S, r.segment<Dim>(row), J.block<Dim, BundleT::DoF>(row, 0));
         row += Dim;
         add_beacon_factor<2, 4>(X, measurements[2][4], S, r.segment<Dim>(row), J.block<Dim, BundleT::DoF>(row, 0));
-        row += Dim;
 
         // 4. Solve -----------------------------------------------------------------
 
