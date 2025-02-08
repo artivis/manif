@@ -278,6 +278,20 @@ public:
   template <typename _DerivedOther>
   bool operator ==(const LieGroupBase<_DerivedOther>& m) const;
 
+  
+  /**
+   * @brief Inequality operator.
+   * @param[in] An element of the same Lie group.
+   * @return false if the Lie group element m is 'close' to this,
+   * true otherwise.
+   * @see operator==.
+   */
+  template <typename _DerivedOther>
+  bool operator!=(
+      const LieGroupBase<_DerivedOther> &m) const {
+    return !(*this == m);
+  }
+
   /**
    * @brief Right oplus operator.
    * @see rplus.

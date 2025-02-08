@@ -461,6 +461,17 @@ TEST(TEST_SE3, TEST_SE3_NORMALIZE)
   );
 }
 
+TEST(TEST_SE3, TEST_SE3_NEQ)
+{
+  SE3d one(SE3d::Translation(1,2,3),
+           Eigen::Quaterniond::Identity());
+
+  SE3d::DataType values; values << 0,0,0, 0,0,0,1;
+  SE3d two(values);
+
+  EXPECT_NE(one, two);
+}
+
 #endif
 
 MANIF_TEST(SE3d);

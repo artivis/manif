@@ -522,6 +522,7 @@ public:
     EXPECT_TRUE(LieGroup::Identity().isApprox(LieGroup::Identity(), tol_));
 
     EXPECT_TRUE(LieGroup::Identity() == LieGroup::Identity());
+    EXPECT_FALSE(LieGroup::Identity() != LieGroup::Identity());
 
     EXPECT_TRUE(getState().isApprox(getState(), tol_));
     EXPECT_FALSE(getState().isApprox(LieGroup::Random(), tol_));
@@ -529,12 +530,14 @@ public:
     // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(getState() == getState());
     EXPECT_FALSE(getState() == LieGroup::Random());
+    EXPECT_TRUE(getState() != LieGroup::Random());
 
     // Tangent
 
     EXPECT_TRUE(Tangent::Zero().isApprox(Tangent::Zero(), tol_));
 
     EXPECT_TRUE(Tangent::Zero() == Tangent::Zero());
+    EXPECT_FALSE(Tangent::Zero() != Tangent::Zero());
 
     EXPECT_TRUE(getDelta().isApprox(getDelta(), tol_));
     EXPECT_FALSE(getDelta().isApprox(Tangent::Random(), tol_));
@@ -542,6 +545,7 @@ public:
     // cppcheck-suppress duplicateExpression
     EXPECT_TRUE(getDelta() == getDelta());
     EXPECT_FALSE(getDelta() == Tangent::Random());
+    EXPECT_TRUE(getDelta() != Tangent::Random());
   }
 
   void evalUnaryMinus()
