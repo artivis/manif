@@ -100,8 +100,6 @@ TEST(Bundle, Interface)
   EXPECT_EIGEN_NEAR(G_Ginv.element<1>().inverse().coeffs(), SO3d::Identity().coeffs());
   EXPECT_EIGEN_NEAR(G_Ginv.element<2>().inverse().coeffs(), R1d::Identity().coeffs());
 
-  typename GroupA::Vector vec;
-
   auto adj = G.adj();
   Eigen::Matrix2d adj0 = adj.block<2, 2>(0, 0);
   EXPECT_EIGEN_NEAR(adj0, G.element<0>().adj());
