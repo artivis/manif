@@ -383,17 +383,17 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
     "__rmatmul__",
     [](const _Tangent& t, pybind11::array_t<Scalar> lhs) {
 
-    pybind11::buffer_info lhs_buf = lhs.request();
+      pybind11::buffer_info lhs_buf = lhs.request();
 
-    if (lhs_buf.ndim != 2)
-        throw std::runtime_error("Number of dimensions must be 2");
+      if (lhs_buf.ndim != 2)
+          throw std::runtime_error("Number of dimensions must be 2");
 
-    if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
-        throw std::runtime_error("Input shapes must match");
+      if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
+          throw std::runtime_error("Input shapes must match");
 
-    _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
+      _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
 
-    return result;
+      return result;
 
     },
     pybind11::is_operator()
