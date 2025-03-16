@@ -11,6 +11,8 @@
 
 ## Package Summary
 
+<!-- Include start manif intro -->
+
 **manif** is a Lie theory library for state-estimation
 targeted at robotics applications.
 It is developed as a header-only C++11 library with Python 3 wrappers.
@@ -39,10 +41,13 @@ The paper provides a thorough introduction to Lie theory,
 in a simplified way so as to make the entrance to Lie theory easy for the average roboticist
 who is interested in designing rigorous and elegant state estimation algorithms.
 
+<!-- Include stop manif intro -->
+
 You may also find the following video online,
 ['Lie theory for the roboticist'][jsola-iri-lecture],
 a lecture given at [IRI-UPC][IRI-UPC].
-In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
+
+> In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
 It provides analytic computation of Jacobians for all the operations listed [below](#features).
 
@@ -65,6 +70,8 @@ Get quickly started with **manif** following our 'quick start' guides for both
 ## Features
 
 ### Available Operations
+
+<!-- Include start manif operation -->
 
 | Operation  |       | Code |
 | :---       |   :---:   | :---: |
@@ -91,6 +98,8 @@ Above, ![\mathbf\mathcal{X},\mathbf\mathcal{Y}][latex16] represent group element
 ![\mathbf\varphi,\tau][latex18] or `w,t` represent the same elements of the tangent space
 but expressed in Cartesian coordinates in ![\mathbb{R}^n][latex19],
 and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][latex21].
+
+<!-- Include stop manif operation -->
 
 ### Jacobians
 
@@ -166,6 +175,8 @@ Find out [who's already using manif](docs/pages/projects.md).
 
 Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.md).
 
+<!-- Include start manif URLs -->
+
 [//]: # (URLs)
 
 [jsola18]: http://arxiv.org/abs/1812.01537
@@ -232,3 +243,5 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [latex21]: https://latex.codecogs.com/svg.latex?\mathbb{R}^n
 [latex22]: https://latex.codecogs.com/svg.latex?\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}
 [latex23]: https://latex.codecogs.com/svg.latex?SO(3)
+
+<!-- Include stop manif URLs -->
