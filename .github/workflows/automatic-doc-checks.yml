@@ -1,0 +1,21 @@
+name: Automatic doc checks
+
+on:
+  push:
+    branches: [ main, devel ]
+  pull_request:
+    paths:
+      - 'docs/**'   # Only run on changes to the docs directory
+  workflow_dispatch:
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  documentation-checks:
+    uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
+    with:
+      working-directory: "docs"
+      fetch-depth: 0

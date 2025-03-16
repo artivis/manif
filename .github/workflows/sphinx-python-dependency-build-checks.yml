@@ -1,0 +1,62 @@
+# The purpose of this workflow file is to confirm that the Sphinx
+# virtual environment can be built from source, consequently documenting
+# the packages required in the build environment to do that.
+#
+# This is needed because some projects embeds the documentation into built
+# artifacts which involves rendering the documentation on the target
+# architecture.
+#
+# Depending on the architecture, pip may or may not have already built wheels
+# available, and as such we need to make sure building wheels from source can
+# succeed.
+name: Sphinx python dependency build checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch: # manual trigger
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        set -ex
+        sudo apt -y install \
+          cargo \
+          libpython3-dev \
+          libxml2-dev \
+          libxslt1-dev \
+          make \
+          python3-venv \
+          rustc \
+          libtiff5-dev \
+          libjpeg8-dev \
+          libopenjp2-7-dev \
+          zlib1g-dev \
+          libfreetype6-dev \
+          liblcms2-dev \
+          libwebp-dev \
+          tcl8.6-dev \
+          tk8.6-dev \
+          python3-tk \
+          libharfbuzz-dev \
+          libfribidi-dev \
+          libxcb1-dev
+    - name: Build Sphinx venv
+      working-directory: "docs"
+      run: |
+        set -ex
+        make install \
+          PIPOPTS="--no-binary :all:" \
+          || ( cat .sphinx/venv/pip_install.log && exit 1 )

@@ -1,0 +1,53 @@
+<header id="header" class="p-navigation">
+
+  <div class="p-navigation__nav" role="menubar">
+
+    <ul class="p-navigation__links" role="menu">
+
+      <li>
+        <a class="p-logo" href="https://{{ product_page }}" aria-current="page">
+          <img src="{{ pathto(product_tag,1) }}" alt="Logo" class="p-logo-image">
+          <div class="p-logo-text p-heading--4">{{ project }}
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-ubuntu-com">
+        <a href="https://{{ product_page }}" class="p-navigation__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+{{ github }}</a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="p-navigation__link nav-more-links">More resources</a>
+        <ul class="more-links-dropdown">
+
+          {% if discourse %}
+          <li>
+            <a href="{{ discourse }}" class="p-navigation__sub-link p-dropdown__link">Discourse</a>
+          </li>
+          {% endif %}
+
+          {% if mattermost %}
+          <li>
+            <a href="{{ mattermost }}" class="p-navigation__sub-link p-dropdown__link">Mattermost</a>
+          </li>
+          {% endif %}
+
+          {% if matrix %}
+          <li>
+            <a href="{{ matrix }}" class="p-navigation__sub-link p-dropdown__link">Matrix</a>
+          </li>
+          {% endif %}
+
+          {% if github_url %}
+          <li>
+            <a href="{{ github_url }}" class="p-navigation__sub-link p-dropdown__link">GitHub</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </li> -->
+
+    </ul>
+  </div>
+</header>
