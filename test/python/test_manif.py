@@ -247,7 +247,7 @@ class TestCommon:
     def test_Vee(self, LieGroup, Tangent):
         a = Tangent.Random()
 
-        # assert a.isApprox(Tangent.Vee(a.hat()))
+        assert a.isApprox(Tangent.Vee(a.hat()))
         assert a.isApprox(Tangent().setVee(a.hat()))
 
     def test_InverseJac(self, LieGroup, Tangent):
