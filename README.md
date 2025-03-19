@@ -28,7 +28,8 @@ At the moment, it provides the groups:
   introduced (to the best of knowledge) in this [paper][barrau15].
   NOTE: The implementation here differs slightly from
   the developments in the [paper][barrau15].
-- SGal(3): The Special Galilean group (rotation, translation, velocity and time) in 3D space, described in these papers [[1][fourmy19]] & [[2][kelly24]].
+- SGal(3): The Special Galilean group (rotation, translation, velocity and time) in 3D space,
+  described in these papers [[1][fourmy19]] & [[2][kelly24]].
 - Bundle<>: allows manipulating a manifold bundle as a single Lie group.
   Referred to as a *composite manifold* in Section IV of the
   [reference paper](http://arxiv.org/abs/1812.01537).
@@ -159,7 +160,8 @@ find on [the dedicated page](docs/pages/publication.md).
 
 ## Tutorials and application demos
 
-We provide some self-contained and self-explained [C++ examples](docs/pages/cpp/Quick-start.md#tutorials-and-application-demos) to help you get started.
+We provide some self-contained and self-explained
+[C++ examples](docs/pages/cpp/Quick-start.md#tutorials-and-application-demos) to help you get started.
 
 You prefer Python? The same examples are also [available in Python](docs/pages/python/Quick-start.md#tutorials-and-application-demos).
 
