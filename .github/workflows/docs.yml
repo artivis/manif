@@ -75,6 +75,7 @@ jobs:
         run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
 
       - name: linkcheck
+        working-directory: docs
         run: make linkcheck
 
       - uses: DavidAnson/markdownlint-cli2-action@v16
