@@ -49,6 +49,7 @@ jobs:
         with:
           name: doc
           path: docs
+          include-hidden-files: true
 
   test:
     needs: [build]
