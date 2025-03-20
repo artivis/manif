@@ -50,15 +50,16 @@ full-help: $(VENVDIR)
 
 # If requirements are updated, venv should be rebuilt and timestamped.
 $(VENVDIR):
+	which doxygen || \
+		(echo "You must install doxygen before you can build the documentation."; exit 1)
 	python3 -c "import venv" || \
-        (echo "You must install python3-venv before you can build the documentation."; exit 1)
+    (echo "You must install python3-venv before you can build the documentation."; exit 1)
 	@echo "... setting up virtualenv"
 	python3 -m venv $(VENVDIR)
 	. $(VENV); pip install $(PIPOPTS) --require-virtualenv \
-	    --upgrade -r $(SPHINXDIR)/requirements.txt \
-            --log $(VENVDIR)/pip_install.log
+	  --upgrade -r $(SPHINXDIR)/requirements.txt --log $(VENVDIR)/pip_install.log
 	@test ! -f $(VENVDIR)/pip_list.txt || \
-            mv $(VENVDIR)/pip_list.txt $(VENVDIR)/pip_list.txt.bak
+    mv $(VENVDIR)/pip_list.txt $(VENVDIR)/pip_list.txt.bak
 	@. $(VENV); pip list --local --format=freeze > $(VENVDIR)/pip_list.txt
 	@touch $(VENVDIR)
 
@@ -71,9 +72,10 @@ spellcheck-install:
 			read -p "This requires sudo privileges. Proceed? [y/N]: " confirm_sudo; \
 		fi; \
 		if [ "$$confirm_sudo" = "y" ] || [ "$$confirm_sudo" = "Y" ]; then \
-			sudo apt-get install aspell aspell-en; \
+			sudo apt-get install -y aspell aspell-en; \
 		else \
 			echo "Installation cancelled."; \
+			exit 1; \
 		fi \
 	}
 
