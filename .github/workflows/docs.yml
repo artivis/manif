@@ -48,7 +48,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: doc
-          path: docs
+          path: |
+            docs
+            !docs/.sphinx/venv
+            !docs/_build/doxyxml
           include-hidden-files: true
 
   test:
@@ -67,6 +70,11 @@ jobs:
 
       - name: Install dependencies
         run: sudo apt-get install -y doxygen
+
+      - name: Build Sphinx venv
+        run: |
+          set -ex
+          make install || ( cat .sphinx/venv/pip_install.log && exit 1 )
 
       - name: linkcheck
         run: make linkcheck
@@ -95,9 +103,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: doc
-          path: docs
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs/_build
+          folder: _build
