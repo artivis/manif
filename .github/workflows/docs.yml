@@ -80,7 +80,7 @@ jobs:
 
       - uses: DavidAnson/markdownlint-cli2-action@v16
         with:
-          config: ".sphinx/.markdownlint.json"
+          config: "docs/.sphinx/.markdownlint.json"
 
   # documentation-checks:
   #   uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
