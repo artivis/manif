@@ -1,21 +1,89 @@
-name: Automatic doc checks
+name: documentation
 
 on:
   push:
-    branches: [ main, devel ]
+    branches: [ devel ]
   pull_request:
-    paths:
-      - 'docs/**'   # Only run on changes to the docs directory
   workflow_dispatch:
-
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  documentation-checks:
-    uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
-    with:
-      working-directory: "docs"
-      fetch-depth: 0
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y doxygen
+
+      - name: Build Sphinx venv
+        working-directory: "docs"
+        run: |
+          set -ex
+          make install PIPOPTS="--no-binary :all:" \
+            || ( cat .sphinx/venv/pip_install.log && exit 1 )
+
+      - name: Build documentation
+        working-directory: docs
+        run: make html
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: doc
+          path: docs
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: doc
+
+      - name: linkcheck
+        run: make linkcheck
+
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          config: ".sphinx/.markdownlint.json"
+
+  # documentation-checks:
+  #   uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
+  #   with:
+  #     working-directory: "docs"
+  #     fetch-depth: 0
+  #     install-target: "gh-ci-install"
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
+    # todo: deploy if new tag/release
+    if: |
+      github.repository == 'artivis/manif' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/devel'
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: doc
+          path: docs
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs/_build
