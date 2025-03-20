@@ -25,14 +25,12 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: |
-          sudo apt-get install -y doxygen
+        run: sudo apt-get install -y doxygen
 
       # Those are necessary if pip doesn't find the wheels
       # and decides to rebuild from source
       - name: Install dependencies
-        run: |
-          sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
+        run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
 
       - name: Build Sphinx venv
         working-directory: "docs"
@@ -60,6 +58,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: doc
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: sudo apt-get install -y doxygen
 
       - name: linkcheck
         run: make linkcheck
