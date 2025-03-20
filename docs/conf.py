@@ -347,3 +347,9 @@ exhale_args = {
     # "exhaleDoxygenStdin":    "INPUT = ../include"
     "exhaleUseDoxyfile": True,
 }
+
+linkcheck_ignore = [
+    'http://localhost:8000',
+    # @todo(artivis) Update the Ceres doc to account for Ceres 2.2 changes
+    'http://ceres-solver.org/nnls_modeling.html#localparameterization',
+]
