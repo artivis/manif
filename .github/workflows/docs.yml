@@ -49,19 +49,17 @@ jobs:
         with:
           name: doc
           path: |
-            docs
-            !docs/.sphinx/venv
+            docs/_build
             !docs/_build/doxyxml
-          include-hidden-files: true
 
   test:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          name: doc
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -71,10 +69,10 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y doxygen
 
-      - name: Build Sphinx venv
-        run: |
-          set -ex
-          make install || ( cat .sphinx/venv/pip_install.log && exit 1 )
+      # Those are necessary if pip doesn't find the wheels
+      # and decides to rebuild from source
+      - name: Install dependencies
+        run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
 
       - name: linkcheck
         run: make linkcheck
@@ -103,9 +101,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: doc
+          path: doc
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: _build
+          folder: doc
