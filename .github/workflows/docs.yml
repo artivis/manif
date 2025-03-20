@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y doxygen
+          sudo apt-get install -y doxygen libxml2
 
       - name: Build Sphinx venv
         working-directory: "docs"
