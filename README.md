@@ -102,6 +102,25 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 
 <!-- Include stop manif operation -->
 
+### Tangent spaces
+
+**manif** favors Cartesian representations of the tangent spaces. 
+This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
+The ordering of the elements in such vectors matters to correctly interpret them. 
+It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces. 
+
+As a reference, this is the way tangent spaces are defined in **manif**
+
+| group | dimension | group elements | tangent elements (in order) | relation to velocity |
+| ---- | ---- | ---- | ---- | ---- |
+| Rn | n | p | p | p = v\*dt |
+| SO(2) | 1 | R | theta | theta = w\*dt |
+| SO(3) | 3 | R | theta | theta = w\*dt |
+| SE(2) | 3 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
+| SE(3) | 6 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
+| SE_2(3) | 9 | R, p, v | rho, nu, theta | rho = v\*dt, nu = a\*dt, theta = w\*dt |
+| SGal(3) | 10 | R, p, v, t | rho, nu, theta, s | rho = v\*dt, nu = a\*dt, theta = w\*dt, s = dt |
+
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
