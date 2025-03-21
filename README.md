@@ -121,6 +121,28 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | SE_2(3) | 9 | R, p, v | rho, nu, theta | rho = v\*dt, nu = a\*dt, theta = w\*dt |
 | SGal(3) | 10 | R, p, v, t | rho, nu, theta, s | rho = v\*dt, nu = a\*dt, theta = w\*dt, s = dt |
 
+As an example, in SE_2(3) the tangent vector `tau` is defined by 
+
+          | rho   |
+    tau = | nu    |   in R^9, 
+          | theta |
+
+where
+
+    rho     in R^3
+    nu      in R^3
+    theta   in R^3
+
+are changes in position, velocity and orientation respectively.
+
+A covariances matrix `Q` of an element of SE_2(3) would be block-partitioned as follows
+
+        | Q_rr  Q_rn  Q_rt |
+    Q = | Q_nr  Q_nn  Q_nt |   in R^9x9
+        | Q_tr  Q_tn  Q_tt |
+
+where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. In this case, all blocks `Q_ij` are 3x3 and `Q` is a 9x9 matrix.
+
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
