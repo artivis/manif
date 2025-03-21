@@ -106,6 +106,7 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 
 **manif** favors Cartesian representations of the tangent spaces. 
 This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
+
 The ordering of the elements in such vectors matters to correctly interpret them. 
 It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces. 
 
