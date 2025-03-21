@@ -38,9 +38,9 @@ Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper][jsola18].
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
-The paper provides a thorough introduction to Lie theory,
-in a simplified way so as to make the entrance to Lie theory easy for the average roboticist
-who is interested in designing rigorous and elegant state estimation algorithms.
+The paper offers a comprehensive yet accessible introduction to Lie theory, tailored specifically for roboticists. 
+By presenting the material in a simplified manner, it lowers the barrier to entry for those interested in developing rigorous and elegant algorithms for state estimation, control, learning, and possibly more. 
+This approach ensures that even readers without an advanced mathematical background can grasp the foundational concepts and apply them effectively in robotics.
 
 <!-- Include stop manif intro -->
 
@@ -50,7 +50,7 @@ a lecture given at [IRI-UPC][IRI-UPC].
 
 > In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
-It provides analytic computation of Jacobians for all the operations listed [below](#features).
+**manif** provides analytic computation of Jacobians for all the operations listed [below](#features).
 
 ### Details
 
@@ -105,7 +105,7 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
-Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
+Throughout **manif**, **Jacobians are differentiated with respect to a perturbation on the local tangent space**.
 These Jacobians map tangent spaces, as described in [this paper][jsola18].
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
