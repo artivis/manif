@@ -103,7 +103,6 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 <!-- Include stop manif operation -->
 
 ### Tangent spaces
-<a id="tangent-spaces"></a>
 
 **manif** favors Cartesian representations of the tangent spaces. 
 This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
@@ -144,7 +143,7 @@ where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. 
 All operations come with their respective analytical Jacobian matrices.
 Throughout **manif**, **Jacobians are differentiated with respect to a perturbation on the local tangent space**.
 These Jacobians map tangent spaces, as described in [this paper][jsola18].
-Please consider [the order of elements in the tangent spaces](#jacobians) when manipulating Jacobians.
+Please consider [the order of elements in the tangent spaces](#tangent-spaces) when manipulating Jacobians.
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
