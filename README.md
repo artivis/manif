@@ -103,6 +103,7 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 <!-- Include stop manif operation -->
 
 ### Tangent spaces
+<a id="tangent-spaces"></a>
 
 **manif** favors Cartesian representations of the tangent spaces. 
 This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
@@ -128,27 +129,22 @@ As an example, in SE_2(3) the tangent vector `tau` is defined by
     tau = | nu    |   in R^9, 
           | theta |
 
-where
+where `rho` in R^3, `nu` in R^3 and `theta` in R^3 are changes in position, velocity and orientation respectively.
 
-    rho     in R^3
-    nu      in R^3
-    theta   in R^3
-
-are changes in position, velocity and orientation respectively.
-
-A covariances matrix `Q` of an element of SE_2(3) would be block-partitioned as follows
+A covariances matrix `Q` of an element of SE_2(3) can be block-partitioned as follows
 
         | Q_rr  Q_rn  Q_rt |
     Q = | Q_nr  Q_nn  Q_nt |   in R^9x9
         | Q_tr  Q_tn  Q_tt |
 
-where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. In this case, all blocks `Q_ij` are 3x3 and `Q` is a 9x9 matrix.
+where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. All blocks `Q_ij` are 3x3 and `Q` is 9x9.
 
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
 Throughout **manif**, **Jacobians are differentiated with respect to a perturbation on the local tangent space**.
 These Jacobians map tangent spaces, as described in [this paper][jsola18].
+Please consider [the order of elements in the tangent spaces](#jacobians) when manipulating Jacobians.
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
