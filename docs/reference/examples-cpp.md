@@ -1,4 +1,4 @@
-# Examples in C++
+# C++ Examples
 
 The project provides some self-contained and self-explained executables implementing some real problems.
 Their source code is located in [`examples/`](https://github.com/artivis/manif/tree/devel/examples) folder.
