@@ -1,4 +1,4 @@
-# Paper & courses
+# Papers & courses
 
 The **manif** project stems out of a larger body of work on the topic of state parameterization and Lie groups.
 

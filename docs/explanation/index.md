@@ -9,9 +9,9 @@ Such as,
 
 Notes on auto-differentiation and how that plays with **manif** own Jacobians.
 ```
-```{grid-item-card} [Paper & courses](publication)
+```{grid-item-card} [Papers & courses](publication)
 
-Find here all the references for **manif** associated publications and recorded courses.
+Find here all the references for **manif** associated publications and video courses.
 ```
 ````
 
