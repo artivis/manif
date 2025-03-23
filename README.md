@@ -38,9 +38,9 @@ Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper][jsola18].
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
-The paper provides a thorough introduction to Lie theory,
-in a simplified way so as to make the entrance to Lie theory easy for the average roboticist
-who is interested in designing rigorous and elegant state estimation algorithms.
+The paper offers a comprehensive yet accessible introduction to Lie theory, tailored specifically for roboticists. 
+By presenting the material in a simplified manner, it lowers the barrier to entry for those interested in developing rigorous and elegant algorithms for state estimation, control, learning, and possibly more. 
+This approach ensures that even readers without an advanced mathematical background can grasp the foundational concepts and apply them effectively in robotics.
 
 <!-- Include stop manif intro -->
 
@@ -50,7 +50,7 @@ a lecture given at [IRI-UPC][IRI-UPC].
 
 > In a rush? Check out our [Lie group cheat sheet][cheat_sheet].
 
-It provides analytic computation of Jacobians for all the operations listed [below](#features).
+**manif** provides analytic computation of Jacobians for all the operations listed [below](#features).
 
 ### Details
 
@@ -102,11 +102,48 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 
 <!-- Include stop manif operation -->
 
+### Tangent spaces
+
+**manif** favors Cartesian representations of the tangent spaces. 
+This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
+
+The ordering of the elements in such vectors matters to correctly interpret them. 
+It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces. 
+
+As a reference, this is the way tangent spaces are defined in **manif**
+
+| group | dimension | group elements | tangent elements (in order) | relation to velocity |
+| ---- | ---- | ---- | ---- | ---- |
+| Rn | n | p | p | p = v\*dt |
+| SO(2) | 1 | R | theta | theta = w\*dt |
+| SO(3) | 3 | R | theta | theta = w\*dt |
+| SE(2) | 3 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
+| SE(3) | 6 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
+| SE_2(3) | 9 | R, p, v | rho, nu, theta | rho = v\*dt, nu = a\*dt, theta = w\*dt |
+| SGal(3) | 10 | R, p, v, t | rho, nu, theta, s | rho = v\*dt, nu = a\*dt, theta = w\*dt, s = dt |
+
+As an example, in SE_2(3) the tangent vector `tau` is defined by 
+
+          | rho   |
+    tau = | nu    |   in R^9, 
+          | theta |
+
+where `rho` in R^3, `nu` in R^3 and `theta` in R^3 are changes in position, velocity and orientation respectively.
+
+A covariances matrix `Q` of an element of SE_2(3) can be block-partitioned as follows
+
+        | Q_rr  Q_rn  Q_rt |
+    Q = | Q_nr  Q_nn  Q_nt |   in R^9x9
+        | Q_tr  Q_tn  Q_tt |
+
+where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. All blocks `Q_ij` are 3x3 and `Q` is 9x9.
+
 ### Jacobians
 
 All operations come with their respective analytical Jacobian matrices.
-Throughout **manif**, **Jacobians are differentiated with respect to a local perturbation on the tangent space**.
+Throughout **manif**, **Jacobians are differentiated with respect to a perturbation on the local tangent space**.
 These Jacobians map tangent spaces, as described in [this paper][jsola18].
+Please consider [the order of elements in the tangent spaces](#tangent-spaces) when manipulating Jacobians.
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
