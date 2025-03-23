@@ -171,6 +171,7 @@ skew(const Eigen::MatrixBase<_Derived>& v)
             -v(1),   +v(0),    T(0.) ).finished();
 }
 
+#if !defined(DOXYGEN_SHOULD_SKIP_THIS)
 /**
  * @brief Return either a 2x2 or a 3x3 skew matrix given a scalar or a 3-vector.
  */
@@ -190,6 +191,7 @@ skew(const Eigen::MatrixBase<_Derived>& v)
     MANIF_THROW("Unexpected vector size in function skew.");
   }
 }
+#endif // DOXYGEN_SHOULD_SKIP_THIS
 
 template <typename Scalar>
 Eigen::Matrix<Scalar, 3, 1> randPointInBall(Scalar radius)
