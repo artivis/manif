@@ -203,7 +203,10 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
-    "https://github.com/canonical/ACME/*"
+    "http://localhost:8000",
+    "https://github.com/canonical/ACME/*",
+    # @todo(artivis) Update the Ceres doc to account for Ceres 2.2 changes
+    'http://ceres-solver.org/nnls_modeling.html#localparameterization',
 ]
 
 
@@ -313,6 +316,10 @@ rst_prolog = """
 
 if "discourse_prefix" not in html_context and "discourse" in html_context:
     html_context["discourse_prefix"] = html_context["discourse"] + "/t/"
+
+suppress_warnings = [
+    "toc.not_included",
+]
 
 # Tell sphinx what the primary language being documented is.
 primary_domain = "cpp"
