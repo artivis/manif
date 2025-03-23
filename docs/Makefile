@@ -93,6 +93,7 @@ run: install
 
 # Doesn't depend on $(BUILDDIR) to rebuild properly at every run.
 html: install
+	. $(VENV); pip install --require-virtualenv ../.
 	. $(VENV); $(SPHINXBUILD) -W --keep-going -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" -w $(SPHINXDIR)/warnings.txt $(SPHINXOPTS)
 
 epub: install
