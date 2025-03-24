@@ -38,9 +38,12 @@ Other Lie groups can and will be added, contributions are welcome.
 
 **manif** is based on the mathematical presentation of the Lie theory available in [this paper][jsola18].
 We recommend every user of **manif** to read the paper (17 pages) before starting to use the library.
-The paper offers a comprehensive yet accessible introduction to Lie theory, tailored specifically for roboticists. 
-By presenting the material in a simplified manner, it lowers the barrier to entry for those interested in developing rigorous and elegant algorithms for state estimation, control, learning, and possibly more. 
-This approach ensures that even readers without an advanced mathematical background can grasp the foundational concepts and apply them effectively in robotics.
+The paper offers a comprehensive yet accessible introduction to Lie theory, tailored specifically for roboticists.
+By presenting the material in a simplified manner,
+it lowers the barrier to entry for those interested in developing rigorous and elegant algorithms for state estimation,
+control, learning, and possibly more.
+This approach ensures that even readers without an advanced mathematical background can grasp the
+foundational concepts and apply them effectively in robotics.
 
 <!-- Include stop manif intro -->
 
@@ -104,11 +107,12 @@ and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][late
 
 ### Tangent spaces
 
-**manif** favors Cartesian representations of the tangent spaces. 
-This means that the tangent elements are regular vectors in Rn, `n` being the dimension of the Lie group. 
+**manif** favors Cartesian representations of the tangent spaces.
+This means that the tangent elements are regular vectors in Rn,
+`n` being the dimension of the Lie group.
 
-The ordering of the elements in such vectors matters to correctly interpret them. 
-It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces. 
+The ordering of the elements in such vectors matters to correctly interpret them.
+It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces.
 
 As a reference, this is the way tangent spaces are defined in **manif**
 
@@ -178,7 +182,8 @@ in Python,
 
 While Jacobians in **manif** are differentiated with respect to a
 local perturbation on the tangent space, many non-linear solvers
-(e.g. [Ceres][ceres]) expect functions to be differentiated with respect to the underlying representation vector of the group element
+(e.g. [Ceres][ceres]) expect functions to be differentiated with respect to
+the underlying representation vector of the group element
 (e.g. with respect to quaternion vector for `SO3`).
 
 For this reason, **manif** is compliant with the auto-differentiation libraries
@@ -200,7 +205,8 @@ find on [the dedicated page](docs/pages/publication.md).
 We provide some self-contained and self-explained
 [C++ examples](docs/pages/cpp/Quick-start.md#tutorials-and-application-demos) to help you get started.
 
-You prefer Python? The same examples are also [available in Python](docs/pages/python/Quick-start.md#tutorials-and-application-demos).
+You prefer Python? The same examples are also
+[available in Python](docs/pages/python/Quick-start.md#tutorials-and-application-demos).
 
 ## Publications
 
