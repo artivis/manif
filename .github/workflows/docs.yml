@@ -27,13 +27,16 @@ jobs:
       - name: Update sources
         run: sudo apt-get update
 
-      - name: Install dependencies
+      - name: Install doc dependencies
         run: sudo apt-get install -y doxygen
 
       # Those are necessary if pip doesn't find the wheels
       # and decides to rebuild from source
-      - name: Install dependencies
+      - name: Install doc extra dependencies
         run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
+
+      - name: Install manif dependencies
+        run: sudo apt-get install -y libeigen3-dev
 
       - name: Build Sphinx venv
         working-directory: "docs"
@@ -72,13 +75,16 @@ jobs:
       - name: Update sources
         run: sudo apt-get update
 
-      - name: Install dependencies
+      - name: Install doc dependencies
         run: sudo apt-get install -y doxygen
 
       # Those are necessary if pip doesn't find the wheels
       # and decides to rebuild from source
-      - name: Install dependencies
+      - name: Install doc extra dependencies
         run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
+
+      - name: Install manif dependencies
+        run: sudo apt-get install -y libeigen3-dev
 
       - name: linkcheck
         working-directory: docs
