@@ -257,28 +257,3 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [badge-cov-img]: https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg
 [badge-license]: https://img.shields.io/github/license/mashape/apistatus.svg
 [badge-joss-img]: https://joss.theoj.org/papers/10.21105/joss.01371/status.svg
-
-[latex1]: https://latex.codecogs.com/svg.latex?\mathbf&amp;space;\mathcal{X}^{-1}
-[latex2]: https://latex.codecogs.com/svg.latex?\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}
-[latex3]: https://latex.codecogs.com/svg.latex?\varphi^\wedge
-[latex4]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\circ\mathbf&amp;space;v
-[latex5]: https://latex.codecogs.com/svg.latex?\exp(\mathbf\varphi^\wedge)
-[latex6]: https://latex.codecogs.com/svg.latex?\log(\mathbf&amp;space;\mathcal{X})^\vee
-[latex7]: https://latex.codecogs.com/svg.latex?\operatorname{Adj}(\mathbf&amp;space;\mathcal{X})
-[latex8]: https://latex.codecogs.com/svg.latex?\operatorname{adj}(\mathbf&amp;space;\varphi^\wedge)
-[latex9]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\oplus\mathbf\varphi=\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)
-[latex10]: https://latex.codecogs.com/svg.latex?\mathbf\varphi\oplus\mathbf\mathcal{X}=\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}
-[latex11]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee
-[latex12]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}\ominus\mathbf\mathcal{Y}=\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee\phantom{.}
-[latex13]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}
-[latex14]: https://latex.codecogs.com/svg.latex?\langle\varphi,\tau\rangle
-[latex15]: https://latex.codecogs.com/svg.latex?\left\lVert\varphi\right\rVert
-[latex16]: https://latex.codecogs.com/svg.latex?\mathbf\mathcal{X},\mathbf\mathcal{Y}
-[latex17]: https://latex.codecogs.com/svg.latex?\mathbf\varphi^\wedge,\tau^\wedge
-[latex18]: https://latex.codecogs.com/svg.latex?\mathbf\varphi,\tau
-[latex19]: https://latex.codecogs.com/svg.latex?\mathbb{R}^n
-[latex20]: https://latex.codecogs.com/svg.latex?\mathbf{v}
-[latex21]: https://latex.codecogs.com/svg.latex?\mathbb{R}^n
-[latex22]: https://latex.codecogs.com/svg.latex?\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}
-[latex23]: https://latex.codecogs.com/svg.latex?SO(3)
-
