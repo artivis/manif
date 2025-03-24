@@ -153,29 +153,29 @@ Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
 ![\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}][latex22]
 
-The Jacobians of any of the aforementionned operations can then be evaluated:
+The Jacobians of any of the aforementioned operations can then be evaluated:
 
 in C++,
 
 ```cpp
-  SE3d X = SE3d::Random();
-  SE3Tangentd w = SE3Tangentd::Random();
+SE3d X = SE3d::Random();
+SE3Tangentd w = SE3Tangentd::Random();
 
-  SE3d::Jacobian J_o_x, J_o_w;
+SE3d::Jacobian J_o_x, J_o_w;
 
-  auto X_plus_w = X.plus(w, J_o_x, J_o_w);
+auto X_plus_w = X.plus(w, J_o_x, J_o_w);
 ```
 
 in Python,
 
 ```python
-  X = SE3.Random()
-  w = SE3Tangentd.Random()
+X = SE3.Random()
+w = SE3Tangentd.Random()
 
-  J_o_x = np.zeros((SE3.DoF, SE3.DoF))
-  J_o_w = np.zeros((SE3.DoF, SE3.DoF))
+J_o_x = np.zeros((SE3.DoF, SE3.DoF))
+J_o_w = np.zeros((SE3.DoF, SE3.DoF))
 
-  X_plus_w = X.plus(w, J_o_x, J_o_w)
+X_plus_w = X.plus(w, J_o_x, J_o_w)
 ```
 
 #### Note
@@ -220,26 +220,20 @@ Find out [who's already using manif](docs/pages/projects.md).
 
 Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.md).
 
-<!-- Include start manif URLs -->
-
 [//]: # (URLs)
 
 [jsola18]: http://arxiv.org/abs/1812.01537
-[jsola18v]: http://arxiv.org/abs/1812.01537v4
 [barrau15]: https://arxiv.org/pdf/1410.1465.pdf
 [fourmy19]: https://hal.science/hal-02183498/document
 [kelly24]: https://arxiv.org/abs/2312.07555
 [deray20]: https://joss.theoj.org/papers/10.21105/joss.01371
 
 [jsola-iri-lecture]: https://www.youtube.com/watch?v=nHOcoIyJj2o
-[jsola-iros-workshop]: https://www.youtube.com/watch?v=QR1p0Rabuww
 [IRI-UPC]: https://www.iri.upc.edu/
 
-[eigen]: http://eigen.tuxfamily.org
 [ceres]: http://ceres-solver.org/
 [ceres-jet]: http://ceres-solver.org/automatic_derivatives.html#dual-numbers-jets
 [autodiff]: https://autodiff.github.io/
-[crtp]: https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 
 [manif-repo]: https://github.com/artivis/manif.git
 [manif-issue]: https://github.com/artivis/manif/issues
@@ -247,12 +241,6 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [manif-doc-cpp]: https://artivis.github.io/manif/cpp/index.html
 [manif-doc-python]: https://artivis.github.io/manif/python/index.html
 [cheat_sheet]: paper/Lie_theory_cheat_sheet.pdf
-
-[optional-repo]: https://github.com/TartanLlama/optional
-
-[pybind11]: https://pybind11.readthedocs.io/en/stable/index.html
-
-[git-workflow]: http://nvie.com/posts/a-successful-git-branching-model/
 
 [badge-ci]: https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel
 [badge-ci-img]: https://github.com/artivis/manif/workflows/build-and-test/badge.svg?branch=devel
@@ -289,4 +277,3 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [latex22]: https://latex.codecogs.com/svg.latex?\frac{\delta&amp;space;f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}\triangleq\lim_{\varphi\to0}\frac{&amp;space;f(\mathbf\mathcal{X}\oplus\varphi)\ominus&amp;space;f(\mathbf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to0}\frac{\log(f(\mathbf\mathcal{X})^{-1}&amp;space;f(\mathbf\mathcal{X}\exp(\varphi^\wedge)))^\vee}{\varphi}
 [latex23]: https://latex.codecogs.com/svg.latex?SO(3)
 
-<!-- Include stop manif URLs -->
