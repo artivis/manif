@@ -250,8 +250,7 @@ Want to contribute? Great! Check out our [contribution guidelines](CONTRIBUTING.
 [badge-cov]: https://codecov.io/gh/artivis/manif
 [badge-cov-img]: https://codecov.io/gh/artivis/manif/branch/devel/graph/badge.svg
 [badge-license]: https://img.shields.io/github/license/mashape/apistatus.svg
-[badge-joss]: http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160
-[badge-joss-img]: http://joss.theoj.org/papers/e3fc778689407f0edd19df8c2089c160/status.svg
+[badge-joss-img]: https://joss.theoj.org/papers/10.21105/joss.01371/status.svg
 
 [latex1]: https://latex.codecogs.com/svg.latex?\mathbf&amp;space;\mathcal{X}^{-1}
 [latex2]: https://latex.codecogs.com/svg.latex?\mathbf&amp;space;\mathcal{X}&amp;space;\circ&amp;space;\mathbf&amp;space;\mathcal{Y}
