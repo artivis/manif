@@ -86,8 +86,8 @@ Get quickly started with **manif** following our 'quick start' guides for both
 | Act on vector | $\bf\mathcal{X}\circ{\bf v}$ | `X.act(v)` |
 | Retract to group element | $\exp(\bf\varphi^\wedge$ | `w.exp()` |
 | Lift to tangent space | $\log(\bf\mathcal{X})^\vee$ | `X.log()` |
-| Manifold Adjoint | $\operatorname{Adj}(\bf\mathcal{X})$ | `X.adj()` |
-| Tangent adjoint | $\operatorname{adj}(\bf\varphi^\wedge)$ | `w.smallAdj()` |
+| Manifold Adjoint | $\mathrm{Adj}(\bf\mathcal{X})$ | `X.adj()` |
+| Tangent adjoint | $\mathrm{adj}(\bf\varphi^\wedge)$ | `w.smallAdj()` |
 |       |   Composed Operation   |  |
 | Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\bf\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
 | Manifold left plus | $\exp(\bf\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
