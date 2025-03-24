@@ -80,36 +80,36 @@ Get quickly started with **manif** following our 'quick start' guides for both
 | Operation  |       | Code |
 | :---       |   :---:   | :---: |
 |       |   Base Operation   |  |
-| Inverse | ![\mathbf\Phi^{-1}][latex1] | `X.inverse()` |
-| Composition | ![\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}][latex2] | `X * Y`<br/>`X.compose(Y)` |
-| Hat | ![\varphi^\wedge][latex3] | `w.hat()` |
-| Act on vector | ![\mathbf\mathcal{X}\circ\mathbf v][latex4] | `X.act(v)` |
-| Retract to group element | ![\exp(\mathbf\varphi^\wedge][latex5] | `w.exp()` |
-| Lift to tangent space | ![\log(\mathbf\mathcal{X})^\vee][latex6] | `X.log()` |
-| Manifold Adjoint | ![\operatorname{Adj}(\mathbf\mathcal{X})][latex7] | `X.adj()` |
-| Tangent adjoint | ![\operatorname{adj}(\mathbf\varphi^\wedge][latex8] | `w.smallAdj()` |
+| Inverse | $\bf\mathcal{X}^{-1}$ | `X.inverse()` |
+| Composition | $\bf\mathcal{X}\circ\bf\mathcal{Y}$ | `X * Y`<br/>`X.compose(Y)` |
+| Hat | $\varphi^\wedge$ | `w.hat()` |
+| Act on vector | $\bf\mathcal{X}\circ{\bf v}$ | `X.act(v)` |
+| Retract to group element | $\exp(\bf\varphi^\wedge$ | `w.exp()` |
+| Lift to tangent space | $\log(\bf\mathcal{X})^\vee$ | `X.log()` |
+| Manifold Adjoint | $\operatorname{Adj}(\bf\mathcal{X})$ | `X.adj()` |
+| Tangent adjoint | $\operatorname{adj}(\bf\varphi^\wedge)$ | `w.smallAdj()` |
 |       |   Composed Operation   |  |
-| Manifold right plus | ![\mathbf\mathcal{X}\circ\exp(\mathbf\varphi^\wedge)][latex9] | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
-| Manifold left plus | ![\exp(\mathbf\varphi^\wedge)\circ\mathbf\mathcal{X}][latex10] | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
-| Manifold right minus | ![\log(\mathbf\mathcal{Y}^{-1}\circ\mathbf\mathcal{X})^\vee][latex11] | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
-| Manifold left minus | ![\log(\mathbf\mathcal{X}\circ\mathbf\mathcal{Y}^{-1})^\vee][latex12] | `X.lminus(Y)` |
-| Between | ![\mathbf\mathcal{X}^{-1}\circ\mathbf\mathcal{Y}][latex13] | `X.between(Y)` |
-| Inner Product | ![\langle\varphi,\tau\rangle][latex14] | `w.inner(t)` |
-| Norm | ![\left\lVert\varphi\right\rVert][latex15] | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
+| Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\bf\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
+| Manifold left plus | $\exp(\bf\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
+| Manifold right minus | $\log(\bf\mathcal{Y}^{-1}\circ\bf\mathcal{X})^\vee$ | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
+| Manifold left minus | $\log(\bf\mathcal{X}\circ\bf\mathcal{Y}^{-1})^\vee$ | `X.lminus(Y)` |
+| Between | ${\bf\mathcal{X}^{-1}}\circ{\bf\mathcal{Y}}$ | `X.between(Y)` |
+| Inner Product | $\langle\varphi,\tau\rangle$ | `w.inner(t)` |
+| Norm | $\left\lVert\varphi\right\rVert$ | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
 
-Above, ![\mathbf\mathcal{X},\mathbf\mathcal{Y}][latex16] represent group elements,
-![\mathbf\varphi^\wedge,\tau^\wedge][latex17] represent elements in the Lie algebra of the Lie group,
-![\mathbf\varphi,\tau][latex18] or `w,t` represent the same elements of the tangent space
-but expressed in Cartesian coordinates in ![\mathbb{R}^n][latex19],
-and ![\mathbf{v}][latex20] or `v` represents any element of ![\mathbb{R}^n][latex21].
+Above, ${\bf\mathcal{X}}$ & ${\bf\mathcal{Y}}$ represent group elements,
+${\bf\varphi^\wedge}$ & ${\bf\tau^\wedge}$ represent elements in the Lie algebra of the Lie group,
+${\bf\varphi}$, ${\bf\tau}$ or `w,t` represent the same elements of the tangent space
+but expressed in Cartesian coordinates in $\mathbb{R}^n$,
+and $\mathbf{v}$ or `v` represents any element of $\mathbb{R}^n$.
 
 <!-- Include stop manif operation -->
 
 ### Tangent spaces
 
 **manif** favors Cartesian representations of the tangent spaces.
-This means that the tangent elements are regular vectors in Rn,
-`n` being the dimension of the Lie group.
+This means that the tangent elements are regular vectors in $\mathbb{R}^n$,
+'n' being the dimension of the Lie group.
 
 The ordering of the elements in such vectors matters to correctly interpret them.
 It impacts the form of all Jacobian matrices and covariances matrices that will be defined on those tangent spaces.
@@ -126,21 +126,25 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | SE_2(3) | 9 | R, p, v | rho, nu, theta | rho = v\*dt, nu = a\*dt, theta = w\*dt |
 | SGal(3) | 10 | R, p, v, t | rho, nu, theta, s | rho = v\*dt, nu = a\*dt, theta = w\*dt, s = dt |
 
-As an example, in SE_2(3) the tangent vector `tau` is defined by 
+As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
 
-          | rho   |
-    tau = | nu    |   in R^9, 
-          | theta |
+```math
+{\bf\tau} = \begin{bmatrix} {\bf\rho} \\ {\bf\nu} \\ {\bf\theta} \end{bmatrix} \in \mathbb{R}^9
+```
 
-where `rho` in R^3, `nu` in R^3 and `theta` in R^3 are changes in position, velocity and orientation respectively.
+where $\bf\rho$, $\bf\nu$ and $\bf\theta$ are $\in \mathbb{R}^3$ are changes in position, velocity and orientation respectively.
 
-A covariances matrix `Q` of an element of SE_2(3) can be block-partitioned as follows
+A covariances matrix $\bf{Q}$ of an element of SE_2(3) can be block-partitioned as follows
 
-        | Q_rr  Q_rn  Q_rt |
-    Q = | Q_nr  Q_nn  Q_nt |   in R^9x9
-        | Q_tr  Q_tn  Q_tt |
+```math
+{\bf Q} = \begin{bmatrix}
+          {\bf Q}_{\rho\rho} & {\bf Q}_{\rho\nu} & {\bf Q}_{\rho\theta} \\
+          {\bf Q}_{\nu\rho} & {\bf Q}_{\nu\nu} & {\bf Q}_{\nu\theta} \\
+          {\bf Q}_{\theta\rho} & {\bf Q}_{\theta\nu} & {\bf Q}_{\theta\theta}
+          \end{bmatrix} \in \mathbb{R}^{9\times 9}
+```
 
-where `r` in the subindices stands for `rho`, `n` for `nu` and `t` for `theta`. All blocks `Q_ij` are 3x3 and `Q` is 9x9.
+All blocks ${\bf Q}_{ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
 
 ### Jacobians
 
@@ -151,7 +155,9 @@ Please consider [the order of elements in the tangent spaces](#tangent-spaces) w
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
-![\frac{\delta f(\mathbf\mathcal{X})}{\delta\mathbf\mathcal{X}}][latex22]
+```math
+\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\bf\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\varphi)\ominus f(\bf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\varphi^\wedge)))^\vee}{\varphi}
+```
 
 The Jacobians of any of the aforementioned operations can then be evaluated:
 
