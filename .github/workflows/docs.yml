@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Update sources
+        run: sudo apt-get update
+
       - name: Install dependencies
         run: sudo apt-get install -y doxygen
 
@@ -65,6 +68,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Update sources
+        run: sudo apt-get update
 
       - name: Install dependencies
         run: sudo apt-get install -y doxygen
