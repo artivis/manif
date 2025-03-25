@@ -123,8 +123,8 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | SO(3) | 3 | $\bf R$ | $\bm\theta$ | $\bm\theta = \bm\omega\cdot dt$ |
 | SE(2) | 3 | $\bf R$, $\bf p$ | $\bm\rho$, $\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
 | SE(3) | 6 | $\bf R$, $\bf p$ | $\bm\rho$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$ |
-| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\bm\rho$, $\bm\nu$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$ |
-| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\bm\rho$, $\bm\nu$, $\bm\theta$, $s$ | $\bm\rho = \bf v\cdot dt$<br/>$\bm\nu = \bf a\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$<br/>$s = dt$ |
+| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\bm\rho$, $\bm\nu$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$ |
+| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\bm\rho$, $\bm\nu$, $\bm\theta$, $s$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$<br/>$s = dt$ |
 
 As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
 
