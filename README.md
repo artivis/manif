@@ -118,7 +118,7 @@ As a reference, this is the way tangent spaces are defined in **manif**
 
 | group | dimension | group elements | tangent elements (in order) | relation to velocity |
 | ---- | ---- | ---- | ---- | ---- |
-| Rn | n | p | p | $p = v\cdot dt$ |
+| Rn | n | $\bf p$ | $\bf p$ | $\bf p = {\bf v}\cdot dt$ |
 | SO(2) | 1 | $\bf R$ | $\theta$ | $\theta = \omega\cdot dt$ |
 | SO(3) | 3 | $\bf R$ | $\bm\theta$ | $\bm\theta = \bm\omega\cdot dt$ |
 | SE(2) | 3 | $\bf R$, $\bf p$ | $\bm\rho$, $\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
