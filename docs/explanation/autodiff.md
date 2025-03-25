@@ -1,4 +1,4 @@
-# Notes on auto-differentiation
+# On auto-differentiation
 
 The **manif** package differentiates Jacobians with respect to a
 **local perturbation on the tangent space**.
@@ -33,19 +33,19 @@ Therefore, the respective Jacobian sizes using [`autodiff::dual`][autodiff] are 
 
 ## Jacobians
 
-Considering, {math}`\bf x` a group element (e.g. S3),
-{math}`\omega` the vector tangent to the group at {math}`\bf x`,
-{math}`f({\bf x})` an error function,
+Considering, $\bf\mathcal{X}$ a group element (e.g. S3),
+$\bm\omega$ the vector tangent to the group at $\bf\mathcal{X}$,
+$f({\bf\mathcal{X}})$ an error function,
 one is interested in expressing the Taylor series of the error function,
-{math}`f({\bf x}\oplus\omega)`.
+$f({\bf\mathcal{X}}\oplus\bm\omega)$.
 
 Therefore we have to compute
 
-```{math}
-{\bf J}_{\omega}^{e}=\frac{\delta{\bf e}}{\delta{\bf x}}=\frac{\delta f({\bf x})}{\delta{\bf x}}=\lim_{\omega\to0}\frac{f({\bf x}\oplus\omega)\ominus f({\bf x})}{\omega}, (1)
+```math
+{\bf J}_{\bm\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta{\bf\mathcal{X}}}=\frac{\delta f({\bf\mathcal{X}})}{\delta{\bf\mathcal{X}}}=\lim_{\bm\omega\to\bf0}\frac{f({\bf\mathcal{X}}\oplus\bm\omega)\ominus f({\bf\mathcal{X}})}{\bm\omega}, (1)
 ```
 
-the **Jacobian of** {math}`f({\bf x})` **with respect to a perturbation on the tangent space**,
+the **Jacobian of** $f({\bf\mathcal{X}})$ **with respect to a perturbation on the tangent space**,
 so that the state update happens on the manifold tangent space.
 
 In some optimization frameworks,
@@ -74,8 +74,8 @@ Eigen::MatrixXd J_e_xj = jacobian(fun, wrt(xj), at(meas_ij, xi, xj), e);
 
 It produces Jacobians of the form,
 
-```{math}
-{\bf J}_{{\bf x}\oplus\omega}^{e}=\frac{\delta{\bf e}}{\delta({\bf x}\oplus\omega)}=\lim_{\mathbf h\to0}\frac{ f({\bf x}+\mathbf h)-f({\bf x})}{\mathbf h}, (2)
+```math
+{\bf J}_{{\bf\mathcal{X}}\oplus\bm\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta({\bf\mathcal{X}}\oplus\omega)}=\lim_{\bf h\to0}\frac{ f({\bf\mathcal{X}}+\mathbf h)-f({\bf\mathcal{X}})}{\mathbf h}, (2)
 ```
 
 We thus then need to compute the Jacobian that will map to the tangent space -
@@ -87,18 +87,18 @@ Eigen::MatrixXd J_xi_lp = autodiffLocalParameterizationJacobian<dual>(xi);
 Eigen::MatrixXd J_xj_lp = autodiffLocalParameterizationJacobian<dual>(xj);
 ```
 
-This function computes the {math}`{\bf x}\oplus\mathbf\omega` operation's
-Jacobian evaluated for {math}`\omega=0` thus providing the Jacobian,
+This function computes the ${\bf\mathcal{X}}\oplus\bm\omega$ operation's
+Jacobian evaluated for $\bm\omega=\bf0$ thus providing the Jacobian,
 
-```{math}
-{\bf J}_{\omega}^{{\bf x}\oplus\omega}=\frac{\delta({\bf x}\oplus\omega)}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf x}\oplus(\omega+\delta\omega)-{\bf x}\oplus\mathbf\omega}{\delta\omega}=\lim_{\delta\omega\to0}\frac{{\bf x}\oplus\delta\omega-{\bf x}}{\delta\omega}, (3)
+```math
+{\bf J}_{\bm\omega}^{{\bf\mathcal{X}}\oplus\bm\omega}=\frac{\delta({\bf\mathcal{X}}\oplus\bm\omega)}{\delta\bm\omega}=\lim_{\delta\bm\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus(\bm\omega+\delta\bm\omega)-{\bf\mathcal{X}}\oplus\bm\omega}{\delta\bm\omega}=\lim_{\delta\bm\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus\delta\bm\omega-{\bf\mathcal{X}}}{\delta\bm\omega}, (3)
 ```
 
 Once both the cost function and local-parameterization's Jacobians are evaluated,
 they can be compose as,
 
-```{math}
-{\bf J}_{\omega}^{e}={\bf J}_{{\bf x}\oplus\omega}^{e}\times{\bf J}_{\omega}^{{\bf x}\oplus\omega}, (4)
+```math
+{\bf J}_{\bm\omega}^{\bf e}={\bf J}_{{\bf\mathcal{X}}\oplus\bm\omega}^{\bf e}\times{\bf J}_{\bm\omega}^{{\bf\mathcal{X}}\oplus\bm\omega}, (4)
 ```
 
 Voila.

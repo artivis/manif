@@ -1,7 +1,7 @@
 # Use with Ceres
 
 The **manif** package differentiates Jacobians with respect to a
-local perturbation on the tangent space.
+perturbation on the local tangent space.
 
 ```{important}
 To understand why is this important,
@@ -19,7 +19,7 @@ in two folds as explained hereafter.
 ### Cost function
 
 A Ceres [`CostFunction`][ceres-costfunction]
-is a class implementing a function {math}`f({\bf x})` such as,
+is a class implementing a function $f({\bf\mathcal{X}})$ such as,
 
 ```cpp
 class QuadraticCostFunction : public ceres::SizedCostFunction<1, 1> {
@@ -63,17 +63,14 @@ problem_->SetManifold(
 ```
 
 The `LocalParameterization` class (and derived) performs the state update step
-of the optimization. If also computes the associated Jacobian which is evaluated at {math}`{\bf\omega}={\bf 0}`.
+of the optimization. If also computes the associated Jacobian which is evaluated at ${\bm\omega}={\bf 0}$.
 
 Once both the `CostFunction` and `LocalParameterization`'s Jacobians are evaluated,
-`Ceres` internally computes the Jacobian (with respect to a
-local perturbation on the tangent space) as the product,
-
-![J_e_w = J_e_x(+)omega * J_x(+)w_w][latex15]
+`Ceres` internally computes the Jacobian (with respect to a perturbation on the local tangent space) as the product ['(4)' detailed in 'autodiff'](../explanation/autodiff.md).
 
 Voila.
 
-The intermediate Jacobians that `Ceres` requires are **not** available in `manif`
+The intermediate Jacobians that `Ceres` requires are **not** available in **manif**
 since it provides directly the final Jacobian.
 
 However, one still wants to use **manif** with in a `Ceres`-based project.
