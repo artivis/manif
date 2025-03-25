@@ -141,9 +141,9 @@ A covariances matrix $\bf Q$ of an element of SE_2(3) can be block-partitioned a
 
 $$
 {\bf Q} = \begin{bmatrix}
-          {\bf Q}_{\boldsymbol\rho\boldsymbol\rho} & {\bf Q}_{\boldsymbol\rho\boldsymbol\nu} & {\bf Q}_{\boldsymbol\rho\boldsymbol\theta} \\
-          {\bf Q}_{\boldsymbol\nu\boldsymbol\rho} & {\bf Q}_{\boldsymbol\nu\boldsymbol\nu} & {\bf Q}_{\boldsymbol\nu\boldsymbol\theta} \\
-          {\bf Q}_{\boldsymbol\theta\boldsymbol\rho} & {\bf Q}_{\boldsymbol\theta\boldsymbol\nu} & {\bf Q}_{\boldsymbol\theta\boldsymbol\theta}
+          {\bf Q}_ {\boldsymbol\rho\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\theta} \\
+          {\bf Q}_ {\boldsymbol\nu\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\theta} \\
+          {\bf Q}_ {\boldsymbol\theta\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\theta}
           \end{bmatrix} \in \mathbb{R}^{9\times 9}
 $$
 
