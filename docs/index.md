@@ -40,8 +40,6 @@
 ````
 
 ````{grid} 1 1 2 2
-:reverse:
-
 ```{grid-item-card} [Reference](reference/index)
 
 **Technical information**.

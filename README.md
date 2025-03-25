@@ -107,6 +107,8 @@ and $\mathbf{v}$ (`v`) represents any element of $\mathbb{R}^n$.
 
 ### Tangent spaces
 
+<!-- Include start manif tangent -->
+
 **manif** favors Cartesian representations of the tangent spaces.
 This means that the tangent elements are regular vectors in $\mathbb{R}^n$,
 'n' being the dimension of the Lie group.
@@ -146,6 +148,8 @@ $$
 $$
 
 All blocks ${\bf Q}_{\bf ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
+
+<!-- Include stop manif tangent -->
 
 ### Jacobians
 
