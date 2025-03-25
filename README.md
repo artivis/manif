@@ -131,7 +131,12 @@ As a reference, this is the way tangent spaces are defined in **manif**
 As an example, in SE_2(3) the tangent vector ${\boldsymbol\tau}$ is defined by
 
 $$
-{\boldsymbol\tau} = \begin{bmatrix} {\boldsymbol\rho} \\ {\boldsymbol\nu} \\ {\boldsymbol\theta} \end{bmatrix} \in \mathbb{R}^9
+{\boldsymbol\tau} = 
+\begin{bmatrix} 
+{\boldsymbol\rho} \\ 
+{\boldsymbol\nu} \\ 
+{\boldsymbol\theta} 
+\end{bmatrix} \in \mathbb{R}^9
 $$
 
 where $\boldsymbol\rho$, $\boldsymbol\nu$ and $\boldsymbol\theta$ are $\in \mathbb{R}^3$ and
@@ -141,10 +146,10 @@ A covariances matrix $\bf Q$ of an element of SE_2(3) can be block-partitioned a
 
 $$
 {\bf Q} = \begin{bmatrix}
-          {\bf Q}_{\rho\rho} & {\bf Q}_{\rho\nu} & {\bf Q}_{\rho\theta} \\
-          {\bf Q}_{\nu\rho} & {\bf Q}_{\nu\nu} & {\bf Q}_{\nu\theta} \\
-          {\bf Q}_{\theta\rho} & {\bf Q}_{\theta\nu} & {\bf Q}_{\theta\theta}
-          \end{bmatrix} \in \mathbb{R}^{9\times 9}
+{\bf Q}\_{\rho\rho} & {\bf Q}\_{\rho\nu} & {\bf Q}\_{\rho\theta} \\
+{\bf Q}\_{\nu\rho} & {\bf Q}\_{\nu\nu} & {\bf Q}\_{\nu\theta} \\
+{\bf Q}\_{\theta\rho} & {\bf Q}\_{\theta\nu} & {\bf Q}\_{\theta\theta}
+\end{bmatrix} \in \mathbb{R}^{9\times 9}
 $$
 
 All blocks ${\bf Q}_{\bf ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
