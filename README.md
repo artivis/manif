@@ -82,24 +82,24 @@ Get quickly started with **manif** following our 'quick start' guides for both
 |       |   Base Operation   |  |
 | Inverse | $\bf\mathcal{X}^{-1}$ | `X.inverse()` |
 | Composition | $\bf\mathcal{X}\circ\bf\mathcal{Y}$ | `X * Y`<br/>`X.compose(Y)` |
-| Hat | $\bm\varphi^\wedge$ | `w.hat()` |
+| Hat | $\boldsymbol\varphi^\wedge$ | `w.hat()` |
 | Act on vector | $\bf\mathcal{X}\circ{\bf v}$ | `X.act(v)` |
-| Retract to group element | $\exp(\bm\varphi^\wedge)$ | `w.exp()` |
+| Retract to group element | $\exp(\boldsymbol\varphi^\wedge)$ | `w.exp()` |
 | Lift to tangent space | $\log(\bf\mathcal{X})^\vee$ | `X.log()` |
 | Manifold Adjoint | $\mathrm{Adj}(\bf\mathcal{X})$ | `X.adj()` |
-| Tangent adjoint | $\mathrm{adj}(\bm\varphi^\wedge)$ | `w.smallAdj()` |
+| Tangent adjoint | $\mathrm{adj}(\boldsymbol\varphi^\wedge)$ | `w.smallAdj()` |
 |       |   Composed Operation   |  |
-| Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\bm\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
-| Manifold left plus | $\exp(\bm\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
+| Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\boldsymbol\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
+| Manifold left plus | $\exp(\boldsymbol\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
 | Manifold right minus | $\log(\bf\mathcal{Y}^{-1}\circ\bf\mathcal{X})^\vee$ | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
 | Manifold left minus | $\log(\bf\mathcal{X}\circ\bf\mathcal{Y}^{-1})^\vee$ | `X.lminus(Y)` |
 | Between | ${\bf\mathcal{X}^{-1}}\circ{\bf\mathcal{Y}}$ | `X.between(Y)` |
-| Inner Product | $\langle\bm\varphi,\bm\tau\rangle$ | `w.inner(t)` |
-| Norm | $\left\lVert\bm\varphi\right\rVert$ | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
+| Inner Product | $\langle\boldsymbol\varphi,\boldsymbol\tau\rangle$ | `w.inner(t)` |
+| Norm | $\left\lVert\boldsymbol\varphi\right\rVert$ | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
 
 Above, ${\bf\mathcal{X}}$ & ${\bf\mathcal{Y}}$ (`X` & `Y`) represent group elements,
-${\bm\varphi^\wedge}$ & ${\bm\tau^\wedge}$ represent elements in the Lie algebra of the Lie group,
-${\bm\varphi}$ & ${\bm\tau}$ (`w` & `t`) represent the same elements of the tangent space
+${\boldsymbol\varphi^\wedge}$ & ${\boldsymbol\tau^\wedge}$ represent elements in the Lie algebra of the Lie group,
+${\boldsymbol\varphi}$ & ${\boldsymbol\tau}$ (`w` & `t`) represent the same elements of the tangent space
 but expressed in Cartesian coordinates in $\mathbb{R}^n$,
 and $\mathbf{v}$ (`v`) represents any element of $\mathbb{R}^n$.
 
@@ -120,30 +120,30 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | ---- | ---- | ---- | ---- | ---- |
 | Rn | n | $\bf p$ | $\bf p$ | ${\bf p} = {\bf v}\cdot dt$ |
 | SO(2) | 1 | $\bf R$ | $\theta$ | $\theta = \omega\cdot dt$ |
-| SO(3) | 3 | $\bf R$ | $\bm\theta$ | $\bm\theta = \bm\omega\cdot dt$ |
-| SE(2) | 3 | $\bf R$, $\bf p$ | $\bm\rho$, $\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
-| SE(3) | 6 | $\bf R$, $\bf p$ | $\bm\rho$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$ |
-| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\bm\rho$, $\bm\nu$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$ |
-| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\bm\rho$, $\bm\nu$, $\bm\theta$, $s$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$<br/>$s = dt$ |
+| SO(3) | 3 | $\bf R$ | $\boldsymbol\theta$ | $\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
+| SE(2) | 3 | $\bf R$, $\bf p$ | $\boldsymbol\rho$, $\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
+| SE(3) | 6 | $\bf R$, $\bf p$ | $\boldsymbol\rho$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
+| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$ |
+| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$, $s$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$<br/>$s = dt$ |
 
-As an example, in SE_2(3) the tangent vector ${\bm\tau}$ is defined by
+As an example, in SE_2(3) the tangent vector ${\boldsymbol\tau}$ is defined by
 
-```math
-{\bm\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
-```
+$$
+{\boldsymbol\tau} = \begin{bmatrix} {\boldsymbol\rho} \\ {\boldsymbol\nu} \\ {\boldsymbol\theta} \end{bmatrix} \in \mathbb{R}^9
+$$
 
-where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ and
+where $\boldsymbol\rho$, $\boldsymbol\nu$ and $\boldsymbol\theta$ are $\in \mathbb{R}^3$ and
 typically correspond respectively to changes in position, velocity and orientation.
 
 A covariances matrix $\bf Q$ of an element of SE_2(3) can be block-partitioned as follows
 
-```math
+$$
 {\bf Q} = \begin{bmatrix}
-          {\bf Q}_{\bm\rho\bm\rho} & {\bf Q}_{\bm\rho\bm\nu} & {\bf Q}_{\bm\rho\bm\theta} \\
-          {\bf Q}_{\bm\nu\bm\rho} & {\bf Q}_{\bm\nu\bm\nu} & {\bf Q}_{\bm\nu\bm\theta} \\
-          {\bf Q}_{\bm\theta\bm\rho} & {\bf Q}_{\bm\theta\bm\nu} & {\bf Q}_{\bm\theta\bm\theta}
+          {\bf Q}_{\boldsymbol\rho\boldsymbol\rho} & {\bf Q}_{\boldsymbol\rho\boldsymbol\nu} & {\bf Q}_{\boldsymbol\rho\boldsymbol\theta} \\
+          {\bf Q}_{\boldsymbol\nu\boldsymbol\rho} & {\bf Q}_{\boldsymbol\nu\boldsymbol\nu} & {\bf Q}_{\boldsymbol\nu\boldsymbol\theta} \\
+          {\bf Q}_{\boldsymbol\theta\boldsymbol\rho} & {\bf Q}_{\boldsymbol\theta\boldsymbol\nu} & {\bf Q}_{\boldsymbol\theta\boldsymbol\theta}
           \end{bmatrix} \in \mathbb{R}^{9\times 9}
-```
+$$
 
 All blocks ${\bf Q}_{\bf ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
 
@@ -156,9 +156,9 @@ Please consider [the order of elements in the tangent spaces](#tangent-spaces) w
 
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
-```math
-\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\bm\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\bm\varphi)\ominus f(\bf\mathcal{X})}{\bm\varphi}\triangleq\lim_{\bm\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\bm\varphi^\wedge)))^\vee}{\bm\varphi}
-```
+$$
+\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\boldsymbol\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\boldsymbol\varphi)\ominus f(\bf\mathcal{X})}{\boldsymbol\varphi}\triangleq\lim_{\boldsymbol\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\boldsymbol\varphi^\wedge)))^\vee}{\boldsymbol\varphi}
+$$
 
 The Jacobians of any of the aforementioned operations can then be evaluated:
 

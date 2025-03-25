@@ -63,7 +63,7 @@ problem_->SetManifold(
 ```
 
 The `LocalParameterization` class (and derived) performs the state update step
-of the optimization. If also computes the associated Jacobian which is evaluated at ${\bm\omega}={\bf 0}$.
+of the optimization. If also computes the associated Jacobian which is evaluated at ${\boldsymbol\omega}={\bf 0}$.
 
 Once both the `CostFunction` and `LocalParameterization`'s Jacobians are evaluated,
 `Ceres` internally computes the Jacobian (with respect to a perturbation on the local tangent space) as the product ['(4)' detailed in 'autodiff'](../explanation/autodiff.md).
