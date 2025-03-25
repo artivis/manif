@@ -126,10 +126,10 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\bm\rho$, $\bm\nu$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$ |
 | SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\bm\rho$, $\bm\nu$, $\bm\theta$, $s$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = {\bm\omega}\cdot dt$<br/>$s = dt$ |
 
-As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
+As an example, in SE_2(3) the tangent vector ${\bm\tau}$ is defined by
 
 ```math
-{\bf\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
+{\bm\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
 ```
 
 where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ and typically correspond respectively to changes in position, velocity and orientation.
