@@ -34,16 +34,16 @@ Therefore, the respective Jacobian sizes using [`autodiff::dual`][autodiff] are 
 ## Jacobians
 
 Considering, $\bf\mathcal{X}$ a group element (e.g. S3),
-$\bm\omega$ the vector tangent to the group at $\bf\mathcal{X}$,
+$\boldsymbol\omega$ the vector tangent to the group at $\bf\mathcal{X}$,
 $f({\bf\mathcal{X}})$ an error function,
 one is interested in expressing the Taylor series of the error function,
-$f({\bf\mathcal{X}}\oplus\bm\omega)$.
+$f({\bf\mathcal{X}}\oplus\boldsymbol\omega)$.
 
 Therefore we have to compute
 
-```math
-{\bf J}_{\bm\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta{\bf\mathcal{X}}}=\frac{\delta f({\bf\mathcal{X}})}{\delta{\bf\mathcal{X}}}=\lim_{\bm\omega\to\bf0}\frac{f({\bf\mathcal{X}}\oplus\bm\omega)\ominus f({\bf\mathcal{X}})}{\bm\omega}, (1)
-```
+$$
+{\bf J}_{\boldsymbol\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta{\bf\mathcal{X}}}=\frac{\delta f({\bf\mathcal{X}})}{\delta{\bf\mathcal{X}}}=\lim_{\boldsymbol\omega\to\bf0}\frac{f({\bf\mathcal{X}}\oplus\boldsymbol\omega)\ominus f({\bf\mathcal{X}})}{\boldsymbol\omega}, (1)
+$$
 
 the **Jacobian of** $f({\bf\mathcal{X}})$ **with respect to a perturbation on the tangent space**,
 so that the state update happens on the manifold tangent space.
@@ -74,9 +74,9 @@ Eigen::MatrixXd J_e_xj = jacobian(fun, wrt(xj), at(meas_ij, xi, xj), e);
 
 It produces Jacobians of the form,
 
-```math
-{\bf J}_{{\bf\mathcal{X}}\oplus\bm\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta({\bf\mathcal{X}}\oplus\omega)}=\lim_{\bf h\to0}\frac{ f({\bf\mathcal{X}}+\mathbf h)-f({\bf\mathcal{X}})}{\mathbf h}, (2)
-```
+$$
+{\bf J}_{{\bf\mathcal{X}}\oplus\boldsymbol\omega}^{\bf e}=\frac{\delta{\bf e}}{\delta({\bf\mathcal{X}}\oplus\omega)}=\lim_{\bf h\to0}\frac{ f({\bf\mathcal{X}}+\mathbf h)-f({\bf\mathcal{X}})}{\mathbf h}, (2)
+$$
 
 We thus then need to compute the Jacobian that will map to the tangent space -
 often called local-parameterization.
@@ -87,19 +87,19 @@ Eigen::MatrixXd J_xi_lp = autodiffLocalParameterizationJacobian<dual>(xi);
 Eigen::MatrixXd J_xj_lp = autodiffLocalParameterizationJacobian<dual>(xj);
 ```
 
-This function computes the ${\bf\mathcal{X}}\oplus\bm\omega$ operation's
-Jacobian evaluated for $\bm\omega=\bf0$ thus providing the Jacobian,
+This function computes the ${\bf\mathcal{X}}\oplus\boldsymbol\omega$ operation's
+Jacobian evaluated for $\boldsymbol\omega=\bf0$ thus providing the Jacobian,
 
-```math
-{\bf J}_{\bm\omega}^{{\bf\mathcal{X}}\oplus\bm\omega}=\frac{\delta({\bf\mathcal{X}}\oplus\bm\omega)}{\delta\bm\omega}=\lim_{\delta\bm\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus(\bm\omega+\delta\bm\omega)-{\bf\mathcal{X}}\oplus\bm\omega}{\delta\bm\omega}=\lim_{\delta\bm\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus\delta\bm\omega-{\bf\mathcal{X}}}{\delta\bm\omega}, (3)
-```
+$$
+{\bf J}_{\boldsymbol\omega}^{{\bf\mathcal{X}}\oplus\boldsymbol\omega}=\frac{\delta({\bf\mathcal{X}}\oplus\boldsymbol\omega)}{\delta\boldsymbol\omega}=\lim_{\delta\boldsymbol\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus(\boldsymbol\omega+\delta\boldsymbol\omega)-{\bf\mathcal{X}}\oplus\boldsymbol\omega}{\delta\boldsymbol\omega}=\lim_{\delta\boldsymbol\omega\to\bf0}\frac{{\bf\mathcal{X}}\oplus\delta\boldsymbol\omega-{\bf\mathcal{X}}}{\delta\boldsymbol\omega}, (3)
+$$
 
 Once both the cost function and local-parameterization's Jacobians are evaluated,
 they can be compose as,
 
-```math
-{\bf J}_{\bm\omega}^{\bf e}={\bf J}_{{\bf\mathcal{X}}\oplus\bm\omega}^{\bf e}\times{\bf J}_{\bm\omega}^{{\bf\mathcal{X}}\oplus\bm\omega}, (4)
-```
+$$
+{\bf J}_{\boldsymbol\omega}^{\bf e}={\bf J}_{{\bf\mathcal{X}}\oplus\boldsymbol\omega}^{\bf e}\times{\bf J}_{\boldsymbol\omega}^{{\bf\mathcal{X}}\oplus\boldsymbol\omega}, (4)
+$$
 
 Voila.
 
