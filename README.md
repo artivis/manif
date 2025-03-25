@@ -118,13 +118,13 @@ As a reference, this is the way tangent spaces are defined in **manif**
 
 | group | dimension | group elements | tangent elements (in order) | relation to velocity |
 | ---- | ---- | ---- | ---- | ---- |
-| Rn | n | p | p | p = v\*dt |
-| SO(2) | 1 | R | theta | theta = w\*dt |
-| SO(3) | 3 | R | theta | theta = w\*dt |
-| SE(2) | 3 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
-| SE(3) | 6 | R, p | rho, theta | rho = v\*dt, theta = w\*dt |
-| SE_2(3) | 9 | R, p, v | rho, nu, theta | rho = v\*dt, nu = a\*dt, theta = w\*dt |
-| SGal(3) | 10 | R, p, v, t | rho, nu, theta, s | rho = v\*dt, nu = a\*dt, theta = w\*dt, s = dt |
+| Rn | n | p | p | $p = v\cdot dt$ |
+| SO(2) | 1 | R | $\theta$ | $\theta = w\cdot dt$ |
+| SO(3) | 3 | R | $\theta$ | $\theta = w\cdot dt$ |
+| SE(2) | 3 | R, p | $\rho$, $\theta$ | $\rho = v\cdot dt$<br/>$\theta = w\cdot dt$ |
+| SE(3) | 6 | R, p | $\rho$, $\theta$ | $\rho = v\cdot dt$<br/>$\theta = w\cdot dt$ |
+| SE_2(3) | 9 | R, p, v | $\rho$, $\nu$, $\theta$ | $\rho = v\cdot dt$<br/>$\nu = a\cdot dt$<br/>$\theta = w\cdot dt$ |
+| SGal(3) | 10 | R, p, v, t | $\rho$, $\nu$, $\theta$, $s$ | $\rho = v\cdot dt$<br/>$\nu = a\cdot dt$<br/>$\theta = w\cdot dt$<br/>$s = dt$ |
 
 As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
 
