@@ -161,7 +161,9 @@ Please consider [the order of elements in the tangent spaces](#tangent-spaces) w
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
 $$
-\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\boldsymbol\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\boldsymbol\varphi)\ominus f(\bf\mathcal{X})}{\boldsymbol\varphi}\triangleq\lim_{\boldsymbol\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\boldsymbol\varphi^\wedge)))^\vee}{\boldsymbol\varphi}
+\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq
+\lim_{\boldsymbol\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\boldsymbol\varphi)\ominus f(\bf\mathcal{X})}{\boldsymbol\varphi}\triangleq
+\lim_{\boldsymbol\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\boldsymbol\varphi^\wedge)))^\vee}{\boldsymbol\varphi}
 $$
 
 The Jacobians of any of the aforementioned operations can then be evaluated:
