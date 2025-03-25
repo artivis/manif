@@ -119,20 +119,20 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | group | dimension | group elements | tangent elements (in order) | relation to velocity |
 | ---- | ---- | ---- | ---- | ---- |
 | Rn | n | p | p | $p = v\cdot dt$ |
-| SO(2) | 1 | R | $\theta$ | $\theta = w\cdot dt$ |
-| SO(3) | 3 | R | $\theta$ | $\theta = w\cdot dt$ |
-| SE(2) | 3 | R, p | $\rho$, $\theta$ | $\rho = v\cdot dt$<br/>$\theta = w\cdot dt$ |
-| SE(3) | 6 | R, p | $\rho$, $\theta$ | $\rho = v\cdot dt$<br/>$\theta = w\cdot dt$ |
-| SE_2(3) | 9 | R, p, v | $\rho$, $\nu$, $\theta$ | $\rho = v\cdot dt$<br/>$\nu = a\cdot dt$<br/>$\theta = w\cdot dt$ |
-| SGal(3) | 10 | R, p, v, t | $\rho$, $\nu$, $\theta$, $s$ | $\rho = v\cdot dt$<br/>$\nu = a\cdot dt$<br/>$\theta = w\cdot dt$<br/>$s = dt$ |
+| SO(2) | 1 | $\bf R$ | $\theta$ | $\theta = \omega\cdot dt$ |
+| SO(3) | 3 | $\bf R$ | $\bm\theta$ | $\bm\theta = \bm\omega\cdot dt$ |
+| SE(2) | 3 | $\bf R$, $\bf p$ | $\bm\rho$, $\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
+| SE(3) | 6 | $\bf R$, $\bf p$ | $\bm\rho$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$ |
+| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\bm\rho$, $\bm\nu$, $\bm\theta$ | $\bm\rho = {\bf v}\cdot dt$<br/>$\bm\nu = {\bf a}\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$ |
+| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\bm\rho$, $\bm\nu$, $\bm\theta$, $s$ | $\bm\rho = \bf v\cdot dt$<br/>$\bm\nu = \bf a\cdot dt$<br/>$\bm\theta = \bm\omega\cdot dt$<br/>$s = dt$ |
 
 As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
 
 ```math
-{\bf\tau} = \begin{bmatrix} {\bf\rho} \\ {\bf\nu} \\ {\bf\theta} \end{bmatrix} \in \mathbb{R}^9
+{\bf\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
 ```
 
-where $\bf\rho$, $\bf\nu$ and $\bf\theta$ are $\in \mathbb{R}^3$ are changes in position, velocity and orientation respectively.
+where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ are changes in position, velocity and orientation respectively.
 
 A covariances matrix $\bf{Q}$ of an element of SE_2(3) can be block-partitioned as follows
 
