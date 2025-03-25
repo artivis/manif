@@ -82,26 +82,26 @@ Get quickly started with **manif** following our 'quick start' guides for both
 |       |   Base Operation   |  |
 | Inverse | $\bf\mathcal{X}^{-1}$ | `X.inverse()` |
 | Composition | $\bf\mathcal{X}\circ\bf\mathcal{Y}$ | `X * Y`<br/>`X.compose(Y)` |
-| Hat | $\varphi^\wedge$ | `w.hat()` |
+| Hat | $\bm\varphi^\wedge$ | `w.hat()` |
 | Act on vector | $\bf\mathcal{X}\circ{\bf v}$ | `X.act(v)` |
-| Retract to group element | $\exp(\bf\varphi^\wedge$ | `w.exp()` |
+| Retract to group element | $\exp(\bm\varphi^\wedge)$ | `w.exp()` |
 | Lift to tangent space | $\log(\bf\mathcal{X})^\vee$ | `X.log()` |
 | Manifold Adjoint | $\mathrm{Adj}(\bf\mathcal{X})$ | `X.adj()` |
-| Tangent adjoint | $\mathrm{adj}(\bf\varphi^\wedge)$ | `w.smallAdj()` |
+| Tangent adjoint | $\mathrm{adj}(\bm\varphi^\wedge)$ | `w.smallAdj()` |
 |       |   Composed Operation   |  |
-| Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\bf\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
-| Manifold left plus | $\exp(\bf\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
+| Manifold right plus | ${\bf\mathcal{X}}\circ\exp(\bm\varphi^\wedge)$ | `X + w`<br/>`X.plus(w)`<br/>`X.rplus(w)` |
+| Manifold left plus | $\exp(\bm\varphi^\wedge)\circ\bf\mathcal{X}$ | `w + X`<br/>`w.plus(X)`<br/>`w.lplus(X)` |
 | Manifold right minus | $\log(\bf\mathcal{Y}^{-1}\circ\bf\mathcal{X})^\vee$ | `X - Y`<br/>`X.minus(Y)`<br/>`X.rminus(Y)` |
 | Manifold left minus | $\log(\bf\mathcal{X}\circ\bf\mathcal{Y}^{-1})^\vee$ | `X.lminus(Y)` |
 | Between | ${\bf\mathcal{X}^{-1}}\circ{\bf\mathcal{Y}}$ | `X.between(Y)` |
-| Inner Product | $\langle\varphi,\tau\rangle$ | `w.inner(t)` |
-| Norm | $\left\lVert\varphi\right\rVert$ | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
+| Inner Product | $\langle\bm\varphi,\bm\tau\rangle$ | `w.inner(t)` |
+| Norm | $\left\lVert\bm\varphi\right\rVert$ | `w.weightedNorm()`<br/>`w.squaredWeightedNorm()` |
 
-Above, ${\bf\mathcal{X}}$ & ${\bf\mathcal{Y}}$ represent group elements,
-${\bf\varphi^\wedge}$ & ${\bf\tau^\wedge}$ represent elements in the Lie algebra of the Lie group,
-${\bf\varphi}$, ${\bf\tau}$ or `w,t` represent the same elements of the tangent space
+Above, ${\bf\mathcal{X}}$ & ${\bf\mathcal{Y}}$ (`X` & `Y`) represent group elements,
+${\bm\varphi^\wedge}$ & ${\bm\tau^\wedge}$ represent elements in the Lie algebra of the Lie group,
+${\bm\varphi}$ & ${\bm\tau}$ (`w` & `t`) represent the same elements of the tangent space
 but expressed in Cartesian coordinates in $\mathbb{R}^n$,
-and $\mathbf{v}$ or `v` represents any element of $\mathbb{R}^n$.
+and $\mathbf{v}$ (`v`) represents any element of $\mathbb{R}^n$.
 
 <!-- Include stop manif operation -->
 
@@ -132,19 +132,20 @@ As an example, in SE_2(3) the tangent vector ${\bm\tau}$ is defined by
 {\bm\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
 ```
 
-where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ and typically correspond respectively to changes in position, velocity and orientation.
+where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ and
+typically correspond respectively to changes in position, velocity and orientation.
 
-A covariances matrix $\bf{Q}$ of an element of SE_2(3) can be block-partitioned as follows
+A covariances matrix $\bf Q$ of an element of SE_2(3) can be block-partitioned as follows
 
 ```math
 {\bf Q} = \begin{bmatrix}
-          {\bf Q}_{\rho\rho} & {\bf Q}_{\rho\nu} & {\bf Q}_{\rho\theta} \\
-          {\bf Q}_{\nu\rho} & {\bf Q}_{\nu\nu} & {\bf Q}_{\nu\theta} \\
-          {\bf Q}_{\theta\rho} & {\bf Q}_{\theta\nu} & {\bf Q}_{\theta\theta}
+          {\bf Q}_{\bm\rho\bm\rho} & {\bf Q}_{\bm\rho\bm\nu} & {\bf Q}_{\bm\rho\bm\theta} \\
+          {\bf Q}_{\bm\nu\bm\rho} & {\bf Q}_{\bm\nu\bm\nu} & {\bf Q}_{\bm\nu\bm\theta} \\
+          {\bf Q}_{\bm\theta\bm\rho} & {\bf Q}_{\bm\theta\bm\nu} & {\bf Q}_{\bm\theta\bm\theta}
           \end{bmatrix} \in \mathbb{R}^{9\times 9}
 ```
 
-All blocks ${\bf Q}_{ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
+All blocks ${\bf Q}_{\bf ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
 
 ### Jacobians
 
@@ -156,7 +157,7 @@ Please consider [the order of elements in the tangent spaces](#tangent-spaces) w
 Currently, **manif** implements the **right Jacobian**, whose definition reads:
 
 ```math
-\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\bf\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\varphi)\ominus f(\bf\mathcal{X})}{\varphi}\triangleq\lim_{\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\varphi^\wedge)))^\vee}{\varphi}
+\frac{\delta f(\bf\mathcal{X})}{\delta\bf\mathcal{X}}\triangleq\lim_{\bm\varphi\to\bf0}\frac{f(\bf\mathcal{X}\oplus\bm\varphi)\ominus f(\bf\mathcal{X})}{\bm\varphi}\triangleq\lim_{\bm\varphi\to\bf0}\frac{\log(f({\bf\mathcal{X}})^{-1} f({\bf\mathcal{X}}\exp(\bm\varphi^\wedge)))^\vee}{\bm\varphi}
 ```
 
 The Jacobians of any of the aforementioned operations can then be evaluated:

@@ -1,4 +1,4 @@
-# Who use manif
+# Who uses manif
 
 A curated list of work and projects using **manif**.
 
