@@ -132,7 +132,7 @@ As an example, in SE_2(3) the tangent vector ${\bf\tau}$ is defined by
 {\bf\tau} = \begin{bmatrix} {\bm\rho} \\ {\bm\nu} \\ {\bm\theta} \end{bmatrix} \in \mathbb{R}^9
 ```
 
-where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ are changes in position, velocity and orientation respectively.
+where $\bm\rho$, $\bm\nu$ and $\bm\theta$ are $\in \mathbb{R}^3$ and typically correspond respectively to changes in position, velocity and orientation.
 
 A covariances matrix $\bf{Q}$ of an element of SE_2(3) can be block-partitioned as follows
 
