@@ -131,7 +131,12 @@ As a reference, this is the way tangent spaces are defined in **manif**
 As an example, in SE_2(3) the tangent vector ${\boldsymbol\tau}$ is defined by
 
 $$
-{\boldsymbol\tau} = \begin{bmatrix} {\boldsymbol\rho} \\ {\boldsymbol\nu} \\ {\boldsymbol\theta} \end{bmatrix} \in \mathbb{R}^9
+{\boldsymbol\tau} = 
+\begin{bmatrix} 
+{\boldsymbol\rho} \\ 
+{\boldsymbol\nu} \\ 
+{\boldsymbol\theta} 
+\end{bmatrix} \in \mathbb{R}^9
 $$
 
 where $\boldsymbol\rho$, $\boldsymbol\nu$ and $\boldsymbol\theta$ are $\in \mathbb{R}^3$ and
