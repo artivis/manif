@@ -50,12 +50,17 @@ jobs:
           make html || ( echo "Whole bunch of things to fix." )
           if ! [ -d _build ]; then exit 1; fi
 
+      - name: Prevent Jekyll from building the gh-pages
+        working-directory: docs
+        run: touch _build/.nojekyll
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: doc
           path: |
             docs/_build
+            docs/_build/.nojekyll
             !docs/_build/doxyxml
 
   test:
