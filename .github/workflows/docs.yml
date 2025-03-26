@@ -104,20 +104,27 @@ jobs:
   deploy:
     needs: [test]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     # todo: deploy if new tag/release
     if: |
       github.repository == 'artivis/manif' &&
       github.event_name == 'push' &&
       github.ref == 'refs/heads/devel'
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: doc
-          path: doc
+          path: docs_build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: doc
+          folder: docs_build
