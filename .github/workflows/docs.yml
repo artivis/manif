@@ -1,107 +1,123 @@
 name: documentation
+
 on:
   push:
-    branches: devel
+    branches: [ devel ]
   pull_request:
-    branches:
-      - devel
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-
-  # There is no way as of now to move artifacts around jobs and
-  # across workflows. So we build the Python bindings here too.
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-
-      # Build manifpy
-
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.6
-      - name: Setup apt
+          python-version: "3.12"
+
+      - name: Update sources
+        run: sudo apt-get update
+
+      - name: Install doc dependencies
+        run: sudo apt-get install -y doxygen
+
+      # Those are necessary if pip doesn't find the wheels
+      # and decides to rebuild from source
+      - name: Install doc extra dependencies
+        run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
+
+      - name: Install manif dependencies
+        run: sudo apt-get install -y libeigen3-dev
+
+      - name: Build Sphinx venv
+        working-directory: "docs"
         run: |
-          sudo apt update
-          sudo apt install -y libeigen3-dev
-      - name: Setup
+          set -ex
+          make install || ( cat .sphinx/venv/pip_install.log && exit 1 )
+
+      - name: Build documentation
+        working-directory: docs
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install build
-      - name: Build
-        run: python -m pip install -v .
+          make html || ( echo "Whole bunch of things to fix." )
+          if ! [ -d _build ]; then exit 1; fi
 
-  # build:
-  #   runs-on: ubuntu-20.04
-  #   needs: [pybind11]
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-
-      # Build documentation website
-
-      - name: Fetch apt deps
-        run: |
-          sudo apt update
-          sudo apt install -y libeigen3-dev flex bison graphicsmagick-imagemagick-compat
-
-      - name: Make install Doxygen
-        run: |
-          git clone --depth 1 --branch Release_1_9_1 https://github.com/doxygen/doxygen.git
-          cd doxygen && mkdir build && cd build
-          cmake -G "Unix Makefiles" ..
-          sudo make install
-
-      - name: Fetch Python deps
-        run: python -m pip install jinja2 Pygments docutils
-      - name: Fetch m.css
-        uses: actions/checkout@v4
-        with:
-          repository: mosra/m.css
-          path: docs/m.css
-
-      - name: Build Python docs
-        working-directory: ${{ runner.workspace }}/manif/docs
-        run: python m.css/documentation/python.py conf_python.py
-      - name: Build C++ docs
-        working-directory: ${{ runner.workspace }}/manif/docs
-        run: |
-          mkdir -p site/cpp
-          python m.css/documentation/doxygen.py conf_cpp.py
-      - name: Build site
-        working-directory: ${{ runner.workspace }}/manif/docs
-        run: python m.css/documentation/doxygen.py conf.py
-
-      - name: Latex equation white color
-        working-directory: ${{ runner.workspace }}/manif/docs
-        run: ./fix_latex_color.sh
-
-      - name: Archive artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: site
-          path: docs/site
+          name: doc
+          path: |
+            docs/_build
+            !docs/_build/doxyxml
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update sources
+        run: sudo apt-get update
+
+      - name: Install doc dependencies
+        run: sudo apt-get install -y doxygen
+
+      # Those are necessary if pip doesn't find the wheels
+      # and decides to rebuild from source
+      - name: Install doc extra dependencies
+        run: sudo apt-get install -y libjpeg-dev libxml2-dev libxslt1-dev
+
+      - name: Install manif dependencies
+        run: sudo apt-get install -y libeigen3-dev
+
+      - name: linkcheck
+        working-directory: docs
+        run: make linkcheck
+
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          config: "docs/.sphinx/.markdownlint.json"
+
+  # documentation-checks:
+  #   uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
+  #   with:
+  #     working-directory: "docs"
+  #     fetch-depth: 0
+  #     install-target: "gh-ci-install"
 
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
-    needs: [build]
     # todo: deploy if new tag/release
     if: |
       github.repository == 'artivis/manif' &&
-      github.event_name == 'push' && github.ref == 'refs/heads/devel'
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/devel'
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: site
-          path: site
+          name: doc
+          path: doc
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: site
+          folder: doc
