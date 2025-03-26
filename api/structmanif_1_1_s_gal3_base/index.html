@@ -1,0 +1,687 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Template Struct SGal3Base" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://artivis.github.io/manif/api/structmanif_1_1_s_gal3_base/" />
+<meta property="og:site_name" content="manif" />
+<meta property="og:description" content="Defined in File SGal3_base.h. Inheritance Relationships: Base Type: public manif::LieGroupBase< _Derived >( Template Struct LieGroupBase). Struct Documentation:" />
+<meta property="og:image" content="https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg" />
+<meta property="og:image:alt" content="manif" />
+<meta name="description" content="Defined in File SGal3_base.h. Inheritance Relationships: Base Type: public manif::LieGroupBase< _Derived >( Template Struct LieGroupBase). Struct Documentation:" />
+
+    <meta property="article:modified_time" content="2025-03-26T20:37:59+00:00" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Template Struct SGal3Base - manif documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/youtube.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/related-links.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/terminal-output.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/contributors.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=202ba174" />
+    <link rel="stylesheet" type="text/css" href="../../_static/header.css?v=84f70f09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/github_issue_links.css?v=af88fb93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/furo_colors.css?v=9c678fc2" />
+    
+</head>
+  <body>
+    <header id="header" class="p-navigation">
+
+  <div class="p-navigation__nav" role="menubar">
+
+    <ul class="p-navigation__links" role="menu">
+
+      <li>
+        <a class="p-logo" href="https://github.com/artivis/manif" aria-current="page">
+          <img src="../../_static/favicon.png" alt="Logo" class="p-logo-image">
+          <div class="p-logo-text p-heading--4">manif
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-ubuntu-com">
+        <a href="https://github.com/artivis/manif" class="p-navigation__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+artivis/manif</a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="p-navigation__link nav-more-links">More resources</a>
+        <ul class="more-links-dropdown">
+
+          
+
+          
+
+          
+
+          
+          <li>
+            <a href="https://github.com/artivis/manif" class="p-navigation__sub-link p-dropdown__link">GitHub</a>
+          </li>
+          
+
+        </ul>
+      </li> -->
+
+    </ul>
+  </div>
+</header>
+   
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">manif documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+  
+  
+  <span class="sidebar-brand-text">manif documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+    <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+    <input type="submit" value="Go">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+  <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorial/">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/cpp/">Getting started in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/python/">Getting started in Python3</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../howto/">How-to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of How-to</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/ceres/">Use with Ceres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/tmpl-code/">Write generic code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/documentation/">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/">References</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of References</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-cpp/">C++ Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-python/">Python3 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-python/">Python3 Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../explanation/">Explanations</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Explanations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/operations/">Operations on Lie groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/tangent/">Tangent spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/autodiff/">On auto-differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/publication/">Papers &amp; courses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/projects/">Who uses manif</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="template-struct-sgal3base">
+<span id="exhale-struct-structmanif-1-1-s-gal3-base"></span><h1>Template Struct SGal3Base<a class="headerlink" href="#template-struct-sgal3base" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="../file_manif_impl_sgal3_SGal3_base.h/#file-manif-impl-sgal3-sgal3-base-h"><span class="std std-ref">File SGal3_base.h</span></a></p></li>
+</ul>
+<section id="inheritance-relationships">
+<h2>Inheritance Relationships<a class="headerlink" href="#inheritance-relationships" title="Link to this heading">¶</a></h2>
+<section id="base-type">
+<h3>Base Type<a class="headerlink" href="#base-type" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::LieGroupBase&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_lie_group_base/#exhale-struct-structmanif-1-1-lie-group-base"><span class="std std-ref">Template Struct LieGroupBase</span></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="struct-documentation">
+<h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif9SGal3BaseE">
+<span id="_CPPv3I0EN5manif9SGal3BaseE"></span><span id="_CPPv2I0EN5manif9SGal3BaseE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_Derived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_s_gal3_base"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SGal3Base</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">manif</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1_lie_group_base/#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I0EN5manif9SGal3BaseE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The base class of the <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See “All About the Galilean Group SGal(3)” J. Kelly. <a class="reference external" href="https://arxiv.org/abs/2312.07555">https://arxiv.org/abs/2312.07555</a></p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base8RotationE">
+<span id="_CPPv3N5manif9SGal3Base8RotationE"></span><span id="_CPPv2N5manif9SGal3Base8RotationE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a02329cee8e1bf4b785e85cc5eb04713b"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Rotation</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Rotation</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base8RotationE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base11TranslationE">
+<span id="_CPPv3N5manif9SGal3Base11TranslationE"></span><span id="_CPPv2N5manif9SGal3Base11TranslationE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a13d2a4fac8d447c386070d21b51bc53d"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Translation</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Translation</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base11TranslationE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base14LinearVelocityE">
+<span id="_CPPv3N5manif9SGal3Base14LinearVelocityE"></span><span id="_CPPv2N5manif9SGal3Base14LinearVelocityE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a9c9651634b17699b464a9cbcde09b8d3"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LinearVelocity</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">LinearVelocity</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base14LinearVelocityE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base4TimeE">
+<span id="_CPPv3N5manif9SGal3Base4TimeE"></span><span id="_CPPv2N5manif9SGal3Base4TimeE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a2ead4808f2bd51271ff1a8f2701740ae"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Time</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Scalar</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base4TimeE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base14TransformationE">
+<span id="_CPPv3N5manif9SGal3Base14TransformationE"></span><span id="_CPPv2N5manif9SGal3Base14TransformationE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ac6c3251eb90da408174b169fdcea726f"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Transformation</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base14TransformationE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base8IsometryE">
+<span id="_CPPv3N5manif9SGal3Base8IsometryE"></span><span id="_CPPv2N5manif9SGal3Base8IsometryE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ab8acf6f7de6380c3c9c27736a4a12a0a"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Isometry</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base8IsometryE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Double direct spatial isometry </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base18QuaternionDataTypeE">
+<span id="_CPPv3N5manif9SGal3Base18QuaternionDataTypeE"></span><span id="_CPPv2N5manif9SGal3Base18QuaternionDataTypeE"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ada77b53a5541bdad5cd6af1d84b53b47"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QuaternionDataType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Quaternion</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base18QuaternionDataTypeE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base5asSO3Ev">
+<span id="_CPPv3NK5manif9SGal3Base5asSO3Ev"></span><span id="_CPPv2NK5manif9SGal3Base5asSO3Ev"></span><span id="manif::SGal3Base::asSO3C"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a1d63c646ee7cecd882c6a4c0e3b72c43"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_s_o3/#_CPPv4I0EN5manif3SO3E" title="manif::SO3"><span class="n"><span class="pre">SO3</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSO3</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base5asSO3Ev" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base5asSO3Ev">
+<span id="_CPPv3N5manif9SGal3Base5asSO3Ev"></span><span id="_CPPv2N5manif9SGal3Base5asSO3Ev"></span><span id="manif::SGal3Base::asSO3"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ad0489673a97d6a618dfb955b51268a44"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../structmanif_1_1_s_o3/#_CPPv4I0EN5manif3SO3E" title="manif::SO3"><span class="n"><span class="pre">SO3</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSO3</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base5asSO3Ev" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixIN9SGal3BaseI8_DerivedE6ScalarEXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_EigenDerived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_s_gal3_base_1aa21c3cfa544c85c19a68a9e619171d91"></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base"><span class="n"><span class="pre">SGal3Base</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">act</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MatrixBase</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixIN9SGal3BaseI8_DerivedE6ScalarEXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE" title="manif::SGal3Base::act::_EigenDerived"><span class="n"><span class="pre">_EigenDerived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">p</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_pout_m</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_pout_p</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixIN9SGal3BaseI8_DerivedE6ScalarEXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base6coeffsEv">
+<span id="_CPPv3N5manif9SGal3Base6coeffsEv"></span><span id="_CPPv2N5manif9SGal3Base6coeffsEv"></span><span id="manif::SGal3Base::coeffs"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a1ac9dd89b140080b8b0284c8bdfb5270"></span><span class="n"><span class="pre">DataType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">coeffs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base6coeffsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by const reference. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base6coeffsEv">
+<span id="_CPPv3NK5manif9SGal3Base6coeffsEv"></span><span id="_CPPv2NK5manif9SGal3Base6coeffsEv"></span><span id="manif::SGal3Base::coeffsC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1acee62f2ce8024b20db04c304031af85e"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">DataType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">coeffs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base6coeffsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by const reference. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="structmanif_1_1_s_gal3_base_1ac2cc0992b6d20e977d7f03c1866773e1"></span><span class="sig-name descname"><span class="pre">MANIF_DEFAULT_CONSTRUCTOR(SGal3Base)</span> <span class="pre">public</span> <span class="pre">Tangent</span> <span class="pre">log</span> <span class="pre">(OptJacobianRef</span> <span class="pre">J_t_m={})</span> <span class="pre">const</span></span></dt>
+<dd><p>Get the inverse. </p>
+<p>
+Get the <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> corresponding Lie algebra element in vector form. <div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../structmanif_1_1_s_gal3_tangent/#structmanif_1_1_s_gal3_tangent"><span class="std std-ref">SGal3Tangent</span></a>. </p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the <a class="reference internal" href="#structmanif_1_1_s_gal3_base_1ac2cc0992b6d20e977d7f03c1866773e1"><span class="std std-ref">log()</span></a> map in vector form. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_minv_m Jacobian of the inverse wrt this.</p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_m Jacobian of the tangent wrt to this. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> tangent of this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="structmanif_1_1_s_gal3_base_1a73d3fd6a810e1dff845c2ecc218bc13c"></span><span class="sig-name descname"><span class="pre">MANIF_DEPRECATED</span> <span class="pre">Tangent</span> <span class="pre">lift</span> <span class="pre">(OptJacobianRef</span> <span class="pre">J_t_m={})</span> <span class="pre">const</span></span></dt>
+<dd><p>This function is deprecated. Please considere using <a class="reference internal" href="#structmanif_1_1_s_gal3_base_1ac2cc0992b6d20e977d7f03c1866773e1"><span class="std std-ref">log</span></a> instead. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif9SGal3Base7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif9SGal3Base7composeERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif9SGal3Base7composeERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_s_gal3_base_1a25bda459a0fa6986f7aa45b50af74a2b"></span><span class="n"><span class="pre">LieGroup</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compose</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_lie_group_base/#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::SGal3Base::compose::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <span class="n"><span class="pre">OptJacobianRef</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <span class="n"><span class="pre">OptJacobianRef</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif9SGal3Base7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Composition of this and another <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> element. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> Another <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> element. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_ma Jacobian of the composition wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_mb Jacobian of the composition wrt m. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The composition of ‘this . m’. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixI6ScalarXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE">
+<span id="_CPPv3I0ENK5manif9SGal3Base3actERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE"></span><span id="_CPPv2I0ENK5manif9SGal3Base3actERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarX3EX10EEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarX3EX3EEEEEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_EigenDerived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_s_gal3_base_1a456326c64437e1430a4bd8c6afe0a377"></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">act</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MatrixBase</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixI6ScalarXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE" title="manif::SGal3Base::act::_EigenDerived"><span class="n"><span class="pre">_EigenDerived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">p</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_pout_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_pout_p</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixI6ScalarXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the action. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – <strong>[in]</strong> A 3D point. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_pout_m The Jacobian of the new object wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_pout_p The Jacobian of the new object wrt input object. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base3adjEv">
+<span id="_CPPv3NK5manif9SGal3Base3adjEv"></span><span id="_CPPv2NK5manif9SGal3Base3adjEv"></span><span id="manif::SGal3Base::adjC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a020d58bfad02ef653284ea9a2138c04c"></span><span class="n"><span class="pre">Jacobian</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adj</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base3adjEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the adjoint matrix of <a class="reference internal" href="../structmanif_1_1_s_gal3/#structmanif_1_1_s_gal3"><span class="std std-ref">SGal3</span></a> at this. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base9transformEv">
+<span id="_CPPv3NK5manif9SGal3Base9transformEv"></span><span id="_CPPv2NK5manif9SGal3Base9transformEv"></span><span id="manif::SGal3Base::transformC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1adab790d905faf56435120be1285265b5"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base14TransformationE" title="manif::SGal3Base::Transformation"><span class="n"><span class="pre">Transformation</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transform</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base9transformEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the isometry object (double direct isometry). </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>T = | R v t| | 1 s| | 1| </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base8isometryEv">
+<span id="_CPPv3NK5manif9SGal3Base8isometryEv"></span><span id="_CPPv2NK5manif9SGal3Base8isometryEv"></span><span id="manif::SGal3Base::isometryC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1aebb95eebb7b1c8acc204424b6d6accbc"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base8IsometryE" title="manif::SGal3Base::Isometry"><span class="n"><span class="pre">Isometry</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isometry</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base8isometryEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the isometry object (double direct isometry). </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>T = | R v t| | 1 s| | 1| </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base8rotationEv">
+<span id="_CPPv3NK5manif9SGal3Base8rotationEv"></span><span id="_CPPv2NK5manif9SGal3Base8rotationEv"></span><span id="manif::SGal3Base::rotationC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a3e14addb43064df49a50e385f81db28d"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base8RotationE" title="manif::SGal3Base::Rotation"><span class="n"><span class="pre">Rotation</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rotation</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base8rotationEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the rotational part of this as a rotation matrix. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base4quatEv">
+<span id="_CPPv3NK5manif9SGal3Base4quatEv"></span><span id="_CPPv2NK5manif9SGal3Base4quatEv"></span><span id="manif::SGal3Base::quatC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a0c72671ad8375fda9a193f5002fa65e9"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base18QuaternionDataTypeE" title="manif::SGal3Base::QuaternionDataType"><span class="n"><span class="pre">QuaternionDataType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">quat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base4quatEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the rotational part of this as a quaternion. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base11translationEv">
+<span id="_CPPv3NK5manif9SGal3Base11translationEv"></span><span id="_CPPv2NK5manif9SGal3Base11translationEv"></span><span id="manif::SGal3Base::translationC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a21ea39f7c50302edaaebee9688b20337"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base11TranslationE" title="manif::SGal3Base::Translation"><span class="n"><span class="pre">Translation</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">translation</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base11translationEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the translational part in vector form. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base1xEv">
+<span id="_CPPv3NK5manif9SGal3Base1xEv"></span><span id="_CPPv2NK5manif9SGal3Base1xEv"></span><span id="manif::SGal3Base::xC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a0070c8798526b4f0805911dfdf10d75a"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">x</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base1xEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the x component of the translational part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base1yEv">
+<span id="_CPPv3NK5manif9SGal3Base1yEv"></span><span id="_CPPv2NK5manif9SGal3Base1yEv"></span><span id="manif::SGal3Base::yC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a2c7392afa655d60fa6e558fe049168c4"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">y</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base1yEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the y component of translational part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base1zEv">
+<span id="_CPPv3NK5manif9SGal3Base1zEv"></span><span id="_CPPv2NK5manif9SGal3Base1zEv"></span><span id="manif::SGal3Base::zC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ad16b38c519ab7172cbf5e16c0f487fad"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">z</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base1zEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the z component of translational part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base14linearVelocityEv">
+<span id="_CPPv3NK5manif9SGal3Base14linearVelocityEv"></span><span id="_CPPv2NK5manif9SGal3Base14linearVelocityEv"></span><span id="manif::SGal3Base::linearVelocityC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1ad66d6fdf2cb0fb95e4dd556de9d18f61"></span><a class="reference internal" href="#_CPPv4N5manif9SGal3Base14LinearVelocityE" title="manif::SGal3Base::LinearVelocity"><span class="n"><span class="pre">LinearVelocity</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">linearVelocity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base14linearVelocityEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the linear velocity part in vector form. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base2vxEv">
+<span id="_CPPv3NK5manif9SGal3Base2vxEv"></span><span id="_CPPv2NK5manif9SGal3Base2vxEv"></span><span id="manif::SGal3Base::vxC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a9388d5ef5a7acfdfa14e1d5d7cddcbe6"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">vx</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base2vxEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the x component of the linear velocity part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base2vyEv">
+<span id="_CPPv3NK5manif9SGal3Base2vyEv"></span><span id="_CPPv2NK5manif9SGal3Base2vyEv"></span><span id="manif::SGal3Base::vyC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a2037442a3e8af9a35ca86bba47b197d5"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">vy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base2vyEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the y component of linear velocity part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base2vzEv">
+<span id="_CPPv3NK5manif9SGal3Base2vzEv"></span><span id="_CPPv2NK5manif9SGal3Base2vzEv"></span><span id="manif::SGal3Base::vzC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a17382a4370d9cba83b1c4c842523d1c5"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">vz</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base2vzEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the z component of linear velocity part. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif9SGal3Base1tEv">
+<span id="_CPPv3NK5manif9SGal3Base1tEv"></span><span id="_CPPv2NK5manif9SGal3Base1tEv"></span><span id="manif::SGal3Base::tC"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a8107b5df2bf76b5dee521ffbb0156366"></span><span class="n"><span class="pre">Scalar</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif9SGal3Base1tEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the time. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif9SGal3Base9normalizeEv">
+<span id="_CPPv3N5manif9SGal3Base9normalizeEv"></span><span id="_CPPv2N5manif9SGal3Base9normalizeEv"></span><span id="manif::SGal3Base::normalize"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a7efdfe3481251ad2744708f0deb7cd2c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">normalize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif9SGal3Base9normalizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Normalize the underlying quaternion. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NR5manif9SGal3Base7derivedEv">
+<span id="_CPPv3NR5manif9SGal3Base7derivedEv"></span><span id="_CPPv2NR5manif9SGal3Base7derivedEv"></span><span id="manif::SGal3Base::derivedR"></span><span class="target" id="structmanif_1_1_s_gal3_base_1a26a8042758db4d0bcf18e29473c46ca4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">derived</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NR5manif9SGal3Base7derivedEv" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NKR5manif9SGal3Base7derivedEv">
+<span id="_CPPv3NKR5manif9SGal3Base7derivedEv"></span><span id="_CPPv2NKR5manif9SGal3Base7derivedEv"></span><span id="manif::SGal3Base::derivedCR"></span><span class="target" id="structmanif_1_1_s_gal3_base_1aa6893bd1008399d9254474d3fead84d7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE" title="manif::SGal3Base::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">derived</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NKR5manif9SGal3Base7derivedEv" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+   
+
+<div class="related-pages">
+  
+  
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2025 MIT license, artivis
+    </div>
+
+    <div class="last-updated">
+      Last updated on Mar 26, 2025</div>
+  </div>
+  <div>
+   
+  </div>
+  <div class="right-details">
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+<div class="toc-sticky toc-scroll">
+   
+    <div class="toc-title-container">
+      <span class="toc-title">
+       Contents
+      </span>
+    </div>
+    <div class="toc-tree-container">
+      <div class="toc-tree">
+        <ul>
+<li><a class="reference internal" href="#">Template Struct SGal3Base</a><ul>
+<li><a class="reference internal" href="#inheritance-relationships">Inheritance Relationships</a><ul>
+<li><a class="reference internal" href="#base-type">Base Type</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#struct-documentation">Struct Documentation</a><ul>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif9SGal3BaseE"><code class="docutils literal notranslate"><span class="pre">manif::SGal3Base</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base8RotationE"><code class="docutils literal notranslate"><span class="pre">Rotation</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base11TranslationE"><code class="docutils literal notranslate"><span class="pre">Translation</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base14LinearVelocityE"><code class="docutils literal notranslate"><span class="pre">LinearVelocity</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base4TimeE"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base14TransformationE"><code class="docutils literal notranslate"><span class="pre">Transformation</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base8IsometryE"><code class="docutils literal notranslate"><span class="pre">Isometry</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base18QuaternionDataTypeE"><code class="docutils literal notranslate"><span class="pre">QuaternionDataType</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base5asSO3Ev"><code class="docutils literal notranslate"><span class="pre">asSO3()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base5asSO3Ev"><code class="docutils literal notranslate"><span class="pre">asSO3()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixIN9SGal3BaseI8_DerivedE6ScalarEXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base6coeffsEv"><code class="docutils literal notranslate"><span class="pre">coeffs()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base6coeffsEv"><code class="docutils literal notranslate"><span class="pre">coeffs()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">compose()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif9SGal3Base3actEN5Eigen6MatrixI6ScalarXL3EEXL1EEEERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL10EEEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6ScalarXL3EEXL3EEEEEEEE"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base3adjEv"><code class="docutils literal notranslate"><span class="pre">adj()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base9transformEv"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base8isometryEv"><code class="docutils literal notranslate"><span class="pre">isometry()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base8rotationEv"><code class="docutils literal notranslate"><span class="pre">rotation()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base4quatEv"><code class="docutils literal notranslate"><span class="pre">quat()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base11translationEv"><code class="docutils literal notranslate"><span class="pre">translation()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base1xEv"><code class="docutils literal notranslate"><span class="pre">x()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base1yEv"><code class="docutils literal notranslate"><span class="pre">y()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base1zEv"><code class="docutils literal notranslate"><span class="pre">z()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base14linearVelocityEv"><code class="docutils literal notranslate"><span class="pre">linearVelocity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base2vxEv"><code class="docutils literal notranslate"><span class="pre">vx()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base2vyEv"><code class="docutils literal notranslate"><span class="pre">vy()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base2vzEv"><code class="docutils literal notranslate"><span class="pre">vz()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif9SGal3Base1tEv"><code class="docutils literal notranslate"><span class="pre">t()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif9SGal3Base9normalizeEv"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NR5manif9SGal3Base7derivedEv"><code class="docutils literal notranslate"><span class="pre">derived()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NKR5manif9SGal3Base7derivedEv"><code class="docutils literal notranslate"><span class="pre">derived()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+   
+    
+  </div>
+
+    </aside>
+  </div>
+</div><script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=a5603611"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/contributors.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/header-nav.js?v=e117ad08"></script>
+    
+<script>
+  const github_url = "https://github.com/artivis/manif";
+</script>
+</body>
+</html>

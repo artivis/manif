@@ -1,0 +1,1069 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Template Struct LieGroupBase" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://artivis.github.io/manif/api/structmanif_1_1_lie_group_base/" />
+<meta property="og:site_name" content="manif" />
+<meta property="og:description" content="Defined in File lie_group_base.h. Inheritance Relationships: Derived Types: public manif::BundleBase< Map< const manif::Bundle< _Scalar, T... >, 0 > >( Template Struct BundleBase), public manif::Bu..." />
+<meta property="og:image" content="https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg" />
+<meta property="og:image:alt" content="manif" />
+<meta name="description" content="Defined in File lie_group_base.h. Inheritance Relationships: Derived Types: public manif::BundleBase< Map< const manif::Bundle< _Scalar, T... >, 0 > >( Template Struct BundleBase), public manif::Bu..." />
+
+    <meta property="article:modified_time" content="2025-03-26T20:37:59+00:00" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Template Struct LieGroupBase - manif documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/youtube.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/related-links.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/terminal-output.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/contributors.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=202ba174" />
+    <link rel="stylesheet" type="text/css" href="../../_static/header.css?v=84f70f09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/github_issue_links.css?v=af88fb93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/furo_colors.css?v=9c678fc2" />
+    
+</head>
+  <body>
+    <header id="header" class="p-navigation">
+
+  <div class="p-navigation__nav" role="menubar">
+
+    <ul class="p-navigation__links" role="menu">
+
+      <li>
+        <a class="p-logo" href="https://github.com/artivis/manif" aria-current="page">
+          <img src="../../_static/favicon.png" alt="Logo" class="p-logo-image">
+          <div class="p-logo-text p-heading--4">manif
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-ubuntu-com">
+        <a href="https://github.com/artivis/manif" class="p-navigation__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+artivis/manif</a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="p-navigation__link nav-more-links">More resources</a>
+        <ul class="more-links-dropdown">
+
+          
+
+          
+
+          
+
+          
+          <li>
+            <a href="https://github.com/artivis/manif" class="p-navigation__sub-link p-dropdown__link">GitHub</a>
+          </li>
+          
+
+        </ul>
+      </li> -->
+
+    </ul>
+  </div>
+</header>
+   
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">manif documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+  
+  
+  <span class="sidebar-brand-text">manif documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+    <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+    <input type="submit" value="Go">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+  <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorial/">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/cpp/">Getting started in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/python/">Getting started in Python3</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../howto/">How-to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of How-to</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/ceres/">Use with Ceres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/tmpl-code/">Write generic code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/documentation/">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/">References</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of References</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-cpp/">C++ Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-python/">Python3 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-python/">Python3 Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../explanation/">Explanations</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Explanations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/operations/">Operations on Lie groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/tangent/">Tangent spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/autodiff/">On auto-differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/publication/">Papers &amp; courses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/projects/">Who uses manif</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="template-struct-liegroupbase">
+<span id="exhale-struct-structmanif-1-1-lie-group-base"></span><h1>Template Struct LieGroupBase<a class="headerlink" href="#template-struct-liegroupbase" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="../file_manif_impl_lie_group_base.h/#file-manif-impl-lie-group-base-h"><span class="std std-ref">File lie_group_base.h</span></a></p></li>
+</ul>
+<section id="inheritance-relationships">
+<h2>Inheritance Relationships<a class="headerlink" href="#inheritance-relationships" title="Link to this heading">¶</a></h2>
+<section id="derived-types">
+<h3>Derived Types<a class="headerlink" href="#derived-types" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::BundleBase&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::Bundle&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">T...</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_bundle_base/#exhale-struct-structmanif-1-1-bundle-base"><span class="std std-ref">Template Struct BundleBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::BundleBase&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::Bundle&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">T...</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_bundle_base/#exhale-struct-structmanif-1-1-bundle-base"><span class="std std-ref">Template Struct BundleBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::BundleBase&lt;</span> <span class="pre">Bundle&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">_T</span> <span class="pre">...</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_bundle_base/#exhale-struct-structmanif-1-1-bundle-base"><span class="std std-ref">Template Struct BundleBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::RnBase&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::Rn&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">_N</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_rn_base/#exhale-struct-structmanif-1-1-rn-base"><span class="std std-ref">Template Struct RnBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::RnBase&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::Rn&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">_N</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_rn_base/#exhale-struct-structmanif-1-1-rn-base"><span class="std std-ref">Template Struct RnBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::RnBase&lt;</span> <span class="pre">Rn&lt;</span> <span class="pre">_Scalar,</span> <span class="pre">_N</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_rn_base/#exhale-struct-structmanif-1-1-rn-base"><span class="std std-ref">Template Struct RnBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE2Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SE2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e2_base/#exhale-struct-structmanif-1-1-s-e2-base"><span class="std std-ref">Template Struct SE2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE2Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SE2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e2_base/#exhale-struct-structmanif-1-1-s-e2-base"><span class="std std-ref">Template Struct SE2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE2Base&lt;</span> <span class="pre">SE2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e2_base/#exhale-struct-structmanif-1-1-s-e2-base"><span class="std std-ref">Template Struct SE2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SE3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e3_base/#exhale-struct-structmanif-1-1-s-e3-base"><span class="std std-ref">Template Struct SE3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SE3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e3_base/#exhale-struct-structmanif-1-1-s-e3-base"><span class="std std-ref">Template Struct SE3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE3Base&lt;</span> <span class="pre">SE3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e3_base/#exhale-struct-structmanif-1-1-s-e3-base"><span class="std std-ref">Template Struct SE3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE_2_3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SE_2_3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#exhale-struct-structmanif-1-1-s-e-2-3-base"><span class="std std-ref">Template Struct SE_2_3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE_2_3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SE_2_3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#exhale-struct-structmanif-1-1-s-e-2-3-base"><span class="std std-ref">Template Struct SE_2_3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE_2_3Base&lt;</span> <span class="pre">SE_2_3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#exhale-struct-structmanif-1-1-s-e-2-3-base"><span class="std std-ref">Template Struct SE_2_3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SGal3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SGal3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_gal3_base/#exhale-struct-structmanif-1-1-s-gal3-base"><span class="std std-ref">Template Struct SGal3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SGal3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SGal3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_gal3_base/#exhale-struct-structmanif-1-1-s-gal3-base"><span class="std std-ref">Template Struct SGal3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SGal3Base&lt;</span> <span class="pre">SGal3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_gal3_base/#exhale-struct-structmanif-1-1-s-gal3-base"><span class="std std-ref">Template Struct SGal3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO2Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SO2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o2_base/#exhale-struct-structmanif-1-1-s-o2-base"><span class="std std-ref">Template Struct SO2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO2Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SO2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o2_base/#exhale-struct-structmanif-1-1-s-o2-base"><span class="std std-ref">Template Struct SO2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO2Base&lt;</span> <span class="pre">SO2&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o2_base/#exhale-struct-structmanif-1-1-s-o2-base"><span class="std std-ref">Template Struct SO2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">const</span> <span class="pre">manif::SO3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o3_base/#exhale-struct-structmanif-1-1-s-o3-base"><span class="std std-ref">Template Struct SO3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO3Base&lt;</span> <span class="pre">Map&lt;</span> <span class="pre">manif::SO3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;,</span> <span class="pre">0</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o3_base/#exhale-struct-structmanif-1-1-s-o3-base"><span class="std std-ref">Template Struct SO3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO3Base&lt;</span> <span class="pre">SO3&lt;</span> <span class="pre">_Scalar</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o3_base/#exhale-struct-structmanif-1-1-s-o3-base"><span class="std std-ref">Template Struct SO3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::BundleBase&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_bundle_base/#exhale-struct-structmanif-1-1-bundle-base"><span class="std std-ref">Template Struct BundleBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::RnBase&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_rn_base/#exhale-struct-structmanif-1-1-rn-base"><span class="std std-ref">Template Struct RnBase</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE2Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e2_base/#exhale-struct-structmanif-1-1-s-e2-base"><span class="std std-ref">Template Struct SE2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE3Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e3_base/#exhale-struct-structmanif-1-1-s-e3-base"><span class="std std-ref">Template Struct SE3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SE_2_3Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#exhale-struct-structmanif-1-1-s-e-2-3-base"><span class="std std-ref">Template Struct SE_2_3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SGal3Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_gal3_base/#exhale-struct-structmanif-1-1-s-gal3-base"><span class="std std-ref">Template Struct SGal3Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO2Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o2_base/#exhale-struct-structmanif-1-1-s-o2-base"><span class="std std-ref">Template Struct SO2Base</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">manif::SO3Base&lt;</span> <span class="pre">_Derived</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="../structmanif_1_1_s_o3_base/#exhale-struct-structmanif-1-1-s-o3-base"><span class="std std-ref">Template Struct SO3Base</span></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="struct-documentation">
+<h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBaseE">
+<span id="_CPPv3I0EN5manif12LieGroupBaseE"></span><span id="_CPPv2I0EN5manif12LieGroupBaseE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_Derived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LieGroupBase</span></span></span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Base class for Lie groups. Defines the minimum common API. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../structmanif_1_1_tangent_base/#structmanif_1_1_tangent_base"><span class="std std-ref">TangentBase</span></a>. </p>
+</div>
+</p>
+<p>Subclassed by <a class="reference internal" href="../structmanif_1_1_bundle_base/#structmanif_1_1_bundle_base"><span class="std std-ref">manif::BundleBase&lt; Map&lt; const manif::Bundle&lt; _Scalar, T… &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_bundle_base/#structmanif_1_1_bundle_base"><span class="std std-ref">manif::BundleBase&lt; Map&lt; manif::Bundle&lt; _Scalar, T… &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_bundle_base/#structmanif_1_1_bundle_base"><span class="std std-ref">manif::BundleBase&lt; Bundle&lt; _Scalar, _T … &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_rn_base/#structmanif_1_1_rn_base"><span class="std std-ref">manif::RnBase&lt; Map&lt; const manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_rn_base/#structmanif_1_1_rn_base"><span class="std std-ref">manif::RnBase&lt; Map&lt; manif::Rn&lt; _Scalar, _N &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_rn_base/#structmanif_1_1_rn_base"><span class="std std-ref">manif::RnBase&lt; Rn&lt; _Scalar, _N &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e2_base/#structmanif_1_1_s_e2_base"><span class="std std-ref">manif::SE2Base&lt; Map&lt; const manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e2_base/#structmanif_1_1_s_e2_base"><span class="std std-ref">manif::SE2Base&lt; Map&lt; manif::SE2&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e2_base/#structmanif_1_1_s_e2_base"><span class="std std-ref">manif::SE2Base&lt; SE2&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e3_base/#structmanif_1_1_s_e3_base"><span class="std std-ref">manif::SE3Base&lt; Map&lt; const manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e3_base/#structmanif_1_1_s_e3_base"><span class="std std-ref">manif::SE3Base&lt; Map&lt; manif::SE3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e3_base/#structmanif_1_1_s_e3_base"><span class="std std-ref">manif::SE3Base&lt; SE3&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#structmanif_1_1_s_e__2__3_base"><span class="std std-ref">manif::SE_2_3Base&lt; Map&lt; const manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#structmanif_1_1_s_e__2__3_base"><span class="std std-ref">manif::SE_2_3Base&lt; Map&lt; manif::SE_2_3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#structmanif_1_1_s_e__2__3_base"><span class="std std-ref">manif::SE_2_3Base&lt; SE_2_3&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_gal3_base/#structmanif_1_1_s_gal3_base"><span class="std std-ref">manif::SGal3Base&lt; Map&lt; const manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_gal3_base/#structmanif_1_1_s_gal3_base"><span class="std std-ref">manif::SGal3Base&lt; Map&lt; manif::SGal3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_gal3_base/#structmanif_1_1_s_gal3_base"><span class="std std-ref">manif::SGal3Base&lt; SGal3&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o2_base/#structmanif_1_1_s_o2_base"><span class="std std-ref">manif::SO2Base&lt; Map&lt; const manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o2_base/#structmanif_1_1_s_o2_base"><span class="std std-ref">manif::SO2Base&lt; Map&lt; manif::SO2&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o2_base/#structmanif_1_1_s_o2_base"><span class="std std-ref">manif::SO2Base&lt; SO2&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o3_base/#structmanif_1_1_s_o3_base"><span class="std std-ref">manif::SO3Base&lt; Map&lt; const manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o3_base/#structmanif_1_1_s_o3_base"><span class="std std-ref">manif::SO3Base&lt; Map&lt; manif::SO3&lt; _Scalar &gt;, 0 &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o3_base/#structmanif_1_1_s_o3_base"><span class="std std-ref">manif::SO3Base&lt; SO3&lt; _Scalar &gt; &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_bundle_base/#structmanif_1_1_bundle_base"><span class="std std-ref">manif::BundleBase&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_rn_base/#structmanif_1_1_rn_base"><span class="std std-ref">manif::RnBase&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e2_base/#structmanif_1_1_s_e2_base"><span class="std std-ref">manif::SE2Base&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e3_base/#structmanif_1_1_s_e3_base"><span class="std std-ref">manif::SE3Base&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#structmanif_1_1_s_e__2__3_base"><span class="std std-ref">manif::SE_2_3Base&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_gal3_base/#structmanif_1_1_s_gal3_base"><span class="std std-ref">manif::SGal3Base&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o2_base/#structmanif_1_1_s_o2_base"><span class="std std-ref">manif::SO2Base&lt; _Derived &gt;</span></a>, <a class="reference internal" href="../structmanif_1_1_s_o3_base/#structmanif_1_1_s_o3_base"><span class="std std-ref">manif::SO3Base&lt; _Derived &gt;</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase6ScalarE">
+<span id="_CPPv3N5manif12LieGroupBase6ScalarE"></span><span id="_CPPv2N5manif12LieGroupBase6ScalarE"></span><span class="target" id="structmanif_1_1_lie_group_base_1a7215753f62eaeced0a3c8f53147938e3"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Scalar</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Scalar</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase8LieGroupE">
+<span id="_CPPv3N5manif12LieGroupBase8LieGroupE"></span><span id="_CPPv2N5manif12LieGroupBase8LieGroupE"></span><span class="target" id="structmanif_1_1_lie_group_base_1a1f015474f257f800bcd826787b26bcfc"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LieGroup</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">LieGroup</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase8DataTypeE">
+<span id="_CPPv3N5manif12LieGroupBase8DataTypeE"></span><span id="_CPPv2N5manif12LieGroupBase8DataTypeE"></span><span class="target" id="structmanif_1_1_lie_group_base_1a59562d75de51334eab68426521a4e923"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DataType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">DataType</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase8DataTypeE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase7TangentE">
+<span id="_CPPv3N5manif12LieGroupBase7TangentE"></span><span id="_CPPv2N5manif12LieGroupBase7TangentE"></span><span class="target" id="structmanif_1_1_lie_group_base_1ab920e7e67b4e174ad7e291cd10945827"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Tangent</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Tangent</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase8JacobianE">
+<span id="_CPPv3N5manif12LieGroupBase8JacobianE"></span><span id="_CPPv2N5manif12LieGroupBase8JacobianE"></span><span class="target" id="structmanif_1_1_lie_group_base_1ac02491bfe309ff4a384ca4394f153d6c"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Jacobian</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Jacobian</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase8JacobianE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase6VectorE">
+<span id="_CPPv3N5manif12LieGroupBase6VectorE"></span><span id="_CPPv2N5manif12LieGroupBase6VectorE"></span><span class="target" id="structmanif_1_1_lie_group_base_1aefcb523771afb5c59a70fb2d869598eb"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Vector</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Vector</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase6VectorE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase14OptJacobianRefE">
+<span id="_CPPv3N5manif12LieGroupBase14OptJacobianRefE"></span><span id="_CPPv2N5manif12LieGroupBase14OptJacobianRefE"></span><span class="target" id="structmanif_1_1_lie_group_base_1a9e323b97f09981a2b0d1973f8d81b21b"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OptJacobianRef</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8JacobianE" title="manif::LieGroupBase::Jacobian"><span class="n"><span class="pre">Jacobian</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBase16LieGroupTemplateE">
+<span id="_CPPv3I0EN5manif12LieGroupBase16LieGroupTemplateE"></span><span id="_CPPv2I0EN5manif12LieGroupBase16LieGroupTemplateE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_Scalar</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a536b5307a15fd40b0e5eb87c0344d6a8"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LieGroupTemplate</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traitscast/#_CPPv4I00EN5manif8internal10traitscastE" title="manif::internal::traitscast"><span class="n"><span class="pre">traitscast</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBase16LieGroupTemplateE" title="manif::LieGroupBase::LieGroupTemplate::_Scalar"><span class="n"><span class="pre">_Scalar</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">cast</span></span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBase16LieGroupTemplateE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBase">
+<span id="_CPPv3I0EN5manif12LieGroupBaseaSERK12LieGroupBase"></span><span id="_CPPv2I0EN5manif12LieGroupBaseaSERK12LieGroupBase"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_Derived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ab936a0b12ec879101e14fd9c29966d5a"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBase" title="manif::LieGroupBase::operator=::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBase" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0EN5manif12LieGroupBaseaSERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0EN5manif12LieGroupBaseaSERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ab3b5b3153e4d50982f9f71d104c8c37f"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator=::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase4castEN12LieGroupBaseI8_DerivedE16LieGroupTemplateI10_NewScalarEEv">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_NewScalar</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ad0a904968886e129d942dafc2ffadf25"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="k"><span class="pre">template</span></span><span class="w"> </span><span class="n"><span class="pre">LieGroupTemplate</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4castEN12LieGroupBaseI8_DerivedE16LieGroupTemplateI10_NewScalarEEv" title="manif::LieGroupBase::cast::_NewScalar"><span class="n"><span class="pre">_NewScalar</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cast</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase4castEN12LieGroupBaseI8_DerivedE16LieGroupTemplateI10_NewScalarEEv" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-attributes">Public Static Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase3DimE">
+<span id="_CPPv3N5manif12LieGroupBase3DimE"></span><span id="_CPPv2N5manif12LieGroupBase3DimE"></span><span id="manif::LieGroupBase::Dim__i"></span><span class="target" id="structmanif_1_1_lie_group_base_1a42a00de7f4c6ae7e8a11568dfd4a43a8"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Dim</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Dim</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase3DimE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase3DoFE">
+<span id="_CPPv3N5manif12LieGroupBase3DoFE"></span><span id="_CPPv2N5manif12LieGroupBase3DoFE"></span><span id="manif::LieGroupBase::DoF__i"></span><span class="target" id="structmanif_1_1_lie_group_base_1a613898f9799c5317567b33a1fabe726e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DoF</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">DoF</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase3DoFE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase7RepSizeE">
+<span id="_CPPv3N5manif12LieGroupBase7RepSizeE"></span><span id="_CPPv2N5manif12LieGroupBase7RepSizeE"></span><span id="manif::LieGroupBase::RepSize__i"></span><span class="target" id="structmanif_1_1_lie_group_base_1a229272dd86ff795a11848855b7072b20"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RepSize</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../structmanif_1_1internal_1_1traits/#_CPPv4I0EN5manif8internal6traitsE" title="manif::internal::traits"><span class="n"><span class="pre">traits</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RepSize</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase7RepSizeE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase1_E">
+<span id="_CPPv3N5manif12LieGroupBase1_E"></span><span id="_CPPv2N5manif12LieGroupBase1_E"></span><span id="manif::LieGroupBase::___OptJacobianRefC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a7fe44175f7ad70476c640d4745d7c6c9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase1_E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Helper for skipping an optional parameter. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="structmanif_1_1_lie_group_base_1a88ae8bfd47a28f8f5758e03213ffd594"></span><span class="sig-name descname"><span class="pre">template&lt;typename</span> <span class="pre">_DerivedOther&gt;</span> <span class="pre">MANIF_DEFAULT_CONSTRUCTOR(LieGroupBase)</span> <span class="pre">public</span> <span class="pre">_Derived</span> <span class="pre">&amp;</span> <span class="pre">operator=</span> <span class="pre">(const</span> <span class="pre">LieGroupBase&lt;</span> <span class="pre">_DerivedOther</span> <span class="pre">&gt;</span> <span class="pre">&amp;m)</span></span></dt>
+<dd><p>Assignment operator. </p>
+<p>
+Assignment operator. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a special case of the templated operator=. Its purpose is to prevent a default operator= from hiding the templated operator=.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>An</strong> – <strong>[in]</strong> element of the Lie group. </p></li>
+<li><p><strong>An</strong> – <strong>[in]</strong> element of the Lie group. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A reference to this. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A reference to this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRKN5Eigen10MatrixBaseI13_EigenDerivedEE">
+<span id="_CPPv3I0EN5manif12LieGroupBaseaSERKN5Eigen10MatrixBaseI13_EigenDerivedEE"></span><span id="_CPPv2I0EN5manif12LieGroupBaseaSERKN5Eigen10MatrixBaseI13_EigenDerivedEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_EigenDerived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a2b270c001e289786a499d76d886a5869"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MatrixBase</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRKN5Eigen10MatrixBaseI13_EigenDerivedEE" title="manif::LieGroupBase::operator=::_EigenDerived"><span class="n"><span class="pre">_EigenDerived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRKN5Eigen10MatrixBaseI13_EigenDerivedEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Assignment operator given Eigen object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>An</strong> – <strong>[in]</strong> element of the Lie group. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A reference to this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase6coeffsEv">
+<span id="_CPPv3N5manif12LieGroupBase6coeffsEv"></span><span id="_CPPv2N5manif12LieGroupBase6coeffsEv"></span><span id="manif::LieGroupBase::coeffs"></span><span class="target" id="structmanif_1_1_lie_group_base_1a1ac9dd89b140080b8b0284c8bdfb5270"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8DataTypeE" title="manif::LieGroupBase::DataType"><span class="n"><span class="pre">DataType</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">coeffs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase6coeffsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by const reference. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase6coeffsEv">
+<span id="_CPPv3NK5manif12LieGroupBase6coeffsEv"></span><span id="_CPPv2NK5manif12LieGroupBase6coeffsEv"></span><span id="manif::LieGroupBase::coeffsC"></span><span class="target" id="structmanif_1_1_lie_group_base_1acee62f2ce8024b20db04c304031af85e"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8DataTypeE" title="manif::LieGroupBase::DataType"><span class="n"><span class="pre">DataType</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">coeffs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase6coeffsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by const reference. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase4dataEv">
+<span id="_CPPv3N5manif12LieGroupBase4dataEv"></span><span id="_CPPv2N5manif12LieGroupBase4dataEv"></span><span id="manif::LieGroupBase::data"></span><span class="target" id="structmanif_1_1_lie_group_base_1a7d766d75afce68d88e7b83108b1bde3d"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase4dataEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by pointer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase4dataEv">
+<span id="_CPPv3NK5manif12LieGroupBase4dataEv"></span><span id="_CPPv2NK5manif12LieGroupBase4dataEv"></span><span id="manif::LieGroupBase::dataC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a58250b5749c58fe57a7ecd14c4009dd0"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase4dataEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the underlying data by const pointer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase4castE16LieGroupTemplateI10_NewScalarEv">
+<span id="_CPPv3I0ENK5manif12LieGroupBase4castEv"></span><span id="_CPPv2I0ENK5manif12LieGroupBase4castEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_NewScalar</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a14659d831ddd5a37525c3cb5a42ca541"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBase16LieGroupTemplateE" title="manif::LieGroupBase::LieGroupTemplate"><span class="n"><span class="pre">LieGroupTemplate</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4castE16LieGroupTemplateI10_NewScalarEv" title="manif::LieGroupBase::cast::_NewScalar"><span class="n"><span class="pre">_NewScalar</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cast</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase4castE16LieGroupTemplateI10_NewScalarEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Cast the LieGroup object to a copy of a different scalar type. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase11setIdentityEv">
+<span id="_CPPv3N5manif12LieGroupBase11setIdentityEv"></span><span id="_CPPv2N5manif12LieGroupBase11setIdentityEv"></span><span id="manif::LieGroupBase::setIdentity"></span><span class="target" id="structmanif_1_1_lie_group_base_1aa154961cb80b013d3d1d66132e487f33"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">setIdentity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase11setIdentityEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set the LieGroup object this to Identity. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Eq. (2). </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A reference to this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase9setRandomEv">
+<span id="_CPPv3N5manif12LieGroupBase9setRandomEv"></span><span id="_CPPv2N5manif12LieGroupBase9setRandomEv"></span><span id="manif::LieGroupBase::setRandom"></span><span class="target" id="structmanif_1_1_lie_group_base_1a3d9dc0ea239fa48ca9d75d11e08e020d"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">setRandom</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase9setRandomEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set the LieGroup object this to a random value. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Randomization happens in the tangent space so that M = Log(tau.random) </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A reference to this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase7inverseE14OptJacobianRef">
+<span id="_CPPv3NK5manif12LieGroupBase7inverseE14OptJacobianRef"></span><span id="_CPPv2NK5manif12LieGroupBase7inverseE14OptJacobianRef"></span><span id="manif::LieGroupBase::inverse__OptJacobianRefC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a5b9c88987e97efb4ded4e1ceca236b46"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inverse</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_m_t</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase7inverseE14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the inverse of the LieGroup object this. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../structmanif_1_1_tangent_base/#structmanif_1_1_tangent_base"><span class="std std-ref">TangentBase</span></a>. </p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (3). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>-optional-</strong> – <strong>[out]</strong> J_m_t Jacobian of the inverse wrt this. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Inverse of this. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase3logE14OptJacobianRef">
+<span id="_CPPv3NK5manif12LieGroupBase3logE14OptJacobianRef"></span><span id="_CPPv2NK5manif12LieGroupBase3logE14OptJacobianRef"></span><span id="manif::LieGroupBase::log__OptJacobianRefC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a27c13e0e833debe4c1b28a1dee828032"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="manif::LieGroupBase::Tangent"><span class="n"><span class="pre">Tangent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase3logE14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the corresponding Lie algebra element in vector form. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Eq. (24). </p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the <a class="reference internal" href="#structmanif_1_1_lie_group_base_1a27c13e0e833debe4c1b28a1dee828032"><span class="std std-ref">log()</span></a> map in vector form. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_m Jacobian of the tangent wrt this. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The tangent element in vector form. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="structmanif_1_1_lie_group_base_1ae6ff30b30fc54178a527e1190a38ce3d"></span><span class="sig-name descname"><span class="pre">MANIF_DEPRECATED</span> <span class="pre">Tangent</span> <span class="pre">lift</span> <span class="pre">(OptJacobianRef</span> <span class="pre">J_t_m={})</span> <span class="pre">const</span></span></dt>
+<dd><p>This function is deprecated. Please considere using <a class="reference internal" href="#structmanif_1_1_lie_group_base_1a27c13e0e833debe4c1b28a1dee828032"><span class="std std-ref">log</span></a> instead. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase7composeERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase7composeERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1aeb8cc8385a9e89c815c749ebfd3c7f14"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compose</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::compose::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Composition of this and another element of the same Lie group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eqs. (1,2,3,4). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> Another element of the same Lie group. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_ma Jacobian of the composition wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_mb Jacobian of the composition wrt m. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The composition of ‘this . m’. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase3actE6VectorRKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE">
+<span id="_CPPv3I0ENK5manif12LieGroupBase3actERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE"></span><span id="_CPPv2I0ENK5manif12LieGroupBase3actERKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_EigenDerived</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1aeed2d70763c3ac09d89eb1b7a8b88f69"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6VectorE" title="manif::LieGroupBase::Vector"><span class="n"><span class="pre">Vector</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">act</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MatrixBase</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase3actE6VectorRKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE" title="manif::LieGroupBase::act::_EigenDerived"><span class="n"><span class="pre">_EigenDerived</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">v</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DimE" title="manif::LieGroupBase::Dim"><span class="n"><span class="pre">Dim</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DoFE" title="manif::LieGroupBase::DoF"><span class="n"><span class="pre">DoF</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_vout_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <span class="n"><span class="pre">tl</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Ref</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Eigen</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Matrix</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DimE" title="manif::LieGroupBase::Dim"><span class="n"><span class="pre">Dim</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DimE" title="manif::LieGroupBase::Dim"><span class="n"><span class="pre">Dim</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">J_vout_v</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase3actE6VectorRKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the action of the Lie group object on a point. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> – <strong>[in]</strong> A point. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_vout_m Jacobian of the new object wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_vout_v Jacobian of the new object wrt input object. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A point acted upon by the object. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase3adjEv">
+<span id="_CPPv3NK5manif12LieGroupBase3adjEv"></span><span id="_CPPv2NK5manif12LieGroupBase3adjEv"></span><span id="manif::LieGroupBase::adjC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a7eee19e807f43489efd4601a8727e9a7"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8JacobianE" title="manif::LieGroupBase::Jacobian"><span class="n"><span class="pre">Jacobian</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adj</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase3adjEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the Adjoint of the Lie group element this. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (29). </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase5rplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase5rplusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase5rplusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rplus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_tangent_base/#_CPPv4I0EN5manif11TangentBaseE" title="manif::TangentBase"><span class="n"><span class="pre">TangentBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5rplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::rplus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_t</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase5rplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Right oplus operation of the Lie group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (25). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – <strong>[in]</strong> An element of the tangent of the Lie group. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mout_m Jacobian of the oplus operation wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mout_t Jacobian of the oplus operation wrt the tangent element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An element of the Lie group. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase5lplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase5lplusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase5lplusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ad6af777d6c8914c59ce88a76db6f4775"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lplus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_tangent_base/#_CPPv4I0EN5manif11TangentBaseE" title="manif::TangentBase"><span class="n"><span class="pre">TangentBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5lplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::lplus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_t</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase5lplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Left oplus operation of the Lie group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (27). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – <strong>[in]</strong> An element of the tangent of the Lie group. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mout_m Jacobian of the oplus operation wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mout_t Jacobian of the oplus operation wrt the tangent element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An element of the Lie group. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase4plusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase4plusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase4plusERK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a74d5760f793fbfdeec248b34b3360d1c"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">plus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_tangent_base/#_CPPv4I0EN5manif11TangentBaseE" title="manif::TangentBase"><span class="n"><span class="pre">TangentBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4plusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::plus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_m</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mout_t</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase4plusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>An alias for the right oplus operation. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119"><span class="std std-ref">rplus</span></a></p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase6rminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase6rminusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase6rminusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="manif::LieGroupBase::Tangent"><span class="n"><span class="pre">Tangent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rminus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase6rminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::rminus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase6rminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Right ominus operation of the Lie group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (26). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> Another element of the same Lie group. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_ma Jacobian of the ominus operation wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_mb Jacobian of the ominus operation wrt the other element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An element of the tangent space of the Lie group. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase6lminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase6lminusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase6lminusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1aef8d336d81a657e541e5ff48e5a08b1c"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="manif::LieGroupBase::Tangent"><span class="n"><span class="pre">Tangent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lminus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase6lminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::lminus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase6lminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Left ominus operation of the Lie group. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Eq. (28). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> Another element of the same Lie group. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_ma Jacobian of the ominus operation wrt this. </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_t_mb Jacobian of the ominus operation wrt the other element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An element of the tangent space of the Lie group. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase5minusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase5minusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase5minusERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a3912f9ef389576c9038ce2d544b4b833"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="manif::LieGroupBase::Tangent"><span class="n"><span class="pre">Tangent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minus</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5minusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::minus::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_t_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase5minusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><p>An alias for the right ominus operation. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed"><span class="std std-ref">rminus</span></a></p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase7betweenE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef">
+<span id="_CPPv3I0ENK5manif12LieGroupBase7betweenERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span id="_CPPv2I0ENK5manif12LieGroupBase7betweenERK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a7351c9a0e8fe51c72978626efa12d97c"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">between</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase7betweenE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="manif::LieGroupBase::between::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_ma</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span>, <a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE" title="manif::LieGroupBase::OptJacobianRef"><span class="n"><span class="pre">OptJacobianRef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">J_mc_mb</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase7betweenE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef" title="Link to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> [description] </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_ma [description] </p></li>
+<li><p><strong>-optional-</strong> – <strong>[out]</strong> J_mc_mb [description] </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[description] </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBase8isApproxEbRK12LieGroupBaseI13_DerivedOtherEK6Scalar">
+<span id="_CPPv3I0ENK5manif12LieGroupBase8isApproxERK12LieGroupBaseI13_DerivedOtherEK6Scalar"></span><span id="_CPPv2I0ENK5manif12LieGroupBase8isApproxERK12LieGroupBaseI13_DerivedOtherEK6Scalar"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isApprox</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase8isApproxEbRK12LieGroupBaseI13_DerivedOtherEK6Scalar" title="manif::LieGroupBase::isApprox::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">eps</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_constants/#_CPPv4I0EN5manif9ConstantsE" title="manif::Constants"><span class="n"><span class="pre">Constants</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE" title="manif::LieGroupBase::Scalar"><span class="n"><span class="pre">Scalar</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">eps</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBase8isApproxEbRK12LieGroupBaseI13_DerivedOtherEK6Scalar" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Evaluate whether this and m are ‘close’. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../structmanif_1_1_tangent_base/#structmanif_1_1_tangent_base_1a09d1ca10487c6c7cc43ff456a1664b65"><span class="std std-ref">TangentBase::isApprox</span></a></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – <strong>[in]</strong> An element of the same Lie Group. </p></li>
+<li><p><strong>eps</strong> – <strong>[in]</strong> Threshold for equality comparison. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the Lie group element m is ‘close’ to this, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBaseeqEbRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0ENK5manif12LieGroupBaseeqERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0ENK5manif12LieGroupBaseeqERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a5d68ac830a6191abb32eccc874612bef"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseeqEbRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator==::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBaseeqEbRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Equality operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1ac4d00c4834b1415eef9fb7a14dc8f708"><span class="std std-ref">isApprox</span></a>. </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>An</strong> – <strong>[in]</strong> element of the same Lie group. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the Lie group element m is ‘close’ to this, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBaseneEbRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0ENK5manif12LieGroupBaseneERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0ENK5manif12LieGroupBaseneERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a1f91ca851960963ba1724ef6e7859bac"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseneEbRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator!=::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBaseneEbRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Inequality operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>operator==. </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>An</strong> – <strong>[in]</strong> element of the same Lie group. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false if the Lie group element m is ‘close’ to this, true otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBaseplE8LieGroupRK11TangentBaseI13_DerivedOtherE">
+<span id="_CPPv3I0ENK5manif12LieGroupBaseplERK11TangentBaseI13_DerivedOtherE"></span><span id="_CPPv2I0ENK5manif12LieGroupBaseplERK11TangentBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a1a497184154ab95cc4cc4d14eb07c513"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">+</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_tangent_base/#_CPPv4I0EN5manif11TangentBaseE" title="manif::TangentBase"><span class="n"><span class="pre">TangentBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseplE8LieGroupRK11TangentBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator+::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBaseplE8LieGroupRK11TangentBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Right oplus operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119"><span class="std std-ref">rplus</span></a>. </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBasepLER8_DerivedRK11TangentBaseI13_DerivedOtherE">
+<span id="_CPPv3I0EN5manif12LieGroupBasepLERK11TangentBaseI13_DerivedOtherE"></span><span id="_CPPv2I0EN5manif12LieGroupBasepLERK11TangentBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a2a3e11651c59644d8f5f3705d0b257de"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">+=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../structmanif_1_1_tangent_base/#_CPPv4I0EN5manif11TangentBaseE" title="manif::TangentBase"><span class="n"><span class="pre">TangentBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBasepLER8_DerivedRK11TangentBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator+=::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBasepLER8_DerivedRK11TangentBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Right in-place oplus operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1a2a36d6106e38cd7fac46510e6458a119"><span class="std std-ref">rplus</span></a>. </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBasemiE7TangentRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0ENK5manif12LieGroupBasemiERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0ENK5manif12LieGroupBasemiERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1af59dd9dc829de8f8f49ecf4bee27fedd"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE" title="manif::LieGroupBase::Tangent"><span class="n"><span class="pre">Tangent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">-</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBasemiE7TangentRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator-::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBasemiE7TangentRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Right ominus operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1ad6c5f9dc430ca6b0ff1eb5cc58c9faed"><span class="std std-ref">rminus</span></a>. </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0ENK5manif12LieGroupBasemlE8LieGroupRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0ENK5manif12LieGroupBasemlERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0ENK5manif12LieGroupBasemlERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a4e49d3cf3538e03ff7d19c1602da19cc"></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">*</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBasemlE8LieGroupRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator*::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4I0ENK5manif12LieGroupBasemlE8LieGroupRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Lie group composition operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1aeb8cc8385a9e89c815c749ebfd3c7f14"><span class="std std-ref">compose</span></a>. </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5manif12LieGroupBasemLER8_DerivedRK12LieGroupBaseI13_DerivedOtherE">
+<span id="_CPPv3I0EN5manif12LieGroupBasemLERK12LieGroupBaseI13_DerivedOtherE"></span><span id="_CPPv2I0EN5manif12LieGroupBasemLERK12LieGroupBaseI13_DerivedOtherE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_DerivedOther</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structmanif_1_1_lie_group_base_1a019031c758bfb21a7030cd97843d4b4d"></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">*=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase"><span class="n"><span class="pre">LieGroupBase</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBasemLER8_DerivedRK12LieGroupBaseI13_DerivedOtherE" title="manif::LieGroupBase::operator*=::_DerivedOther"><span class="n"><span class="pre">_DerivedOther</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5manif12LieGroupBasemLER8_DerivedRK12LieGroupBaseI13_DerivedOtherE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Lie group in-place composition operator. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structmanif_1_1_lie_group_base_1aeb8cc8385a9e89c815c749ebfd3c7f14"><span class="std std-ref">compose</span></a>. </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBaseixEKj">
+<span id="_CPPv3NK5manif12LieGroupBaseixEKj"></span><span id="_CPPv2NK5manif12LieGroupBaseixEKj"></span><span id="manif::LieGroupBase::subscript-operator__unsigned-iCC"></span><span class="target" id="structmanif_1_1_lie_group_base_1a7eb3084333fc8887e2fca17484eb8b81"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="k"><span class="pre">decltype</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6coeffsEv" title="manif::LieGroupBase::coeffs"><span class="n"><span class="pre">coeffs</span></span></a><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBaseixEKj" title="manif::LieGroupBase::operator[]::i"><span class="n"><span class="pre">i</span></span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBaseixEKj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the ith coeffs. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBaseixEKj">
+<span id="_CPPv3N5manif12LieGroupBaseixEKj"></span><span id="_CPPv2N5manif12LieGroupBaseixEKj"></span><span id="manif::LieGroupBase::subscript-operator__unsigned-iC"></span><span class="target" id="structmanif_1_1_lie_group_base_1ad6e624bd8270cec712a65f215d361b92"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="o"><span class="pre">-&gt;</span></span><span class="w"> </span><span class="k"><span class="pre">decltype</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6coeffsEv" title="manif::LieGroupBase::coeffs"><span class="n"><span class="pre">coeffs</span></span></a><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBaseixEKj" title="manif::LieGroupBase::operator[]::i"><span class="n"><span class="pre">i</span></span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBaseixEKj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Access the ith coeffs. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5manif12LieGroupBase4sizeEv">
+<span id="_CPPv3NK5manif12LieGroupBase4sizeEv"></span><span id="_CPPv2NK5manif12LieGroupBase4sizeEv"></span><span id="manif::LieGroupBase::sizeCCE"></span><span class="target" id="structmanif_1_1_lie_group_base_1a87b9295ceffbca507f4a056a20260fc1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5manif12LieGroupBase4sizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The size of the underlying vector. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NR5manif12LieGroupBase7derivedEv">
+<span id="_CPPv3NR5manif12LieGroupBase7derivedEv"></span><span id="_CPPv2NR5manif12LieGroupBase7derivedEv"></span><span id="manif::LieGroupBase::derivedR"></span><span class="target" id="structmanif_1_1_lie_group_base_1a26a8042758db4d0bcf18e29473c46ca4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">derived</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NR5manif12LieGroupBase7derivedEv" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NKR5manif12LieGroupBase7derivedEv">
+<span id="_CPPv3NKR5manif12LieGroupBase7derivedEv"></span><span id="_CPPv2NKR5manif12LieGroupBase7derivedEv"></span><span id="manif::LieGroupBase::derivedCR"></span><span class="target" id="structmanif_1_1_lie_group_base_1aa6893bd1008399d9254474d3fead84d7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE" title="manif::LieGroupBase::_Derived"><span class="n"><span class="pre">_Derived</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">derived</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NKR5manif12LieGroupBase7derivedEv" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-static-functions">Protected Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase8IdentityEv">
+<span id="_CPPv3N5manif12LieGroupBase8IdentityEv"></span><span id="_CPPv2N5manif12LieGroupBase8IdentityEv"></span><span id="manif::LieGroupBase::Identity"></span><span class="target" id="structmanif_1_1_lie_group_base_1a34a63b85f977cb40012be342f902404a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase8IdentityEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Static helper to create a Lie group object set at Identity. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5manif12LieGroupBase6RandomEv">
+<span id="_CPPv3N5manif12LieGroupBase6RandomEv"></span><span id="_CPPv2N5manif12LieGroupBase6RandomEv"></span><span id="manif::LieGroupBase::Random"></span><span class="target" id="structmanif_1_1_lie_group_base_1a0c1def597571453671f7762c4e511e05"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE" title="manif::LieGroupBase::LieGroup"><span class="n"><span class="pre">LieGroup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Random</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5manif12LieGroupBase6RandomEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Static helper to create a random object of the Lie group. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+   
+
+<div class="related-pages">
+  
+  
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2025 MIT license, artivis
+    </div>
+
+    <div class="last-updated">
+      Last updated on Mar 26, 2025</div>
+  </div>
+  <div>
+   
+  </div>
+  <div class="right-details">
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+<div class="toc-sticky toc-scroll">
+   
+    <div class="toc-title-container">
+      <span class="toc-title">
+       Contents
+      </span>
+    </div>
+    <div class="toc-tree-container">
+      <div class="toc-tree">
+        <ul>
+<li><a class="reference internal" href="#">Template Struct LieGroupBase</a><ul>
+<li><a class="reference internal" href="#inheritance-relationships">Inheritance Relationships</a><ul>
+<li><a class="reference internal" href="#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#struct-documentation">Struct Documentation</a><ul>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseE"><code class="docutils literal notranslate"><span class="pre">manif::LieGroupBase</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6ScalarE"><code class="docutils literal notranslate"><span class="pre">Scalar</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8LieGroupE"><code class="docutils literal notranslate"><span class="pre">LieGroup</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8DataTypeE"><code class="docutils literal notranslate"><span class="pre">DataType</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7TangentE"><code class="docutils literal notranslate"><span class="pre">Tangent</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8JacobianE"><code class="docutils literal notranslate"><span class="pre">Jacobian</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6VectorE"><code class="docutils literal notranslate"><span class="pre">Vector</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase14OptJacobianRefE"><code class="docutils literal notranslate"><span class="pre">OptJacobianRef</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBase16LieGroupTemplateE"><code class="docutils literal notranslate"><span class="pre">LieGroupTemplate</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBase"><code class="docutils literal notranslate"><span class="pre">operator=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4castEN12LieGroupBaseI8_DerivedE16LieGroupTemplateI10_NewScalarEEv"><code class="docutils literal notranslate"><span class="pre">cast()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DimE"><code class="docutils literal notranslate"><span class="pre">Dim</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase3DoFE"><code class="docutils literal notranslate"><span class="pre">DoF</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase7RepSizeE"><code class="docutils literal notranslate"><span class="pre">RepSize</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase1_E"><code class="docutils literal notranslate"><span class="pre">_</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBaseaSER8_DerivedRKN5Eigen10MatrixBaseI13_EigenDerivedEE"><code class="docutils literal notranslate"><span class="pre">operator=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6coeffsEv"><code class="docutils literal notranslate"><span class="pre">coeffs()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase6coeffsEv"><code class="docutils literal notranslate"><span class="pre">coeffs()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase4dataEv"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase4dataEv"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4castE16LieGroupTemplateI10_NewScalarEv"><code class="docutils literal notranslate"><span class="pre">cast()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase11setIdentityEv"><code class="docutils literal notranslate"><span class="pre">setIdentity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase9setRandomEv"><code class="docutils literal notranslate"><span class="pre">setRandom()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase7inverseE14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">inverse()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase3logE14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase7composeE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">compose()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase3actE6VectorRKN5Eigen10MatrixBaseI13_EigenDerivedEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DoFEEEEEEN2tl8optionalIN5Eigen3RefIN5Eigen6MatrixI6Scalar3Dim3DimEEEEEE"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase3adjEv"><code class="docutils literal notranslate"><span class="pre">adj()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5rplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">rplus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5lplusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">lplus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase4plusE8LieGroupRK11TangentBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">plus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase6rminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">rminus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase6lminusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">lminus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase5minusE7TangentRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">minus()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase7betweenE8LieGroupRK12LieGroupBaseI13_DerivedOtherE14OptJacobianRef14OptJacobianRef"><code class="docutils literal notranslate"><span class="pre">between()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBase8isApproxEbRK12LieGroupBaseI13_DerivedOtherEK6Scalar"><code class="docutils literal notranslate"><span class="pre">isApprox()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseeqEbRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator==()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseneEbRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator!=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBaseplE8LieGroupRK11TangentBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator+()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBasepLER8_DerivedRK11TangentBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator+=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBasemiE7TangentRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator-()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0ENK5manif12LieGroupBasemlE8LieGroupRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator*()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0EN5manif12LieGroupBasemLER8_DerivedRK12LieGroupBaseI13_DerivedOtherE"><code class="docutils literal notranslate"><span class="pre">operator*=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBaseixEKj"><code class="docutils literal notranslate"><span class="pre">operator[]()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBaseixEKj"><code class="docutils literal notranslate"><span class="pre">operator[]()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NK5manif12LieGroupBase4sizeEv"><code class="docutils literal notranslate"><span class="pre">size()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NR5manif12LieGroupBase7derivedEv"><code class="docutils literal notranslate"><span class="pre">derived()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4NKR5manif12LieGroupBase7derivedEv"><code class="docutils literal notranslate"><span class="pre">derived()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase8IdentityEv"><code class="docutils literal notranslate"><span class="pre">Identity()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N5manif12LieGroupBase6RandomEv"><code class="docutils literal notranslate"><span class="pre">Random()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+   
+    
+  </div>
+
+    </aside>
+  </div>
+</div><script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=a5603611"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/contributors.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/header-nav.js?v=e117ad08"></script>
+    
+<script>
+  const github_url = "https://github.com/artivis/manif";
+</script>
+</body>
+</html>

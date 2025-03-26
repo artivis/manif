@@ -1,0 +1,33 @@
+/** Links to YouTube videos **/
+
+p.youtube_link {
+    float: right;
+    border: 1px #cdcdcd solid;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+p.youtube_link a {
+    text-align: center;
+}
+
+p.youtube_link span.play_icon {
+    color: #E95420;
+    font-size: 2em;
+}
+
+p.youtube_link span.play_icon::after {
+    content: "\a"
+}
+
+p.youtube_link span {
+    display: block;
+    font-size: small;
+    max-width: 70px;
+}
+
+/* The YouTube link should not span into the next section */
+section {
+    clear: right;
+}

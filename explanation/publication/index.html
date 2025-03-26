@@ -1,0 +1,498 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Papers & courses" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://artivis.github.io/manif/explanation/publication/" />
+<meta property="og:site_name" content="manif" />
+<meta property="og:description" content="The manif project stems out of a larger body of work on the topic of state parameterization and Lie groups. Most notably, it accompanies the paper&quot;A micro Lie theory for state estimation in robotic..." />
+<meta property="og:image" content="https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg" />
+<meta property="og:image:alt" content="manif" />
+<meta name="description" content="The manif project stems out of a larger body of work on the topic of state parameterization and Lie groups. Most notably, it accompanies the paper&quot;A micro Lie theory for state estimation in robotic..." />
+
+    <meta property="article:modified_time" content="2025-03-26T20:37:59+00:00" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Who uses manif" href="../projects/" /><link rel="prev" title="On auto-differentiation" href="../autodiff/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Papers &amp; courses - manif documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/youtube.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/related-links.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/terminal-output.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/contributors.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=202ba174" />
+    <link rel="stylesheet" type="text/css" href="../../_static/header.css?v=84f70f09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/github_issue_links.css?v=af88fb93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/furo_colors.css?v=9c678fc2" />
+    
+</head>
+  <body>
+    <header id="header" class="p-navigation">
+
+  <div class="p-navigation__nav" role="menubar">
+
+    <ul class="p-navigation__links" role="menu">
+
+      <li>
+        <a class="p-logo" href="https://github.com/artivis/manif" aria-current="page">
+          <img src="../../_static/favicon.png" alt="Logo" class="p-logo-image">
+          <div class="p-logo-text p-heading--4">manif
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-ubuntu-com">
+        <a href="https://github.com/artivis/manif" class="p-navigation__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+artivis/manif</a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="p-navigation__link nav-more-links">More resources</a>
+        <ul class="more-links-dropdown">
+
+          
+
+          
+
+          
+
+          
+          <li>
+            <a href="https://github.com/artivis/manif" class="p-navigation__sub-link p-dropdown__link">GitHub</a>
+          </li>
+          
+
+        </ul>
+      </li> -->
+
+    </ul>
+  </div>
+</header>
+   
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">manif documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+  
+  
+  <span class="sidebar-brand-text">manif documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+    <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+    <input type="submit" value="Go">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+  <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorial/">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/cpp/">Getting started in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/python/">Getting started in Python3</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../howto/">How-to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of How-to</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/ceres/">Use with Ceres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/tmpl-code/">Write generic code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/documentation/">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/">References</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of References</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-cpp/">C++ Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-python/">Python3 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-python/">Python3 Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../">Explanations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Explanations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../operations/">Operations on Lie groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tangent/">Tangent spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/">On auto-differentiation</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Papers &amp; courses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/">Who uses manif</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/artivis/manif/blob/devel/docs/explanation/publication.md" title="Contribute to this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Contribute to this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="papers-courses">
+<h1>Papers &amp; courses<a class="headerlink" href="#papers-courses" title="Link to this heading">¶</a></h1>
+<p>The <strong>manif</strong> project stems out of a larger body of work on the topic of state parameterization and Lie groups.</p>
+<p>Most notably, it accompanies the paper <code class="docutils literal notranslate"><span class="pre">&quot;A</span> <span class="pre">micro</span> <span class="pre">Lie</span> <span class="pre">theory</span> <span class="pre">for</span> <span class="pre">state</span> <span class="pre">estimation</span> <span class="pre">in</span> <span class="pre">robotics&quot;,</span> <span class="pre">J.</span> <span class="pre">Sola,</span> <span class="pre">J.</span> <span class="pre">Deray,</span> <span class="pre">D.</span> <span class="pre">Atchuthan</span></code>, presented <a class="reference internal" href="#micro-lie-theory"><span class="xref myst">below</span></a>.</p>
+<section id="lie-group-cheat-sheets">
+<h2>Lie group cheat sheets<a class="headerlink" href="#lie-group-cheat-sheets" title="Link to this heading">¶</a></h2>
+<p>In a rush? Check out our Lie group theory take away,
+the <a class="reference external" href="https://github.com/artivis/manif/blob/devel/paper/Lie_theory_cheat_sheet.pdf">Lie group cheat sheet</a> (or hit <a class="reference external" href="https://github.com/artivis/manif/raw/devel/paper/Lie_theory_cheat_sheet.pdf">dowload</a>).</p>
+</section>
+<section id="micro-lie-theory">
+<h2>Micro Lie theory<a class="headerlink" href="#micro-lie-theory" title="Link to this heading">¶</a></h2>
+<p>Find the accompanying paper readily available on Arxiv:</p>
+<p><a class="reference external" href="https://arxiv.org/abs/1812.01537"><code class="docutils literal notranslate"><span class="pre">&quot;A</span> <span class="pre">micro</span> <span class="pre">Lie</span> <span class="pre">theory</span> <span class="pre">for</span> <span class="pre">state</span> <span class="pre">estimation</span> <span class="pre">in</span> <span class="pre">robotics&quot;,</span> <span class="pre">J.</span> <span class="pre">Sola,</span> <span class="pre">J.</span> <span class="pre">Deray,</span> <span class="pre">D.</span> <span class="pre">Atchuthan</span></code></a>.</p>
+<section id="abstract">
+<h3>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h3>
+<p>A Lie group is an old mathematical abstract object dating back to the XIX century, when mathematician Sophus Lie laid the foundations of the theory of continuous transformation groups. As it often happens, its usage has spread over diverse areas of science and technology many years later. In robotics, we are recently experiencing an important trend in its usage, at least in the fields of estimation, and particularly in motion estimation for navigation. Yet for a vast majority of roboticians, Lie groups are highly abstract constructions and therefore difficult to understand and to use. This may be due to the fact that most of the literature on Lie theory is written by and for mathematicians and physicists, who might be more used than us to the deep abstractions this theory deals with.
+In estimation for robotics it is often not necessary to exploit the full capacity of the theory, and therefore an effort of selection of materials is required. In this paper, we will walk through the most basic principles of the Lie theory, with the aim of conveying clear and useful ideas, and leave a significant corpus of the Lie theory behind. Even with this mutilation, the material included here has proven to be extremely useful in modern estimation algorithms for robotics, especially in the fields of SLAM, visual odometry, and the like.
+Alongside this micro Lie theory, we provide a chapter with a few application examples, and a vast reference of formulas for the major Lie groups used in robotics, including most jacobian matrices and the way to easily manipulate them. We also present a new C++ template-only library implementing all the functionality described here.</p>
+</section>
+<section id="bibetex">
+<h3>Bibetex<a class="headerlink" href="#bibetex" title="Link to this heading">¶</a></h3>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@techreport<span class="nb">{</span>SOLA-18-Lie,
+    Address = <span class="nb">{</span>Barcelona<span class="nb">}</span>,
+    Author = <span class="nb">{</span>Joan Sol<span class="k">\`</span>a and Jeremie Deray and Dinesh Atchuthan<span class="nb">}</span>,
+    Institution = <span class="nb">{{</span>Institut de Rob<span class="k">\`</span>otica i Inform<span class="k">\`</span>atica Industrial<span class="nb">}}</span>,
+    Number = <span class="nb">{</span>IRI-TR-18-01<span class="nb">}</span>,
+    Title = <span class="nb">{</span>A micro <span class="nb">{</span>L<span class="nb">}</span>ie theory for state estimation in robotics<span class="nb">}</span>,
+    Howpublished=&quot;<span class="k">\url</span><span class="nb">{</span>http://arxiv.org/abs/1812.01537<span class="nb">}</span>&quot;,
+    Year = <span class="nb">{</span>2018<span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manif">
+<h2>manif<a class="headerlink" href="#manif" title="Link to this heading">¶</a></h2>
+<p>The <strong>manif</strong> project is also subject of a publication at the Journal of Open Source Software (JOSS):</p>
+<p><a class="reference external" href="https://joss.theoj.org/papers/10.21105/joss.01371"><code class="docutils literal notranslate"><span class="pre">&quot;Manif:</span> <span class="pre">A</span> <span class="pre">micro</span> <span class="pre">Lie</span> <span class="pre">theory</span> <span class="pre">library</span> <span class="pre">for</span> <span class="pre">state</span> <span class="pre">estimation</span> <span class="pre">in</span> <span class="pre">robotics</span> <span class="pre">applications&quot;</span> <span class="pre">J.</span> <span class="pre">Deray,</span> <span class="pre">J.</span> <span class="pre">Sola</span></code></a>.</p>
+<p>If you use this software,
+please consider citing it!</p>
+<section id="id1">
+<h3>Abstract<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>There has been a remarkable effort in the last years in the robotics community to formulate
+estimation problems properly (Eade, 2013)(Barfoot, 2017). This is motivated by an increasing
+demand for precision, consistency, and stability of the solutions. Indeed, proper modeling of
+the states and measurements, the functions relating them, and their uncertainties, is crucial
+to achieve these goals. This has led to problem formulations involving what has been known
+as ‘manifolds’, which in this context are no less than the smooth topologic surfaces of the Lie
+groups where the state representations evolve (Chirikjian, 2011).
+manif (Deray &amp; Solà, 2019) is a micro Lie theory library targeted at state estimation in
+robotics applications. With a single dependency on Eigen (Guennebaud, Jacob, &amp; others,
+2010) and a requirement on C++11 only, it is developed as a header-only library, making it
+easy to integrate to existing projects.
+The manif library provides simple interfaces to the most common operations on Lie groups
+in state estimation. Its design is similar to Eigen, in that all Lie group classes inherit from a
+templated base class using static polymorphism. This allows for writing generic code without
+paying the price of pointer arithmetic. Thanks to this polymorphism, the library is open to
+extensions to Lie groups beyond the currently implemented: the Special Orthogonal groups
+SO(2) and SO(3) and the Special Euclidean groups SE(2) and SE(3).
+The mathematical foundations of the library are given in (Solà, Deray, &amp; Atchuthan, 2018),
+which is often referred to in the documentation, especially for providing references for the
+mathematical formulae.</p>
+</section>
+<section id="id2">
+<h3>Bibetex<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@article<span class="nb">{</span>Deray-20-JOSS,
+  doi = <span class="nb">{</span>10.21105/joss.01371<span class="nb">}</span>,
+  url = <span class="nb">{</span>https://doi.org/10.21105/joss.01371<span class="nb">}</span>,
+  year = <span class="nb">{</span>2020<span class="nb">}</span>,
+  publisher = <span class="nb">{</span>The Open Journal<span class="nb">}</span>,
+  volume = <span class="nb">{</span>5<span class="nb">}</span>,
+  number = <span class="nb">{</span>46<span class="nb">}</span>,
+  pages = <span class="nb">{</span>1371<span class="nb">}</span>,
+  author = <span class="nb">{</span>Jérémie Deray and Joan Solà<span class="nb">}</span>,
+  title = <span class="nb">{</span>Manif: A micro <span class="nb">{</span>L<span class="nb">}</span>ie theory library for state estimation in robotics applications<span class="nb">}</span>,
+  journal = <span class="nb">{</span>Journal of Open Source Software<span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">¶</a></h2>
+<p>Several courses and workshops were also delivered along the years.
+A selection is proposed here.</p>
+<section id="robotics-ai-summer-school-2022">
+<h3>Robotics &amp; AI Summer School 2022<a class="headerlink" href="#robotics-ai-summer-school-2022" title="Link to this heading">¶</a></h3>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/csolG83gCV8" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
+<section id="iros-20-workshop-on-bringing-geometric-methods-to-robot-learning-optimization-and-control">
+<h3>IROS’20 Workshop on Bringing Geometric Methods to Robot Learning, Optimization and Control<a class="headerlink" href="#iros-20-workshop-on-bringing-geometric-methods-to-robot-learning-optimization-and-control" title="Link to this heading">¶</a></h3>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/QR1p0Rabuww" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
+<section id="robotics-ai-summer-school-2020">
+<h3>Robotics &amp; AI Summer School 2020<a class="headerlink" href="#robotics-ai-summer-school-2020" title="Link to this heading">¶</a></h3>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/nHOcoIyJj2o" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+   
+
+<div class="related-pages">
+  
+  
+    
+  
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2025 MIT license, artivis
+    </div>
+
+    <div class="last-updated">
+      Last updated on Mar 26, 2025</div>
+  </div>
+  <div>
+   
+  </div>
+  <div class="right-details">
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+<div class="toc-sticky toc-scroll">
+   
+    <div class="toc-title-container">
+      <span class="toc-title">
+       Contents
+      </span>
+    </div>
+    <div class="toc-tree-container">
+      <div class="toc-tree">
+        <ul>
+<li><a class="reference internal" href="#">Papers &amp; courses</a><ul>
+<li><a class="reference internal" href="#lie-group-cheat-sheets">Lie group cheat sheets</a></li>
+<li><a class="reference internal" href="#micro-lie-theory">Micro Lie theory</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#bibetex">Bibetex</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manif">manif</a><ul>
+<li><a class="reference internal" href="#id1">Abstract</a></li>
+<li><a class="reference internal" href="#id2">Bibetex</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#videos">Videos</a><ul>
+<li><a class="reference internal" href="#robotics-ai-summer-school-2022">Robotics &amp; AI Summer School 2022</a></li>
+<li><a class="reference internal" href="#iros-20-workshop-on-bringing-geometric-methods-to-robot-learning-optimization-and-control">IROS’20 Workshop on Bringing Geometric Methods to Robot Learning, Optimization and Control</a></li>
+<li><a class="reference internal" href="#robotics-ai-summer-school-2020">Robotics &amp; AI Summer School 2020</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+   
+    
+  </div>
+
+    </aside>
+  </div>
+</div><script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=a5603611"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/contributors.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/header-nav.js?v=e117ad08"></script>
+    
+<script>
+  const github_url = "https://github.com/artivis/manif";
+</script>
+</body>
+</html>

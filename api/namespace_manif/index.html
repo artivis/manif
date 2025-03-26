@@ -1,0 +1,576 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Namespace manif" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://artivis.github.io/manif/api/namespace_manif/" />
+<meta property="og:site_name" content="manif" />
+<meta property="og:description" content="Contents: Namespaces, Classes, Enums, Functions, Typedefs. Namespaces: Namespace manif::detail, Namespace manif::internal. Classes: Template Struct Bundle, Template Struct BundleBase, Template Stru..." />
+<meta property="og:image" content="https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg" />
+<meta property="og:image:alt" content="manif" />
+<meta name="description" content="Contents: Namespaces, Classes, Enums, Functions, Typedefs. Namespaces: Namespace manif::detail, Namespace manif::internal. Classes: Template Struct Bundle, Template Struct BundleBase, Template Stru..." />
+
+    <meta property="article:modified_time" content="2025-03-26T20:37:59+00:00" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Namespace manif - manif documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/youtube.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/related-links.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/terminal-output.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/contributors.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=202ba174" />
+    <link rel="stylesheet" type="text/css" href="../../_static/header.css?v=84f70f09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/github_issue_links.css?v=af88fb93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/furo_colors.css?v=9c678fc2" />
+    
+</head>
+  <body>
+    <header id="header" class="p-navigation">
+
+  <div class="p-navigation__nav" role="menubar">
+
+    <ul class="p-navigation__links" role="menu">
+
+      <li>
+        <a class="p-logo" href="https://github.com/artivis/manif" aria-current="page">
+          <img src="../../_static/favicon.png" alt="Logo" class="p-logo-image">
+          <div class="p-logo-text p-heading--4">manif
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-ubuntu-com">
+        <a href="https://github.com/artivis/manif" class="p-navigation__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+artivis/manif</a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="p-navigation__link nav-more-links">More resources</a>
+        <ul class="more-links-dropdown">
+
+          
+
+          
+
+          
+
+          
+          <li>
+            <a href="https://github.com/artivis/manif" class="p-navigation__sub-link p-dropdown__link">GitHub</a>
+          </li>
+          
+
+        </ul>
+      </li> -->
+
+    </ul>
+  </div>
+</header>
+   
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">manif documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+  
+  
+  <span class="sidebar-brand-text">manif documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+    <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+    <input type="submit" value="Go">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+  <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorial/">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/cpp/">Getting started in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/python/">Getting started in Python3</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../howto/">How-to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of How-to</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/ceres/">Use with Ceres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/tmpl-code/">Write generic code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../howto/documentation/">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/">References</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of References</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-cpp/">C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-cpp/">C++ Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/api-python/">Python3 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/examples-python/">Python3 Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../explanation/">Explanations</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Explanations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/operations/">Operations on Lie groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/tangent/">Tangent spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/autodiff/">On auto-differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/publication/">Papers &amp; courses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../explanation/projects/">Who uses manif</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="namespace-manif">
+<span id="id1"></span><h1>Namespace manif<a class="headerlink" href="#namespace-manif" title="Link to this heading">¶</a></h1>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#namespaces" id="id2">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id4">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id5">Functions</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id6">Typedefs</a></p></li>
+</ul>
+</nav>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../namespace_manif__detail/#namespace-manif-detail"><span class="std std-ref">Namespace manif::detail</span></a></p></li>
+<li><p><a class="reference internal" href="../namespace_manif__internal/#namespace-manif-internal"><span class="std std-ref">Namespace manif::internal</span></a></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../structmanif_1_1_bundle/#exhale-struct-structmanif-1-1-bundle"><span class="std std-ref">Template Struct Bundle</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_bundle_base/#exhale-struct-structmanif-1-1-bundle-base"><span class="std std-ref">Template Struct BundleBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_bundle_tangent/#exhale-struct-structmanif-1-1-bundle-tangent"><span class="std std-ref">Template Struct BundleTangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_bundle_tangent_base/#exhale-struct-structmanif-1-1-bundle-tangent-base"><span class="std std-ref">Template Struct BundleTangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_constants/#exhale-struct-structmanif-1-1-constants"><span class="std std-ref">Template Struct Constants</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_dual_3_01_scalar_00_01_g_01_4_01_4/#exhale-struct-structmanif-1-1-constants-3-01autodiff-1-1detail-1-1-dual-3-01-scalar-00-01-g-01-4-01-4"><span class="std std-ref">Template Struct Constants&lt; autodiff::detail::Dual&lt; Scalar, G &gt; &gt;</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_constants_3_01autodiff_1_1detail_1_1_real_3_01_n_00_01_t_01_4_01_4/#exhale-struct-structmanif-1-1-constants-3-01autodiff-1-1detail-1-1-real-3-01-n-00-01-t-01-4-01-4"><span class="std std-ref">Template Struct Constants&lt; autodiff::detail::Real&lt; N, T &gt; &gt;</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_constants_3_01ceres_1_1_jet_3_01___scalar_00_01_n_01_4_01_4/#exhale-struct-structmanif-1-1-constants-3-01ceres-1-1-jet-3-01-scalar-00-01-n-01-4-01-4"><span class="std std-ref">Template Struct Constants&lt; ceres::Jet&lt; _Scalar, N &gt; &gt;</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1invalid__argument/#exhale-struct-structmanif-1-1invalid-argument"><span class="std std-ref">Struct invalid_argument</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_lie_group_base/#exhale-struct-structmanif-1-1-lie-group-base"><span class="std std-ref">Template Struct LieGroupBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_rn/#exhale-struct-structmanif-1-1-rn"><span class="std std-ref">Template Struct Rn</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_rn_base/#exhale-struct-structmanif-1-1-rn-base"><span class="std std-ref">Template Struct RnBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_rn_tangent/#exhale-struct-structmanif-1-1-rn-tangent"><span class="std std-ref">Template Struct RnTangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_rn_tangent_base/#exhale-struct-structmanif-1-1-rn-tangent-base"><span class="std std-ref">Template Struct RnTangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1runtime__error/#exhale-struct-structmanif-1-1runtime-error"><span class="std std-ref">Struct runtime_error</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e2/#exhale-struct-structmanif-1-1-s-e2"><span class="std std-ref">Template Struct SE2</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e2_base/#exhale-struct-structmanif-1-1-s-e2-base"><span class="std std-ref">Template Struct SE2Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e2_tangent/#exhale-struct-structmanif-1-1-s-e2-tangent"><span class="std std-ref">Template Struct SE2Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e2_tangent_base/#exhale-struct-structmanif-1-1-s-e2-tangent-base"><span class="std std-ref">Template Struct SE2TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e3/#exhale-struct-structmanif-1-1-s-e3"><span class="std std-ref">Template Struct SE3</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e3_base/#exhale-struct-structmanif-1-1-s-e3-base"><span class="std std-ref">Template Struct SE3Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e3_tangent/#exhale-struct-structmanif-1-1-s-e3-tangent"><span class="std std-ref">Template Struct SE3Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e3_tangent_base/#exhale-struct-structmanif-1-1-s-e3-tangent-base"><span class="std std-ref">Template Struct SE3TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e__2__3/#exhale-struct-structmanif-1-1-s-e-2-3"><span class="std std-ref">Template Struct SE_2_3</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e__2__3_base/#exhale-struct-structmanif-1-1-s-e-2-3-base"><span class="std std-ref">Template Struct SE_2_3Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e__2__3_tangent/#exhale-struct-structmanif-1-1-s-e-2-3-tangent"><span class="std std-ref">Template Struct SE_2_3Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_e__2__3_tangent_base/#exhale-struct-structmanif-1-1-s-e-2-3-tangent-base"><span class="std std-ref">Template Struct SE_2_3TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_gal3/#exhale-struct-structmanif-1-1-s-gal3"><span class="std std-ref">Template Struct SGal3</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_gal3_base/#exhale-struct-structmanif-1-1-s-gal3-base"><span class="std std-ref">Template Struct SGal3Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_gal3_tangent/#exhale-struct-structmanif-1-1-s-gal3-tangent"><span class="std std-ref">Template Struct SGal3Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_gal3_tangent_base/#exhale-struct-structmanif-1-1-s-gal3-tangent-base"><span class="std std-ref">Template Struct SGal3TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o2/#exhale-struct-structmanif-1-1-s-o2"><span class="std std-ref">Template Struct SO2</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o2_base/#exhale-struct-structmanif-1-1-s-o2-base"><span class="std std-ref">Template Struct SO2Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o2_tangent/#exhale-struct-structmanif-1-1-s-o2-tangent"><span class="std std-ref">Template Struct SO2Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o2_tangent_base/#exhale-struct-structmanif-1-1-s-o2-tangent-base"><span class="std std-ref">Template Struct SO2TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o3/#exhale-struct-structmanif-1-1-s-o3"><span class="std std-ref">Template Struct SO3</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o3_base/#exhale-struct-structmanif-1-1-s-o3-base"><span class="std std-ref">Template Struct SO3Base</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o3_tangent/#exhale-struct-structmanif-1-1-s-o3-tangent"><span class="std std-ref">Template Struct SO3Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_s_o3_tangent_base/#exhale-struct-structmanif-1-1-s-o3-tangent-base"><span class="std std-ref">Template Struct SO3TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../structmanif_1_1_tangent_base/#exhale-struct-structmanif-1-1-tangent-base"><span class="std std-ref">Template Struct TangentBase</span></a></p></li>
+<li><p><a class="reference internal" href="../classmanif_1_1_ceres_constraint_functor/#exhale-class-classmanif-1-1-ceres-constraint-functor"><span class="std std-ref">Template Class CeresConstraintFunctor</span></a></p></li>
+<li><p><a class="reference internal" href="../classmanif_1_1_ceres_local_parameterization_functor/#exhale-class-classmanif-1-1-ceres-local-parameterization-functor"><span class="std std-ref">Template Class CeresLocalParameterizationFunctor</span></a></p></li>
+<li><p><a class="reference internal" href="../classmanif_1_1_ceres_manifold_functor/#exhale-class-classmanif-1-1-ceres-manifold-functor"><span class="std std-ref">Template Class CeresManifoldFunctor</span></a></p></li>
+<li><p><a class="reference internal" href="../classmanif_1_1_ceres_objective_functor/#exhale-class-classmanif-1-1-ceres-objective-functor"><span class="std std-ref">Template Class CeresObjectiveFunctor</span></a></p></li>
+</ul>
+</section>
+<section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../enum_interpolation_8h_1a911794f2f9314606a19dbfe9e5c25d9b/#exhale-enum-interpolation-8h-1a911794f2f9314606a19dbfe9e5c25d9b"><span class="std std-ref">Enum INTERP_METHOD</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../functions_8h_1a60b95930002126191ea31ccf40485fb5/#exhale-function-functions-8h-1a60b95930002126191ea31ccf40485fb5"><span class="std std-ref">Template Function manif::act</span></a></p></li>
+<li><p><a class="reference internal" href="../function_utils_8h_1a2fd98a5e8a312235a4926f80908b04e5/#exhale-function-utils-8h-1a2fd98a5e8a312235a4926f80908b04e5"><span class="std std-ref">Template Function manif::approxSqrtInv</span></a></p></li>
+<li><p><a class="reference internal" href="../function_local__parameterization_8h_1a5440c096bd53cf5873fdc85ef3ad31c2/#exhale-function-local-parameterization-8h-1a5440c096bd53cf5873fdc85ef3ad31c2"><span class="std std-ref">Template Function manif::autodiffLocalParameterizationJacobian</span></a></p></li>
+<li><p><a class="reference internal" href="../function_average_8h_1a3e83110740f2a5c823e0828371ca5c3c/#exhale-function-average-8h-1a3e83110740f2a5c823e0828371ca5c3c"><span class="std std-ref">Template Function manif::average</span></a></p></li>
+<li><p><a class="reference internal" href="../function_average_8h_1abfe31d4fd9656f86c3967ade1bbc1d0f/#exhale-function-average-8h-1abfe31d4fd9656f86c3967ade1bbc1d0f"><span class="std std-ref">Template Function manif::average_biinvariant</span></a></p></li>
+<li><p><a class="reference internal" href="../function_average_8h_1ab22f058044a82639492eb371a6690d26/#exhale-function-average-8h-1ab22f058044a82639492eb371a6690d26"><span class="std std-ref">Template Function manif::average_frechet_left</span></a></p></li>
+<li><p><a class="reference internal" href="../function_average_8h_1a42a7468756052fcf47a0cd192d08b50b/#exhale-function-average-8h-1a42a7468756052fcf47a0cd192d08b50b"><span class="std std-ref">Template Function manif::average_frechet_right</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a971cd9d0dc1600a7f139f10e043aa080/#exhale-function-functions-8h-1a971cd9d0dc1600a7f139f10e043aa080"><span class="std std-ref">Template Function manif::between</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1a039949a766aced0ba6b70e666f42ee34/#exhale-function-interpolation-8h-1a039949a766aced0ba6b70e666f42ee34"><span class="std std-ref">Template Function manif::binomial_coefficient</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1acf6698ca149f666819d40b70a6c863d4/#exhale-function-functions-8h-1acf6698ca149f666819d40b70a6c863d4"><span class="std std-ref">Template Function manif::coeffs(const LieGroupBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1ae93f4a0b2c26cdb09e0b33305ebc1bb3/#exhale-function-functions-8h-1ae93f4a0b2c26cdb09e0b33305ebc1bb3"><span class="std std-ref">Template Function manif::coeffs(const TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a70ea23f1f27fdde8c4b36dc47b85966a/#exhale-function-functions-8h-1a70ea23f1f27fdde8c4b36dc47b85966a"><span class="std std-ref">Template Function manif::compose</span></a></p></li>
+<li><p><a class="reference internal" href="../function_bezier_8h_1a9d07db5fb785de258bf31c72ccecd955/#exhale-function-bezier-8h-1a9d07db5fb785de258bf31c72ccecd955"><span class="std std-ref">Template Function manif::computeBezierCurve</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1ab2cac9178365dc18d7733be5e107c78e/#exhale-function-functions-8h-1ab2cac9178365dc18d7733be5e107c78e"><span class="std std-ref">Template Function manif::data(const LieGroupBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1af93ccb6696bdba953662ec892515df73/#exhale-function-functions-8h-1af93ccb6696bdba953662ec892515df73"><span class="std std-ref">Template Function manif::data(LieGroupBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1ab06c51291e6bbfa5a3b13b9d9d20f2e5/#exhale-function-functions-8h-1ab06c51291e6bbfa5a3b13b9d9d20f2e5"><span class="std std-ref">Template Function manif::data(const TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a4e9dc69a53d49b9383e522d47ba91193/#exhale-function-functions-8h-1a4e9dc69a53d49b9383e522d47ba91193"><span class="std std-ref">Template Function manif::data(TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_decasteljau_8h_1a61b3ce12321fdf574cf2cbd7001d44f2/#exhale-function-decasteljau-8h-1a61b3ce12321fdf574cf2cbd7001d44f2"><span class="std std-ref">Template Function manif::decasteljau</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a204ec012f89c5f0a1f829390a3ba9ebf/#exhale-function-functions-8h-1a204ec012f89c5f0a1f829390a3ba9ebf"><span class="std std-ref">Template Function manif::exp</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a7a068c52f8235362ae316edf9e069a7e/#exhale-function-functions-8h-1a7a068c52f8235362ae316edf9e069a7e"><span class="std std-ref">Template Function manif::identity</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a4e507312642be570258356358ac4c5e9/#exhale-function-functions-8h-1a4e507312642be570258356358ac4c5e9"><span class="std std-ref">Template Function manif::Identity</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1a0acf1119c5bcb1a539f66decba93cca5/#exhale-function-interpolation-8h-1a0acf1119c5bcb1a539f66decba93cca5"><span class="std std-ref">Template Function manif::interpolate</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1ac4ccc0c20103d1c17802910cc974a257/#exhale-function-interpolation-8h-1ac4ccc0c20103d1c17802910cc974a257"><span class="std std-ref">Template Function manif::interpolate_cubic</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1abee03704288b3007835b0b127bd243e1/#exhale-function-interpolation-8h-1abee03704288b3007835b0b127bd243e1"><span class="std std-ref">Template Function manif::interpolate_slerp</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1ac6193fd10dbab4c3c21a0baa61b9a256/#exhale-function-interpolation-8h-1ac6193fd10dbab4c3c21a0baa61b9a256"><span class="std std-ref">Template Function manif::interpolate_smooth</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a011e436350b65006d6232e656486d8e5/#exhale-function-functions-8h-1a011e436350b65006d6232e656486d8e5"><span class="std std-ref">Template Function manif::inverse</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1acd03b1bdbc5b9a6a191431c49cbda958/#exhale-function-interpolation-8h-1acd03b1bdbc5b9a6a191431c49cbda958"><span class="std std-ref">Template Function manif::ipow</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a35fbecd3477d57f6a60c1c5d88edd602/#exhale-function-functions-8h-1a35fbecd3477d57f6a60c1c5d88edd602"><span class="std std-ref">Template Function manif::lift</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a704d432231d85be05d27f9ffc74d3833/#exhale-function-functions-8h-1a704d432231d85be05d27f9ffc74d3833"><span class="std std-ref">Template Function manif::lminus</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1aa005874089802e0315df9074f7f89c48/#exhale-function-functions-8h-1aa005874089802e0315df9074f7f89c48"><span class="std std-ref">Template Function manif::log</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1afc0e615b2d824170754cc5f88e658035/#exhale-function-functions-8h-1afc0e615b2d824170754cc5f88e658035"><span class="std std-ref">Template Function manif::lplus</span></a></p></li>
+<li><p><a class="reference internal" href="../function_ceres__utils_8h_1a54b4bfede043886bd27115aebeb2292e/#exhale-function-ceres-utils-8h-1a54b4bfede043886bd27115aebeb2292e"><span class="std std-ref">Template Function manif::make_constraint_autodiff</span></a></p></li>
+<li><p><a class="reference internal" href="../function_ceres__utils_8h_1a041bd1623554e96e7e27a6d39d688fea/#exhale-function-ceres-utils-8h-1a041bd1623554e96e7e27a6d39d688fea"><span class="std std-ref">Template Function manif::make_local_parameterization_autodiff</span></a></p></li>
+<li><p><a class="reference internal" href="../function_ceres__utils_8h_1a80086f2e6a289602d346b0dd770b63dd/#exhale-function-ceres-utils-8h-1a80086f2e6a289602d346b0dd770b63dd"><span class="std std-ref">Template Function manif::make_objective_autodiff</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2rn_2_rn_8h_1a8def4140c9b63c228a936d5b6b219910/#exhale-function-impl-2rn-2-rn-8h-1a8def4140c9b63c228a936d5b6b219910"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(R1)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2se2_2_s_e2_8h_1abd81f1bc8a15f3fe96ab460f53ef6256/#exhale-function-impl-2se2-2-s-e2-8h-1abd81f1bc8a15f3fe96ab460f53ef6256"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SE2)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2se3_2_s_e3_8h_1ab5c994b185e86c823f4edbe92b234ba0/#exhale-function-impl-2se3-2-s-e3-8h-1ab5c994b185e86c823f4edbe92b234ba0"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SE3)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2se__2__3_2_s_e__2__3_8h_1a0168a795b8ef39de685f742887968fb6/#exhale-function-impl-2se-2-3-2-s-e-2-3-8h-1a0168a795b8ef39de685f742887968fb6"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SE_2_3)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2sgal3_2_s_gal3_8h_1af2362b00a3a54be249bd3f0c24f8054b/#exhale-function-impl-2sgal3-2-s-gal3-8h-1af2362b00a3a54be249bd3f0c24f8054b"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SGal3)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2so2_2_s_o2_8h_1aa4bd1535b78baafe4203edc09956f490/#exhale-function-impl-2so2-2-s-o2-8h-1aa4bd1535b78baafe4203edc09956f490"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SO2)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_impl_2so3_2_s_o3_8h_1ae5cc9c7368bd642d5a51c0e30b6ab6ae/#exhale-function-impl-2so3-2-s-o3-8h-1ae5cc9c7368bd642d5a51c0e30b6ab6ae"><span class="std std-ref">Function manif::MANIF_EXTRA_GROUP_TYPEDEF(SO3)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__rn_tangent_8h_1a150ebd9244df4a4754de9b17c563dd94/#exhale-function-rn-tangent-8h-1a150ebd9244df4a4754de9b17c563dd94"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(R1Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_e2_tangent_8h_1a728e852117939343122920bdf7e76783/#exhale-function-s-e2-tangent-8h-1a728e852117939343122920bdf7e76783"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_e3_tangent_8h_1a5f2d061318b41df8b122263dc109f857/#exhale-function-s-e3-tangent-8h-1a5f2d061318b41df8b122263dc109f857"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SE3Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_e__2__3_tangent_8h_1a4b15dc0814f98a234001ec21990badd1/#exhale-function-s-e-2-3-tangent-8h-1a4b15dc0814f98a234001ec21990badd1"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SE_2_3Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_gal3_tangent_8h_1a928ae40af6c1cdd637c1dfe3ada92a31/#exhale-function-s-gal3-tangent-8h-1a928ae40af6c1cdd637c1dfe3ada92a31"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SGal3Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_o2_tangent_8h_1a1b6499354c5bf1549a84650fb53855c7/#exhale-function-s-o2-tangent-8h-1a1b6499354c5bf1549a84650fb53855c7"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SO2Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../function__s_o3_tangent_8h_1ab713caeb88a3c0bffea4615c96d3853c/#exhale-function-s-o3-tangent-8h-1ab713caeb88a3c0bffea4615c96d3853c"><span class="std std-ref">Function manif::MANIF_EXTRA_TANGENT_TYPEDEF(SO3Tangent)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a4b41435976d7cc36a9ca72e05688a89b/#exhale-function-functions-8h-1a4b41435976d7cc36a9ca72e05688a89b"><span class="std std-ref">Template Function manif::minus</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1ad620f3846d20938013b81a3fde036834/#exhale-function-tangent-base-8h-1ad620f3846d20938013b81a3fde036834"><span class="std std-ref">Template Function manif::operator!=(const TangentBase&lt;_Derived&gt;&amp;, const TangentBase&lt;_DerivedOther&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a30137d393a2ed6dbf931064e862be1b6/#exhale-function-tangent-base-8h-1a30137d393a2ed6dbf931064e862be1b6"><span class="std std-ref">Template Function manif::operator!=(const TangentBase&lt;_Derived&gt;&amp;, const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a7320db2c100a4b39237730a11ff9fb60/#exhale-function-tangent-base-8h-1a7320db2c100a4b39237730a11ff9fb60"><span class="std std-ref">Template Function manif::operator*(const TangentBase&lt;_Derived&gt;&amp;, const typename _Derived::Scalar)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1aa910f13276f990d52c6f5fdd24cd9094/#exhale-function-tangent-base-8h-1aa910f13276f990d52c6f5fdd24cd9094"><span class="std std-ref">Template Function manif::operator*(const typename _Derived::Scalar, const TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1ac1b5fd98c8b2ef87eee901ac1bec4287/#exhale-function-tangent-base-8h-1ac1b5fd98c8b2ef87eee901ac1bec4287"><span class="std std-ref">Template Function manif::operator*(const typename TangentBase&lt;_DerivedOther&gt;::Jacobian&amp;, const TangentBase&lt;_DerivedOther&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a6be25bf63e4b93bec975e2980dbd5d93/#exhale-function-tangent-base-8h-1a6be25bf63e4b93bec975e2980dbd5d93"><span class="std std-ref">Template Function manif::operator+(const TangentBase&lt;_Derived&gt;&amp;, const TangentBase&lt;_DerivedOther&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1af58761e56a007c26b5e7a5e66a83b9a1/#exhale-function-tangent-base-8h-1af58761e56a007c26b5e7a5e66a83b9a1"><span class="std std-ref">Template Function manif::operator+(const TangentBase&lt;_Derived&gt;&amp;, const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1aa42ef5cd0fabd1f45a7ad1822f2ebe51/#exhale-function-tangent-base-8h-1aa42ef5cd0fabd1f45a7ad1822f2ebe51"><span class="std std-ref">Template Function manif::operator+(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;, const TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a41cc9f49e6797c614613efa2c36a0463/#exhale-function-tangent-base-8h-1a41cc9f49e6797c614613efa2c36a0463"><span class="std std-ref">Template Function manif::operator-(const TangentBase&lt;_Derived&gt;&amp;, const TangentBase&lt;_DerivedOther&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a1e552c650c72a5479a3da017903b9e6f/#exhale-function-tangent-base-8h-1a1e552c650c72a5479a3da017903b9e6f"><span class="std std-ref">Template Function manif::operator-(const TangentBase&lt;_Derived&gt;&amp;, const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1ab952d0f1ec392a23cafb8920fd8821ba/#exhale-function-tangent-base-8h-1ab952d0f1ec392a23cafb8920fd8821ba"><span class="std std-ref">Template Function manif::operator-(const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;, const TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1ab681227af9c75c9c3f9f3e9c9524ae7a/#exhale-function-tangent-base-8h-1ab681227af9c75c9c3f9f3e9c9524ae7a"><span class="std std-ref">Template Function manif::operator/</span></a></p></li>
+<li><p><a class="reference internal" href="../function_lie__group__base_8h_1afcbf260dcd2567abb343ddcf622785ea/#exhale-function-lie-group-base-8h-1afcbf260dcd2567abb343ddcf622785ea"><span class="std std-ref">Template Function manif::operator&lt;&lt;(_Stream&amp;, const manif::LieGroupBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1a168b109c03805356d193c5fd84eb66be/#exhale-function-tangent-base-8h-1a168b109c03805356d193c5fd84eb66be"><span class="std std-ref">Template Function manif::operator&lt;&lt;(_Stream&amp;, const manif::TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1aeb6a053cf7d4578c97d0aa9eb9d69ea1/#exhale-function-tangent-base-8h-1aeb6a053cf7d4578c97d0aa9eb9d69ea1"><span class="std std-ref">Template Function manif::operator==(const TangentBase&lt;_Derived&gt;&amp;, const TangentBase&lt;_DerivedOther&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_tangent__base_8h_1aaae84429b756548d52a2be9680db1378/#exhale-function-tangent-base-8h-1aaae84429b756548d52a2be9680db1378"><span class="std std-ref">Template Function manif::operator==(const TangentBase&lt;_Derived&gt;&amp;, const Eigen::MatrixBase&lt;_EigenDerived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_utils_8h_1a18b90a86a6200162b35cb7d811f60e6b/#exhale-function-utils-8h-1a18b90a86a6200162b35cb7d811f60e6b"><span class="std std-ref">Template Function manif::pi2pi</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1acfc673b2f49e06dc48ec22e4c4b26aee/#exhale-function-functions-8h-1acfc673b2f49e06dc48ec22e4c4b26aee"><span class="std std-ref">Template Function manif::plus</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1adebc43a184092f1b146e15776ea172be/#exhale-function-interpolation-8h-1adebc43a184092f1b146e15776ea172be"><span class="std std-ref">Template Function manif::polynomialBernstein</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a5906dc016d463552a7fb76c028da7931/#exhale-function-functions-8h-1a5906dc016d463552a7fb76c028da7931"><span class="std std-ref">Template Function manif::random(LieGroupBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a17856dfe22b0e8e11a0ccdbb1ead3fdb/#exhale-function-functions-8h-1a17856dfe22b0e8e11a0ccdbb1ead3fdb"><span class="std std-ref">Template Function manif::Random</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a3c19e6c137b556ddb069f166866aea00/#exhale-function-functions-8h-1a3c19e6c137b556ddb069f166866aea00"><span class="std std-ref">Template Function manif::random(TangentBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_eigen_8h_1a1cd98da6ac129a395db6001c604e51d6/#exhale-function-eigen-8h-1a1cd98da6ac129a395db6001c604e51d6"><span class="std std-ref">Template Function manif::randPointInBall</span></a></p></li>
+<li><p><a class="reference internal" href="../function_eigen_8h_1af8f7c51a5964b10086103f3aec0a4b4e/#exhale-function-eigen-8h-1af8f7c51a5964b10086103f3aec0a4b4e"><span class="std std-ref">Template Function manif::randQuat</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1adadc051b9518af950b2de1e82c86eae6/#exhale-function-functions-8h-1adadc051b9518af950b2de1e82c86eae6"><span class="std std-ref">Template Function manif::retract</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a87b037d5a558d46e17f98d5b00a40ddf/#exhale-function-functions-8h-1a87b037d5a558d46e17f98d5b00a40ddf"><span class="std std-ref">Template Function manif::rminus</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a648a67f6d91d5dee23dba0d42022d87a/#exhale-function-functions-8h-1a648a67f6d91d5dee23dba0d42022d87a"><span class="std std-ref">Template Function manif::rplus</span></a></p></li>
+<li><p><a class="reference internal" href="../function_eigen_8h_1a3f31a4e545839f5dc7449af1fd520bfe/#exhale-function-eigen-8h-1a3f31a4e545839f5dc7449af1fd520bfe"><span class="std std-ref">Template Function manif::skew(const _Scalar)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_eigen_8h_1a2c66dda9b31734a3a83b74329e3cc892/#exhale-function-eigen-8h-1a2c66dda9b31734a3a83b74329e3cc892"><span class="std std-ref">Template Function manif::skew(const Eigen::MatrixBase&lt;_Derived&gt;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="../function_interpolation_8h_1aa34dab229333417af321bf8646ef3e98/#exhale-function-interpolation-8h-1aa34dab229333417af321bf8646ef3e98"><span class="std std-ref">Template Function manif::smoothing_phi</span></a></p></li>
+<li><p><a class="reference internal" href="../function_utils_8h_1a680866a07b3fb917acfc21d001e4b244/#exhale-function-utils-8h-1a680866a07b3fb917acfc21d001e4b244"><span class="std std-ref">Template Function manif::toDeg</span></a></p></li>
+<li><p><a class="reference internal" href="../function_utils_8h_1acef0c918075389f40c545e2b4027c06e/#exhale-function-utils-8h-1acef0c918075389f40c545e2b4027c06e"><span class="std std-ref">Template Function manif::toRad</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1aed5c7b7cdd948a7f72d8a2a3587bbf5d/#exhale-function-functions-8h-1aed5c7b7cdd948a7f72d8a2a3587bbf5d"><span class="std std-ref">Template Function manif::Zero</span></a></p></li>
+<li><p><a class="reference internal" href="../functions_8h_1a513af9be91fc9169dc270d7849a86f23/#exhale-function-functions-8h-1a513af9be91fc9169dc270d7849a86f23"><span class="std std-ref">Template Function manif::zero</span></a></p></li>
+</ul>
+</section>
+<section id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1a4324f19851d969ecec715fb89101309c/#exhale-typedef-ceres-8h-1a4324f19851d969ecec715fb89101309c"><span class="std std-ref">Typedef manif::CeresConstraintSE2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1af44c5fcb65c0f8df467f43496af82a0d/#exhale-typedef-ceres-8h-1af44c5fcb65c0f8df467f43496af82a0d"><span class="std std-ref">Typedef manif::CeresConstraintSE3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1ac6ddd9b278529245f92e46842fd29c63/#exhale-typedef-ceres-8h-1ac6ddd9b278529245f92e46842fd29c63"><span class="std std-ref">Typedef manif::CeresConstraintSO2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1a3f7b2abd726b9f6eb42bf8f5ef70387a/#exhale-typedef-ceres-8h-1a3f7b2abd726b9f6eb42bf8f5ef70387a"><span class="std std-ref">Typedef manif::CeresConstraintSO3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1a9eb35bc1677ec6f0a8b5f64c6b70f8ed/#exhale-typedef-ceres-8h-1a9eb35bc1677ec6f0a8b5f64c6b70f8ed"><span class="std std-ref">Typedef manif::CeresManifoldSE2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1ae29659c12acd4ebd3c6d291784ed49d2/#exhale-typedef-ceres-8h-1ae29659c12acd4ebd3c6d291784ed49d2"><span class="std std-ref">Typedef manif::CeresManifoldSE3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1aa723a1d097a234f47ae3e56ea88f28c8/#exhale-typedef-ceres-8h-1aa723a1d097a234f47ae3e56ea88f28c8"><span class="std std-ref">Typedef manif::CeresManifoldSO2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1ab42ada164698e1cd8115c90f34e7fc8c/#exhale-typedef-ceres-8h-1ab42ada164698e1cd8115c90f34e7fc8c"><span class="std std-ref">Typedef manif::CeresManifoldSO3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1a2570a7c7229594e3814b302ac334f111/#exhale-typedef-ceres-8h-1a2570a7c7229594e3814b302ac334f111"><span class="std std-ref">Typedef manif::CeresObjectiveSE2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1a40da5c261df2138cd2f6df516ce22120/#exhale-typedef-ceres-8h-1a40da5c261df2138cd2f6df516ce22120"><span class="std std-ref">Typedef manif::CeresObjectiveSE3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1ad20159821fd04530436a69c8c3cd3423/#exhale-typedef-ceres-8h-1ad20159821fd04530436a69c8c3cd3423"><span class="std std-ref">Typedef manif::CeresObjectiveSO2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_ceres_8h_1acaa0b20d837b7c4e512e043936f987dc/#exhale-typedef-ceres-8h-1acaa0b20d837b7c4e512e043936f987dc"><span class="std std-ref">Typedef manif::CeresObjectiveSO3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a4d2798597b7458980f04818b58ce29b8/#exhale-typedef-impl-2rn-2-rn-8h-1a4d2798597b7458980f04818b58ce29b8"><span class="std std-ref">Typedef manif::R1</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1af9871e10feaf4dae441549e5f418eceb/#exhale-typedef-rn-tangent-8h-1af9871e10feaf4dae441549e5f418eceb"><span class="std std-ref">Typedef manif::R1Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a477fdb281fd6b72f55dd2b63012a7054/#exhale-typedef-impl-2rn-2-rn-8h-1a477fdb281fd6b72f55dd2b63012a7054"><span class="std std-ref">Typedef manif::R2</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1abca13aca626f9073b402246eee5c3408/#exhale-typedef-rn-tangent-8h-1abca13aca626f9073b402246eee5c3408"><span class="std std-ref">Typedef manif::R2Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a6dffbe7afe32b8136b0572869c6b601c/#exhale-typedef-impl-2rn-2-rn-8h-1a6dffbe7afe32b8136b0572869c6b601c"><span class="std std-ref">Typedef manif::R3</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1abc1aca110d483a28ab4ffd7c598eacc8/#exhale-typedef-rn-tangent-8h-1abc1aca110d483a28ab4ffd7c598eacc8"><span class="std std-ref">Typedef manif::R3Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1abc04f58b3bfe90ce7efa222ed0b7937b/#exhale-typedef-impl-2rn-2-rn-8h-1abc04f58b3bfe90ce7efa222ed0b7937b"><span class="std std-ref">Typedef manif::R4</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1a6ee0f3d326f4436023f93a82e6ec7a6d/#exhale-typedef-rn-tangent-8h-1a6ee0f3d326f4436023f93a82e6ec7a6d"><span class="std std-ref">Typedef manif::R4Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a946b27b1124dc1f4656ff68b84545d37/#exhale-typedef-impl-2rn-2-rn-8h-1a946b27b1124dc1f4656ff68b84545d37"><span class="std std-ref">Typedef manif::R5</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1a34a791334f3112a4507a4a83487c2209/#exhale-typedef-rn-tangent-8h-1a34a791334f3112a4507a4a83487c2209"><span class="std std-ref">Typedef manif::R5Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a263f21fc8c1aa6cbd50ac314ec2e657f/#exhale-typedef-impl-2rn-2-rn-8h-1a263f21fc8c1aa6cbd50ac314ec2e657f"><span class="std std-ref">Typedef manif::R6</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1a55992733f37ddb2141de2d27c60f23b8/#exhale-typedef-rn-tangent-8h-1a55992733f37ddb2141de2d27c60f23b8"><span class="std std-ref">Typedef manif::R6Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a08ac29332a6512078aa5fda2a7a8df67/#exhale-typedef-impl-2rn-2-rn-8h-1a08ac29332a6512078aa5fda2a7a8df67"><span class="std std-ref">Typedef manif::R7</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1a8e52f0a72f3886c655c2e2aa00d09024/#exhale-typedef-rn-tangent-8h-1a8e52f0a72f3886c655c2e2aa00d09024"><span class="std std-ref">Typedef manif::R7Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1aa3dbb8b0e1735d0abf72e8281c805193/#exhale-typedef-impl-2rn-2-rn-8h-1aa3dbb8b0e1735d0abf72e8281c805193"><span class="std std-ref">Typedef manif::R8</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1ab00a8303f4fbf1d74463daee9065ec4b/#exhale-typedef-rn-tangent-8h-1ab00a8303f4fbf1d74463daee9065ec4b"><span class="std std-ref">Typedef manif::R8Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_impl_2rn_2_rn_8h_1a9a4af6400706ef5322b3a1d4ac6ee196/#exhale-typedef-impl-2rn-2-rn-8h-1a9a4af6400706ef5322b3a1d4ac6ee196"><span class="std std-ref">Typedef manif::R9</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef__rn_tangent_8h_1ae21187f91283001ad81f934f4500c887/#exhale-typedef-rn-tangent-8h-1ae21187f91283001ad81f934f4500c887"><span class="std std-ref">Typedef manif::R9Tangent</span></a></p></li>
+<li><p><a class="reference internal" href="../typedef_eigen_8h_1a081919d2085b3ee3fb49035ca3ea425c/#exhale-typedef-eigen-8h-1a081919d2085b3ee3fb49035ca3ea425c"><span class="std std-ref">Typedef manif::SquareMatrix</span></a></p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+   
+
+<div class="related-pages">
+  
+  
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2025 MIT license, artivis
+    </div>
+
+    <div class="last-updated">
+      Last updated on Mar 26, 2025</div>
+  </div>
+  <div>
+   
+  </div>
+  <div class="right-details">
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+<div class="toc-sticky toc-scroll">
+   
+    <div class="toc-title-container">
+      <span class="toc-title">
+       Contents
+      </span>
+    </div>
+    <div class="toc-tree-container">
+      <div class="toc-tree">
+        <ul>
+<li><a class="reference internal" href="#">Namespace manif</a><ul>
+<li><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#enums">Enums</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#typedefs">Typedefs</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+   
+    
+  </div>
+
+    </aside>
+  </div>
+</div><script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=a5603611"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/contributors.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/header-nav.js?v=e117ad08"></script>
+    
+<script>
+  const github_url = "https://github.com/artivis/manif";
+</script>
+</body>
+</html>
