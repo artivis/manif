@@ -123,33 +123,33 @@ As a reference, this is the way tangent spaces are defined in **manif**
 | Rn | n | $\bf p$ | $\bf p$ | ${\bf p} = {\bf v}\cdot dt$ |
 | SO(2) | 1 | $\bf R$ | $\theta$ | $\theta = \omega\cdot dt$ |
 | SO(3) | 3 | $\bf R$ | $\boldsymbol\theta$ | $\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
-| SE(2) | 3 | $\bf R$, $\bf p$ | $\boldsymbol\rho$, $\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
-| SE(3) | 6 | $\bf R$, $\bf p$ | $\boldsymbol\rho$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
-| SE_2(3) | 9 | $\bf R$, $\bf p$, $\bf v$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$ |
-| SGal(3) | 10 | $\bf R$, $\bf p$, $\bf v$, $t$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$, $s$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$<br/>$s = dt$ |
+| SE(2) | 3 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
+| SE(3) | 6 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
+| SE_2(3) | 9 | $\bf p$, $\bf R$, $\bf v$ | $\boldsymbol\rho$, $\boldsymbol\theta$, $\boldsymbol\nu$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$ |
+| SGal(3) | 10 | $\bf p$, $\bf R$, $\bf v$, $t$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$, $s$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$<br/>$s = dt$ |
 
 As an example, in SE_2(3) the tangent vector ${\boldsymbol\tau}$ is defined by
 
 $$
-{\boldsymbol\tau} = 
-\begin{bmatrix} 
-{\boldsymbol\rho} \\ 
-{\boldsymbol\nu} \\ 
-{\boldsymbol\theta} 
+{\boldsymbol\tau} =
+\begin{bmatrix}
+{\boldsymbol\rho} \\
+{\boldsymbol\theta} \\
+{\boldsymbol\nu}
 \end{bmatrix} \in \mathbb{R}^9
 $$
 
-where $\boldsymbol\rho$, $\boldsymbol\nu$ and $\boldsymbol\theta$ are $\in \mathbb{R}^3$ and
-typically correspond respectively to changes in position, velocity and orientation.
+where $\boldsymbol\rho$, $\boldsymbol\theta$ and $\boldsymbol\nu$ are $\in \mathbb{R}^3$ and
+typically correspond respectively to changes in position, orientation and velocity.
 
 A covariances matrix $\bf Q$ of an element of SE_2(3) can be block-partitioned as follows
 
 $$
 {\bf Q} = \begin{bmatrix}
-          {\bf Q}_ {\boldsymbol\rho\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\theta} \\
-          {\bf Q}_ {\boldsymbol\nu\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\theta} \\
-          {\bf Q}_ {\boldsymbol\theta\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\nu} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\theta}
-          \end{bmatrix} \in \mathbb{R}^{9\times 9}
+  {\bf Q}_ {\boldsymbol\rho\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\theta} & {\bf Q}_ {\boldsymbol\rho\boldsymbol\nu} \\
+  {\bf Q}_ {\boldsymbol\theta\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\theta} & {\bf Q}_ {\boldsymbol\theta\boldsymbol\nu} \\
+  {\bf Q}_ {\boldsymbol\nu\boldsymbol\rho} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\theta} & {\bf Q}_ {\boldsymbol\nu\boldsymbol\nu}
+  \end{bmatrix} \in \mathbb{R}^{9\times 9}
 $$
 
 All blocks ${\bf Q}_{\bf ij}$ are $3\times3$ and ${\bf Q}$ is $9\times9$.
