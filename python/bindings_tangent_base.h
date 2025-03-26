@@ -9,6 +9,7 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
   using DataType = typename _Tangent::DataType;
   using Jacobian = typename _Tangent::Jacobian;
   using OptJacobianRef = typename _Tangent::OptJacobianRef;
+  using LieAlg = typename _Tangent::LieAlg;
 
   py_class.attr("Dim") = _Tangent::Dim;
   py_class.attr("DoF") = _Tangent::DoF;
@@ -229,6 +230,17 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
   py_class.def("smallAdj", &_Tangent::smallAdj);
 
   py_class.def(
+    "bracket",
+    &_Tangent::template bracket<_Tangent>,
+    pybind11::arg("other"),
+    R"(
+      Compute the Lie bracket [this,other] in vector form.
+
+      return The Lie bracket [this,other] in vector form.
+    )"
+  );
+
+  py_class.def(
     "isApprox",
     [](const _Tangent& self, const _Tangent& t, Scalar eps) {
       return self.isApprox(t, eps);
@@ -278,6 +290,16 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
     "Set self to a random value."
   );
 
+  py_class.def(
+    "setVee",
+    [](_Tangent& self, const LieAlg& vee) {
+      return self.setVee(vee);
+    },
+    // &_Tangent::template setVee<_Tangent::LieAlg>,
+    pybind11::arg("vee"),
+    "Set the Tangent object from an object in the Lie algebra."
+  );
+
   py_class.def_static(
     "Zero",
     &_Tangent::Zero,
@@ -303,6 +325,23 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
     "Static helper to get the weight matrix of the "
     "Weighted Euclidean inner product, "
     "relative to the space basis."
+  );
+
+  py_class.def_static(
+    "Bracket",
+    &_Tangent::template Bracket<_Tangent>,
+    pybind11::arg("a"),
+    pybind11::arg("b"),
+    "Compute the Lie bracket [a,b] in vector form.."
+  );
+
+  py_class.def_static(
+    "Vee",
+    [](const LieAlg& vee) {
+      return _Tangent::Vee(vee);
+    },
+    // &_Tangent::template Vee<_Tangent, typename _Tangent::LieAlg>,
+    "Instantiate a Tangent from a Lie algebra object."
   );
 
   // operator overloads
@@ -344,17 +383,17 @@ void wrap_tangent_base(pybind11::class_<_Tangent, _Args...>& py_class) {
     "__rmatmul__",
     [](const _Tangent& t, pybind11::array_t<Scalar> lhs) {
 
-    pybind11::buffer_info lhs_buf = lhs.request();
+      pybind11::buffer_info lhs_buf = lhs.request();
 
-    if (lhs_buf.ndim != 2)
-        throw std::runtime_error("Number of dimensions must be 2");
+      if (lhs_buf.ndim != 2)
+          throw std::runtime_error("Number of dimensions must be 2");
 
-    if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
-        throw std::runtime_error("Input shapes must match");
+      if (lhs_buf.size != _Tangent::DoF * _Tangent::DoF)
+          throw std::runtime_error("Input shapes must match");
 
-    _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
+      _Tangent result = Eigen::Map<Jacobian>(static_cast<Scalar*>(lhs_buf.ptr)) * t;
 
-    return result;
+      return result;
 
     },
     pybind11::is_operator()

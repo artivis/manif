@@ -224,6 +224,32 @@ class TestCommon:
             delta.hat() @ delta_other.hat() - delta_other.hat() @ delta.hat()
         )
 
+    def test_Bracket(self, LieGroup, Tangent):
+        a = Tangent.Random()
+        b = Tangent.Random()
+
+        assert a.bracket(b) == Tangent.Bracket(a, b)
+
+        assert np.allclose(
+            Tangent.Bracket(a, b).hat(), (a.hat() @ b.hat()) - (b.hat() @ a.hat())
+        )
+
+        c = Tangent.Random()
+
+        assert (
+            Tangent.Bracket(a, Tangent.Bracket(b, c)) +
+            Tangent.Bracket(b, Tangent.Bracket(c, a)) +
+            Tangent.Bracket(c, Tangent.Bracket(a, b))
+        ).isApprox(Tangent.Zero())
+
+        assert Tangent.Bracket(a, b).isApprox(-Tangent.Bracket(b, a))
+
+    def test_Vee(self, LieGroup, Tangent):
+        a = Tangent.Random()
+
+        assert a.isApprox(Tangent.Vee(a.hat()))
+        assert a.isApprox(Tangent().setVee(a.hat()))
+
     def test_InverseJac(self, LieGroup, Tangent):
         state = LieGroup.Random()
         w = Tangent(np.random.rand(Tangent.DoF, 1)*1e-4)
