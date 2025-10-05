@@ -27,7 +27,7 @@ endif()
 # fall-back to the version provided in the cmake/modules.
 find_package(Eigen3 QUIET)
 
-if(NOT EIGEN3_FOUND)
+if(NOT Eigen3_FOUND)
   list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
   find_package(Eigen3 REQUIRED)
 endif()
