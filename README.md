@@ -118,15 +118,17 @@ It impacts the form of all Jacobian matrices and covariances matrices that will 
 
 As a reference, this is the way tangent spaces are defined in **manif**
 
-| group | dimension | group elements | tangent elements (in order) | relation to velocity |
-| ---- | ---- | ---- | ---- | ---- |
-| Rn | n | $\bf p$ | $\bf p$ | ${\bf p} = {\bf v}\cdot dt$ |
-| SO(2) | 1 | $\bf R$ | $\theta$ | $\theta = \omega\cdot dt$ |
-| SO(3) | 3 | $\bf R$ | $\boldsymbol\theta$ | $\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
-| SE(2) | 3 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\theta = \omega\cdot dt$ |
-| SE(3) | 6 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\boldsymbol\theta$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\theta = \boldsymbol\omega\cdot dt$ |
-| SE_2(3) | 9 | $\bf p$, $\bf R$, $\bf v$ | $\boldsymbol\rho$, $\boldsymbol\theta$, $\boldsymbol\nu$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$ |
-| SGal(3) | 10 | $\bf p$, $\bf R$, $\bf v$, $t$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$, $s$ | $\boldsymbol\rho = {\bf v}\cdot dt$<br/>$\boldsymbol\nu = {\bf a}\cdot dt$<br/>$\boldsymbol\theta = {\boldsymbol\omega}\cdot dt$<br/>$s = dt$ |
+| group | dimension | group elements | tangent elements (in order) | 
+| ---- | ---- | ---- | ---- | 
+| Rn | n | $\bf p$ | $\bf p$ | 
+| SO(2) | 1 | $\bf R$ | $\theta$ | 
+| SO(3) | 3 | $\bf R$ | $\boldsymbol\theta$ | 
+| SE(2) | 3 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\theta$ | 
+| SE(3) | 6 | $\bf p$, $\bf R$ | $\boldsymbol\rho$, $\boldsymbol\theta$ | 
+| SE_2(3) | 9 | $\bf p$, $\bf R$, $\bf v$ | $\boldsymbol\rho$, $\boldsymbol\theta$, $\boldsymbol\nu$ | $
+| SGal(3) | 10 | $\bf p$, $\bf R$, $\bf v$, $t$ | $\boldsymbol\rho$, $\boldsymbol\nu$, $\boldsymbol\theta$, $s$ | 
+
+NOTE: the unfortunate order mismatch between the tangent elements in SE_2(3) and SGal(3).
 
 As an example, in SE_2(3) the tangent vector ${\boldsymbol\tau}$ is defined by
 
