@@ -89,9 +89,6 @@ jobs:
       matrix:
         combinations: [
           {
-            "os": "windows-2019",
-            "cmake_generator": "Visual Studio 16 2019"
-          }, {
             "os": "windows-2022",
             "cmake_generator": "Visual Studio 17 2022"
           }
