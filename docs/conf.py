@@ -207,8 +207,7 @@ linkcheck_ignore = [
     "https://github.com/canonical/ACME/*",
     # @todo(artivis) Update the Ceres doc to account for Ceres 2.2 changes
     'http://ceres-solver.org/nnls_modeling.html#localparameterization',
-    "https://scholar.google.com/scholar?cites=16456301708818968338",
-    "https://scholar.google.com/scholar?cites=1235228860941456363",
+    "https://scholar.google.com/*",
 ]
 
 
