@@ -18,6 +18,10 @@
     color: #FFFFFF;
     text-decoration: underline;
 }
+.muted-link.github-issue-link:visited:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
 .github-issue-link:active {
     color: #FFFFFF;
     text-decoration: underline;

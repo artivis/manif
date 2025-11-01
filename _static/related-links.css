@@ -8,7 +8,8 @@
 }
 
 .relatedlinks {
-    font-size: var(--font-size--small--2);
+    font-size: var(--toc-font-size);
+    line-height: 1.3;
     padding-left: calc(var(--toc-spacing-horizontal) - var(--toc-item-spacing-horizontal));
     padding-bottom: 1em;
 }
@@ -35,5 +36,6 @@
 }
 
 .relatedlinks-title-container {
-    padding-top: 2em;
+    padding: var(--toc-title-padding);
+    padding-top: var(--toc-spacing-vertical);
 }

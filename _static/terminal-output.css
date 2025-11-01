@@ -3,11 +3,11 @@
     color: #ebebeb;
     border: 1px solid #666;
     padding: 0.625rem 0;
-    overflow-x: scroll;
 }
 
 .terminal .highlight {
     background-color: #202020;
+    color: #ebebeb;
 }
 
 .terminal .output {
@@ -29,4 +29,48 @@
 
 .terminal.scroll .input, .terminal.scroll .output {
     width: max-content;
+}
+
+.terminal-code pre {
+    font-size: var(--font-size--small--2);
+}
+
+div.terminal-code {
+    margin: 0 0;
+}
+
+/* Copybutton settings */
+
+div.input  {
+    position: relative;
+}
+
+div.input > button.copybtn {
+    overflow-y: visible;
+    top: 0.1em;
+    right: 0.1em;
+    width: 1.4em;
+    height: 1.4em;
+}
+
+div.input > button.copybtn svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.input:hover button.copybtn, button.copybtn.success {
+	opacity: 1;
+}
+
+.terminal.scroll > .input {
+    width: inherit;
+}
+
+.input button.copybtn {
+    align-items: center;
+    background-color: inherit;
+    border: none;
+    color: #f8f8f8;
+    cursor: pointer;
+    transition: color .3s, opacity .3s;
 }

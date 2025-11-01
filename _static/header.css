@@ -13,6 +13,14 @@
   text-decoration: none;
 }
 
+.p-logo:hover {
+  text-decoration: none;
+}
+
+.p-logo:visited:hover {
+  text-decoration: none;
+}
+
 .p-logo-image {
   height: 44px;
   padding-right: 10px;
@@ -59,6 +67,11 @@ ul.p-navigation__links li a {
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   white-space: nowrap;
   width: 100%;
+}
+
+ul.p-navigation__links li div.p-logo {
+  line-height: 1.5rem;
+  padding: 1rem 0;
 }
 
 ul.p-navigation__links .p-navigation__link {

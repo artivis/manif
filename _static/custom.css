@@ -344,6 +344,14 @@ details summary {
    opacity: 0;
 }
 
+/* For sidebar documentation title, match text color and underline color on hover */
+.sidebar-brand:hover {
+    text-decoration-color: var(--color-sidebar-brand-text);
+}
+.sidebar-brand:visited:hover {
+    text-decoration-color: var(--color-sidebar-brand-text);
+}
+
 /* Mimicking the 'Give feedback' button for UX consistency */
 .sidebar-search-container input[type=submit] {
     color: #FFFFFF;
