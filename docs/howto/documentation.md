@@ -4,7 +4,7 @@ To build the documentation,
 make sure you have Doxygen installed:
 
 ```bash
-sudo apt-get install -y doxygen
+sudo apt-get install -y build-essential doxygen python3-venv
 ```
 
 and execute the following:

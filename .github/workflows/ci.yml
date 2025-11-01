@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
+        os: [ubuntu-22.04, ubuntu-24.04]
         build_type: [Release, Debug]
         compiler: [
           {
@@ -60,7 +60,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13, macos-14, macos-15]
+        os: [macos-14, macos-15]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -89,9 +89,6 @@ jobs:
       matrix:
         combinations: [
           {
-            "os": "windows-2019",
-            "cmake_generator": "Visual Studio 16 2019"
-          }, {
             "os": "windows-2022",
             "cmake_generator": "Visual Studio 17 2022"
           }
@@ -290,7 +287,7 @@ jobs:
     needs: [build-ubuntu, build-mac]
     strategy:
       matrix:
-        platform: [ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
+        platform: [ubuntu-22.04, ubuntu-24.04]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
