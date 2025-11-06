@@ -27,14 +27,14 @@ endif()
 # fall-back to the version provided in the cmake/modules.
 find_package(Eigen3 QUIET)
 
-if(NOT EIGEN3_FOUND)
+if(NOT Eigen3_FOUND)
   list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
   find_package(Eigen3 REQUIRED)
 endif()
 
 # Note that eigen 3.2 (on Ubuntu Wily) only provides EIGEN3_INCLUDE_DIR,
 # not EIGEN3_INCLUDE_DIRS, so we have to set the latter from the former.
-if(NOT EIGEN3_INCLUDE_DIRS)
+if(NOT EIGEN3_INCLUDE_DIRS AND (DEFINED EIGEN3_INCLUDE_DIR))
   set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
 endif()
 
@@ -43,12 +43,16 @@ if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
   set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
 endif()
 
-if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
-                  "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
-elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
-                  "Beware that the move semantic has a bug and resolves to a simple copy.")
+# Eigen3 >= 5.0.0 doe not define EIGEN3_VERSION_STRING or EIGEN3_VERSION, but if that is
+# is the case we are sure that Eigen is not ==3.3.6 or <=3.3.8
+if(DEFINED EIGEN3_VERSION)
+  if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+    message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
+                    "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
+  elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
+    message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
+                    "Beware that the move semantic has a bug and resolves to a simple copy.")
+  endif()
 endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
