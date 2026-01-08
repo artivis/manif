@@ -32,6 +32,13 @@ TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_THETA)
   EXPECT_DOUBLE_EQ(0, so2.angle());
 }
 
+TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_ROTATION_MATRIX)
+{
+  SO2d so2(Eigen::Matrix2d{Eigen::Matrix2d::Identity()});
+
+  EXPECT_DOUBLE_EQ(0, so2.angle());
+}
+
 TEST(TEST_SO2, TEST_SO2_CONSTRUCTOR_COPY)
 {
   using std::cos;

@@ -56,6 +56,7 @@ private:
   using Type = SO3<_Scalar>;
 
   using QuaternionDataType = Eigen::Quaternion<_Scalar>;
+  using RotationMatrixDataType = Eigen::Matrix<_Scalar, 3, 3>;
 
 protected:
 
@@ -113,6 +114,12 @@ public:
   SO3(const Scalar roll, const Scalar pitch,
       const Scalar yaw);
 
+  /**
+   * @brief Constructor given a 3x3 rotation matrix.
+   * @param[in] rotation_matrix A 3x3 rotation matrix.
+   */
+  SO3(const RotationMatrixDataType& rotation_matrix);
+
   DataType& coeffs();
   const DataType& coeffs() const;
 
@@ -160,6 +167,13 @@ SO3<_Scalar>::SO3(const Scalar roll,
   : SO3(Eigen::AngleAxis<Scalar>(yaw,   Eigen::Matrix<Scalar, 3, 1>::UnitZ()) *
         Eigen::AngleAxis<Scalar>(pitch, Eigen::Matrix<Scalar, 3, 1>::UnitY()) *
         Eigen::AngleAxis<Scalar>(roll,  Eigen::Matrix<Scalar, 3, 1>::UnitX())  )
+{
+  //
+}
+
+template <typename _Scalar>
+SO3<_Scalar>::SO3(const RotationMatrixDataType& rotation_matrix)
+  : SO3(Eigen::AngleAxis<Scalar>(rotation_matrix))
 {
   //
 }
