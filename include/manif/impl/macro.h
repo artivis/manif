@@ -1,6 +1,7 @@
 #ifndef _MANIF_MANIF_FWD_H_
 #define _MANIF_MANIF_FWD_H_
 
+#include <cassert>
 #include <stdexcept> // for std::runtime_error
 #include <utility> // for std::forward
 
