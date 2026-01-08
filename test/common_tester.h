@@ -8,6 +8,9 @@
 
 #include <Eigen/StdVector>
 
+#include <algorithm>
+#include <random>
+
 #define MANIF_TEST(manifold)                                              \
   using TEST_##manifold##_TESTER = CommonTester<manifold>;                \
   INSTANTIATE_TEST_SUITE_P(                                               \
@@ -505,9 +508,10 @@ public:
 
     // A proper mean function should always return
     // the same mean no matter the initial pivot.
+    static std::mt19937 g(std::random_device{}());
     for (int i=0; i<20; ++i)
     {
-      std::random_shuffle( mans.begin(), mans.end() );
+      std::shuffle(mans.begin(), mans.end(), g);
 
       const auto avg_shu = average_biinvariant(mans);
 
