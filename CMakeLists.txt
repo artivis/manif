@@ -21,34 +21,47 @@ if(NOT MSVC)
   endif()
 endif()
 
-# Finding Eigen is somewhat complicated.
-# First we look for the Eigen3 cmake module
-# provided by the libeigen3-dev on newer Ubuntu. If that fails, then we
-# fall-back to the version provided in the cmake/modules.
-find_package(Eigen3 QUIET)
+# Find Eigen if the interface target does not yet exist.
+# This allows manif to be included seamlessly in downstream projects via CMake's FetchContent module when a specific
+# version of Eigen is already fetched or available.
+if(TARGET Eigen3::Eigen)
+  # Get include directories from target
+  get_target_property(EIGEN3_INCLUDE_DIRS Eigen3::Eigen INCLUDE_DIRECTORIES)
 
-if(NOT EIGEN3_FOUND)
-  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-  find_package(Eigen3 REQUIRED)
-endif()
-
-# Note that eigen 3.2 (on Ubuntu Wily) only provides EIGEN3_INCLUDE_DIR,
-# not EIGEN3_INCLUDE_DIRS, so we have to set the latter from the former.
-if(NOT EIGEN3_INCLUDE_DIRS)
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
-endif()
-
-# Necessary for Ubuntu 16.04's god-awful FindEigen3.cmake.
-if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
+  # Get version from Eigen3Config.cmake
+  get_target_property(Eigen3_BINARY_DIR Eigen3::Eigen BINARY_DIR)
+  include("${Eigen3_BINARY_DIR}/Eigen3Config.cmake")
   set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
-endif()
+else()
+  # Finding Eigen is somewhat complicated.
+  # First we look for the Eigen3 cmake module
+  # provided by the libeigen3-dev on newer Ubuntu. If that fails, then we
+  # fall-back to the version provided in the cmake/modules.
+  find_package(Eigen3 QUIET)
 
-if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
-                  "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
-elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
-                  "Beware that the move semantic has a bug and resolves to a simple copy.")
+  if(NOT EIGEN3_FOUND)
+    list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+    find_package(Eigen3 REQUIRED)
+  endif()
+
+  # Note that eigen 3.2 (on Ubuntu Wily) only provides EIGEN3_INCLUDE_DIR,
+  # not EIGEN3_INCLUDE_DIRS, so we have to set the latter from the former.
+  if(NOT EIGEN3_INCLUDE_DIRS)
+    set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+  endif()
+
+  # Necessary for Ubuntu 16.04's god-awful FindEigen3.cmake.
+  if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
+    set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
+  endif()
+
+  if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
+    message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
+                    "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
+  elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
+    message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
+                    "Beware that the move semantic has a bug and resolves to a simple copy.")
+  endif()
 endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.
@@ -79,6 +92,7 @@ endif()
 ###########
 
 add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME_CAPS}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 # @todo export c++11 dependency
 # @note A per-feature basis does
