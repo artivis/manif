@@ -34,6 +34,7 @@ void wrap_SO3(py::module &m)
                        return manif::SO3d(quat);
                    }),
       py::arg("quaternion"));
+  SO3.def(py::init<const Eigen::Matrix<Scalar, 3, 3>&>(), py::arg("rotation_matrix"));
 
   // SO3.def(py::init<const Quaternion&>());
   // SO3.def(py::init<const Eigen::AngleAxis<Scalar>&>());

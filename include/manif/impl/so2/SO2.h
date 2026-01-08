@@ -55,6 +55,8 @@ private:
   using Base = SO2Base<SO2<_Scalar>>;
   using Type = SO2<_Scalar>;
 
+  using RotationMatrixDataType = Eigen::Matrix<_Scalar, 2, 2>;
+
 public:
 
   MANIF_COMPLETE_GROUP_TYPEDEF
@@ -92,6 +94,12 @@ public:
 
   //! @brief Constructor given an angle (rad.)
   SO2(const Scalar theta);
+
+  /**
+   * @brief Constructor given a 2x2 rotation matrix.
+   * @param[in] rotation_matrix A 2x2 rotation matrix.
+   */
+  SO2(const RotationMatrixDataType& rotation_matrix);
 
   // LieGroup common API
 
@@ -131,6 +139,13 @@ SO2<_Scalar>::SO2(const Scalar theta)
 {
   using std::cos;
   using std::sin;
+}
+
+template <typename _Scalar>
+SO2<_Scalar>::SO2(const RotationMatrixDataType& rotation_matrix)
+  : SO2(rotation_matrix(0, 0), rotation_matrix(1, 0))
+{
+  //
 }
 
 template <typename _Scalar>

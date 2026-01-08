@@ -27,6 +27,7 @@ void wrap_SO2(py::module &m)
 
   SO2.def(py::init<const Scalar>());
   SO2.def(py::init<const Scalar, const Scalar>());
+  SO2.def(py::init<const Eigen::Matrix<Scalar, 2, 2>&>(), py::arg("rotation_matrix"));
 
   SO2.def("transform", &manif::SO2d::transform, "Get the transformation matrix");
   SO2.def("rotation", &manif::SO2d::rotation, "Get the rotation matrix");

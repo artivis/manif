@@ -11,6 +11,9 @@ def test_constructor():
     state = SO2(1, 0)
     assert 0 == state.angle()
 
+    state = SO2(rotation_matrix=np.identity(2))
+    assert 0 == state.angle()
+
     delta = SO2Tangent(0.17)
     assert 0.17 == delta.angle()
 

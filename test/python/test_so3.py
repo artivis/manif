@@ -37,6 +37,12 @@ def test_constructor():
     # assert 0 == state.z()
     # assert 1 == state.w()
 
+    state = SO3(rotation_matrix=np.identity(3))
+    assert 0 == state.x()
+    assert 0 == state.y()
+    assert 0 == state.z()
+    assert 1 == state.w()
+
     # delta = SO3Tangent(1,2,3)
     # assert 1 == delta.x()
     # assert 2 == delta.y()
