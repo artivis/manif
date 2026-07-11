@@ -19,7 +19,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, ubuntu-24.04]
+        os:
+          - ubuntu-22.04
+          - ubuntu-22.04-arm
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         build_type: [Release, Debug]
         compiler: [
           {
@@ -35,7 +41,7 @@ jobs:
       CXX: ${{ matrix.compiler.cxx }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -51,7 +57,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
@@ -60,10 +66,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14, macos-15]
+        os: [macos-14, macos-15, macos-15-intel, macos-26, macos-26-intel]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           brew install eigen
@@ -78,7 +84,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
@@ -95,7 +101,7 @@ jobs:
         ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           vcpkg install eigen3:x64-windows
@@ -121,7 +127,7 @@ jobs:
     needs: [build-ubuntu]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -133,7 +139,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DENABLE_CPPCHECK=ON -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make run-cppcheck
@@ -143,7 +149,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -155,7 +161,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DENABLE_VALGRIND=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: ctest -T memcheck
@@ -165,7 +171,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -177,7 +183,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DENABLE_COVERAGE=ON -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
@@ -187,16 +193,10 @@ jobs:
 
   ceres:
     needs: [build-ubuntu]
-    # runs-on: ubuntu-latest
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      # Test for both Ceres pre/post 2.2
-      matrix:
-        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -208,7 +208,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
@@ -218,7 +218,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
           sudo apt update
@@ -226,7 +226,7 @@ jobs:
           mkdir ${{ runner.workspace }}/build
       # Install autodiff
       - name: Checkout autodiff
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           repository: autodiff/autodiff
           ref: main
@@ -245,7 +245,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DBUILD_TESTING=ON
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
@@ -256,14 +256,14 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest] #windows-latest,
-        python-version: ['3.8', '3.9', '3.10', '3.12']
+        python-version: ['3.10', '3.12', '3.14']
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - run: git fetch --prune --unshallow
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Setup apt
@@ -287,16 +287,12 @@ jobs:
     needs: [build-ubuntu, build-mac]
     strategy:
       matrix:
-        platform: [ubuntu-22.04, ubuntu-24.04]
+        platform: [ubuntu-22.04, ubuntu-24.04, ubuntu-26.04]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - run: git fetch --prune --unshallow
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
       - name: Setup apt
         run: |
           sudo apt update
@@ -307,7 +303,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON -DBUILD_PYTHON_BINDINGS=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build
         working-directory: ${{ runner.workspace }}/build
-        run: make -j2
+        run: make -j$(nproc)
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: make test
