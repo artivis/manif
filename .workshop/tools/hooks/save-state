@@ -1,0 +1,14 @@
+# save-state must never block a refresh, even in a broken container.
+trap 'exit 0' ERR
+
+if [ -d /home/workshop/build ]; then
+  cp -a /home/workshop/build "${SDK_STATE_DIR}/"
+fi
+
+if [ -d /home/workshop/.cache/ccache ]; then
+  cp -a /home/workshop/.cache/ccache "${SDK_STATE_DIR}/"
+fi
+
+if [ -f /home/workshop/.ssh/authorized_keys ]; then
+  cp /home/workshop/.ssh/authorized_keys "${SDK_STATE_DIR}/"
+fi

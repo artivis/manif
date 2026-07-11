@@ -1,0 +1,25 @@
+snap install just --classic
+sudo snap install go --classic
+
+apt-get update
+apt-get install -y \
+    build-essential \
+    ccache \
+    cmake \
+    libeigen3-dev \
+    libgtest-dev \
+    python3-venv \
+    \
+    doxygen \
+    libjpeg-dev \
+    libxml2-dev \
+    libxslt1-dev
+
+# Setup ccache
+mkdir -p /etc/environment.d /etc/profile.d
+# /etc/environment.d - system-wide for all processes via pam_env
+echo 'PATH="/usr/lib/ccache:${PATH}"' | sudo tee /etc/environment.d/ccache.conf
+echo 'PATH="/home/workshop/go/bin:${PATH}"' | sudo tee /etc/environment.d/go.conf
+# /etc/profile.d - for interactive login shells (e.g. workshop shell)
+echo 'export PATH="/usr/lib/ccache:${PATH}"' | sudo tee /etc/profile.d/ccache.sh
+echo 'export PATH="/home/workshop/go/bin:${PATH}"' | sudo tee /etc/profile.d/go.sh

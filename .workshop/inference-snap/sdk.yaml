@@ -1,0 +1,5 @@
+name: inference-snap
+plugs:
+  inference-snap:
+    interface: tunnel
+    endpoint: localhost:8336
