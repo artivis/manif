@@ -45,7 +45,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libeigen3-dev
+          sudo apt install -y libeigen3-dev libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Display config
         run: |
@@ -72,7 +72,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
-          brew install eigen
+          brew install eigen googletest
           mkdir ${{ runner.workspace }}/build
       - name: Display config
         run: |
@@ -104,7 +104,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Setup
         run: |
-          vcpkg install eigen3:x64-windows
+          vcpkg install eigen3:x64-windows gtest
           cd ${{ runner.workspace }}
           mkdir build
       - name: Display config
@@ -131,8 +131,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libunwind-dev
-          sudo apt install -y libceres-dev cppcheck
+          sudo apt install -y libceres-dev libunwind-dev cppcheck libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
@@ -153,8 +152,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libunwind-dev
-          sudo apt install -y libceres-dev valgrind
+          sudo apt install -y libceres-dev libunwind-dev valgrind libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
@@ -175,8 +173,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libunwind-dev
-          sudo apt install -y libceres-dev
+          sudo apt install -y libceres-dev libunwind-dev libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
@@ -200,8 +197,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libunwind-dev
-          sudo apt install -y libceres-dev
+          sudo apt install -y libceres-dev libunwind-dev libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
@@ -222,7 +218,7 @@ jobs:
       - name: Setup
         run: |
           sudo apt update
-          sudo apt install -y libeigen3-dev
+          sudo apt install -y libeigen3-dev libgtest-dev
           mkdir ${{ runner.workspace }}/build
       # Install autodiff
       - name: Checkout autodiff
@@ -296,7 +292,7 @@ jobs:
       - name: Setup apt
         run: |
           sudo apt update
-          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest python3-numpy
+          sudo apt install -y libeigen3-dev pybind11-dev python3-pytest python3-numpy libgtest-dev
           mkdir ${{ runner.workspace }}/build
       - name: Configure
         working-directory: ${{ runner.workspace }}/build
