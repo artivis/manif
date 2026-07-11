@@ -69,7 +69,7 @@ a lecture given at [IRI-UPC][IRI-UPC].
 ## Quick Start
 
 Get quickly started with **manif** following our 'quick start' guides for both
-[C++](docs/pages/cpp/Quick-start.md) and [Python](docs/pages/python/Quick-start.md).
+[C++](docs/tutorial/cpp.md) and [Python](docs/tutorial/python.md).
 
 ## Features
 
