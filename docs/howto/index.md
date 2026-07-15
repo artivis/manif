@@ -20,5 +20,6 @@ How to use **manif** with the Ceres solver.
 
 ceres
 tmpl-code
+workshop
 documentation
 ```
