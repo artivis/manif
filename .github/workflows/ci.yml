@@ -49,9 +49,9 @@ jobs:
           mkdir ${{ runner.workspace }}/build
       - name: Display config
         run: |
-          echo "OS:" && $RUNNER_OS && echo ""
-          echo "Compiler:" && $CC && $CXX && echo ""
-          echo "Eigen:" && apt-cache policy libeigen3-dev | grep Installed
+          echo "OS: RUNNER_OS=$RUNNER_OS" && echo ""
+          echo "Compiler: CC=$CC CXX=$CXX" && echo ""
+          echo "Eigen: $(apt-cache policy libeigen3-dev | grep Installed)"
       - name: Configure
         working-directory: ${{ runner.workspace }}/build
         run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
@@ -122,6 +122,55 @@ jobs:
       - name: Test
         working-directory: ${{ runner.workspace }}/build
         run: ctest . -C Release
+
+  eigen3-5:
+    runs-on: ubuntu-26.04
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [Release, Debug]
+        compiler: [
+          {
+            "cc": "gcc",
+            "cxx": "g++"
+          }, {
+            "cc": "clang",
+            "cxx": "clang++"
+          }
+        ]
+    env:
+      CC: ${{ matrix.compiler.cc }}
+      CXX: ${{ matrix.compiler.cxx }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Setup
+        run: |
+          sudo apt update
+          sudo apt install -y libblas3 curl tar libgtest-dev
+          curl -sL https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.gz | tar -xzf -
+          cd eigen-5.0.0
+          cmake -S . -B build -DBUILD_TESTING=OFF
+          cmake --build build
+          sudo cmake --install build
+          mkdir ${{ runner.workspace }}/build
+      - name: Configure CMake
+        working-directory: ${{ runner.workspace }}/build
+        run: |
+          RELEASE_FLAGS=""
+          # GCC 15 -O3 miscompiles manif's bundle Generator code (bundle tests
+          # fail intermittently). -fno-guess-branch-probability keeps -O3 and
+          # avoids the bad codegen path. Only apply to gcc + Release.
+          if [ "${{ matrix.compiler.cc }}" = "gcc" ] && [ "${{ matrix.build_type }}" = "Release" ]; then
+            RELEASE_FLAGS="-fno-guess-branch-probability"
+          fi
+          cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_FLAGS_RELEASE="$RELEASE_FLAGS"
+      - name: Build
+        working-directory: ${{ runner.workspace }}/build
+        run: make -j$(nproc)
+      - name: Test
+        working-directory: ${{ runner.workspace }}/build
+        run: ctest . -C ${{ matrix.build_type }}
 
   cppcheck:
     needs: [build-ubuntu]
