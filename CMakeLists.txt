@@ -31,6 +31,14 @@ if(DEFINED Eigen3_VERSION)
     message(WARNING "Eigen3 version ${Eigen3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
                     "Beware that the move semantic has a bug and resolves to a simple copy.")
   endif()
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+     AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15
+     AND Eigen3_VERSION VERSION_LESS 5.0.0)
+    message(WARNING "GCC >= 15 with Eigen < 5.0.0 may emit false-positive "
+                    "-Warray-bounds warnings inside Eigen's "
+                    "AVX/SIMD code when building against manif with -Werror. Upgrade to Eigen "
+                    "5.0.0 or add -Wno-array-bounds to your compile flags.")
+  endif()
 endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.

@@ -13,6 +13,13 @@ function(manif_add_gtest target)
       -Werror=all
       -Werror=extra
       )
+    # GCC 15 emits false-positive array-bounds
+    # warnings after inlining (see Eigen 3.4 + GCC 15).
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15)
+      target_compile_options(${target} PRIVATE
+        -Wno-array-bounds
+        )
+    endif()
   endif()
 
   add_test(NAME ${target} COMMAND ${target})
