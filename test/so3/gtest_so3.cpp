@@ -449,15 +449,15 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
   EXPECT_EQ(3, J_inv.rows());
   EXPECT_EQ(3, J_inv.cols());
 
-  EXPECT_EQ(-1, J_inv(0,0));
-  EXPECT_EQ( 0, J_inv(0,1));
-  EXPECT_EQ( 0, J_inv(0,2));
-  EXPECT_EQ( 0, J_inv(1,0));
-  EXPECT_EQ(-1, J_inv(1,1));
-  EXPECT_EQ( 0, J_inv(1,2));
-  EXPECT_EQ( 0, J_inv(2,0));
-  EXPECT_EQ( 0, J_inv(2,1));
-  EXPECT_EQ(-1, J_inv(2,2));
+  EXPECT_DOUBLE_EQ(-1, J_inv(0,0));
+  EXPECT_DOUBLE_EQ( 0, J_inv(0,1));
+  EXPECT_DOUBLE_EQ( 0, J_inv(0,2));
+  EXPECT_DOUBLE_EQ( 0, J_inv(1,0));
+  EXPECT_DOUBLE_EQ(-1, J_inv(1,1));
+  EXPECT_DOUBLE_EQ( 0, J_inv(1,2));
+  EXPECT_DOUBLE_EQ( 0, J_inv(2,0));
+  EXPECT_DOUBLE_EQ( 0, J_inv(2,1));
+  EXPECT_DOUBLE_EQ(-1, J_inv(2,2));
 
   // Inverse of something is conjugate; Jac is minus rotation
   so3 = SO3d::Random();
@@ -472,15 +472,7 @@ TEST(TEST_SO3, TEST_SO3_INVERSE_JAC)
   EXPECT_EQ(3, J_inv.rows());
   EXPECT_EQ(3, J_inv.cols());
 
-  EXPECT_EQ(-so3.rotation()(0,0), J_inv(0,0));
-  EXPECT_EQ(-so3.rotation()(0,1), J_inv(0,1));
-  EXPECT_EQ(-so3.rotation()(0,2), J_inv(0,2));
-  EXPECT_EQ(-so3.rotation()(1,0), J_inv(1,0));
-  EXPECT_EQ(-so3.rotation()(1,1), J_inv(1,1));
-  EXPECT_EQ(-so3.rotation()(1,2), J_inv(1,2));
-  EXPECT_EQ(-so3.rotation()(2,0), J_inv(2,0));
-  EXPECT_EQ(-so3.rotation()(2,1), J_inv(2,1));
-  EXPECT_EQ(-so3.rotation()(2,2), J_inv(2,2));
+  EXPECT_EIGEN_NEAR(-so3.rotation(), J_inv);
 }
 
 TEST(TEST_SO3, TEST_SO3_LIFT_JAC)
