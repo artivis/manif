@@ -3,7 +3,6 @@
 ## A small header-only library for Lie theory
 
 [![GHA][badge-ci-img]][badge-ci]
-[![appveyor][badge-ci-win-img]][badge-ci-win]
 [![Documentation][badge-doc-img]][manif-doc]
 [![codecov][badge-cov-img]][badge-cov]
 ![GitHub][badge-license]
