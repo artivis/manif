@@ -273,10 +273,10 @@ SE_2_3Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
   const SO3Tangent<Scalar> so3tan = asSO3().log();
 
-  Tangent tan((typename Tangent::DataType() <<
-               so3tan.ljacinv()*translation(),
-               so3tan.coeffs(),
-               so3tan.ljacinv()*linearVelocity()).finished());
+  Tangent tan;
+  tan.coeffs().template head<3>() = so3tan.ljacinv()*translation();
+  tan.coeffs().template segment<3>(3) = so3tan.coeffs();
+  tan.coeffs().template tail<3>() = so3tan.ljacinv()*linearVelocity();
 
   if (J_t_m)
   {

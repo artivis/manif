@@ -364,11 +364,12 @@ int main()
         auto acc_k_est = alpha_prev + R_k_est.transpose()*g;
 
         Eigen::Vector3d accLin = dt*(R_k_est.transpose())*v_k_est + 0.5*dt*dt*acc_k_est;
+
         Eigen::Vector3d gLin = R_k_est.transpose()*g*dt;
         Eigen::Matrix3d accLinCross = manif::skew(accLin);
         Eigen::Matrix3d gCross = manif::skew(gLin);
 
-        u_est << accLin,  dt*omega_prev, dt*acc_k_est;
+        u_est << accLin, dt*omega_prev, dt*acc_k_est;
         u_est += u_noise;
 
         /// First we move - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "inference-snaps": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Inference Snaps",
+      "options": {
+        "baseURL": "http://10.86.192.1:8336/v1",
+        "apiKey": "none"
+      },
+      "models": {
+        "gemma4-e2b-q4-k-m": {"name": "Gemma 4 E2B"},
+        "gemma4-e4b-q4-k-m": {"name": "Gemma 4 E4B"},
+        "gemma4-26b-a4b-q4-k-m": {"name": "Gemma 4 26B"}
+      }
+    }
+  }
+}

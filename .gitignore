@@ -16,3 +16,4 @@ docs/m.css
 *__pycache__
 .pytest_cache
 dist
+.workshop.lock

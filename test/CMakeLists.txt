@@ -1,35 +1,6 @@
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.22.1)
 
-find_package(GTest QUIET)
-
-if(NOT GTEST_FOUND)
-  # If not found, download it
-
-  # Download and unpack googletest at configure time
-  configure_file(gtest/CMakeLists.txt.in gtest/CMakeLists.txt)
-  execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
-    RESULT_VARIABLE result
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/gtest )
-  if(result)
-    message(FATAL_ERROR "CMake step for googletest failed: ${result}")
-  endif()
-  execute_process(COMMAND ${CMAKE_COMMAND} --build .
-    RESULT_VARIABLE result
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/gtest )
-  if(result)
-    message(FATAL_ERROR "Build step for googletest failed: ${result}")
-  endif()
-
-  # Prevent overriding the parent project's compiler/linker
-  # settings on Windows
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-  # Add googletest directly to our build. This defines
-  # the gtest and gtest_main targets.
-  add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
-                   ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
-                   EXCLUDE_FROM_ALL)
-endif()
+find_package(GTest REQUIRED)
 
 # small helper function
 function(manif_add_gtest target)
@@ -42,6 +13,13 @@ function(manif_add_gtest target)
       -Werror=all
       -Werror=extra
       )
+    # GCC 15 emits false-positive array-bounds
+    # warnings after inlining (see Eigen 3.4 + GCC 15).
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15)
+      target_compile_options(${target} PRIVATE
+        -Wno-array-bounds
+        )
+    endif()
   endif()
 
   add_test(NAME ${target} COMMAND ${target})

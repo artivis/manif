@@ -1,0 +1,14 @@
+apt-get install -y jq
+
+mkdir -p /etc/opencode/
+
+_config="/etc/opencode/opencode.json"
+_sdk_config="${SDK}/config.json"
+
+if [ ! -f "${_config}" ]; then
+  install -m 644 "${_sdk_config}" "${_config}"
+else
+  _provider=$(jq '.provider["inference-snaps"]' "${_sdk_config}")
+  _updated=$(jq ".provider[\"inference-snaps\"] = ${_provider}" "${_config}")
+  echo "${_updated}" > "${_config}"
+fi

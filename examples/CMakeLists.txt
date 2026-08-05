@@ -57,7 +57,15 @@ foreach(target ${CXX_11_EXAMPLE_TARGETS})
     target_compile_options(${target} PRIVATE
       -Werror=all
       -Werror=extra
+      -Wno-error=unused-variable
     )
+    # GCC 15 emits false-positive array-bounds
+    # warnings after inlining (see Eigen 3.4 + GCC 15).
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15)
+      target_compile_options(${target} PRIVATE
+        -Wno-array-bounds
+      )
+    endif()
   endif()
 
 endforeach()

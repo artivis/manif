@@ -1,0 +1,26 @@
+name: manif-dev
+base: ubuntu@26.04
+sdks:
+  - name: opencode
+  - name: project-inference-snap
+  - name: project-tools
+    plugs:
+      ssh-agent:
+        interface: ssh-agent
+  - name: system
+    slots:
+      inference-snap:
+        interface: tunnel
+        endpoint: localhost:8336
+actions:
+  ssh-import-id-gh: ssh-import-id-gh "$@"
+
+  opencode: opencode "$@"
+  just: just "$@"
+
+  build: just build build_dir="${HOME}/build"
+  clean: just clean build_dir="${HOME}/build"
+  test: just test build_dir="${HOME}/build"
+  docs-make: cd docs && make html
+  docs-serve: cd docs && make serve
+  docs-clean: cd docs && make clean

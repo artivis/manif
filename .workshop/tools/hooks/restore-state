@@ -1,0 +1,14 @@
+if [ -d "${SDK_STATE_DIR}/build" ]; then
+  cp -a "${SDK_STATE_DIR}/build" /home/workshop
+fi
+
+if [ -d "${SDK_STATE_DIR}/ccache" ]; then
+  mkdir -p /home/workshop/.cache
+  cp -a "${SDK_STATE_DIR}/ccache" /home/workshop/.cache
+fi
+
+if [ -f "${SDK_STATE_DIR}/authorized_keys" ]; then
+  install -m 0600 -o 1000 -g 1000 \
+    "${SDK_STATE_DIR}/authorized_keys" \
+    /home/workshop/.ssh/authorized_keys
+fi

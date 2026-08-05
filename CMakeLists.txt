@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.5.1)
-cmake_policy(SET CMP0048 NEW)
+cmake_minimum_required(VERSION 3.22.1)
 
 project(manif VERSION 0.0.3 LANGUAGES CXX)
 
@@ -21,34 +20,25 @@ if(NOT MSVC)
   endif()
 endif()
 
-# Finding Eigen is somewhat complicated.
-# First we look for the Eigen3 cmake module
-# provided by the libeigen3-dev on newer Ubuntu. If that fails, then we
-# fall-back to the version provided in the cmake/modules.
-find_package(Eigen3 QUIET)
+find_package(Eigen3 REQUIRED)
 
-if(NOT EIGEN3_FOUND)
-  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-  find_package(Eigen3 REQUIRED)
-endif()
-
-# Note that eigen 3.2 (on Ubuntu Wily) only provides EIGEN3_INCLUDE_DIR,
-# not EIGEN3_INCLUDE_DIRS, so we have to set the latter from the former.
-if(NOT EIGEN3_INCLUDE_DIRS)
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
-endif()
-
-# Necessary for Ubuntu 16.04's god-awful FindEigen3.cmake.
-if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
-  set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
-endif()
-
-if(${EIGEN3_VERSION} VERSION_EQUAL "3.3.6")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
-                  "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
-elseif(${EIGEN3_VERSION} VERSION_LESS "3.3.8")
-  message(WARNING "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
-                  "Beware that the move semantic has a bug and resolves to a simple copy.")
+if(DEFINED Eigen3_VERSION)
+  message(STATUS "Eigen3 version ${Eigen3_VERSION}")
+  if(${Eigen3_VERSION} VERSION_EQUAL "3.3.6")
+    message(WARNING "Eigen3 version ${Eigen3_VERSION} found in ${EIGEN3_INCLUDE_DIRS},"
+                    "but this version has a [bug](http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1643)")
+  elseif(${Eigen3_VERSION} VERSION_LESS "3.3.8")
+    message(WARNING "Eigen3 version ${Eigen3_VERSION} found in ${EIGEN3_INCLUDE_DIRS}. "
+                    "Beware that the move semantic has a bug and resolves to a simple copy.")
+  endif()
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+     AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 15
+     AND Eigen3_VERSION VERSION_LESS 5.0.0)
+    message(WARNING "GCC >= 15 with Eigen < 5.0.0 may emit false-positive "
+                    "-Warray-bounds warnings inside Eigen's "
+                    "AVX/SIMD code when building against manif with -Werror. Upgrade to Eigen "
+                    "5.0.0 or add -Wno-array-bounds to your compile flags.")
+  endif()
 endif()
 
 # Options. Turn on with 'cmake -DBUILD_TESTING=ON'.

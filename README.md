@@ -3,7 +3,6 @@
 ## A small header-only library for Lie theory
 
 [![GHA][badge-ci-img]][badge-ci]
-[![appveyor][badge-ci-win-img]][badge-ci-win]
 [![Documentation][badge-doc-img]][manif-doc]
 [![codecov][badge-cov-img]][badge-cov]
 ![GitHub][badge-license]
@@ -69,7 +68,7 @@ a lecture given at [IRI-UPC][IRI-UPC].
 ## Quick Start
 
 Get quickly started with **manif** following our 'quick start' guides for both
-[C++](docs/pages/cpp/Quick-start.md) and [Python](docs/pages/python/Quick-start.md).
+[C++](docs/tutorial/cpp.md) and [Python](docs/tutorial/python.md).
 
 ## Features
 

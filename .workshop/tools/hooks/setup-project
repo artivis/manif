@@ -1,0 +1,3 @@
+mkdir -p "${HOME}/build"
+
+go install github.com/rhysd/actionlint/cmd/actionlint@latest
