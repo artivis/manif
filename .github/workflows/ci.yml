@@ -54,7 +54,15 @@ jobs:
           echo "Eigen: $(apt-cache policy libeigen3-dev | grep Installed)"
       - name: Configure
         working-directory: ${{ runner.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        run: |
+          RELEASE_FLAGS=""
+          # GCC 15 -O3 miscompiles manif's bundle Generator code (bundle tests
+          # fail intermittently). -fno-guess-branch-probability keeps -O3 and
+          # avoids the bad codegen path. Only apply to gcc + Release.
+          if [ "${{ matrix.compiler.cc }}" = "gcc" ] && [ "${{ matrix.build_type }}" = "Release" ]; then
+            RELEASE_FLAGS="-fno-guess-branch-probability"
+          fi
+          cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_FLAGS_RELEASE="$RELEASE_FLAGS"
       - name: Build
         working-directory: ${{ runner.workspace }}/build
         run: make -j$(nproc)
@@ -345,7 +353,15 @@ jobs:
           mkdir ${{ runner.workspace }}/build
       - name: Configure
         working-directory: ${{ runner.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON -DBUILD_PYTHON_BINDINGS=ON -DCMAKE_BUILD_TYPE=Release
+        run: |
+          RELEASE_FLAGS=""
+          # GCC 15 -O3 miscompiles manif's bundle Generator code (bundle tests
+          # fail intermittently). -fno-guess-branch-probability keeps -O3 and
+          # avoids the bad codegen path. Only apply to gcc + Release.
+          if [ "${{ matrix.platform }}" = "ubuntu-26.04" ]; then
+            RELEASE_FLAGS="-fno-guess-branch-probability"
+          fi
+          cmake $GITHUB_WORKSPACE -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=ON -DBUILD_PYTHON_BINDINGS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="$RELEASE_FLAGS"
       - name: Build
         working-directory: ${{ runner.workspace }}/build
         run: make -j$(nproc)
