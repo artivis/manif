@@ -126,6 +126,71 @@ TEST(Bundle, Map)
 }
 
 
+TEST(Bundle, MapElementConstCorrectness)
+{
+  std::array<double, GroupA::RepSize> data;
+
+  Eigen::Map<GroupA> map(data.data());
+  map = GroupA::Random();
+
+  auto element = map.element<0>();
+  const Eigen::Map<GroupA>& const_map = map;
+  auto const_element = const_map.element<0>();
+  Eigen::Map<const GroupA> map_const(data.data());
+  auto element_from_map_const = map_const.element<0>();
+  const Eigen::Map<const GroupA>& const_map_const = map_const;
+  auto const_element_from_map_const = const_map_const.element<0>();
+
+  static_assert(
+    std::is_same<decltype(element), Eigen::Map<R2d>>::value,
+    "Element of a writable map should be writable");
+  static_assert(
+    std::is_same<decltype(const_element), Eigen::Map<const R2d>>::value,
+    "Element of a const writable map should be read-only");
+  static_assert(
+    std::is_same<decltype(element_from_map_const), Eigen::Map<const R2d>>::value,
+    "Element of a read-only map should be read-only");
+  static_assert(
+    std::is_same<decltype(const_element_from_map_const), Eigen::Map<const R2d>>::value,
+    "Element of a const read-only map should be read-only");
+
+  EXPECT_EIGEN_NEAR(element.coeffs(), element_from_map_const.coeffs());
+}
+
+
+TEST(BundleTangent, MapElementConstCorrectness)
+{
+  using Tangent = GroupA::Tangent;
+  std::array<double, Tangent::RepSize> data;
+
+  Eigen::Map<Tangent> map(data.data());
+  map = Tangent::Random();
+
+  auto element = map.element<0>();
+  const Eigen::Map<Tangent>& const_map = map;
+  auto const_element = const_map.element<0>();
+  Eigen::Map<const Tangent> map_const(data.data());
+  auto element_from_map_const = map_const.element<0>();
+  const Eigen::Map<const Tangent>& const_map_const = map_const;
+  auto const_element_from_map_const = const_map_const.element<0>();
+
+  static_assert(
+    std::is_same<decltype(element), Eigen::Map<R2Tangentd>>::value,
+    "Element of a writable tangent map should be writable");
+  static_assert(
+    std::is_same<decltype(const_element), Eigen::Map<const R2Tangentd>>::value,
+    "Element of a const writable tangent map should be read-only");
+  static_assert(
+    std::is_same<decltype(element_from_map_const), Eigen::Map<const R2Tangentd>>::value,
+    "Element of a read-only tangent map should be read-only");
+  static_assert(
+    std::is_same<decltype(const_element_from_map_const), Eigen::Map<const R2Tangentd>>::value,
+    "Element of a const read-only tangent map should be read-only");
+
+  EXPECT_EIGEN_NEAR(element.coeffs(), element_from_map_const.coeffs());
+}
+
+
 TEST(BundleTangent, Interface)
 {
   typename GroupA::Tangent tangent = GroupA::Tangent::Random();
