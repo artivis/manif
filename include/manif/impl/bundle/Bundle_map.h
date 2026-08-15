@@ -28,6 +28,8 @@ struct traits<Eigen::Map<const Bundle<_Scalar, T...>, 0>>
 {
   using typename traits<const Bundle<_Scalar, T...>>::Scalar;
   using traits<const Bundle<Scalar, T...>>::RepSize;
+  template <int _N>
+  using MapElement = typename traits<Bundle<_Scalar, T...>>::template MapConstElement<_N>;
   using Base = BundleBase<Eigen::Map<const Bundle<Scalar, T...>, 0>>;
   using DataType = Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
 };
