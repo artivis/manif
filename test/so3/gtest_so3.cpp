@@ -1,10 +1,51 @@
 #include <gtest/gtest.h>
+#include <limits>
 
 #include "manif/SO3.h"
 
 #include "../common_tester.h"
 
 using namespace manif;
+
+template <typename Scalar>
+class SO3LogQuaternionSignTest : public ::testing::Test {};
+
+using SO3LogScalars = ::testing::Types<float, double>;
+TYPED_TEST_SUITE(SO3LogQuaternionSignTest, SO3LogScalars);
+
+TYPED_TEST(SO3LogQuaternionSignTest, LogIsIndependentOfQuaternionSign)
+{
+  using Scalar = TypeParam;
+  using Vector = Eigen::Matrix<Scalar, 3, 1>;
+  const Scalar tol = Scalar(16) * std::numeric_limits<Scalar>::epsilon();
+  const Vector axes[] = {Vector::UnitX(), Vector(1, -2, 3).normalized()};
+  // The small-angle branch ends at sin(angle / 2)^2 == eps.
+  const Scalar factors[] = {Scalar(0), Scalar(0.25), Scalar(1),
+                            Scalar(1.9), Scalar(2.1), Scalar(4)};
+
+  for (const Vector& axis : axes)
+  {
+    for (const Scalar factor : factors)
+    {
+      const Scalar angle = factor * Constants<Scalar>::eps_sqrt;
+      SCOPED_TRACE(::testing::Message() << "angle=" << angle
+                                       << ", axis=" << axis.transpose());
+      Eigen::Quaternion<Scalar> quat(Eigen::AngleAxis<Scalar>(angle, axis));
+      const SO3<Scalar> positive(quat);
+      quat.coeffs() *= Scalar(-1);
+      const SO3<Scalar> negative(quat);
+      typename SO3<Scalar>::Jacobian J_positive, J_negative;
+      const auto positive_log = positive.log(J_positive);
+      const auto negative_log = negative.log(J_negative);
+
+      EXPECT_EIGEN_NEAR(positive.rotation(), negative.rotation(), tol);
+      EXPECT_EIGEN_NEAR(positive_log.coeffs(), negative_log.coeffs(), tol);
+      EXPECT_EIGEN_NEAR(axis * angle, negative_log.coeffs(), tol);
+      EXPECT_EIGEN_NEAR(positive.rotation(), negative_log.exp().rotation(), tol);
+      EXPECT_EIGEN_NEAR(J_positive, J_negative, tol);
+    }
+  }
+}
 
 TEST(TEST_SO3, TEST_SO3_CONSTRUCTOR_DATATYPE)
 {

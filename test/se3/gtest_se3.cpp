@@ -1,8 +1,49 @@
 #include "manif/SE3.h"
 
+#include <limits>
+
 #include "../common_tester.h"
 
 using namespace manif;
+
+template <typename Scalar>
+class SE3LogQuaternionSignTest : public ::testing::Test {};
+
+using SE3LogScalars = ::testing::Types<float, double>;
+TYPED_TEST_SUITE(SE3LogQuaternionSignTest, SE3LogScalars);
+
+TYPED_TEST(SE3LogQuaternionSignTest, LogIsIndependentOfQuaternionSign)
+{
+  using Scalar = TypeParam;
+  using Vector = Eigen::Matrix<Scalar, 3, 1>;
+  const Scalar tol = Scalar(32) * std::numeric_limits<Scalar>::epsilon();
+  const Vector translation(1, 2, -3);
+  const Vector axes[] = {Vector::UnitX(), Vector(1, -2, 3).normalized()};
+  const Scalar factors[] = {Scalar(0), Scalar(0.25), Scalar(1),
+                            Scalar(1.9), Scalar(2.1), Scalar(4)};
+
+  for (const Vector& axis : axes)
+  {
+    for (const Scalar factor : factors)
+    {
+      const Scalar angle = factor * Constants<Scalar>::eps_sqrt;
+      SCOPED_TRACE(::testing::Message() << "angle=" << angle
+                                       << ", axis=" << axis.transpose());
+      Eigen::Quaternion<Scalar> quat(Eigen::AngleAxis<Scalar>(angle, axis));
+      const SE3<Scalar> positive(translation, quat);
+      quat.coeffs() *= Scalar(-1);
+      const SE3<Scalar> negative(translation, quat);
+      typename SE3<Scalar>::Jacobian J_positive, J_negative;
+      const auto positive_log = positive.log(J_positive);
+      const auto negative_log = negative.log(J_negative);
+
+      EXPECT_EIGEN_NEAR(positive.transform(), negative.transform(), tol);
+      EXPECT_EIGEN_NEAR(positive_log.coeffs(), negative_log.coeffs(), tol);
+      EXPECT_EIGEN_NEAR(positive.transform(), negative_log.exp().transform(), tol);
+      EXPECT_EIGEN_NEAR(J_positive, J_negative, tol);
+    }
+  }
+}
 
 TEST(TEST_SE3, TEST_SE3_CONSTRUCTOR_DATATYPE)
 {

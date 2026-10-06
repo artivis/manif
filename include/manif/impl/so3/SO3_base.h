@@ -214,8 +214,8 @@ SO3Base<_Derived>::log(OptJacobianRef J_t_m) const
   }
   else
   {
-    // small-angle approximation
-    log_coeff = Scalar(2.0);
+    // Small-angle approximation on the same principal branch as above.
+    log_coeff = w() < Scalar(0.0) ? Scalar(-2.0) : Scalar(2.0);
   }
 
   tan = Tangent(coeffs().template head<3>() * log_coeff);
