@@ -30,6 +30,10 @@ struct traits<Eigen::Map<const BundleTangent<_Scalar, T...>, 0>>
   using traits<const BundleTangent<Scalar, T...>>::DoF;
   using Base = BundleTangentBase<Eigen::Map<const BundleTangent<Scalar, T...>, 0>>;
   using DataType = Eigen::Map<const Eigen::Matrix<Scalar, DoF, 1>, 0>;
+
+  // The elements of a Map to const are Maps to const
+  template<int _N>
+  using MapElement = typename traits<const BundleTangent<Scalar, T...>>::template MapConstElement<_N>;
 };
 
 }  // namespace internal

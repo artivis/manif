@@ -76,8 +76,8 @@ public:
   //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
 
-  //! @brief Access the underlying data by pointer
-  Scalar* data();
+  //! @brief Access the underlying data by pointer (const for a Map to const)
+  auto data() -> decltype(std::declval<DataType&>().data());
   //! @brief Access the underlying data by const pointer
   const Scalar* data() const;
 
@@ -446,8 +446,8 @@ TangentBase<_Derived>::coeffs() const
 }
 
 template <class _Derived>
-typename TangentBase<_Derived>::Scalar*
-TangentBase<_Derived>::data()
+auto TangentBase<_Derived>::data()
+-> decltype(std::declval<DataType&>().data())
 {
   return derived().coeffs().data();
 }

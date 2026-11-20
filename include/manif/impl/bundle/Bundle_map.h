@@ -30,6 +30,10 @@ struct traits<Eigen::Map<const Bundle<_Scalar, T...>, 0>>
   using traits<const Bundle<Scalar, T...>>::RepSize;
   using Base = BundleBase<Eigen::Map<const Bundle<Scalar, T...>, 0>>;
   using DataType = Eigen::Map<const Eigen::Matrix<Scalar, RepSize, 1>, 0>;
+
+  // The elements of a Map to const are Maps to const
+  template<int _N>
+  using MapElement = typename traits<const Bundle<Scalar, T...>>::template MapConstElement<_N>;
 };
 
 }  // namespace internal
