@@ -132,8 +132,11 @@ SO3TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
     {
       const LieAlg W = hat();
 
+      // 1 - cos(theta) = 2 sin(theta/2)^2 avoids cancellation
+      const Scalar sin_half_theta = sin(theta * Scalar(0.5));
+
       J_m_t->setIdentity();
-      J_m_t->noalias() -= (Scalar(1.0) - cos(theta)) / theta_sq * W;
+      J_m_t->noalias() -= Scalar(2) * sin_half_theta * sin_half_theta / theta_sq * W;
       J_m_t->noalias() += (theta - sin(theta)) / (theta_sq * theta) * W * W;
     }
 
@@ -183,8 +186,11 @@ SO3TangentBase<_Derived>::ljac() const
 
   const Scalar theta = sqrt(theta_sq); // rotation angle
 
+  // 1 - cos(theta) = 2 sin(theta/2)^2 avoids cancellation
+  const Scalar sin_half_theta = sin(theta * Scalar(0.5));
+
   return Jacobian::Identity() +
-    (Scalar(1) - cos(theta)) / theta_sq * W +
+    Scalar(2) * sin_half_theta * sin_half_theta / theta_sq * W +
     (theta - sin(theta)) / (theta_sq * theta) * W * W;
 }
 

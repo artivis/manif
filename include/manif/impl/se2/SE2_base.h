@@ -215,30 +215,12 @@ template <typename _Derived>
 typename SE2Base<_Derived>::Tangent
 SE2Base<_Derived>::log(OptJacobianRef J_t_m) const
 {
-  using std::abs;
-  using std::cos;
-  using std::sin;
-
-  const Scalar theta     = angle();
-  const Scalar cos_theta = coeffs()[2];
-  const Scalar sin_theta = coeffs()[3];
-  const Scalar theta_sq  = theta * theta;
+  const Scalar theta = angle();
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps)
-  {
-    // Taylor approximation
-    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+  Tangent::fillAB(A, B, theta);
 
   const Scalar den = Scalar(1) / (A*A + B*B);
 
