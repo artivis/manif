@@ -252,25 +252,39 @@ void SE3TangentBase<_Derived>::fillQ(
     using std::sqrt;
 
     const Scalar theta_sq = c.template tail<3>().squaredNorm();
+    const Scalar theta_p4 = theta_sq * theta_sq;
 
     Scalar A(0.5), B, C, D;
 
     // Small angle approximation
-    if (theta_sq <= Constants<Scalar>::eps)
+    // The numerators of B, C and D cancel to O(theta^3), O(theta^4)
+    // and O(theta^5) so that their terms of Q lose precision
+    // as eps / theta. The series are thus used up to theta^8 < eps,
+    // where their neglected terms are still below eps.
+    if (theta_p4 * theta_p4 <= Constants<Scalar>::eps)
     {
-      B =  Scalar(1./6.)  + Scalar(1./120.)  * theta_sq;
-      C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq;
-      D = -Scalar(1./60.);
+      B =  Scalar(1./6.)  - Scalar(1./120.)  * theta_sq
+                          + Scalar(1./5040.) * theta_p4
+                          - Scalar(1./362880.) * theta_p4 * theta_sq;
+      C = -Scalar(1./24.) + Scalar(1./720.)  * theta_sq
+                          - Scalar(1./40320.) * theta_p4
+                          + Scalar(1./3628800.) * theta_p4 * theta_sq;
+      D = -Scalar(1./60.) + Scalar(1./1260.) * theta_sq
+                          - Scalar(1./60480.) * theta_p4
+                          + Scalar(1./4989600.) * theta_p4 * theta_sq;
     }
     else
     {
       const Scalar theta     = sqrt(theta_sq);
       const Scalar sin_theta = sin(theta);
-      const Scalar cos_theta = cos(theta);
+
+      // 1 - cos(theta) = 2 sin(theta/2)^2 avoids one cancellation in C
+      const Scalar half_theta     = theta * Scalar(0.5);
+      const Scalar sin_half_theta = sin(half_theta);
 
       B = (theta - sin_theta) / (theta_sq*theta);
-      C = (Scalar(1) - theta_sq/Scalar(2) - cos_theta) / (theta_sq*theta_sq);
-      D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_sq*theta_sq*theta));
+      C = Scalar(2) * (sin_half_theta - half_theta) * (sin_half_theta + half_theta) / theta_p4;
+      D = (C - Scalar(3)*(theta-sin_theta-theta_sq*theta/Scalar(6)) / (theta_p4*theta));
 
       // http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17_identities.pdf
   //    C = (theta_sq+Scalar(2)*cos_theta-Scalar(2)) / (Scalar(2)*theta_sq*theta_sq);

@@ -127,4 +127,37 @@ TEST(TEST_SE2, TEST_SE2_TANGENT_INSTREAM)
   EXPECT_DOUBLE_EQ(3, se2.angle());
 }
 
+TEST(TEST_SE2, TEST_SE2_TANGENT_SMALL_ANGLE_JACOBIANS)
+{
+  // Angles on both sides of the small angle thresholds
+  const double angles[] = {
+    0, 1e-8, 1e-7, 1.4e-7, 1.6e-7, 1e-6, 1e-5, 1e-4, 1e-3,
+    1e-2, 1.9e-2, 2e-2, 1e-1, 0.5
+  };
+
+  for (const double angle : angles)
+  {
+    for (const double sign : {1., -1.})
+    {
+      const SE2Tangentd tan(0.5, -0.8, sign * angle);
+      const JacobiansSeries<SE2Tangentd> series(tan);
+
+      SCOPED_TRACE(::testing::Message() << "angle=" << tan.angle());
+
+      EXPECT_EIGEN_NEAR(series.Jr, tan.rjac(), 1e-14);
+      EXPECT_EIGEN_NEAR(series.Jl, tan.ljac(), 1e-14);
+      EXPECT_EIGEN_NEAR(series.Jrinv, tan.rjacinv(), 1e-14);
+      EXPECT_EIGEN_NEAR(series.Jlinv, tan.ljacinv(), 1e-14);
+
+      SE2d::Jacobian J_exp, J_log;
+      const SE2d state = tan.exp(J_exp);
+      const SE2Tangentd tan_log = state.log(J_log);
+
+      EXPECT_EIGEN_NEAR(series.Jr, J_exp, 1e-14);
+      EXPECT_EIGEN_NEAR(series.Jrinv, J_log, 1e-14);
+      EXPECT_EIGEN_NEAR(tan.coeffs(), tan_log.coeffs(), 1e-14);
+    }
+  }
+}
+
 MANIF_RUN_ALL_TEST;

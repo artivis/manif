@@ -103,6 +103,28 @@ public:
   Scalar y() const;
   //! @brief Get the rotational part.
   Scalar angle() const;
+
+// private:
+
+  /**
+   * @brief Get the coefficients of the exponential map and of
+   * the rotational part of the right and left Jacobians,
+   * A = sin(theta) / theta and B = (1 - cos(theta)) / theta.
+   */
+  static void fillAB(Scalar& A, Scalar& B, const Scalar& theta);
+
+  /**
+   * @brief Get the coefficients of the translational part of
+   * the right and left Jacobians,
+   * C = (1 - cos(theta)) / theta^2 and D = (theta - sin(theta)) / theta^2.
+   */
+  static void fillCD(Scalar& C, Scalar& D, const Scalar& theta);
+
+  /**
+   * @brief Get the coefficients of the inverse right and left Jacobians,
+   * E = theta/2 cot(theta/2) and F = (1 - E) / theta.
+   */
+  static void fillEF(Scalar& E, Scalar& F, const Scalar& theta);
 };
 
 template <typename _Derived>
@@ -126,23 +148,11 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
   const Scalar theta = angle();
   const Scalar cos_theta = cos(theta);
   const Scalar sin_theta = sin(theta);
-  const Scalar theta_sq = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
 
-  if (theta_sq < Constants<Scalar>::eps)
-  {
-    // Taylor approximation
-    A = Scalar(1) - Scalar(1. / 6.) * theta_sq;
-    B = Scalar(.5) * theta - Scalar(1. / 24.) * theta * theta_sq;
-  }
-  else
-  {
-    // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+  fillAB(A, B, theta);
 
   if (J_m_t)
   {
@@ -153,16 +163,13 @@ SE2TangentBase<_Derived>::exp(OptJacobianRef J_m_t) const
     (*J_m_t)(1,0) = -B;
     (*J_m_t)(1,1) =  A;
 
-    if (theta_sq < Constants<Scalar>::eps)
-    {
-      (*J_m_t)(0,2) = -y() / Scalar(2) + theta * x() / Scalar(6);
-      (*J_m_t)(1,2) =  x() / Scalar(2) + theta * y() / Scalar(6);
-    }
-    else
-    {
-      (*J_m_t)(0,2) = (-y() + theta*x() + y()*cos_theta - x()*sin_theta)/theta_sq;
-      (*J_m_t)(1,2) = ( x() + theta*y() - x()*cos_theta - y()*sin_theta)/theta_sq;
-    }
+    Scalar C,  // one_minus_cos_theta_by_theta_sq
+           D;  // theta_minus_sin_theta_by_theta_sq
+
+    fillCD(C, D, theta);
+
+    (*J_m_t)(0,2) = D * x() - C * y();
+    (*J_m_t)(1,2) = D * y() + C * x();
   }
 
   return LieGroup( A * x() - B * y(),
@@ -223,43 +230,22 @@ template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
 SE2TangentBase<_Derived>::rjacinv() const
 {
-  using std::abs;
-  using std::cos;
-  using std::sin;
-
   const Scalar theta = angle();
-  const Scalar cos_theta = cos(theta);
-  const Scalar sin_theta = sin(theta);
-  const Scalar theta_sq = theta * theta;
 
-  Scalar A,  // theta_sin_theta
-         B;  // theta_cos_theta
+  Scalar E,  // half_theta_cot_half_theta
+         F;  // one_minus_half_theta_cot_half_theta_by_theta
 
-  A = theta*sin_theta;
-  B = theta*cos_theta;
+  fillEF(E, F, theta);
 
   Jacobian Jrinv;
 
+  Jrinv(0,0) =  E;
   Jrinv(0,1) = -theta*Scalar(0.5);
   Jrinv(1,0) = -Jrinv(0,1);
+  Jrinv(1,1) =  E;
 
-  if (theta_sq > Constants<Scalar>::eps)
-  {
-    Jrinv(0,0) = -A/(Scalar(2)*cos_theta-Scalar(2));
-    Jrinv(1,1) =  Jrinv(0,0);
-
-    Scalar den = Scalar(2)*theta*(cos_theta-Scalar(1));
-    Jrinv(0,2) = (A*x() + B*y() - theta*y() + Scalar(2)*x()*cos_theta - Scalar(2)*x()) / den;
-    Jrinv(1,2) = (-B*x() + A*y() + theta*x() + Scalar(2)*y()*cos_theta - Scalar(2)*y()) / den;
-  }
-  else
-  {
-    Jrinv(0,0) = Scalar(1)-theta_sq/Scalar(12);
-    Jrinv(1,1) =  Jrinv(0,0);
-
-    Jrinv(0,2) =  y()/Scalar(2) + theta*x()/Scalar(12);
-    Jrinv(1,2) = -x()/Scalar(2) + theta*y()/Scalar(12);
-  }
+  Jrinv(0,2) = F * x() + y()/Scalar(2);
+  Jrinv(1,2) = F * y() - x()/Scalar(2);
 
   Jrinv(2,0) = Scalar(0);
   Jrinv(2,1) = Scalar(0);
@@ -272,16 +258,65 @@ template <typename _Derived>
 typename SE2TangentBase<_Derived>::Jacobian
 SE2TangentBase<_Derived>::ljac() const
 {
-  using std::cos;
-  using std::sin;
-
   const Scalar theta = angle();
-  const Scalar cos_theta = cos(theta);
-  const Scalar sin_theta = sin(theta);
-  const Scalar theta_sq = theta * theta;
 
   Scalar A,  // sin_theta_by_theta
          B;  // one_minus_cos_theta_by_theta
+
+  fillAB(A, B, theta);
+
+  Jacobian Jl = Jacobian::Identity();
+  Jl(0,0) =  A;
+  Jl(0,1) = -B;
+  Jl(1,0) =  B;
+  Jl(1,1) =  A;
+
+  Scalar C,  // one_minus_cos_theta_by_theta_sq
+         D;  // theta_minus_sin_theta_by_theta_sq
+
+  fillCD(C, D, theta);
+
+  Jl(0,2) = D * x() + C * y();
+  Jl(1,2) = D * y() - C * x();
+
+  return Jl;
+}
+
+template <typename _Derived>
+typename SE2TangentBase<_Derived>::Jacobian
+SE2TangentBase<_Derived>::ljacinv() const
+{
+  const Scalar theta = angle();
+
+  Scalar E,  // half_theta_cot_half_theta
+         F;  // one_minus_half_theta_cot_half_theta_by_theta
+
+  fillEF(E, F, theta);
+
+  Jacobian Jlinv;
+
+  Jlinv(0,0) =  E;
+  Jlinv(0,1) =  theta*Scalar(0.5);
+  Jlinv(1,0) = -Jlinv(0,1);
+  Jlinv(1,1) =  E;
+
+  Jlinv(0,2) = F * x() - y()/Scalar(2);
+  Jlinv(1,2) = F * y() + x()/Scalar(2);
+
+  Jlinv(2,0) = Scalar(0);
+  Jlinv(2,1) = Scalar(0);
+  Jlinv(2,2) = Scalar(1);
+
+  return Jlinv;
+}
+
+template <typename _Derived>
+void SE2TangentBase<_Derived>::fillAB(
+  Scalar& A, Scalar& B, const Scalar& theta)
+{
+  using std::sin;
+
+  const Scalar theta_sq = theta * theta;
 
   if (theta_sq < Constants<Scalar>::eps)
   {
@@ -292,77 +327,74 @@ SE2TangentBase<_Derived>::ljac() const
   else
   {
     // Euler
-    A = sin_theta / theta;
-    B = (Scalar(1) - cos_theta) / theta;
-  }
+    // 1 - cos(theta) = 2 sin(theta/2)^2 avoids cancellation
+    const Scalar sin_half_theta = sin(theta * Scalar(0.5));
 
-  Jacobian Jl = Jacobian::Identity();
-  Jl(0,0) =  A;
-  Jl(0,1) = -B;
-  Jl(1,0) =  B;
-  Jl(1,1) =  A;
-
-  if (theta_sq < Constants<Scalar>::eps)
-  {
-    Jl(0,2) =  y() / Scalar(2) + theta * x() / Scalar(6);
-    Jl(1,2) = -x() / Scalar(2) + theta * y() / Scalar(6);
+    A = sin(theta) / theta;
+    B = Scalar(2) * sin_half_theta * sin_half_theta / theta;
   }
-  else
-  {
-    Jl(0,2) = ( y() + theta*x() - y()*cos_theta - x()*sin_theta)/theta_sq;
-    Jl(1,2) = (-x() + theta*y() + x()*cos_theta - y()*sin_theta)/theta_sq;
-  }
-
-  return Jl;
 }
 
 template <typename _Derived>
-typename SE2TangentBase<_Derived>::Jacobian
-SE2TangentBase<_Derived>::ljacinv() const
+void SE2TangentBase<_Derived>::fillCD(
+  Scalar& C, Scalar& D, const Scalar& theta)
 {
-  using std::abs;
-  using std::cos;
   using std::sin;
 
-  const Scalar theta = angle();
-  const Scalar cos_theta = cos(theta);
-  const Scalar sin_theta = sin(theta);
   const Scalar theta_sq = theta * theta;
+  const Scalar theta_p4 = theta_sq * theta_sq;
 
-  Scalar A,  // theta_sin_theta
-         B;  // theta_cos_theta
-
-  A = theta*sin_theta;
-  B = theta*cos_theta;
-
-  Jacobian Jlinv;
-
-  Jlinv(0,1) =  theta*Scalar(0.5);
-  Jlinv(1,0) = -Jlinv(0,1);
-
-  if (theta_sq > Constants<Scalar>::eps)
+  // theta - sin(theta) cancels to O(theta^3) so that D loses
+  // precision as eps / theta. The series is thus used up to
+  // theta^8 < eps, where its neglected terms are still below eps.
+  if (theta_p4 * theta_p4 < Constants<Scalar>::eps)
   {
-    Jlinv(0,0) = -A/(Scalar(2)*cos_theta-Scalar(2));
-    Jlinv(1,1) =  Jlinv(0,0);
-
-    Scalar den = Scalar(2)*theta*(cos_theta-Scalar(1));
-    Jlinv(0,2) = (A*x() - B*y() + theta*y() + Scalar(2)*x()*cos_theta - Scalar(2)*x()) / den;
-    Jlinv(1,2) = (B*x() + A*y() - theta*x() + Scalar(2)*y()*cos_theta - Scalar(2)*y()) / den;
+    // Taylor approximation
+    C = Scalar(1. / 2.) - Scalar(1. / 24.) * theta_sq +
+        Scalar(1. / 720.) * theta_p4 -
+        Scalar(1. / 40320.) * theta_p4 * theta_sq;
+    D = theta * (Scalar(1. / 6.) - Scalar(1. / 120.) * theta_sq +
+                 Scalar(1. / 5040.) * theta_p4 -
+                 Scalar(1. / 362880.) * theta_p4 * theta_sq);
   }
   else
   {
-    Jlinv(0,0) = Scalar(1)-theta_sq/Scalar(12);
-    Jlinv(1,1) = Jlinv(0,0);
+    // 1 - cos(theta) = 2 sin(theta/2)^2 avoids cancellation
+    const Scalar sin_half_theta = sin(theta * Scalar(0.5));
 
-    Jlinv(0,2) = -y()/Scalar(2) + theta*x()/Scalar(12);
-    Jlinv(1,2) =  x()/Scalar(2) + theta*y()/Scalar(12);
+    C = Scalar(2) * sin_half_theta * sin_half_theta / theta_sq;
+    D = (theta - sin(theta)) / theta_sq;
   }
+}
 
-  Jlinv(2,0) = Scalar(0);
-  Jlinv(2,1) = Scalar(0);
-  Jlinv(2,2) = Scalar(1);
+template <typename _Derived>
+void SE2TangentBase<_Derived>::fillEF(
+  Scalar& E, Scalar& F, const Scalar& theta)
+{
+  using std::cos;
+  using std::sin;
 
-  return Jlinv;
+  const Scalar theta_sq = theta * theta;
+  const Scalar theta_p4 = theta_sq * theta_sq;
+
+  // 1 - theta/2 cot(theta/2) cancels to O(theta^2) so that F loses
+  // precision as eps / theta. The series is thus used up to
+  // theta^8 < eps, where its neglected terms are still below eps.
+  if (theta_p4 * theta_p4 < Constants<Scalar>::eps)
+  {
+    // Taylor approximation
+    F = theta * (Scalar(1. / 12.) + Scalar(1. / 720.) * theta_sq +
+                 Scalar(1. / 30240.) * theta_p4 +
+                 Scalar(1. / 1209600.) * theta_p4 * theta_sq);
+    E = Scalar(1) - theta * F;
+  }
+  else
+  {
+    const Scalar half_theta = theta * Scalar(0.5);
+
+    E = half_theta * cos(half_theta) / sin(half_theta);
+    F = (Scalar(1) - E) / theta;
+  }
 }
 
 template <typename _Derived>

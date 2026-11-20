@@ -2,6 +2,7 @@
 #define _MANIF_MANIF_GTEST_GTEST_MANIF_UTILS_H_
 
 #include "manif/impl/lie_group_base.h"
+#include "manif/impl/tangent_base.h"
 #include "manif/impl/utils.h"
 
 #include "gtest_eigen_utils.h"
@@ -126,6 +127,56 @@ protected:
 
   std::default_random_engine re_;
   std::normal_distribution<Scalar> distr_;
+};
+
+/**
+ * @brief Jacobians of a tangent evaluated from their series
+ * in the small adjoint,
+ *   Jr    = sum (-1)^n / (n+1)! ad^n,
+ *   Jl    = sum 1 / (n+1)! ad^n,
+ *   Jrinv = sum (-1)^n B_n / n! ad^n,
+ *   Jlinv = sum B_n / n! ad^n,
+ * where B_n are the Bernoulli numbers (B_1 = -1/2).
+ * @note The series converge quickly for small angles only.
+ */
+template <typename _Tangent>
+struct JacobiansSeries
+{
+  using Jacobian = typename _Tangent::Jacobian;
+
+  explicit JacobiansSeries(const _Tangent& tangent)
+    : Jr(Jacobian::Zero())
+    , Jl(Jacobian::Zero())
+    , Jrinv(Jacobian::Zero())
+    , Jlinv(Jacobian::Zero())
+  {
+    const double bernoulli[] = {
+      1., -1./2., 1./6., 0., -1./30., 0., 1./42., 0., -1./30., 0.,
+      5./66., 0., -691./2730., 0., 7./6., 0., -3617./510.
+    };
+
+    const Jacobian ad = tangent.smallAdj();
+    Jacobian ad_pow_n = Jacobian::Identity();
+    double n_factorial = 1;
+
+    for (int n = 0; n <= 16; ++n)
+    {
+      if (n > 0)
+      {
+        ad_pow_n = ad_pow_n * ad;
+        n_factorial *= n;
+      }
+
+      const double sign = (n % 2 == 0) ? 1. : -1.;
+
+      Jr    += sign / (n_factorial * (n + 1)) * ad_pow_n;
+      Jl    += 1. / (n_factorial * (n + 1)) * ad_pow_n;
+      Jrinv += sign * bernoulli[n] / n_factorial * ad_pow_n;
+      Jlinv += bernoulli[n] / n_factorial * ad_pow_n;
+    }
+  }
+
+  Jacobian Jr, Jl, Jrinv, Jlinv;
 };
 
 } /* namespace manif */
