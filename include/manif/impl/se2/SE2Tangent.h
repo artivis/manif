@@ -87,7 +87,7 @@ protected:
   DataType data_;
 };
 
-MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent);
+MANIF_EXTRA_TANGENT_TYPEDEF(SE2Tangent)
 
 template <typename _Scalar>
 template <typename _DerivedOther>

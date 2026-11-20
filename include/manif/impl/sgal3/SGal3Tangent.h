@@ -80,7 +80,7 @@ protected:
   DataType data_;
 };
 
-MANIF_EXTRA_TANGENT_TYPEDEF(SGal3Tangent);
+MANIF_EXTRA_TANGENT_TYPEDEF(SGal3Tangent)
 
 template <typename _Scalar>
 template <typename _DerivedOther>
