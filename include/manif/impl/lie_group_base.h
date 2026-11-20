@@ -80,8 +80,8 @@ public:
   //! @brief Access the underlying data by const reference
   const DataType& coeffs() const;
 
-  //! @brief Access the underlying data by pointer
-  Scalar* data();
+  //! @brief Access the underlying data by pointer (const for a Map to const)
+  auto data() -> decltype(std::declval<DataType&>().data());
   //! @brief Access the underlying data by const pointer
   const Scalar* data() const;
 
@@ -412,8 +412,8 @@ LieGroupBase<_Derived>::coeffs() const
 }
 
 template <typename _Derived>
-typename LieGroupBase<_Derived>::Scalar*
-LieGroupBase<_Derived>::data()
+auto LieGroupBase<_Derived>::data()
+-> decltype(std::declval<DataType&>().data())
 {
   return derived().coeffs().data();
 }

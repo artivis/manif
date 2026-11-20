@@ -126,6 +126,73 @@ TEST(Bundle, Map)
 }
 
 
+TEST(Bundle, MapConst)
+{
+  const GroupA group = GroupA::Random();
+
+  // non-const Map to const
+  Eigen::Map<const GroupA> map(group.data());
+
+  static_assert(
+    std::is_same<decltype(map.element<0>()), Eigen::Map<const R2d>>::value,
+    "Element of a Map to const must be a Map to const");
+  static_assert(
+    std::is_same<decltype(map.element<1>()), Eigen::Map<const SO3d>>::value,
+    "Element of a Map to const must be a Map to const");
+  static_assert(
+    std::is_same<decltype(map.data()), const double*>::value,
+    "Data of a Map to const must be a pointer to const");
+  static_assert(
+    std::is_same<decltype(map.element<1>().data()), const double*>::value,
+    "Data of a Map to const must be a pointer to const");
+
+  EXPECT_EQ(group.data(), map.data());
+  EXPECT_EQ(group.data() + 2, map.element<1>().data());
+
+  EXPECT_EIGEN_NEAR(group.element<0>().coeffs(), map.element<0>().coeffs());
+  EXPECT_EIGEN_NEAR(group.element<1>().coeffs(), map.element<1>().coeffs());
+  EXPECT_EIGEN_NEAR(group.element<2>().coeffs(), map.element<2>().coeffs());
+
+  // Map to non-const
+  GroupA other = group;
+  Eigen::Map<GroupA> map_other(other.data());
+
+  static_assert(
+    std::is_same<decltype(map_other.element<1>()), Eigen::Map<SO3d>>::value,
+    "Element of a Map must be a Map");
+  static_assert(
+    std::is_same<decltype(map_other.data()), double*>::value,
+    "Data of a Map must be a pointer");
+}
+
+TEST(BundleTangent, MapConst)
+{
+  const GroupA::Tangent tangent = GroupA::Tangent::Random();
+
+  // non-const Map to const
+  Eigen::Map<const GroupA::Tangent> map(tangent.data());
+
+  static_assert(
+    std::is_same<decltype(map.element<0>()), Eigen::Map<const R2Tangentd>>::value,
+    "Element of a Map to const must be a Map to const");
+  static_assert(
+    std::is_same<decltype(map.element<1>()), Eigen::Map<const SO3Tangentd>>::value,
+    "Element of a Map to const must be a Map to const");
+  static_assert(
+    std::is_same<decltype(map.data()), const double*>::value,
+    "Data of a Map to const must be a pointer to const");
+  static_assert(
+    std::is_same<decltype(map.element<1>().data()), const double*>::value,
+    "Data of a Map to const must be a pointer to const");
+
+  EXPECT_EQ(tangent.data(), map.data());
+  EXPECT_EQ(tangent.data() + 2, map.element<1>().data());
+
+  EXPECT_EIGEN_NEAR(tangent.element<0>().coeffs(), map.element<0>().coeffs());
+  EXPECT_EIGEN_NEAR(tangent.element<1>().coeffs(), map.element<1>().coeffs());
+  EXPECT_EIGEN_NEAR(tangent.element<2>().coeffs(), map.element<2>().coeffs());
+}
+
 TEST(BundleTangent, Interface)
 {
   typename GroupA::Tangent tangent = GroupA::Tangent::Random();
